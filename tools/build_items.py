@@ -149,4 +149,5 @@ def main():
     unparsed = sum(1 for s in sets.values() for b in s if not b['ok'])
     print('set bonuses not parsed:', unparsed)
 
-main()
+if __name__ == '__main__':
+    main()

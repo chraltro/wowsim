@@ -20,8 +20,18 @@ PD = {'head': 'head', 'neck': 'neck', 'shoulder': 'shoulder', 'back': 'back', 'c
       'trinket2': 'trinket2', 'mainHand': 'mainhand', 'offHand': 'offhand', 'ranged': 'ranged'}
 
 
+def engine_ids():
+    """Item ids MythicSim's engine knows; it refuses a request with any other item."""
+    ids = set()
+    for line in open(os.path.join(ROOT, 'vendor/mythicsim-forever-engine/data/items.jsonl')):
+        if line.strip():
+            ids.add(json.loads(line)['id'])
+    return ids
+
+
 def main():
     d = json.load(open(SRC))
+    known = engine_ids()
     items, sets, dropped = {}, {}, 0
     for i in d['items']:
         slots = [PD[s] for s in (i.get('equipSlots') or []) if s in PD]
@@ -49,6 +59,8 @@ def main():
             s2 = [PD[s] for s in u.get('slots') or [] if s in PD]
             ub[u['class']] = [u.get('fromLevel') or 0] + ([s2] if s2 != slots else []) + ([u['offHandFromLevel']] if u.get('offHandFromLevel') else [])
         rec['ub'] = ub
+        if i['id'] not in known:
+            rec['ne'] = 1
         if srcs:
             rec['src'] = srcs
         if i.get('unique'):

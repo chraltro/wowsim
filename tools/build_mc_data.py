@@ -40,7 +40,13 @@ SPECS = {
               'restoration': ('restorationDruid', 'druid/restoration/default', 'Restoration')},
 }
 # Extra engine specs reachable from a route spec for a dungeon role
-ROLE_SPEC = {('druid', 'feral_combat', 'tank'): ('feralBearDruid', 'druid/feralbear/default')}
+ROLE_SPEC = {('druid', 'feral_combat', 'tank'): ('feralBearDruid', 'druid/feralbear/default'),
+             # Healers quest with their damage abilities: the rotation and spec options of a damage spec, their own talents
+             ('paladin', 'holy', 'quest'): ('retributionPaladin', 'paladin/retribution/default'),
+             ('priest', 'discipline', 'quest'): ('dpsPriest', 'priest/dps/smite'),
+             ('priest', 'holy', 'quest'): ('dpsPriest', 'priest/dps/smite'),
+             ('druid', 'restoration', 'quest'): ('balanceDruid', 'druid/balance/launch'),
+             ('shaman', 'res', 'quest'): ('enhancementShaman', 'shaman/enhancement/forever')}
 
 STD = {'buffs', 'characterSheet', 'class', 'consumables', 'distanceFromTarget', 'equipment', 'level', 'name', 'profession1',
        'profession2', 'race', 'reactionTimeMs', 'rotation', 'talentsString', 'knownSpells', 'cooldowns', 'bonusStats',
