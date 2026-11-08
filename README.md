@@ -1,91 +1,110 @@
-# Shaman Sim for WoW Forever
+# WoW Forever sims
 
-A single-page simulator for a Dwarf Restoration Shaman in WoW Forever, from level 1 to 60. It has four parts:
+Two simulators for a group leveling together in World of Warcraft: Forever, from level 1 to 60.
 
-- **Questing.** Kills per hour while leveling, for four ways to fight. It picks your best weapon imbue for each and includes Lightning Shield, eating and drinking.
+**Live: https://chraltro.github.io/wowsim/**
+
+| Tool | What it does | Page |
+| --- | --- | --- |
+| Forever Group Sim | Every class and spec. Kills per hour while questing, dungeon damage and healing, talents from leveling routes, upgrades ranked by effort. Class combat runs on MythicSim's Forever engine, compiled to WebAssembly and run in your browser. | [/forever/](https://chraltro.github.io/wowsim/forever/) |
+| Shaman Sim | A Restoration Shaman in depth: a second-by-second healer AI for dungeons, questing with four fighting styles, upgrades by effort and a combat log parser. Its own engine, in JavaScript. | [/shaman/](https://chraltro.github.io/wowsim/shaman/) |
+
+Both run entirely in the browser. Characters and settings are kept in the browser's local storage.
+
+## Forever Group Sim
+
+- **Group.** One row per character: level, spec, kills per hour while questing, time per kill and dungeon damage or healing. Change everyone's level at once.
+- **Character.** Class, race, level, spec and talent route. Talents follow the route one point a level from 10. Gear starts as typical gear for the level and can be changed slot by slot.
+- **Questing.** Kill time is a normal mob's health over the engine's damage per second at your level. Then the damage you take (armor, dodge, parry, mob misses; your pet tanks for Hunter and Warlock from 10), eating and drinking with the food and water of your level, and 10 seconds of walking between pulls.
+- **Dungeon.** A boss two levels above you for two minutes: damage per second, healing per second for healers, damage taken for tanks.
+- **Upgrades.** Items you can get at your level, simmed against your current gear and ranked by how easy they are to get. PvP and raid-only items are left out.
+
+The engine is [MythicSim's Forever engine](https://github.com/sage3648/mythicsim-forever-engine) (MIT), which is built on [wowsims Forever](https://github.com/wowsims/forever) (MIT). It was written for level 60. We carry nine patches that make it correct at lower levels, each one leaving level 60 results bit-identical. [`docs/multiclass.md`](docs/multiclass.md) lists every patch, the gaps that remain and the before and after numbers.
+
+## Shaman Sim
+
+- **Questing.** Kills per hour for four ways to fight, with the best weapon imbue for each, Lightning Shield, eating and drinking.
 - **Dungeon fight.** A Monte Carlo healer AI with a tank, three damage dealers and you. It finds the most tank damage per second you can heal through.
-- **Upgrades.** Finds the easiest real upgrades for your level. Each item is ranked by what it adds to questing speed or healing, divided by the effort to get it.
+- **Upgrades.** The easiest real upgrades for your level, ranked by what they add to questing speed or healing over the effort to get them.
 - **Combat log.** Parses a WoW combat log file in the browser and writes a summary you can paste to Claude for a critique.
-
-Every spell uses the rank you have at your level, with its level scaling. Talents come from each build's leveling route, one point per level from 10.
-
-Live version: https://claude.ai/artifact/HmiNY3CyCiiMqAeMS6kPRU
 
 ## Layout
 
 | Path | What it is |
 | --- | --- |
-| `src/app.html` | Page template: markup and CSS. Has placeholders for the scripts below. |
-| `src/app_main.js` | The page's UI: level, builds and routes, gear picker, questing, dungeon runs, upgrades, log view. |
-| `src/engine.js` | Simulation engine: character sheet, heal spells, 5-minute healing capacity, dungeon fight, melee and Lightning Bolt damage, questing model. Runs in both node and the browser. |
-| `src/data.js` | Level 60 constants, leveling tables and the list of assumptions with their status. |
-| `src/levels.js` | Generated. Base stats, crit scaling, mob health, damage and armor per level, plus every spell rank. |
-| `src/items.js` | Generated. 6,214 Shaman-usable items with sources, drop chances, set bonuses and gear presets. |
-| `src/ranks.json` | Generated. Compact spell ranks, read by `tools/build_levels.py`. |
-| `src/logparse.js` | Combat log parser. |
-| `src/worker.js` | Web Worker entry point, used for dungeon runs and log parsing. |
-| `tools/` | Build scripts (see below). |
-| `data/` | Inputs to the generated files. |
-| `opt/` | Talent optimizer: local search over legal 51-point builds, plus Pareto frontiers. |
+| `src/mc/` | Group Sim: `app.html` and `app.js` (page), `request.js` (engine requests and character sheets), `quest.js` (questing model), `gear.js` (typical gear), `worker.js` (runs the engine off the main thread). `classdata.js` and `items.js` are generated. |
+| `src/` | Shaman Sim: `app.html`, `app_main.js`, `engine.js`, `data.js`, `logparse.js`, `worker.js`. `levels.js`, `items.js` and `ranks.json` are generated. The Group Sim reuses `data.js`, `levels.js` and the page CSS. |
+| `src/site/index.html` | The landing page. |
+| `engine-wasm/` | A small Rust crate that wraps the engine for the browser (`ws_alloc`, `ws_sim`, `ws_out_ptr`, `ws_out_len`), our engine patches, and the built `engine.wasm.gz`. |
+| `vendor/mythicsim-forever-engine` | The engine, a git submodule pinned at `b3c5eb6`. |
+| `data/` | Inputs to the generated files: items, class stats per level, talents, leveling routes, Shaman data. |
+| `tools/` | Build and deploy scripts. |
 | `test/` | Node checks and Playwright browser checks. |
-| `pipeline/` | One-off crawlers that produced `data/`. See `pipeline/README.md`. |
-| `dist/index.html` | The built page. One self-contained file. |
+| `opt/` | Shaman talent optimizer: local search over legal 51-point builds, plus Pareto frontiers. |
+| `pipeline/` | The one-off crawlers that produced `data/`. They do not run as they are; see `pipeline/README.md`. |
+| `docs/multiclass.md` | Group Sim design notes, engine patches and known gaps. |
+| `dist/` | The built site: `index.html`, `shaman/index.html`, `forever/index.html` and `forever/engine.gz.wasm`. |
 
 ## Build
 
 ```sh
-python3 tools/build_ranks.py    # data/shaman_ranks.json  -> src/ranks.json
-python3 tools/build_levels.py   # data/shaman_levels.json + src/ranks.json -> src/levels.js
-python3 tools/build_items.py    # data/items_forever_all.json + presets -> src/items.js
-python3 tools/build.py          # src/* -> dist/index.html
+git clone --recurse-submodules https://github.com/chraltro/wowsim
+cd wowsim
+./tools/build_site.sh       # src/ -> dist/ (Python only)
+cd dist && python3 -m http.server 8765    # open http://localhost:8765/
 ```
 
-You only need the first three when the data changes. `tools/build.py` inlines everything into one HTML file, including a copy of the engine for the Web Worker.
+The Group Sim fetches its engine, so open it over HTTP, not from the file system. The Shaman Sim is one self-contained file.
+
+The engine is committed already built, in `engine-wasm/engine.wasm.gz`. To rebuild it you need [rustup](https://rustup.rs); the toolchain and the wasm target are pinned in `engine-wasm/rust-toolchain.toml`:
+
+```sh
+./tools/build_engine.sh     # applies engine-wasm/patches/ to the submodule, builds, gzips
+```
+
+When the data changes:
+
+```sh
+python3 tools/build_mc_data.py    # data/classes, data/talents, data/routes + engine presets -> src/mc/classdata.js
+python3 tools/build_items_all.py  # data/items_all.json -> src/mc/items.js
+python3 tools/build_ranks.py      # data/shaman_ranks.json -> src/ranks.json
+python3 tools/build_levels.py     # data/shaman_levels.json + src/ranks.json -> src/levels.js
+python3 tools/build_items.py      # data/items_forever_all.json + presets -> src/items.js
+```
+
+## Deploy
+
+```sh
+./tools/build_site.sh && ./tools/deploy_pages.sh
+```
+
+`deploy_pages.sh` force-pushes `dist/` as a single commit to the `gh-pages` branch, which GitHub Pages serves.
 
 ## Checks
 
 ```sh
-node test/lv.js        # engine at levels 8 to 60: spells, dungeon limits, questing per style
-node test/routes.js    # every leveling route is legal and ends on its 51-point code
-node test/imbue.js     # imbue comparison at 60 with the gear presets
-node test/gen.js       # regenerate the synthetic combat log in test/sample.txt
-python3 test/ui.py     # browser run at several levels (needs playwright and Chrome)
+node test/mc_levels.js all 10,20,40,60   # every spec through the engine: no refusals, damage rises with level
+node test/mc_quest.js all 10,20,40,60    # questing kills per hour for every spec
+node test/lv.js                          # Shaman engine at levels 8 to 60
+node test/routes.js                      # every Shaman leveling route is legal
+python3 test/mc_ui.py                    # Group Sim in a browser (needs Playwright and Chrome, and the local server above)
+python3 test/ui.py                       # Shaman Sim in a browser
 ```
 
-## Optimizer
+The engine checks use a local cargo build if there is one, otherwise the committed `engine.wasm.gz`.
 
-```sh
-cd opt
-node optimize.js resto_timesaver          # best builds for healing, and for healing plus melee
-node frontier.js                          # healing vs melee damage Pareto frontier
-node frontier2.js                         # healing vs Lightning Bolt frontier
-node validate.js resto_timesaver '{"pure":"-055-5530003315513151"}'   # Monte Carlo check
-```
+## Data
 
-Build codes use the timesaver.gg format `ele-enh-res`, with one digit per talent in row and column order.
+Each Shaman Sim assumption in `src/data.js` is labelled, and the page shows the labels under "How the sim works": **Forever** (Forever client data or a Blizzard statement), **Sim rule** (taken from wowsims Forever), **Vanilla** (a Classic value nobody has confirmed for Forever) or **Estimate** (our own assumption).
 
-## Data and status labels
+Sources:
 
-Each assumption in `src/data.js` has one of four labels, and the page shows them under "How the sim works":
+- Class combat for the Group Sim: MythicSim's Forever engine, pinned at `b3c5eb6`, with our patches.
+- Spell records, the item database and level 60 rules: [wowsims/forever](https://github.com/wowsims/forever), commit `125e534`, client build 1.60.1.70862.
+- Per-level player and mob stats: the Forever client tables PlayerExpectedStat and ExpectedStat via wago.tools, with gaps filled from cmangos and vmangos.
+- Talents and leveling routes: the public talent calculators and leveling guides named on each route in the page.
+- Drop chances: Wowhead Forever and Warcraft DB. Quest rewards: QuestieDB-Forever.
 
-- **Forever**: Forever client data or a Blizzard statement.
-- **Sim rule**: a rule taken from the wowsims Forever simulator.
-- **Vanilla**: a Classic value that nobody has confirmed for Forever.
-- **Estimate**: this tool's own assumption.
+## Licence
 
-Where the data comes from:
-
-- Spell records, the item database and level 60 rules: [wowsims/forever](https://github.com/wowsims/forever), MIT licence, commit 125e534, client build 1.60.1.70862.
-- Per-level player and mob stats: the Forever client tables PlayerExpectedStat and ExpectedStat, via wago.tools. Gaps are filled from cmangos and vmangos. `data/shaman_levels.json` records the source of every value.
-- Drop chances: Wowhead Forever and Warcraft DB (wowtbc.gg).
-- Quest rewards: QuestieDB-Forever.
-- Tooltip checks for spells, potions, drinks and food: Wowhead Forever.
-
-## Not modelled
-
-- Healing threat and cast pushback.
-- Item procs and on-use trinkets.
-- Searing Totem.
-- Pulling more than one mob while questing.
-- Health regeneration outside eating.
-- Armor debuffs (Sunder Armor, Faerie Fire). Melee is always against a normal mob's full armor.
+This repo includes code from MythicSim's Forever engine and wowsims Forever, both under the MIT licence; see [`NOTICE.md`](NOTICE.md). Not affiliated with Blizzard Entertainment. World of Warcraft is a trademark of Blizzard Entertainment.

@@ -1,11 +1,15 @@
 // Run a request file through the wasm build and print headline numbers.
 const fs = require('fs');
 const path = require('path');
+// A local cargo build if there is one, else the committed engine-wasm/engine.wasm.gz, so a fresh
+// clone runs the checks without Rust.
 const wasmPath = path.join(__dirname, '../target/wasm32-unknown-unknown/release/wowsim_engine.wasm');
+const gzPath = path.join(__dirname, '../engine.wasm.gz');
+const wasmBytes = () => fs.existsSync(wasmPath) ? fs.readFileSync(wasmPath) : require('zlib').gunzipSync(fs.readFileSync(gzPath));
 // The engine keeps state between runs that a second run in the same instance trips over,
 // so every run gets a fresh instance of the compiled module (instantiating takes a few ms).
 let MODULE = null;
-async function load(){ if(!MODULE) MODULE = await WebAssembly.compile(fs.readFileSync(wasmPath)); return {fresh: () => new WebAssembly.Instance(MODULE, {}).exports}; }
+async function load(){ if(!MODULE) MODULE = await WebAssembly.compile(wasmBytes()); return {fresh: () => new WebAssembly.Instance(MODULE, {}).exports}; }
 function sim(eng, reqText){
   const ex = eng.fresh ? eng.fresh() : eng;
   const bytes = Buffer.from(reqText, 'utf8');

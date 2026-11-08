@@ -11,6 +11,5 @@ for p in "$ROOT"/engine-wasm/patches/*.patch; do
 done
 cd "$ROOT/engine-wasm"
 cargo build --release --target wasm32-unknown-unknown
-mkdir -p "$ROOT/dist"
-gzip -9 -c target/wasm32-unknown-unknown/release/wowsim_engine.wasm > "$ROOT/dist/engine.wasm.gz"
-ls -la "$ROOT/dist/engine.wasm.gz"
+gzip -9 -c target/wasm32-unknown-unknown/release/wowsim_engine.wasm > "$ROOT/engine-wasm/engine.wasm.gz"
+ls -la "$ROOT/engine-wasm/engine.wasm.gz"

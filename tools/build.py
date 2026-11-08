@@ -11,6 +11,6 @@ wsrc = data + '\n' + engine + '\n' + log + '\n' + worker
 for k,v in [('/*DATA_JS*/',data),('/*ITEMS_JS*/',items),('/*ENGINE_JS*/',engine),('/*LOG_JS*/',log + '\n' + worker),('/*WORKER_JS*/',wsrc),('/*MAIN_JS*/',main)]:
     assert k in html, k
     html = html.replace(k, v.replace('</script>','<\\/script>'))
-os.makedirs(ROOT+'/dist', exist_ok=True)
-open(ROOT+'/dist/index.html','w').write(html)
+os.makedirs(ROOT+'/dist/shaman', exist_ok=True)
+open(ROOT+'/dist/shaman/index.html','w').write(html)
 print('bytes', len(html))

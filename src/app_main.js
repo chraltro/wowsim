@@ -1,6 +1,8 @@
 (function(){
 'use strict';
 const $ = s => document.querySelector(s);
+// On GitHub Pages the two tools sit side by side; elsewhere they link to the published artifacts
+if(/github\.io$/.test(location.hostname)) $('#groupLink').href = '../forever/';
 const fmt = (n, d) => (n === null || n === undefined || !isFinite(n)) ? '–' : Number(n).toLocaleString('en-US', {maximumFractionDigits: d||0, minimumFractionDigits: d||0});
 const pct = (n, d) => fmt(n, d===undefined?1:d) + '%';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));

@@ -11,6 +11,7 @@ const SLOT_LABEL = {head:'Head',neck:'Neck',shoulder:'Shoulder',back:'Back',ches
 const statLabel = {int:'Int',spi:'Spi',sta:'Sta',str:'Str',agi:'Agi',healing:'Heal',spellDamage:'Spell dmg',mp5:'Mp5',critRating:'Crit',hitRating:'Hit',ap:'AP',rangedAp:'RAP',armor:'Armor',defenseRating:'Def',dodgeRating:'Dodge',blockValue:'Block value'};
 const statText = it => Object.entries(it.s||{}).filter(([k]) => statLabel[k]).map(([k,v]) => (k === 'armor' ? v : '+'+v)+' '+statLabel[k]).join(', ') + (it.w ? (it.s && Object.keys(it.s).length ? ', ' : '')+it.w.min+'-'+it.w.max+' @ '+it.w.speed : '');
 const inEngine = id => ITEMS_ALL[id] && !ITEMS_ALL[id].ne;
+const SHAMAN_SIM = /github\.io$/.test(location.hostname) ? '../shaman/' : 'https://claude.ai/artifact/HmiNY3CyCiiMqAeMS6kPRU';
 
 // ---------- Characters ----------
 const DEFAULT_SPEC = {warrior:'arms', paladin:'protection', hunter:'beast_mastery', rogue:'combat', priest:'shadow', shaman:'res', mage:'frost', warlock:'affliction', druid:'feral_combat'};
@@ -215,7 +216,7 @@ function renderResults(){
   const du = d && d.role === 'healer' ? 'healing per second' : 'damage per second';
   const dd = d && d.ok ? 'Boss two levels above you, 2 minutes'+(d.petDps ? ', pet '+fmt(d.petDps)+' of it' : '')+(d.role === 'tank' ? '. Tanking is simmed as damage for now' : '') : esc(d ? d.why : '');
   $('#charKpis').innerHTML = kpi('Questing', qv, 'kills per hour', qd) + kpi('Dungeon', dv, du, dd)
-    + (c.cls === 'shaman' && specOf(c) === 'res' ? '<div class="note" style="grid-column:1/-1">Whether you keep the tank alive, mana over a pull and Resto talents compared: <a href="https://claude.ai/artifact/HmiNY3CyCiiMqAeMS6kPRU" target="_blank" rel="noopener">Shaman Sim</a>.</div>' : '');
+    + (c.cls === 'shaman' && specOf(c) === 'res' ? '<div class="note" style="grid-column:1/-1">Whether you keep the tank alive, mana over a pull and Resto talents compared: <a href="'+SHAMAN_SIM+'" target="_blank" rel="noopener">Shaman Sim</a>.</div>' : '');
   if(pending || !q || !q.ok){ $('#charDetails').innerHTML = ''; return; }
   const rows = [
     ['Mob', 'Level '+q.mob.level+', '+fmt(q.mob.hp)+' health, '+fmt(q.mob.dps,1)+' damage per second'],

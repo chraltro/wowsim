@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the group page: dist/forever/index.html plus dist/forever/engine.wasm.gz."""
+"""Build the group page: dist/forever/index.html plus dist/forever/engine.gz.wasm."""
 import os, shutil
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 r = lambda f: open(os.path.join(ROOT, f)).read()
@@ -17,5 +17,5 @@ out = os.path.join(ROOT, 'dist/forever')
 os.makedirs(out, exist_ok=True)
 open(os.path.join(out, 'index.html'), 'w').write(html)
 # The gzipped engine, named .wasm because artifact hosting serves that extension; the page checks the gzip header
-shutil.copyfile(os.path.join(ROOT, 'dist/engine.wasm.gz'), os.path.join(out, 'engine.gz.wasm'))
+shutil.copyfile(os.path.join(ROOT, 'engine-wasm/engine.wasm.gz'), os.path.join(out, 'engine.gz.wasm'))
 print('index.html', len(html), 'bytes; engine.gz.wasm', os.path.getsize(os.path.join(out, 'engine.gz.wasm')))

@@ -2,7 +2,7 @@ import asyncio
 from playwright.async_api import async_playwright
 import os
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-URL='file://'+ROOT+'/dist/index.html'
+URL='file://'+ROOT+'/dist/shaman/index.html'
 async def main():
     async with async_playwright() as p:
         b = await p.chromium.launch(executable_path='/usr/bin/google-chrome', args=['--no-sandbox'])
