@@ -1,0 +1,5100 @@
+{
+ "class": "warlock",
+ "client_build": "1.60.1.70862",
+ "generated": "2026-11-08",
+ "generator": "wowsim/pipeline/talents/build_talents.py",
+ "row_col_base": 1,
+ "codeOrder": {
+  "affliction": [
+   "improved_life_tap",
+   "suppression",
+   "improved_corruption",
+   "grim_reach",
+   "soul_harvest",
+   "improved_drains",
+   "improved_bane_of_agony",
+   "fel_concentration",
+   "amplify_curse",
+   "pandemic",
+   "malevolence",
+   "nightfall",
+   "curse_of_exhaustion",
+   "siphon_life",
+   "soul_siphon",
+   "shadow_mastery",
+   "wrack"
+  ],
+  "demonology": [
+   "improved_health_funnel",
+   "improved_imp",
+   "demonic_embrace",
+   "unholy_power",
+   "demonic_aegis",
+   "improved_voidwalker",
+   "fel_vitality",
+   "demonic_energies",
+   "improved_sayaad",
+   "demonic_sacrifice",
+   "master_summoner",
+   "decimation",
+   "fel_domination",
+   "demonic_brand",
+   "improved_felhunter",
+   "soul_link",
+   "demonic_knowledge",
+   "master_demonologist",
+   "demonic_pact"
+  ],
+  "destruction": [
+   "destructive_reach",
+   "improved_shadow_bolt",
+   "bane",
+   "molten_skin",
+   "cataclysm",
+   "aftermath",
+   "ruin",
+   "shadowburn",
+   "intensity",
+   "agonizing_flames",
+   "conflagrate",
+   "pyroclasm",
+   "bane_of_havoc",
+   "fire_and_brimstone",
+   "shadow_and_flame",
+   "incinerate"
+  ]
+ },
+ "code_format": "timesaver.gg / wowsims talents string: trees in the order of \"trees\", joined with \"-\"; within a tree one digit (the rank) per talent in codeOrder (row by row, left to right); trailing zeros of each tree and trailing dashes are dropped. Example: ",
+ "rules": {
+  "tier": "a talent in row N (1-based) needs 5 x (N-1) points in its tree; client TraitCond SpentAmountRequired matches 5 x (N-1) for all 467 nodes. Whether points in the gated row itself count (Method.gg planner) or only rows above (wowsims) is not settled by the client data.",
+  "prereq": "prerequisite at its maximum rank (wowsims ui/sim/talents/broken_talents.ts rule; client TraitEdge Type 2/3 gives the link, not the rank)",
+  "max_points": 51,
+  "first_point_level": 10
+ },
+ "sources": {
+  "client": "Forever client DB2 tables TraitTree, TraitNode, TraitNodeEntry, TraitNodeXTraitNodeEntry, TraitDefinition, TraitDefinitionEffectPoints, TraitEdge, TraitCond, CurvePoint, Spell, SpellEffect, SpellName, SkillLineAbility, SpellClassOptions, build 1.60.1.70862 (wago.tools CSV export, fetched 2026-11-08). These exports carry no hotfixes.",
+  "wowsims": "wowsims/forever commit 125e534 (2026-11-08): ui/sim/talents/trees/warlock.json, proto/warlock.proto",
+  "timesaver": "https://timesaver.gg/tools/wow-forever/talent-calculator/warlock (fetched 2026-11-08)",
+  "warcraftdb": "https://forever.warcraftdb.com/api/v1/talents/warlock (fetched 2026-11-08)",
+  "wowforevertalents": "https://wowforevertalents.com/warlock/ (bundle data says client 1.60.1.70862 plus DBCache hotfixes of 2026-11-07; fetched 2026-11-08)"
+ },
+ "verification": {
+  "tree_matches": {
+   "wowsims_tree_json": true,
+   "timesaver": true,
+   "warcraftdb": true,
+   "wowforevertalents": true,
+   "wowsims_proto_order": true
+  },
+  "notes": [],
+  "rank_values_vs_wowsims_hotfixed_store": {
+   "rank_values_compared": 242,
+   "differences": [],
+   "against": "wowsims-forever assets/db_inputs/spell_store_inputs.json TraitPoints (class data from build 1.60.1.70790 with hotfix push 113715)"
+  },
+  "decode_checks": [
+   {
+    "check": "A",
+    "published": "timesaver.gg preset \"Affliction drain life leveling\" code 2550032303520135-00050032002 (cites https://maxroll.gg/wow-forever/class-guides/warlock-leveling-guide)",
+    "against": "Maxroll planner profile \"Drain Life Affliction\" (https://maxroll.gg/wow-forever/class-guides/warlock-leveling-guide), TraitNodeEntry ids mapped through the client",
+    "decoded": [
+     "Demonic Energies 2/2",
+     "Fel Concentration 3/3",
+     "Fel Vitality 3/3",
+     "Improved Bane of Agony 2/2",
+     "Improved Corruption 5/5",
+     "Improved Drains 3/3",
+     "Improved Life Tap 2/2",
+     "Malevolence 5/5",
+     "Master Summoner 2/2",
+     "Nightfall 2/2",
+     "Pandemic 3/3",
+     "Shadow Mastery 5/5",
+     "Siphon Life 1/1",
+     "Soul Siphon 3/3",
+     "Suppression 5/5",
+     "Unholy Power 5/5"
+    ],
+    "match": true
+   },
+   {
+    "check": "A",
+    "published": "timesaver.gg preset \"Destruction leveling\" code 250003-00050002-0051355103101351 (cites https://maxroll.gg/wow-forever/class-guides/warlock-leveling-guide)",
+    "against": "Maxroll planner profile \"Deep Destruction\" (https://maxroll.gg/wow-forever/class-guides/warlock-leveling-guide), TraitNodeEntry ids mapped through the client",
+    "decoded": [
+     "Aftermath 5/5",
+     "Agonizing Flames 3/3",
+     "Bane 5/5",
+     "Bane of Havoc 1/1",
+     "Cataclysm 3/3",
+     "Conflagrate 1/1",
+     "Demonic Energies 2/2",
+     "Fire and Brimstone 3/3",
+     "Improved Drains 3/3",
+     "Improved Life Tap 2/2",
+     "Incinerate 1/1",
+     "Molten Skin 1/5",
+     "Ruin 5/5",
+     "Shadow and Flame 5/5",
+     "Shadowburn 1/1",
+     "Suppression 5/5",
+     "Unholy Power 5/5"
+    ],
+    "match": true
+   },
+   {
+    "check": "A",
+    "published": "timesaver.gg preset \"Demonology shadow leveling\" code 2550000003-1055003231201301351 (cites https://maxroll.gg/wow-forever/class-guides/warlock-leveling-guide)",
+    "against": "Maxroll planner profile \"Shadow Demonology\" (https://maxroll.gg/wow-forever/class-guides/warlock-leveling-guide), TraitNodeEntry ids mapped through the client",
+    "decoded": [
+     "Demonic Brand 3/3",
+     "Demonic Embrace 5/5",
+     "Demonic Energies 2/2",
+     "Demonic Knowledge 3/3",
+     "Demonic Pact 1/1",
+     "Demonic Sacrifice 1/1",
+     "Fel Domination 1/1",
+     "Fel Vitality 3/3",
+     "Improved Corruption 5/5",
+     "Improved Health Funnel 1/2",
+     "Improved Life Tap 2/2",
+     "Improved Sayaad 3/3",
+     "Master Demonologist 5/5",
+     "Master Summoner 2/2",
+     "Pandemic 3/3",
+     "Soul Link 1/1",
+     "Suppression 5/5",
+     "Unholy Power 5/5"
+    ],
+    "match": true
+   },
+   {
+    "check": "C",
+    "published": "Maxroll guide talent section text (https://maxroll.gg/wow-forever/class-guides/warlock-leveling-guide)",
+    "talents_named_in_text": [
+     "Bane of Havoc",
+     "Conflagrate",
+     "Demonic Brand",
+     "Demonic Pact",
+     "Demonic Sacrifice",
+     "Fel Concentration",
+     "Fel Domination",
+     "Improved Corruption",
+     "Improved Drains",
+     "Malevolence",
+     "Nightfall",
+     "Pandemic",
+     "Shadow Mastery",
+     "Shadow and Flame",
+     "Shadowburn",
+     "Siphon Life",
+     "Soul Link",
+     "Soul Siphon"
+    ],
+    "named_but_not_in_any_profile_build": [],
+    "match": true
+   },
+   {
+    "check": "B2",
+    "published": "Method embed https://www.method.gg/wow-forever/wow-forever-warlock-leveling-guide-and-talents #0",
+    "against": "its own point order string",
+    "match": true,
+    "code": "2552032303520135-00050032"
+   },
+   {
+    "check": "B2",
+    "published": "Method embed https://www.method.gg/wow-forever/wow-forever-warlock-leveling-guide-and-talents #1",
+    "against": "its own point order string",
+    "match": true,
+    "code": "05500020035-0025003201221301351"
+   },
+   {
+    "check": "B2",
+    "published": "Method embed https://www.method.gg/wow-forever/wow-forever-warlock-leveling-guide-and-talents #2",
+    "against": "its own point order string",
+    "match": true,
+    "code": "255-00050001-0050355103101351"
+   },
+   {
+    "check": "B2",
+    "published": "Method embed https://www.method.gg/wow-forever/class-guides/affliction-warlock/talents #0",
+    "against": "its own point order string",
+    "match": true,
+    "code": "2550002013520105--0550205003"
+   },
+   {
+    "check": "B2",
+    "published": "Method embed https://www.method.gg/wow-forever/class-guides/affliction-warlock/talents #1",
+    "against": "its own point order string",
+    "match": true,
+    "code": "25300020135201351-0050203001-052"
+   },
+   {
+    "check": "B2",
+    "published": "Method embed https://www.method.gg/wow-forever/class-guides/demonology-warlock/talents #0",
+    "against": "its own point order string",
+    "match": true,
+    "code": "02-0305003101221301351-0050055003"
+   },
+   {
+    "check": "B2",
+    "published": "Method embed https://www.method.gg/wow-forever/class-guides/demonology-warlock/talents #1",
+    "against": "its own point order string",
+    "match": true,
+    "code": "02-0005003131221301351-0050055003"
+   },
+   {
+    "check": "B2",
+    "published": "Method embed https://www.method.gg/wow-forever/class-guides/demonology-warlock/talents #2",
+    "against": "its own point order string",
+    "match": true,
+    "code": "-0305003101221301351-0550205003"
+   },
+   {
+    "check": "B2",
+    "published": "Method embed https://www.method.gg/wow-forever/class-guides/destruction-warlock/talents #0",
+    "against": "its own point order string",
+    "match": true,
+    "code": "2550002013--0050355103101351"
+   }
+  ],
+  "decode_checks_legend": {
+   "A": "timesaver.gg preset code decoded with codeOrder equals the Maxroll planner build read from client TraitNodeEntry ids",
+   "B": "timesaver.gg preset code decoded with codeOrder equals the Method.gg embed decoded from its own bit format (client TraitNode ids)",
+   "B2": "Method.gg embed: its point order ends on the same build as its loadout string",
+   "C": "talents linked in the Maxroll guide talent text are present in the decoded profile builds (soft: the text also names optional swaps)",
+   "D": "wowsims-forever preset string (same format) decodes to a legal build"
+  }
+ },
+ "trees": [
+  {
+   "key": "affliction",
+   "name": "Affliction",
+   "talent_tab_id": 302,
+   "talents": [
+    {
+     "id": "improved_life_tap",
+     "name": "Improved Life Tap",
+     "tree": "affliction",
+     "row": 1,
+     "col": 1,
+     "maxRank": 2,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 0,
+     "spell_id": 18182,
+     "rank_spell_ids": [
+      18182,
+      18182
+     ],
+     "trait": {
+      "definition_id": 135452,
+      "node_id": 105921,
+      "node_entry_id": 130651
+     },
+     "wowsims_field": "improved_life_tap",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases the amount of Mana awarded by your Life Tap spell by 10%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18182,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases the amount of Mana awarded by your Life Tap spell by 20%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18182,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        10,
+        20
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 10
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "unchanged",
+      "classic_max_rank": 2,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      18182,
+      18183
+     ]
+    },
+    {
+     "id": "suppression",
+     "name": "Suppression",
+     "tree": "affliction",
+     "row": 1,
+     "col": 2,
+     "maxRank": 5,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 0,
+     "spell_id": 18174,
+     "rank_spell_ids": [
+      18174,
+      18174,
+      18174,
+      18174,
+      18174
+     ],
+     "trait": {
+      "definition_id": 135456,
+      "node_id": 105925,
+      "node_entry_id": 130655
+     },
+     "wowsims_field": "suppression",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Improves your chance to hit by 1% and reduces all threat you generate by 4%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18174,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Improves your chance to hit by 2% and reduces all threat you generate by 8%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18174,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Improves your chance to hit by 3% and reduces all threat you generate by 12%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18174,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 4,
+       "text": "Improves your chance to hit by 4% and reduces all threat you generate by 16%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18174,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 5,
+       "text": "Improves your chance to hit by 5% and reduces all threat you generate by 20%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18174,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_MOD_SPELL_HIT_CHANCE",
+       "misc_value": 0,
+       "per_rank": [
+        1,
+        2,
+        3,
+        4,
+        5
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 1,
+       "stat": "spell_hit_pct"
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_MOD_HIT_CHANCE",
+       "misc_value": 0,
+       "per_rank": [
+        1,
+        2,
+        3,
+        4,
+        5
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 1,
+       "stat": "melee_hit_pct"
+      },
+      {
+       "effect_index": 2,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_MOD_THREAT",
+       "misc_value": 127,
+       "per_rank": [
+        -4,
+        -8,
+        -12,
+        -16,
+        -20
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": -4
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 5,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      18174,
+      18175,
+      18176,
+      18177,
+      18178
+     ]
+    },
+    {
+     "id": "improved_corruption",
+     "name": "Improved Corruption",
+     "tree": "affliction",
+     "row": 1,
+     "col": 3,
+     "maxRank": 5,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 0,
+     "spell_id": 17810,
+     "rank_spell_ids": [
+      17810,
+      17810,
+      17810,
+      17810,
+      17810
+     ],
+     "trait": {
+      "definition_id": 135455,
+      "node_id": 105924,
+      "node_entry_id": 130654
+     },
+     "wowsims_field": "improved_corruption",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Reduces the casting time of your Corruption spell by 0.4 sec and increases the damage it deals by 2%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17810,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Reduces the casting time of your Corruption spell by 0.8 sec and increases the damage it deals by 4%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17810,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Reduces the casting time of your Corruption spell by 1.2 sec and increases the damage it deals by 6%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17810,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 4,
+       "text": "Reduces the casting time of your Corruption spell by 1.6 sec and increases the damage it deals by 8%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17810,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 5,
+       "text": "Reduces the casting time of your Corruption spell by 2 sec and increases the damage it deals by 10%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17810,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_FLAT_MODIFIER",
+       "misc_value": 10,
+       "per_rank": [
+        -400,
+        -800,
+        -1200,
+        -1600,
+        -2000
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": -400,
+       "spell_mod": "SPELLMOD_CASTING_TIME",
+       "mod_kind": "flat",
+       "affects": [
+        "Corruption",
+        "Invocation"
+       ]
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 22,
+       "per_rank": [
+        2,
+        4,
+        6,
+        8,
+        10
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 2,
+       "spell_mod": "SPELLMOD_DOT",
+       "mod_kind": "pct",
+       "affects": [
+        "Corruption",
+        "Invocation"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 5,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      17810,
+      17811,
+      17812,
+      17813,
+      17814
+     ]
+    },
+    {
+     "id": "grim_reach",
+     "name": "Grim Reach",
+     "tree": "affliction",
+     "row": 2,
+     "col": 1,
+     "maxRank": 2,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 5,
+     "spell_id": 18218,
+     "rank_spell_ids": [
+      18218,
+      18218
+     ],
+     "trait": {
+      "definition_id": 135454,
+      "node_id": 105923,
+      "node_entry_id": 130653
+     },
+     "wowsims_field": "grim_reach",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases the range of your Affliction spells by 10%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18218,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases the range of your Affliction spells by 20%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18218,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 5,
+       "per_rank": [
+        10,
+        20
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 10,
+       "spell_mod": "SPELLMOD_RANGE",
+       "mod_kind": "pct",
+       "affects": [
+        "Bane of Agony",
+        "Bane of Doom",
+        "Corruption",
+        "Curse of Exhaustion",
+        "Curse of Idiocy",
+        "Curse of Recklessness",
+        "Curse of Tongues",
+        "Curse of Weakness",
+        "Death Coil",
+        "Drain Life",
+        "Drain Mana",
+        "Drain Soul",
+        "Fear",
+        "Howl of Terror",
+        "Invocation",
+        "Menace",
+        "Siphon Life",
+        "Wrack"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "unchanged",
+      "classic_max_rank": 2,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      18218,
+      18219
+     ]
+    },
+    {
+     "id": "soul_harvest",
+     "name": "Soul Harvest",
+     "tree": "affliction",
+     "row": 2,
+     "col": 2,
+     "maxRank": 2,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 5,
+     "spell_id": 437032,
+     "rank_spell_ids": [
+      437032,
+      437032
+     ],
+     "trait": {
+      "definition_id": 135453,
+      "node_id": 105922,
+      "node_entry_id": 130652
+     },
+     "wowsims_field": "soul_harvest",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Killing a non-trivial target afflicted by your Drain Soul increases your Mana regeneration by 50% for 10 sec and allows 50% of normal Mana regeneration to continue while casting.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 437032,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Killing a non-trivial target afflicted by your Drain Soul increases your Mana regeneration by 100% for 10 sec and allows 100% of normal Mana regeneration to continue while casting.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 437032,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        50,
+        100
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 50
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        50,
+        100
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 50
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "new",
+      "classic_max_rank": null,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     }
+    },
+    {
+     "id": "improved_drains",
+     "name": "Improved Drains",
+     "tree": "affliction",
+     "row": 2,
+     "col": 3,
+     "maxRank": 3,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 5,
+     "spell_id": 403511,
+     "rank_spell_ids": [
+      403511,
+      403511,
+      403511
+     ],
+     "trait": {
+      "definition_id": 135451,
+      "node_id": 105920,
+      "node_entry_id": 130650
+     },
+     "wowsims_field": "improved_drains",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases Health drained, damage done, or Mana drained by your Drain Life, Drain Soul, and Drain Mana spells by 7%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 403511,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases Health drained, damage done, or Mana drained by your Drain Life, Drain Soul, and Drain Mana spells by 13%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 403511,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Increases Health drained, damage done, or Mana drained by your Drain Life, Drain Soul, and Drain Mana spells by 20%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 403511,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 22,
+       "per_rank": [
+        7,
+        13,
+        20
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "spell_mod": "SPELLMOD_DOT",
+       "mod_kind": "pct",
+       "affects": [
+        "Drain Life",
+        "Drain Soul"
+       ]
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 3,
+       "per_rank": [
+        7,
+        13,
+        20
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "spell_mod": "SPELLMOD_EFFECT1",
+       "mod_kind": "pct",
+       "affects": [
+        "Drain Mana"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "new",
+      "classic_max_rank": null,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     }
+    },
+    {
+     "id": "improved_bane_of_agony",
+     "name": "Improved Bane of Agony",
+     "tree": "affliction",
+     "row": 3,
+     "col": 1,
+     "maxRank": 2,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 10,
+     "spell_id": 18827,
+     "rank_spell_ids": [
+      18827,
+      18827
+     ],
+     "trait": {
+      "definition_id": 135450,
+      "node_id": 105919,
+      "node_entry_id": 130649
+     },
+     "wowsims_field": "improved_bane_of_agony",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases the damage done by your Bane of Agony by 5%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18827,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases the damage done by your Bane of Agony by 10%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18827,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 22,
+       "per_rank": [
+        5,
+        10
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 5,
+       "spell_mod": "SPELLMOD_DOT",
+       "mod_kind": "pct",
+       "affects": [
+        "Bane of Agony",
+        "Invocation"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 3,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      18827,
+      18829,
+      18830
+     ]
+    },
+    {
+     "id": "fel_concentration",
+     "name": "Fel Concentration",
+     "tree": "affliction",
+     "row": 3,
+     "col": 2,
+     "maxRank": 3,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 10,
+     "spell_id": 17783,
+     "rank_spell_ids": [
+      17783,
+      17783,
+      17783
+     ],
+     "trait": {
+      "definition_id": 135449,
+      "node_id": 105918,
+      "node_entry_id": 130648
+     },
+     "wowsims_field": "fel_concentration",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Gives your Drain Life, Drain Mana, Drain Soul, and Wrack spells a 23% chance to not lose casting time when you take damage.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17783,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Gives your Drain Life, Drain Mana, Drain Soul, and Wrack spells a 47% chance to not lose casting time when you take damage.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17783,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Gives your Drain Life, Drain Mana, Drain Soul, and Wrack spells a 70% chance to not lose casting time when you take damage.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17783,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 9,
+       "per_rank": [
+        23,
+        47,
+        70
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "spell_mod": "SPELLMOD_NOT_LOSE_CASTING_TIME",
+       "mod_kind": "pct",
+       "affects": [
+        "Drain Life",
+        "Drain Mana",
+        "Drain Soul",
+        "Wrack"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 5,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      17783,
+      17784,
+      17785,
+      17786,
+      17787
+     ]
+    },
+    {
+     "id": "amplify_curse",
+     "name": "Amplify Curse",
+     "tree": "affliction",
+     "row": 3,
+     "col": 3,
+     "maxRank": 1,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 10,
+     "spell_id": 18288,
+     "rank_spell_ids": [
+      18288
+     ],
+     "trait": {
+      "definition_id": 135447,
+      "node_id": 105916,
+      "node_entry_id": 130646
+     },
+     "wowsims_field": "amplify_curse",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases the effect of your next Curse of Weakness or Bane of Agony by 50%, or your next Curse of Exhaustion by 20%.  Lasts 30 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18288,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 8,
+       "per_rank": [
+        50
+       ],
+       "value_source": "SpellEffect base points, same at every rank",
+       "spell_mod": "SPELLMOD_ALL_EFFECTS",
+       "mod_kind": "pct",
+       "affects": [
+        "Curse of Weakness"
+       ]
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_FLAT_MODIFIER",
+       "misc_value": 8,
+       "per_rank": [
+        -20
+       ],
+       "value_source": "SpellEffect base points, same at every rank",
+       "spell_mod": "SPELLMOD_ALL_EFFECTS",
+       "mod_kind": "flat",
+       "affects": [
+        "Curse of Exhaustion",
+        "Demonic Grace"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 1,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      18288
+     ]
+    },
+    {
+     "id": "pandemic",
+     "name": "Pandemic",
+     "tree": "affliction",
+     "row": 3,
+     "col": 4,
+     "maxRank": 3,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 10,
+     "spell_id": 427712,
+     "rank_spell_ids": [
+      427712,
+      427712,
+      427712
+     ],
+     "trait": {
+      "definition_id": 135448,
+      "node_id": 105917,
+      "node_entry_id": 130647
+     },
+     "wowsims_field": "pandemic",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases the critical strike damage bonus of your Corruption, Bane of Agony, Bane of Doom, Drain Soul, Drain Life, Siphon Life, and Wrack spells by 33%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 427712,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases the critical strike damage bonus of your Corruption, Bane of Agony, Bane of Doom, Drain Soul, Drain Life, Siphon Life, and Wrack spells by 67%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 427712,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Increases the critical strike damage bonus of your Corruption, Bane of Agony, Bane of Doom, Drain Soul, Drain Life, Siphon Life, and Wrack spells by 100%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 427712,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 15,
+       "per_rank": [
+        33,
+        67,
+        100
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "spell_mod": "SPELLMOD_CRIT_DAMAGE_BONUS",
+       "mod_kind": "pct",
+       "affects": [
+        "Bane of Agony",
+        "Bane of Doom",
+        "Corruption",
+        "Drain Life",
+        "Drain Soul",
+        "Invocation",
+        "Siphon Life",
+        "Wrack"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "new",
+      "classic_max_rank": null,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     }
+    },
+    {
+     "id": "malevolence",
+     "name": "Malevolence",
+     "tree": "affliction",
+     "row": 4,
+     "col": 1,
+     "maxRank": 5,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 15,
+     "spell_id": 1310949,
+     "rank_spell_ids": [
+      1310949,
+      1310949,
+      1310949,
+      1310949,
+      1310949
+     ],
+     "trait": {
+      "definition_id": 142628,
+      "node_id": 110876,
+      "node_entry_id": 137874
+     },
+     "wowsims_field": "malevolence",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases the critical effect chance of your Shadow spells by 1%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 1310949,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases the critical effect chance of your Shadow spells by 2%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 1310949,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Increases the critical effect chance of your Shadow spells by 3%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 1310949,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 4,
+       "text": "Increases the critical effect chance of your Shadow spells by 4%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 1310949,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 5,
+       "text": "Increases the critical effect chance of your Shadow spells by 5%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 1310949,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_FLAT_MODIFIER",
+       "misc_value": 7,
+       "per_rank": [
+        1,
+        2,
+        3,
+        4,
+        5
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 1,
+       "spell_mod": "SPELLMOD_CRITICAL_CHANCE",
+       "mod_kind": "flat",
+       "affects": [
+        "Bane of Agony",
+        "Bane of Doom",
+        "Bane of Havoc",
+        "Corruption",
+        "Death Coil",
+        "Drain Life",
+        "Drain Soul",
+        "Invocation",
+        "Shadow Bolt",
+        "Shadowburn",
+        "Siphon Life",
+        "Wrack"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "new",
+      "classic_max_rank": null,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     }
+    },
+    {
+     "id": "nightfall",
+     "name": "Nightfall",
+     "tree": "affliction",
+     "row": 4,
+     "col": 2,
+     "maxRank": 2,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 15,
+     "spell_id": 18094,
+     "rank_spell_ids": [
+      18094,
+      18094
+     ],
+     "trait": {
+      "definition_id": 135445,
+      "node_id": 105914,
+      "node_entry_id": 130644
+     },
+     "wowsims_field": "nightfall",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Gives your Corruption, Drain Soul, Drain Life, and Wrack spells a 2% chance to cause you to enter a Shadow Trance after damaging the opponent. The Shadow Trance reduces the casting time of your next Shadow Bolt spell by 100%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18094,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Gives your Corruption, Drain Soul, Drain Life, and Wrack spells a 4% chance to cause you to enter a Shadow Trance after damaging the opponent. The Shadow Trance reduces the casting time of your next Shadow Bolt spell by 100%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18094,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        2,
+        4
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 2
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 2,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      18094,
+      18095
+     ]
+    },
+    {
+     "id": "curse_of_exhaustion",
+     "name": "Curse of Exhaustion",
+     "tree": "affliction",
+     "row": 4,
+     "col": 3,
+     "maxRank": 1,
+     "prereq": "amplify_curse",
+     "prereq_rank": 1,
+     "tier_points_required": 15,
+     "spell_id": 18223,
+     "rank_spell_ids": [
+      18223
+     ],
+     "trait": {
+      "definition_id": 135444,
+      "node_id": 105913,
+      "node_entry_id": 130643
+     },
+     "wowsims_field": "curse_of_exhaustion",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Reduces the target's movement speed by 30% for 12 sec.  Only one Curse per Warlock can be active on any one target.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18223,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_MOD_DECREASE_SPEED",
+       "misc_value": 0,
+       "per_rank": [
+        -30
+       ],
+       "value_source": "SpellEffect base points, same at every rank"
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 1,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      18223
+     ]
+    },
+    {
+     "id": "siphon_life",
+     "name": "Siphon Life",
+     "tree": "affliction",
+     "row": 5,
+     "col": 2,
+     "maxRank": 1,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 20,
+     "spell_id": 18265,
+     "rank_spell_ids": [
+      18265
+     ],
+     "trait": {
+      "definition_id": 135443,
+      "node_id": 105912,
+      "node_entry_id": 130642
+     },
+     "wowsims_field": "siphon_life",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Transfers 11 health from the target to the caster every 3 sec.  Lasts 30 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18265,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_PERIODIC_LEECH",
+       "misc_value": 0,
+       "per_rank": [
+        11
+       ],
+       "value_source": "SpellEffect base points, same at every rank"
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 1,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      18265
+     ]
+    },
+    {
+     "id": "soul_siphon",
+     "name": "Soul Siphon",
+     "tree": "affliction",
+     "row": 5,
+     "col": 3,
+     "maxRank": 3,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 20,
+     "spell_id": 17804,
+     "rank_spell_ids": [
+      17804,
+      17804,
+      17804
+     ],
+     "trait": {
+      "definition_id": 135442,
+      "node_id": 105911,
+      "node_entry_id": 130641
+     },
+     "wowsims_field": "soul_siphon",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases the damage done or health drained by your Drain Life, Drain Soul, and Wrack spells by 4% per each of your other Affliction effects active on the target, up to a maximum increase of 12%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17804,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases the damage done or health drained by your Drain Life, Drain Soul, and Wrack spells by 8% per each of your other Affliction effects active on the target, up to a maximum increase of 24%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17804,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Increases the damage done or health drained by your Drain Life, Drain Soul, and Wrack spells by 12% per each of your other Affliction effects active on the target, up to a maximum increase of 36%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17804,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        4,
+        8,
+        12
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 4
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 5,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      17804,
+      17805,
+      17806,
+      17807,
+      17808
+     ]
+    },
+    {
+     "id": "shadow_mastery",
+     "name": "Shadow Mastery",
+     "tree": "affliction",
+     "row": 6,
+     "col": 3,
+     "maxRank": 5,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 25,
+     "spell_id": 18271,
+     "rank_spell_ids": [
+      18271,
+      18271,
+      18271,
+      18271,
+      18271
+     ],
+     "trait": {
+      "definition_id": 135441,
+      "node_id": 105910,
+      "node_entry_id": 130640
+     },
+     "wowsims_field": "shadow_mastery",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases the damage dealt or life drained by your Shadow spells by 2%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18271,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases the damage dealt or life drained by your Shadow spells by 4%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18271,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Increases the damage dealt or life drained by your Shadow spells by 6%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18271,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 4,
+       "text": "Increases the damage dealt or life drained by your Shadow spells by 8%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18271,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 5,
+       "text": "Increases the damage dealt or life drained by your Shadow spells by 10%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18271,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 0,
+       "per_rank": [
+        2,
+        4,
+        6,
+        8,
+        10
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 2,
+       "spell_mod": "SPELLMOD_DAMAGE",
+       "mod_kind": "pct",
+       "affects": [
+        "Corruption",
+        "Death Coil",
+        "Drain Mana",
+        "Invocation",
+        "Shadow Bolt",
+        "Shadowburn"
+       ]
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 22,
+       "per_rank": [
+        2,
+        4,
+        6,
+        8,
+        10
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 2,
+       "spell_mod": "SPELLMOD_DOT",
+       "mod_kind": "pct",
+       "affects": [
+        "Bane of Agony",
+        "Bane of Doom",
+        "Corruption",
+        "Drain Life",
+        "Drain Soul",
+        "Invocation",
+        "Siphon Life",
+        "Wrack"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "unchanged",
+      "classic_max_rank": 5,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      18271,
+      18272,
+      18273,
+      18274,
+      18275
+     ]
+    },
+    {
+     "id": "wrack",
+     "name": "Wrack",
+     "tree": "affliction",
+     "row": 7,
+     "col": 2,
+     "maxRank": 1,
+     "prereq": "siphon_life",
+     "prereq_rank": 1,
+     "tier_points_required": 30,
+     "spell_id": 1316697,
+     "rank_spell_ids": [
+      1316697
+     ],
+     "trait": {
+      "definition_id": 135440,
+      "node_id": 105909,
+      "node_entry_id": 130639
+     },
+     "wowsims_field": "wrack",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Tears the target apart from within, inflicting 86 Shadow damage every 1 sec and increasing the damage they take from your other Shadow damage over time effects by 10% for 6 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 1316697,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_PERIODIC_DAMAGE",
+       "misc_value": 0,
+       "per_rank": [
+        86
+       ],
+       "value_source": "level-scaled base points at level 60"
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_MOD_SPELL_DAMAGE_FROM_CASTER",
+       "misc_value": 0,
+       "per_rank": [
+        10
+       ],
+       "value_source": "SpellEffect base points, same at every rank"
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "new",
+      "classic_max_rank": null,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     }
+    }
+   ]
+  },
+  {
+   "key": "demonology",
+   "name": "Demonology",
+   "talent_tab_id": 303,
+   "talents": [
+    {
+     "id": "improved_health_funnel",
+     "name": "Improved Health Funnel",
+     "tree": "demonology",
+     "row": 1,
+     "col": 1,
+     "maxRank": 2,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 0,
+     "spell_id": 18703,
+     "rank_spell_ids": [
+      18703,
+      18703
+     ],
+     "trait": {
+      "definition_id": 135436,
+      "node_id": 105905,
+      "node_entry_id": 130635
+     },
+     "wowsims_field": "improved_health_funnel",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases the amount of health transferred by your Health Funnel spell by 20%, reduces its health cost by 15%, and reduces all threat your Health Funnel generates by 50%. Allows Health Funnel to be used regardless of your demon's health.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18703,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases the amount of health transferred by your Health Funnel spell by 40%, reduces its health cost by 30%, and reduces all threat your Health Funnel generates by 100%. Allows Health Funnel to be used regardless of your demon's health.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18703,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 3,
+       "per_rank": [
+        20,
+        40
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 20,
+       "spell_mod": "SPELLMOD_EFFECT1",
+       "mod_kind": "pct",
+       "affects": [
+        "Health Funnel"
+       ]
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 14,
+       "per_rank": [
+        -15,
+        -30
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": -15,
+       "spell_mod": "SPELLMOD_COST",
+       "mod_kind": "pct",
+       "affects": [
+        "Health Funnel"
+       ]
+      },
+      {
+       "effect_index": 2,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 2,
+       "per_rank": [
+        -50,
+        -100
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": -50,
+       "spell_mod": "SPELLMOD_THREAT",
+       "mod_kind": "pct",
+       "affects": [
+        "Health Funnel"
+       ]
+      },
+      {
+       "effect_index": 3,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 32,
+       "per_rank": [
+        -15,
+        -30
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": -15,
+       "spell_mod": "SPELLMOD_EFFECT4",
+       "mod_kind": "pct",
+       "affects": [
+        "Health Funnel"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 2,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      18703,
+      18704
+     ]
+    },
+    {
+     "id": "improved_imp",
+     "name": "Improved Imp",
+     "tree": "demonology",
+     "row": 1,
+     "col": 2,
+     "maxRank": 3,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 0,
+     "spell_id": 18694,
+     "rank_spell_ids": [
+      18694,
+      18694,
+      18694
+     ],
+     "trait": {
+      "definition_id": 135439,
+      "node_id": 105908,
+      "node_entry_id": 130638
+     },
+     "wowsims_field": "improved_imp",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases the damage of your Imp's Firebolt spell by 10% and the effect of its Fire Shield spell by 10%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18694,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases the damage of your Imp's Firebolt spell by 20% and the effect of its Fire Shield spell by 20%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18694,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Increases the damage of your Imp's Firebolt spell by 30% and the effect of its Fire Shield spell by 30%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18694,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 8,
+       "per_rank": [
+        10,
+        20,
+        30
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 10,
+       "spell_mod": "SPELLMOD_ALL_EFFECTS",
+       "mod_kind": "pct",
+       "affects": []
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 0,
+       "per_rank": [
+        10,
+        20,
+        30
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 10,
+       "spell_mod": "SPELLMOD_DAMAGE",
+       "mod_kind": "pct",
+       "affects": []
+      },
+      {
+       "effect_index": 2,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        -300,
+        -700,
+        -1000
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)"
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 3,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      18694,
+      18695,
+      18696
+     ]
+    },
+    {
+     "id": "demonic_embrace",
+     "name": "Demonic Embrace",
+     "tree": "demonology",
+     "row": 1,
+     "col": 3,
+     "maxRank": 5,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 0,
+     "spell_id": 18697,
+     "rank_spell_ids": [
+      18697,
+      18697,
+      18697,
+      18697,
+      18697
+     ],
+     "trait": {
+      "definition_id": 135438,
+      "node_id": 105907,
+      "node_entry_id": 130637
+     },
+     "wowsims_field": "demonic_embrace",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases your total Stamina by 3%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18697,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases your total Stamina by 6%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18697,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Increases your total Stamina by 9%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18697,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 4,
+       "text": "Increases your total Stamina by 12%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18697,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 5,
+       "text": "Increases your total Stamina by 15%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18697,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_MOD_TOTAL_STAT_PERCENTAGE",
+       "misc_value": 0,
+       "per_rank": [
+        3,
+        6,
+        9,
+        12,
+        15
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 3,
+       "stat": "str_pct"
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 5,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      18697,
+      18698,
+      18699,
+      18700,
+      18701
+     ]
+    },
+    {
+     "id": "unholy_power",
+     "name": "Unholy Power",
+     "tree": "demonology",
+     "row": 1,
+     "col": 4,
+     "maxRank": 5,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 0,
+     "spell_id": 18769,
+     "rank_spell_ids": [
+      18769,
+      18769,
+      18769,
+      18769,
+      18769
+     ],
+     "trait": {
+      "definition_id": 135437,
+      "node_id": 105906,
+      "node_entry_id": 130636
+     },
+     "wowsims_field": "unholy_power",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases all damage done by your Imp, Voidwalker, Succubus, Incubus, and Felhunter pets by 2%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18769,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases all damage done by your Imp, Voidwalker, Succubus, Incubus, and Felhunter pets by 4%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18769,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Increases all damage done by your Imp, Voidwalker, Succubus, Incubus, and Felhunter pets by 6%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18769,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 4,
+       "text": "Increases all damage done by your Imp, Voidwalker, Succubus, Incubus, and Felhunter pets by 8%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18769,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 5,
+       "text": "Increases all damage done by your Imp, Voidwalker, Succubus, Incubus, and Felhunter pets by 10%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18769,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_FLAT_MODIFIER",
+       "misc_value": 8,
+       "per_rank": [
+        2,
+        4,
+        6,
+        8,
+        10
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 2,
+       "spell_mod": "SPELLMOD_ALL_EFFECTS",
+       "mod_kind": "flat",
+       "affects": []
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 5,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      18769,
+      18770,
+      18771,
+      18772,
+      18773
+     ]
+    },
+    {
+     "id": "demonic_aegis",
+     "name": "Demonic Aegis",
+     "tree": "demonology",
+     "row": 2,
+     "col": 1,
+     "maxRank": 2,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 5,
+     "spell_id": 1235316,
+     "rank_spell_ids": [
+      1235316,
+      1235316
+     ],
+     "trait": {
+      "definition_id": 135433,
+      "node_id": 105902,
+      "node_entry_id": 130632
+     },
+     "wowsims_field": "demonic_aegis",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases the effectiveness of your Demon Skin and Demon Armor spells by 15%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 1235316,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases the effectiveness of your Demon Skin and Demon Armor spells by 30%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 1235316,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 8,
+       "per_rank": [
+        15,
+        30
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 15,
+       "spell_mod": "SPELLMOD_ALL_EFFECTS",
+       "mod_kind": "pct",
+       "affects": [
+        "Demon Armor",
+        "Demon Skin"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "new",
+      "classic_max_rank": null,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     }
+    },
+    {
+     "id": "improved_voidwalker",
+     "name": "Improved Voidwalker",
+     "tree": "demonology",
+     "row": 2,
+     "col": 2,
+     "maxRank": 3,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 5,
+     "spell_id": 18705,
+     "rank_spell_ids": [
+      18705,
+      18705,
+      18705
+     ],
+     "trait": {
+      "definition_id": 135435,
+      "node_id": 105904,
+      "node_entry_id": 130634
+     },
+     "wowsims_field": "improved_voidwalker",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases the effectiveness of your Voidwalker's Torment, Consume Shadows, Sacrifice, and Suffering spells by 10%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18705,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases the effectiveness of your Voidwalker's Torment, Consume Shadows, Sacrifice, and Suffering spells by 20%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18705,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Increases the effectiveness of your Voidwalker's Torment, Consume Shadows, Sacrifice, and Suffering spells by 30%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18705,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 8,
+       "per_rank": [
+        10,
+        20,
+        30
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 10,
+       "spell_mod": "SPELLMOD_ALL_EFFECTS",
+       "mod_kind": "pct",
+       "affects": []
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 3,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      18705,
+      18706,
+      18707
+     ]
+    },
+    {
+     "id": "fel_vitality",
+     "name": "Fel Vitality",
+     "tree": "demonology",
+     "row": 2,
+     "col": 3,
+     "maxRank": 3,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 5,
+     "spell_id": 18731,
+     "rank_spell_ids": [
+      18731,
+      18731,
+      18731
+     ],
+     "trait": {
+      "definition_id": 135434,
+      "node_id": 105903,
+      "node_entry_id": 130633
+     },
+     "wowsims_field": "fel_vitality",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases the maximum health and Mana of your Imp, Voidwalker, Succubus, Incubus, and Felhunter by 5%, and increases your maximum Mana by 5%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18731,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases the maximum health and Mana of your Imp, Voidwalker, Succubus, Incubus, and Felhunter by 10%, and increases your maximum Mana by 10%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18731,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Increases the maximum health and Mana of your Imp, Voidwalker, Succubus, Incubus, and Felhunter by 15%, and increases your maximum Mana by 15%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18731,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_FLAT_MODIFIER",
+       "misc_value": 8,
+       "per_rank": [
+        5,
+        10,
+        15
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 5,
+       "spell_mod": "SPELLMOD_ALL_EFFECTS",
+       "mod_kind": "flat",
+       "affects": []
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_MOD_MAX_POWER_PCT",
+       "misc_value": 0,
+       "per_rank": [
+        5,
+        10,
+        15
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 5
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 5,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      18731,
+      18743,
+      18744,
+      18745,
+      18746
+     ]
+    },
+    {
+     "id": "demonic_energies",
+     "name": "Demonic Energies",
+     "tree": "demonology",
+     "row": 2,
+     "col": 4,
+     "maxRank": 2,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 5,
+     "spell_id": 1225214,
+     "rank_spell_ids": [
+      1225214,
+      1225214
+     ],
+     "trait": {
+      "definition_id": 135430,
+      "node_id": 105899,
+      "node_entry_id": 130629
+     },
+     "wowsims_field": "demonic_energies",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "You heal your pet for 8% of all spell damage you deal. When you gain Mana from Life Tap, your summoned demon gains 50% of the Mana you gain.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 1225214,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "You heal your pet for 15% of all spell damage you deal. When you gain Mana from Life Tap, your summoned demon gains 100% of the Mana you gain.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 1225214,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        8,
+        15
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)"
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        50,
+        100
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 50
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "new",
+      "classic_max_rank": null,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     }
+    },
+    {
+     "id": "improved_sayaad",
+     "name": "Improved Sayaad",
+     "tree": "demonology",
+     "row": 3,
+     "col": 1,
+     "maxRank": 3,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 10,
+     "spell_id": 18754,
+     "rank_spell_ids": [
+      18754,
+      18754,
+      18754
+     ],
+     "trait": {
+      "definition_id": 135432,
+      "node_id": 105901,
+      "node_entry_id": 130631
+     },
+     "wowsims_field": "improved_sayaad",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases the effect of your Succubus' and Incubus' Lash of Pain and Soothing Kiss spells by 10%, and increases the duration of your Succubus' and Incubus' Seduction and Lesser Invisibility spells by 10%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18754,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases the effect of your Succubus' and Incubus' Lash of Pain and Soothing Kiss spells by 20%, and increases the duration of your Succubus' and Incubus' Seduction and Lesser Invisibility spells by 20%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18754,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Increases the effect of your Succubus' and Incubus' Lash of Pain and Soothing Kiss spells by 30%, and increases the duration of your Succubus' and Incubus' Seduction and Lesser Invisibility spells by 30%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18754,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 8,
+       "per_rank": [
+        10,
+        20,
+        30
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 10,
+       "spell_mod": "SPELLMOD_ALL_EFFECTS",
+       "mod_kind": "pct",
+       "affects": []
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 1,
+       "per_rank": [
+        10,
+        20,
+        30
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 10,
+       "spell_mod": "SPELLMOD_DURATION",
+       "mod_kind": "pct",
+       "affects": []
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "unchanged",
+      "classic_max_rank": 3,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      18754,
+      18755,
+      18756
+     ]
+    },
+    {
+     "id": "demonic_sacrifice",
+     "name": "Demonic Sacrifice",
+     "tree": "demonology",
+     "row": 3,
+     "col": 2,
+     "maxRank": 1,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 10,
+     "spell_id": 18788,
+     "rank_spell_ids": [
+      18788
+     ],
+     "trait": {
+      "definition_id": 135431,
+      "node_id": 105900,
+      "node_entry_id": 130630
+     },
+     "wowsims_field": "demonic_sacrifice",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "When activated, sacrifices your summoned Demon to enhance the opposing aspect of your power, granting you an effect that lasts 2 hours. The effect is canceled if any Demon is summoned.\r\n\r\nImp: Increases your Shadow damage by 15%.\r\n\r\nVoidwalker: Restores 2% of your total Mana every 4 sec.\r\n\r\nSuccubus/Incubus: Increases your Fire damage by 15%.\r\n\r\nFelhunter: Restores 3% of your total Health every 4 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18788,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_INSTAKILL",
+       "aura": null,
+       "misc_value": 0,
+       "per_rank": [
+        0
+       ],
+       "value_source": "SpellEffect base points, same at every rank"
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 1,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      18788
+     ]
+    },
+    {
+     "id": "master_summoner",
+     "name": "Master Summoner",
+     "tree": "demonology",
+     "row": 3,
+     "col": 3,
+     "maxRank": 2,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 10,
+     "spell_id": 18709,
+     "rank_spell_ids": [
+      18709,
+      18709
+     ],
+     "trait": {
+      "definition_id": 135429,
+      "node_id": 105898,
+      "node_entry_id": 130628
+     },
+     "wowsims_field": "master_summoner",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Reduces the casting time of your Imp, Voidwalker, Succubus, Incubus, and Felhunter Summoning spells by 2 sec and the Mana cost by 20%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18709,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Reduces the casting time of your Imp, Voidwalker, Succubus, Incubus, and Felhunter Summoning spells by 4 sec and the Mana cost by 40%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18709,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_FLAT_MODIFIER",
+       "misc_value": 10,
+       "per_rank": [
+        -2000,
+        -4000
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": -2000,
+       "spell_mod": "SPELLMOD_CASTING_TIME",
+       "mod_kind": "flat",
+       "affects": [
+        "Summon Felhunter",
+        "Summon Imp",
+        "Summon Incubus",
+        "Summon Succubus",
+        "Summon Voidwalker"
+       ]
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 14,
+       "per_rank": [
+        -20,
+        -40
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": -20,
+       "spell_mod": "SPELLMOD_COST",
+       "mod_kind": "pct",
+       "affects": [
+        "Summon Felhunter",
+        "Summon Imp",
+        "Summon Incubus",
+        "Summon Succubus",
+        "Summon Voidwalker"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "unchanged",
+      "classic_max_rank": 2,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      18709,
+      18710
+     ]
+    },
+    {
+     "id": "decimation",
+     "name": "Decimation",
+     "tree": "demonology",
+     "row": 4,
+     "col": 1,
+     "maxRank": 2,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 15,
+     "spell_id": 440870,
+     "rank_spell_ids": [
+      440870,
+      440870
+     ],
+     "trait": {
+      "definition_id": 135428,
+      "node_id": 105897,
+      "node_entry_id": 130627
+     },
+     "wowsims_field": "decimation",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Reduces the cooldown of your Soul Fire spell by 45%. When you cast Shadow Bolt or Searing Pain on an enemy below 35% health, they deal 3% increased damage, and for the next 10 sec your Soul Fire spell has its cast time reduced by 20% and costs no Soul Shards.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 440870,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Reduces the cooldown of your Soul Fire spell by 90%. When you cast Shadow Bolt or Searing Pain on an enemy below 35% health, they deal 6% increased damage, and for the next 10 sec your Soul Fire spell has its cast time reduced by 40% and costs no Soul Shards.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 440870,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        -20,
+        -40
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": -20
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 11,
+       "per_rank": [
+        -45,
+        -90
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": -45,
+       "spell_mod": "SPELLMOD_COOLDOWN",
+       "mod_kind": "pct",
+       "affects": [
+        "Soul Fire"
+       ]
+      },
+      {
+       "effect_index": 2,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        35,
+        35
+       ],
+       "value_source": "SpellEffect base points, same at every rank"
+      },
+      {
+       "effect_index": 3,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 0,
+       "per_rank": [
+        3,
+        6
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 3,
+       "spell_mod": "SPELLMOD_DAMAGE",
+       "mod_kind": "pct",
+       "affects": [
+        "Searing Pain",
+        "Shadow Bolt"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "new",
+      "classic_max_rank": null,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     }
+    },
+    {
+     "id": "fel_domination",
+     "name": "Fel Domination",
+     "tree": "demonology",
+     "row": 4,
+     "col": 3,
+     "maxRank": 1,
+     "prereq": "master_summoner",
+     "prereq_rank": 2,
+     "tier_points_required": 15,
+     "spell_id": 18708,
+     "rank_spell_ids": [
+      18708
+     ],
+     "trait": {
+      "definition_id": 135426,
+      "node_id": 105895,
+      "node_entry_id": 130625
+     },
+     "wowsims_field": "fel_domination",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Your next Imp, Voidwalker, Succubus, Incubus, or Felhunter Summon spell has its casting time reduced by 5.5 sec and its Mana cost reduced by 50%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18708,
+       "numbers_match": {
+        "timesaver": false,
+        "wowforevertalents": true
+       },
+       "other_texts": {
+        "client": "Your next Imp, Voidwalker, Succubus, Incubus, or Felhunter Summon spell has its casting time reduced by 5.5 sec and its Mana cost reduced by 50%.",
+        "timesaver": "Your next Imp, Voidwalker, Succubus, Incubus, or Felhunter Summon spell has its casting time reduced by 6 sec and its Mana cost reduced by 50%.",
+        "wowforevertalents": "Your next Imp, Voidwalker, Succubus, Incubus, or Felhunter Summon spell has its casting time reduced by 5.5 sec and its Mana cost reduced by 50%."
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_FLAT_MODIFIER",
+       "misc_value": 10,
+       "per_rank": [
+        -5500
+       ],
+       "value_source": "SpellEffect base points, same at every rank",
+       "spell_mod": "SPELLMOD_CASTING_TIME",
+       "mod_kind": "flat",
+       "affects": [
+        "Summon Felhunter",
+        "Summon Imp",
+        "Summon Incubus",
+        "Summon Succubus",
+        "Summon Voidwalker"
+       ]
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 14,
+       "per_rank": [
+        -50
+       ],
+       "value_source": "SpellEffect base points, same at every rank",
+       "spell_mod": "SPELLMOD_COST",
+       "mod_kind": "pct",
+       "affects": [
+        "Summon Felhunter",
+        "Summon Imp",
+        "Summon Incubus",
+        "Summon Succubus",
+        "Summon Voidwalker"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "unchanged",
+      "classic_max_rank": 1,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      18708
+     ]
+    },
+    {
+     "id": "demonic_brand",
+     "name": "Demonic Brand",
+     "tree": "demonology",
+     "row": 4,
+     "col": 4,
+     "maxRank": 3,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 15,
+     "spell_id": 1293695,
+     "rank_spell_ids": [
+      1293695,
+      1293695,
+      1293695
+     ],
+     "trait": {
+      "definition_id": 135427,
+      "node_id": 105896,
+      "node_entry_id": 130626
+     },
+     "wowsims_field": "demonic_brand",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Your Searing Pain generates 17% less threat and brands the target for 10 sec. Your pet's next 2 attacks against the target deal (65 + 7.8% of the higher of Fire and Shadow Spell Power) to (68 + 7.8% of the higher of Fire and Shadow Spell Power) Fire or Shadow damage based on the pet. If Shadow damage is dealt, it has high threat.",
+       "text_source": "wowforevertalents.com (client text with the resolver here unable to fill every token)",
+       "spell_id": 1293695,
+       "numbers_match": {
+        "timesaver": false,
+        "wowforevertalents": false
+       },
+       "other_texts": {
+        "client": "Your Searing Pain generates 17% less threat and brands the target for 10 sec. Your pet's next 2 attacks against the target deal {?$<minDam>} to {?$<maxDam>} Fire or Shadow damage based on the pet. If Shadow damage is dealt, it has high threat.",
+        "timesaver": "Your Searing Pain generates 17% less threat and brands the target for 10 sec. Your pet's next 2 attacks against the target deal ((((60 - 26) * 1.5) + 14 + (0.078 * ((Shadow spell power)))) * (1 * 1 * 1)) to ((((60 - 26) * 1.5) + 17 + (0.078 * ((Shadow spell power)))) * (1 * 1 * 1)) Fire or Shadow damage based on the pet. If Shadow damage is dealt, it has high threat.",
+        "wowforevertalents": "Your Searing Pain generates 17% less threat and brands the target for 10 sec. Your pet's next 2 attacks against the target deal (65 + 7.8% of the higher of Fire and Shadow Spell Power) to (68 + 7.8% of the higher of Fire and Shadow Spell Power) Fire or Shadow damage based on the pet. If Shadow damage is dealt, it has high threat."
+       },
+       "client_unresolved_tokens": [
+        "$<maxDam>",
+        "$<minDam>",
+        "$pl"
+       ]
+      },
+      {
+       "rank": 2,
+       "text": "Your Searing Pain generates 33% less threat and brands the target for 10 sec. Your pet's next 4 attacks against the target deal (65 + 7.8% of the higher of Fire and Shadow Spell Power) to (68 + 7.8% of the higher of Fire and Shadow Spell Power) Fire or Shadow damage based on the pet. If Shadow damage is dealt, it has high threat.",
+       "text_source": "wowforevertalents.com (client text with the resolver here unable to fill every token)",
+       "spell_id": 1293695,
+       "numbers_match": {
+        "timesaver": false,
+        "wowforevertalents": false
+       },
+       "other_texts": {
+        "client": "Your Searing Pain generates 33% less threat and brands the target for 10 sec. Your pet's next 4 attacks against the target deal {?$<minDam>} to {?$<maxDam>} Fire or Shadow damage based on the pet. If Shadow damage is dealt, it has high threat.",
+        "timesaver": "Your Searing Pain generates 33% less threat and brands the target for 10 sec. Your pet's next 4 attacks against the target deal ((((60 - 26) * 1.5) + 14 + (0.078 * ((Shadow spell power)))) * (1 * 1 * 1)) to ((((60 - 26) * 1.5) + 17 + (0.078 * ((Shadow spell power)))) * (1 * 1 * 1)) Fire or Shadow damage based on the pet. If Shadow damage is dealt, it has high threat.",
+        "wowforevertalents": "Your Searing Pain generates 33% less threat and brands the target for 10 sec. Your pet's next 4 attacks against the target deal (65 + 7.8% of the higher of Fire and Shadow Spell Power) to (68 + 7.8% of the higher of Fire and Shadow Spell Power) Fire or Shadow damage based on the pet. If Shadow damage is dealt, it has high threat."
+       },
+       "client_unresolved_tokens": [
+        "$<maxDam>",
+        "$<minDam>",
+        "$pl"
+       ]
+      },
+      {
+       "rank": 3,
+       "text": "Your Searing Pain generates 50% less threat and brands the target for 10 sec. Your pet's next 6 attacks against the target deal (65 + 7.8% of the higher of Fire and Shadow Spell Power) to (68 + 7.8% of the higher of Fire and Shadow Spell Power) Fire or Shadow damage based on the pet. If Shadow damage is dealt, it has high threat.",
+       "text_source": "wowforevertalents.com (client text with the resolver here unable to fill every token)",
+       "spell_id": 1293695,
+       "numbers_match": {
+        "timesaver": false,
+        "wowforevertalents": false
+       },
+       "other_texts": {
+        "client": "Your Searing Pain generates 50% less threat and brands the target for 10 sec. Your pet's next 6 attacks against the target deal {?$<minDam>} to {?$<maxDam>} Fire or Shadow damage based on the pet. If Shadow damage is dealt, it has high threat.",
+        "timesaver": "Your Searing Pain generates 50% less threat and brands the target for 10 sec. Your pet's next 6 attacks against the target deal ((((60 - 26) * 1.5) + 14 + (0.078 * ((Shadow spell power)))) * (1 * 1 * 1)) to ((((60 - 26) * 1.5) + 17 + (0.078 * ((Shadow spell power)))) * (1 * 1 * 1)) Fire or Shadow damage based on the pet. If Shadow damage is dealt, it has high threat.",
+        "wowforevertalents": "Your Searing Pain generates 50% less threat and brands the target for 10 sec. Your pet's next 6 attacks against the target deal (65 + 7.8% of the higher of Fire and Shadow Spell Power) to (68 + 7.8% of the higher of Fire and Shadow Spell Power) Fire or Shadow damage based on the pet. If Shadow damage is dealt, it has high threat."
+       },
+       "client_unresolved_tokens": [
+        "$<maxDam>",
+        "$<minDam>",
+        "$pl"
+       ]
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 2,
+       "per_rank": [
+        -17,
+        -33,
+        -50
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "spell_mod": "SPELLMOD_THREAT",
+       "mod_kind": "pct",
+       "affects": [
+        "Searing Pain"
+       ]
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_FLAT_MODIFIER",
+       "misc_value": 4,
+       "per_rank": [
+        2,
+        4,
+        6
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 2,
+       "spell_mod": "SPELLMOD_CHARGES",
+       "mod_kind": "flat",
+       "affects": []
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "new",
+      "classic_max_rank": null,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     }
+    },
+    {
+     "id": "improved_felhunter",
+     "name": "Improved Felhunter",
+     "tree": "demonology",
+     "row": 5,
+     "col": 1,
+     "maxRank": 3,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 20,
+     "spell_id": 1225217,
+     "rank_spell_ids": [
+      1225217,
+      1225217,
+      1225217
+     ],
+     "trait": {
+      "definition_id": 135425,
+      "node_id": 105894,
+      "node_entry_id": 130624
+     },
+     "wowsims_field": "improved_felhunter",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases the Attack Power reduction of your Felhunter's Tainted Blood, the healing of its Devour Magic, and the detection level of its Paranoia by 10%, and reduces the cooldown of its Spell Lock by 2 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 1225217,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases the Attack Power reduction of your Felhunter's Tainted Blood, the healing of its Devour Magic, and the detection level of its Paranoia by 20%, and reduces the cooldown of its Spell Lock by 4 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 1225217,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Increases the Attack Power reduction of your Felhunter's Tainted Blood, the healing of its Devour Magic, and the detection level of its Paranoia by 30%, and reduces the cooldown of its Spell Lock by 6 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 1225217,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 8,
+       "per_rank": [
+        10,
+        20,
+        30
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 10,
+       "spell_mod": "SPELLMOD_ALL_EFFECTS",
+       "mod_kind": "pct",
+       "affects": []
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_FLAT_MODIFIER",
+       "misc_value": 11,
+       "per_rank": [
+        -2000,
+        -4000,
+        -6000
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": -2000,
+       "spell_mod": "SPELLMOD_COOLDOWN",
+       "mod_kind": "flat",
+       "affects": []
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "new",
+      "classic_max_rank": null,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     }
+    },
+    {
+     "id": "soul_link",
+     "name": "Soul Link",
+     "tree": "demonology",
+     "row": 5,
+     "col": 2,
+     "maxRank": 1,
+     "prereq": "demonic_sacrifice",
+     "prereq_rank": 1,
+     "tier_points_required": 20,
+     "spell_id": 19028,
+     "rank_spell_ids": [
+      19028
+     ],
+     "trait": {
+      "definition_id": 135423,
+      "node_id": 105892,
+      "node_entry_id": 130622
+     },
+     "wowsims_field": "soul_link",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "When active, 30% of all damage taken by the caster is taken by your Imp, Voidwalker, Succubus, Incubus, or Felhunter Demon instead. In addition, both the Demon and the master will inflict 3% more damage. Lasts as long as the Demon is active.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 19028,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_DUMMY",
+       "aura": null,
+       "misc_value": 0,
+       "per_rank": [
+        0
+       ],
+       "value_source": "SpellEffect base points, same at every rank"
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 1,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      19028
+     ]
+    },
+    {
+     "id": "demonic_knowledge",
+     "name": "Demonic Knowledge",
+     "tree": "demonology",
+     "row": 5,
+     "col": 3,
+     "maxRank": 3,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 20,
+     "spell_id": 412732,
+     "rank_spell_ids": [
+      412732,
+      412732,
+      412732
+     ],
+     "trait": {
+      "definition_id": 135424,
+      "node_id": 105893,
+      "node_entry_id": 130623
+     },
+     "wowsims_field": "demonic_knowledge",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases your spell damage and your Demon pet's spell damage by up to 33% of your level while you have a summoned Demon pet active.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 412732,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases your spell damage and your Demon pet's spell damage by up to 67% of your level while you have a summoned Demon pet active.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 412732,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Increases your spell damage and your Demon pet's spell damage by up to 100% of your level while you have a summoned Demon pet active.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 412732,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        33,
+        67,
+        100
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)"
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "new",
+      "classic_max_rank": null,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     }
+    },
+    {
+     "id": "master_demonologist",
+     "name": "Master Demonologist",
+     "tree": "demonology",
+     "row": 6,
+     "col": 3,
+     "maxRank": 5,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 25,
+     "spell_id": 23785,
+     "rank_spell_ids": [
+      23785,
+      23785,
+      23785,
+      23785,
+      23785
+     ],
+     "trait": {
+      "definition_id": 135422,
+      "node_id": 105891,
+      "node_entry_id": 130621
+     },
+     "wowsims_field": "master_demonologist",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Grants both the Warlock and the summoned demon an effect as long as that demon is active.\r\n\r\nImp - Increases Fire damage done by 2%.\r\n\r\nVoidwalker - Reduces Physical damage taken by 2%.\r\n\r\nSuccubus/Incubus - Increases Shadow damage done by 2%.\r\n\r\nFelhunter - Reduces Magic damage taken by 2%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 23785,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Grants both the Warlock and the summoned demon an effect as long as that demon is active.\r\n\r\nImp - Increases Fire damage done by 4%.\r\n\r\nVoidwalker - Reduces Physical damage taken by 4%.\r\n\r\nSuccubus/Incubus - Increases Shadow damage done by 4%.\r\n\r\nFelhunter - Reduces Magic damage taken by 4%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 23785,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Grants both the Warlock and the summoned demon an effect as long as that demon is active.\r\n\r\nImp - Increases Fire damage done by 6%.\r\n\r\nVoidwalker - Reduces Physical damage taken by 6%.\r\n\r\nSuccubus/Incubus - Increases Shadow damage done by 6%.\r\n\r\nFelhunter - Reduces Magic damage taken by 6%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 23785,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 4,
+       "text": "Grants both the Warlock and the summoned demon an effect as long as that demon is active.\r\n\r\nImp - Increases Fire damage done by 8%.\r\n\r\nVoidwalker - Reduces Physical damage taken by 8%.\r\n\r\nSuccubus/Incubus - Increases Shadow damage done by 8%.\r\n\r\nFelhunter - Reduces Magic damage taken by 8%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 23785,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 5,
+       "text": "Grants both the Warlock and the summoned demon an effect as long as that demon is active.\r\n\r\nImp - Increases Fire damage done by 10%.\r\n\r\nVoidwalker - Reduces Physical damage taken by 10%.\r\n\r\nSuccubus/Incubus - Increases Shadow damage done by 10%.\r\n\r\nFelhunter - Reduces Magic damage taken by 10%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 23785,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        2,
+        4,
+        6,
+        8,
+        10
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 2
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        -2,
+        -4,
+        -6,
+        -8,
+        -10
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": -2
+      },
+      {
+       "effect_index": 2,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        2,
+        4,
+        6,
+        8,
+        10
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 2
+      },
+      {
+       "effect_index": 3,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        -2,
+        -4,
+        -6,
+        -8,
+        -10
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": -2
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 5,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      23785,
+      23822,
+      23823,
+      23824,
+      23825
+     ]
+    },
+    {
+     "id": "demonic_pact",
+     "name": "Demonic Pact",
+     "tree": "demonology",
+     "row": 7,
+     "col": 2,
+     "maxRank": 1,
+     "prereq": "soul_link",
+     "prereq_rank": 1,
+     "tier_points_required": 30,
+     "spell_id": 425464,
+     "rank_spell_ids": [
+      425464
+     ],
+     "trait": {
+      "definition_id": 135421,
+      "node_id": 105890,
+      "node_entry_id": 130620
+     },
+     "wowsims_field": "demonic_pact",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Your Demonic Sacrifice effect is no longer cancelled by summoning a different Demon pet. Resummoning the sacrificed pet will still cancel the effect.\r\n",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 425464,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        10
+       ],
+       "value_source": "SpellEffect base points, same at every rank"
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "new",
+      "classic_max_rank": null,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     }
+    }
+   ]
+  },
+  {
+   "key": "destruction",
+   "name": "Destruction",
+   "talent_tab_id": 301,
+   "talents": [
+    {
+     "id": "destructive_reach",
+     "name": "Destructive Reach",
+     "tree": "destruction",
+     "row": 1,
+     "col": 1,
+     "maxRank": 2,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 0,
+     "spell_id": 17917,
+     "rank_spell_ids": [
+      17917,
+      17917
+     ],
+     "trait": {
+      "definition_id": 135412,
+      "node_id": 105881,
+      "node_entry_id": 130611
+     },
+     "wowsims_field": "destructive_reach",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases the range of your Destruction spells by 10%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17917,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases the range of your Destruction spells by 20%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17917,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 5,
+       "per_rank": [
+        10,
+        20
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 10,
+       "spell_mod": "SPELLMOD_RANGE",
+       "mod_kind": "pct",
+       "affects": [
+        "Bane of Havoc",
+        "Conflagrate",
+        "Hellfire",
+        "Hellfire Effect",
+        "Immolate",
+        "Incinerate",
+        "Invocation",
+        "Rain of Fire",
+        "Searing Pain",
+        "Shadow Bolt",
+        "Shadowburn",
+        "Soul Fire"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "unchanged",
+      "classic_max_rank": 2,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      17917,
+      17918
+     ]
+    },
+    {
+     "id": "improved_shadow_bolt",
+     "name": "Improved Shadow Bolt",
+     "tree": "destruction",
+     "row": 1,
+     "col": 2,
+     "maxRank": 5,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 0,
+     "spell_id": 17793,
+     "rank_spell_ids": [
+      17793,
+      17793,
+      17793,
+      17793,
+      17793
+     ],
+     "trait": {
+      "definition_id": 135420,
+      "node_id": 105889,
+      "node_entry_id": 130619
+     },
+     "wowsims_field": "improved_shadow_bolt",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Your Shadow Bolt critical strikes increase Shadow damage taken by the target from your attacks by 4% for 12 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17793,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Your Shadow Bolt critical strikes increase Shadow damage taken by the target from your attacks by 8% for 12 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17793,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Your Shadow Bolt critical strikes increase Shadow damage taken by the target from your attacks by 12% for 12 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17793,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 4,
+       "text": "Your Shadow Bolt critical strikes increase Shadow damage taken by the target from your attacks by 16% for 12 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17793,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 5,
+       "text": "Your Shadow Bolt critical strikes increase Shadow damage taken by the target from your attacks by 20% for 12 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17793,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        4,
+        8,
+        12,
+        16,
+        20
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 4
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 5,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      17793,
+      17796,
+      17801,
+      17802,
+      17803
+     ]
+    },
+    {
+     "id": "bane",
+     "name": "Bane",
+     "tree": "destruction",
+     "row": 1,
+     "col": 3,
+     "maxRank": 5,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 0,
+     "spell_id": 17788,
+     "rank_spell_ids": [
+      17788,
+      17788,
+      17788,
+      17788,
+      17788
+     ],
+     "trait": {
+      "definition_id": 135419,
+      "node_id": 105888,
+      "node_entry_id": 130618
+     },
+     "wowsims_field": "bane",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Reduces the casting time of your Shadow Bolt, Immolate, and Incinerate spells by 0.1 sec and your Soul Fire spell by 0.4 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17788,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Reduces the casting time of your Shadow Bolt, Immolate, and Incinerate spells by 0.2 sec and your Soul Fire spell by 0.8 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17788,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Reduces the casting time of your Shadow Bolt, Immolate, and Incinerate spells by 0.3 sec and your Soul Fire spell by 1.2 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17788,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 4,
+       "text": "Reduces the casting time of your Shadow Bolt, Immolate, and Incinerate spells by 0.4 sec and your Soul Fire spell by 1.6 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17788,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 5,
+       "text": "Reduces the casting time of your Shadow Bolt, Immolate, and Incinerate spells by 0.5 sec and your Soul Fire spell by 2 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17788,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_FLAT_MODIFIER",
+       "misc_value": 10,
+       "per_rank": [
+        -100,
+        -200,
+        -300,
+        -400,
+        -500
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": -100,
+       "spell_mod": "SPELLMOD_CASTING_TIME",
+       "mod_kind": "flat",
+       "affects": [
+        "Immolate",
+        "Incinerate",
+        "Invocation",
+        "Shadow Bolt",
+        "Shadowflame"
+       ]
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_FLAT_MODIFIER",
+       "misc_value": 10,
+       "per_rank": [
+        -400,
+        -800,
+        -1200,
+        -1600,
+        -2000
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": -400,
+       "spell_mod": "SPELLMOD_CASTING_TIME",
+       "mod_kind": "flat",
+       "affects": [
+        "Hellfire",
+        "Hellfire Effect",
+        "Soul Fire"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 5,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      17788,
+      17789,
+      17790,
+      17791,
+      17792
+     ]
+    },
+    {
+     "id": "molten_skin",
+     "name": "Molten Skin",
+     "tree": "destruction",
+     "row": 2,
+     "col": 1,
+     "maxRank": 5,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 5,
+     "spell_id": 1225220,
+     "rank_spell_ids": [
+      1225220,
+      1225220,
+      1225220,
+      1225220,
+      1225220
+     ],
+     "trait": {
+      "definition_id": 135416,
+      "node_id": 105885,
+      "node_entry_id": 130615
+     },
+     "wowsims_field": "molten_skin",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Reduces all damage taken by 2%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 1225220,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Reduces all damage taken by 4%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 1225220,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Reduces all damage taken by 6%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 1225220,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 4,
+       "text": "Reduces all damage taken by 8%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 1225220,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 5,
+       "text": "Reduces all damage taken by 10%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 1225220,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_MOD_DAMAGE_PERCENT_TAKEN",
+       "misc_value": 127,
+       "per_rank": [
+        -2,
+        -4,
+        -6,
+        -8,
+        -10
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": -2
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "new",
+      "classic_max_rank": null,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     }
+    },
+    {
+     "id": "cataclysm",
+     "name": "Cataclysm",
+     "tree": "destruction",
+     "row": 2,
+     "col": 2,
+     "maxRank": 3,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 5,
+     "spell_id": 17778,
+     "rank_spell_ids": [
+      17778,
+      17778,
+      17778
+     ],
+     "trait": {
+      "definition_id": 135418,
+      "node_id": 105887,
+      "node_entry_id": 130617
+     },
+     "wowsims_field": "cataclysm",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Reduces the Mana cost of your Destruction spells by 3%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17778,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Reduces the Mana cost of your Destruction spells by 6%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17778,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Reduces the Mana cost of your Destruction spells by 10%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17778,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 14,
+       "per_rank": [
+        -3,
+        -6,
+        -10
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "spell_mod": "SPELLMOD_COST",
+       "mod_kind": "pct",
+       "affects": [
+        "Bane of Havoc",
+        "Chaos Bolt",
+        "Conflagrate",
+        "Hellfire",
+        "Hellfire Effect",
+        "Immolate",
+        "Incinerate",
+        "Invocation",
+        "Rain of Fire",
+        "Searing Pain",
+        "Shadow Bolt",
+        "Shadow Cleave",
+        "Shadowburn",
+        "Shadowflame",
+        "Soul Fire"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 5,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      17778,
+      17779,
+      17780,
+      17781,
+      17782
+     ]
+    },
+    {
+     "id": "aftermath",
+     "name": "Aftermath",
+     "tree": "destruction",
+     "row": 2,
+     "col": 3,
+     "maxRank": 5,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 5,
+     "spell_id": 18119,
+     "rank_spell_ids": [
+      18119,
+      18119,
+      18119,
+      18119,
+      18119
+     ],
+     "trait": {
+      "definition_id": 135417,
+      "node_id": 105886,
+      "node_entry_id": 130616
+     },
+     "wowsims_field": "aftermath",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases the initial damage of your Immolate spell by 10% and your Conflagrate spell has a 20% chance to Daze the target, reducing the target's movement speed by 50% for 5 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18119,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases the initial damage of your Immolate spell by 20% and your Conflagrate spell has a 40% chance to Daze the target, reducing the target's movement speed by 50% for 5 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18119,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Increases the initial damage of your Immolate spell by 30% and your Conflagrate spell has a 60% chance to Daze the target, reducing the target's movement speed by 50% for 5 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18119,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 4,
+       "text": "Increases the initial damage of your Immolate spell by 40% and your Conflagrate spell has a 80% chance to Daze the target, reducing the target's movement speed by 50% for 5 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18119,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 5,
+       "text": "Increases the initial damage of your Immolate spell by 50% and your Conflagrate spell has a 100% chance to Daze the target, reducing the target's movement speed by 50% for 5 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18119,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_PROC_TRIGGER_SPELL",
+       "misc_value": 0,
+       "per_rank": [
+        20,
+        40,
+        60,
+        80,
+        100
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 20,
+       "trigger_spell": {
+        "id": 18118,
+        "name": "Aftermath"
+       }
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 0,
+       "per_rank": [
+        10,
+        20,
+        30,
+        40,
+        50
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 10,
+       "spell_mod": "SPELLMOD_DAMAGE",
+       "mod_kind": "pct",
+       "affects": [
+        "Immolate",
+        "Invocation"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 5,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      18119,
+      18120,
+      18121,
+      18122,
+      18123
+     ]
+    },
+    {
+     "id": "ruin",
+     "name": "Ruin",
+     "tree": "destruction",
+     "row": 3,
+     "col": 2,
+     "maxRank": 5,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 10,
+     "spell_id": 17959,
+     "rank_spell_ids": [
+      17959,
+      17959,
+      17959,
+      17959,
+      17959
+     ],
+     "trait": {
+      "definition_id": 135414,
+      "node_id": 105883,
+      "node_entry_id": 130613
+     },
+     "wowsims_field": "ruin",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases the critical strike damage bonus of your Destruction spells by 20%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17959,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases the critical strike damage bonus of your Destruction spells by 40%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17959,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Increases the critical strike damage bonus of your Destruction spells by 60%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17959,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 4,
+       "text": "Increases the critical strike damage bonus of your Destruction spells by 80%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17959,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 5,
+       "text": "Increases the critical strike damage bonus of your Destruction spells by 100%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17959,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 15,
+       "per_rank": [
+        20,
+        40,
+        60,
+        80,
+        100
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 20,
+       "spell_mod": "SPELLMOD_CRIT_DAMAGE_BONUS",
+       "mod_kind": "pct",
+       "affects": [
+        "Chaos Bolt",
+        "Conflagrate",
+        "Hellfire",
+        "Hellfire Effect",
+        "Immolate",
+        "Incinerate",
+        "Invocation",
+        "Rain of Fire",
+        "Searing Pain",
+        "Shadow Bolt",
+        "Shadow Cleave",
+        "Shadowburn",
+        "Shadowflame",
+        "Soul Fire"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 1,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      17959
+     ]
+    },
+    {
+     "id": "shadowburn",
+     "name": "Shadowburn",
+     "tree": "destruction",
+     "row": 3,
+     "col": 3,
+     "maxRank": 1,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 10,
+     "spell_id": 17877,
+     "rank_spell_ids": [
+      17877
+     ],
+     "trait": {
+      "definition_id": 135415,
+      "node_id": 105884,
+      "node_entry_id": 130614
+     },
+     "wowsims_field": "shadowburn",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Instantly blasts the target for 65 to 74 Shadow damage.  If a non-trivial target dies within 8 sec of being hit with Shadowburn, the caster gains a Soul Shard.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17877,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_CHANNEL_DEATH_ITEM",
+       "misc_value": 0,
+       "per_rank": [
+        1
+       ],
+       "value_source": "SpellEffect base points, same at every rank"
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_SCHOOL_DAMAGE",
+       "aura": null,
+       "misc_value": 0,
+       "per_rank": [
+        69.6
+       ],
+       "value_source": "level-scaled base points at level 60"
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 1,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      17877
+     ]
+    },
+    {
+     "id": "intensity",
+     "name": "Intensity",
+     "tree": "destruction",
+     "row": 4,
+     "col": 1,
+     "maxRank": 3,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 15,
+     "spell_id": 18135,
+     "rank_spell_ids": [
+      18135,
+      18135,
+      18135
+     ],
+     "trait": {
+      "definition_id": 135413,
+      "node_id": 105882,
+      "node_entry_id": 130612
+     },
+     "wowsims_field": "intensity",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Gives your Destruction spells a 23% chance to not lose casting time when you take damage.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18135,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Gives your Destruction spells a 47% chance to not lose casting time when you take damage.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18135,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Gives your Destruction spells a 70% chance to not lose casting time when you take damage.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18135,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 9,
+       "per_rank": [
+        23,
+        47,
+        70
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "spell_mod": "SPELLMOD_NOT_LOSE_CASTING_TIME",
+       "mod_kind": "pct",
+       "affects": [
+        "Conflagrate",
+        "Hellfire",
+        "Hellfire Effect",
+        "Immolate",
+        "Invocation",
+        "Rain of Fire",
+        "Searing Pain",
+        "Shadow Bolt",
+        "Shadowburn",
+        "Soul Fire"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 2,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      18135,
+      18136
+     ]
+    },
+    {
+     "id": "agonizing_flames",
+     "name": "Agonizing Flames",
+     "tree": "destruction",
+     "row": 4,
+     "col": 2,
+     "maxRank": 3,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 15,
+     "spell_id": 17927,
+     "rank_spell_ids": [
+      17927,
+      17927,
+      17927
+     ],
+     "trait": {
+      "definition_id": 135410,
+      "node_id": 105879,
+      "node_entry_id": 130609
+     },
+     "wowsims_field": "agonizing_flames",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases the critical strike chance of your Searing Pain spell by 3% and the damage done by all your Destruction spells by 3%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17927,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases the critical strike chance of your Searing Pain spell by 7% and the damage done by all your Destruction spells by 7%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17927,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Increases the critical strike chance of your Searing Pain spell by 10% and the damage done by all your Destruction spells by 10%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 17927,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_FLAT_MODIFIER",
+       "misc_value": 7,
+       "per_rank": [
+        3,
+        7,
+        10
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "spell_mod": "SPELLMOD_CRITICAL_CHANCE",
+       "mod_kind": "flat",
+       "affects": [
+        "Searing Pain"
+       ]
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 0,
+       "per_rank": [
+        3,
+        7,
+        10
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "spell_mod": "SPELLMOD_DAMAGE",
+       "mod_kind": "pct",
+       "affects": [
+        "Conflagrate",
+        "Immolate",
+        "Incinerate",
+        "Invocation",
+        "Rain of Fire",
+        "Searing Pain",
+        "Shadow Bolt",
+        "Shadowburn",
+        "Soul Fire"
+       ]
+      },
+      {
+       "effect_index": 2,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_PCT_MODIFIER",
+       "misc_value": 22,
+       "per_rank": [
+        3,
+        7,
+        10
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "spell_mod": "SPELLMOD_DOT",
+       "mod_kind": "pct",
+       "affects": [
+        "Immolate",
+        "Invocation",
+        "Rain of Fire"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 5,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      17927,
+      17929,
+      17930,
+      17931,
+      17932
+     ]
+    },
+    {
+     "id": "conflagrate",
+     "name": "Conflagrate",
+     "tree": "destruction",
+     "row": 4,
+     "col": 3,
+     "maxRank": 1,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 15,
+     "spell_id": 1293817,
+     "rank_spell_ids": [
+      1293817
+     ],
+     "trait": {
+      "definition_id": 135411,
+      "node_id": 105880,
+      "node_entry_id": 130610
+     },
+     "wowsims_field": "conflagrate",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Ignites a target that is already afflicted by your Immolate spell, dealing 87 to 112 Fire damage and consuming your Immolate effect.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 1293817,
+       "numbers_match": {
+        "timesaver": false,
+        "wowforevertalents": true
+       },
+       "other_texts": {
+        "client": "Ignites a target that is already afflicted by your Immolate spell, dealing 87 to 112 Fire damage and consuming your Immolate effect.",
+        "timesaver": "Ignites a target that is already afflicted by your Immolate spell, dealing 88 to 111 Fire damage and consuming your Immolate effect.",
+        "wowforevertalents": "Ignites a target that is already afflicted by your Immolate spell, dealing 87 to 112 Fire damage and consuming your Immolate effect."
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_SCHOOL_DAMAGE",
+       "aura": null,
+       "misc_value": 0,
+       "per_rank": [
+        99.5
+       ],
+       "value_source": "level-scaled base points at level 60"
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 1,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     },
+     "legacy_classic_rank_spell_ids": [
+      17962
+     ]
+    },
+    {
+     "id": "pyroclasm",
+     "name": "Pyroclasm",
+     "tree": "destruction",
+     "row": 5,
+     "col": 1,
+     "maxRank": 2,
+     "prereq": "intensity",
+     "prereq_rank": 3,
+     "tier_points_required": 20,
+     "spell_id": 18073,
+     "rank_spell_ids": [
+      18073,
+      18073
+     ],
+     "trait": {
+      "definition_id": 135409,
+      "node_id": 105878,
+      "node_entry_id": 130608
+     },
+     "wowsims_field": "pyroclasm",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Gives your Soul Fire spell a 13% chance to Stun the target for 3 sec, and your Rain of Fire and Hellfire spells a 13% chance over their duration to Stun targets they damage for 3 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18073,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Gives your Soul Fire spell a 26% chance to Stun the target for 3 sec, and your Rain of Fire and Hellfire spells a 26% chance over their duration to Stun targets they damage for 3 sec.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 18073,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        13,
+        26
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 13
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_PROC_TRIGGER_SPELL",
+       "misc_value": 0,
+       "per_rank": [
+        0,
+        0
+       ],
+       "value_source": "SpellEffect base points, same at every rank",
+       "per_rank_step": 0,
+       "trigger_spell": {
+        "id": 18350,
+        "name": "Dummy Trigger"
+       }
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "changed",
+      "classic_max_rank": 2,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     }
+    },
+    {
+     "id": "bane_of_havoc",
+     "name": "Bane of Havoc",
+     "tree": "destruction",
+     "row": 5,
+     "col": 2,
+     "maxRank": 1,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 20,
+     "spell_id": 1225228,
+     "rank_spell_ids": [
+      1225228
+     ],
+     "trait": {
+      "definition_id": 135407,
+      "node_id": 105876,
+      "node_entry_id": 130606
+     },
+     "wowsims_field": "bane_of_havoc",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Afflicts the target for 5 min, causing 15% of all damage done by the Warlock to other targets to also be dealt to the cursed target. Bane of Havoc is limited to 1 target, and only one Bane per Warlock can be active on any one target.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 1225228,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        15
+       ],
+       "value_source": "SpellEffect base points, same at every rank"
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "new",
+      "classic_max_rank": null,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     }
+    },
+    {
+     "id": "fire_and_brimstone",
+     "name": "Fire and Brimstone",
+     "tree": "destruction",
+     "row": 5,
+     "col": 3,
+     "maxRank": 3,
+     "prereq": "conflagrate",
+     "prereq_rank": 1,
+     "tier_points_required": 20,
+     "spell_id": 412751,
+     "rank_spell_ids": [
+      412751,
+      412751,
+      412751
+     ],
+     "trait": {
+      "definition_id": 135408,
+      "node_id": 105877,
+      "node_entry_id": 130607
+     },
+     "wowsims_field": "fire_and_brimstone",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Increases the critical strike chance of your Conflagrate spell by 8%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 412751,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Increases the critical strike chance of your Conflagrate spell by 17%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 412751,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Increases the critical strike chance of your Conflagrate spell by 25%.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 412751,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        3,
+        7,
+        10
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)"
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_ADD_FLAT_MODIFIER",
+       "misc_value": 7,
+       "per_rank": [
+        8,
+        17,
+        25
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "spell_mod": "SPELLMOD_CRITICAL_CHANCE",
+       "mod_kind": "flat",
+       "affects": [
+        "Conflagrate"
+       ]
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "new",
+      "classic_max_rank": null,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     }
+    },
+    {
+     "id": "shadow_and_flame",
+     "name": "Shadow and Flame",
+     "tree": "destruction",
+     "row": 6,
+     "col": 3,
+     "maxRank": 5,
+     "prereq": null,
+     "prereq_rank": null,
+     "tier_points_required": 25,
+     "spell_id": 426316,
+     "rank_spell_ids": [
+      426316,
+      426316,
+      426316,
+      426316,
+      426316
+     ],
+     "trait": {
+      "definition_id": 135406,
+      "node_id": 105875,
+      "node_entry_id": 130605
+     },
+     "wowsims_field": "shadow_and_flame",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Hitting an enemy with Conflagrate increases all Shadow damage you deal by 4% for 20 sec, and hitting an enemy with Shadowburn increases all Fire damage you deal by 4% for 20 sec. In addition, Conflagrate has a 20% chance not to consume Immolate, and Shadowburn has a 20% chance to instantly refund a Soul Shard.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 426316,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 2,
+       "text": "Hitting an enemy with Conflagrate increases all Shadow damage you deal by 8% for 20 sec, and hitting an enemy with Shadowburn increases all Fire damage you deal by 8% for 20 sec. In addition, Conflagrate has a 40% chance not to consume Immolate, and Shadowburn has a 40% chance to instantly refund a Soul Shard.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 426316,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 3,
+       "text": "Hitting an enemy with Conflagrate increases all Shadow damage you deal by 12% for 20 sec, and hitting an enemy with Shadowburn increases all Fire damage you deal by 12% for 20 sec. In addition, Conflagrate has a 60% chance not to consume Immolate, and Shadowburn has a 60% chance to instantly refund a Soul Shard.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 426316,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 4,
+       "text": "Hitting an enemy with Conflagrate increases all Shadow damage you deal by 16% for 20 sec, and hitting an enemy with Shadowburn increases all Fire damage you deal by 16% for 20 sec. In addition, Conflagrate has a 80% chance not to consume Immolate, and Shadowburn has a 80% chance to instantly refund a Soul Shard.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 426316,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      },
+      {
+       "rank": 5,
+       "text": "Hitting an enemy with Conflagrate increases all Shadow damage you deal by 20% for 20 sec, and hitting an enemy with Shadowburn increases all Fire damage you deal by 20% for 20 sec. In addition, Conflagrate has a 100% chance not to consume Immolate, and Shadowburn has a 100% chance to instantly refund a Soul Shard.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 426316,
+       "numbers_match": {
+        "timesaver": true,
+        "wowforevertalents": true
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        4,
+        8,
+        12,
+        16,
+        20
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 4
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        20,
+        40,
+        60,
+        80,
+        100
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 20
+      },
+      {
+       "effect_index": 2,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        4,
+        8,
+        12,
+        16,
+        20
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 4
+      },
+      {
+       "effect_index": 3,
+       "effect": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "misc_value": 0,
+       "per_rank": [
+        4,
+        8,
+        12,
+        16,
+        20
+       ],
+       "value_source": "trait curve (TraitDefinitionEffectPoints)",
+       "per_rank_step": 4
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "new",
+      "classic_max_rank": null,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     }
+    },
+    {
+     "id": "incinerate",
+     "name": "Incinerate",
+     "tree": "destruction",
+     "row": 7,
+     "col": 2,
+     "maxRank": 1,
+     "prereq": "bane_of_havoc",
+     "prereq_rank": 1,
+     "tier_points_required": 30,
+     "spell_id": 412758,
+     "rank_spell_ids": [
+      412758
+     ],
+     "trait": {
+      "definition_id": 135405,
+      "node_id": 105874,
+      "node_entry_id": 130604
+     },
+     "wowsims_field": "incinerate",
+     "ranks": [
+      {
+       "rank": 1,
+       "text": "Deals 99 to 115 Fire damage to your target and an additional 25% damage if the target is afflicted by Immolate.",
+       "text_source": "client (resolved from Spell.Description_lang, build 70862)",
+       "spell_id": 412758,
+       "numbers_match": {
+        "timesaver": false,
+        "wowforevertalents": true
+       },
+       "other_texts": {
+        "client": "Deals 99 to 115 Fire damage to your target and an additional 25% damage if the target is afflicted by Immolate.",
+        "timesaver": "Deals 100 to 114 Fire damage to your target and an additional 25% damage if the target is afflicted by Immolate.",
+        "wowforevertalents": "Deals 99 to 115 Fire damage to your target and an additional 25% damage if the target is afflicted by Immolate."
+       }
+      }
+     ],
+     "effects": [
+      {
+       "effect_index": 0,
+       "effect": "E_SCHOOL_DAMAGE",
+       "aura": null,
+       "misc_value": 0,
+       "per_rank": [
+        106.9
+       ],
+       "value_source": "level-scaled base points at level 60"
+      },
+      {
+       "effect_index": 1,
+       "effect": "E_DUMMY",
+       "aura": null,
+       "misc_value": 0,
+       "per_rank": [
+        25
+       ],
+       "value_source": "SpellEffect base points, same at every rank"
+      }
+     ],
+     "forever_vs_classic": {
+      "status": "new",
+      "classic_max_rank": null,
+      "source": "wowforevertalents.com classification (Forever client 70862 vs Classic Era 1.15.9.69722); not checked here"
+     }
+    }
+   ]
+  }
+ ]
+}

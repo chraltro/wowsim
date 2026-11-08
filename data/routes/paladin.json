@@ -1,0 +1,5380 @@
+{
+ "class": "paladin",
+ "generated": "2026-11-08",
+ "generator": "wowsim/pipeline/talents/build_routes.py",
+ "talents_file": "data/talents/paladin.json",
+ "code_format": "see data/talents/paladin.json code_format; codes here are re-encoded from each source's own data",
+ "level_rule": "order[i] is the point spent at level 10 + i",
+ "sources_tried": {
+  "Maxroll": "leveling guide planner profiles (point order): fetched",
+  "Method.gg": "leveling guide + spec \"talents\" pages (embeds with point order): fetched",
+  "Warcraft Tavern": "leveling guide + spec guides (Warcraft DB ordered links): fetched",
+  "wowtbc.gg": "Warcraft Forever class guides (page-data JSON: level 60 builds and a \"Leveling 1-60\" point order): fetched",
+  "timesaver.gg": "calculator presets (secondary transcriptions of Maxroll, Wowhead, Icy Veins, Method)",
+  "Wowhead, Icy Veins, Mobalytics": "blocked by Cloudflare from this sandbox (HTTP 403/202 challenge); only timesaver.gg transcriptions of their codes are included, marked secondary",
+  "wowsims-forever": "sim presets are not guides; used only as decode checks (see data/talents/README.md)"
+ },
+ "specs": {
+  "holy": {
+   "name": "Holy",
+   "tree": "holy",
+   "dungeon_roles": [
+    "healer"
+   ],
+   "leveling": [
+    {
+     "name": "Holy",
+     "source": {
+      "site": "Maxroll",
+      "url": "https://maxroll.gg/wow-forever/class-guides/paladin-leveling-guide",
+      "title": "Paladin Leveling Guide",
+      "author": "maxroll",
+      "published": "October 30, 2026",
+      "updated": "November 4, 2026",
+      "date_seen": "2026-11-08",
+      "data": "planner profile \"Holy\" (uid n66aGbb3, planner li3ym80u saved 2026-11-04 09:14:27): talents.history, TraitNodeEntry ids from window.__remixContext",
+      "guide_order": "point by point (the planner history is the guide's own order)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "spiritual_focus",
+       "name": "Spiritual Focus",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "spiritual_focus",
+       "name": "Spiritual Focus",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "spiritual_focus",
+       "name": "Spiritual Focus",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "spiritual_focus",
+       "name": "Spiritual Focus",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "spiritual_focus",
+       "name": "Spiritual Focus",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "reverence",
+       "name": "Reverence",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "reverence",
+       "name": "Reverence",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "healing_light",
+       "name": "Healing Light",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "healing_light",
+       "name": "Healing Light",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "healing_light",
+       "name": "Healing Light",
+       "rank": 3
+      },
+      {
+       "level": 20,
+       "id": "divine_favor",
+       "name": "Divine Favor",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "illumination",
+       "name": "Illumination",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "illumination",
+       "name": "Illumination",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "illumination",
+       "name": "Illumination",
+       "rank": 3
+      },
+      {
+       "level": 24,
+       "id": "illumination",
+       "name": "Illumination",
+       "rank": 4
+      },
+      {
+       "level": 25,
+       "id": "oath_of_light",
+       "name": "Oath of Light",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "illumination",
+       "name": "Illumination",
+       "rank": 5
+      },
+      {
+       "level": 27,
+       "id": "infusion_of_light",
+       "name": "Infusion of Light",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "infusion_of_light",
+       "name": "Infusion of Light",
+       "rank": 2
+      },
+      {
+       "level": 29,
+       "id": "purifying_power",
+       "name": "Purifying Power",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "holy_shock",
+       "name": "Holy Shock",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "boundless_light",
+       "name": "Boundless Light",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "boundless_light",
+       "name": "Boundless Light",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "purifying_power",
+       "name": "Purifying Power",
+       "rank": 2
+      },
+      {
+       "level": 34,
+       "id": "holy_conduit",
+       "name": "Holy Conduit",
+       "rank": 1
+      },
+      {
+       "level": 35,
+       "id": "holy_power",
+       "name": "Holy Power",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "holy_power",
+       "name": "Holy Power",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "holy_power",
+       "name": "Holy Power",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "holy_power",
+       "name": "Holy Power",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "holy_power",
+       "name": "Holy Power",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "lights_vigil",
+       "name": "Light's Vigil",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 4
+      },
+      {
+       "level": 45,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 1
+      },
+      {
+       "level": 50,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 2
+      },
+      {
+       "level": 51,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 2
+      },
+      {
+       "level": 53,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 3
+      },
+      {
+       "level": 56,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 4
+      },
+      {
+       "level": 57,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 5
+      },
+      {
+       "level": 58,
+       "id": "guardians_favor",
+       "name": "Guardian's Favor",
+       "rank": 1
+      },
+      {
+       "level": 59,
+       "id": "guardians_favor",
+       "name": "Guardian's Favor",
+       "rank": 2
+      },
+      {
+       "level": 60,
+       "id": "sacred_duty",
+       "name": "Sacred Duty",
+       "rank": 1
+      }
+     ],
+     "route_runs": [
+      [
+       "spiritual_focus",
+       5
+      ],
+      [
+       "reverence",
+       2
+      ],
+      [
+       "healing_light",
+       3
+      ],
+      [
+       "divine_favor",
+       1
+      ],
+      [
+       "illumination",
+       4
+      ],
+      [
+       "oath_of_light",
+       1
+      ],
+      [
+       "illumination",
+       1
+      ],
+      [
+       "infusion_of_light",
+       2
+      ],
+      [
+       "purifying_power",
+       1
+      ],
+      [
+       "holy_shock",
+       1
+      ],
+      [
+       "boundless_light",
+       2
+      ],
+      [
+       "purifying_power",
+       1
+      ],
+      [
+       "holy_conduit",
+       1
+      ],
+      [
+       "holy_power",
+       5
+      ],
+      [
+       "lights_vigil",
+       1
+      ],
+      [
+       "benediction",
+       5
+      ],
+      [
+       "conviction",
+       3
+      ],
+      [
+       "sanctified_judgement",
+       2
+      ],
+      [
+       "pursuit_of_justice",
+       2
+      ],
+      [
+       "divine_intellect",
+       5
+      ],
+      [
+       "guardians_favor",
+       2
+      ],
+      [
+       "sacred_duty",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "50320215102101251-50021-050320002",
+      "split": "31/8/12",
+      "points": 51,
+      "talents": {
+       "spiritual_focus": 5,
+       "healing_light": 3,
+       "reverence": 2,
+       "purifying_power": 2,
+       "divine_favor": 1,
+       "illumination": 5,
+       "holy_conduit": 1,
+       "infusion_of_light": 2,
+       "oath_of_light": 1,
+       "holy_shock": 1,
+       "boundless_light": 2,
+       "holy_power": 5,
+       "lights_vigil": 1,
+       "divine_intellect": 5,
+       "guardians_favor": 2,
+       "sacred_duty": 1,
+       "benediction": 5,
+       "conviction": 3,
+       "sanctified_judgement": 2,
+       "pursuit_of_justice": 2
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "timesaver.gg (transcription): Holy leveling (Maxroll)"
+     ]
+    },
+    {
+     "name": "Holy leveling",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/paladin",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Wowhead",
+       "url": "https://www.wowhead.com/forever/guide/classes/paladin/holy/healer-leveling-tips",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Holy leveling\" in the calculator page payload; mode Leveling",
+      "guide_order": "final build only"
+     },
+     "kind": "final_only",
+     "final": {
+      "code": "50320015222121251-5-052300002",
+      "split": "34/5/12",
+      "points": 51,
+      "talents": {
+       "spiritual_focus": 5,
+       "healing_light": 3,
+       "reverence": 2,
+       "divine_favor": 1,
+       "illumination": 5,
+       "holy_conduit": 2,
+       "divine_precision": 2,
+       "infusion_of_light": 2,
+       "oath_of_light": 1,
+       "consecrated_ground": 2,
+       "holy_shock": 1,
+       "boundless_light": 2,
+       "holy_power": 5,
+       "lights_vigil": 1,
+       "divine_intellect": 5,
+       "benediction": 5,
+       "improved_judgement": 2,
+       "conviction": 3,
+       "pursuit_of_justice": 2
+      },
+      "legal_on_client_tree": "OK"
+     },
+     "secondary": true,
+     "notes": [
+      "original Wowhead page not reachable from this sandbox (Cloudflare); this is timesaver.gg's transcription, unverified against the original"
+     ],
+     "spec_assigned_by": "guide label"
+    },
+    {
+     "name": "Holy leveling (Maxroll)",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/paladin",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Maxroll",
+       "url": "https://maxroll.gg/wow-forever/class-guides/paladin-leveling-guide",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Holy leveling (Maxroll)\" in the calculator page payload; mode Leveling",
+      "guide_order": "point by point as transcribed by timesaver.gg"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "spiritual_focus",
+       "name": "Spiritual Focus",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "spiritual_focus",
+       "name": "Spiritual Focus",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "spiritual_focus",
+       "name": "Spiritual Focus",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "spiritual_focus",
+       "name": "Spiritual Focus",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "spiritual_focus",
+       "name": "Spiritual Focus",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "reverence",
+       "name": "Reverence",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "reverence",
+       "name": "Reverence",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "healing_light",
+       "name": "Healing Light",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "healing_light",
+       "name": "Healing Light",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "healing_light",
+       "name": "Healing Light",
+       "rank": 3
+      },
+      {
+       "level": 20,
+       "id": "divine_favor",
+       "name": "Divine Favor",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "illumination",
+       "name": "Illumination",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "illumination",
+       "name": "Illumination",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "illumination",
+       "name": "Illumination",
+       "rank": 3
+      },
+      {
+       "level": 24,
+       "id": "illumination",
+       "name": "Illumination",
+       "rank": 4
+      },
+      {
+       "level": 25,
+       "id": "oath_of_light",
+       "name": "Oath of Light",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "illumination",
+       "name": "Illumination",
+       "rank": 5
+      },
+      {
+       "level": 27,
+       "id": "infusion_of_light",
+       "name": "Infusion of Light",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "infusion_of_light",
+       "name": "Infusion of Light",
+       "rank": 2
+      },
+      {
+       "level": 29,
+       "id": "purifying_power",
+       "name": "Purifying Power",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "holy_shock",
+       "name": "Holy Shock",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "boundless_light",
+       "name": "Boundless Light",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "boundless_light",
+       "name": "Boundless Light",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "purifying_power",
+       "name": "Purifying Power",
+       "rank": 2
+      },
+      {
+       "level": 34,
+       "id": "holy_conduit",
+       "name": "Holy Conduit",
+       "rank": 1
+      },
+      {
+       "level": 35,
+       "id": "holy_power",
+       "name": "Holy Power",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "holy_power",
+       "name": "Holy Power",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "holy_power",
+       "name": "Holy Power",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "holy_power",
+       "name": "Holy Power",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "holy_power",
+       "name": "Holy Power",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "lights_vigil",
+       "name": "Light's Vigil",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 4
+      },
+      {
+       "level": 45,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 1
+      },
+      {
+       "level": 50,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 2
+      },
+      {
+       "level": 51,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 2
+      },
+      {
+       "level": 53,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 3
+      },
+      {
+       "level": 56,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 4
+      },
+      {
+       "level": 57,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 5
+      },
+      {
+       "level": 58,
+       "id": "guardians_favor",
+       "name": "Guardian's Favor",
+       "rank": 1
+      },
+      {
+       "level": 59,
+       "id": "guardians_favor",
+       "name": "Guardian's Favor",
+       "rank": 2
+      },
+      {
+       "level": 60,
+       "id": "sacred_duty",
+       "name": "Sacred Duty",
+       "rank": 1
+      }
+     ],
+     "route_runs": [
+      [
+       "spiritual_focus",
+       5
+      ],
+      [
+       "reverence",
+       2
+      ],
+      [
+       "healing_light",
+       3
+      ],
+      [
+       "divine_favor",
+       1
+      ],
+      [
+       "illumination",
+       4
+      ],
+      [
+       "oath_of_light",
+       1
+      ],
+      [
+       "illumination",
+       1
+      ],
+      [
+       "infusion_of_light",
+       2
+      ],
+      [
+       "purifying_power",
+       1
+      ],
+      [
+       "holy_shock",
+       1
+      ],
+      [
+       "boundless_light",
+       2
+      ],
+      [
+       "purifying_power",
+       1
+      ],
+      [
+       "holy_conduit",
+       1
+      ],
+      [
+       "holy_power",
+       5
+      ],
+      [
+       "lights_vigil",
+       1
+      ],
+      [
+       "benediction",
+       5
+      ],
+      [
+       "conviction",
+       3
+      ],
+      [
+       "sanctified_judgement",
+       2
+      ],
+      [
+       "pursuit_of_justice",
+       2
+      ],
+      [
+       "divine_intellect",
+       5
+      ],
+      [
+       "guardians_favor",
+       2
+      ],
+      [
+       "sacred_duty",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "50320215102101251-50021-050320002",
+      "split": "31/8/12",
+      "points": 51,
+      "talents": {
+       "spiritual_focus": 5,
+       "healing_light": 3,
+       "reverence": 2,
+       "purifying_power": 2,
+       "divine_favor": 1,
+       "illumination": 5,
+       "holy_conduit": 1,
+       "infusion_of_light": 2,
+       "oath_of_light": 1,
+       "holy_shock": 1,
+       "boundless_light": 2,
+       "holy_power": 5,
+       "lights_vigil": 1,
+       "divine_intellect": 5,
+       "guardians_favor": 2,
+       "sacred_duty": 1,
+       "benediction": 5,
+       "conviction": 3,
+       "sanctified_judgement": 2,
+       "pursuit_of_justice": 2
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "secondary": true,
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "Maxroll: Holy"
+     ]
+    },
+    {
+     "name": "Leveling 1-60",
+     "source": {
+      "site": "wowtbc.gg (Warcraft Forever class guide)",
+      "url": "https://wowtbc.gg/warcraftforever/class-guides/holy-paladin/",
+      "author": null,
+      "updated": null,
+      "date_seen": "2026-11-08",
+      "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/holy-paladin/page-data.json, build \"Leveling 1-60\"",
+      "note": "the page shows no author or date",
+      "guide_order": "point by point (\"Leveling 1-60\" talentBuildPaths)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "improved_judgement",
+       "name": "Improved Judgement",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "improved_judgement",
+       "name": "Improved Judgement",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "spiritual_focus",
+       "name": "Spiritual Focus",
+       "rank": 1
+      },
+      {
+       "level": 23,
+       "id": "spiritual_focus",
+       "name": "Spiritual Focus",
+       "rank": 2
+      },
+      {
+       "level": 24,
+       "id": "spiritual_focus",
+       "name": "Spiritual Focus",
+       "rank": 3
+      },
+      {
+       "level": 25,
+       "id": "spiritual_focus",
+       "name": "Spiritual Focus",
+       "rank": 4
+      },
+      {
+       "level": 26,
+       "id": "spiritual_focus",
+       "name": "Spiritual Focus",
+       "rank": 5
+      },
+      {
+       "level": 27,
+       "id": "reverence",
+       "name": "Reverence",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "reverence",
+       "name": "Reverence",
+       "rank": 2
+      },
+      {
+       "level": 29,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 2
+      },
+      {
+       "level": 31,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 3
+      },
+      {
+       "level": 32,
+       "id": "holy_conduit",
+       "name": "Holy Conduit",
+       "rank": 1
+      },
+      {
+       "level": 33,
+       "id": "holy_conduit",
+       "name": "Holy Conduit",
+       "rank": 2
+      },
+      {
+       "level": 34,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 4
+      },
+      {
+       "level": 35,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 5
+      },
+      {
+       "level": 36,
+       "id": "divine_favor",
+       "name": "Divine Favor",
+       "rank": 1
+      },
+      {
+       "level": 37,
+       "id": "divine_precision",
+       "name": "Divine Precision",
+       "rank": 1
+      },
+      {
+       "level": 38,
+       "id": "oath_of_light",
+       "name": "Oath of Light",
+       "rank": 1
+      },
+      {
+       "level": 39,
+       "id": "divine_precision",
+       "name": "Divine Precision",
+       "rank": 2
+      },
+      {
+       "level": 40,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 2
+      },
+      {
+       "level": 42,
+       "id": "holy_shock",
+       "name": "Holy Shock",
+       "rank": 1
+      },
+      {
+       "level": 43,
+       "id": "consecrated_ground",
+       "name": "Consecrated Ground",
+       "rank": 1
+      },
+      {
+       "level": 44,
+       "id": "consecrated_ground",
+       "name": "Consecrated Ground",
+       "rank": 2
+      },
+      {
+       "level": 45,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 1
+      },
+      {
+       "level": 46,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 2
+      },
+      {
+       "level": 47,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 3
+      },
+      {
+       "level": 48,
+       "id": "sacred_arbiter",
+       "name": "Sacred Arbiter",
+       "rank": 1
+      },
+      {
+       "level": 49,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 1
+      },
+      {
+       "level": 50,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 2
+      },
+      {
+       "level": 51,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 3
+      },
+      {
+       "level": 52,
+       "id": "seal_of_command",
+       "name": "Seal of Command",
+       "rank": 1
+      },
+      {
+       "level": 53,
+       "id": "vengeance",
+       "name": "Vengeance",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "vengeance",
+       "name": "Vengeance",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "vengeance",
+       "name": "Vengeance",
+       "rank": 3
+      },
+      {
+       "level": 56,
+       "id": "repentance",
+       "name": "Repentance",
+       "rank": 1
+      },
+      {
+       "level": 57,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 1
+      },
+      {
+       "level": 58,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 1
+      },
+      {
+       "level": 59,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 2
+      },
+      {
+       "level": 60,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 3
+      }
+     ],
+     "route_runs": [
+      [
+       "deflection",
+       5
+      ],
+      [
+       "conviction",
+       3
+      ],
+      [
+       "improved_judgement",
+       2
+      ],
+      [
+       "pursuit_of_justice",
+       2
+      ],
+      [
+       "spiritual_focus",
+       5
+      ],
+      [
+       "reverence",
+       2
+      ],
+      [
+       "improved_seals",
+       3
+      ],
+      [
+       "holy_conduit",
+       2
+      ],
+      [
+       "improved_seals",
+       2
+      ],
+      [
+       "divine_favor",
+       1
+      ],
+      [
+       "divine_precision",
+       1
+      ],
+      [
+       "oath_of_light",
+       1
+      ],
+      [
+       "divine_precision",
+       1
+      ],
+      [
+       "divine_strength",
+       2
+      ],
+      [
+       "holy_shock",
+       1
+      ],
+      [
+       "consecrated_ground",
+       2
+      ],
+      [
+       "sanctified_judgement",
+       3
+      ],
+      [
+       "sacred_arbiter",
+       1
+      ],
+      [
+       "two_handed_weapon_specialization",
+       3
+      ],
+      [
+       "seal_of_command",
+       1
+      ],
+      [
+       "vengeance",
+       3
+      ],
+      [
+       "repentance",
+       1
+      ],
+      [
+       "benediction",
+       1
+      ],
+      [
+       "champion_of_the_light",
+       3
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "52025010220121--5123300120130133",
+      "split": "23/0/28",
+      "points": 51,
+      "talents": {
+       "spiritual_focus": 5,
+       "divine_strength": 2,
+       "reverence": 2,
+       "improved_seals": 5,
+       "divine_favor": 1,
+       "holy_conduit": 2,
+       "divine_precision": 2,
+       "oath_of_light": 1,
+       "consecrated_ground": 2,
+       "holy_shock": 1,
+       "deflection": 5,
+       "benediction": 1,
+       "improved_judgement": 2,
+       "conviction": 3,
+       "sanctified_judgement": 3,
+       "seal_of_command": 1,
+       "pursuit_of_justice": 2,
+       "sacred_arbiter": 1,
+       "two_handed_weapon_specialization": 3,
+       "repentance": 1,
+       "vengeance": 3,
+       "champion_of_the_light": 3
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "wowtbc_spec_page": "holy-paladin",
+     "spec_assigned_by": "guide page is for this spec",
+     "notes": [
+      "listed under Holy because the guide puts it there, but most points go into Retribution"
+     ]
+    }
+   ],
+   "endgame": {
+    "healer": [
+     {
+      "name": "Recommended Holy Build",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/holy-paladin/talents",
+       "title": "WoW Forever Holy Paladin Talents & Builds Guide",
+       "author": "Joki",
+       "updated": "4th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #0 (\"Recommended Holy Build\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "50320115202101251-5-052330002",
+       "split": "31/5/15",
+       "points": 51,
+       "talents": {
+        "spiritual_focus": 5,
+        "healing_light": 3,
+        "reverence": 2,
+        "purifying_power": 1,
+        "divine_favor": 1,
+        "illumination": 5,
+        "holy_conduit": 2,
+        "infusion_of_light": 2,
+        "oath_of_light": 1,
+        "holy_shock": 1,
+        "boundless_light": 2,
+        "holy_power": 5,
+        "lights_vigil": 1,
+        "divine_intellect": 5,
+        "benediction": 5,
+        "improved_judgement": 2,
+        "conviction": 3,
+        "sanctified_judgement": 3,
+        "pursuit_of_justice": 2
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "notes": [
+       "guide text: ...Beacon, it increases the healing of Holy Light , Flash Of Light and Holy Shock on a single target. In most situations this buff should go on the tank. A Note On Oath: I'm not particularly fond of this ability, as it encourages you to repeatedly heal the same person, thus severely limiting your gameplay and decision making. Hopefully Blizzard will rework it at some point to be more engaging. Holy P"
+      ],
+      "method_spec_page": "holy-paladin",
+      "embedded_order_check": {
+       "ok": true,
+       "errors": [],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Standard Build",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/holy-paladin/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/holy-paladin/page-data.json, build \"Standard Build\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "50320215012101251-5002-050330002",
+       "split": "31/7/13",
+       "points": 51,
+       "talents": {
+        "spiritual_focus": 5,
+        "healing_light": 3,
+        "reverence": 2,
+        "purifying_power": 2,
+        "divine_favor": 1,
+        "illumination": 5,
+        "divine_precision": 1,
+        "infusion_of_light": 2,
+        "oath_of_light": 1,
+        "holy_shock": 1,
+        "boundless_light": 2,
+        "holy_power": 5,
+        "lights_vigil": 1,
+        "divine_intellect": 5,
+        "guardians_favor": 2,
+        "benediction": 5,
+        "conviction": 3,
+        "sanctified_judgement": 3,
+        "pursuit_of_justice": 2
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "holy-paladin",
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     }
+    ]
+   }
+  },
+  "protection": {
+   "name": "Protection",
+   "tree": "protection",
+   "dungeon_roles": [
+    "tank"
+   ],
+   "leveling": [
+    {
+     "name": "Protection",
+     "source": {
+      "site": "Maxroll",
+      "url": "https://maxroll.gg/wow-forever/class-guides/paladin-leveling-guide",
+      "title": "Paladin Leveling Guide",
+      "author": "maxroll",
+      "published": "October 30, 2026",
+      "updated": "November 4, 2026",
+      "date_seen": "2026-11-08",
+      "data": "planner profile \"Protection\" (uid 7cags2sO, planner li3ym80u saved 2026-11-04 09:14:27): talents.history, TraitNodeEntry ids from window.__remixContext",
+      "guide_order": "point by point (the planner history is the guide's own order)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "redoubt",
+       "name": "Redoubt",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "redoubt",
+       "name": "Redoubt",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "redoubt",
+       "name": "Redoubt",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "redoubt",
+       "name": "Redoubt",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "redoubt",
+       "name": "Redoubt",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "sacred_duty",
+       "name": "Sacred Duty",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "sacred_duty",
+       "name": "Sacred Duty",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "guardians_favor",
+       "name": "Guardian's Favor",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "guardians_favor",
+       "name": "Guardian's Favor",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 1
+      },
+      {
+       "level": 20,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "templars_bulwark",
+       "name": "Templar's Bulwark",
+       "rank": 1
+      },
+      {
+       "level": 23,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 2
+      },
+      {
+       "level": 24,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 3
+      },
+      {
+       "level": 25,
+       "id": "swift_judgement",
+       "name": "Swift Judgement",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "improved_righteous_fury",
+       "name": "Improved Righteous Fury",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "improved_righteous_fury",
+       "name": "Improved Righteous Fury",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "improved_righteous_fury",
+       "name": "Improved Righteous Fury",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 4
+      },
+      {
+       "level": 30,
+       "id": "holy_shield",
+       "name": "Holy Shield",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "reckoning",
+       "name": "Reckoning",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "reckoning",
+       "name": "Reckoning",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "reckoning",
+       "name": "Reckoning",
+       "rank": 3
+      },
+      {
+       "level": 34,
+       "id": "reckoning",
+       "name": "Reckoning",
+       "rank": 4
+      },
+      {
+       "level": 35,
+       "id": "iron_creed",
+       "name": "Iron Creed",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "iron_creed",
+       "name": "Iron Creed",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "iron_creed",
+       "name": "Iron Creed",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "reckoning",
+       "name": "Reckoning",
+       "rank": 5
+      },
+      {
+       "level": 39,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "shieldsworn",
+       "name": "Shieldsworn",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 4
+      },
+      {
+       "level": 45,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 1
+      },
+      {
+       "level": 50,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 2
+      },
+      {
+       "level": 51,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 2
+      },
+      {
+       "level": 53,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 3
+      },
+      {
+       "level": 56,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 4
+      },
+      {
+       "level": 57,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 5
+      },
+      {
+       "level": 58,
+       "id": "reverence",
+       "name": "Reverence",
+       "rank": 1
+      },
+      {
+       "level": 59,
+       "id": "reverence",
+       "name": "Reverence",
+       "rank": 2
+      },
+      {
+       "level": 60,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 3
+      }
+     ],
+     "route_runs": [
+      [
+       "redoubt",
+       5
+      ],
+      [
+       "sacred_duty",
+       2
+      ],
+      [
+       "guardians_favor",
+       2
+      ],
+      [
+       "divine_intellect",
+       1
+      ],
+      [
+       "shield_specialization",
+       2
+      ],
+      [
+       "templars_bulwark",
+       1
+      ],
+      [
+       "divine_intellect",
+       2
+      ],
+      [
+       "swift_judgement",
+       1
+      ],
+      [
+       "improved_righteous_fury",
+       3
+      ],
+      [
+       "divine_intellect",
+       1
+      ],
+      [
+       "holy_shield",
+       1
+      ],
+      [
+       "reckoning",
+       4
+      ],
+      [
+       "iron_creed",
+       3
+      ],
+      [
+       "reckoning",
+       1
+      ],
+      [
+       "divine_intellect",
+       1
+      ],
+      [
+       "shieldsworn",
+       1
+      ],
+      [
+       "deflection",
+       5
+      ],
+      [
+       "conviction",
+       3
+      ],
+      [
+       "benediction",
+       2
+      ],
+      [
+       "pursuit_of_justice",
+       2
+      ],
+      [
+       "divine_strength",
+       5
+      ],
+      [
+       "reverence",
+       2
+      ],
+      [
+       "benediction",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "0502-55022102013001531-530300002",
+      "split": "7/31/13",
+      "points": 51,
+      "talents": {
+       "divine_strength": 5,
+       "reverence": 2,
+       "divine_intellect": 5,
+       "redoubt": 5,
+       "guardians_favor": 2,
+       "sacred_duty": 2,
+       "templars_bulwark": 1,
+       "shield_specialization": 2,
+       "swift_judgement": 1,
+       "improved_righteous_fury": 3,
+       "holy_shield": 1,
+       "reckoning": 5,
+       "iron_creed": 3,
+       "shieldsworn": 1,
+       "deflection": 5,
+       "benediction": 3,
+       "conviction": 3,
+       "pursuit_of_justice": 2
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "timesaver.gg (transcription): Protection leveling (Maxroll)"
+     ]
+    },
+    {
+     "name": "Recommended Leveling Talents for Paladin in WoW Forever",
+     "source": {
+      "site": "Method.gg",
+      "url": "https://www.method.gg/wow-forever/wow-forever-paladin-leveling-guide-and-talents",
+      "title": "WoW Forever Paladin Leveling Guide & Talents",
+      "author": "Jurdi",
+      "updated": "4th November 2026",
+      "patch": null,
+      "date_seen": "2026-11-08",
+      "data": "data-talent embed #1 (\"Recommended Leveling Talents for Paladin in WoW Forever\"), decoded with the reader in pipeline/talents/method_decode.py",
+      "guide_order": "point by point (the embed carries the order after \";\")"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "improved_judgement",
+       "name": "Improved Judgement",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "improved_judgement",
+       "name": "Improved Judgement",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "redoubt",
+       "name": "Redoubt",
+       "rank": 1
+      },
+      {
+       "level": 23,
+       "id": "redoubt",
+       "name": "Redoubt",
+       "rank": 2
+      },
+      {
+       "level": 24,
+       "id": "redoubt",
+       "name": "Redoubt",
+       "rank": 3
+      },
+      {
+       "level": 25,
+       "id": "redoubt",
+       "name": "Redoubt",
+       "rank": 4
+      },
+      {
+       "level": 26,
+       "id": "redoubt",
+       "name": "Redoubt",
+       "rank": 5
+      },
+      {
+       "level": 27,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 2
+      },
+      {
+       "level": 29,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 3
+      },
+      {
+       "level": 30,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 4
+      },
+      {
+       "level": 31,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 5
+      },
+      {
+       "level": 32,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 1
+      },
+      {
+       "level": 33,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 2
+      },
+      {
+       "level": 34,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 3
+      },
+      {
+       "level": 35,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "improved_righteous_fury",
+       "name": "Improved Righteous Fury",
+       "rank": 1
+      },
+      {
+       "level": 38,
+       "id": "improved_righteous_fury",
+       "name": "Improved Righteous Fury",
+       "rank": 2
+      },
+      {
+       "level": 39,
+       "id": "improved_righteous_fury",
+       "name": "Improved Righteous Fury",
+       "rank": 3
+      },
+      {
+       "level": 40,
+       "id": "templars_bulwark",
+       "name": "Templar's Bulwark",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "swift_judgement",
+       "name": "Swift Judgement",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "holy_shield",
+       "name": "Holy Shield",
+       "rank": 1
+      },
+      {
+       "level": 43,
+       "id": "reckoning",
+       "name": "Reckoning",
+       "rank": 1
+      },
+      {
+       "level": 44,
+       "id": "reckoning",
+       "name": "Reckoning",
+       "rank": 2
+      },
+      {
+       "level": 45,
+       "id": "reckoning",
+       "name": "Reckoning",
+       "rank": 3
+      },
+      {
+       "level": 46,
+       "id": "reckoning",
+       "name": "Reckoning",
+       "rank": 4
+      },
+      {
+       "level": 47,
+       "id": "reckoning",
+       "name": "Reckoning",
+       "rank": 5
+      },
+      {
+       "level": 48,
+       "id": "iron_creed",
+       "name": "Iron Creed",
+       "rank": 1
+      },
+      {
+       "level": 49,
+       "id": "iron_creed",
+       "name": "Iron Creed",
+       "rank": 2
+      },
+      {
+       "level": 50,
+       "id": "iron_creed",
+       "name": "Iron Creed",
+       "rank": 3
+      },
+      {
+       "level": 51,
+       "id": "toughness",
+       "name": "Toughness",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "shieldsworn",
+       "name": "Shieldsworn",
+       "rank": 1
+      }
+     ],
+     "route_runs": [
+      [
+       "benediction",
+       5
+      ],
+      [
+       "sanctified_judgement",
+       3
+      ],
+      [
+       "improved_judgement",
+       2
+      ],
+      [
+       "pursuit_of_justice",
+       2
+      ],
+      [
+       "redoubt",
+       5
+      ],
+      [
+       "divine_intellect",
+       5
+      ],
+      [
+       "precision",
+       3
+      ],
+      [
+       "shield_specialization",
+       2
+      ],
+      [
+       "improved_righteous_fury",
+       3
+      ],
+      [
+       "templars_bulwark",
+       1
+      ],
+      [
+       "swift_judgement",
+       1
+      ],
+      [
+       "holy_shield",
+       1
+      ],
+      [
+       "reckoning",
+       5
+      ],
+      [
+       "iron_creed",
+       3
+      ],
+      [
+       "toughness",
+       1
+      ],
+      [
+       "shieldsworn",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "-55300102113001531-052030002",
+      "split": "0/31/12",
+      "points": 43,
+      "talents": {
+       "divine_intellect": 5,
+       "redoubt": 5,
+       "precision": 3,
+       "templars_bulwark": 1,
+       "shield_specialization": 2,
+       "toughness": 1,
+       "swift_judgement": 1,
+       "improved_righteous_fury": 3,
+       "holy_shield": 1,
+       "reckoning": 5,
+       "iron_creed": 3,
+       "shieldsworn": 1,
+       "benediction": 5,
+       "improved_judgement": 2,
+       "sanctified_judgement": 3,
+       "pursuit_of_justice": 2
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "notes": [
+      "guide text after the build: ...st. Holy Strike is our instant damage-dealing ability. Our rotation in a nutshell from level 1-10 will be: Keep Seal Of Righteousness active Judgement Holy Strike You will acquire Retribution Aura at level 16 and Consecration at level 20, which will contribute to your overall damage significantly. T",
+      "the guide's build has 43 points, so it covers levels 10 to 52"
+     ],
+     "spec_assigned_by": "tree with most points (guide label names no spec)"
+    },
+    {
+     "name": "Protection leveling",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/paladin",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Wowhead",
+       "url": "https://www.wowhead.com/forever/guide/classes/paladin/protection/tank-leveling-tips",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Protection leveling\" in the calculator page payload; mode Leveling",
+      "guide_order": "final build only"
+     },
+     "kind": "final_only",
+     "final": {
+      "code": "-05322102313001531-05233300201",
+      "split": "0/32/19",
+      "points": 51,
+      "talents": {
+       "redoubt": 5,
+       "precision": 3,
+       "guardians_favor": 2,
+       "sacred_duty": 2,
+       "templars_bulwark": 1,
+       "shield_specialization": 2,
+       "toughness": 3,
+       "swift_judgement": 1,
+       "improved_righteous_fury": 3,
+       "holy_shield": 1,
+       "reckoning": 5,
+       "iron_creed": 3,
+       "shieldsworn": 1,
+       "benediction": 5,
+       "improved_judgement": 2,
+       "conviction": 3,
+       "sanctified_judgement": 3,
+       "vindication": 3,
+       "pursuit_of_justice": 2,
+       "sacred_arbiter": 1
+      },
+      "legal_on_client_tree": "OK"
+     },
+     "secondary": true,
+     "notes": [
+      "original Wowhead page not reachable from this sandbox (Cloudflare); this is timesaver.gg's transcription, unverified against the original"
+     ],
+     "spec_assigned_by": "guide label"
+    },
+    {
+     "name": "Protection leveling (Maxroll)",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/paladin",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Maxroll",
+       "url": "https://maxroll.gg/wow-forever/class-guides/paladin-leveling-guide",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Protection leveling (Maxroll)\" in the calculator page payload; mode Leveling",
+      "guide_order": "point by point as transcribed by timesaver.gg"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "redoubt",
+       "name": "Redoubt",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "redoubt",
+       "name": "Redoubt",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "redoubt",
+       "name": "Redoubt",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "redoubt",
+       "name": "Redoubt",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "redoubt",
+       "name": "Redoubt",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "sacred_duty",
+       "name": "Sacred Duty",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "sacred_duty",
+       "name": "Sacred Duty",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "guardians_favor",
+       "name": "Guardian's Favor",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "guardians_favor",
+       "name": "Guardian's Favor",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 1
+      },
+      {
+       "level": 20,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "templars_bulwark",
+       "name": "Templar's Bulwark",
+       "rank": 1
+      },
+      {
+       "level": 23,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 2
+      },
+      {
+       "level": 24,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 3
+      },
+      {
+       "level": 25,
+       "id": "swift_judgement",
+       "name": "Swift Judgement",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "improved_righteous_fury",
+       "name": "Improved Righteous Fury",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "improved_righteous_fury",
+       "name": "Improved Righteous Fury",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "improved_righteous_fury",
+       "name": "Improved Righteous Fury",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 4
+      },
+      {
+       "level": 30,
+       "id": "holy_shield",
+       "name": "Holy Shield",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "reckoning",
+       "name": "Reckoning",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "reckoning",
+       "name": "Reckoning",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "reckoning",
+       "name": "Reckoning",
+       "rank": 3
+      },
+      {
+       "level": 34,
+       "id": "reckoning",
+       "name": "Reckoning",
+       "rank": 4
+      },
+      {
+       "level": 35,
+       "id": "iron_creed",
+       "name": "Iron Creed",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "iron_creed",
+       "name": "Iron Creed",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "iron_creed",
+       "name": "Iron Creed",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "reckoning",
+       "name": "Reckoning",
+       "rank": 5
+      },
+      {
+       "level": 39,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "shieldsworn",
+       "name": "Shieldsworn",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 4
+      },
+      {
+       "level": 45,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 1
+      },
+      {
+       "level": 50,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 2
+      },
+      {
+       "level": 51,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 2
+      },
+      {
+       "level": 53,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 3
+      },
+      {
+       "level": 56,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 4
+      },
+      {
+       "level": 57,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 5
+      },
+      {
+       "level": 58,
+       "id": "reverence",
+       "name": "Reverence",
+       "rank": 1
+      },
+      {
+       "level": 59,
+       "id": "reverence",
+       "name": "Reverence",
+       "rank": 2
+      },
+      {
+       "level": 60,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 3
+      }
+     ],
+     "route_runs": [
+      [
+       "redoubt",
+       5
+      ],
+      [
+       "sacred_duty",
+       2
+      ],
+      [
+       "guardians_favor",
+       2
+      ],
+      [
+       "divine_intellect",
+       1
+      ],
+      [
+       "shield_specialization",
+       2
+      ],
+      [
+       "templars_bulwark",
+       1
+      ],
+      [
+       "divine_intellect",
+       2
+      ],
+      [
+       "swift_judgement",
+       1
+      ],
+      [
+       "improved_righteous_fury",
+       3
+      ],
+      [
+       "divine_intellect",
+       1
+      ],
+      [
+       "holy_shield",
+       1
+      ],
+      [
+       "reckoning",
+       4
+      ],
+      [
+       "iron_creed",
+       3
+      ],
+      [
+       "reckoning",
+       1
+      ],
+      [
+       "divine_intellect",
+       1
+      ],
+      [
+       "shieldsworn",
+       1
+      ],
+      [
+       "deflection",
+       5
+      ],
+      [
+       "conviction",
+       3
+      ],
+      [
+       "benediction",
+       2
+      ],
+      [
+       "pursuit_of_justice",
+       2
+      ],
+      [
+       "divine_strength",
+       5
+      ],
+      [
+       "reverence",
+       2
+      ],
+      [
+       "benediction",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "0502-55022102013001531-530300002",
+      "split": "7/31/13",
+      "points": 51,
+      "talents": {
+       "divine_strength": 5,
+       "reverence": 2,
+       "divine_intellect": 5,
+       "redoubt": 5,
+       "guardians_favor": 2,
+       "sacred_duty": 2,
+       "templars_bulwark": 1,
+       "shield_specialization": 2,
+       "swift_judgement": 1,
+       "improved_righteous_fury": 3,
+       "holy_shield": 1,
+       "reckoning": 5,
+       "iron_creed": 3,
+       "shieldsworn": 1,
+       "deflection": 5,
+       "benediction": 3,
+       "conviction": 3,
+       "pursuit_of_justice": 2
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "secondary": true,
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "Maxroll: Protection"
+     ]
+    },
+    {
+     "name": "Leveling 1-60",
+     "source": {
+      "site": "wowtbc.gg (Warcraft Forever class guide)",
+      "url": "https://wowtbc.gg/warcraftforever/class-guides/protection-paladin/",
+      "author": null,
+      "updated": null,
+      "date_seen": "2026-11-08",
+      "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/protection-paladin/page-data.json, build \"Leveling 1-60\"",
+      "note": "the page shows no author or date",
+      "guide_order": "point by point (\"Leveling 1-60\" talentBuildPaths)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "improved_judgement",
+       "name": "Improved Judgement",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "improved_judgement",
+       "name": "Improved Judgement",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 1
+      },
+      {
+       "level": 23,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 2
+      },
+      {
+       "level": 24,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 3
+      },
+      {
+       "level": 25,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 4
+      },
+      {
+       "level": 26,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 5
+      },
+      {
+       "level": 27,
+       "id": "reverence",
+       "name": "Reverence",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "reverence",
+       "name": "Reverence",
+       "rank": 2
+      },
+      {
+       "level": 29,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 2
+      },
+      {
+       "level": 31,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 3
+      },
+      {
+       "level": 32,
+       "id": "holy_conduit",
+       "name": "Holy Conduit",
+       "rank": 1
+      },
+      {
+       "level": 33,
+       "id": "holy_conduit",
+       "name": "Holy Conduit",
+       "rank": 2
+      },
+      {
+       "level": 34,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 1
+      },
+      {
+       "level": 35,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 2
+      },
+      {
+       "level": 36,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 3
+      },
+      {
+       "level": 37,
+       "id": "sacred_arbiter",
+       "name": "Sacred Arbiter",
+       "rank": 1
+      },
+      {
+       "level": 38,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 1
+      },
+      {
+       "level": 39,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 2
+      },
+      {
+       "level": 40,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 3
+      },
+      {
+       "level": 41,
+       "id": "seal_of_command",
+       "name": "Seal of Command",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "vengeance",
+       "name": "Vengeance",
+       "rank": 1
+      },
+      {
+       "level": 43,
+       "id": "vengeance",
+       "name": "Vengeance",
+       "rank": 2
+      },
+      {
+       "level": 44,
+       "id": "vengeance",
+       "name": "Vengeance",
+       "rank": 3
+      },
+      {
+       "level": 45,
+       "id": "repentance",
+       "name": "Repentance",
+       "rank": 1
+      },
+      {
+       "level": 46,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 4
+      },
+      {
+       "level": 47,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 1
+      },
+      {
+       "level": 48,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 2
+      },
+      {
+       "level": 49,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 3
+      },
+      {
+       "level": 50,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 4
+      },
+      {
+       "level": 51,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 5
+      },
+      {
+       "level": 52,
+       "id": "unsealed_wrath",
+       "name": "Unsealed Wrath",
+       "rank": 1
+      },
+      {
+       "level": 53,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 4
+      },
+      {
+       "level": 54,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 5
+      },
+      {
+       "level": 55,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 1
+      },
+      {
+       "level": 56,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 2
+      },
+      {
+       "level": 57,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 3
+      },
+      {
+       "level": 58,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 4
+      },
+      {
+       "level": 59,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 5
+      },
+      {
+       "level": 60,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 1
+      }
+     ],
+     "route_runs": [
+      [
+       "deflection",
+       5
+      ],
+      [
+       "conviction",
+       3
+      ],
+      [
+       "improved_judgement",
+       2
+      ],
+      [
+       "pursuit_of_justice",
+       2
+      ],
+      [
+       "divine_strength",
+       5
+      ],
+      [
+       "reverence",
+       2
+      ],
+      [
+       "improved_seals",
+       3
+      ],
+      [
+       "holy_conduit",
+       2
+      ],
+      [
+       "sanctified_judgement",
+       3
+      ],
+      [
+       "sacred_arbiter",
+       1
+      ],
+      [
+       "benediction",
+       3
+      ],
+      [
+       "seal_of_command",
+       1
+      ],
+      [
+       "vengeance",
+       3
+      ],
+      [
+       "repentance",
+       1
+      ],
+      [
+       "benediction",
+       1
+      ],
+      [
+       "champion_of_the_light",
+       5
+      ],
+      [
+       "unsealed_wrath",
+       1
+      ],
+      [
+       "improved_seals",
+       2
+      ],
+      [
+       "divine_intellect",
+       5
+      ],
+      [
+       "precision",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "050250002-501-54233001201001351",
+      "split": "14/6/31",
+      "points": 51,
+      "talents": {
+       "divine_strength": 5,
+       "reverence": 2,
+       "improved_seals": 5,
+       "holy_conduit": 2,
+       "divine_intellect": 5,
+       "precision": 1,
+       "deflection": 5,
+       "benediction": 4,
+       "improved_judgement": 2,
+       "conviction": 3,
+       "sanctified_judgement": 3,
+       "seal_of_command": 1,
+       "pursuit_of_justice": 2,
+       "sacred_arbiter": 1,
+       "repentance": 1,
+       "vengeance": 3,
+       "champion_of_the_light": 5,
+       "unsealed_wrath": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "wowtbc_spec_page": "protection-paladin",
+     "spec_assigned_by": "guide page is for this spec",
+     "notes": [
+      "listed under Protection because the guide puts it there, but most points go into Retribution"
+     ]
+    }
+   ],
+   "endgame": {
+    "tank": [
+     {
+      "name": "Standard Prot: Sacred Arbiter",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/protection-paladin/talents",
+       "title": "WoW Forever Protection Paladin Talents & Builds Guide",
+       "author": "Jurdi",
+       "updated": "5th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #0 (\"Standard Prot: Sacred Arbiter\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "-05302102313501531-50233000201",
+       "split": "0/35/16",
+       "points": 51,
+       "talents": {
+        "redoubt": 5,
+        "precision": 3,
+        "sacred_duty": 2,
+        "templars_bulwark": 1,
+        "shield_specialization": 2,
+        "toughness": 3,
+        "swift_judgement": 1,
+        "improved_righteous_fury": 3,
+        "anticipation": 5,
+        "holy_shield": 1,
+        "reckoning": 5,
+        "iron_creed": 3,
+        "shieldsworn": 1,
+        "deflection": 5,
+        "improved_judgement": 2,
+        "conviction": 3,
+        "sanctified_judgement": 3,
+        "pursuit_of_justice": 2,
+        "sacred_arbiter": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "notes": [
+       "guide text: ...o pick up every talent in the 2nd row as they're all incredibly beneficial to our Threat. If you lack a warrior for Demoralizing Shout in your raid, you can take out 3 points from Conviction and put them into Vindication . We can move some talents around in the Prot Tree, primarily Anticipation , should we end up not needing all the Defense Skill from that talent. For now, we recommend taking 5/5."
+      ],
+      "method_spec_page": "protection-paladin",
+      "embedded_order_check": {
+       "ok": true,
+       "errors": [],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "same_final_code_as": [
+       "wowtbc.gg (Warcraft Forever class guide): Standard Build"
+      ],
+      "use_in_build_name": null,
+      "use_words_in_guide_text": [
+       "raid"
+      ]
+     },
+     {
+      "name": "Standard Prot: Improved Seals",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/protection-paladin/talents",
+       "title": "WoW Forever Protection Paladin Talents & Builds Guide",
+       "author": "Jurdi",
+       "updated": "5th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #1 (\"Standard Prot: Improved Seals\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "05005-05302102213201531-50203",
+       "split": "10/31/10",
+       "points": 51,
+       "talents": {
+        "divine_strength": 5,
+        "improved_seals": 5,
+        "redoubt": 5,
+        "precision": 3,
+        "sacred_duty": 2,
+        "templars_bulwark": 1,
+        "shield_specialization": 2,
+        "toughness": 2,
+        "swift_judgement": 1,
+        "improved_righteous_fury": 3,
+        "anticipation": 2,
+        "holy_shield": 1,
+        "reckoning": 5,
+        "iron_creed": 3,
+        "shieldsworn": 1,
+        "deflection": 5,
+        "improved_judgement": 2,
+        "sanctified_judgement": 3
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "notes": [
+       "guide text: ...is build focuses on grabbing Improved Seals from the Holy tree, this is primarily if Sacred Arbiter doesn't scale with Holy damage, as we're trying to learn if that's a bug or intended. The caveat to this build is that we drop 3 points out of Anticipation , and we're unsure if this is wise depending on the gear and stats we'll have at endgame, and should we want to achieve Crit and Crush Immunity."
+      ],
+      "method_spec_page": "protection-paladin",
+      "embedded_order_check": {
+       "ok": true,
+       "errors": [],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Improved Seals and Pursuit of Justice",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/protection-paladin/talents",
+       "title": "WoW Forever Protection Paladin Talents & Builds Guide",
+       "author": "Jurdi",
+       "updated": "5th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #2 (\"Improved Seals and Pursuit of Justice\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "05003-05302102213201531-502030002",
+       "split": "8/31/12",
+       "points": 51,
+       "talents": {
+        "divine_strength": 5,
+        "improved_seals": 3,
+        "redoubt": 5,
+        "precision": 3,
+        "sacred_duty": 2,
+        "templars_bulwark": 1,
+        "shield_specialization": 2,
+        "toughness": 2,
+        "swift_judgement": 1,
+        "improved_righteous_fury": 3,
+        "anticipation": 2,
+        "holy_shield": 1,
+        "reckoning": 5,
+        "iron_creed": 3,
+        "shieldsworn": 1,
+        "deflection": 5,
+        "improved_judgement": 2,
+        "sanctified_judgement": 3,
+        "pursuit_of_justice": 2
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "notes": [
+       "guide text: readonly > Improved Seals and Pursuit of Justice Talent Build This build is the happy medium between the first two, allowing us to get 3/5 Improved Seals but also still picking up Pursuit Of Justice . Again, it assumes we won't need 5/5 Anticipation , so we'll have to wait and see what endgame gearing is like."
+      ],
+      "method_spec_page": "protection-paladin",
+      "embedded_order_check": {
+       "ok": true,
+       "errors": [],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Shock Prot",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/protection-paladin/talents",
+       "title": "WoW Forever Protection Paladin Talents & Builds Guide",
+       "author": "Jurdi",
+       "updated": "5th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #3 (\"Shock Prot\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "05025210220021-55300102013001-05003",
+       "split": "22/21/8",
+       "points": 51,
+       "talents": {
+        "divine_strength": 5,
+        "reverence": 2,
+        "improved_seals": 5,
+        "purifying_power": 2,
+        "divine_favor": 1,
+        "holy_conduit": 2,
+        "divine_precision": 2,
+        "consecrated_ground": 2,
+        "holy_shock": 1,
+        "divine_intellect": 5,
+        "redoubt": 5,
+        "precision": 3,
+        "templars_bulwark": 1,
+        "shield_specialization": 2,
+        "swift_judgement": 1,
+        "improved_righteous_fury": 3,
+        "holy_shield": 1,
+        "benediction": 5,
+        "sanctified_judgement": 3
+       },
+       "legal_on_client_tree": [
+        "Holy Shock (row 5) needs 20 points above, has 19",
+        "Consecrated Ground (row 5) needs 20 points above, has 19"
+       ]
+      },
+      "notes": [
+       "guide text: ...the Attack Table works slightly different, and Melee Hit Cap is only 8% Hit. Swift Judgement allows us to have safety net if Judgement Of Fury 's taunt resists, and Improved Righteous Fury gives us a flat 6% Damage Reduction. As you're leveling, we'd recommend going into the Retribution Tree to grab mana talents such as Benediction and Sanctified Judgement , but also the powerful Pursuit Of Justic"
+      ],
+      "method_spec_page": "protection-paladin",
+      "embedded_order_check": {
+       "ok": false,
+       "errors": [
+        "L29: Holy Shock row 5 needs 20 above, has 19",
+        "L30: Consecrated Ground row 5 needs 20 above, has 19",
+        "L36: Consecrated Ground row 5 needs 20 above, has 19"
+       ],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Standard Build",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/protection-paladin/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/protection-paladin/page-data.json, build \"Standard Build\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "-05302102313501531-50233000201",
+       "split": "0/35/16",
+       "points": 51,
+       "talents": {
+        "redoubt": 5,
+        "precision": 3,
+        "sacred_duty": 2,
+        "templars_bulwark": 1,
+        "shield_specialization": 2,
+        "toughness": 3,
+        "swift_judgement": 1,
+        "improved_righteous_fury": 3,
+        "anticipation": 5,
+        "holy_shield": 1,
+        "reckoning": 5,
+        "iron_creed": 3,
+        "shieldsworn": 1,
+        "deflection": 5,
+        "improved_judgement": 2,
+        "conviction": 3,
+        "sanctified_judgement": 3,
+        "pursuit_of_justice": 2,
+        "sacred_arbiter": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "protection-paladin",
+      "spec_assigned_by": "guide page is for this spec",
+      "same_final_code_as": [
+       "Method.gg: Standard Prot: Sacred Arbiter"
+      ],
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "AoE",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/protection-paladin/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/protection-paladin/page-data.json, build \"AoE\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "-55300102013001-5523300120100035",
+       "split": "0/21/30",
+       "points": 51,
+       "talents": {
+        "divine_intellect": 5,
+        "redoubt": 5,
+        "precision": 3,
+        "templars_bulwark": 1,
+        "shield_specialization": 2,
+        "swift_judgement": 1,
+        "improved_righteous_fury": 3,
+        "holy_shield": 1,
+        "deflection": 5,
+        "benediction": 5,
+        "improved_judgement": 2,
+        "conviction": 3,
+        "sanctified_judgement": 3,
+        "seal_of_command": 1,
+        "pursuit_of_justice": 2,
+        "sacred_arbiter": 1,
+        "vengeance": 3,
+        "champion_of_the_light": 5
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "protection-paladin",
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     }
+    ]
+   }
+  },
+  "retribution": {
+   "name": "Retribution",
+   "tree": "retribution",
+   "dungeon_roles": [
+    "damage"
+   ],
+   "leveling": [
+    {
+     "name": "Retribution",
+     "source": {
+      "site": "Maxroll",
+      "url": "https://maxroll.gg/wow-forever/class-guides/paladin-leveling-guide",
+      "title": "Paladin Leveling Guide",
+      "author": "maxroll",
+      "published": "October 30, 2026",
+      "updated": "November 4, 2026",
+      "date_seen": "2026-11-08",
+      "data": "planner profile \"Retribution\" (uid xbbuxXIx, planner li3ym80u saved 2026-11-04 09:14:27): talents.history, TraitNodeEntry ids from window.__remixContext",
+      "guide_order": "point by point (the planner history is the guide's own order)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "seal_of_command",
+       "name": "Seal of Command",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 3
+      },
+      {
+       "level": 24,
+       "id": "improved_judgement",
+       "name": "Improved Judgement",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 2
+      },
+      {
+       "level": 27,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 3
+      },
+      {
+       "level": 28,
+       "id": "sacred_arbiter",
+       "name": "Sacred Arbiter",
+       "rank": 1
+      },
+      {
+       "level": 29,
+       "id": "improved_judgement",
+       "name": "Improved Judgement",
+       "rank": 2
+      },
+      {
+       "level": 30,
+       "id": "vengeance",
+       "name": "Vengeance",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "vengeance",
+       "name": "Vengeance",
+       "rank": 2
+      },
+      {
+       "level": 32,
+       "id": "vengeance",
+       "name": "Vengeance",
+       "rank": 3
+      },
+      {
+       "level": 33,
+       "id": "repentance",
+       "name": "Repentance",
+       "rank": 1
+      },
+      {
+       "level": 34,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 1
+      },
+      {
+       "level": 35,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "unsealed_wrath",
+       "name": "Unsealed Wrath",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 4
+      },
+      {
+       "level": 45,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "reverence",
+       "name": "Reverence",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "reverence",
+       "name": "Reverence",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 1
+      },
+      {
+       "level": 49,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 2
+      },
+      {
+       "level": 50,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 3
+      },
+      {
+       "level": 51,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 4
+      },
+      {
+       "level": 52,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 5
+      },
+      {
+       "level": 53,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 3
+      },
+      {
+       "level": 56,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 4
+      },
+      {
+       "level": 57,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 5
+      },
+      {
+       "level": 58,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 1
+      },
+      {
+       "level": 59,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 2
+      },
+      {
+       "level": 60,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 3
+      }
+     ],
+     "route_runs": [
+      [
+       "benediction",
+       5
+      ],
+      [
+       "conviction",
+       3
+      ],
+      [
+       "sanctified_judgement",
+       2
+      ],
+      [
+       "seal_of_command",
+       1
+      ],
+      [
+       "pursuit_of_justice",
+       2
+      ],
+      [
+       "sanctified_judgement",
+       1
+      ],
+      [
+       "improved_judgement",
+       1
+      ],
+      [
+       "two_handed_weapon_specialization",
+       3
+      ],
+      [
+       "sacred_arbiter",
+       1
+      ],
+      [
+       "improved_judgement",
+       1
+      ],
+      [
+       "vengeance",
+       3
+      ],
+      [
+       "repentance",
+       1
+      ],
+      [
+       "deflection",
+       1
+      ],
+      [
+       "champion_of_the_light",
+       5
+      ],
+      [
+       "unsealed_wrath",
+       1
+      ],
+      [
+       "divine_strength",
+       5
+      ],
+      [
+       "reverence",
+       2
+      ],
+      [
+       "improved_seals",
+       5
+      ],
+      [
+       "divine_intellect",
+       5
+      ],
+      [
+       "precision",
+       3
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "05025-503-15233001201301351",
+      "split": "12/8/31",
+      "points": 51,
+      "talents": {
+       "divine_strength": 5,
+       "reverence": 2,
+       "improved_seals": 5,
+       "divine_intellect": 5,
+       "precision": 3,
+       "deflection": 1,
+       "benediction": 5,
+       "improved_judgement": 2,
+       "conviction": 3,
+       "sanctified_judgement": 3,
+       "seal_of_command": 1,
+       "pursuit_of_justice": 2,
+       "sacred_arbiter": 1,
+       "two_handed_weapon_specialization": 3,
+       "repentance": 1,
+       "vengeance": 3,
+       "champion_of_the_light": 5,
+       "unsealed_wrath": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "timesaver.gg (transcription): Retribution leveling"
+     ]
+    },
+    {
+     "name": "Recommended Leveling Talents for Paladin in WoW Forever",
+     "source": {
+      "site": "Method.gg",
+      "url": "https://www.method.gg/wow-forever/wow-forever-paladin-leveling-guide-and-talents",
+      "title": "WoW Forever Paladin Leveling Guide & Talents",
+      "author": "Jurdi",
+      "updated": "4th November 2026",
+      "patch": null,
+      "date_seen": "2026-11-08",
+      "data": "data-talent embed #0 (\"Recommended Leveling Talents for Paladin in WoW Forever\"), decoded with the reader in pipeline/talents/method_decode.py",
+      "guide_order": "point by point (the embed carries the order after \";\")"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "improved_judgement",
+       "name": "Improved Judgement",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "improved_judgement",
+       "name": "Improved Judgement",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 1
+      },
+      {
+       "level": 23,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 2
+      },
+      {
+       "level": 24,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 3
+      },
+      {
+       "level": 25,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 4
+      },
+      {
+       "level": 26,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 5
+      },
+      {
+       "level": 27,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 2
+      },
+      {
+       "level": 29,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 3
+      },
+      {
+       "level": 30,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 4
+      },
+      {
+       "level": 31,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 5
+      },
+      {
+       "level": 32,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 1
+      },
+      {
+       "level": 33,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 2
+      },
+      {
+       "level": 34,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 3
+      },
+      {
+       "level": 35,
+       "id": "sacred_arbiter",
+       "name": "Sacred Arbiter",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "seal_of_command",
+       "name": "Seal of Command",
+       "rank": 1
+      },
+      {
+       "level": 37,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 1
+      },
+      {
+       "level": 38,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 2
+      },
+      {
+       "level": 39,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 3
+      },
+      {
+       "level": 40,
+       "id": "vengeance",
+       "name": "Vengeance",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "vengeance",
+       "name": "Vengeance",
+       "rank": 2
+      },
+      {
+       "level": 42,
+       "id": "vengeance",
+       "name": "Vengeance",
+       "rank": 3
+      }
+     ],
+     "route_runs": [
+      [
+       "benediction",
+       5
+      ],
+      [
+       "sanctified_judgement",
+       3
+      ],
+      [
+       "improved_judgement",
+       2
+      ],
+      [
+       "pursuit_of_justice",
+       2
+      ],
+      [
+       "divine_strength",
+       5
+      ],
+      [
+       "improved_seals",
+       5
+      ],
+      [
+       "conviction",
+       3
+      ],
+      [
+       "sacred_arbiter",
+       1
+      ],
+      [
+       "seal_of_command",
+       1
+      ],
+      [
+       "two_handed_weapon_specialization",
+       3
+      ],
+      [
+       "vengeance",
+       3
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "05005--052330012013003",
+      "split": "10/0/23",
+      "points": 33,
+      "talents": {
+       "divine_strength": 5,
+       "improved_seals": 5,
+       "benediction": 5,
+       "improved_judgement": 2,
+       "conviction": 3,
+       "sanctified_judgement": 3,
+       "seal_of_command": 1,
+       "pursuit_of_justice": 2,
+       "sacred_arbiter": 1,
+       "two_handed_weapon_specialization": 3,
+       "vengeance": 3
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "notes": [
+      "guide text after the build: ...r Holy. Here's an example of how I would talent in the exact order if I wanted to level as Protection from 40 and onward. Notice how I'm skipping endgame talents such as Anticipation and putting them into Divine Intellect to increase my overall mana. At endgame, I would swap those talent placements.",
+      "the guide's build has 33 points, so it covers levels 10 to 42"
+     ],
+     "spec_assigned_by": "tree with most points (guide label names no spec)"
+    },
+    {
+     "name": "Retribution leveling",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/paladin",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Maxroll",
+       "url": "https://maxroll.gg/wow-forever/class-guides/paladin-leveling-guide",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Retribution leveling\" in the calculator page payload; mode Leveling",
+      "guide_order": "point by point as transcribed by timesaver.gg"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "seal_of_command",
+       "name": "Seal of Command",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 3
+      },
+      {
+       "level": 24,
+       "id": "improved_judgement",
+       "name": "Improved Judgement",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 2
+      },
+      {
+       "level": 27,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 3
+      },
+      {
+       "level": 28,
+       "id": "sacred_arbiter",
+       "name": "Sacred Arbiter",
+       "rank": 1
+      },
+      {
+       "level": 29,
+       "id": "improved_judgement",
+       "name": "Improved Judgement",
+       "rank": 2
+      },
+      {
+       "level": 30,
+       "id": "vengeance",
+       "name": "Vengeance",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "vengeance",
+       "name": "Vengeance",
+       "rank": 2
+      },
+      {
+       "level": 32,
+       "id": "vengeance",
+       "name": "Vengeance",
+       "rank": 3
+      },
+      {
+       "level": 33,
+       "id": "repentance",
+       "name": "Repentance",
+       "rank": 1
+      },
+      {
+       "level": 34,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 1
+      },
+      {
+       "level": 35,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "unsealed_wrath",
+       "name": "Unsealed Wrath",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 4
+      },
+      {
+       "level": 45,
+       "id": "divine_strength",
+       "name": "Divine Strength",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "reverence",
+       "name": "Reverence",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "reverence",
+       "name": "Reverence",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 1
+      },
+      {
+       "level": 49,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 2
+      },
+      {
+       "level": 50,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 3
+      },
+      {
+       "level": 51,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 4
+      },
+      {
+       "level": 52,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 5
+      },
+      {
+       "level": 53,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 3
+      },
+      {
+       "level": 56,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 4
+      },
+      {
+       "level": 57,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 5
+      },
+      {
+       "level": 58,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 1
+      },
+      {
+       "level": 59,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 2
+      },
+      {
+       "level": 60,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 3
+      }
+     ],
+     "route_runs": [
+      [
+       "benediction",
+       5
+      ],
+      [
+       "conviction",
+       3
+      ],
+      [
+       "sanctified_judgement",
+       2
+      ],
+      [
+       "seal_of_command",
+       1
+      ],
+      [
+       "pursuit_of_justice",
+       2
+      ],
+      [
+       "sanctified_judgement",
+       1
+      ],
+      [
+       "improved_judgement",
+       1
+      ],
+      [
+       "two_handed_weapon_specialization",
+       3
+      ],
+      [
+       "sacred_arbiter",
+       1
+      ],
+      [
+       "improved_judgement",
+       1
+      ],
+      [
+       "vengeance",
+       3
+      ],
+      [
+       "repentance",
+       1
+      ],
+      [
+       "deflection",
+       1
+      ],
+      [
+       "champion_of_the_light",
+       5
+      ],
+      [
+       "unsealed_wrath",
+       1
+      ],
+      [
+       "divine_strength",
+       5
+      ],
+      [
+       "reverence",
+       2
+      ],
+      [
+       "improved_seals",
+       5
+      ],
+      [
+       "divine_intellect",
+       5
+      ],
+      [
+       "precision",
+       3
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "05025-503-15233001201301351",
+      "split": "12/8/31",
+      "points": 51,
+      "talents": {
+       "divine_strength": 5,
+       "reverence": 2,
+       "improved_seals": 5,
+       "divine_intellect": 5,
+       "precision": 3,
+       "deflection": 1,
+       "benediction": 5,
+       "improved_judgement": 2,
+       "conviction": 3,
+       "sanctified_judgement": 3,
+       "seal_of_command": 1,
+       "pursuit_of_justice": 2,
+       "sacred_arbiter": 1,
+       "two_handed_weapon_specialization": 3,
+       "repentance": 1,
+       "vengeance": 3,
+       "champion_of_the_light": 5,
+       "unsealed_wrath": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "secondary": true,
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "Maxroll: Retribution"
+     ]
+    },
+    {
+     "name": "Leveling 1-60",
+     "source": {
+      "site": "wowtbc.gg (Warcraft Forever class guide)",
+      "url": "https://wowtbc.gg/warcraftforever/class-guides/retribution-paladin/",
+      "author": null,
+      "updated": null,
+      "date_seen": "2026-11-08",
+      "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/retribution-paladin/page-data.json, build \"Leveling 1-60\"",
+      "note": "the page shows no author or date",
+      "guide_order": "point by point (\"Leveling 1-60\" talentBuildPaths)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "conviction",
+       "name": "Conviction",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "improved_judgement",
+       "name": "Improved Judgement",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "improved_judgement",
+       "name": "Improved Judgement",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "pursuit_of_justice",
+       "name": "Pursuit of Justice",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "seal_of_command",
+       "name": "Seal of Command",
+       "rank": 1
+      },
+      {
+       "level": 23,
+       "id": "spiritual_focus",
+       "name": "Spiritual Focus",
+       "rank": 1
+      },
+      {
+       "level": 24,
+       "id": "spiritual_focus",
+       "name": "Spiritual Focus",
+       "rank": 2
+      },
+      {
+       "level": 25,
+       "id": "spiritual_focus",
+       "name": "Spiritual Focus",
+       "rank": 3
+      },
+      {
+       "level": 26,
+       "id": "spiritual_focus",
+       "name": "Spiritual Focus",
+       "rank": 4
+      },
+      {
+       "level": 27,
+       "id": "spiritual_focus",
+       "name": "Spiritual Focus",
+       "rank": 5
+      },
+      {
+       "level": 28,
+       "id": "reverence",
+       "name": "Reverence",
+       "rank": 1
+      },
+      {
+       "level": 29,
+       "id": "reverence",
+       "name": "Reverence",
+       "rank": 2
+      },
+      {
+       "level": 30,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 2
+      },
+      {
+       "level": 32,
+       "id": "sacred_arbiter",
+       "name": "Sacred Arbiter",
+       "rank": 1
+      },
+      {
+       "level": 33,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 1
+      },
+      {
+       "level": 34,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 2
+      },
+      {
+       "level": 35,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 3
+      },
+      {
+       "level": 36,
+       "id": "sanctified_judgement",
+       "name": "Sanctified Judgement",
+       "rank": 3
+      },
+      {
+       "level": 37,
+       "id": "vengeance",
+       "name": "Vengeance",
+       "rank": 1
+      },
+      {
+       "level": 38,
+       "id": "vengeance",
+       "name": "Vengeance",
+       "rank": 2
+      },
+      {
+       "level": 39,
+       "id": "vengeance",
+       "name": "Vengeance",
+       "rank": 3
+      },
+      {
+       "level": 40,
+       "id": "repentance",
+       "name": "Repentance",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "benediction",
+       "name": "Benediction",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 1
+      },
+      {
+       "level": 43,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 2
+      },
+      {
+       "level": 44,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 3
+      },
+      {
+       "level": 45,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 4
+      },
+      {
+       "level": 46,
+       "id": "champion_of_the_light",
+       "name": "Champion of the Light",
+       "rank": 5
+      },
+      {
+       "level": 47,
+       "id": "unsealed_wrath",
+       "name": "Unsealed Wrath",
+       "rank": 1
+      },
+      {
+       "level": 48,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 1
+      },
+      {
+       "level": 49,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 2
+      },
+      {
+       "level": 50,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 3
+      },
+      {
+       "level": 51,
+       "id": "holy_conduit",
+       "name": "Holy Conduit",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "holy_conduit",
+       "name": "Holy Conduit",
+       "rank": 2
+      },
+      {
+       "level": 53,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 4
+      },
+      {
+       "level": 54,
+       "id": "improved_seals",
+       "name": "Improved Seals",
+       "rank": 5
+      },
+      {
+       "level": 55,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 1
+      },
+      {
+       "level": 56,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 2
+      },
+      {
+       "level": 57,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 3
+      },
+      {
+       "level": 58,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 4
+      },
+      {
+       "level": 59,
+       "id": "divine_intellect",
+       "name": "Divine Intellect",
+       "rank": 5
+      },
+      {
+       "level": 60,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 1
+      }
+     ],
+     "route_runs": [
+      [
+       "deflection",
+       5
+      ],
+      [
+       "conviction",
+       3
+      ],
+      [
+       "improved_judgement",
+       2
+      ],
+      [
+       "pursuit_of_justice",
+       2
+      ],
+      [
+       "seal_of_command",
+       1
+      ],
+      [
+       "spiritual_focus",
+       5
+      ],
+      [
+       "reverence",
+       2
+      ],
+      [
+       "sanctified_judgement",
+       2
+      ],
+      [
+       "sacred_arbiter",
+       1
+      ],
+      [
+       "two_handed_weapon_specialization",
+       3
+      ],
+      [
+       "sanctified_judgement",
+       1
+      ],
+      [
+       "vengeance",
+       3
+      ],
+      [
+       "repentance",
+       1
+      ],
+      [
+       "benediction",
+       1
+      ],
+      [
+       "champion_of_the_light",
+       5
+      ],
+      [
+       "unsealed_wrath",
+       1
+      ],
+      [
+       "improved_seals",
+       3
+      ],
+      [
+       "holy_conduit",
+       2
+      ],
+      [
+       "improved_seals",
+       2
+      ],
+      [
+       "divine_intellect",
+       5
+      ],
+      [
+       "precision",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "500250002-501-51233001201301351",
+      "split": "14/6/31",
+      "points": 51,
+      "talents": {
+       "spiritual_focus": 5,
+       "reverence": 2,
+       "improved_seals": 5,
+       "holy_conduit": 2,
+       "divine_intellect": 5,
+       "precision": 1,
+       "deflection": 5,
+       "benediction": 1,
+       "improved_judgement": 2,
+       "conviction": 3,
+       "sanctified_judgement": 3,
+       "seal_of_command": 1,
+       "pursuit_of_justice": 2,
+       "sacred_arbiter": 1,
+       "two_handed_weapon_specialization": 3,
+       "repentance": 1,
+       "vengeance": 3,
+       "champion_of_the_light": 5,
+       "unsealed_wrath": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "wowtbc_spec_page": "retribution-paladin",
+     "spec_assigned_by": "guide page is for this spec"
+    }
+   ],
+   "endgame": {
+    "damage": [
+     {
+      "name": "Unsealed Wrath",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/retribution-paladin/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/retribution-paladin/page-data.json, build \"Unsealed Wrath\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "050050002-503-05233011201301351",
+       "split": "12/8/31",
+       "points": 51,
+       "talents": {
+        "divine_strength": 5,
+        "improved_seals": 5,
+        "holy_conduit": 2,
+        "divine_intellect": 5,
+        "precision": 3,
+        "benediction": 5,
+        "improved_judgement": 2,
+        "conviction": 3,
+        "sanctified_judgement": 3,
+        "unyielding_faith": 1,
+        "seal_of_command": 1,
+        "pursuit_of_justice": 2,
+        "sacred_arbiter": 1,
+        "two_handed_weapon_specialization": 3,
+        "repentance": 1,
+        "vengeance": 3,
+        "champion_of_the_light": 5,
+        "unsealed_wrath": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "retribution-paladin",
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Shockadin",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/retribution-paladin/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/retribution-paladin/page-data.json, build \"Shockadin\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "05025210221021--0523301120130133",
+       "split": "23/0/28",
+       "points": 51,
+       "talents": {
+        "divine_strength": 5,
+        "reverence": 2,
+        "improved_seals": 5,
+        "purifying_power": 2,
+        "divine_favor": 1,
+        "holy_conduit": 2,
+        "divine_precision": 2,
+        "infusion_of_light": 1,
+        "consecrated_ground": 2,
+        "holy_shock": 1,
+        "benediction": 5,
+        "improved_judgement": 2,
+        "conviction": 3,
+        "sanctified_judgement": 3,
+        "unyielding_faith": 1,
+        "seal_of_command": 1,
+        "pursuit_of_justice": 2,
+        "sacred_arbiter": 1,
+        "two_handed_weapon_specialization": 3,
+        "repentance": 1,
+        "vengeance": 3,
+        "champion_of_the_light": 3
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "retribution-paladin",
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     }
+    ]
+   }
+  }
+ },
+ "excluded": [
+  {
+   "source": "https://www.method.gg/wow-forever/class-guides/holy-paladin/talents",
+   "label": "embed #1 near \"Legacy Talents\"",
+   "reason": "embed is not a class tree build (Legacy talents or a short discussion example); it does not decode against the class tree"
+  }
+ ]
+}

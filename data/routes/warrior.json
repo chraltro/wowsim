@@ -1,0 +1,5401 @@
+{
+ "class": "warrior",
+ "generated": "2026-11-08",
+ "generator": "wowsim/pipeline/talents/build_routes.py",
+ "talents_file": "data/talents/warrior.json",
+ "code_format": "see data/talents/warrior.json code_format; codes here are re-encoded from each source's own data",
+ "level_rule": "order[i] is the point spent at level 10 + i",
+ "sources_tried": {
+  "Maxroll": "leveling guide planner profiles (point order): fetched",
+  "Method.gg": "leveling guide + spec \"talents\" pages (embeds with point order): fetched",
+  "Warcraft Tavern": "leveling guide + spec guides (Warcraft DB ordered links): fetched",
+  "wowtbc.gg": "Warcraft Forever class guides (page-data JSON: level 60 builds and a \"Leveling 1-60\" point order): fetched",
+  "timesaver.gg": "calculator presets (secondary transcriptions of Maxroll, Wowhead, Icy Veins, Method)",
+  "Wowhead, Icy Veins, Mobalytics": "blocked by Cloudflare from this sandbox (HTTP 403/202 challenge); only timesaver.gg transcriptions of their codes are included, marked secondary",
+  "wowsims-forever": "sim presets are not guides; used only as decode checks (see data/talents/README.md)"
+ },
+ "specs": {
+  "arms": {
+   "name": "Arms",
+   "tree": "arms",
+   "dungeon_roles": [
+    "damage"
+   ],
+   "leveling": [
+    {
+     "name": "Arms",
+     "source": {
+      "site": "Maxroll",
+      "url": "https://maxroll.gg/wow-forever/class-guides/warrior-leveling-guide",
+      "title": "Warrior Leveling Guide",
+      "author": "maxroll",
+      "published": "October 30, 2026",
+      "updated": "November 4, 2026",
+      "date_seen": "2026-11-08",
+      "data": "planner profile \"Arms\" (uid uuGAG8iw, planner pg3wme0u saved 2026-11-04 18:43:26): talents.history, TraitNodeEntry ids from window.__remixContext",
+      "guide_order": "point by point (the planner history is the guide's own order)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 1
+      },
+      {
+       "level": 14,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 2
+      },
+      {
+       "level": 15,
+       "id": "improved_overpower",
+       "name": "Improved Overpower",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "improved_overpower",
+       "name": "Improved Overpower",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "improved_tactical_mastery",
+       "name": "Improved Tactical Mastery",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "improved_tactical_mastery",
+       "name": "Improved Tactical Mastery",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "improved_tactical_mastery",
+       "name": "Improved Tactical Mastery",
+       "rank": 3
+      },
+      {
+       "level": 20,
+       "id": "deep_wounds",
+       "name": "Deep Wounds",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "deep_wounds",
+       "name": "Deep Wounds",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "deep_wounds",
+       "name": "Deep Wounds",
+       "rank": 3
+      },
+      {
+       "level": 23,
+       "id": "anger_management",
+       "name": "Anger Management",
+       "rank": 1
+      },
+      {
+       "level": 24,
+       "id": "improved_charge",
+       "name": "Improved Charge",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 2
+      },
+      {
+       "level": 27,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 3
+      },
+      {
+       "level": 28,
+       "id": "impale",
+       "name": "Impale",
+       "rank": 1
+      },
+      {
+       "level": 29,
+       "id": "impale",
+       "name": "Impale",
+       "rank": 2
+      },
+      {
+       "level": 30,
+       "id": "sweeping_strikes",
+       "name": "Sweeping Strikes",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "weaponmaster",
+       "name": "Weaponmaster",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "weaponmaster",
+       "name": "Weaponmaster",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "weaponmaster",
+       "name": "Weaponmaster",
+       "rank": 3
+      },
+      {
+       "level": 34,
+       "id": "weaponmaster",
+       "name": "Weaponmaster",
+       "rank": 4
+      },
+      {
+       "level": 35,
+       "id": "weaponmaster",
+       "name": "Weaponmaster",
+       "rank": 5
+      },
+      {
+       "level": 36,
+       "id": "bloodthrill",
+       "name": "Bloodthrill",
+       "rank": 1
+      },
+      {
+       "level": 37,
+       "id": "bloodthrill",
+       "name": "Bloodthrill",
+       "rank": 2
+      },
+      {
+       "level": 38,
+       "id": "improved_slam",
+       "name": "Improved Slam",
+       "rank": 1
+      },
+      {
+       "level": 39,
+       "id": "improved_slam",
+       "name": "Improved Slam",
+       "rank": 2
+      },
+      {
+       "level": 40,
+       "id": "mortal_strike",
+       "name": "Mortal Strike",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 4
+      },
+      {
+       "level": 45,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 4
+      },
+      {
+       "level": 50,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 5
+      },
+      {
+       "level": 51,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 2
+      },
+      {
+       "level": 53,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 3
+      },
+      {
+       "level": 54,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 4
+      },
+      {
+       "level": 55,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 5
+      },
+      {
+       "level": 56,
+       "id": "improved_execute",
+       "name": "Improved Execute",
+       "rank": 1
+      },
+      {
+       "level": 57,
+       "id": "improved_execute",
+       "name": "Improved Execute",
+       "rank": 2
+      },
+      {
+       "level": 58,
+       "id": "reckless_swings",
+       "name": "Reckless Swings",
+       "rank": 1
+      },
+      {
+       "level": 59,
+       "id": "booming_voice",
+       "name": "Booming Voice",
+       "rank": 1
+      },
+      {
+       "level": 60,
+       "id": "booming_voice",
+       "name": "Booming Voice",
+       "rank": 2
+      }
+     ],
+     "route_runs": [
+      [
+       "improved_rend",
+       3
+      ],
+      [
+       "deflection",
+       2
+      ],
+      [
+       "improved_overpower",
+       2
+      ],
+      [
+       "improved_tactical_mastery",
+       3
+      ],
+      [
+       "deep_wounds",
+       3
+      ],
+      [
+       "anger_management",
+       1
+      ],
+      [
+       "improved_charge",
+       1
+      ],
+      [
+       "two_handed_weapon_specialization",
+       3
+      ],
+      [
+       "impale",
+       2
+      ],
+      [
+       "sweeping_strikes",
+       1
+      ],
+      [
+       "weaponmaster",
+       5
+      ],
+      [
+       "bloodthrill",
+       2
+      ],
+      [
+       "improved_slam",
+       2
+      ],
+      [
+       "mortal_strike",
+       1
+      ],
+      [
+       "cruelty",
+       5
+      ],
+      [
+       "unbridled_wrath",
+       5
+      ],
+      [
+       "enrage",
+       5
+      ],
+      [
+       "improved_execute",
+       2
+      ],
+      [
+       "reckless_swings",
+       1
+      ],
+      [
+       "booming_voice",
+       2
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "02313213032215201-25050005012",
+      "split": "31/20/0",
+      "points": 51,
+      "talents": {
+       "deflection": 2,
+       "improved_rend": 3,
+       "improved_charge": 1,
+       "improved_tactical_mastery": 3,
+       "improved_overpower": 2,
+       "anger_management": 1,
+       "deep_wounds": 3,
+       "two_handed_weapon_specialization": 3,
+       "impale": 2,
+       "bloodthrill": 2,
+       "sweeping_strikes": 1,
+       "weaponmaster": 5,
+       "improved_slam": 2,
+       "mortal_strike": 1,
+       "booming_voice": 2,
+       "cruelty": 5,
+       "unbridled_wrath": 5,
+       "enrage": 5,
+       "reckless_swings": 1,
+       "improved_execute": 2
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "spec_assigned_by": "guide label"
+    },
+    {
+     "name": "Arms (Two-handed) Build",
+     "source": {
+      "site": "Method.gg",
+      "url": "https://www.method.gg/wow-forever/wow-forever-warrior-leveling-guide-and-talents",
+      "title": "WoW Forever Warrior Leveling Guide & Talents",
+      "author": "Babyhoof",
+      "updated": "4th November 2026",
+      "patch": null,
+      "date_seen": "2026-11-08",
+      "data": "data-talent embed #0 (\"Arms (Two-handed) Build\"), decoded with the reader in pipeline/talents/method_decode.py",
+      "guide_order": "point by point (the embed carries the order after \";\")"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 1
+      },
+      {
+       "level": 14,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 2
+      },
+      {
+       "level": 15,
+       "id": "improved_overpower",
+       "name": "Improved Overpower",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "improved_overpower",
+       "name": "Improved Overpower",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "improved_tactical_mastery",
+       "name": "Improved Tactical Mastery",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "improved_tactical_mastery",
+       "name": "Improved Tactical Mastery",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "improved_tactical_mastery",
+       "name": "Improved Tactical Mastery",
+       "rank": 3
+      },
+      {
+       "level": 20,
+       "id": "anger_management",
+       "name": "Anger Management",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "deep_wounds",
+       "name": "Deep Wounds",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "deep_wounds",
+       "name": "Deep Wounds",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "deep_wounds",
+       "name": "Deep Wounds",
+       "rank": 3
+      },
+      {
+       "level": 24,
+       "id": "improved_charge",
+       "name": "Improved Charge",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 2
+      },
+      {
+       "level": 27,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 3
+      },
+      {
+       "level": 28,
+       "id": "spearing_strike",
+       "name": "Spearing Strike",
+       "rank": 1
+      },
+      {
+       "level": 29,
+       "id": "improved_charge",
+       "name": "Improved Charge",
+       "rank": 2
+      },
+      {
+       "level": 30,
+       "id": "sweeping_strikes",
+       "name": "Sweeping Strikes",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "bloodthrill",
+       "name": "Bloodthrill",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "bloodthrill",
+       "name": "Bloodthrill",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "weaponmaster",
+       "name": "Weaponmaster",
+       "rank": 1
+      },
+      {
+       "level": 34,
+       "id": "weaponmaster",
+       "name": "Weaponmaster",
+       "rank": 2
+      },
+      {
+       "level": 35,
+       "id": "improved_slam",
+       "name": "Improved Slam",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "improved_slam",
+       "name": "Improved Slam",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "weaponmaster",
+       "name": "Weaponmaster",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "weaponmaster",
+       "name": "Weaponmaster",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "weaponmaster",
+       "name": "Weaponmaster",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "mortal_strike",
+       "name": "Mortal Strike",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 4
+      },
+      {
+       "level": 45,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "lingering_rage",
+       "name": "Lingering Rage",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "lingering_rage",
+       "name": "Lingering Rage",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "lingering_rage",
+       "name": "Lingering Rage",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "lingering_rage",
+       "name": "Lingering Rage",
+       "rank": 4
+      },
+      {
+       "level": 50,
+       "id": "lingering_rage",
+       "name": "Lingering Rage",
+       "rank": 5
+      },
+      {
+       "level": 51,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 2
+      },
+      {
+       "level": 53,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 3
+      },
+      {
+       "level": 54,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 4
+      },
+      {
+       "level": 55,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 5
+      },
+      {
+       "level": 56,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 3
+      },
+      {
+       "level": 57,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 4
+      },
+      {
+       "level": 58,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 5
+      },
+      {
+       "level": 59,
+       "id": "improved_bloodrage",
+       "name": "Improved Bloodrage",
+       "rank": 1
+      },
+      {
+       "level": 60,
+       "id": "improved_bloodrage",
+       "name": "Improved Bloodrage",
+       "rank": 2
+      }
+     ],
+     "route_runs": [
+      [
+       "improved_rend",
+       3
+      ],
+      [
+       "deflection",
+       2
+      ],
+      [
+       "improved_overpower",
+       2
+      ],
+      [
+       "improved_tactical_mastery",
+       3
+      ],
+      [
+       "anger_management",
+       1
+      ],
+      [
+       "deep_wounds",
+       3
+      ],
+      [
+       "improved_charge",
+       1
+      ],
+      [
+       "two_handed_weapon_specialization",
+       3
+      ],
+      [
+       "spearing_strike",
+       1
+      ],
+      [
+       "improved_charge",
+       1
+      ],
+      [
+       "sweeping_strikes",
+       1
+      ],
+      [
+       "bloodthrill",
+       2
+      ],
+      [
+       "weaponmaster",
+       2
+      ],
+      [
+       "improved_slam",
+       2
+      ],
+      [
+       "weaponmaster",
+       3
+      ],
+      [
+       "mortal_strike",
+       1
+      ],
+      [
+       "cruelty",
+       5
+      ],
+      [
+       "lingering_rage",
+       5
+      ],
+      [
+       "enrage",
+       5
+      ],
+      [
+       "deflection",
+       3
+      ],
+      [
+       "improved_bloodrage",
+       2
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "05323213130215201-05500005-2",
+      "split": "34/15/2",
+      "points": 51,
+      "talents": {
+       "deflection": 5,
+       "improved_rend": 3,
+       "improved_charge": 2,
+       "improved_tactical_mastery": 3,
+       "improved_overpower": 2,
+       "anger_management": 1,
+       "deep_wounds": 3,
+       "spearing_strike": 1,
+       "two_handed_weapon_specialization": 3,
+       "bloodthrill": 2,
+       "sweeping_strikes": 1,
+       "weaponmaster": 5,
+       "improved_slam": 2,
+       "mortal_strike": 1,
+       "cruelty": 5,
+       "lingering_rage": 5,
+       "enrage": 5,
+       "improved_bloodrage": 2
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "notes": [
+      "guide text after the build: ...before going back into the Fury Tree to pick up Unbridled Wrath for some extra rage generation as mobs start to live longer at higher levels. Enrage is also a fantastic pickup, as it will have almost permanent uptime while levelling. Protection Build This build is great for solo leveling & grinding."
+     ],
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "timesaver.gg (transcription): Arms leveling"
+     ]
+    },
+    {
+     "name": "Arms leveling",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/warrior",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Method",
+       "url": "https://www.method.gg/wow-forever/wow-forever-warrior-leveling-guide-and-talents",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Arms leveling\" in the calculator page payload; mode Leveling",
+      "guide_order": "point by point as transcribed by timesaver.gg"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 1
+      },
+      {
+       "level": 14,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 2
+      },
+      {
+       "level": 15,
+       "id": "improved_overpower",
+       "name": "Improved Overpower",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "improved_overpower",
+       "name": "Improved Overpower",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "improved_tactical_mastery",
+       "name": "Improved Tactical Mastery",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "improved_tactical_mastery",
+       "name": "Improved Tactical Mastery",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "improved_tactical_mastery",
+       "name": "Improved Tactical Mastery",
+       "rank": 3
+      },
+      {
+       "level": 20,
+       "id": "anger_management",
+       "name": "Anger Management",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "deep_wounds",
+       "name": "Deep Wounds",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "deep_wounds",
+       "name": "Deep Wounds",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "deep_wounds",
+       "name": "Deep Wounds",
+       "rank": 3
+      },
+      {
+       "level": 24,
+       "id": "improved_charge",
+       "name": "Improved Charge",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 2
+      },
+      {
+       "level": 27,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 3
+      },
+      {
+       "level": 28,
+       "id": "spearing_strike",
+       "name": "Spearing Strike",
+       "rank": 1
+      },
+      {
+       "level": 29,
+       "id": "improved_charge",
+       "name": "Improved Charge",
+       "rank": 2
+      },
+      {
+       "level": 30,
+       "id": "sweeping_strikes",
+       "name": "Sweeping Strikes",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "bloodthrill",
+       "name": "Bloodthrill",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "bloodthrill",
+       "name": "Bloodthrill",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "weaponmaster",
+       "name": "Weaponmaster",
+       "rank": 1
+      },
+      {
+       "level": 34,
+       "id": "weaponmaster",
+       "name": "Weaponmaster",
+       "rank": 2
+      },
+      {
+       "level": 35,
+       "id": "improved_slam",
+       "name": "Improved Slam",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "improved_slam",
+       "name": "Improved Slam",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "weaponmaster",
+       "name": "Weaponmaster",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "weaponmaster",
+       "name": "Weaponmaster",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "weaponmaster",
+       "name": "Weaponmaster",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "mortal_strike",
+       "name": "Mortal Strike",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 4
+      },
+      {
+       "level": 45,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "lingering_rage",
+       "name": "Lingering Rage",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "lingering_rage",
+       "name": "Lingering Rage",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "lingering_rage",
+       "name": "Lingering Rage",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "lingering_rage",
+       "name": "Lingering Rage",
+       "rank": 4
+      },
+      {
+       "level": 50,
+       "id": "lingering_rage",
+       "name": "Lingering Rage",
+       "rank": 5
+      },
+      {
+       "level": 51,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 2
+      },
+      {
+       "level": 53,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 3
+      },
+      {
+       "level": 54,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 4
+      },
+      {
+       "level": 55,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 5
+      },
+      {
+       "level": 56,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 3
+      },
+      {
+       "level": 57,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 4
+      },
+      {
+       "level": 58,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 5
+      },
+      {
+       "level": 59,
+       "id": "improved_bloodrage",
+       "name": "Improved Bloodrage",
+       "rank": 1
+      },
+      {
+       "level": 60,
+       "id": "improved_bloodrage",
+       "name": "Improved Bloodrage",
+       "rank": 2
+      }
+     ],
+     "route_runs": [
+      [
+       "improved_rend",
+       3
+      ],
+      [
+       "deflection",
+       2
+      ],
+      [
+       "improved_overpower",
+       2
+      ],
+      [
+       "improved_tactical_mastery",
+       3
+      ],
+      [
+       "anger_management",
+       1
+      ],
+      [
+       "deep_wounds",
+       3
+      ],
+      [
+       "improved_charge",
+       1
+      ],
+      [
+       "two_handed_weapon_specialization",
+       3
+      ],
+      [
+       "spearing_strike",
+       1
+      ],
+      [
+       "improved_charge",
+       1
+      ],
+      [
+       "sweeping_strikes",
+       1
+      ],
+      [
+       "bloodthrill",
+       2
+      ],
+      [
+       "weaponmaster",
+       2
+      ],
+      [
+       "improved_slam",
+       2
+      ],
+      [
+       "weaponmaster",
+       3
+      ],
+      [
+       "mortal_strike",
+       1
+      ],
+      [
+       "cruelty",
+       5
+      ],
+      [
+       "lingering_rage",
+       5
+      ],
+      [
+       "enrage",
+       5
+      ],
+      [
+       "deflection",
+       3
+      ],
+      [
+       "improved_bloodrage",
+       2
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "05323213130215201-05500005-2",
+      "split": "34/15/2",
+      "points": 51,
+      "talents": {
+       "deflection": 5,
+       "improved_rend": 3,
+       "improved_charge": 2,
+       "improved_tactical_mastery": 3,
+       "improved_overpower": 2,
+       "anger_management": 1,
+       "deep_wounds": 3,
+       "spearing_strike": 1,
+       "two_handed_weapon_specialization": 3,
+       "bloodthrill": 2,
+       "sweeping_strikes": 1,
+       "weaponmaster": 5,
+       "improved_slam": 2,
+       "mortal_strike": 1,
+       "cruelty": 5,
+       "lingering_rage": 5,
+       "enrage": 5,
+       "improved_bloodrage": 2
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "secondary": true,
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "Method.gg: Arms (Two-handed) Build"
+     ]
+    },
+    {
+     "name": "Leveling 1-60",
+     "source": {
+      "site": "wowtbc.gg (Warcraft Forever class guide)",
+      "url": "https://wowtbc.gg/warcraftforever/class-guides/arms-warrior/",
+      "author": null,
+      "updated": null,
+      "date_seen": "2026-11-08",
+      "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/arms-warrior/page-data.json, build \"Leveling 1-60\"",
+      "note": "the page shows no author or date",
+      "guide_order": "point by point (\"Leveling 1-60\" talentBuildPaths)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 1
+      },
+      {
+       "level": 14,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 2
+      },
+      {
+       "level": 15,
+       "id": "improved_overpower",
+       "name": "Improved Overpower",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "improved_overpower",
+       "name": "Improved Overpower",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "improved_charge",
+       "name": "Improved Charge",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "improved_charge",
+       "name": "Improved Charge",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 3
+      },
+      {
+       "level": 20,
+       "id": "deep_wounds",
+       "name": "Deep Wounds",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "deep_wounds",
+       "name": "Deep Wounds",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "deep_wounds",
+       "name": "Deep Wounds",
+       "rank": 3
+      },
+      {
+       "level": 23,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 4
+      },
+      {
+       "level": 24,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 5
+      },
+      {
+       "level": 25,
+       "id": "spearing_strike",
+       "name": "Spearing Strike",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "two_handed_weapon_specialization",
+       "name": "Two-Handed Weapon Specialization",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "impale",
+       "name": "Impale",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "sweeping_strikes",
+       "name": "Sweeping Strikes",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "bloodthrill",
+       "name": "Bloodthrill",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "bloodthrill",
+       "name": "Bloodthrill",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "weaponmaster",
+       "name": "Weaponmaster",
+       "rank": 1
+      },
+      {
+       "level": 34,
+       "id": "weaponmaster",
+       "name": "Weaponmaster",
+       "rank": 2
+      },
+      {
+       "level": 35,
+       "id": "improved_slam",
+       "name": "Improved Slam",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "improved_slam",
+       "name": "Improved Slam",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "weaponmaster",
+       "name": "Weaponmaster",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "weaponmaster",
+       "name": "Weaponmaster",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "weaponmaster",
+       "name": "Weaponmaster",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "mortal_strike",
+       "name": "Mortal Strike",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 4
+      },
+      {
+       "level": 45,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 4
+      },
+      {
+       "level": 50,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 5
+      },
+      {
+       "level": 51,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 2
+      },
+      {
+       "level": 53,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 3
+      },
+      {
+       "level": 54,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 4
+      },
+      {
+       "level": 55,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 5
+      },
+      {
+       "level": 56,
+       "id": "impale",
+       "name": "Impale",
+       "rank": 2
+      },
+      {
+       "level": 57,
+       "id": "blood_craze",
+       "name": "Blood Craze",
+       "rank": 1
+      },
+      {
+       "level": 58,
+       "id": "blood_craze",
+       "name": "Blood Craze",
+       "rank": 2
+      },
+      {
+       "level": 59,
+       "id": "blood_craze",
+       "name": "Blood Craze",
+       "rank": 3
+      },
+      {
+       "level": 60,
+       "id": "piercing_howl",
+       "name": "Piercing Howl",
+       "rank": 1
+      }
+     ],
+     "route_runs": [
+      [
+       "improved_rend",
+       3
+      ],
+      [
+       "deflection",
+       2
+      ],
+      [
+       "improved_overpower",
+       2
+      ],
+      [
+       "improved_charge",
+       2
+      ],
+      [
+       "deflection",
+       1
+      ],
+      [
+       "deep_wounds",
+       3
+      ],
+      [
+       "deflection",
+       2
+      ],
+      [
+       "spearing_strike",
+       1
+      ],
+      [
+       "two_handed_weapon_specialization",
+       3
+      ],
+      [
+       "impale",
+       1
+      ],
+      [
+       "sweeping_strikes",
+       1
+      ],
+      [
+       "bloodthrill",
+       2
+      ],
+      [
+       "weaponmaster",
+       2
+      ],
+      [
+       "improved_slam",
+       2
+      ],
+      [
+       "weaponmaster",
+       3
+      ],
+      [
+       "mortal_strike",
+       1
+      ],
+      [
+       "cruelty",
+       5
+      ],
+      [
+       "unbridled_wrath",
+       5
+      ],
+      [
+       "enrage",
+       5
+      ],
+      [
+       "impale",
+       1
+      ],
+      [
+       "blood_craze",
+       3
+      ],
+      [
+       "piercing_howl",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "05320203132215201-05050135",
+      "split": "32/19/0",
+      "points": 51,
+      "talents": {
+       "deflection": 5,
+       "improved_rend": 3,
+       "improved_charge": 2,
+       "improved_overpower": 2,
+       "deep_wounds": 3,
+       "spearing_strike": 1,
+       "two_handed_weapon_specialization": 3,
+       "impale": 2,
+       "bloodthrill": 2,
+       "sweeping_strikes": 1,
+       "weaponmaster": 5,
+       "improved_slam": 2,
+       "mortal_strike": 1,
+       "cruelty": 5,
+       "unbridled_wrath": 5,
+       "piercing_howl": 1,
+       "blood_craze": 3,
+       "enrage": 5
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "wowtbc_spec_page": "arms-warrior",
+     "spec_assigned_by": "guide page is for this spec"
+    }
+   ],
+   "endgame": {
+    "damage": [
+     {
+      "name": "Standard Arms",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/arms-warrior/talents",
+       "title": "WoW Forever Arms Warrior Talents & Builds Guide",
+       "author": "Babyhoof",
+       "updated": "4th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #0 (\"Standard Arms\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "30303213132215201-05150005012",
+       "split": "32/19/0",
+       "points": 51,
+       "talents": {
+        "improved_heroic_strike": 3,
+        "improved_rend": 3,
+        "improved_tactical_mastery": 3,
+        "improved_overpower": 2,
+        "anger_management": 1,
+        "deep_wounds": 3,
+        "spearing_strike": 1,
+        "two_handed_weapon_specialization": 3,
+        "impale": 2,
+        "bloodthrill": 2,
+        "sweeping_strikes": 1,
+        "weaponmaster": 5,
+        "improved_slam": 2,
+        "mortal_strike": 1,
+        "cruelty": 5,
+        "lingering_rage": 1,
+        "unbridled_wrath": 5,
+        "enrage": 5,
+        "reckless_swings": 1,
+        "improved_execute": 2
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "notes": [
+       "guide text: ...our identity as a slow yet powerful spec that does consistent single target damage and high burst cleave. Talents Discussion When it comes to Legacy Talent points, we have very few that affect our end game performance. However, I would advise picking up Gourmand and Permanence , both of which can save you money and Rage during a fight, letting you spend more globals and rage on damaging abilities."
+      ],
+      "method_spec_page": "arms-warrior",
+      "embedded_order_check": {
+       "ok": true,
+       "errors": [],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Standard Build",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/arms-warrior/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/arms-warrior/page-data.json, build \"Standard Build\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "30303213132215201-05050005012-1",
+       "split": "32/18/1",
+       "points": 51,
+       "talents": {
+        "improved_heroic_strike": 3,
+        "improved_rend": 3,
+        "improved_tactical_mastery": 3,
+        "improved_overpower": 2,
+        "anger_management": 1,
+        "deep_wounds": 3,
+        "spearing_strike": 1,
+        "two_handed_weapon_specialization": 3,
+        "impale": 2,
+        "bloodthrill": 2,
+        "sweeping_strikes": 1,
+        "weaponmaster": 5,
+        "improved_slam": 2,
+        "mortal_strike": 1,
+        "cruelty": 5,
+        "unbridled_wrath": 5,
+        "enrage": 5,
+        "reckless_swings": 1,
+        "improved_execute": 2,
+        "improved_bloodrage": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "arms-warrior",
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     }
+    ]
+   }
+  },
+  "fury": {
+   "name": "Fury",
+   "tree": "fury",
+   "dungeon_roles": [
+    "damage"
+   ],
+   "leveling": [
+    {
+     "name": "Fury",
+     "source": {
+      "site": "Maxroll",
+      "url": "https://maxroll.gg/wow-forever/class-guides/warrior-leveling-guide",
+      "title": "Warrior Leveling Guide",
+      "author": "maxroll",
+      "published": "October 30, 2026",
+      "updated": "November 4, 2026",
+      "date_seen": "2026-11-08",
+      "data": "planner profile \"Fury\" (uid O4UuyiW5, planner pg3wme0u saved 2026-11-04 18:43:26): talents.history, TraitNodeEntry ids from window.__remixContext",
+      "guide_order": "point by point (the planner history is the guide's own order)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 4
+      },
+      {
+       "level": 19,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 5
+      },
+      {
+       "level": 20,
+       "id": "blood_craze",
+       "name": "Blood Craze",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "blood_craze",
+       "name": "Blood Craze",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "blood_craze",
+       "name": "Blood Craze",
+       "rank": 3
+      },
+      {
+       "level": 23,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 1
+      },
+      {
+       "level": 24,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 2
+      },
+      {
+       "level": 25,
+       "id": "dual_wield_specialization",
+       "name": "Dual Wield Specialization",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "dual_wield_specialization",
+       "name": "Dual Wield Specialization",
+       "rank": 2
+      },
+      {
+       "level": 27,
+       "id": "dual_wield_specialization",
+       "name": "Dual Wield Specialization",
+       "rank": 3
+      },
+      {
+       "level": 28,
+       "id": "dual_wield_specialization",
+       "name": "Dual Wield Specialization",
+       "rank": 4
+      },
+      {
+       "level": 29,
+       "id": "dual_wield_specialization",
+       "name": "Dual Wield Specialization",
+       "rank": 5
+      },
+      {
+       "level": 30,
+       "id": "gore_drinker",
+       "name": "Gore Drinker",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "gore_drinker",
+       "name": "Gore Drinker",
+       "rank": 2
+      },
+      {
+       "level": 32,
+       "id": "death_wish",
+       "name": "Death Wish",
+       "rank": 1
+      },
+      {
+       "level": 33,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 3
+      },
+      {
+       "level": 34,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 4
+      },
+      {
+       "level": 35,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "improved_whirlwind",
+       "name": "Improved Whirlwind",
+       "rank": 1
+      },
+      {
+       "level": 39,
+       "id": "improved_whirlwind",
+       "name": "Improved Whirlwind",
+       "rank": 2
+      },
+      {
+       "level": 40,
+       "id": "bloodthirst",
+       "name": "Bloodthirst",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 1
+      },
+      {
+       "level": 45,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 2
+      },
+      {
+       "level": 46,
+       "id": "improved_tactical_mastery",
+       "name": "Improved Tactical Mastery",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "improved_tactical_mastery",
+       "name": "Improved Tactical Mastery",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "improved_tactical_mastery",
+       "name": "Improved Tactical Mastery",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "improved_overpower",
+       "name": "Improved Overpower",
+       "rank": 1
+      },
+      {
+       "level": 50,
+       "id": "improved_overpower",
+       "name": "Improved Overpower",
+       "rank": 2
+      },
+      {
+       "level": 51,
+       "id": "anger_management",
+       "name": "Anger Management",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "deep_wounds",
+       "name": "Deep Wounds",
+       "rank": 1
+      },
+      {
+       "level": 53,
+       "id": "deep_wounds",
+       "name": "Deep Wounds",
+       "rank": 2
+      },
+      {
+       "level": 54,
+       "id": "deep_wounds",
+       "name": "Deep Wounds",
+       "rank": 3
+      },
+      {
+       "level": 55,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 5
+      },
+      {
+       "level": 56,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 3
+      },
+      {
+       "level": 57,
+       "id": "impale",
+       "name": "Impale",
+       "rank": 1
+      },
+      {
+       "level": 58,
+       "id": "impale",
+       "name": "Impale",
+       "rank": 2
+      },
+      {
+       "level": 59,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 4
+      },
+      {
+       "level": 60,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 5
+      }
+     ],
+     "route_runs": [
+      [
+       "cruelty",
+       5
+      ],
+      [
+       "unbridled_wrath",
+       5
+      ],
+      [
+       "blood_craze",
+       3
+      ],
+      [
+       "enrage",
+       2
+      ],
+      [
+       "dual_wield_specialization",
+       5
+      ],
+      [
+       "gore_drinker",
+       2
+      ],
+      [
+       "death_wish",
+       1
+      ],
+      [
+       "enrage",
+       2
+      ],
+      [
+       "flurry",
+       3
+      ],
+      [
+       "improved_whirlwind",
+       2
+      ],
+      [
+       "bloodthirst",
+       1
+      ],
+      [
+       "improved_rend",
+       3
+      ],
+      [
+       "deflection",
+       2
+      ],
+      [
+       "improved_tactical_mastery",
+       3
+      ],
+      [
+       "improved_overpower",
+       2
+      ],
+      [
+       "anger_management",
+       1
+      ],
+      [
+       "deep_wounds",
+       3
+      ],
+      [
+       "enrage",
+       1
+      ],
+      [
+       "deflection",
+       1
+      ],
+      [
+       "impale",
+       2
+      ],
+      [
+       "deflection",
+       2
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "05303213002-050500355000120231",
+      "split": "19/32/0",
+      "points": 51,
+      "talents": {
+       "deflection": 5,
+       "improved_rend": 3,
+       "improved_tactical_mastery": 3,
+       "improved_overpower": 2,
+       "anger_management": 1,
+       "deep_wounds": 3,
+       "impale": 2,
+       "cruelty": 5,
+       "unbridled_wrath": 5,
+       "blood_craze": 3,
+       "enrage": 5,
+       "dual_wield_specialization": 5,
+       "death_wish": 1,
+       "gore_drinker": 2,
+       "improved_whirlwind": 2,
+       "flurry": 3,
+       "bloodthirst": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "timesaver.gg (transcription): Fury leveling (Maxroll)"
+     ]
+    },
+    {
+     "name": "Fury leveling",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/warrior",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Wowhead",
+       "url": "https://www.wowhead.com/forever/guide/classes/warrior/fury/dps-leveling-tips",
+       "updated": "2026-11-06"
+      },
+      "data": "preset \"Fury leveling\" in the calculator page payload; mode Leveling",
+      "guide_order": "final build only"
+     },
+     "kind": "final_only",
+     "final": {
+      "code": "0500321-050530355122120231",
+      "split": "11/40/0",
+      "points": 51,
+      "talents": {
+       "deflection": 5,
+       "improved_tactical_mastery": 3,
+       "improved_overpower": 2,
+       "anger_management": 1,
+       "cruelty": 5,
+       "unbridled_wrath": 5,
+       "furious_precision": 3,
+       "blood_craze": 3,
+       "enrage": 5,
+       "dual_wield_specialization": 5,
+       "reckless_swings": 1,
+       "improved_execute": 2,
+       "improved_berserker_rage": 2,
+       "death_wish": 1,
+       "gore_drinker": 2,
+       "improved_whirlwind": 2,
+       "flurry": 3,
+       "bloodthirst": 1
+      },
+      "legal_on_client_tree": "OK"
+     },
+     "secondary": true,
+     "notes": [
+      "original Wowhead page not reachable from this sandbox (Cloudflare); this is timesaver.gg's transcription, unverified against the original"
+     ],
+     "spec_assigned_by": "guide label"
+    },
+    {
+     "name": "Fury leveling (Maxroll)",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/warrior",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Maxroll",
+       "url": "https://maxroll.gg/wow-forever/class-guides/warrior-leveling-guide",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Fury leveling (Maxroll)\" in the calculator page payload; mode Leveling",
+      "guide_order": "point by point as transcribed by timesaver.gg"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 4
+      },
+      {
+       "level": 19,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 5
+      },
+      {
+       "level": 20,
+       "id": "blood_craze",
+       "name": "Blood Craze",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "blood_craze",
+       "name": "Blood Craze",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "blood_craze",
+       "name": "Blood Craze",
+       "rank": 3
+      },
+      {
+       "level": 23,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 1
+      },
+      {
+       "level": 24,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 2
+      },
+      {
+       "level": 25,
+       "id": "dual_wield_specialization",
+       "name": "Dual Wield Specialization",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "dual_wield_specialization",
+       "name": "Dual Wield Specialization",
+       "rank": 2
+      },
+      {
+       "level": 27,
+       "id": "dual_wield_specialization",
+       "name": "Dual Wield Specialization",
+       "rank": 3
+      },
+      {
+       "level": 28,
+       "id": "dual_wield_specialization",
+       "name": "Dual Wield Specialization",
+       "rank": 4
+      },
+      {
+       "level": 29,
+       "id": "dual_wield_specialization",
+       "name": "Dual Wield Specialization",
+       "rank": 5
+      },
+      {
+       "level": 30,
+       "id": "gore_drinker",
+       "name": "Gore Drinker",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "gore_drinker",
+       "name": "Gore Drinker",
+       "rank": 2
+      },
+      {
+       "level": 32,
+       "id": "death_wish",
+       "name": "Death Wish",
+       "rank": 1
+      },
+      {
+       "level": 33,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 3
+      },
+      {
+       "level": 34,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 4
+      },
+      {
+       "level": 35,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "improved_whirlwind",
+       "name": "Improved Whirlwind",
+       "rank": 1
+      },
+      {
+       "level": 39,
+       "id": "improved_whirlwind",
+       "name": "Improved Whirlwind",
+       "rank": 2
+      },
+      {
+       "level": 40,
+       "id": "bloodthirst",
+       "name": "Bloodthirst",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 1
+      },
+      {
+       "level": 45,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 2
+      },
+      {
+       "level": 46,
+       "id": "improved_tactical_mastery",
+       "name": "Improved Tactical Mastery",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "improved_tactical_mastery",
+       "name": "Improved Tactical Mastery",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "improved_tactical_mastery",
+       "name": "Improved Tactical Mastery",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "improved_overpower",
+       "name": "Improved Overpower",
+       "rank": 1
+      },
+      {
+       "level": 50,
+       "id": "improved_overpower",
+       "name": "Improved Overpower",
+       "rank": 2
+      },
+      {
+       "level": 51,
+       "id": "anger_management",
+       "name": "Anger Management",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "deep_wounds",
+       "name": "Deep Wounds",
+       "rank": 1
+      },
+      {
+       "level": 53,
+       "id": "deep_wounds",
+       "name": "Deep Wounds",
+       "rank": 2
+      },
+      {
+       "level": 54,
+       "id": "deep_wounds",
+       "name": "Deep Wounds",
+       "rank": 3
+      },
+      {
+       "level": 55,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 5
+      },
+      {
+       "level": 56,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 3
+      },
+      {
+       "level": 57,
+       "id": "impale",
+       "name": "Impale",
+       "rank": 1
+      },
+      {
+       "level": 58,
+       "id": "impale",
+       "name": "Impale",
+       "rank": 2
+      },
+      {
+       "level": 59,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 4
+      },
+      {
+       "level": 60,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 5
+      }
+     ],
+     "route_runs": [
+      [
+       "cruelty",
+       5
+      ],
+      [
+       "unbridled_wrath",
+       5
+      ],
+      [
+       "blood_craze",
+       3
+      ],
+      [
+       "enrage",
+       2
+      ],
+      [
+       "dual_wield_specialization",
+       5
+      ],
+      [
+       "gore_drinker",
+       2
+      ],
+      [
+       "death_wish",
+       1
+      ],
+      [
+       "enrage",
+       2
+      ],
+      [
+       "flurry",
+       3
+      ],
+      [
+       "improved_whirlwind",
+       2
+      ],
+      [
+       "bloodthirst",
+       1
+      ],
+      [
+       "improved_rend",
+       3
+      ],
+      [
+       "deflection",
+       2
+      ],
+      [
+       "improved_tactical_mastery",
+       3
+      ],
+      [
+       "improved_overpower",
+       2
+      ],
+      [
+       "anger_management",
+       1
+      ],
+      [
+       "deep_wounds",
+       3
+      ],
+      [
+       "enrage",
+       1
+      ],
+      [
+       "deflection",
+       1
+      ],
+      [
+       "impale",
+       2
+      ],
+      [
+       "deflection",
+       2
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "05303213002-050500355000120231",
+      "split": "19/32/0",
+      "points": 51,
+      "talents": {
+       "deflection": 5,
+       "improved_rend": 3,
+       "improved_tactical_mastery": 3,
+       "improved_overpower": 2,
+       "anger_management": 1,
+       "deep_wounds": 3,
+       "impale": 2,
+       "cruelty": 5,
+       "unbridled_wrath": 5,
+       "blood_craze": 3,
+       "enrage": 5,
+       "dual_wield_specialization": 5,
+       "death_wish": 1,
+       "gore_drinker": 2,
+       "improved_whirlwind": 2,
+       "flurry": 3,
+       "bloodthirst": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "secondary": true,
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "Maxroll: Fury"
+     ]
+    },
+    {
+     "name": "Leveling 1-60",
+     "source": {
+      "site": "wowtbc.gg (Warcraft Forever class guide)",
+      "url": "https://wowtbc.gg/warcraftforever/class-guides/fury-warrior/",
+      "author": null,
+      "updated": null,
+      "date_seen": "2026-11-08",
+      "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/fury-warrior/page-data.json, build \"Leveling 1-60\"",
+      "note": "the page shows no author or date",
+      "guide_order": "point by point (\"Leveling 1-60\" talentBuildPaths)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 4
+      },
+      {
+       "level": 19,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 5
+      },
+      {
+       "level": 20,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 3
+      },
+      {
+       "level": 23,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 4
+      },
+      {
+       "level": 24,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 5
+      },
+      {
+       "level": 25,
+       "id": "dual_wield_specialization",
+       "name": "Dual Wield Specialization",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "dual_wield_specialization",
+       "name": "Dual Wield Specialization",
+       "rank": 2
+      },
+      {
+       "level": 27,
+       "id": "blood_craze",
+       "name": "Blood Craze",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "blood_craze",
+       "name": "Blood Craze",
+       "rank": 2
+      },
+      {
+       "level": 29,
+       "id": "blood_craze",
+       "name": "Blood Craze",
+       "rank": 3
+      },
+      {
+       "level": 30,
+       "id": "gore_drinker",
+       "name": "Gore Drinker",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "gore_drinker",
+       "name": "Gore Drinker",
+       "rank": 2
+      },
+      {
+       "level": 32,
+       "id": "dual_wield_specialization",
+       "name": "Dual Wield Specialization",
+       "rank": 3
+      },
+      {
+       "level": 33,
+       "id": "dual_wield_specialization",
+       "name": "Dual Wield Specialization",
+       "rank": 4
+      },
+      {
+       "level": 34,
+       "id": "dual_wield_specialization",
+       "name": "Dual Wield Specialization",
+       "rank": 5
+      },
+      {
+       "level": 35,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "improved_whirlwind",
+       "name": "Improved Whirlwind",
+       "rank": 1
+      },
+      {
+       "level": 39,
+       "id": "death_wish",
+       "name": "Death Wish",
+       "rank": 1
+      },
+      {
+       "level": 40,
+       "id": "bloodthirst",
+       "name": "Bloodthirst",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "improved_whirlwind",
+       "name": "Improved Whirlwind",
+       "rank": 2
+      },
+      {
+       "level": 42,
+       "id": "furious_precision",
+       "name": "Furious Precision",
+       "rank": 1
+      },
+      {
+       "level": 43,
+       "id": "furious_precision",
+       "name": "Furious Precision",
+       "rank": 2
+      },
+      {
+       "level": 44,
+       "id": "furious_precision",
+       "name": "Furious Precision",
+       "rank": 3
+      },
+      {
+       "level": 45,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 1
+      },
+      {
+       "level": 46,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 2
+      },
+      {
+       "level": 47,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 3
+      },
+      {
+       "level": 48,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 4
+      },
+      {
+       "level": 49,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 5
+      },
+      {
+       "level": 50,
+       "id": "improved_charge",
+       "name": "Improved Charge",
+       "rank": 1
+      },
+      {
+       "level": 51,
+       "id": "improved_charge",
+       "name": "Improved Charge",
+       "rank": 2
+      },
+      {
+       "level": 52,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 1
+      },
+      {
+       "level": 53,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 2
+      },
+      {
+       "level": 54,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 3
+      },
+      {
+       "level": 55,
+       "id": "deep_wounds",
+       "name": "Deep Wounds",
+       "rank": 1
+      },
+      {
+       "level": 56,
+       "id": "deep_wounds",
+       "name": "Deep Wounds",
+       "rank": 2
+      },
+      {
+       "level": 57,
+       "id": "deep_wounds",
+       "name": "Deep Wounds",
+       "rank": 3
+      },
+      {
+       "level": 58,
+       "id": "improved_bloodrage",
+       "name": "Improved Bloodrage",
+       "rank": 1
+      },
+      {
+       "level": 59,
+       "id": "improved_bloodrage",
+       "name": "Improved Bloodrage",
+       "rank": 2
+      },
+      {
+       "level": 60,
+       "id": "piercing_howl",
+       "name": "Piercing Howl",
+       "rank": 1
+      }
+     ],
+     "route_runs": [
+      [
+       "cruelty",
+       5
+      ],
+      [
+       "unbridled_wrath",
+       5
+      ],
+      [
+       "enrage",
+       5
+      ],
+      [
+       "dual_wield_specialization",
+       2
+      ],
+      [
+       "blood_craze",
+       3
+      ],
+      [
+       "gore_drinker",
+       2
+      ],
+      [
+       "dual_wield_specialization",
+       3
+      ],
+      [
+       "flurry",
+       3
+      ],
+      [
+       "improved_whirlwind",
+       1
+      ],
+      [
+       "death_wish",
+       1
+      ],
+      [
+       "bloodthirst",
+       1
+      ],
+      [
+       "improved_whirlwind",
+       1
+      ],
+      [
+       "furious_precision",
+       3
+      ],
+      [
+       "deflection",
+       5
+      ],
+      [
+       "improved_charge",
+       2
+      ],
+      [
+       "improved_rend",
+       3
+      ],
+      [
+       "deep_wounds",
+       3
+      ],
+      [
+       "improved_bloodrage",
+       2
+      ],
+      [
+       "piercing_howl",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "05320003-050531355000120231-2",
+      "split": "13/36/2",
+      "points": 51,
+      "talents": {
+       "deflection": 5,
+       "improved_rend": 3,
+       "improved_charge": 2,
+       "deep_wounds": 3,
+       "cruelty": 5,
+       "unbridled_wrath": 5,
+       "furious_precision": 3,
+       "piercing_howl": 1,
+       "blood_craze": 3,
+       "enrage": 5,
+       "dual_wield_specialization": 5,
+       "death_wish": 1,
+       "gore_drinker": 2,
+       "improved_whirlwind": 2,
+       "flurry": 3,
+       "bloodthirst": 1,
+       "improved_bloodrage": 2
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "wowtbc_spec_page": "fury-warrior",
+     "spec_assigned_by": "guide page is for this spec"
+    }
+   ],
+   "endgame": {
+    "damage": [
+     {
+      "name": "Standard Raid Build",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/fury-warrior/talents",
+       "title": "WoW Forever Fury Warrior Talents & Builds Guide",
+       "author": "Babyhoof",
+       "updated": "4th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #0 (\"Standard Raid Build\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "30303213002-050530045122100231",
+       "split": "17/34/0",
+       "points": 51,
+       "talents": {
+        "improved_heroic_strike": 3,
+        "improved_rend": 3,
+        "improved_tactical_mastery": 3,
+        "improved_overpower": 2,
+        "anger_management": 1,
+        "deep_wounds": 3,
+        "impale": 2,
+        "cruelty": 5,
+        "unbridled_wrath": 5,
+        "furious_precision": 3,
+        "enrage": 4,
+        "dual_wield_specialization": 5,
+        "reckless_swings": 1,
+        "improved_execute": 2,
+        "improved_berserker_rage": 2,
+        "death_wish": 1,
+        "improved_whirlwind": 2,
+        "flurry": 3,
+        "bloodthirst": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "notes": [
+       "guide text: ...ree including Deep Wounds , Impale , and Improved Overpower to facilitate Stance Dancing in our rotation. Talents Discussion When it comes to Legacy Talent points, we have very few that affect our end game performance. However, I would advise picking up Gourmand and Permanence , both of which can save you money and Rage during a fight, letting you spend more globals and rage on damaging abilities."
+      ],
+      "method_spec_page": "fury-warrior",
+      "embedded_order_check": {
+       "ok": true,
+       "errors": [],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": [
+       "raid"
+      ],
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Standard Build",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/fury-warrior/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/fury-warrior/page-data.json, build \"Standard Build\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "30303213102-050530055120100231",
+       "split": "18/33/0",
+       "points": 51,
+       "talents": {
+        "improved_heroic_strike": 3,
+        "improved_rend": 3,
+        "improved_tactical_mastery": 3,
+        "improved_overpower": 2,
+        "anger_management": 1,
+        "deep_wounds": 3,
+        "spearing_strike": 1,
+        "impale": 2,
+        "cruelty": 5,
+        "unbridled_wrath": 5,
+        "furious_precision": 3,
+        "enrage": 5,
+        "dual_wield_specialization": 5,
+        "reckless_swings": 1,
+        "improved_execute": 2,
+        "death_wish": 1,
+        "improved_whirlwind": 2,
+        "flurry": 3,
+        "bloodthirst": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "fury-warrior",
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Sweeping Strikes",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/fury-warrior/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/fury-warrior/page-data.json, build \"Sweeping Strikes\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "3032321310201-05053003512010023",
+       "split": "21/30/0",
+       "points": 51,
+       "talents": {
+        "improved_heroic_strike": 3,
+        "improved_rend": 3,
+        "improved_charge": 2,
+        "improved_tactical_mastery": 3,
+        "improved_overpower": 2,
+        "anger_management": 1,
+        "deep_wounds": 3,
+        "spearing_strike": 1,
+        "impale": 2,
+        "sweeping_strikes": 1,
+        "cruelty": 5,
+        "unbridled_wrath": 5,
+        "furious_precision": 3,
+        "enrage": 3,
+        "dual_wield_specialization": 5,
+        "reckless_swings": 1,
+        "improved_execute": 2,
+        "death_wish": 1,
+        "improved_whirlwind": 2,
+        "flurry": 3
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "fury-warrior",
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     }
+    ]
+   }
+  },
+  "protection": {
+   "name": "Protection",
+   "tree": "protection",
+   "dungeon_roles": [
+    "tank"
+   ],
+   "leveling": [
+    {
+     "name": "Protection",
+     "source": {
+      "site": "Maxroll",
+      "url": "https://maxroll.gg/wow-forever/class-guides/warrior-leveling-guide",
+      "title": "Warrior Leveling Guide",
+      "author": "maxroll",
+      "published": "October 30, 2026",
+      "updated": "November 4, 2026",
+      "date_seen": "2026-11-08",
+      "data": "planner profile \"Protection\" (uid 8PdbXAzP, planner pg3wme0u saved 2026-11-04 18:43:26): talents.history, TraitNodeEntry ids from window.__remixContext",
+      "guide_order": "point by point (the planner history is the guide's own order)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "improved_revenge",
+       "name": "Improved Revenge",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "improved_revenge",
+       "name": "Improved Revenge",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "improved_revenge",
+       "name": "Improved Revenge",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "improved_thunder_clap",
+       "name": "Improved Thunder Clap",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "improved_thunder_clap",
+       "name": "Improved Thunder Clap",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "master_of_defense",
+       "name": "Master of Defense",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "master_of_defense",
+       "name": "Master of Defense",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "improved_thunder_clap",
+       "name": "Improved Thunder Clap",
+       "rank": 3
+      },
+      {
+       "level": 23,
+       "id": "last_stand",
+       "name": "Last Stand",
+       "rank": 1
+      },
+      {
+       "level": 24,
+       "id": "improved_bloodrage",
+       "name": "Improved Bloodrage",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "vanguard",
+       "name": "Vanguard",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "improved_bloodrage",
+       "name": "Improved Bloodrage",
+       "rank": 2
+      },
+      {
+       "level": 27,
+       "id": "anticipation",
+       "name": "Anticipation",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "anticipation",
+       "name": "Anticipation",
+       "rank": 2
+      },
+      {
+       "level": 29,
+       "id": "anticipation",
+       "name": "Anticipation",
+       "rank": 3
+      },
+      {
+       "level": 30,
+       "id": "concussion_blow",
+       "name": "Concussion Blow",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "focused_rage",
+       "name": "Focused Rage",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "focused_rage",
+       "name": "Focused Rage",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "focused_rage",
+       "name": "Focused Rage",
+       "rank": 3
+      },
+      {
+       "level": 34,
+       "id": "anticipation",
+       "name": "Anticipation",
+       "rank": 4
+      },
+      {
+       "level": 35,
+       "id": "bastion",
+       "name": "Bastion",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "bastion",
+       "name": "Bastion",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "bastion",
+       "name": "Bastion",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "bastion",
+       "name": "Bastion",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "bastion",
+       "name": "Bastion",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "shield_slam",
+       "name": "Shield Slam",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 1
+      },
+      {
+       "level": 45,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 2
+      },
+      {
+       "level": 46,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 3
+      },
+      {
+       "level": 47,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 4
+      },
+      {
+       "level": 48,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 5
+      },
+      {
+       "level": 49,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 1
+      },
+      {
+       "level": 50,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 2
+      },
+      {
+       "level": 51,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 3
+      },
+      {
+       "level": 52,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 4
+      },
+      {
+       "level": 53,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 5
+      },
+      {
+       "level": 54,
+       "id": "improved_charge",
+       "name": "Improved Charge",
+       "rank": 1
+      },
+      {
+       "level": 55,
+       "id": "improved_charge",
+       "name": "Improved Charge",
+       "rank": 2
+      },
+      {
+       "level": 56,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 1
+      },
+      {
+       "level": 57,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 2
+      },
+      {
+       "level": 58,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 3
+      },
+      {
+       "level": 59,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 4
+      },
+      {
+       "level": 60,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 5
+      }
+     ],
+     "route_runs": [
+      [
+       "shield_specialization",
+       5
+      ],
+      [
+       "improved_revenge",
+       3
+      ],
+      [
+       "improved_thunder_clap",
+       2
+      ],
+      [
+       "master_of_defense",
+       2
+      ],
+      [
+       "improved_thunder_clap",
+       1
+      ],
+      [
+       "last_stand",
+       1
+      ],
+      [
+       "improved_bloodrage",
+       1
+      ],
+      [
+       "vanguard",
+       1
+      ],
+      [
+       "improved_bloodrage",
+       1
+      ],
+      [
+       "anticipation",
+       3
+      ],
+      [
+       "concussion_blow",
+       1
+      ],
+      [
+       "focused_rage",
+       3
+      ],
+      [
+       "anticipation",
+       1
+      ],
+      [
+       "bastion",
+       5
+      ],
+      [
+       "shield_slam",
+       1
+      ],
+      [
+       "improved_rend",
+       3
+      ],
+      [
+       "deflection",
+       5
+      ],
+      [
+       "cruelty",
+       5
+      ],
+      [
+       "improved_charge",
+       2
+      ],
+      [
+       "unbridled_wrath",
+       5
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "0532-0505-250433120001001351",
+      "split": "10/10/31",
+      "points": 51,
+      "talents": {
+       "deflection": 5,
+       "improved_rend": 3,
+       "improved_charge": 2,
+       "cruelty": 5,
+       "unbridled_wrath": 5,
+       "improved_bloodrage": 2,
+       "shield_specialization": 5,
+       "anticipation": 4,
+       "improved_revenge": 3,
+       "improved_thunder_clap": 3,
+       "last_stand": 1,
+       "master_of_defense": 2,
+       "vanguard": 1,
+       "concussion_blow": 1,
+       "focused_rage": 3,
+       "bastion": 5,
+       "shield_slam": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "timesaver.gg (transcription): Protection leveling"
+     ]
+    },
+    {
+     "name": "Protection Build",
+     "source": {
+      "site": "Method.gg",
+      "url": "https://www.method.gg/wow-forever/wow-forever-warrior-leveling-guide-and-talents",
+      "title": "WoW Forever Warrior Leveling Guide & Talents",
+      "author": "Babyhoof",
+      "updated": "4th November 2026",
+      "patch": null,
+      "date_seen": "2026-11-08",
+      "data": "data-talent embed #1 (\"Protection Build\"), decoded with the reader in pipeline/talents/method_decode.py",
+      "guide_order": "point by point (the embed carries the order after \";\")"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "improved_revenge",
+       "name": "Improved Revenge",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "improved_revenge",
+       "name": "Improved Revenge",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "improved_revenge",
+       "name": "Improved Revenge",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "improved_thunder_clap",
+       "name": "Improved Thunder Clap",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "improved_thunder_clap",
+       "name": "Improved Thunder Clap",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "master_of_defense",
+       "name": "Master of Defense",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "master_of_defense",
+       "name": "Master of Defense",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "last_stand",
+       "name": "Last Stand",
+       "rank": 1
+      },
+      {
+       "level": 23,
+       "id": "improved_thunder_clap",
+       "name": "Improved Thunder Clap",
+       "rank": 3
+      },
+      {
+       "level": 24,
+       "id": "improved_bloodrage",
+       "name": "Improved Bloodrage",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "vanguard",
+       "name": "Vanguard",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "improved_bloodrage",
+       "name": "Improved Bloodrage",
+       "rank": 2
+      },
+      {
+       "level": 27,
+       "id": "anticipation",
+       "name": "Anticipation",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "anticipation",
+       "name": "Anticipation",
+       "rank": 2
+      },
+      {
+       "level": 29,
+       "id": "anticipation",
+       "name": "Anticipation",
+       "rank": 3
+      },
+      {
+       "level": 30,
+       "id": "concussion_blow",
+       "name": "Concussion Blow",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "focused_rage",
+       "name": "Focused Rage",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "focused_rage",
+       "name": "Focused Rage",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "focused_rage",
+       "name": "Focused Rage",
+       "rank": 3
+      },
+      {
+       "level": 34,
+       "id": "anticipation",
+       "name": "Anticipation",
+       "rank": 4
+      },
+      {
+       "level": 35,
+       "id": "bastion",
+       "name": "Bastion",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "bastion",
+       "name": "Bastion",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "bastion",
+       "name": "Bastion",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "bastion",
+       "name": "Bastion",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "bastion",
+       "name": "Bastion",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "shield_slam",
+       "name": "Shield Slam",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 4
+      },
+      {
+       "level": 45,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 4
+      },
+      {
+       "level": 50,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 5
+      },
+      {
+       "level": 51,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 2
+      },
+      {
+       "level": 53,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 3
+      },
+      {
+       "level": 54,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 4
+      },
+      {
+       "level": 55,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 5
+      },
+      {
+       "level": 56,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 1
+      },
+      {
+       "level": 57,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 2
+      },
+      {
+       "level": 58,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 3
+      },
+      {
+       "level": 59,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 4
+      },
+      {
+       "level": 60,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 5
+      }
+     ],
+     "route_runs": [
+      [
+       "shield_specialization",
+       5
+      ],
+      [
+       "improved_revenge",
+       3
+      ],
+      [
+       "improved_thunder_clap",
+       2
+      ],
+      [
+       "master_of_defense",
+       2
+      ],
+      [
+       "last_stand",
+       1
+      ],
+      [
+       "improved_thunder_clap",
+       1
+      ],
+      [
+       "improved_bloodrage",
+       1
+      ],
+      [
+       "vanguard",
+       1
+      ],
+      [
+       "improved_bloodrage",
+       1
+      ],
+      [
+       "anticipation",
+       3
+      ],
+      [
+       "concussion_blow",
+       1
+      ],
+      [
+       "focused_rage",
+       3
+      ],
+      [
+       "anticipation",
+       1
+      ],
+      [
+       "bastion",
+       5
+      ],
+      [
+       "shield_slam",
+       1
+      ],
+      [
+       "cruelty",
+       5
+      ],
+      [
+       "unbridled_wrath",
+       5
+      ],
+      [
+       "enrage",
+       5
+      ],
+      [
+       "deflection",
+       5
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "05-05050005-250433120001001351",
+      "split": "5/15/31",
+      "points": 51,
+      "talents": {
+       "deflection": 5,
+       "cruelty": 5,
+       "unbridled_wrath": 5,
+       "enrage": 5,
+       "improved_bloodrage": 2,
+       "shield_specialization": 5,
+       "anticipation": 4,
+       "improved_revenge": 3,
+       "improved_thunder_clap": 3,
+       "last_stand": 1,
+       "master_of_defense": 2,
+       "vanguard": 1,
+       "concussion_blow": 1,
+       "focused_rage": 3,
+       "bastion": 5,
+       "shield_slam": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "notes": [
+      "guide text after the build: ...riod of time using the same weapon, to immensely powerful after upgrading to a strong new weapon, such as a new dungeon reward or drop. Basic Leveling Rotation Much of a Warriors play style while leveling will revolve around spending Rage at the start of a fight to put up important debuffs such as R"
+     ],
+     "spec_assigned_by": "guide label"
+    },
+    {
+     "name": "Protection leveling",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/warrior",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Maxroll",
+       "url": "https://maxroll.gg/wow-forever/class-guides/warrior-leveling-guide",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Protection leveling\" in the calculator page payload; mode Leveling",
+      "guide_order": "point by point as transcribed by timesaver.gg"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "improved_revenge",
+       "name": "Improved Revenge",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "improved_revenge",
+       "name": "Improved Revenge",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "improved_revenge",
+       "name": "Improved Revenge",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "improved_thunder_clap",
+       "name": "Improved Thunder Clap",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "improved_thunder_clap",
+       "name": "Improved Thunder Clap",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "master_of_defense",
+       "name": "Master of Defense",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "master_of_defense",
+       "name": "Master of Defense",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "improved_thunder_clap",
+       "name": "Improved Thunder Clap",
+       "rank": 3
+      },
+      {
+       "level": 23,
+       "id": "last_stand",
+       "name": "Last Stand",
+       "rank": 1
+      },
+      {
+       "level": 24,
+       "id": "improved_bloodrage",
+       "name": "Improved Bloodrage",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "vanguard",
+       "name": "Vanguard",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "improved_bloodrage",
+       "name": "Improved Bloodrage",
+       "rank": 2
+      },
+      {
+       "level": 27,
+       "id": "anticipation",
+       "name": "Anticipation",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "anticipation",
+       "name": "Anticipation",
+       "rank": 2
+      },
+      {
+       "level": 29,
+       "id": "anticipation",
+       "name": "Anticipation",
+       "rank": 3
+      },
+      {
+       "level": 30,
+       "id": "concussion_blow",
+       "name": "Concussion Blow",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "focused_rage",
+       "name": "Focused Rage",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "focused_rage",
+       "name": "Focused Rage",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "focused_rage",
+       "name": "Focused Rage",
+       "rank": 3
+      },
+      {
+       "level": 34,
+       "id": "anticipation",
+       "name": "Anticipation",
+       "rank": 4
+      },
+      {
+       "level": 35,
+       "id": "bastion",
+       "name": "Bastion",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "bastion",
+       "name": "Bastion",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "bastion",
+       "name": "Bastion",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "bastion",
+       "name": "Bastion",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "bastion",
+       "name": "Bastion",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "shield_slam",
+       "name": "Shield Slam",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "improved_rend",
+       "name": "Improved Rend",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 1
+      },
+      {
+       "level": 45,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 2
+      },
+      {
+       "level": 46,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 3
+      },
+      {
+       "level": 47,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 4
+      },
+      {
+       "level": 48,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 5
+      },
+      {
+       "level": 49,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 1
+      },
+      {
+       "level": 50,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 2
+      },
+      {
+       "level": 51,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 3
+      },
+      {
+       "level": 52,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 4
+      },
+      {
+       "level": 53,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 5
+      },
+      {
+       "level": 54,
+       "id": "improved_charge",
+       "name": "Improved Charge",
+       "rank": 1
+      },
+      {
+       "level": 55,
+       "id": "improved_charge",
+       "name": "Improved Charge",
+       "rank": 2
+      },
+      {
+       "level": 56,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 1
+      },
+      {
+       "level": 57,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 2
+      },
+      {
+       "level": 58,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 3
+      },
+      {
+       "level": 59,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 4
+      },
+      {
+       "level": 60,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 5
+      }
+     ],
+     "route_runs": [
+      [
+       "shield_specialization",
+       5
+      ],
+      [
+       "improved_revenge",
+       3
+      ],
+      [
+       "improved_thunder_clap",
+       2
+      ],
+      [
+       "master_of_defense",
+       2
+      ],
+      [
+       "improved_thunder_clap",
+       1
+      ],
+      [
+       "last_stand",
+       1
+      ],
+      [
+       "improved_bloodrage",
+       1
+      ],
+      [
+       "vanguard",
+       1
+      ],
+      [
+       "improved_bloodrage",
+       1
+      ],
+      [
+       "anticipation",
+       3
+      ],
+      [
+       "concussion_blow",
+       1
+      ],
+      [
+       "focused_rage",
+       3
+      ],
+      [
+       "anticipation",
+       1
+      ],
+      [
+       "bastion",
+       5
+      ],
+      [
+       "shield_slam",
+       1
+      ],
+      [
+       "improved_rend",
+       3
+      ],
+      [
+       "deflection",
+       5
+      ],
+      [
+       "cruelty",
+       5
+      ],
+      [
+       "improved_charge",
+       2
+      ],
+      [
+       "unbridled_wrath",
+       5
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "0532-0505-250433120001001351",
+      "split": "10/10/31",
+      "points": 51,
+      "talents": {
+       "deflection": 5,
+       "improved_rend": 3,
+       "improved_charge": 2,
+       "cruelty": 5,
+       "unbridled_wrath": 5,
+       "improved_bloodrage": 2,
+       "shield_specialization": 5,
+       "anticipation": 4,
+       "improved_revenge": 3,
+       "improved_thunder_clap": 3,
+       "last_stand": 1,
+       "master_of_defense": 2,
+       "vanguard": 1,
+       "concussion_blow": 1,
+       "focused_rage": 3,
+       "bastion": 5,
+       "shield_slam": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "secondary": true,
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "Maxroll: Protection"
+     ]
+    },
+    {
+     "name": "Leveling 1-60",
+     "source": {
+      "site": "wowtbc.gg (Warcraft Forever class guide)",
+      "url": "https://wowtbc.gg/warcraftforever/class-guides/protection-warrior/",
+      "author": null,
+      "updated": null,
+      "date_seen": "2026-11-08",
+      "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/protection-warrior/page-data.json, build \"Leveling 1-60\"",
+      "note": "the page shows no author or date",
+      "guide_order": "point by point (\"Leveling 1-60\" talentBuildPaths)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "shield_specialization",
+       "name": "Shield Specialization",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "improved_revenge",
+       "name": "Improved Revenge",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "improved_revenge",
+       "name": "Improved Revenge",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "improved_revenge",
+       "name": "Improved Revenge",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "improved_thunder_clap",
+       "name": "Improved Thunder Clap",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "improved_thunder_clap",
+       "name": "Improved Thunder Clap",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "master_of_defense",
+       "name": "Master of Defense",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "master_of_defense",
+       "name": "Master of Defense",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 1
+      },
+      {
+       "level": 23,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 2
+      },
+      {
+       "level": 24,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 3
+      },
+      {
+       "level": 25,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 4
+      },
+      {
+       "level": 26,
+       "id": "cruelty",
+       "name": "Cruelty",
+       "rank": 5
+      },
+      {
+       "level": 27,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 2
+      },
+      {
+       "level": 29,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 3
+      },
+      {
+       "level": 30,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 4
+      },
+      {
+       "level": 31,
+       "id": "unbridled_wrath",
+       "name": "Unbridled Wrath",
+       "rank": 5
+      },
+      {
+       "level": 32,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 1
+      },
+      {
+       "level": 33,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 2
+      },
+      {
+       "level": 34,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 3
+      },
+      {
+       "level": 35,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 4
+      },
+      {
+       "level": 36,
+       "id": "enrage",
+       "name": "Enrage",
+       "rank": 5
+      },
+      {
+       "level": 37,
+       "id": "last_stand",
+       "name": "Last Stand",
+       "rank": 1
+      },
+      {
+       "level": 38,
+       "id": "improved_thunder_clap",
+       "name": "Improved Thunder Clap",
+       "rank": 3
+      },
+      {
+       "level": 39,
+       "id": "improved_bloodrage",
+       "name": "Improved Bloodrage",
+       "rank": 1
+      },
+      {
+       "level": 40,
+       "id": "vanguard",
+       "name": "Vanguard",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "improved_bloodrage",
+       "name": "Improved Bloodrage",
+       "rank": 2
+      },
+      {
+       "level": 42,
+       "id": "anticipation",
+       "name": "Anticipation",
+       "rank": 1
+      },
+      {
+       "level": 43,
+       "id": "anticipation",
+       "name": "Anticipation",
+       "rank": 2
+      },
+      {
+       "level": 44,
+       "id": "anticipation",
+       "name": "Anticipation",
+       "rank": 3
+      },
+      {
+       "level": 45,
+       "id": "concussion_blow",
+       "name": "Concussion Blow",
+       "rank": 1
+      },
+      {
+       "level": 46,
+       "id": "focused_rage",
+       "name": "Focused Rage",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "focused_rage",
+       "name": "Focused Rage",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "focused_rage",
+       "name": "Focused Rage",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "improved_shield_wall",
+       "name": "Improved Shield Wall",
+       "rank": 1
+      },
+      {
+       "level": 50,
+       "id": "bastion",
+       "name": "Bastion",
+       "rank": 1
+      },
+      {
+       "level": 51,
+       "id": "bastion",
+       "name": "Bastion",
+       "rank": 2
+      },
+      {
+       "level": 52,
+       "id": "bastion",
+       "name": "Bastion",
+       "rank": 3
+      },
+      {
+       "level": 53,
+       "id": "bastion",
+       "name": "Bastion",
+       "rank": 4
+      },
+      {
+       "level": 54,
+       "id": "bastion",
+       "name": "Bastion",
+       "rank": 5
+      },
+      {
+       "level": 55,
+       "id": "shield_slam",
+       "name": "Shield Slam",
+       "rank": 1
+      },
+      {
+       "level": 56,
+       "id": "improved_shield_wall",
+       "name": "Improved Shield Wall",
+       "rank": 2
+      },
+      {
+       "level": 57,
+       "id": "anticipation",
+       "name": "Anticipation",
+       "rank": 4
+      },
+      {
+       "level": 58,
+       "id": "anticipation",
+       "name": "Anticipation",
+       "rank": 5
+      },
+      {
+       "level": 59,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 1
+      },
+      {
+       "level": 60,
+       "id": "deflection",
+       "name": "Deflection",
+       "rank": 2
+      }
+     ],
+     "route_runs": [
+      [
+       "shield_specialization",
+       5
+      ],
+      [
+       "improved_revenge",
+       3
+      ],
+      [
+       "improved_thunder_clap",
+       2
+      ],
+      [
+       "master_of_defense",
+       2
+      ],
+      [
+       "cruelty",
+       5
+      ],
+      [
+       "unbridled_wrath",
+       5
+      ],
+      [
+       "enrage",
+       5
+      ],
+      [
+       "last_stand",
+       1
+      ],
+      [
+       "improved_thunder_clap",
+       1
+      ],
+      [
+       "improved_bloodrage",
+       1
+      ],
+      [
+       "vanguard",
+       1
+      ],
+      [
+       "improved_bloodrage",
+       1
+      ],
+      [
+       "anticipation",
+       3
+      ],
+      [
+       "concussion_blow",
+       1
+      ],
+      [
+       "focused_rage",
+       3
+      ],
+      [
+       "improved_shield_wall",
+       1
+      ],
+      [
+       "bastion",
+       5
+      ],
+      [
+       "shield_slam",
+       1
+      ],
+      [
+       "improved_shield_wall",
+       1
+      ],
+      [
+       "anticipation",
+       2
+      ],
+      [
+       "deflection",
+       2
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "02-05050005-250533120001021351",
+      "split": "2/15/34",
+      "points": 51,
+      "talents": {
+       "deflection": 2,
+       "cruelty": 5,
+       "unbridled_wrath": 5,
+       "enrage": 5,
+       "improved_bloodrage": 2,
+       "shield_specialization": 5,
+       "anticipation": 5,
+       "improved_revenge": 3,
+       "improved_thunder_clap": 3,
+       "last_stand": 1,
+       "master_of_defense": 2,
+       "vanguard": 1,
+       "improved_shield_wall": 2,
+       "concussion_blow": 1,
+       "focused_rage": 3,
+       "bastion": 5,
+       "shield_slam": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "wowtbc_spec_page": "protection-warrior",
+     "spec_assigned_by": "guide page is for this spec"
+    }
+   ],
+   "endgame": {
+    "tank": [
+     {
+      "name": "Standard Raid Build",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/protection-warrior/talents",
+       "title": "WoW Forever Protection Warrior Talents & Builds Guide",
+       "author": "Babyhoof",
+       "updated": "4th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #0 (\"Standard Raid Build\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "05303013002-03-050530120301021251",
+       "split": "17/3/31",
+       "points": 51,
+       "talents": {
+        "deflection": 5,
+        "improved_rend": 3,
+        "improved_tactical_mastery": 3,
+        "anger_management": 1,
+        "deep_wounds": 3,
+        "impale": 2,
+        "cruelty": 3,
+        "shield_specialization": 5,
+        "anticipation": 5,
+        "improved_revenge": 3,
+        "last_stand": 1,
+        "master_of_defense": 2,
+        "defiance": 3,
+        "vanguard": 1,
+        "improved_shield_wall": 2,
+        "concussion_blow": 1,
+        "focused_rage": 2,
+        "bastion": 5,
+        "shield_slam": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "notes": [
+       "guide text: ...d Improved Sunder Armor in favour of having extra points in the Arms tree to pick up Impale and Deep Wounds , both of which gain significant value when in a raid environment due to the added stats from raid buffs we can expect. Other useful utility talents, including Improved Shield Bash and Improved Charge , are skipped due to the rarity you will be able to make use of them in a raid environment."
+      ],
+      "method_spec_page": "protection-warrior",
+      "embedded_order_check": {
+       "ok": false,
+       "errors": [
+        "L49: Deep Wounds row 3 needs 10 above, has 8",
+        "L50: Deep Wounds row 3 needs 10 above, has 8",
+        "L51: Deep Wounds row 3 needs 10 above, has 8",
+        "L52: Impale row 4 needs 15 above, has 11",
+        "L53: Impale row 4 needs 15 above, has 11"
+       ],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": [
+       "raid"
+      ],
+      "use_words_in_guide_text": [
+       "raid"
+      ]
+     },
+     {
+      "name": "Standard Dungeon Build",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/protection-warrior/talents",
+       "title": "WoW Forever Protection Warrior Talents & Builds Guide",
+       "author": "Babyhoof",
+       "updated": "4th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #1 (\"Standard Dungeon Build\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "02-0505010501-050033120301221351",
+       "split": "2/17/32",
+       "points": 51,
+       "talents": {
+        "deflection": 2,
+        "cruelty": 5,
+        "unbridled_wrath": 5,
+        "piercing_howl": 1,
+        "enrage": 5,
+        "reckless_swings": 1,
+        "shield_specialization": 5,
+        "improved_revenge": 3,
+        "improved_thunder_clap": 3,
+        "last_stand": 1,
+        "master_of_defense": 2,
+        "defiance": 3,
+        "vanguard": 1,
+        "improved_shield_bash": 2,
+        "improved_shield_wall": 2,
+        "concussion_blow": 1,
+        "focused_rage": 3,
+        "bastion": 5,
+        "shield_slam": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "notes": [
+       "guide text: ...slightly, picking up some of the utility talents in the Protection Tree, that we skipped over previously. Talents Discussion When it comes to Legacy Talent points, we have very few that affect our end game performance. However, I would advise picking up Gourmand and Permanence , both of which can save you money and Rage during a fight, letting you spend more globals and rage on damaging abilities."
+      ],
+      "method_spec_page": "protection-warrior",
+      "embedded_order_check": {
+       "ok": false,
+       "errors": [
+        "L49: Bastion row 6 needs 25 above, has 24",
+        "L50: Bastion row 6 needs 25 above, has 24",
+        "L51: Bastion row 6 needs 25 above, has 24",
+        "L52: Bastion row 6 needs 25 above, has 24",
+        "L53: Bastion row 6 needs 25 above, has 24"
+       ],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": [
+       "dungeon"
+      ],
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Standard Build",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/protection-warrior/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/protection-warrior/page-data.json, build \"Standard Build\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "-0505000501-050533120301021351",
+       "split": "0/16/35",
+       "points": 51,
+       "talents": {
+        "cruelty": 5,
+        "unbridled_wrath": 5,
+        "enrage": 5,
+        "reckless_swings": 1,
+        "shield_specialization": 5,
+        "anticipation": 5,
+        "improved_revenge": 3,
+        "improved_thunder_clap": 3,
+        "last_stand": 1,
+        "master_of_defense": 2,
+        "defiance": 3,
+        "vanguard": 1,
+        "improved_shield_wall": 2,
+        "concussion_blow": 1,
+        "focused_rage": 3,
+        "bastion": 5,
+        "shield_slam": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "protection-warrior",
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     }
+    ]
+   }
+  }
+ },
+ "excluded": [
+  {
+   "source": "https://www.method.gg/wow-forever/class-guides/arms-warrior/talents",
+   "label": "embed #1 near \"Talents Discussion\"",
+   "reason": "embed is not a class tree build (Legacy talents or a short discussion example); it does not decode against the class tree"
+  },
+  {
+   "source": "https://www.method.gg/wow-forever/class-guides/fury-warrior/talents",
+   "label": "embed #1 near \"Talents Discussion\"",
+   "reason": "embed is not a class tree build (Legacy talents or a short discussion example); it does not decode against the class tree"
+  },
+  {
+   "source": "https://www.method.gg/wow-forever/class-guides/protection-warrior/talents",
+   "label": "embed #2 near \"Talents Discussion\"",
+   "reason": "embed is not a class tree build (Legacy talents or a short discussion example); it does not decode against the class tree"
+  }
+ ]
+}

@@ -1,0 +1,5458 @@
+{
+ "class": "hunter",
+ "generated": "2026-11-08",
+ "generator": "wowsim/pipeline/talents/build_routes.py",
+ "talents_file": "data/talents/hunter.json",
+ "code_format": "see data/talents/hunter.json code_format; codes here are re-encoded from each source's own data",
+ "level_rule": "order[i] is the point spent at level 10 + i",
+ "sources_tried": {
+  "Maxroll": "leveling guide planner profiles (point order): fetched",
+  "Method.gg": "leveling guide + spec \"talents\" pages (embeds with point order): fetched",
+  "Warcraft Tavern": "leveling guide + spec guides (Warcraft DB ordered links): fetched",
+  "wowtbc.gg": "Warcraft Forever class guides (page-data JSON: level 60 builds and a \"Leveling 1-60\" point order): fetched",
+  "timesaver.gg": "calculator presets (secondary transcriptions of Maxroll, Wowhead, Icy Veins, Method)",
+  "Wowhead, Icy Veins, Mobalytics": "blocked by Cloudflare from this sandbox (HTTP 403/202 challenge); only timesaver.gg transcriptions of their codes are included, marked secondary",
+  "wowsims-forever": "sim presets are not guides; used only as decode checks (see data/talents/README.md)"
+ },
+ "specs": {
+  "beast_mastery": {
+   "name": "Beast Mastery",
+   "tree": "beast_mastery",
+   "dungeon_roles": [
+    "damage"
+   ],
+   "leveling": [
+    {
+     "name": "Beast Mastery (Reccomended)",
+     "source": {
+      "site": "Maxroll",
+      "url": "https://maxroll.gg/wow-forever/class-guides/hunter-leveling-guide",
+      "title": "Hunter Leveling Guide",
+      "author": "maxroll",
+      "published": "October 30, 2026",
+      "updated": "November 4, 2026",
+      "date_seen": "2026-11-08",
+      "data": "planner profile \"Beast Mastery (Reccomended)\" (uid uuGAG8iw, planner w25j8w0u saved 2026-11-05 18:54:32): talents.history, TraitNodeEntry ids from window.__remixContext",
+      "guide_order": "point by point (the planner history is the guide's own order)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "improved_revive_pet",
+       "name": "Improved Revive Pet",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "improved_revive_pet",
+       "name": "Improved Revive Pet",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "focused_fire",
+       "name": "Focused Fire",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "focused_fire",
+       "name": "Focused Fire",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "endurance_training",
+       "name": "Endurance Training",
+       "rank": 1
+      },
+      {
+       "level": 20,
+       "id": "bestial_swiftness",
+       "name": "Bestial Swiftness",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "pathfinding",
+       "name": "Pathfinding",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "pathfinding",
+       "name": "Pathfinding",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "unleashed_fury",
+       "name": "Unleashed Fury",
+       "rank": 1
+      },
+      {
+       "level": 24,
+       "id": "unleashed_fury",
+       "name": "Unleashed Fury",
+       "rank": 2
+      },
+      {
+       "level": 25,
+       "id": "summon_hawk",
+       "name": "Summon Hawk",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "unleashed_fury",
+       "name": "Unleashed Fury",
+       "rank": 3
+      },
+      {
+       "level": 27,
+       "id": "unleashed_fury",
+       "name": "Unleashed Fury",
+       "rank": 4
+      },
+      {
+       "level": 28,
+       "id": "unleashed_fury",
+       "name": "Unleashed Fury",
+       "rank": 5
+      },
+      {
+       "level": 29,
+       "id": "ferocity",
+       "name": "Ferocity",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "intimidation",
+       "name": "Intimidation",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "bestial_discipline",
+       "name": "Bestial Discipline",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "bestial_discipline",
+       "name": "Bestial Discipline",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "ferocity",
+       "name": "Ferocity",
+       "rank": 2
+      },
+      {
+       "level": 34,
+       "id": "ferocity",
+       "name": "Ferocity",
+       "rank": 3
+      },
+      {
+       "level": 35,
+       "id": "ferocity",
+       "name": "Ferocity",
+       "rank": 4
+      },
+      {
+       "level": 36,
+       "id": "ferocity",
+       "name": "Ferocity",
+       "rank": 5
+      },
+      {
+       "level": 37,
+       "id": "frenzy",
+       "name": "Frenzy",
+       "rank": 1
+      },
+      {
+       "level": 38,
+       "id": "frenzy",
+       "name": "Frenzy",
+       "rank": 2
+      },
+      {
+       "level": 39,
+       "id": "frenzy",
+       "name": "Frenzy",
+       "rank": 3
+      },
+      {
+       "level": 40,
+       "id": "bestial_wrath",
+       "name": "Bestial Wrath",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "hawk_eye",
+       "name": "Hawk Eye",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "hawk_eye",
+       "name": "Hawk Eye",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "hawk_eye",
+       "name": "Hawk Eye",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 1
+      },
+      {
+       "level": 45,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 2
+      },
+      {
+       "level": 46,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 4
+      },
+      {
+       "level": 50,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 5
+      },
+      {
+       "level": 51,
+       "id": "rapid_killing",
+       "name": "Rapid Killing",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "rapid_killing",
+       "name": "Rapid Killing",
+       "rank": 2
+      },
+      {
+       "level": 53,
+       "id": "efficiency",
+       "name": "Efficiency",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "efficiency",
+       "name": "Efficiency",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "efficiency",
+       "name": "Efficiency",
+       "rank": 3
+      },
+      {
+       "level": 56,
+       "id": "trueshot_aura",
+       "name": "Trueshot Aura",
+       "rank": 1
+      },
+      {
+       "level": 57,
+       "id": "frenzy",
+       "name": "Frenzy",
+       "rank": 4
+      },
+      {
+       "level": 58,
+       "id": "frenzy",
+       "name": "Frenzy",
+       "rank": 5
+      },
+      {
+       "level": 59,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 3
+      }
+     ],
+     "route_runs": [
+      [
+       "deadly_aspects",
+       5
+      ],
+      [
+       "improved_revive_pet",
+       2
+      ],
+      [
+       "focused_fire",
+       2
+      ],
+      [
+       "endurance_training",
+       1
+      ],
+      [
+       "bestial_swiftness",
+       1
+      ],
+      [
+       "pathfinding",
+       2
+      ],
+      [
+       "unleashed_fury",
+       2
+      ],
+      [
+       "summon_hawk",
+       1
+      ],
+      [
+       "unleashed_fury",
+       3
+      ],
+      [
+       "ferocity",
+       1
+      ],
+      [
+       "intimidation",
+       1
+      ],
+      [
+       "bestial_discipline",
+       2
+      ],
+      [
+       "ferocity",
+       4
+      ],
+      [
+       "frenzy",
+       3
+      ],
+      [
+       "bestial_wrath",
+       1
+      ],
+      [
+       "hawk_eye",
+       3
+      ],
+      [
+       "lethal_attacks",
+       2
+      ],
+      [
+       "careful_aim",
+       5
+      ],
+      [
+       "rapid_killing",
+       2
+      ],
+      [
+       "efficiency",
+       3
+      ],
+      [
+       "trueshot_aura",
+       1
+      ],
+      [
+       "frenzy",
+       2
+      ],
+      [
+       "lethal_attacks",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "5120221505101251-3030352001",
+      "split": "33/17/0",
+      "points": 50,
+      "talents": {
+       "deadly_aspects": 5,
+       "endurance_training": 1,
+       "focused_fire": 2,
+       "improved_revive_pet": 2,
+       "pathfinding": 2,
+       "bestial_swiftness": 1,
+       "unleashed_fury": 5,
+       "ferocity": 5,
+       "summon_hawk": 1,
+       "intimidation": 1,
+       "bestial_discipline": 2,
+       "frenzy": 5,
+       "bestial_wrath": 1,
+       "hawk_eye": 3,
+       "lethal_attacks": 3,
+       "efficiency": 3,
+       "careful_aim": 5,
+       "rapid_killing": 2,
+       "trueshot_aura": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "notes": [
+      "the guide's build has 50 points, so it covers levels 10 to 59"
+     ],
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "timesaver.gg (transcription): Beast Mastery leveling (Maxroll)"
+     ]
+    },
+    {
+     "name": "Recommended Leveling Talents for Hunter",
+     "source": {
+      "site": "Method.gg",
+      "url": "https://www.method.gg/wow-forever/wow-forever-hunter-leveling-guide-and-talents",
+      "title": "WoW Forever Hunter Leveling Guide & Talents",
+      "author": "Celz",
+      "updated": "8th November 2026",
+      "patch": null,
+      "date_seen": "2026-11-08",
+      "data": "data-talent embed #0 (\"Recommended Leveling Talents for Hunter\"), decoded with the reader in pipeline/talents/method_decode.py",
+      "guide_order": "point by point (the embed carries the order after \";\")"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "focused_fire",
+       "name": "Focused Fire",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "focused_fire",
+       "name": "Focused Fire",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "improved_revive_pet",
+       "name": "Improved Revive Pet",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "improved_revive_pet",
+       "name": "Improved Revive Pet",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "endurance_training",
+       "name": "Endurance Training",
+       "rank": 1
+      },
+      {
+       "level": 20,
+       "id": "pathfinding",
+       "name": "Pathfinding",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "pathfinding",
+       "name": "Pathfinding",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "unleashed_fury",
+       "name": "Unleashed Fury",
+       "rank": 1
+      },
+      {
+       "level": 23,
+       "id": "unleashed_fury",
+       "name": "Unleashed Fury",
+       "rank": 2
+      },
+      {
+       "level": 24,
+       "id": "unleashed_fury",
+       "name": "Unleashed Fury",
+       "rank": 3
+      },
+      {
+       "level": 25,
+       "id": "summon_hawk",
+       "name": "Summon Hawk",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "bestial_swiftness",
+       "name": "Bestial Swiftness",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "unleashed_fury",
+       "name": "Unleashed Fury",
+       "rank": 4
+      },
+      {
+       "level": 28,
+       "id": "ferocity",
+       "name": "Ferocity",
+       "rank": 1
+      },
+      {
+       "level": 29,
+       "id": "ferocity",
+       "name": "Ferocity",
+       "rank": 2
+      },
+      {
+       "level": 30,
+       "id": "intimidation",
+       "name": "Intimidation",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "bestial_discipline",
+       "name": "Bestial Discipline",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "bestial_discipline",
+       "name": "Bestial Discipline",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "ferocity",
+       "name": "Ferocity",
+       "rank": 3
+      },
+      {
+       "level": 34,
+       "id": "ferocity",
+       "name": "Ferocity",
+       "rank": 4
+      },
+      {
+       "level": 35,
+       "id": "ferocity",
+       "name": "Ferocity",
+       "rank": 5
+      },
+      {
+       "level": 36,
+       "id": "frenzy",
+       "name": "Frenzy",
+       "rank": 1
+      },
+      {
+       "level": 37,
+       "id": "frenzy",
+       "name": "Frenzy",
+       "rank": 2
+      },
+      {
+       "level": 38,
+       "id": "frenzy",
+       "name": "Frenzy",
+       "rank": 3
+      },
+      {
+       "level": 39,
+       "id": "frenzy",
+       "name": "Frenzy",
+       "rank": 4
+      },
+      {
+       "level": 40,
+       "id": "bestial_wrath",
+       "name": "Bestial Wrath",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 4
+      },
+      {
+       "level": 45,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 4
+      },
+      {
+       "level": 50,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 5
+      },
+      {
+       "level": 51,
+       "id": "rapid_killing",
+       "name": "Rapid Killing",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "rapid_killing",
+       "name": "Rapid Killing",
+       "rank": 2
+      },
+      {
+       "level": 53,
+       "id": "efficiency",
+       "name": "Efficiency",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "efficiency",
+       "name": "Efficiency",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "efficiency",
+       "name": "Efficiency",
+       "rank": 3
+      },
+      {
+       "level": 56,
+       "id": "mortal_shots",
+       "name": "Mortal Shots",
+       "rank": 1
+      },
+      {
+       "level": 57,
+       "id": "mortal_shots",
+       "name": "Mortal Shots",
+       "rank": 2
+      },
+      {
+       "level": 58,
+       "id": "mortal_shots",
+       "name": "Mortal Shots",
+       "rank": 3
+      },
+      {
+       "level": 59,
+       "id": "mortal_shots",
+       "name": "Mortal Shots",
+       "rank": 4
+      },
+      {
+       "level": 60,
+       "id": "mortal_shots",
+       "name": "Mortal Shots",
+       "rank": 5
+      }
+     ],
+     "route_runs": [
+      [
+       "deadly_aspects",
+       5
+      ],
+      [
+       "focused_fire",
+       2
+      ],
+      [
+       "improved_revive_pet",
+       2
+      ],
+      [
+       "endurance_training",
+       1
+      ],
+      [
+       "pathfinding",
+       2
+      ],
+      [
+       "unleashed_fury",
+       3
+      ],
+      [
+       "summon_hawk",
+       1
+      ],
+      [
+       "bestial_swiftness",
+       1
+      ],
+      [
+       "unleashed_fury",
+       1
+      ],
+      [
+       "ferocity",
+       2
+      ],
+      [
+       "intimidation",
+       1
+      ],
+      [
+       "bestial_discipline",
+       2
+      ],
+      [
+       "ferocity",
+       3
+      ],
+      [
+       "frenzy",
+       4
+      ],
+      [
+       "bestial_wrath",
+       1
+      ],
+      [
+       "lethal_attacks",
+       5
+      ],
+      [
+       "careful_aim",
+       5
+      ],
+      [
+       "rapid_killing",
+       2
+      ],
+      [
+       "efficiency",
+       3
+      ],
+      [
+       "mortal_shots",
+       5
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "5120221405101241-00503520005",
+      "split": "31/20/0",
+      "points": 51,
+      "talents": {
+       "deadly_aspects": 5,
+       "endurance_training": 1,
+       "focused_fire": 2,
+       "improved_revive_pet": 2,
+       "pathfinding": 2,
+       "bestial_swiftness": 1,
+       "unleashed_fury": 4,
+       "ferocity": 5,
+       "summon_hawk": 1,
+       "intimidation": 1,
+       "bestial_discipline": 2,
+       "frenzy": 4,
+       "bestial_wrath": 1,
+       "lethal_attacks": 5,
+       "efficiency": 3,
+       "careful_aim": 5,
+       "rapid_killing": 2,
+       "mortal_shots": 5
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "notes": [
+      "guide text after the build: ...good gear and weapons can still make all the difference in how easy fights feel while leveling your character. Generally, weapon upgrades will be worth more than other slots, as weapons provide the baseline damage your Auto Shot and ranged abilities do, compared to other slots which throughout the l"
+     ],
+     "spec_assigned_by": "tree with most points (guide label names no spec)"
+    },
+    {
+     "name": "Beast Mastery leveling",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/hunter",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Icy Veins",
+       "url": "https://www.icy-veins.com/wow-forever/beast-mastery-hunter-leveling",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Beast Mastery leveling\" in the calculator page payload; mode Leveling",
+      "guide_order": "final build only"
+     },
+     "kind": "final_only",
+     "final": {
+      "code": "5120221505101241-0052052-5",
+      "split": "32/14/5",
+      "points": 51,
+      "talents": {
+       "deadly_aspects": 5,
+       "endurance_training": 1,
+       "focused_fire": 2,
+       "improved_revive_pet": 2,
+       "pathfinding": 2,
+       "bestial_swiftness": 1,
+       "unleashed_fury": 5,
+       "ferocity": 5,
+       "summon_hawk": 1,
+       "intimidation": 1,
+       "bestial_discipline": 2,
+       "frenzy": 4,
+       "bestial_wrath": 1,
+       "lethal_attacks": 5,
+       "improved_stings": 2,
+       "careful_aim": 5,
+       "rapid_killing": 2,
+       "improved_tracking": 5
+      },
+      "legal_on_client_tree": "OK"
+     },
+     "secondary": true,
+     "notes": [
+      "original Icy Veins page not reachable from this sandbox (Cloudflare); this is timesaver.gg's transcription, unverified against the original"
+     ],
+     "spec_assigned_by": "guide label"
+    },
+    {
+     "name": "Beast Mastery leveling (Maxroll)",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/hunter",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Maxroll",
+       "url": "https://maxroll.gg/wow-forever/class-guides/hunter-leveling-guide",
+       "updated": "2026-11-05"
+      },
+      "data": "preset \"Beast Mastery leveling (Maxroll)\" in the calculator page payload; mode Leveling",
+      "guide_order": "point by point as transcribed by timesaver.gg"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "improved_revive_pet",
+       "name": "Improved Revive Pet",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "improved_revive_pet",
+       "name": "Improved Revive Pet",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "focused_fire",
+       "name": "Focused Fire",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "focused_fire",
+       "name": "Focused Fire",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "endurance_training",
+       "name": "Endurance Training",
+       "rank": 1
+      },
+      {
+       "level": 20,
+       "id": "bestial_swiftness",
+       "name": "Bestial Swiftness",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "pathfinding",
+       "name": "Pathfinding",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "pathfinding",
+       "name": "Pathfinding",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "unleashed_fury",
+       "name": "Unleashed Fury",
+       "rank": 1
+      },
+      {
+       "level": 24,
+       "id": "unleashed_fury",
+       "name": "Unleashed Fury",
+       "rank": 2
+      },
+      {
+       "level": 25,
+       "id": "summon_hawk",
+       "name": "Summon Hawk",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "unleashed_fury",
+       "name": "Unleashed Fury",
+       "rank": 3
+      },
+      {
+       "level": 27,
+       "id": "unleashed_fury",
+       "name": "Unleashed Fury",
+       "rank": 4
+      },
+      {
+       "level": 28,
+       "id": "unleashed_fury",
+       "name": "Unleashed Fury",
+       "rank": 5
+      },
+      {
+       "level": 29,
+       "id": "ferocity",
+       "name": "Ferocity",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "intimidation",
+       "name": "Intimidation",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "bestial_discipline",
+       "name": "Bestial Discipline",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "bestial_discipline",
+       "name": "Bestial Discipline",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "ferocity",
+       "name": "Ferocity",
+       "rank": 2
+      },
+      {
+       "level": 34,
+       "id": "ferocity",
+       "name": "Ferocity",
+       "rank": 3
+      },
+      {
+       "level": 35,
+       "id": "ferocity",
+       "name": "Ferocity",
+       "rank": 4
+      },
+      {
+       "level": 36,
+       "id": "ferocity",
+       "name": "Ferocity",
+       "rank": 5
+      },
+      {
+       "level": 37,
+       "id": "frenzy",
+       "name": "Frenzy",
+       "rank": 1
+      },
+      {
+       "level": 38,
+       "id": "frenzy",
+       "name": "Frenzy",
+       "rank": 2
+      },
+      {
+       "level": 39,
+       "id": "frenzy",
+       "name": "Frenzy",
+       "rank": 3
+      },
+      {
+       "level": 40,
+       "id": "bestial_wrath",
+       "name": "Bestial Wrath",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "hawk_eye",
+       "name": "Hawk Eye",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "hawk_eye",
+       "name": "Hawk Eye",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "hawk_eye",
+       "name": "Hawk Eye",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 1
+      },
+      {
+       "level": 45,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 2
+      },
+      {
+       "level": 46,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 4
+      },
+      {
+       "level": 50,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 5
+      },
+      {
+       "level": 51,
+       "id": "rapid_killing",
+       "name": "Rapid Killing",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "rapid_killing",
+       "name": "Rapid Killing",
+       "rank": 2
+      },
+      {
+       "level": 53,
+       "id": "efficiency",
+       "name": "Efficiency",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "efficiency",
+       "name": "Efficiency",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "efficiency",
+       "name": "Efficiency",
+       "rank": 3
+      },
+      {
+       "level": 56,
+       "id": "trueshot_aura",
+       "name": "Trueshot Aura",
+       "rank": 1
+      },
+      {
+       "level": 57,
+       "id": "frenzy",
+       "name": "Frenzy",
+       "rank": 4
+      },
+      {
+       "level": 58,
+       "id": "frenzy",
+       "name": "Frenzy",
+       "rank": 5
+      },
+      {
+       "level": 59,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 3
+      }
+     ],
+     "route_runs": [
+      [
+       "deadly_aspects",
+       5
+      ],
+      [
+       "improved_revive_pet",
+       2
+      ],
+      [
+       "focused_fire",
+       2
+      ],
+      [
+       "endurance_training",
+       1
+      ],
+      [
+       "bestial_swiftness",
+       1
+      ],
+      [
+       "pathfinding",
+       2
+      ],
+      [
+       "unleashed_fury",
+       2
+      ],
+      [
+       "summon_hawk",
+       1
+      ],
+      [
+       "unleashed_fury",
+       3
+      ],
+      [
+       "ferocity",
+       1
+      ],
+      [
+       "intimidation",
+       1
+      ],
+      [
+       "bestial_discipline",
+       2
+      ],
+      [
+       "ferocity",
+       4
+      ],
+      [
+       "frenzy",
+       3
+      ],
+      [
+       "bestial_wrath",
+       1
+      ],
+      [
+       "hawk_eye",
+       3
+      ],
+      [
+       "lethal_attacks",
+       2
+      ],
+      [
+       "careful_aim",
+       5
+      ],
+      [
+       "rapid_killing",
+       2
+      ],
+      [
+       "efficiency",
+       3
+      ],
+      [
+       "trueshot_aura",
+       1
+      ],
+      [
+       "frenzy",
+       2
+      ],
+      [
+       "lethal_attacks",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "5120221505101251-3030352001",
+      "split": "33/17/0",
+      "points": 50,
+      "talents": {
+       "deadly_aspects": 5,
+       "endurance_training": 1,
+       "focused_fire": 2,
+       "improved_revive_pet": 2,
+       "pathfinding": 2,
+       "bestial_swiftness": 1,
+       "unleashed_fury": 5,
+       "ferocity": 5,
+       "summon_hawk": 1,
+       "intimidation": 1,
+       "bestial_discipline": 2,
+       "frenzy": 5,
+       "bestial_wrath": 1,
+       "hawk_eye": 3,
+       "lethal_attacks": 3,
+       "efficiency": 3,
+       "careful_aim": 5,
+       "rapid_killing": 2,
+       "trueshot_aura": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "notes": [
+      "the guide's build has 50 points, so it covers levels 10 to 59"
+     ],
+     "secondary": true,
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "Maxroll: Beast Mastery (Reccomended)"
+     ]
+    },
+    {
+     "name": "Leveling 1-60",
+     "source": {
+      "site": "wowtbc.gg (Warcraft Forever class guide)",
+      "url": "https://wowtbc.gg/warcraftforever/class-guides/beast-mastery-hunter/",
+      "author": null,
+      "updated": null,
+      "date_seen": "2026-11-08",
+      "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/beast-mastery-hunter/page-data.json, build \"Leveling 1-60\"",
+      "note": "the page shows no author or date",
+      "guide_order": "point by point (\"Leveling 1-60\" talentBuildPaths)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "focused_fire",
+       "name": "Focused Fire",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "focused_fire",
+       "name": "Focused Fire",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "endurance_training",
+       "name": "Endurance Training",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "improved_revive_pet",
+       "name": "Improved Revive Pet",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "improved_revive_pet",
+       "name": "Improved Revive Pet",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "bestial_swiftness",
+       "name": "Bestial Swiftness",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "unleashed_fury",
+       "name": "Unleashed Fury",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "unleashed_fury",
+       "name": "Unleashed Fury",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "unleashed_fury",
+       "name": "Unleashed Fury",
+       "rank": 3
+      },
+      {
+       "level": 24,
+       "id": "unleashed_fury",
+       "name": "Unleashed Fury",
+       "rank": 4
+      },
+      {
+       "level": 25,
+       "id": "summon_hawk",
+       "name": "Summon Hawk",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "unleashed_fury",
+       "name": "Unleashed Fury",
+       "rank": 5
+      },
+      {
+       "level": 27,
+       "id": "ferocity",
+       "name": "Ferocity",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "ferocity",
+       "name": "Ferocity",
+       "rank": 2
+      },
+      {
+       "level": 29,
+       "id": "ferocity",
+       "name": "Ferocity",
+       "rank": 3
+      },
+      {
+       "level": 30,
+       "id": "intimidation",
+       "name": "Intimidation",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "bestial_discipline",
+       "name": "Bestial Discipline",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "bestial_discipline",
+       "name": "Bestial Discipline",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "ferocity",
+       "name": "Ferocity",
+       "rank": 4
+      },
+      {
+       "level": 34,
+       "id": "ferocity",
+       "name": "Ferocity",
+       "rank": 5
+      },
+      {
+       "level": 35,
+       "id": "frenzy",
+       "name": "Frenzy",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "frenzy",
+       "name": "Frenzy",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "frenzy",
+       "name": "Frenzy",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "frenzy",
+       "name": "Frenzy",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "frenzy",
+       "name": "Frenzy",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "bestial_wrath",
+       "name": "Bestial Wrath",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 4
+      },
+      {
+       "level": 45,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 4
+      },
+      {
+       "level": 50,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 5
+      },
+      {
+       "level": 51,
+       "id": "efficiency",
+       "name": "Efficiency",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "efficiency",
+       "name": "Efficiency",
+       "rank": 2
+      },
+      {
+       "level": 53,
+       "id": "efficiency",
+       "name": "Efficiency",
+       "rank": 3
+      },
+      {
+       "level": 54,
+       "id": "efficiency",
+       "name": "Efficiency",
+       "rank": 4
+      },
+      {
+       "level": 55,
+       "id": "efficiency",
+       "name": "Efficiency",
+       "rank": 5
+      },
+      {
+       "level": 56,
+       "id": "trueshot_aura",
+       "name": "Trueshot Aura",
+       "rank": 1
+      },
+      {
+       "level": 57,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 1
+      },
+      {
+       "level": 58,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 2
+      },
+      {
+       "level": 59,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 3
+      },
+      {
+       "level": 60,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 4
+      }
+     ],
+     "route_runs": [
+      [
+       "deadly_aspects",
+       5
+      ],
+      [
+       "focused_fire",
+       2
+      ],
+      [
+       "endurance_training",
+       1
+      ],
+      [
+       "improved_revive_pet",
+       2
+      ],
+      [
+       "bestial_swiftness",
+       1
+      ],
+      [
+       "unleashed_fury",
+       4
+      ],
+      [
+       "summon_hawk",
+       1
+      ],
+      [
+       "unleashed_fury",
+       1
+      ],
+      [
+       "ferocity",
+       3
+      ],
+      [
+       "intimidation",
+       1
+      ],
+      [
+       "bestial_discipline",
+       2
+      ],
+      [
+       "ferocity",
+       2
+      ],
+      [
+       "frenzy",
+       5
+      ],
+      [
+       "bestial_wrath",
+       1
+      ],
+      [
+       "lethal_attacks",
+       5
+      ],
+      [
+       "careful_aim",
+       5
+      ],
+      [
+       "efficiency",
+       5
+      ],
+      [
+       "trueshot_aura",
+       1
+      ],
+      [
+       "improved_tracking",
+       4
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "5120201505101251-0050550001-4",
+      "split": "31/16/4",
+      "points": 51,
+      "talents": {
+       "deadly_aspects": 5,
+       "endurance_training": 1,
+       "focused_fire": 2,
+       "improved_revive_pet": 2,
+       "bestial_swiftness": 1,
+       "unleashed_fury": 5,
+       "ferocity": 5,
+       "summon_hawk": 1,
+       "intimidation": 1,
+       "bestial_discipline": 2,
+       "frenzy": 5,
+       "bestial_wrath": 1,
+       "lethal_attacks": 5,
+       "efficiency": 5,
+       "careful_aim": 5,
+       "trueshot_aura": 1,
+       "improved_tracking": 4
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "wowtbc_spec_page": "beast-mastery-hunter",
+     "spec_assigned_by": "guide page is for this spec"
+    }
+   ],
+   "endgame": {
+    "damage": [
+     {
+      "name": "Optimal Beast Mastery Talents",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/beast-mastery-hunter/talents",
+       "title": "WoW Forever Beast Mastery Hunter Talents & Builds Guide",
+       "author": "Vareion",
+       "updated": "5th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #0 (\"Optimal Beast Mastery Talents\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "5120201505101251-30500520014",
+       "split": "31/20/0",
+       "points": 51,
+       "talents": {
+        "deadly_aspects": 5,
+        "endurance_training": 1,
+        "focused_fire": 2,
+        "improved_revive_pet": 2,
+        "bestial_swiftness": 1,
+        "unleashed_fury": 5,
+        "ferocity": 5,
+        "summon_hawk": 1,
+        "intimidation": 1,
+        "bestial_discipline": 2,
+        "frenzy": 5,
+        "bestial_wrath": 1,
+        "hawk_eye": 3,
+        "lethal_attacks": 5,
+        "careful_aim": 5,
+        "rapid_killing": 2,
+        "trueshot_aura": 1,
+        "mortal_shots": 4
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "notes": [
+       "guide text: ...l recommend to always have at least one person bringing this buff to a raid team but since this only affects ranged attack power, thus pretty much only Hunters, I would recommend to talent out of it and put the last point in Mortal Shots if you can. Picking up Deadly Aspects will give your Auto Shot a 10% chance to increase your attack speed by 30% for 12 seconds. This is incredibly strong, as Hun"
+      ],
+      "method_spec_page": "beast-mastery-hunter",
+      "embedded_order_check": {
+       "ok": true,
+       "errors": [],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "same_final_code_as": [
+       "Warcraft Tavern: Beast Mastery Hunter talent build"
+      ],
+      "use_in_build_name": null,
+      "use_words_in_guide_text": [
+       "raid"
+      ]
+     },
+     {
+      "name": "Beast Mastery Hunter talent build",
+      "source": {
+       "site": "Warcraft Tavern",
+       "url": "https://www.warcrafttavern.com/forever/guides/beast-mastery-hunter/",
+       "title": "Beast Mastery Hunter Guide - WoW Forever - Warcraft Tavern",
+       "author": "sponge",
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "calculator_link": "https://www.warcrafttavern.com/forever/tools/talent-calculator/hunter#?t=A11111442aaaaaeeeeejj9hfmmmmmpB222226666688eeeeA66B000d",
+       "data": "Warcraft DB calculator link #?t= (one character per point, in order)",
+       "guide_order": "point by point (the link string is ordered)"
+      },
+      "kind": "level_60_build",
+      "order": [
+       {
+        "level": 10,
+        "id": "deadly_aspects",
+        "name": "Deadly Aspects",
+        "rank": 1
+       },
+       {
+        "level": 11,
+        "id": "deadly_aspects",
+        "name": "Deadly Aspects",
+        "rank": 2
+       },
+       {
+        "level": 12,
+        "id": "deadly_aspects",
+        "name": "Deadly Aspects",
+        "rank": 3
+       },
+       {
+        "level": 13,
+        "id": "deadly_aspects",
+        "name": "Deadly Aspects",
+        "rank": 4
+       },
+       {
+        "level": 14,
+        "id": "deadly_aspects",
+        "name": "Deadly Aspects",
+        "rank": 5
+       },
+       {
+        "level": 15,
+        "id": "focused_fire",
+        "name": "Focused Fire",
+        "rank": 1
+       },
+       {
+        "level": 16,
+        "id": "focused_fire",
+        "name": "Focused Fire",
+        "rank": 2
+       },
+       {
+        "level": 17,
+        "id": "endurance_training",
+        "name": "Endurance Training",
+        "rank": 1
+       },
+       {
+        "level": 18,
+        "id": "unleashed_fury",
+        "name": "Unleashed Fury",
+        "rank": 1
+       },
+       {
+        "level": 19,
+        "id": "unleashed_fury",
+        "name": "Unleashed Fury",
+        "rank": 2
+       },
+       {
+        "level": 20,
+        "id": "unleashed_fury",
+        "name": "Unleashed Fury",
+        "rank": 3
+       },
+       {
+        "level": 21,
+        "id": "unleashed_fury",
+        "name": "Unleashed Fury",
+        "rank": 4
+       },
+       {
+        "level": 22,
+        "id": "unleashed_fury",
+        "name": "Unleashed Fury",
+        "rank": 5
+       },
+       {
+        "level": 23,
+        "id": "ferocity",
+        "name": "Ferocity",
+        "rank": 1
+       },
+       {
+        "level": 24,
+        "id": "ferocity",
+        "name": "Ferocity",
+        "rank": 2
+       },
+       {
+        "level": 25,
+        "id": "ferocity",
+        "name": "Ferocity",
+        "rank": 3
+       },
+       {
+        "level": 26,
+        "id": "ferocity",
+        "name": "Ferocity",
+        "rank": 4
+       },
+       {
+        "level": 27,
+        "id": "ferocity",
+        "name": "Ferocity",
+        "rank": 5
+       },
+       {
+        "level": 28,
+        "id": "bestial_discipline",
+        "name": "Bestial Discipline",
+        "rank": 1
+       },
+       {
+        "level": 29,
+        "id": "bestial_discipline",
+        "name": "Bestial Discipline",
+        "rank": 2
+       },
+       {
+        "level": 30,
+        "id": "bestial_swiftness",
+        "name": "Bestial Swiftness",
+        "rank": 1
+       },
+       {
+        "level": 31,
+        "id": "intimidation",
+        "name": "Intimidation",
+        "rank": 1
+       },
+       {
+        "level": 32,
+        "id": "summon_hawk",
+        "name": "Summon Hawk",
+        "rank": 1
+       },
+       {
+        "level": 33,
+        "id": "frenzy",
+        "name": "Frenzy",
+        "rank": 1
+       },
+       {
+        "level": 34,
+        "id": "frenzy",
+        "name": "Frenzy",
+        "rank": 2
+       },
+       {
+        "level": 35,
+        "id": "frenzy",
+        "name": "Frenzy",
+        "rank": 3
+       },
+       {
+        "level": 36,
+        "id": "frenzy",
+        "name": "Frenzy",
+        "rank": 4
+       },
+       {
+        "level": 37,
+        "id": "frenzy",
+        "name": "Frenzy",
+        "rank": 5
+       },
+       {
+        "level": 38,
+        "id": "bestial_wrath",
+        "name": "Bestial Wrath",
+        "rank": 1
+       },
+       {
+        "level": 39,
+        "id": "lethal_attacks",
+        "name": "Lethal Attacks",
+        "rank": 1
+       },
+       {
+        "level": 40,
+        "id": "lethal_attacks",
+        "name": "Lethal Attacks",
+        "rank": 2
+       },
+       {
+        "level": 41,
+        "id": "lethal_attacks",
+        "name": "Lethal Attacks",
+        "rank": 3
+       },
+       {
+        "level": 42,
+        "id": "lethal_attacks",
+        "name": "Lethal Attacks",
+        "rank": 4
+       },
+       {
+        "level": 43,
+        "id": "lethal_attacks",
+        "name": "Lethal Attacks",
+        "rank": 5
+       },
+       {
+        "level": 44,
+        "id": "careful_aim",
+        "name": "Careful Aim",
+        "rank": 1
+       },
+       {
+        "level": 45,
+        "id": "careful_aim",
+        "name": "Careful Aim",
+        "rank": 2
+       },
+       {
+        "level": 46,
+        "id": "careful_aim",
+        "name": "Careful Aim",
+        "rank": 3
+       },
+       {
+        "level": 47,
+        "id": "careful_aim",
+        "name": "Careful Aim",
+        "rank": 4
+       },
+       {
+        "level": 48,
+        "id": "careful_aim",
+        "name": "Careful Aim",
+        "rank": 5
+       },
+       {
+        "level": 49,
+        "id": "rapid_killing",
+        "name": "Rapid Killing",
+        "rank": 1
+       },
+       {
+        "level": 50,
+        "id": "rapid_killing",
+        "name": "Rapid Killing",
+        "rank": 2
+       },
+       {
+        "level": 51,
+        "id": "mortal_shots",
+        "name": "Mortal Shots",
+        "rank": 1
+       },
+       {
+        "level": 52,
+        "id": "mortal_shots",
+        "name": "Mortal Shots",
+        "rank": 2
+       },
+       {
+        "level": 53,
+        "id": "mortal_shots",
+        "name": "Mortal Shots",
+        "rank": 3
+       },
+       {
+        "level": 54,
+        "id": "mortal_shots",
+        "name": "Mortal Shots",
+        "rank": 4
+       },
+       {
+        "level": 55,
+        "id": "improved_revive_pet",
+        "name": "Improved Revive Pet",
+        "rank": 1
+       },
+       {
+        "level": 56,
+        "id": "improved_revive_pet",
+        "name": "Improved Revive Pet",
+        "rank": 2
+       },
+       {
+        "level": 57,
+        "id": "hawk_eye",
+        "name": "Hawk Eye",
+        "rank": 1
+       },
+       {
+        "level": 58,
+        "id": "hawk_eye",
+        "name": "Hawk Eye",
+        "rank": 2
+       },
+       {
+        "level": 59,
+        "id": "hawk_eye",
+        "name": "Hawk Eye",
+        "rank": 3
+       },
+       {
+        "level": 60,
+        "id": "trueshot_aura",
+        "name": "Trueshot Aura",
+        "rank": 1
+       }
+      ],
+      "route_runs": [
+       [
+        "deadly_aspects",
+        5
+       ],
+       [
+        "focused_fire",
+        2
+       ],
+       [
+        "endurance_training",
+        1
+       ],
+       [
+        "unleashed_fury",
+        5
+       ],
+       [
+        "ferocity",
+        5
+       ],
+       [
+        "bestial_discipline",
+        2
+       ],
+       [
+        "bestial_swiftness",
+        1
+       ],
+       [
+        "intimidation",
+        1
+       ],
+       [
+        "summon_hawk",
+        1
+       ],
+       [
+        "frenzy",
+        5
+       ],
+       [
+        "bestial_wrath",
+        1
+       ],
+       [
+        "lethal_attacks",
+        5
+       ],
+       [
+        "careful_aim",
+        5
+       ],
+       [
+        "rapid_killing",
+        2
+       ],
+       [
+        "mortal_shots",
+        4
+       ],
+       [
+        "improved_revive_pet",
+        2
+       ],
+       [
+        "hawk_eye",
+        3
+       ],
+       [
+        "trueshot_aura",
+        1
+       ]
+      ],
+      "order_check": {
+       "ok": false,
+       "errors": [
+        "L18: Unleashed Fury row 3 needs 10 above, has 8",
+        "L19: Unleashed Fury row 3 needs 10 above, has 8",
+        "L20: Unleashed Fury row 3 needs 10 above, has 8",
+        "L21: Unleashed Fury row 3 needs 10 above, has 8",
+        "L22: Unleashed Fury row 3 needs 10 above, has 8",
+        "L23: Ferocity row 4 needs 15 above, has 13",
+        "L24: Ferocity row 4 needs 15 above, has 13",
+        "L25: Ferocity row 4 needs 15 above, has 13",
+        "L26: Ferocity row 4 needs 15 above, has 13",
+        "L27: Ferocity row 4 needs 15 above, has 13",
+        "L28: Bestial Discipline row 5 needs 20 above, has 18",
+        "L29: Bestial Discipline row 5 needs 20 above, has 18",
+        "L30: Bestial Swiftness row 3 needs 10 above, has 8",
+        "L31: Intimidation row 5 needs 20 above, has 19",
+        "L32: Summon Hawk row 4 needs 15 above, has 14",
+        "L33: Frenzy row 6 needs 25 above, has 23",
+        "L34: Frenzy row 6 needs 25 above, has 23",
+        "L35: Frenzy row 6 needs 25 above, has 23",
+        "L36: Frenzy row 6 needs 25 above, has 23",
+        "L37: Frenzy row 6 needs 25 above, has 23",
+        "L38: Bestial Wrath row 7 needs 30 above, has 28",
+        "L51: Mortal Shots row 4 needs 15 above, has 12",
+        "L52: Mortal Shots row 4 needs 15 above, has 12",
+        "L53: Mortal Shots row 4 needs 15 above, has 12",
+        "L54: Mortal Shots row 4 needs 15 above, has 12"
+       ],
+       "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+      },
+      "final": {
+       "code": "5120201505101251-30500520014",
+       "split": "31/20/0",
+       "points": 51,
+       "talents": {
+        "deadly_aspects": 5,
+        "endurance_training": 1,
+        "focused_fire": 2,
+        "improved_revive_pet": 2,
+        "bestial_swiftness": 1,
+        "unleashed_fury": 5,
+        "ferocity": 5,
+        "summon_hawk": 1,
+        "intimidation": 1,
+        "bestial_discipline": 2,
+        "frenzy": 5,
+        "bestial_wrath": 1,
+        "hawk_eye": 3,
+        "lethal_attacks": 5,
+        "careful_aim": 5,
+        "rapid_killing": 2,
+        "trueshot_aura": 1,
+        "mortal_shots": 4
+       },
+       "legal_on_client_tree": "OK",
+       "order_end_state_equals_final": true
+      },
+      "notes": [
+       "guide text before the link: ...een melee range and 8 yards cannot be attacked with either melee or ranged abilities, forcing you to reposition before you can resume dealing damage. Talent Builds You can experiment with these Beast Mastery builds or make your own in our Hunter Talent Calculator . Beast Mastery Talent Build 31/20/0"
+      ],
+      "spec_assigned_by": "guide label",
+      "same_final_code_as": [
+       "Method.gg: Optimal Beast Mastery Talents"
+      ],
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Standard Build",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/beast-mastery-hunter/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/beast-mastery-hunter/page-data.json, build \"Standard Build\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "5320001505101251-00532500014",
+       "split": "31/20/0",
+       "points": 51,
+       "talents": {
+        "deadly_aspects": 5,
+        "endurance_training": 3,
+        "focused_fire": 2,
+        "bestial_swiftness": 1,
+        "unleashed_fury": 5,
+        "ferocity": 5,
+        "summon_hawk": 1,
+        "intimidation": 1,
+        "bestial_discipline": 2,
+        "frenzy": 5,
+        "bestial_wrath": 1,
+        "lethal_attacks": 5,
+        "improved_stings": 3,
+        "efficiency": 2,
+        "careful_aim": 5,
+        "trueshot_aura": 1,
+        "mortal_shots": 4
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "beast-mastery-hunter",
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     }
+    ]
+   }
+  },
+  "marksmanship": {
+   "name": "Marksmanship",
+   "tree": "marksmanship",
+   "dungeon_roles": [
+    "damage"
+   ],
+   "leveling": [
+    {
+     "name": "Marksmanship leveling",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/hunter",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Wowhead",
+       "url": "https://www.wowhead.com/forever/guide/classes/hunter/marksmanship/dps-leveling-tips",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Marksmanship leveling\" in the calculator page payload; mode Leveling",
+      "guide_order": "final build only"
+     },
+     "kind": "final_only",
+     "final": {
+      "code": "53200014-005055250152015",
+      "split": "15/36/0",
+      "points": 51,
+      "talents": {
+       "deadly_aspects": 5,
+       "endurance_training": 3,
+       "focused_fire": 2,
+       "bestial_swiftness": 1,
+       "unleashed_fury": 4,
+       "lethal_attacks": 5,
+       "efficiency": 5,
+       "careful_aim": 5,
+       "rapid_killing": 2,
+       "improved_arcane_shot": 5,
+       "trueshot_aura": 1,
+       "mortal_shots": 5,
+       "rapid_recuperation": 2,
+       "scatter_shot": 1,
+       "ranged_weapon_specialization": 5
+      },
+      "legal_on_client_tree": "OK"
+     },
+     "secondary": true,
+     "notes": [
+      "original Wowhead page not reachable from this sandbox (Cloudflare); this is timesaver.gg's transcription, unverified against the original"
+     ],
+     "spec_assigned_by": "guide label"
+    },
+    {
+     "name": "Leveling 1-60",
+     "source": {
+      "site": "wowtbc.gg (Warcraft Forever class guide)",
+      "url": "https://wowtbc.gg/warcraftforever/class-guides/marksmanship-hunter/",
+      "author": null,
+      "updated": null,
+      "date_seen": "2026-11-08",
+      "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/marksmanship-hunter/page-data.json, build \"Leveling 1-60\"",
+      "note": "the page shows no author or date",
+      "guide_order": "point by point (\"Leveling 1-60\" talentBuildPaths)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "focused_fire",
+       "name": "Focused Fire",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "focused_fire",
+       "name": "Focused Fire",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "improved_revive_pet",
+       "name": "Improved Revive Pet",
+       "rank": 1
+      },
+      {
+       "level": 20,
+       "id": "improved_revive_pet",
+       "name": "Improved Revive Pet",
+       "rank": 2
+      },
+      {
+       "level": 21,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 3
+      },
+      {
+       "level": 22,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 4
+      },
+      {
+       "level": 23,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 5
+      },
+      {
+       "level": 24,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 2
+      },
+      {
+       "level": 26,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 3
+      },
+      {
+       "level": 27,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 4
+      },
+      {
+       "level": 28,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 5
+      },
+      {
+       "level": 29,
+       "id": "improved_stings",
+       "name": "Improved Stings",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "improved_stings",
+       "name": "Improved Stings",
+       "rank": 2
+      },
+      {
+       "level": 31,
+       "id": "improved_stings",
+       "name": "Improved Stings",
+       "rank": 3
+      },
+      {
+       "level": 32,
+       "id": "rapid_killing",
+       "name": "Rapid Killing",
+       "rank": 1
+      },
+      {
+       "level": 33,
+       "id": "rapid_killing",
+       "name": "Rapid Killing",
+       "rank": 2
+      },
+      {
+       "level": 34,
+       "id": "trueshot_aura",
+       "name": "Trueshot Aura",
+       "rank": 1
+      },
+      {
+       "level": 35,
+       "id": "mortal_shots",
+       "name": "Mortal Shots",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "mortal_shots",
+       "name": "Mortal Shots",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "mortal_shots",
+       "name": "Mortal Shots",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "mortal_shots",
+       "name": "Mortal Shots",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "rapid_recuperation",
+       "name": "Rapid Recuperation",
+       "rank": 1
+      },
+      {
+       "level": 40,
+       "id": "rapid_recuperation",
+       "name": "Rapid Recuperation",
+       "rank": 2
+      },
+      {
+       "level": 41,
+       "id": "barrage",
+       "name": "Barrage",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "barrage",
+       "name": "Barrage",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "barrage",
+       "name": "Barrage",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "ranged_weapon_specialization",
+       "name": "Ranged Weapon Specialization",
+       "rank": 1
+      },
+      {
+       "level": 45,
+       "id": "ranged_weapon_specialization",
+       "name": "Ranged Weapon Specialization",
+       "rank": 2
+      },
+      {
+       "level": 46,
+       "id": "ranged_weapon_specialization",
+       "name": "Ranged Weapon Specialization",
+       "rank": 3
+      },
+      {
+       "level": 47,
+       "id": "ranged_weapon_specialization",
+       "name": "Ranged Weapon Specialization",
+       "rank": 4
+      },
+      {
+       "level": 48,
+       "id": "ranged_weapon_specialization",
+       "name": "Ranged Weapon Specialization",
+       "rank": 5
+      },
+      {
+       "level": 49,
+       "id": "sniper_shot",
+       "name": "Sniper Shot",
+       "rank": 1
+      },
+      {
+       "level": 50,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 1
+      },
+      {
+       "level": 51,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 2
+      },
+      {
+       "level": 52,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 3
+      },
+      {
+       "level": 53,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 4
+      },
+      {
+       "level": 54,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 5
+      },
+      {
+       "level": 55,
+       "id": "mortal_shots",
+       "name": "Mortal Shots",
+       "rank": 5
+      },
+      {
+       "level": 56,
+       "id": "efficiency",
+       "name": "Efficiency",
+       "rank": 1
+      },
+      {
+       "level": 57,
+       "id": "efficiency",
+       "name": "Efficiency",
+       "rank": 2
+      },
+      {
+       "level": 58,
+       "id": "efficiency",
+       "name": "Efficiency",
+       "rank": 3
+      },
+      {
+       "level": 59,
+       "id": "efficiency",
+       "name": "Efficiency",
+       "rank": 4
+      },
+      {
+       "level": 60,
+       "id": "efficiency",
+       "name": "Efficiency",
+       "rank": 5
+      }
+     ],
+     "route_runs": [
+      [
+       "deadly_aspects",
+       5
+      ],
+      [
+       "focused_fire",
+       2
+      ],
+      [
+       "lethal_attacks",
+       2
+      ],
+      [
+       "improved_revive_pet",
+       2
+      ],
+      [
+       "lethal_attacks",
+       3
+      ],
+      [
+       "careful_aim",
+       5
+      ],
+      [
+       "improved_stings",
+       3
+      ],
+      [
+       "rapid_killing",
+       2
+      ],
+      [
+       "trueshot_aura",
+       1
+      ],
+      [
+       "mortal_shots",
+       4
+      ],
+      [
+       "rapid_recuperation",
+       2
+      ],
+      [
+       "barrage",
+       3
+      ],
+      [
+       "ranged_weapon_specialization",
+       5
+      ],
+      [
+       "sniper_shot",
+       1
+      ],
+      [
+       "improved_tracking",
+       5
+      ],
+      [
+       "mortal_shots",
+       1
+      ],
+      [
+       "efficiency",
+       5
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "50202-0053552001523051-5",
+      "split": "9/37/5",
+      "points": 51,
+      "talents": {
+       "deadly_aspects": 5,
+       "focused_fire": 2,
+       "improved_revive_pet": 2,
+       "lethal_attacks": 5,
+       "improved_stings": 3,
+       "efficiency": 5,
+       "careful_aim": 5,
+       "rapid_killing": 2,
+       "trueshot_aura": 1,
+       "mortal_shots": 5,
+       "rapid_recuperation": 2,
+       "barrage": 3,
+       "ranged_weapon_specialization": 5,
+       "sniper_shot": 1,
+       "improved_tracking": 5
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "wowtbc_spec_page": "marksmanship-hunter",
+     "spec_assigned_by": "guide page is for this spec"
+    }
+   ],
+   "endgame": {
+    "damage": [
+     {
+      "name": "Lone Wolf Marksmanship",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/marksmanship-hunter/talents",
+       "title": "WoW Forever Marksmanship Hunter Talents & Builds Guide",
+       "author": "Vareion",
+       "updated": "5th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #0 (\"Lone Wolf Marksmanship\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "5-3050052011523051-50500003",
+       "split": "5/33/13",
+       "points": 51,
+       "talents": {
+        "deadly_aspects": 5,
+        "hawk_eye": 3,
+        "lethal_attacks": 5,
+        "careful_aim": 5,
+        "rapid_killing": 2,
+        "lone_wolf": 1,
+        "trueshot_aura": 1,
+        "mortal_shots": 5,
+        "rapid_recuperation": 2,
+        "barrage": 3,
+        "ranged_weapon_specialization": 5,
+        "sniper_shot": 1,
+        "improved_tracking": 5,
+        "entrapment": 5,
+        "surefooted": 3
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "notes": [
+       "guide text: ...apon Specialization and Trueshot Aura is crucial for a functional Marksmanship build. You also have to be aware of your tracking as a Hunter, as you'll only get the 5% damage increase from Improved Tracking if you track the correct creature type you're currently fighting. That also means that if you're fighting a creature type you can't track, this talent node is pretty much useless unfortunately."
+      ],
+      "method_spec_page": "marksmanship-hunter",
+      "embedded_order_check": {
+       "ok": true,
+       "errors": [],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Pet Build",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/marksmanship-hunter/talents",
+       "title": "WoW Forever Marksmanship Hunter Talents & Builds Guide",
+       "author": "Vareion",
+       "updated": "5th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #1 (\"Pet Build\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "51202015-3050352001523051",
+       "split": "16/35/0",
+       "points": 51,
+       "talents": {
+        "deadly_aspects": 5,
+        "endurance_training": 1,
+        "focused_fire": 2,
+        "improved_revive_pet": 2,
+        "bestial_swiftness": 1,
+        "unleashed_fury": 5,
+        "hawk_eye": 3,
+        "lethal_attacks": 5,
+        "efficiency": 3,
+        "careful_aim": 5,
+        "rapid_killing": 2,
+        "trueshot_aura": 1,
+        "mortal_shots": 5,
+        "rapid_recuperation": 2,
+        "barrage": 3,
+        "ranged_weapon_specialization": 5,
+        "sniper_shot": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "notes": [
+       "guide text: ... to always have at least one person bringing this buff to a raid team. However, since this only affects ranged attack power, so pretty much only Hunters, I would recommend to talent out of it and put the last point into Efficiency instead. Legacy Talents The best choice of Legacy Talents for endgame raiding and dungeons is to work towards Reagent Economy , Gourmand & Permanence . These legacy tale"
+      ],
+      "method_spec_page": "marksmanship-hunter",
+      "embedded_order_check": {
+       "ok": true,
+       "errors": [],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": [
+       "dungeon",
+       "raid"
+      ]
+     },
+     {
+      "name": "Marksmanship Hunter talent build",
+      "source": {
+       "site": "Warcraft Tavern",
+       "url": "https://www.warcrafttavern.com/forever/guides/marksmanship-hunter/",
+       "title": "Marksmanship Hunter Guide - WoW Forever - Warcraft Tavern",
+       "author": "sponge",
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "calculator_link": "https://www.warcrafttavern.com/forever/tools/talent-calculator/hunter#?t=B222226666688b4445555599999eeeeedggpiiimmmmmA11111B000",
+       "data": "Warcraft DB calculator link #?t= (one character per point, in order)",
+       "guide_order": "point by point (the link string is ordered)"
+      },
+      "kind": "level_60_build",
+      "order": [
+       {
+        "level": 10,
+        "id": "lethal_attacks",
+        "name": "Lethal Attacks",
+        "rank": 1
+       },
+       {
+        "level": 11,
+        "id": "lethal_attacks",
+        "name": "Lethal Attacks",
+        "rank": 2
+       },
+       {
+        "level": 12,
+        "id": "lethal_attacks",
+        "name": "Lethal Attacks",
+        "rank": 3
+       },
+       {
+        "level": 13,
+        "id": "lethal_attacks",
+        "name": "Lethal Attacks",
+        "rank": 4
+       },
+       {
+        "level": 14,
+        "id": "lethal_attacks",
+        "name": "Lethal Attacks",
+        "rank": 5
+       },
+       {
+        "level": 15,
+        "id": "careful_aim",
+        "name": "Careful Aim",
+        "rank": 1
+       },
+       {
+        "level": 16,
+        "id": "careful_aim",
+        "name": "Careful Aim",
+        "rank": 2
+       },
+       {
+        "level": 17,
+        "id": "careful_aim",
+        "name": "Careful Aim",
+        "rank": 3
+       },
+       {
+        "level": 18,
+        "id": "careful_aim",
+        "name": "Careful Aim",
+        "rank": 4
+       },
+       {
+        "level": 19,
+        "id": "careful_aim",
+        "name": "Careful Aim",
+        "rank": 5
+       },
+       {
+        "level": 20,
+        "id": "rapid_killing",
+        "name": "Rapid Killing",
+        "rank": 1
+       },
+       {
+        "level": 21,
+        "id": "rapid_killing",
+        "name": "Rapid Killing",
+        "rank": 2
+       },
+       {
+        "level": 22,
+        "id": "lone_wolf",
+        "name": "Lone Wolf",
+        "rank": 1
+       },
+       {
+        "level": 23,
+        "id": "improved_stings",
+        "name": "Improved Stings",
+        "rank": 1
+       },
+       {
+        "level": 24,
+        "id": "improved_stings",
+        "name": "Improved Stings",
+        "rank": 2
+       },
+       {
+        "level": 25,
+        "id": "improved_stings",
+        "name": "Improved Stings",
+        "rank": 3
+       },
+       {
+        "level": 26,
+        "id": "efficiency",
+        "name": "Efficiency",
+        "rank": 1
+       },
+       {
+        "level": 27,
+        "id": "efficiency",
+        "name": "Efficiency",
+        "rank": 2
+       },
+       {
+        "level": 28,
+        "id": "efficiency",
+        "name": "Efficiency",
+        "rank": 3
+       },
+       {
+        "level": 29,
+        "id": "efficiency",
+        "name": "Efficiency",
+        "rank": 4
+       },
+       {
+        "level": 30,
+        "id": "efficiency",
+        "name": "Efficiency",
+        "rank": 5
+       },
+       {
+        "level": 31,
+        "id": "improved_arcane_shot",
+        "name": "Improved Arcane Shot",
+        "rank": 1
+       },
+       {
+        "level": 32,
+        "id": "improved_arcane_shot",
+        "name": "Improved Arcane Shot",
+        "rank": 2
+       },
+       {
+        "level": 33,
+        "id": "improved_arcane_shot",
+        "name": "Improved Arcane Shot",
+        "rank": 3
+       },
+       {
+        "level": 34,
+        "id": "improved_arcane_shot",
+        "name": "Improved Arcane Shot",
+        "rank": 4
+       },
+       {
+        "level": 35,
+        "id": "improved_arcane_shot",
+        "name": "Improved Arcane Shot",
+        "rank": 5
+       },
+       {
+        "level": 36,
+        "id": "mortal_shots",
+        "name": "Mortal Shots",
+        "rank": 1
+       },
+       {
+        "level": 37,
+        "id": "mortal_shots",
+        "name": "Mortal Shots",
+        "rank": 2
+       },
+       {
+        "level": 38,
+        "id": "mortal_shots",
+        "name": "Mortal Shots",
+        "rank": 3
+       },
+       {
+        "level": 39,
+        "id": "mortal_shots",
+        "name": "Mortal Shots",
+        "rank": 4
+       },
+       {
+        "level": 40,
+        "id": "mortal_shots",
+        "name": "Mortal Shots",
+        "rank": 5
+       },
+       {
+        "level": 41,
+        "id": "trueshot_aura",
+        "name": "Trueshot Aura",
+        "rank": 1
+       },
+       {
+        "level": 42,
+        "id": "rapid_recuperation",
+        "name": "Rapid Recuperation",
+        "rank": 1
+       },
+       {
+        "level": 43,
+        "id": "rapid_recuperation",
+        "name": "Rapid Recuperation",
+        "rank": 2
+       },
+       {
+        "level": 44,
+        "id": "sniper_shot",
+        "name": "Sniper Shot",
+        "rank": 1
+       },
+       {
+        "level": 45,
+        "id": "barrage",
+        "name": "Barrage",
+        "rank": 1
+       },
+       {
+        "level": 46,
+        "id": "barrage",
+        "name": "Barrage",
+        "rank": 2
+       },
+       {
+        "level": 47,
+        "id": "barrage",
+        "name": "Barrage",
+        "rank": 3
+       },
+       {
+        "level": 48,
+        "id": "ranged_weapon_specialization",
+        "name": "Ranged Weapon Specialization",
+        "rank": 1
+       },
+       {
+        "level": 49,
+        "id": "ranged_weapon_specialization",
+        "name": "Ranged Weapon Specialization",
+        "rank": 2
+       },
+       {
+        "level": 50,
+        "id": "ranged_weapon_specialization",
+        "name": "Ranged Weapon Specialization",
+        "rank": 3
+       },
+       {
+        "level": 51,
+        "id": "ranged_weapon_specialization",
+        "name": "Ranged Weapon Specialization",
+        "rank": 4
+       },
+       {
+        "level": 52,
+        "id": "ranged_weapon_specialization",
+        "name": "Ranged Weapon Specialization",
+        "rank": 5
+       },
+       {
+        "level": 53,
+        "id": "deadly_aspects",
+        "name": "Deadly Aspects",
+        "rank": 1
+       },
+       {
+        "level": 54,
+        "id": "deadly_aspects",
+        "name": "Deadly Aspects",
+        "rank": 2
+       },
+       {
+        "level": 55,
+        "id": "deadly_aspects",
+        "name": "Deadly Aspects",
+        "rank": 3
+       },
+       {
+        "level": 56,
+        "id": "deadly_aspects",
+        "name": "Deadly Aspects",
+        "rank": 4
+       },
+       {
+        "level": 57,
+        "id": "deadly_aspects",
+        "name": "Deadly Aspects",
+        "rank": 5
+       },
+       {
+        "level": 58,
+        "id": "hawk_eye",
+        "name": "Hawk Eye",
+        "rank": 1
+       },
+       {
+        "level": 59,
+        "id": "hawk_eye",
+        "name": "Hawk Eye",
+        "rank": 2
+       },
+       {
+        "level": 60,
+        "id": "hawk_eye",
+        "name": "Hawk Eye",
+        "rank": 3
+       }
+      ],
+      "route_runs": [
+       [
+        "lethal_attacks",
+        5
+       ],
+       [
+        "careful_aim",
+        5
+       ],
+       [
+        "rapid_killing",
+        2
+       ],
+       [
+        "lone_wolf",
+        1
+       ],
+       [
+        "improved_stings",
+        3
+       ],
+       [
+        "efficiency",
+        5
+       ],
+       [
+        "improved_arcane_shot",
+        5
+       ],
+       [
+        "mortal_shots",
+        5
+       ],
+       [
+        "trueshot_aura",
+        1
+       ],
+       [
+        "rapid_recuperation",
+        2
+       ],
+       [
+        "sniper_shot",
+        1
+       ],
+       [
+        "barrage",
+        3
+       ],
+       [
+        "ranged_weapon_specialization",
+        5
+       ],
+       [
+        "deadly_aspects",
+        5
+       ],
+       [
+        "hawk_eye",
+        3
+       ]
+      ],
+      "order_check": {
+       "ok": true,
+       "errors": [],
+       "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+      },
+      "final": {
+       "code": "5-3053552511523051",
+       "split": "5/46/0",
+       "points": 51,
+       "talents": {
+        "deadly_aspects": 5,
+        "hawk_eye": 3,
+        "lethal_attacks": 5,
+        "improved_stings": 3,
+        "efficiency": 5,
+        "careful_aim": 5,
+        "rapid_killing": 2,
+        "improved_arcane_shot": 5,
+        "lone_wolf": 1,
+        "trueshot_aura": 1,
+        "mortal_shots": 5,
+        "rapid_recuperation": 2,
+        "barrage": 3,
+        "ranged_weapon_specialization": 5,
+        "sniper_shot": 1
+       },
+       "legal_on_client_tree": "OK",
+       "order_end_state_equals_final": true
+      },
+      "notes": [
+       "guide text before the link: ...etween melee range and 8 yards cannot be attacked with either melee or ranged abilities, forcing you to reposition before you can resume dealing damage. Talent Builds You can experiment with these Marksmanship builds or make your own in our Hunter Talent Calculator . Marksmanship Talent Build 5/46/0"
+      ],
+      "spec_assigned_by": "guide label",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Standard Build",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/marksmanship-hunter/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/marksmanship-hunter/page-data.json, build \"Standard Build\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "5-0053352511523051-5",
+       "split": "5/41/5",
+       "points": 51,
+       "talents": {
+        "deadly_aspects": 5,
+        "lethal_attacks": 5,
+        "improved_stings": 3,
+        "efficiency": 3,
+        "careful_aim": 5,
+        "rapid_killing": 2,
+        "improved_arcane_shot": 5,
+        "lone_wolf": 1,
+        "trueshot_aura": 1,
+        "mortal_shots": 5,
+        "rapid_recuperation": 2,
+        "barrage": 3,
+        "ranged_weapon_specialization": 5,
+        "sniper_shot": 1,
+        "improved_tracking": 5
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "marksmanship-hunter",
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     }
+    ]
+   }
+  },
+  "survival": {
+   "name": "Survival",
+   "tree": "survival",
+   "dungeon_roles": [
+    "damage"
+   ],
+   "leveling": [
+    {
+     "name": "Survival Melee Fun (40+ only)",
+     "source": {
+      "site": "Maxroll",
+      "url": "https://maxroll.gg/wow-forever/class-guides/hunter-leveling-guide",
+      "title": "Hunter Leveling Guide",
+      "author": "maxroll",
+      "published": "October 30, 2026",
+      "updated": "November 4, 2026",
+      "date_seen": "2026-11-08",
+      "data": "planner profile \"Survival Melee Fun (40+ only)\" (uid VG7WBkh3, planner w25j8w0u saved 2026-11-05 18:54:32): talents.history, TraitNodeEntry ids from window.__remixContext",
+      "guide_order": "point by point (the planner history is the guide's own order)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "savage_strikes",
+       "name": "Savage Strikes",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "savage_strikes",
+       "name": "Savage Strikes",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "entrapment",
+       "name": "Entrapment",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "entrapment",
+       "name": "Entrapment",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "entrapment",
+       "name": "Entrapment",
+       "rank": 3
+      },
+      {
+       "level": 20,
+       "id": "clever_traps",
+       "name": "Clever Traps",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "clever_traps",
+       "name": "Clever Traps",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "deterrence",
+       "name": "Deterrence",
+       "rank": 1
+      },
+      {
+       "level": 23,
+       "id": "entrapment",
+       "name": "Entrapment",
+       "rank": 4
+      },
+      {
+       "level": 24,
+       "id": "entrapment",
+       "name": "Entrapment",
+       "rank": 5
+      },
+      {
+       "level": 25,
+       "id": "predators_edge",
+       "name": "Predator's Edge",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "predators_edge",
+       "name": "Predator's Edge",
+       "rank": 2
+      },
+      {
+       "level": 27,
+       "id": "predators_edge",
+       "name": "Predator's Edge",
+       "rank": 3
+      },
+      {
+       "level": 28,
+       "id": "predators_edge",
+       "name": "Predator's Edge",
+       "rank": 4
+      },
+      {
+       "level": 29,
+       "id": "predators_edge",
+       "name": "Predator's Edge",
+       "rank": 5
+      },
+      {
+       "level": 30,
+       "id": "strider_kick",
+       "name": "Strider Kick",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "resourcefulness",
+       "name": "Resourcefulness",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "resourcefulness",
+       "name": "Resourcefulness",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "survivalists_discipline",
+       "name": "Survivalist's Discipline",
+       "rank": 1
+      },
+      {
+       "level": 34,
+       "id": "survivalists_discipline",
+       "name": "Survivalist's Discipline",
+       "rank": 2
+      },
+      {
+       "level": 35,
+       "id": "expose_prey",
+       "name": "Expose Prey",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "expose_prey",
+       "name": "Expose Prey",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "lightning_reflexes",
+       "name": "Lightning Reflexes",
+       "rank": 1
+      },
+      {
+       "level": 38,
+       "id": "lightning_reflexes",
+       "name": "Lightning Reflexes",
+       "rank": 2
+      },
+      {
+       "level": 39,
+       "id": "lightning_reflexes",
+       "name": "Lightning Reflexes",
+       "rank": 3
+      },
+      {
+       "level": 40,
+       "id": "lightning_reflexes",
+       "name": "Lightning Reflexes",
+       "rank": 4
+      },
+      {
+       "level": 41,
+       "id": "lightning_reflexes",
+       "name": "Lightning Reflexes",
+       "rank": 5
+      },
+      {
+       "level": 42,
+       "id": "lacerating_strikes",
+       "name": "Lacerating Strikes",
+       "rank": 1
+      },
+      {
+       "level": 43,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 1
+      },
+      {
+       "level": 44,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 2
+      },
+      {
+       "level": 45,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 3
+      },
+      {
+       "level": 46,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 4
+      },
+      {
+       "level": 47,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 5
+      },
+      {
+       "level": 48,
+       "id": "improved_revive_pet",
+       "name": "Improved Revive Pet",
+       "rank": 1
+      },
+      {
+       "level": 49,
+       "id": "improved_revive_pet",
+       "name": "Improved Revive Pet",
+       "rank": 2
+      },
+      {
+       "level": 50,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 1
+      },
+      {
+       "level": 51,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 2
+      },
+      {
+       "level": 52,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 3
+      },
+      {
+       "level": 53,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 4
+      },
+      {
+       "level": 54,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 5
+      },
+      {
+       "level": 55,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 1
+      },
+      {
+       "level": 56,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 2
+      },
+      {
+       "level": 57,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 3
+      },
+      {
+       "level": 58,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 4
+      },
+      {
+       "level": 59,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 5
+      }
+     ],
+     "route_runs": [
+      [
+       "improved_tracking",
+       5
+      ],
+      [
+       "savage_strikes",
+       2
+      ],
+      [
+       "entrapment",
+       3
+      ],
+      [
+       "clever_traps",
+       2
+      ],
+      [
+       "deterrence",
+       1
+      ],
+      [
+       "entrapment",
+       2
+      ],
+      [
+       "predators_edge",
+       5
+      ],
+      [
+       "strider_kick",
+       1
+      ],
+      [
+       "resourcefulness",
+       2
+      ],
+      [
+       "survivalists_discipline",
+       2
+      ],
+      [
+       "expose_prey",
+       2
+      ],
+      [
+       "lightning_reflexes",
+       5
+      ],
+      [
+       "lacerating_strikes",
+       1
+      ],
+      [
+       "deadly_aspects",
+       5
+      ],
+      [
+       "improved_revive_pet",
+       2
+      ],
+      [
+       "lethal_attacks",
+       5
+      ],
+      [
+       "careful_aim",
+       5
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "50002-005005-505200201050222151",
+      "split": "7/10/33",
+      "points": 50,
+      "talents": {
+       "deadly_aspects": 5,
+       "improved_revive_pet": 2,
+       "lethal_attacks": 5,
+       "careful_aim": 5,
+       "improved_tracking": 5,
+       "entrapment": 5,
+       "savage_strikes": 2,
+       "clever_traps": 2,
+       "deterrence": 1,
+       "predators_edge": 5,
+       "resourcefulness": 2,
+       "expose_prey": 2,
+       "survivalists_discipline": 2,
+       "strider_kick": 1,
+       "lightning_reflexes": 5,
+       "lacerating_strikes": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "notes": [
+      "the guide's build has 50 points, so it covers levels 10 to 59"
+     ],
+     "spec_assigned_by": "guide label"
+    },
+    {
+     "name": "Survival leveling",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/hunter",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Icy Veins",
+       "url": "https://www.icy-veins.com/wow-forever/survival-hunter-leveling",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Survival leveling\" in the calculator page payload; mode Leveling",
+      "guide_order": "point by point as transcribed by timesaver.gg"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 4
+      },
+      {
+       "level": 19,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 5
+      },
+      {
+       "level": 20,
+       "id": "savage_strikes",
+       "name": "Savage Strikes",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "savage_strikes",
+       "name": "Savage Strikes",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "survivalist",
+       "name": "Survivalist",
+       "rank": 1
+      },
+      {
+       "level": 23,
+       "id": "survivalist",
+       "name": "Survivalist",
+       "rank": 2
+      },
+      {
+       "level": 24,
+       "id": "survivalist",
+       "name": "Survivalist",
+       "rank": 3
+      },
+      {
+       "level": 25,
+       "id": "surefooted",
+       "name": "Surefooted",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "surefooted",
+       "name": "Surefooted",
+       "rank": 2
+      },
+      {
+       "level": 27,
+       "id": "surefooted",
+       "name": "Surefooted",
+       "rank": 3
+      },
+      {
+       "level": 28,
+       "id": "clever_traps",
+       "name": "Clever Traps",
+       "rank": 1
+      },
+      {
+       "level": 29,
+       "id": "clever_traps",
+       "name": "Clever Traps",
+       "rank": 2
+      },
+      {
+       "level": 30,
+       "id": "predators_edge",
+       "name": "Predator's Edge",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "predators_edge",
+       "name": "Predator's Edge",
+       "rank": 2
+      },
+      {
+       "level": 32,
+       "id": "predators_edge",
+       "name": "Predator's Edge",
+       "rank": 3
+      },
+      {
+       "level": 33,
+       "id": "predators_edge",
+       "name": "Predator's Edge",
+       "rank": 4
+      },
+      {
+       "level": 34,
+       "id": "predators_edge",
+       "name": "Predator's Edge",
+       "rank": 5
+      },
+      {
+       "level": 35,
+       "id": "strider_kick",
+       "name": "Strider Kick",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "expose_prey",
+       "name": "Expose Prey",
+       "rank": 1
+      },
+      {
+       "level": 37,
+       "id": "expose_prey",
+       "name": "Expose Prey",
+       "rank": 2
+      },
+      {
+       "level": 38,
+       "id": "survivalists_discipline",
+       "name": "Survivalist's Discipline",
+       "rank": 1
+      },
+      {
+       "level": 39,
+       "id": "survivalists_discipline",
+       "name": "Survivalist's Discipline",
+       "rank": 2
+      },
+      {
+       "level": 40,
+       "id": "lightning_reflexes",
+       "name": "Lightning Reflexes",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "lightning_reflexes",
+       "name": "Lightning Reflexes",
+       "rank": 2
+      },
+      {
+       "level": 42,
+       "id": "lightning_reflexes",
+       "name": "Lightning Reflexes",
+       "rank": 3
+      },
+      {
+       "level": 43,
+       "id": "lightning_reflexes",
+       "name": "Lightning Reflexes",
+       "rank": 4
+      },
+      {
+       "level": 44,
+       "id": "lightning_reflexes",
+       "name": "Lightning Reflexes",
+       "rank": 5
+      },
+      {
+       "level": 45,
+       "id": "lacerating_strikes",
+       "name": "Lacerating Strikes",
+       "rank": 1
+      },
+      {
+       "level": 46,
+       "id": "resourcefulness",
+       "name": "Resourcefulness",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "survival_tactics",
+       "name": "Survival Tactics",
+       "rank": 1
+      },
+      {
+       "level": 48,
+       "id": "survival_tactics",
+       "name": "Survival Tactics",
+       "rank": 2
+      },
+      {
+       "level": 49,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 1
+      },
+      {
+       "level": 50,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 2
+      },
+      {
+       "level": 51,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 3
+      },
+      {
+       "level": 52,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 4
+      },
+      {
+       "level": 53,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 5
+      },
+      {
+       "level": 54,
+       "id": "lone_wolf",
+       "name": "Lone Wolf",
+       "rank": 1
+      },
+      {
+       "level": 55,
+       "id": "improved_stings",
+       "name": "Improved Stings",
+       "rank": 1
+      },
+      {
+       "level": 56,
+       "id": "improved_stings",
+       "name": "Improved Stings",
+       "rank": 2
+      },
+      {
+       "level": 57,
+       "id": "improved_stings",
+       "name": "Improved Stings",
+       "rank": 3
+      },
+      {
+       "level": 58,
+       "id": "efficiency",
+       "name": "Efficiency",
+       "rank": 1
+      },
+      {
+       "level": 59,
+       "id": "mortal_shots",
+       "name": "Mortal Shots",
+       "rank": 1
+      },
+      {
+       "level": 60,
+       "id": "mortal_shots",
+       "name": "Mortal Shots",
+       "rank": 2
+      }
+     ],
+     "route_runs": [
+      [
+       "lethal_attacks",
+       5
+      ],
+      [
+       "improved_tracking",
+       5
+      ],
+      [
+       "savage_strikes",
+       2
+      ],
+      [
+       "survivalist",
+       3
+      ],
+      [
+       "surefooted",
+       3
+      ],
+      [
+       "clever_traps",
+       2
+      ],
+      [
+       "predators_edge",
+       5
+      ],
+      [
+       "strider_kick",
+       1
+      ],
+      [
+       "expose_prey",
+       2
+      ],
+      [
+       "survivalists_discipline",
+       2
+      ],
+      [
+       "lightning_reflexes",
+       5
+      ],
+      [
+       "lacerating_strikes",
+       1
+      ],
+      [
+       "resourcefulness",
+       1
+      ],
+      [
+       "survival_tactics",
+       2
+      ],
+      [
+       "careful_aim",
+       5
+      ],
+      [
+       "lone_wolf",
+       1
+      ],
+      [
+       "improved_stings",
+       3
+      ],
+      [
+       "efficiency",
+       1
+      ],
+      [
+       "mortal_shots",
+       2
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "-00531500102-500230230250122151",
+      "split": "0/17/34",
+      "points": 51,
+      "talents": {
+       "lethal_attacks": 5,
+       "improved_stings": 3,
+       "efficiency": 1,
+       "careful_aim": 5,
+       "lone_wolf": 1,
+       "mortal_shots": 2,
+       "improved_tracking": 5,
+       "savage_strikes": 2,
+       "survivalist": 3,
+       "clever_traps": 2,
+       "surefooted": 3,
+       "survival_tactics": 2,
+       "predators_edge": 5,
+       "resourcefulness": 1,
+       "expose_prey": 2,
+       "survivalists_discipline": 2,
+       "strider_kick": 1,
+       "lightning_reflexes": 5,
+       "lacerating_strikes": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "secondary": true,
+     "notes": [
+      "original Icy Veins page not reachable from this sandbox (Cloudflare); this is timesaver.gg's transcription, unverified against the original"
+     ],
+     "spec_assigned_by": "guide label"
+    },
+    {
+     "name": "Leveling 1-60",
+     "source": {
+      "site": "wowtbc.gg (Warcraft Forever class guide)",
+      "url": "https://wowtbc.gg/warcraftforever/class-guides/survival-hunter/",
+      "author": null,
+      "updated": null,
+      "date_seen": "2026-11-08",
+      "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/survival-hunter/page-data.json, build \"Leveling 1-60\"",
+      "note": "the page shows no author or date",
+      "guide_order": "point by point (\"Leveling 1-60\" talentBuildPaths)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "deadly_aspects",
+       "name": "Deadly Aspects",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "focused_fire",
+       "name": "Focused Fire",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "focused_fire",
+       "name": "Focused Fire",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "improved_revive_pet",
+       "name": "Improved Revive Pet",
+       "rank": 1
+      },
+      {
+       "level": 20,
+       "id": "improved_revive_pet",
+       "name": "Improved Revive Pet",
+       "rank": 2
+      },
+      {
+       "level": 21,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 3
+      },
+      {
+       "level": 22,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 4
+      },
+      {
+       "level": 23,
+       "id": "improved_tracking",
+       "name": "Improved Tracking",
+       "rank": 5
+      },
+      {
+       "level": 24,
+       "id": "savage_strikes",
+       "name": "Savage Strikes",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "savage_strikes",
+       "name": "Savage Strikes",
+       "rank": 2
+      },
+      {
+       "level": 26,
+       "id": "improved_wing_clip",
+       "name": "Improved Wing Clip",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "improved_wing_clip",
+       "name": "Improved Wing Clip",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "improved_wing_clip",
+       "name": "Improved Wing Clip",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "surefooted",
+       "name": "Surefooted",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "surefooted",
+       "name": "Surefooted",
+       "rank": 2
+      },
+      {
+       "level": 31,
+       "id": "surefooted",
+       "name": "Surefooted",
+       "rank": 3
+      },
+      {
+       "level": 32,
+       "id": "clever_traps",
+       "name": "Clever Traps",
+       "rank": 1
+      },
+      {
+       "level": 33,
+       "id": "clever_traps",
+       "name": "Clever Traps",
+       "rank": 2
+      },
+      {
+       "level": 34,
+       "id": "predators_edge",
+       "name": "Predator's Edge",
+       "rank": 1
+      },
+      {
+       "level": 35,
+       "id": "predators_edge",
+       "name": "Predator's Edge",
+       "rank": 2
+      },
+      {
+       "level": 36,
+       "id": "predators_edge",
+       "name": "Predator's Edge",
+       "rank": 3
+      },
+      {
+       "level": 37,
+       "id": "predators_edge",
+       "name": "Predator's Edge",
+       "rank": 4
+      },
+      {
+       "level": 38,
+       "id": "predators_edge",
+       "name": "Predator's Edge",
+       "rank": 5
+      },
+      {
+       "level": 39,
+       "id": "strider_kick",
+       "name": "Strider Kick",
+       "rank": 1
+      },
+      {
+       "level": 40,
+       "id": "resourcefulness",
+       "name": "Resourcefulness",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "resourcefulness",
+       "name": "Resourcefulness",
+       "rank": 2
+      },
+      {
+       "level": 42,
+       "id": "expose_prey",
+       "name": "Expose Prey",
+       "rank": 1
+      },
+      {
+       "level": 43,
+       "id": "expose_prey",
+       "name": "Expose Prey",
+       "rank": 2
+      },
+      {
+       "level": 44,
+       "id": "survivalists_discipline",
+       "name": "Survivalist's Discipline",
+       "rank": 1
+      },
+      {
+       "level": 45,
+       "id": "survivalists_discipline",
+       "name": "Survivalist's Discipline",
+       "rank": 2
+      },
+      {
+       "level": 46,
+       "id": "survival_tactics",
+       "name": "Survival Tactics",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "survival_tactics",
+       "name": "Survival Tactics",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "lightning_reflexes",
+       "name": "Lightning Reflexes",
+       "rank": 1
+      },
+      {
+       "level": 49,
+       "id": "lacerating_strikes",
+       "name": "Lacerating Strikes",
+       "rank": 1
+      },
+      {
+       "level": 50,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 1
+      },
+      {
+       "level": 51,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 2
+      },
+      {
+       "level": 52,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 3
+      },
+      {
+       "level": 53,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 4
+      },
+      {
+       "level": 54,
+       "id": "lethal_attacks",
+       "name": "Lethal Attacks",
+       "rank": 5
+      },
+      {
+       "level": 55,
+       "id": "lightning_reflexes",
+       "name": "Lightning Reflexes",
+       "rank": 2
+      },
+      {
+       "level": 56,
+       "id": "lightning_reflexes",
+       "name": "Lightning Reflexes",
+       "rank": 3
+      },
+      {
+       "level": 57,
+       "id": "lightning_reflexes",
+       "name": "Lightning Reflexes",
+       "rank": 4
+      },
+      {
+       "level": 58,
+       "id": "lightning_reflexes",
+       "name": "Lightning Reflexes",
+       "rank": 5
+      },
+      {
+       "level": 59,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 1
+      },
+      {
+       "level": 60,
+       "id": "careful_aim",
+       "name": "Careful Aim",
+       "rank": 2
+      }
+     ],
+     "route_runs": [
+      [
+       "deadly_aspects",
+       5
+      ],
+      [
+       "focused_fire",
+       2
+      ],
+      [
+       "improved_tracking",
+       2
+      ],
+      [
+       "improved_revive_pet",
+       2
+      ],
+      [
+       "improved_tracking",
+       3
+      ],
+      [
+       "savage_strikes",
+       2
+      ],
+      [
+       "improved_wing_clip",
+       3
+      ],
+      [
+       "surefooted",
+       3
+      ],
+      [
+       "clever_traps",
+       2
+      ],
+      [
+       "predators_edge",
+       5
+      ],
+      [
+       "strider_kick",
+       1
+      ],
+      [
+       "resourcefulness",
+       2
+      ],
+      [
+       "expose_prey",
+       2
+      ],
+      [
+       "survivalists_discipline",
+       2
+      ],
+      [
+       "survival_tactics",
+       2
+      ],
+      [
+       "lightning_reflexes",
+       1
+      ],
+      [
+       "lacerating_strikes",
+       1
+      ],
+      [
+       "lethal_attacks",
+       5
+      ],
+      [
+       "lightning_reflexes",
+       4
+      ],
+      [
+       "careful_aim",
+       2
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "50202-005002-500203230250222151",
+      "split": "9/7/35",
+      "points": 51,
+      "talents": {
+       "deadly_aspects": 5,
+       "focused_fire": 2,
+       "improved_revive_pet": 2,
+       "lethal_attacks": 5,
+       "careful_aim": 2,
+       "improved_tracking": 5,
+       "savage_strikes": 2,
+       "improved_wing_clip": 3,
+       "clever_traps": 2,
+       "surefooted": 3,
+       "survival_tactics": 2,
+       "predators_edge": 5,
+       "resourcefulness": 2,
+       "expose_prey": 2,
+       "survivalists_discipline": 2,
+       "strider_kick": 1,
+       "lightning_reflexes": 5,
+       "lacerating_strikes": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "wowtbc_spec_page": "survival-hunter",
+     "spec_assigned_by": "guide page is for this spec"
+    }
+   ],
+   "endgame": {
+    "damage": [
+     {
+      "name": "Ranged / Melee Weaving",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/survival-hunter/talents",
+       "title": "WoW Forever Survival Hunter Talents & Builds Guide",
+       "author": "Vareion",
+       "updated": "5th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #0 (\"Ranged / Melee Weaving\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "51202005-005005-5002302310502201",
+       "split": "15/10/26",
+       "points": 51,
+       "talents": {
+        "deadly_aspects": 5,
+        "endurance_training": 1,
+        "focused_fire": 2,
+        "improved_revive_pet": 2,
+        "unleashed_fury": 5,
+        "lethal_attacks": 5,
+        "careful_aim": 5,
+        "improved_tracking": 5,
+        "savage_strikes": 2,
+        "survivalist": 3,
+        "clever_traps": 2,
+        "surefooted": 3,
+        "deterrence": 1,
+        "predators_edge": 5,
+        "resourcefulness": 2,
+        "expose_prey": 2,
+        "strider_kick": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "notes": [
+       "guide text: ...at all times, so Deadly Aspects can proc, you need to manage your tracking buffs so you don't waste your 5% increased damage with Improved Tracking and you'll need to make sure you spend your Expose Prey procs as quickly as possible, so you don't lose the opportunity to get another one as they don't stack. In the end-game of WoW Forever, this will most likely be the superior Survival Hunter build."
+      ],
+      "method_spec_page": "survival-hunter",
+      "embedded_order_check": {
+       "ok": true,
+       "errors": [],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Full Melee",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/survival-hunter/talents",
+       "title": "WoW Forever Survival Hunter Talents & Builds Guide",
+       "author": "Vareion",
+       "updated": "5th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #1 (\"Full Melee\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "51202005001-005005-5402000310412201",
+       "split": "16/10/25",
+       "points": 51,
+       "talents": {
+        "deadly_aspects": 5,
+        "endurance_training": 1,
+        "focused_fire": 2,
+        "improved_revive_pet": 2,
+        "unleashed_fury": 5,
+        "summon_hawk": 1,
+        "lethal_attacks": 5,
+        "careful_aim": 5,
+        "improved_tracking": 5,
+        "deflection": 4,
+        "savage_strikes": 2,
+        "surefooted": 3,
+        "deterrence": 1,
+        "predators_edge": 4,
+        "counterattack": 1,
+        "resourcefulness": 2,
+        "expose_prey": 2,
+        "strider_kick": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "notes": [
+       "guide text: ...g tons of damage. This is one of the reasons why you will either pop off in the damage charts if you execute everything properly and get good procs or fall off tremendously, even though you're doing everything right, simply because you didn't get any good procs. Picking up Deadly Aspects will give your Auto Shot a 10% chance to increase your attack speed by 30% for 12 seconds. This is incredibly s"
+      ],
+      "method_spec_page": "survival-hunter",
+      "embedded_order_check": {
+       "ok": true,
+       "errors": [],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Survival Hunter talent build",
+      "source": {
+       "site": "Warcraft Tavern",
+       "url": "https://www.warcrafttavern.com/forever/guides/survival-hunter/",
+       "title": "Survival Hunter Guide - WoW Forever - Warcraft Tavern",
+       "author": "sponge",
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "calculator_link": "https://www.warcrafttavern.com/forever/tools/talent-calculator/hunter#?t=A11111C111115522288999dddddhhggiijmmmmmpB2222266666b88",
+       "data": "Warcraft DB calculator link #?t= (one character per point, in order)",
+       "guide_order": "point by point (the link string is ordered)"
+      },
+      "kind": "level_60_build",
+      "order": [
+       {
+        "level": 10,
+        "id": "deadly_aspects",
+        "name": "Deadly Aspects",
+        "rank": 1
+       },
+       {
+        "level": 11,
+        "id": "deadly_aspects",
+        "name": "Deadly Aspects",
+        "rank": 2
+       },
+       {
+        "level": 12,
+        "id": "deadly_aspects",
+        "name": "Deadly Aspects",
+        "rank": 3
+       },
+       {
+        "level": 13,
+        "id": "deadly_aspects",
+        "name": "Deadly Aspects",
+        "rank": 4
+       },
+       {
+        "level": 14,
+        "id": "deadly_aspects",
+        "name": "Deadly Aspects",
+        "rank": 5
+       },
+       {
+        "level": 15,
+        "id": "improved_tracking",
+        "name": "Improved Tracking",
+        "rank": 1
+       },
+       {
+        "level": 16,
+        "id": "improved_tracking",
+        "name": "Improved Tracking",
+        "rank": 2
+       },
+       {
+        "level": 17,
+        "id": "improved_tracking",
+        "name": "Improved Tracking",
+        "rank": 3
+       },
+       {
+        "level": 18,
+        "id": "improved_tracking",
+        "name": "Improved Tracking",
+        "rank": 4
+       },
+       {
+        "level": 19,
+        "id": "improved_tracking",
+        "name": "Improved Tracking",
+        "rank": 5
+       },
+       {
+        "level": 20,
+        "id": "savage_strikes",
+        "name": "Savage Strikes",
+        "rank": 1
+       },
+       {
+        "level": 21,
+        "id": "savage_strikes",
+        "name": "Savage Strikes",
+        "rank": 2
+       },
+       {
+        "level": 22,
+        "id": "deflection",
+        "name": "Deflection",
+        "rank": 1
+       },
+       {
+        "level": 23,
+        "id": "deflection",
+        "name": "Deflection",
+        "rank": 2
+       },
+       {
+        "level": 24,
+        "id": "deflection",
+        "name": "Deflection",
+        "rank": 3
+       },
+       {
+        "level": 25,
+        "id": "clever_traps",
+        "name": "Clever Traps",
+        "rank": 1
+       },
+       {
+        "level": 26,
+        "id": "clever_traps",
+        "name": "Clever Traps",
+        "rank": 2
+       },
+       {
+        "level": 27,
+        "id": "surefooted",
+        "name": "Surefooted",
+        "rank": 1
+       },
+       {
+        "level": 28,
+        "id": "surefooted",
+        "name": "Surefooted",
+        "rank": 2
+       },
+       {
+        "level": 29,
+        "id": "surefooted",
+        "name": "Surefooted",
+        "rank": 3
+       },
+       {
+        "level": 30,
+        "id": "predators_edge",
+        "name": "Predator's Edge",
+        "rank": 1
+       },
+       {
+        "level": 31,
+        "id": "predators_edge",
+        "name": "Predator's Edge",
+        "rank": 2
+       },
+       {
+        "level": 32,
+        "id": "predators_edge",
+        "name": "Predator's Edge",
+        "rank": 3
+       },
+       {
+        "level": 33,
+        "id": "predators_edge",
+        "name": "Predator's Edge",
+        "rank": 4
+       },
+       {
+        "level": 34,
+        "id": "predators_edge",
+        "name": "Predator's Edge",
+        "rank": 5
+       },
+       {
+        "level": 35,
+        "id": "expose_prey",
+        "name": "Expose Prey",
+        "rank": 1
+       },
+       {
+        "level": 36,
+        "id": "expose_prey",
+        "name": "Expose Prey",
+        "rank": 2
+       },
+       {
+        "level": 37,
+        "id": "resourcefulness",
+        "name": "Resourcefulness",
+        "rank": 1
+       },
+       {
+        "level": 38,
+        "id": "resourcefulness",
+        "name": "Resourcefulness",
+        "rank": 2
+       },
+       {
+        "level": 39,
+        "id": "survivalists_discipline",
+        "name": "Survivalist's Discipline",
+        "rank": 1
+       },
+       {
+        "level": 40,
+        "id": "survivalists_discipline",
+        "name": "Survivalist's Discipline",
+        "rank": 2
+       },
+       {
+        "level": 41,
+        "id": "strider_kick",
+        "name": "Strider Kick",
+        "rank": 1
+       },
+       {
+        "level": 42,
+        "id": "lightning_reflexes",
+        "name": "Lightning Reflexes",
+        "rank": 1
+       },
+       {
+        "level": 43,
+        "id": "lightning_reflexes",
+        "name": "Lightning Reflexes",
+        "rank": 2
+       },
+       {
+        "level": 44,
+        "id": "lightning_reflexes",
+        "name": "Lightning Reflexes",
+        "rank": 3
+       },
+       {
+        "level": 45,
+        "id": "lightning_reflexes",
+        "name": "Lightning Reflexes",
+        "rank": 4
+       },
+       {
+        "level": 46,
+        "id": "lightning_reflexes",
+        "name": "Lightning Reflexes",
+        "rank": 5
+       },
+       {
+        "level": 47,
+        "id": "lacerating_strikes",
+        "name": "Lacerating Strikes",
+        "rank": 1
+       },
+       {
+        "level": 48,
+        "id": "lethal_attacks",
+        "name": "Lethal Attacks",
+        "rank": 1
+       },
+       {
+        "level": 49,
+        "id": "lethal_attacks",
+        "name": "Lethal Attacks",
+        "rank": 2
+       },
+       {
+        "level": 50,
+        "id": "lethal_attacks",
+        "name": "Lethal Attacks",
+        "rank": 3
+       },
+       {
+        "level": 51,
+        "id": "lethal_attacks",
+        "name": "Lethal Attacks",
+        "rank": 4
+       },
+       {
+        "level": 52,
+        "id": "lethal_attacks",
+        "name": "Lethal Attacks",
+        "rank": 5
+       },
+       {
+        "level": 53,
+        "id": "careful_aim",
+        "name": "Careful Aim",
+        "rank": 1
+       },
+       {
+        "level": 54,
+        "id": "careful_aim",
+        "name": "Careful Aim",
+        "rank": 2
+       },
+       {
+        "level": 55,
+        "id": "careful_aim",
+        "name": "Careful Aim",
+        "rank": 3
+       },
+       {
+        "level": 56,
+        "id": "careful_aim",
+        "name": "Careful Aim",
+        "rank": 4
+       },
+       {
+        "level": 57,
+        "id": "careful_aim",
+        "name": "Careful Aim",
+        "rank": 5
+       },
+       {
+        "level": 58,
+        "id": "lone_wolf",
+        "name": "Lone Wolf",
+        "rank": 1
+       },
+       {
+        "level": 59,
+        "id": "rapid_killing",
+        "name": "Rapid Killing",
+        "rank": 1
+       },
+       {
+        "level": 60,
+        "id": "rapid_killing",
+        "name": "Rapid Killing",
+        "rank": 2
+       }
+      ],
+      "route_runs": [
+       [
+        "deadly_aspects",
+        5
+       ],
+       [
+        "improved_tracking",
+        5
+       ],
+       [
+        "savage_strikes",
+        2
+       ],
+       [
+        "deflection",
+        3
+       ],
+       [
+        "clever_traps",
+        2
+       ],
+       [
+        "surefooted",
+        3
+       ],
+       [
+        "predators_edge",
+        5
+       ],
+       [
+        "expose_prey",
+        2
+       ],
+       [
+        "resourcefulness",
+        2
+       ],
+       [
+        "survivalists_discipline",
+        2
+       ],
+       [
+        "strider_kick",
+        1
+       ],
+       [
+        "lightning_reflexes",
+        5
+       ],
+       [
+        "lacerating_strikes",
+        1
+       ],
+       [
+        "lethal_attacks",
+        5
+       ],
+       [
+        "careful_aim",
+        5
+       ],
+       [
+        "lone_wolf",
+        1
+       ],
+       [
+        "rapid_killing",
+        2
+       ]
+      ],
+      "order_check": {
+       "ok": true,
+       "errors": [],
+       "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+      },
+      "final": {
+       "code": "5-005005201-530200230050222151",
+       "split": "5/13/33",
+       "points": 51,
+       "talents": {
+        "deadly_aspects": 5,
+        "lethal_attacks": 5,
+        "careful_aim": 5,
+        "rapid_killing": 2,
+        "lone_wolf": 1,
+        "improved_tracking": 5,
+        "deflection": 3,
+        "savage_strikes": 2,
+        "clever_traps": 2,
+        "surefooted": 3,
+        "predators_edge": 5,
+        "resourcefulness": 2,
+        "expose_prey": 2,
+        "survivalists_discipline": 2,
+        "strider_kick": 1,
+        "lightning_reflexes": 5,
+        "lacerating_strikes": 1
+       },
+       "legal_on_client_tree": "OK",
+       "order_end_state_equals_final": true
+      },
+      "notes": [
+       "guide text before the link: ...ioned between melee range and 8 yards cannot be attacked with either melee or ranged abilities, forcing you to reposition before you can resume dealing damage. Talent Builds You can experiment with these Survival builds or make your own in our Hunter Talent Calculator . Survival Talent Build 5/13/33"
+      ],
+      "spec_assigned_by": "guide label",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "2H Weave",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/survival-hunter/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/survival-hunter/page-data.json, build \"2H Weave\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "-00530501114-500230230050220151",
+       "split": "0/20/31",
+       "points": 51,
+       "talents": {
+        "lethal_attacks": 5,
+        "improved_stings": 3,
+        "careful_aim": 5,
+        "improved_arcane_shot": 1,
+        "lone_wolf": 1,
+        "trueshot_aura": 1,
+        "mortal_shots": 4,
+        "improved_tracking": 5,
+        "savage_strikes": 2,
+        "survivalist": 3,
+        "clever_traps": 2,
+        "surefooted": 3,
+        "predators_edge": 5,
+        "resourcefulness": 2,
+        "expose_prey": 2,
+        "strider_kick": 1,
+        "lightning_reflexes": 5,
+        "lacerating_strikes": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "survival-hunter",
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "DW Melee",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/survival-hunter/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/survival-hunter/page-data.json, build \"DW Melee\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "502-005005-500230230250122151",
+       "split": "7/10/34",
+       "points": 51,
+       "talents": {
+        "deadly_aspects": 5,
+        "focused_fire": 2,
+        "lethal_attacks": 5,
+        "careful_aim": 5,
+        "improved_tracking": 5,
+        "savage_strikes": 2,
+        "survivalist": 3,
+        "clever_traps": 2,
+        "surefooted": 3,
+        "survival_tactics": 2,
+        "predators_edge": 5,
+        "resourcefulness": 1,
+        "expose_prey": 2,
+        "survivalists_discipline": 2,
+        "strider_kick": 1,
+        "lightning_reflexes": 5,
+        "lacerating_strikes": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "survival-hunter",
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     }
+    ]
+   }
+  }
+ },
+ "excluded": [
+  {
+   "source": "https://www.method.gg/wow-forever/class-guides/beast-mastery-hunter/talents",
+   "label": "embed #1 near \"Legacy Talents\"",
+   "reason": "embed is not a class tree build (Legacy talents or a short discussion example); it does not decode against the class tree"
+  },
+  {
+   "source": "https://www.method.gg/wow-forever/class-guides/marksmanship-hunter/talents",
+   "label": "embed #2 near \"Legacy Talents\"",
+   "reason": "embed is not a class tree build (Legacy talents or a short discussion example); it does not decode against the class tree"
+  },
+  {
+   "source": "https://www.method.gg/wow-forever/class-guides/survival-hunter/talents",
+   "label": "embed #2 near \"Legacy Talents\"",
+   "reason": "embed is not a class tree build (Legacy talents or a short discussion example); it does not decode against the class tree"
+  },
+  {
+   "source": "https://www.warcrafttavern.com/forever/guides/hunter-leveling/",
+   "label": "Level 30 Beast Mastery Build",
+   "headings": [
+    "Stat Priority",
+    "Level 30 Beast Mastery Build",
+    "Talents"
+   ],
+   "calculator_link": "https://www.warcrafttavern.com/forever/tools/talent-calculator/hunter#?t=A1111144662aaaaaeeeefj",
+   "code": "51202005041001",
+   "points": 21,
+   "reason": "beta-era build for the level 30 cap (guide says it will be updated for 60)"
+  },
+  {
+   "source": "https://www.warcrafttavern.com/forever/guides/hunter-leveling/",
+   "label": "Level 30 Marksmanship Build",
+   "headings": [
+    "Stat Priority",
+    "Level 30 Marksmanship Build",
+    "Talents"
+   ],
+   "calculator_link": "https://www.warcrafttavern.com/forever/tools/talent-calculator/hunter#?t=B222226666655588eeeeed",
+   "code": "-00503520015",
+   "points": 21,
+   "reason": "beta-era build for the level 30 cap (guide says it will be updated for 60)"
+  },
+  {
+   "source": "https://www.warcrafttavern.com/forever/guides/hunter-leveling/",
+   "label": "Level 30 Survival Build",
+   "headings": [
+    "Stat Priority",
+    "Level 30 Survival Build",
+    "Talents"
+   ],
+   "calculator_link": "https://www.warcrafttavern.com/forever/tools/talent-calculator/hunter#?t=C111115544499988dddddg",
+   "code": "--5032002300501",
+   "points": 21,
+   "reason": "beta-era build for the level 30 cap (guide says it will be updated for 60)"
+  }
+ ]
+}

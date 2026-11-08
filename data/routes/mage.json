@@ -1,0 +1,7532 @@
+{
+ "class": "mage",
+ "generated": "2026-11-08",
+ "generator": "wowsim/pipeline/talents/build_routes.py",
+ "talents_file": "data/talents/mage.json",
+ "code_format": "see data/talents/mage.json code_format; codes here are re-encoded from each source's own data",
+ "level_rule": "order[i] is the point spent at level 10 + i",
+ "sources_tried": {
+  "Maxroll": "leveling guide planner profiles (point order): fetched",
+  "Method.gg": "leveling guide + spec \"talents\" pages (embeds with point order): fetched",
+  "Warcraft Tavern": "leveling guide + spec guides (Warcraft DB ordered links): fetched",
+  "wowtbc.gg": "Warcraft Forever class guides (page-data JSON: level 60 builds and a \"Leveling 1-60\" point order): fetched",
+  "timesaver.gg": "calculator presets (secondary transcriptions of Maxroll, Wowhead, Icy Veins, Method)",
+  "Wowhead, Icy Veins, Mobalytics": "blocked by Cloudflare from this sandbox (HTTP 403/202 challenge); only timesaver.gg transcriptions of their codes are included, marked secondary",
+  "wowsims-forever": "sim presets are not guides; used only as decode checks (see data/talents/README.md)"
+ },
+ "specs": {
+  "arcane": {
+   "name": "Arcane",
+   "tree": "arcane",
+   "dungeon_roles": [
+    "damage"
+   ],
+   "leveling": [
+    {
+     "name": "Arcane",
+     "source": {
+      "site": "Maxroll",
+      "url": "https://maxroll.gg/wow-forever/class-guides/mage-leveling-guide",
+      "title": "Mage Leveling Guide",
+      "author": "maxroll",
+      "published": "October 30, 2026",
+      "updated": "November 4, 2026",
+      "date_seen": "2026-11-08",
+      "data": "planner profile \"Arcane\" (uid kVnKlsxE, planner oo3nid0u saved 2026-11-04 03:01:04): talents.history, TraitNodeEntry ids from window.__remixContext",
+      "guide_order": "point by point (the planner history is the guide's own order)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "arcane_blast",
+       "name": "Arcane Blast",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 4
+      },
+      {
+       "level": 20,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 5
+      },
+      {
+       "level": 21,
+       "id": "arcane_wrath",
+       "name": "Arcane Wrath",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "presence_of_mind",
+       "name": "Presence of Mind",
+       "rank": 1
+      },
+      {
+       "level": 23,
+       "id": "arcane_mind",
+       "name": "Arcane Mind",
+       "rank": 1
+      },
+      {
+       "level": 24,
+       "id": "arcane_mind",
+       "name": "Arcane Mind",
+       "rank": 2
+      },
+      {
+       "level": 25,
+       "id": "arcane_mind",
+       "name": "Arcane Mind",
+       "rank": 3
+      },
+      {
+       "level": 26,
+       "id": "arcane_mind",
+       "name": "Arcane Mind",
+       "rank": 4
+      },
+      {
+       "level": 27,
+       "id": "arcane_instability",
+       "name": "Arcane Instability",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "arcane_instability",
+       "name": "Arcane Instability",
+       "rank": 2
+      },
+      {
+       "level": 29,
+       "id": "arcane_instability",
+       "name": "Arcane Instability",
+       "rank": 3
+      },
+      {
+       "level": 30,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "arcane_mind",
+       "name": "Arcane Mind",
+       "rank": 5
+      },
+      {
+       "level": 32,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "arcane_power",
+       "name": "Arcane Power",
+       "rank": 1
+      },
+      {
+       "level": 34,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 3
+      },
+      {
+       "level": 35,
+       "id": "arcane_impact",
+       "name": "Arcane Impact",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "arcane_impact",
+       "name": "Arcane Impact",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "arcane_impact",
+       "name": "Arcane Impact",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "arcane_subtlety",
+       "name": "Arcane Subtlety",
+       "rank": 1
+      },
+      {
+       "level": 39,
+       "id": "arcane_subtlety",
+       "name": "Arcane Subtlety",
+       "rank": 2
+      },
+      {
+       "level": 40,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 2
+      },
+      {
+       "level": 42,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 3
+      },
+      {
+       "level": 43,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 1
+      },
+      {
+       "level": 44,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 2
+      },
+      {
+       "level": 45,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 3
+      },
+      {
+       "level": 46,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 4
+      },
+      {
+       "level": 47,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 5
+      },
+      {
+       "level": 48,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 1
+      },
+      {
+       "level": 49,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 2
+      },
+      {
+       "level": 50,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 3
+      },
+      {
+       "level": 51,
+       "id": "frostbite",
+       "name": "Frostbite",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "frostbite",
+       "name": "Frostbite",
+       "rank": 2
+      },
+      {
+       "level": 53,
+       "id": "frostbite",
+       "name": "Frostbite",
+       "rank": 3
+      },
+      {
+       "level": 54,
+       "id": "missile_barrage",
+       "name": "Missile Barrage",
+       "rank": 1
+      },
+      {
+       "level": 55,
+       "id": "missile_barrage",
+       "name": "Missile Barrage",
+       "rank": 2
+      },
+      {
+       "level": 56,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 4
+      },
+      {
+       "level": 57,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 5
+      },
+      {
+       "level": 58,
+       "id": "arcane_geometry",
+       "name": "Arcane Geometry",
+       "rank": 1
+      },
+      {
+       "level": 59,
+       "id": "arcane_geometry",
+       "name": "Arcane Geometry",
+       "rank": 2
+      },
+      {
+       "level": 60,
+       "id": "magic_absorption",
+       "name": "Magic Absorption",
+       "rank": 1
+      }
+     ],
+     "route_runs": [
+      [
+       "improved_channeling",
+       5
+      ],
+      [
+       "arcane_concentration",
+       3
+      ],
+      [
+       "arcane_blast",
+       1
+      ],
+      [
+       "arcane_concentration",
+       2
+      ],
+      [
+       "arcane_wrath",
+       1
+      ],
+      [
+       "presence_of_mind",
+       1
+      ],
+      [
+       "arcane_mind",
+       4
+      ],
+      [
+       "arcane_instability",
+       3
+      ],
+      [
+       "arcane_meditation",
+       1
+      ],
+      [
+       "arcane_mind",
+       1
+      ],
+      [
+       "arcane_meditation",
+       1
+      ],
+      [
+       "arcane_power",
+       1
+      ],
+      [
+       "arcane_meditation",
+       1
+      ],
+      [
+       "arcane_impact",
+       3
+      ],
+      [
+       "arcane_subtlety",
+       2
+      ],
+      [
+       "incineration",
+       3
+      ],
+      [
+       "improved_frostbolt",
+       5
+      ],
+      [
+       "precision",
+       3
+      ],
+      [
+       "frostbite",
+       3
+      ],
+      [
+       "missile_barrage",
+       2
+      ],
+      [
+       "incineration",
+       2
+      ],
+      [
+       "arcane_geometry",
+       2
+      ],
+      [
+       "magic_absorption",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": false,
+      "errors": [
+       "L18: Arcane Blast row 3 needs 10 above, has 8",
+       "L21: Arcane Wrath row 4 needs 15 above, has 11",
+       "L22: Presence of Mind row 5 needs 20 above, has 12",
+       "L23: Arcane Mind row 5 needs 20 above, has 12",
+       "L24: Arcane Mind row 5 needs 20 above, has 12",
+       "L25: Arcane Mind row 5 needs 20 above, has 12",
+       "L26: Arcane Mind row 5 needs 20 above, has 12",
+       "L27: Arcane Instability row 6 needs 25 above, has 17",
+       "L28: Arcane Instability row 6 needs 25 above, has 17",
+       "L29: Arcane Instability row 6 needs 25 above, has 17",
+       "L30: Arcane Meditation row 4 needs 15 above, has 11",
+       "L31: Arcane Mind row 5 needs 20 above, has 13",
+       "L32: Arcane Meditation row 4 needs 15 above, has 11",
+       "L33: Arcane Power row 7 needs 30 above, has 23",
+       "L34: Arcane Meditation row 4 needs 15 above, has 11"
+      ],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "050215223100311531-5-05303",
+      "split": "35/5/11",
+      "points": 51,
+      "talents": {
+       "improved_channeling": 5,
+       "arcane_subtlety": 2,
+       "magic_absorption": 1,
+       "arcane_concentration": 5,
+       "missile_barrage": 2,
+       "arcane_geometry": 2,
+       "arcane_impact": 3,
+       "arcane_blast": 1,
+       "arcane_meditation": 3,
+       "arcane_wrath": 1,
+       "presence_of_mind": 1,
+       "arcane_mind": 5,
+       "arcane_instability": 3,
+       "arcane_power": 1,
+       "incineration": 5,
+       "improved_frostbolt": 5,
+       "precision": 3,
+       "frostbite": 3
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "timesaver.gg (transcription): Arcane leveling"
+     ]
+    },
+    {
+     "name": "Arcane Mage Leveling Build",
+     "source": {
+      "site": "Warcraft Tavern",
+      "url": "https://www.warcrafttavern.com/forever/guides/mage-leveling/",
+      "title": "Mage Leveling Guide - WoW Forever - Warcraft Tavern",
+      "author": "nevermore",
+      "updated": null,
+      "date_seen": "2026-11-08",
+      "calculator_link": "https://www.warcrafttavern.com/forever/tools/talent-calculator/mage#?t=A1111177666b6699feeeC222A9hiiiiimmm4p4B1111122222b44444",
+      "data": "Warcraft DB calculator link #?t= (one character per point, in order)",
+      "guide_order": "point by point (the link string is ordered)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "missile_barrage",
+       "name": "Missile Barrage",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "missile_barrage",
+       "name": "Missile Barrage",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 3
+      },
+      {
+       "level": 20,
+       "id": "arcane_blast",
+       "name": "Arcane Blast",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 4
+      },
+      {
+       "level": 22,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 5
+      },
+      {
+       "level": 23,
+       "id": "arcane_impact",
+       "name": "Arcane Impact",
+       "rank": 1
+      },
+      {
+       "level": 24,
+       "id": "arcane_impact",
+       "name": "Arcane Impact",
+       "rank": 2
+      },
+      {
+       "level": 25,
+       "id": "arcane_wrath",
+       "name": "Arcane Wrath",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 2
+      },
+      {
+       "level": 31,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 3
+      },
+      {
+       "level": 32,
+       "id": "arcane_impact",
+       "name": "Arcane Impact",
+       "rank": 3
+      },
+      {
+       "level": 33,
+       "id": "presence_of_mind",
+       "name": "Presence of Mind",
+       "rank": 1
+      },
+      {
+       "level": 34,
+       "id": "arcane_mind",
+       "name": "Arcane Mind",
+       "rank": 1
+      },
+      {
+       "level": 35,
+       "id": "arcane_mind",
+       "name": "Arcane Mind",
+       "rank": 2
+      },
+      {
+       "level": 36,
+       "id": "arcane_mind",
+       "name": "Arcane Mind",
+       "rank": 3
+      },
+      {
+       "level": 37,
+       "id": "arcane_mind",
+       "name": "Arcane Mind",
+       "rank": 4
+      },
+      {
+       "level": 38,
+       "id": "arcane_mind",
+       "name": "Arcane Mind",
+       "rank": 5
+      },
+      {
+       "level": 39,
+       "id": "arcane_instability",
+       "name": "Arcane Instability",
+       "rank": 1
+      },
+      {
+       "level": 40,
+       "id": "arcane_instability",
+       "name": "Arcane Instability",
+       "rank": 2
+      },
+      {
+       "level": 41,
+       "id": "arcane_instability",
+       "name": "Arcane Instability",
+       "rank": 3
+      },
+      {
+       "level": 42,
+       "id": "arcane_subtlety",
+       "name": "Arcane Subtlety",
+       "rank": 1
+      },
+      {
+       "level": 43,
+       "id": "arcane_power",
+       "name": "Arcane Power",
+       "rank": 1
+      },
+      {
+       "level": 44,
+       "id": "arcane_subtlety",
+       "name": "Arcane Subtlety",
+       "rank": 2
+      },
+      {
+       "level": 45,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 1
+      },
+      {
+       "level": 46,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 2
+      },
+      {
+       "level": 47,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 3
+      },
+      {
+       "level": 48,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 4
+      },
+      {
+       "level": 49,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 5
+      },
+      {
+       "level": 50,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 1
+      },
+      {
+       "level": 51,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 2
+      },
+      {
+       "level": 52,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 3
+      },
+      {
+       "level": 53,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 4
+      },
+      {
+       "level": 54,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 5
+      },
+      {
+       "level": 55,
+       "id": "improved_fire_blast",
+       "name": "Improved Fire Blast",
+       "rank": 1
+      },
+      {
+       "level": 56,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 1
+      },
+      {
+       "level": 57,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 2
+      },
+      {
+       "level": 58,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 3
+      },
+      {
+       "level": 59,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 4
+      },
+      {
+       "level": 60,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 5
+      }
+     ],
+     "route_runs": [
+      [
+       "improved_channeling",
+       5
+      ],
+      [
+       "missile_barrage",
+       2
+      ],
+      [
+       "arcane_concentration",
+       3
+      ],
+      [
+       "arcane_blast",
+       1
+      ],
+      [
+       "arcane_concentration",
+       2
+      ],
+      [
+       "arcane_impact",
+       2
+      ],
+      [
+       "arcane_wrath",
+       1
+      ],
+      [
+       "arcane_meditation",
+       3
+      ],
+      [
+       "precision",
+       3
+      ],
+      [
+       "arcane_impact",
+       1
+      ],
+      [
+       "presence_of_mind",
+       1
+      ],
+      [
+       "arcane_mind",
+       5
+      ],
+      [
+       "arcane_instability",
+       3
+      ],
+      [
+       "arcane_subtlety",
+       1
+      ],
+      [
+       "arcane_power",
+       1
+      ],
+      [
+       "arcane_subtlety",
+       1
+      ],
+      [
+       "incineration",
+       5
+      ],
+      [
+       "accelerant",
+       5
+      ],
+      [
+       "improved_fire_blast",
+       1
+      ],
+      [
+       "ignite",
+       5
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "050205203100311531-555000001-003",
+      "split": "32/16/3",
+      "points": 51,
+      "talents": {
+       "improved_channeling": 5,
+       "arcane_subtlety": 2,
+       "arcane_concentration": 5,
+       "missile_barrage": 2,
+       "arcane_impact": 3,
+       "arcane_blast": 1,
+       "arcane_meditation": 3,
+       "arcane_wrath": 1,
+       "presence_of_mind": 1,
+       "arcane_mind": 5,
+       "arcane_instability": 3,
+       "arcane_power": 1,
+       "incineration": 5,
+       "accelerant": 5,
+       "ignite": 5,
+       "improved_fire_blast": 1,
+       "precision": 3
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "notes": [
+      "guide text before the link: ...ts. Alternatively, you can go for a Heating Up version, but you’ll only be able to unlock it between levels 50-60 to use it reliably. Fret not, the Arcane Mage spamming Pyroblasts dream is very viable for raiding and dungeons at 60, so that’s something you can look forward to after leveling. Talents"
+     ],
+     "spec_assigned_by": "guide label"
+    },
+    {
+     "name": "Arcane leveling",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/mage",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Maxroll",
+       "url": "https://maxroll.gg/wow-forever/class-guides/mage-leveling-guide",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Arcane leveling\" in the calculator page payload; mode Leveling",
+      "guide_order": "final build only"
+     },
+     "kind": "final_only",
+     "final": {
+      "code": "050215223100311531-5-05303",
+      "split": "35/5/11",
+      "points": 51,
+      "talents": {
+       "improved_channeling": 5,
+       "arcane_subtlety": 2,
+       "magic_absorption": 1,
+       "arcane_concentration": 5,
+       "missile_barrage": 2,
+       "arcane_geometry": 2,
+       "arcane_impact": 3,
+       "arcane_blast": 1,
+       "arcane_meditation": 3,
+       "arcane_wrath": 1,
+       "presence_of_mind": 1,
+       "arcane_mind": 5,
+       "arcane_instability": 3,
+       "arcane_power": 1,
+       "incineration": 5,
+       "improved_frostbolt": 5,
+       "precision": 3,
+       "frostbite": 3
+      },
+      "legal_on_client_tree": "OK"
+     },
+     "secondary": true,
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "Maxroll: Arcane"
+     ]
+    },
+    {
+     "name": "Leveling 1-60",
+     "source": {
+      "site": "wowtbc.gg (Warcraft Forever class guide)",
+      "url": "https://wowtbc.gg/warcraftforever/class-guides/arcane-mage/",
+      "author": null,
+      "updated": null,
+      "date_seen": "2026-11-08",
+      "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/arcane-mage/page-data.json, build \"Leveling 1-60\"",
+      "note": "the page shows no author or date",
+      "guide_order": "point by point (\"Leveling 1-60\" talentBuildPaths)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 1
+      },
+      {
+       "level": 13,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 2
+      },
+      {
+       "level": 14,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 3
+      },
+      {
+       "level": 15,
+       "id": "missile_barrage",
+       "name": "Missile Barrage",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "missile_barrage",
+       "name": "Missile Barrage",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 4
+      },
+      {
+       "level": 18,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 5
+      },
+      {
+       "level": 19,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 1
+      },
+      {
+       "level": 20,
+       "id": "arcane_blast",
+       "name": "Arcane Blast",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 3
+      },
+      {
+       "level": 23,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 4
+      },
+      {
+       "level": 24,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 5
+      },
+      {
+       "level": 25,
+       "id": "arcane_wrath",
+       "name": "Arcane Wrath",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 2
+      },
+      {
+       "level": 31,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 3
+      },
+      {
+       "level": 32,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 4
+      },
+      {
+       "level": 33,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 5
+      },
+      {
+       "level": 34,
+       "id": "arcane_impact",
+       "name": "Arcane Impact",
+       "rank": 1
+      },
+      {
+       "level": 35,
+       "id": "presence_of_mind",
+       "name": "Presence of Mind",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "arcane_impact",
+       "name": "Arcane Impact",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "arcane_impact",
+       "name": "Arcane Impact",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "arcane_mind",
+       "name": "Arcane Mind",
+       "rank": 1
+      },
+      {
+       "level": 39,
+       "id": "arcane_mind",
+       "name": "Arcane Mind",
+       "rank": 2
+      },
+      {
+       "level": 40,
+       "id": "arcane_instability",
+       "name": "Arcane Instability",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "arcane_instability",
+       "name": "Arcane Instability",
+       "rank": 2
+      },
+      {
+       "level": 42,
+       "id": "arcane_instability",
+       "name": "Arcane Instability",
+       "rank": 3
+      },
+      {
+       "level": 43,
+       "id": "arcane_mind",
+       "name": "Arcane Mind",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "arcane_mind",
+       "name": "Arcane Mind",
+       "rank": 4
+      },
+      {
+       "level": 45,
+       "id": "arcane_power",
+       "name": "Arcane Power",
+       "rank": 1
+      },
+      {
+       "level": 46,
+       "id": "arcane_mind",
+       "name": "Arcane Mind",
+       "rank": 5
+      },
+      {
+       "level": 47,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 1
+      },
+      {
+       "level": 48,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 2
+      },
+      {
+       "level": 49,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 3
+      },
+      {
+       "level": 50,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 1
+      },
+      {
+       "level": 51,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 2
+      },
+      {
+       "level": 52,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 3
+      },
+      {
+       "level": 53,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 4
+      },
+      {
+       "level": 54,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 5
+      },
+      {
+       "level": 55,
+       "id": "improved_fire_blast",
+       "name": "Improved Fire Blast",
+       "rank": 1
+      },
+      {
+       "level": 56,
+       "id": "improved_fire_blast",
+       "name": "Improved Fire Blast",
+       "rank": 2
+      },
+      {
+       "level": 57,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 1
+      },
+      {
+       "level": 58,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 2
+      },
+      {
+       "level": 59,
+       "id": "pyroblast",
+       "name": "Pyroblast",
+       "rank": 1
+      },
+      {
+       "level": 60,
+       "id": "heating_up",
+       "name": "Heating Up",
+       "rank": 1
+      }
+     ],
+     "route_runs": [
+      [
+       "wand_specialization",
+       2
+      ],
+      [
+       "improved_channeling",
+       3
+      ],
+      [
+       "missile_barrage",
+       2
+      ],
+      [
+       "improved_channeling",
+       2
+      ],
+      [
+       "arcane_concentration",
+       1
+      ],
+      [
+       "arcane_blast",
+       1
+      ],
+      [
+       "arcane_concentration",
+       4
+      ],
+      [
+       "arcane_wrath",
+       1
+      ],
+      [
+       "arcane_meditation",
+       3
+      ],
+      [
+       "accelerant",
+       5
+      ],
+      [
+       "arcane_impact",
+       1
+      ],
+      [
+       "presence_of_mind",
+       1
+      ],
+      [
+       "arcane_impact",
+       2
+      ],
+      [
+       "arcane_mind",
+       2
+      ],
+      [
+       "arcane_instability",
+       3
+      ],
+      [
+       "arcane_mind",
+       2
+      ],
+      [
+       "arcane_power",
+       1
+      ],
+      [
+       "arcane_mind",
+       1
+      ],
+      [
+       "precision",
+       3
+      ],
+      [
+       "incineration",
+       5
+      ],
+      [
+       "improved_fire_blast",
+       2
+      ],
+      [
+       "ignite",
+       2
+      ],
+      [
+       "pyroblast",
+       1
+      ],
+      [
+       "heating_up",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "250005203100311531-552000012001-003",
+      "split": "32/16/3",
+      "points": 51,
+      "talents": {
+       "wand_specialization": 2,
+       "improved_channeling": 5,
+       "arcane_concentration": 5,
+       "missile_barrage": 2,
+       "arcane_impact": 3,
+       "arcane_blast": 1,
+       "arcane_meditation": 3,
+       "arcane_wrath": 1,
+       "presence_of_mind": 1,
+       "arcane_mind": 5,
+       "arcane_instability": 3,
+       "arcane_power": 1,
+       "incineration": 5,
+       "accelerant": 5,
+       "ignite": 2,
+       "pyroblast": 1,
+       "improved_fire_blast": 2,
+       "heating_up": 1,
+       "precision": 3
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "wowtbc_spec_page": "arcane-mage",
+     "spec_assigned_by": "guide page is for this spec"
+    }
+   ],
+   "endgame": {
+    "damage": [
+     {
+      "name": "Arcane / Pyroblast",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/arcane-mage/talents",
+       "title": "WoW Forever Arcane Mage Talents & Builds Guide",
+       "author": "Celz",
+       "updated": "4th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #0 (\"Arcane / Pyroblast\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "050205203100311531-525000012001-003",
+       "split": "32/16/3",
+       "points": 51,
+       "talents": {
+        "improved_channeling": 5,
+        "arcane_subtlety": 2,
+        "arcane_concentration": 5,
+        "missile_barrage": 2,
+        "arcane_impact": 3,
+        "arcane_blast": 1,
+        "arcane_meditation": 3,
+        "arcane_wrath": 1,
+        "presence_of_mind": 1,
+        "arcane_mind": 5,
+        "arcane_instability": 3,
+        "arcane_power": 1,
+        "incineration": 5,
+        "accelerant": 2,
+        "ignite": 5,
+        "pyroblast": 1,
+        "improved_fire_blast": 2,
+        "heating_up": 1,
+        "precision": 3
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "notes": [
+       "guide text: readonly > Arcane / Pyroblast Talent Build This build dips into the Fire tree whilst taking the majority of Arcane talents so that we can have Pyroblast buffed by Heating Up as a huge damage spell on top of our normal Arcane rotation."
+      ],
+      "method_spec_page": "arcane-mage",
+      "embedded_order_check": {
+       "ok": true,
+       "errors": [],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "same_final_code_as": [
+       "wowtbc.gg (Warcraft Forever class guide): Arcane Fire"
+      ],
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Pure Arcane",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/arcane-mage/talents",
+       "title": "WoW Forever Arcane Mage Talents & Builds Guide",
+       "author": "Celz",
+       "updated": "4th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #1 (\"Pure Arcane\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "250205223102311531-55-003",
+       "split": "38/10/3",
+       "points": 51,
+       "talents": {
+        "wand_specialization": 2,
+        "improved_channeling": 5,
+        "arcane_subtlety": 2,
+        "arcane_concentration": 5,
+        "missile_barrage": 2,
+        "arcane_geometry": 2,
+        "arcane_impact": 3,
+        "arcane_blast": 1,
+        "improved_counterspell": 2,
+        "arcane_meditation": 3,
+        "arcane_wrath": 1,
+        "presence_of_mind": 1,
+        "arcane_mind": 5,
+        "arcane_instability": 3,
+        "arcane_power": 1,
+        "incineration": 5,
+        "accelerant": 5,
+        "precision": 3
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "notes": [
+       "guide text: ...:hidden;border:1px solid #333;max-width:100%;flex-grow:1}.talent-holder:before{content:\"\";position:absolute;inset:0;background-image:linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.8)),var(--background-top-left);background-position:0 0,50% 0;background-repeat:no-repeat;background-size:100% 100%,cover;opacity:.9;pointer-events:none}.preview-actions{display:flex;flex-wrap:wrap;gap:8px;margin:10"
+      ],
+      "method_spec_page": "arcane-mage",
+      "embedded_order_check": {
+       "ok": true,
+       "errors": [],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Level 60 Arcane Mage Dungeon & Raid Build",
+      "source": {
+       "site": "Warcraft Tavern",
+       "url": "https://www.warcrafttavern.com/forever/guides/arcane-mage/",
+       "title": "Arcane Mage Guide - WoW Forever - Warcraft Tavern",
+       "author": "nevermore",
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "calculator_link": "https://www.warcrafttavern.com/forever/tools/talent-calculator/mage#?t=A111117766666b4feee9h99iiiiimmmpC222B222221144444a11e1",
+       "data": "Warcraft DB calculator link #?t= (one character per point, in order)",
+       "guide_order": "point by point (the link string is ordered)"
+      },
+      "kind": "level_60_build",
+      "order": [
+       {
+        "level": 10,
+        "id": "improved_channeling",
+        "name": "Improved Channeling",
+        "rank": 1
+       },
+       {
+        "level": 11,
+        "id": "improved_channeling",
+        "name": "Improved Channeling",
+        "rank": 2
+       },
+       {
+        "level": 12,
+        "id": "improved_channeling",
+        "name": "Improved Channeling",
+        "rank": 3
+       },
+       {
+        "level": 13,
+        "id": "improved_channeling",
+        "name": "Improved Channeling",
+        "rank": 4
+       },
+       {
+        "level": 14,
+        "id": "improved_channeling",
+        "name": "Improved Channeling",
+        "rank": 5
+       },
+       {
+        "level": 15,
+        "id": "missile_barrage",
+        "name": "Missile Barrage",
+        "rank": 1
+       },
+       {
+        "level": 16,
+        "id": "missile_barrage",
+        "name": "Missile Barrage",
+        "rank": 2
+       },
+       {
+        "level": 17,
+        "id": "arcane_concentration",
+        "name": "Arcane Concentration",
+        "rank": 1
+       },
+       {
+        "level": 18,
+        "id": "arcane_concentration",
+        "name": "Arcane Concentration",
+        "rank": 2
+       },
+       {
+        "level": 19,
+        "id": "arcane_concentration",
+        "name": "Arcane Concentration",
+        "rank": 3
+       },
+       {
+        "level": 20,
+        "id": "arcane_concentration",
+        "name": "Arcane Concentration",
+        "rank": 4
+       },
+       {
+        "level": 21,
+        "id": "arcane_concentration",
+        "name": "Arcane Concentration",
+        "rank": 5
+       },
+       {
+        "level": 22,
+        "id": "arcane_blast",
+        "name": "Arcane Blast",
+        "rank": 1
+       },
+       {
+        "level": 23,
+        "id": "arcane_subtlety",
+        "name": "Arcane Subtlety",
+        "rank": 1
+       },
+       {
+        "level": 24,
+        "id": "arcane_wrath",
+        "name": "Arcane Wrath",
+        "rank": 1
+       },
+       {
+        "level": 25,
+        "id": "arcane_meditation",
+        "name": "Arcane Meditation",
+        "rank": 1
+       },
+       {
+        "level": 26,
+        "id": "arcane_meditation",
+        "name": "Arcane Meditation",
+        "rank": 2
+       },
+       {
+        "level": 27,
+        "id": "arcane_meditation",
+        "name": "Arcane Meditation",
+        "rank": 3
+       },
+       {
+        "level": 28,
+        "id": "arcane_impact",
+        "name": "Arcane Impact",
+        "rank": 1
+       },
+       {
+        "level": 29,
+        "id": "presence_of_mind",
+        "name": "Presence of Mind",
+        "rank": 1
+       },
+       {
+        "level": 30,
+        "id": "arcane_impact",
+        "name": "Arcane Impact",
+        "rank": 2
+       },
+       {
+        "level": 31,
+        "id": "arcane_impact",
+        "name": "Arcane Impact",
+        "rank": 3
+       },
+       {
+        "level": 32,
+        "id": "arcane_mind",
+        "name": "Arcane Mind",
+        "rank": 1
+       },
+       {
+        "level": 33,
+        "id": "arcane_mind",
+        "name": "Arcane Mind",
+        "rank": 2
+       },
+       {
+        "level": 34,
+        "id": "arcane_mind",
+        "name": "Arcane Mind",
+        "rank": 3
+       },
+       {
+        "level": 35,
+        "id": "arcane_mind",
+        "name": "Arcane Mind",
+        "rank": 4
+       },
+       {
+        "level": 36,
+        "id": "arcane_mind",
+        "name": "Arcane Mind",
+        "rank": 5
+       },
+       {
+        "level": 37,
+        "id": "arcane_instability",
+        "name": "Arcane Instability",
+        "rank": 1
+       },
+       {
+        "level": 38,
+        "id": "arcane_instability",
+        "name": "Arcane Instability",
+        "rank": 2
+       },
+       {
+        "level": 39,
+        "id": "arcane_instability",
+        "name": "Arcane Instability",
+        "rank": 3
+       },
+       {
+        "level": 40,
+        "id": "arcane_power",
+        "name": "Arcane Power",
+        "rank": 1
+       },
+       {
+        "level": 41,
+        "id": "precision",
+        "name": "Precision",
+        "rank": 1
+       },
+       {
+        "level": 42,
+        "id": "precision",
+        "name": "Precision",
+        "rank": 2
+       },
+       {
+        "level": 43,
+        "id": "precision",
+        "name": "Precision",
+        "rank": 3
+       },
+       {
+        "level": 44,
+        "id": "accelerant",
+        "name": "Accelerant",
+        "rank": 1
+       },
+       {
+        "level": 45,
+        "id": "accelerant",
+        "name": "Accelerant",
+        "rank": 2
+       },
+       {
+        "level": 46,
+        "id": "accelerant",
+        "name": "Accelerant",
+        "rank": 3
+       },
+       {
+        "level": 47,
+        "id": "accelerant",
+        "name": "Accelerant",
+        "rank": 4
+       },
+       {
+        "level": 48,
+        "id": "accelerant",
+        "name": "Accelerant",
+        "rank": 5
+       },
+       {
+        "level": 49,
+        "id": "incineration",
+        "name": "Incineration",
+        "rank": 1
+       },
+       {
+        "level": 50,
+        "id": "incineration",
+        "name": "Incineration",
+        "rank": 2
+       },
+       {
+        "level": 51,
+        "id": "ignite",
+        "name": "Ignite",
+        "rank": 1
+       },
+       {
+        "level": 52,
+        "id": "ignite",
+        "name": "Ignite",
+        "rank": 2
+       },
+       {
+        "level": 53,
+        "id": "ignite",
+        "name": "Ignite",
+        "rank": 3
+       },
+       {
+        "level": 54,
+        "id": "ignite",
+        "name": "Ignite",
+        "rank": 4
+       },
+       {
+        "level": 55,
+        "id": "ignite",
+        "name": "Ignite",
+        "rank": 5
+       },
+       {
+        "level": 56,
+        "id": "pyroblast",
+        "name": "Pyroblast",
+        "rank": 1
+       },
+       {
+        "level": 57,
+        "id": "incineration",
+        "name": "Incineration",
+        "rank": 3
+       },
+       {
+        "level": 58,
+        "id": "incineration",
+        "name": "Incineration",
+        "rank": 4
+       },
+       {
+        "level": 59,
+        "id": "heating_up",
+        "name": "Heating Up",
+        "rank": 1
+       },
+       {
+        "level": 60,
+        "id": "incineration",
+        "name": "Incineration",
+        "rank": 5
+       }
+      ],
+      "route_runs": [
+       [
+        "improved_channeling",
+        5
+       ],
+       [
+        "missile_barrage",
+        2
+       ],
+       [
+        "arcane_concentration",
+        5
+       ],
+       [
+        "arcane_blast",
+        1
+       ],
+       [
+        "arcane_subtlety",
+        1
+       ],
+       [
+        "arcane_wrath",
+        1
+       ],
+       [
+        "arcane_meditation",
+        3
+       ],
+       [
+        "arcane_impact",
+        1
+       ],
+       [
+        "presence_of_mind",
+        1
+       ],
+       [
+        "arcane_impact",
+        2
+       ],
+       [
+        "arcane_mind",
+        5
+       ],
+       [
+        "arcane_instability",
+        3
+       ],
+       [
+        "arcane_power",
+        1
+       ],
+       [
+        "precision",
+        3
+       ],
+       [
+        "accelerant",
+        5
+       ],
+       [
+        "incineration",
+        2
+       ],
+       [
+        "ignite",
+        5
+       ],
+       [
+        "pyroblast",
+        1
+       ],
+       [
+        "incineration",
+        2
+       ],
+       [
+        "heating_up",
+        1
+       ],
+       [
+        "incineration",
+        1
+       ]
+      ],
+      "order_check": {
+       "ok": false,
+       "errors": [
+        "L24: Arcane Wrath row 4 needs 15 above, has 14",
+        "L25: Arcane Meditation row 4 needs 15 above, has 14",
+        "L26: Arcane Meditation row 4 needs 15 above, has 14",
+        "L27: Arcane Meditation row 4 needs 15 above, has 14",
+        "L29: Presence of Mind row 5 needs 20 above, has 19"
+       ],
+       "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+      },
+      "final": {
+       "code": "050105203100311531-555000010001-003",
+       "split": "31/17/3",
+       "points": 51,
+       "talents": {
+        "improved_channeling": 5,
+        "arcane_subtlety": 1,
+        "arcane_concentration": 5,
+        "missile_barrage": 2,
+        "arcane_impact": 3,
+        "arcane_blast": 1,
+        "arcane_meditation": 3,
+        "arcane_wrath": 1,
+        "presence_of_mind": 1,
+        "arcane_mind": 5,
+        "arcane_instability": 3,
+        "arcane_power": 1,
+        "incineration": 5,
+        "accelerant": 5,
+        "ignite": 5,
+        "pyroblast": 1,
+        "heating_up": 1,
+        "precision": 3
+       },
+       "legal_on_client_tree": "OK",
+       "order_end_state_equals_final": true
+      },
+      "notes": [
+       "guide text before the link: ...From the Fire Tree, you’ll get Incineration to boost your Critical Strike Chance and Accelerant to reduce the cast time of Arcane Wrath. Improved Fire Blast plus Ignite for better Single-Target DPS. After that, you’ll get Pyroblast and Heating Up , and trigger the effects with Fire Blast and Scorch."
+      ],
+      "spec_assigned_by": "guide label",
+      "use_in_build_name": [
+       "dungeon",
+       "raid"
+      ],
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Arcane Fire",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/arcane-mage/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/arcane-mage/page-data.json, build \"Arcane Fire\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "050205203100311531-525000012001-003",
+       "split": "32/16/3",
+       "points": 51,
+       "talents": {
+        "improved_channeling": 5,
+        "arcane_subtlety": 2,
+        "arcane_concentration": 5,
+        "missile_barrage": 2,
+        "arcane_impact": 3,
+        "arcane_blast": 1,
+        "arcane_meditation": 3,
+        "arcane_wrath": 1,
+        "presence_of_mind": 1,
+        "arcane_mind": 5,
+        "arcane_instability": 3,
+        "arcane_power": 1,
+        "incineration": 5,
+        "accelerant": 2,
+        "ignite": 5,
+        "pyroblast": 1,
+        "improved_fire_blast": 2,
+        "heating_up": 1,
+        "precision": 3
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "arcane-mage",
+      "spec_assigned_by": "guide page is for this spec",
+      "same_final_code_as": [
+       "Method.gg: Arcane / Pyroblast"
+      ],
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Arcane",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/arcane-mage/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/arcane-mage/page-data.json, build \"Arcane\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "050205203100311531-554000002-003",
+       "split": "32/16/3",
+       "points": 51,
+       "talents": {
+        "improved_channeling": 5,
+        "arcane_subtlety": 2,
+        "arcane_concentration": 5,
+        "missile_barrage": 2,
+        "arcane_impact": 3,
+        "arcane_blast": 1,
+        "arcane_meditation": 3,
+        "arcane_wrath": 1,
+        "presence_of_mind": 1,
+        "arcane_mind": 5,
+        "arcane_instability": 3,
+        "arcane_power": 1,
+        "incineration": 5,
+        "accelerant": 5,
+        "ignite": 4,
+        "improved_fire_blast": 2,
+        "precision": 3
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "arcane-mage",
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     }
+    ]
+   }
+  },
+  "fire": {
+   "name": "Fire",
+   "tree": "fire",
+   "dungeon_roles": [
+    "damage"
+   ],
+   "leveling": [
+    {
+     "name": "Fire",
+     "source": {
+      "site": "Maxroll",
+      "url": "https://maxroll.gg/wow-forever/class-guides/mage-leveling-guide",
+      "title": "Mage Leveling Guide",
+      "author": "maxroll",
+      "published": "October 30, 2026",
+      "updated": "November 4, 2026",
+      "date_seen": "2026-11-08",
+      "data": "planner profile \"Fire\" (uid vhcGY986, planner oo3nid0u saved 2026-11-04 03:01:04): talents.history, TraitNodeEntry ids from window.__remixContext",
+      "guide_order": "point by point (the planner history is the guide's own order)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 4
+      },
+      {
+       "level": 19,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 5
+      },
+      {
+       "level": 20,
+       "id": "pyroblast",
+       "name": "Pyroblast",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "burning_soul",
+       "name": "Burning Soul",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "burning_soul",
+       "name": "Burning Soul",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "burning_soul",
+       "name": "Burning Soul",
+       "rank": 3
+      },
+      {
+       "level": 24,
+       "id": "improved_fire_blast",
+       "name": "Improved Fire Blast",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "heating_up",
+       "name": "Heating Up",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "master_of_elements",
+       "name": "Master of Elements",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "master_of_elements",
+       "name": "Master of Elements",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "master_of_elements",
+       "name": "Master of Elements",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "improved_scorch",
+       "name": "Improved Scorch",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "blast_wave",
+       "name": "Blast Wave",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "critical_mass",
+       "name": "Critical Mass",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "critical_mass",
+       "name": "Critical Mass",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "critical_mass",
+       "name": "Critical Mass",
+       "rank": 3
+      },
+      {
+       "level": 34,
+       "id": "critical_mass",
+       "name": "Critical Mass",
+       "rank": 4
+      },
+      {
+       "level": 35,
+       "id": "fire_power",
+       "name": "Fire Power",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "fire_power",
+       "name": "Fire Power",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "fire_power",
+       "name": "Fire Power",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "critical_mass",
+       "name": "Critical Mass",
+       "rank": 5
+      },
+      {
+       "level": 39,
+       "id": "improved_fire_blast",
+       "name": "Improved Fire Blast",
+       "rank": 2
+      },
+      {
+       "level": 40,
+       "id": "combustion",
+       "name": "Combustion",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 1
+      },
+      {
+       "level": 45,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 2
+      },
+      {
+       "level": 46,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 3
+      },
+      {
+       "level": 47,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 4
+      },
+      {
+       "level": 48,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 5
+      },
+      {
+       "level": 49,
+       "id": "arcane_subtlety",
+       "name": "Arcane Subtlety",
+       "rank": 1
+      },
+      {
+       "level": 50,
+       "id": "arcane_subtlety",
+       "name": "Arcane Subtlety",
+       "rank": 2
+      },
+      {
+       "level": 51,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 2
+      },
+      {
+       "level": 53,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 3
+      },
+      {
+       "level": 56,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 4
+      },
+      {
+       "level": 57,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 5
+      },
+      {
+       "level": 58,
+       "id": "missile_barrage",
+       "name": "Missile Barrage",
+       "rank": 1
+      },
+      {
+       "level": 59,
+       "id": "missile_barrage",
+       "name": "Missile Barrage",
+       "rank": 2
+      },
+      {
+       "level": 60,
+       "id": "arcane_blast",
+       "name": "Arcane Blast",
+       "rank": 1
+      }
+     ],
+     "route_runs": [
+      [
+       "accelerant",
+       5
+      ],
+      [
+       "ignite",
+       5
+      ],
+      [
+       "pyroblast",
+       1
+      ],
+      [
+       "burning_soul",
+       3
+      ],
+      [
+       "improved_fire_blast",
+       1
+      ],
+      [
+       "heating_up",
+       1
+      ],
+      [
+       "master_of_elements",
+       3
+      ],
+      [
+       "improved_scorch",
+       1
+      ],
+      [
+       "blast_wave",
+       1
+      ],
+      [
+       "critical_mass",
+       4
+      ],
+      [
+       "fire_power",
+       3
+      ],
+      [
+       "critical_mass",
+       1
+      ],
+      [
+       "improved_fire_blast",
+       1
+      ],
+      [
+       "combustion",
+       1
+      ],
+      [
+       "precision",
+       3
+      ],
+      [
+       "arcane_concentration",
+       5
+      ],
+      [
+       "arcane_subtlety",
+       2
+      ],
+      [
+       "arcane_meditation",
+       2
+      ],
+      [
+       "improved_channeling",
+       5
+      ],
+      [
+       "missile_barrage",
+       2
+      ],
+      [
+       "arcane_blast",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": false,
+      "errors": [
+       "L34: Critical Mass over max",
+       "L38: Critical Mass over max",
+       "L44: Arcane Concentration row 2 needs 5 above, has 0",
+       "L45: Arcane Concentration row 2 needs 5 above, has 0",
+       "L46: Arcane Concentration row 2 needs 5 above, has 0",
+       "L47: Arcane Concentration row 2 needs 5 above, has 0",
+       "L48: Arcane Concentration row 2 needs 5 above, has 0",
+       "L49: Arcane Subtlety row 2 needs 5 above, has 0",
+       "L50: Arcane Subtlety row 2 needs 5 above, has 0",
+       "L51: Arcane Meditation row 4 needs 15 above, has 7",
+       "L52: Arcane Meditation row 4 needs 15 above, has 7"
+      ],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "0502052001002-05500301210135131-003",
+      "split": "17/31/3",
+      "points": 51,
+      "talents": {
+       "improved_channeling": 5,
+       "arcane_subtlety": 2,
+       "arcane_concentration": 5,
+       "missile_barrage": 2,
+       "arcane_blast": 1,
+       "arcane_meditation": 2,
+       "accelerant": 5,
+       "ignite": 5,
+       "burning_soul": 3,
+       "pyroblast": 1,
+       "improved_fire_blast": 2,
+       "improved_scorch": 1,
+       "heating_up": 1,
+       "master_of_elements": 3,
+       "critical_mass": 5,
+       "blast_wave": 1,
+       "fire_power": 3,
+       "combustion": 1,
+       "precision": 3
+      },
+      "legal_on_client_tree": [
+       "Critical Mass 5/3 over max"
+      ],
+      "order_end_state_equals_final": true
+     },
+     "spec_assigned_by": "guide label"
+    },
+    {
+     "name": "Fire Mage Leveling Build",
+     "source": {
+      "site": "Warcraft Tavern",
+      "url": "https://www.warcrafttavern.com/forever/guides/mage-leveling/",
+      "title": "Mage Leveling Guide - WoW Forever - Warcraft Tavern",
+      "author": "nevermore",
+      "updated": null,
+      "date_seen": "2026-11-08",
+      "calculator_link": "https://www.warcrafttavern.com/forever/tools/talent-calculator/mage#?t=C222B2222244444a8881e1111hhhbbmmmccpcA111117766666BfffA4",
+      "data": "Warcraft DB calculator link #?t= (one character per point, in order)",
+      "guide_order": "point by point (the link string is ordered)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 1
+      },
+      {
+       "level": 14,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 2
+      },
+      {
+       "level": 15,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 3
+      },
+      {
+       "level": 16,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 4
+      },
+      {
+       "level": 17,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 5
+      },
+      {
+       "level": 18,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 3
+      },
+      {
+       "level": 21,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 4
+      },
+      {
+       "level": 22,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 5
+      },
+      {
+       "level": 23,
+       "id": "pyroblast",
+       "name": "Pyroblast",
+       "rank": 1
+      },
+      {
+       "level": 24,
+       "id": "burning_soul",
+       "name": "Burning Soul",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "burning_soul",
+       "name": "Burning Soul",
+       "rank": 2
+      },
+      {
+       "level": 26,
+       "id": "burning_soul",
+       "name": "Burning Soul",
+       "rank": 3
+      },
+      {
+       "level": 27,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "heating_up",
+       "name": "Heating Up",
+       "rank": 1
+      },
+      {
+       "level": 29,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 2
+      },
+      {
+       "level": 30,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 3
+      },
+      {
+       "level": 31,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 4
+      },
+      {
+       "level": 32,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 5
+      },
+      {
+       "level": 33,
+       "id": "critical_mass",
+       "name": "Critical Mass",
+       "rank": 1
+      },
+      {
+       "level": 34,
+       "id": "critical_mass",
+       "name": "Critical Mass",
+       "rank": 2
+      },
+      {
+       "level": 35,
+       "id": "critical_mass",
+       "name": "Critical Mass",
+       "rank": 3
+      },
+      {
+       "level": 36,
+       "id": "improved_fire_blast",
+       "name": "Improved Fire Blast",
+       "rank": 1
+      },
+      {
+       "level": 37,
+       "id": "improved_fire_blast",
+       "name": "Improved Fire Blast",
+       "rank": 2
+      },
+      {
+       "level": 38,
+       "id": "fire_power",
+       "name": "Fire Power",
+       "rank": 1
+      },
+      {
+       "level": 39,
+       "id": "fire_power",
+       "name": "Fire Power",
+       "rank": 2
+      },
+      {
+       "level": 40,
+       "id": "fire_power",
+       "name": "Fire Power",
+       "rank": 3
+      },
+      {
+       "level": 41,
+       "id": "improved_scorch",
+       "name": "Improved Scorch",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "improved_scorch",
+       "name": "Improved Scorch",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "combustion",
+       "name": "Combustion",
+       "rank": 1
+      },
+      {
+       "level": 44,
+       "id": "improved_scorch",
+       "name": "Improved Scorch",
+       "rank": 3
+      },
+      {
+       "level": 45,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 1
+      },
+      {
+       "level": 46,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 2
+      },
+      {
+       "level": 47,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 3
+      },
+      {
+       "level": 48,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 4
+      },
+      {
+       "level": 49,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 5
+      },
+      {
+       "level": 50,
+       "id": "missile_barrage",
+       "name": "Missile Barrage",
+       "rank": 1
+      },
+      {
+       "level": 51,
+       "id": "missile_barrage",
+       "name": "Missile Barrage",
+       "rank": 2
+      },
+      {
+       "level": 52,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 1
+      },
+      {
+       "level": 53,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 2
+      },
+      {
+       "level": 54,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 3
+      },
+      {
+       "level": 55,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 4
+      },
+      {
+       "level": 56,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 5
+      },
+      {
+       "level": 57,
+       "id": "master_of_elements",
+       "name": "Master of Elements",
+       "rank": 1
+      },
+      {
+       "level": 58,
+       "id": "master_of_elements",
+       "name": "Master of Elements",
+       "rank": 2
+      },
+      {
+       "level": 59,
+       "id": "master_of_elements",
+       "name": "Master of Elements",
+       "rank": 3
+      },
+      {
+       "level": 60,
+       "id": "arcane_subtlety",
+       "name": "Arcane Subtlety",
+       "rank": 1
+      }
+     ],
+     "route_runs": [
+      [
+       "precision",
+       3
+      ],
+      [
+       "accelerant",
+       5
+      ],
+      [
+       "ignite",
+       5
+      ],
+      [
+       "pyroblast",
+       1
+      ],
+      [
+       "burning_soul",
+       3
+      ],
+      [
+       "incineration",
+       1
+      ],
+      [
+       "heating_up",
+       1
+      ],
+      [
+       "incineration",
+       4
+      ],
+      [
+       "critical_mass",
+       3
+      ],
+      [
+       "improved_fire_blast",
+       2
+      ],
+      [
+       "fire_power",
+       3
+      ],
+      [
+       "improved_scorch",
+       2
+      ],
+      [
+       "combustion",
+       1
+      ],
+      [
+       "improved_scorch",
+       1
+      ],
+      [
+       "improved_channeling",
+       5
+      ],
+      [
+       "missile_barrage",
+       2
+      ],
+      [
+       "arcane_concentration",
+       5
+      ],
+      [
+       "master_of_elements",
+       3
+      ],
+      [
+       "arcane_subtlety",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "0501052-55500301230133031-003",
+      "split": "13/35/3",
+      "points": 51,
+      "talents": {
+       "improved_channeling": 5,
+       "arcane_subtlety": 1,
+       "arcane_concentration": 5,
+       "missile_barrage": 2,
+       "incineration": 5,
+       "accelerant": 5,
+       "ignite": 5,
+       "burning_soul": 3,
+       "pyroblast": 1,
+       "improved_fire_blast": 2,
+       "improved_scorch": 3,
+       "heating_up": 1,
+       "master_of_elements": 3,
+       "critical_mass": 3,
+       "fire_power": 3,
+       "combustion": 1,
+       "precision": 3
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "notes": [
+      "guide text before the link: ...to help with your Mana Management, while also spending points into Missile Barrage for extra damage at no cost. This version of the build picks Missile Barrage around level 50, but you can instead use the first 7 talent points you get to reach Missile Barrage early if you struggle with mobs. Talents"
+     ],
+     "spec_assigned_by": "guide label"
+    },
+    {
+     "name": "Fire leveling",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/mage",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Wowhead",
+       "url": "https://www.wowhead.com/forever/guide/classes/mage/fire/dps-leveling-tips",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Fire leveling\" in the calculator page payload; mode Leveling",
+      "guide_order": "final build only"
+     },
+     "kind": "final_only",
+     "final": {
+      "code": "0502052001003-55520301200103031-002",
+      "split": "18/31/2",
+      "points": 51,
+      "talents": {
+       "improved_channeling": 5,
+       "arcane_subtlety": 2,
+       "arcane_concentration": 5,
+       "missile_barrage": 2,
+       "arcane_blast": 1,
+       "arcane_meditation": 3,
+       "incineration": 5,
+       "accelerant": 5,
+       "ignite": 5,
+       "flame_throwing": 2,
+       "burning_soul": 3,
+       "pyroblast": 1,
+       "improved_fire_blast": 2,
+       "heating_up": 1,
+       "critical_mass": 3,
+       "fire_power": 3,
+       "combustion": 1,
+       "precision": 2
+      },
+      "legal_on_client_tree": "OK"
+     },
+     "secondary": true,
+     "notes": [
+      "original Wowhead page not reachable from this sandbox (Cloudflare); this is timesaver.gg's transcription, unverified against the original"
+     ],
+     "spec_assigned_by": "guide label"
+    },
+    {
+     "name": "Leveling 1-60",
+     "source": {
+      "site": "wowtbc.gg (Warcraft Forever class guide)",
+      "url": "https://wowtbc.gg/warcraftforever/class-guides/fire-mage/",
+      "author": null,
+      "updated": null,
+      "date_seen": "2026-11-08",
+      "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/fire-mage/page-data.json, build \"Leveling 1-60\"",
+      "note": "the page shows no author or date",
+      "guide_order": "point by point (\"Leveling 1-60\" talentBuildPaths)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 1
+      },
+      {
+       "level": 13,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 2
+      },
+      {
+       "level": 14,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 3
+      },
+      {
+       "level": 15,
+       "id": "missile_barrage",
+       "name": "Missile Barrage",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "missile_barrage",
+       "name": "Missile Barrage",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 4
+      },
+      {
+       "level": 18,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 5
+      },
+      {
+       "level": 19,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 1
+      },
+      {
+       "level": 20,
+       "id": "arcane_blast",
+       "name": "Arcane Blast",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 3
+      },
+      {
+       "level": 23,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 4
+      },
+      {
+       "level": 24,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 5
+      },
+      {
+       "level": 25,
+       "id": "arcane_wrath",
+       "name": "Arcane Wrath",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 2
+      },
+      {
+       "level": 31,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 3
+      },
+      {
+       "level": 32,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 4
+      },
+      {
+       "level": 33,
+       "id": "accelerant",
+       "name": "Accelerant",
+       "rank": 5
+      },
+      {
+       "level": 34,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 1
+      },
+      {
+       "level": 35,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 2
+      },
+      {
+       "level": 36,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 3
+      },
+      {
+       "level": 37,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 4
+      },
+      {
+       "level": 38,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 5
+      },
+      {
+       "level": 39,
+       "id": "burning_soul",
+       "name": "Burning Soul",
+       "rank": 1
+      },
+      {
+       "level": 40,
+       "id": "burning_soul",
+       "name": "Burning Soul",
+       "rank": 2
+      },
+      {
+       "level": 41,
+       "id": "improved_fire_blast",
+       "name": "Improved Fire Blast",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "improved_fire_blast",
+       "name": "Improved Fire Blast",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "pyroblast",
+       "name": "Pyroblast",
+       "rank": 1
+      },
+      {
+       "level": 44,
+       "id": "heating_up",
+       "name": "Heating Up",
+       "rank": 1
+      },
+      {
+       "level": 45,
+       "id": "burning_soul",
+       "name": "Burning Soul",
+       "rank": 3
+      },
+      {
+       "level": 46,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "blast_wave",
+       "name": "Blast Wave",
+       "rank": 1
+      },
+      {
+       "level": 50,
+       "id": "critical_mass",
+       "name": "Critical Mass",
+       "rank": 1
+      },
+      {
+       "level": 51,
+       "id": "critical_mass",
+       "name": "Critical Mass",
+       "rank": 2
+      },
+      {
+       "level": 52,
+       "id": "critical_mass",
+       "name": "Critical Mass",
+       "rank": 3
+      },
+      {
+       "level": 53,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 4
+      },
+      {
+       "level": 54,
+       "id": "fire_power",
+       "name": "Fire Power",
+       "rank": 1
+      },
+      {
+       "level": 55,
+       "id": "fire_power",
+       "name": "Fire Power",
+       "rank": 2
+      },
+      {
+       "level": 56,
+       "id": "fire_power",
+       "name": "Fire Power",
+       "rank": 3
+      },
+      {
+       "level": 57,
+       "id": "ignite",
+       "name": "Ignite",
+       "rank": 5
+      },
+      {
+       "level": 58,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 1
+      },
+      {
+       "level": 59,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 2
+      },
+      {
+       "level": 60,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 3
+      }
+     ],
+     "route_runs": [
+      [
+       "wand_specialization",
+       2
+      ],
+      [
+       "improved_channeling",
+       3
+      ],
+      [
+       "missile_barrage",
+       2
+      ],
+      [
+       "improved_channeling",
+       2
+      ],
+      [
+       "arcane_concentration",
+       1
+      ],
+      [
+       "arcane_blast",
+       1
+      ],
+      [
+       "arcane_concentration",
+       4
+      ],
+      [
+       "arcane_wrath",
+       1
+      ],
+      [
+       "arcane_meditation",
+       3
+      ],
+      [
+       "accelerant",
+       5
+      ],
+      [
+       "incineration",
+       5
+      ],
+      [
+       "burning_soul",
+       2
+      ],
+      [
+       "improved_fire_blast",
+       2
+      ],
+      [
+       "pyroblast",
+       1
+      ],
+      [
+       "heating_up",
+       1
+      ],
+      [
+       "burning_soul",
+       1
+      ],
+      [
+       "ignite",
+       3
+      ],
+      [
+       "blast_wave",
+       1
+      ],
+      [
+       "critical_mass",
+       3
+      ],
+      [
+       "ignite",
+       1
+      ],
+      [
+       "fire_power",
+       3
+      ],
+      [
+       "ignite",
+       1
+      ],
+      [
+       "precision",
+       3
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "25000520010031-5550030120010313-003",
+      "split": "19/29/3",
+      "points": 51,
+      "talents": {
+       "wand_specialization": 2,
+       "improved_channeling": 5,
+       "arcane_concentration": 5,
+       "missile_barrage": 2,
+       "arcane_blast": 1,
+       "arcane_meditation": 3,
+       "arcane_wrath": 1,
+       "incineration": 5,
+       "accelerant": 5,
+       "ignite": 5,
+       "burning_soul": 3,
+       "pyroblast": 1,
+       "improved_fire_blast": 2,
+       "heating_up": 1,
+       "critical_mass": 3,
+       "blast_wave": 1,
+       "fire_power": 3,
+       "precision": 3
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "wowtbc_spec_page": "fire-mage",
+     "spec_assigned_by": "guide page is for this spec"
+    }
+   ],
+   "endgame": {
+    "damage": [
+     {
+      "name": "Fireball / Arcane",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/fire-mage/talents",
+       "title": "WoW Forever Fire Mage Talents & Builds Guide",
+       "author": "Celz",
+       "updated": "7th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #0 (\"Fireball / Arcane\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "0502052001001-55500001230133031-003",
+       "split": "16/32/3",
+       "points": 51,
+       "talents": {
+        "improved_channeling": 5,
+        "arcane_subtlety": 2,
+        "arcane_concentration": 5,
+        "missile_barrage": 2,
+        "arcane_blast": 1,
+        "arcane_meditation": 1,
+        "incineration": 5,
+        "accelerant": 5,
+        "ignite": 5,
+        "pyroblast": 1,
+        "improved_fire_blast": 2,
+        "improved_scorch": 3,
+        "heating_up": 1,
+        "master_of_elements": 3,
+        "critical_mass": 3,
+        "fire_power": 3,
+        "combustion": 1,
+        "precision": 3
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "notes": [
+       "guide text: ...ireball / Arcane Talent Build This build is centred on keeping at least 1 stack of Arcane Blast up for the Spell Damage buff, which makes your crits, especially Pyroblast , hit very hard. Arcane Blast is the key talent. The rest of the points go to smaller Arcane picks. We take Combustion in this build. It needs 3 points in Critical Mass and guarantees crits, which suits that build’s burst window."
+      ],
+      "method_spec_page": "fire-mage",
+      "embedded_order_check": {
+       "ok": true,
+       "errors": [],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Frostfire + Shatter",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/fire-mage/talents",
+       "title": "WoW Forever Fire Mage Talents & Builds Guide",
+       "author": "Celz",
+       "updated": "7th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #1 (\"Frostfire + Shatter\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "-5550000123011303-2035200301013002",
+       "split": "0/29/22",
+       "points": 51,
+       "talents": {
+        "incineration": 5,
+        "accelerant": 5,
+        "ignite": 5,
+        "pyroblast": 1,
+        "improved_fire_blast": 2,
+        "improved_scorch": 3,
+        "heating_up": 1,
+        "master_of_elements": 1,
+        "critical_mass": 3,
+        "fire_power": 3,
+        "frost_warding": 2,
+        "precision": 3,
+        "ice_shards": 5,
+        "frostbite": 2,
+        "frost_channeling": 3,
+        "ice_lance": 1,
+        "ice_block": 1,
+        "shatter": 3,
+        "fingers_of_frost": 2
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "notes": [
+       "guide text: ...Heating Up both rely on crit, it’s one of the cheapest ways to keep them running. Accelerant cuts the cast time of Fireball and Frostfire Bolt by 0.5 seconds at max rank, which speeds up your main fillers and gives you more chances to crit and build Heating Up stacks. Ignite adds extra damage over time to your Fire crits and now applies as a separate debuff for each Mage, so all of the benefit goe"
+      ],
+      "method_spec_page": "fire-mage",
+      "embedded_order_check": {
+       "ok": true,
+       "errors": [],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "same_final_code_as": [
+       "Warcraft Tavern: Level 60 Fire Mage Frostfire Bolt Build"
+      ],
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Level 60 Fire Mage Build",
+      "source": {
+       "site": "Warcraft Tavern",
+       "url": "https://www.warcrafttavern.com/forever/guides/fire-mage/",
+       "title": "Fire Mage Guide - WoW Forever - Warcraft Tavern",
+       "author": "nevermore",
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "calculator_link": "https://www.warcrafttavern.com/forever/tools/talent-calculator/mage#?t=B111112222244444a888ehhhcccmmmpfC22A111116666699977eee",
+       "data": "Warcraft DB calculator link #?t= (one character per point, in order)",
+       "guide_order": "point by point (the link string is ordered)"
+      },
+      "kind": "level_60_build",
+      "order": [
+       {
+        "level": 10,
+        "id": "incineration",
+        "name": "Incineration",
+        "rank": 1
+       },
+       {
+        "level": 11,
+        "id": "incineration",
+        "name": "Incineration",
+        "rank": 2
+       },
+       {
+        "level": 12,
+        "id": "incineration",
+        "name": "Incineration",
+        "rank": 3
+       },
+       {
+        "level": 13,
+        "id": "incineration",
+        "name": "Incineration",
+        "rank": 4
+       },
+       {
+        "level": 14,
+        "id": "incineration",
+        "name": "Incineration",
+        "rank": 5
+       },
+       {
+        "level": 15,
+        "id": "accelerant",
+        "name": "Accelerant",
+        "rank": 1
+       },
+       {
+        "level": 16,
+        "id": "accelerant",
+        "name": "Accelerant",
+        "rank": 2
+       },
+       {
+        "level": 17,
+        "id": "accelerant",
+        "name": "Accelerant",
+        "rank": 3
+       },
+       {
+        "level": 18,
+        "id": "accelerant",
+        "name": "Accelerant",
+        "rank": 4
+       },
+       {
+        "level": 19,
+        "id": "accelerant",
+        "name": "Accelerant",
+        "rank": 5
+       },
+       {
+        "level": 20,
+        "id": "ignite",
+        "name": "Ignite",
+        "rank": 1
+       },
+       {
+        "level": 21,
+        "id": "ignite",
+        "name": "Ignite",
+        "rank": 2
+       },
+       {
+        "level": 22,
+        "id": "ignite",
+        "name": "Ignite",
+        "rank": 3
+       },
+       {
+        "level": 23,
+        "id": "ignite",
+        "name": "Ignite",
+        "rank": 4
+       },
+       {
+        "level": 24,
+        "id": "ignite",
+        "name": "Ignite",
+        "rank": 5
+       },
+       {
+        "level": 25,
+        "id": "pyroblast",
+        "name": "Pyroblast",
+        "rank": 1
+       },
+       {
+        "level": 26,
+        "id": "burning_soul",
+        "name": "Burning Soul",
+        "rank": 1
+       },
+       {
+        "level": 27,
+        "id": "burning_soul",
+        "name": "Burning Soul",
+        "rank": 2
+       },
+       {
+        "level": 28,
+        "id": "burning_soul",
+        "name": "Burning Soul",
+        "rank": 3
+       },
+       {
+        "level": 29,
+        "id": "heating_up",
+        "name": "Heating Up",
+        "rank": 1
+       },
+       {
+        "level": 30,
+        "id": "critical_mass",
+        "name": "Critical Mass",
+        "rank": 1
+       },
+       {
+        "level": 31,
+        "id": "critical_mass",
+        "name": "Critical Mass",
+        "rank": 2
+       },
+       {
+        "level": 32,
+        "id": "critical_mass",
+        "name": "Critical Mass",
+        "rank": 3
+       },
+       {
+        "level": 33,
+        "id": "improved_scorch",
+        "name": "Improved Scorch",
+        "rank": 1
+       },
+       {
+        "level": 34,
+        "id": "improved_scorch",
+        "name": "Improved Scorch",
+        "rank": 2
+       },
+       {
+        "level": 35,
+        "id": "improved_scorch",
+        "name": "Improved Scorch",
+        "rank": 3
+       },
+       {
+        "level": 36,
+        "id": "fire_power",
+        "name": "Fire Power",
+        "rank": 1
+       },
+       {
+        "level": 37,
+        "id": "fire_power",
+        "name": "Fire Power",
+        "rank": 2
+       },
+       {
+        "level": 38,
+        "id": "fire_power",
+        "name": "Fire Power",
+        "rank": 3
+       },
+       {
+        "level": 39,
+        "id": "combustion",
+        "name": "Combustion",
+        "rank": 1
+       },
+       {
+        "level": 40,
+        "id": "master_of_elements",
+        "name": "Master of Elements",
+        "rank": 1
+       },
+       {
+        "level": 41,
+        "id": "precision",
+        "name": "Precision",
+        "rank": 1
+       },
+       {
+        "level": 42,
+        "id": "precision",
+        "name": "Precision",
+        "rank": 2
+       },
+       {
+        "level": 43,
+        "id": "improved_channeling",
+        "name": "Improved Channeling",
+        "rank": 1
+       },
+       {
+        "level": 44,
+        "id": "improved_channeling",
+        "name": "Improved Channeling",
+        "rank": 2
+       },
+       {
+        "level": 45,
+        "id": "improved_channeling",
+        "name": "Improved Channeling",
+        "rank": 3
+       },
+       {
+        "level": 46,
+        "id": "improved_channeling",
+        "name": "Improved Channeling",
+        "rank": 4
+       },
+       {
+        "level": 47,
+        "id": "improved_channeling",
+        "name": "Improved Channeling",
+        "rank": 5
+       },
+       {
+        "level": 48,
+        "id": "arcane_concentration",
+        "name": "Arcane Concentration",
+        "rank": 1
+       },
+       {
+        "level": 49,
+        "id": "arcane_concentration",
+        "name": "Arcane Concentration",
+        "rank": 2
+       },
+       {
+        "level": 50,
+        "id": "arcane_concentration",
+        "name": "Arcane Concentration",
+        "rank": 3
+       },
+       {
+        "level": 51,
+        "id": "arcane_concentration",
+        "name": "Arcane Concentration",
+        "rank": 4
+       },
+       {
+        "level": 52,
+        "id": "arcane_concentration",
+        "name": "Arcane Concentration",
+        "rank": 5
+       },
+       {
+        "level": 53,
+        "id": "arcane_impact",
+        "name": "Arcane Impact",
+        "rank": 1
+       },
+       {
+        "level": 54,
+        "id": "arcane_impact",
+        "name": "Arcane Impact",
+        "rank": 2
+       },
+       {
+        "level": 55,
+        "id": "arcane_impact",
+        "name": "Arcane Impact",
+        "rank": 3
+       },
+       {
+        "level": 56,
+        "id": "missile_barrage",
+        "name": "Missile Barrage",
+        "rank": 1
+       },
+       {
+        "level": 57,
+        "id": "missile_barrage",
+        "name": "Missile Barrage",
+        "rank": 2
+       },
+       {
+        "level": 58,
+        "id": "arcane_meditation",
+        "name": "Arcane Meditation",
+        "rank": 1
+       },
+       {
+        "level": 59,
+        "id": "arcane_meditation",
+        "name": "Arcane Meditation",
+        "rank": 2
+       },
+       {
+        "level": 60,
+        "id": "arcane_meditation",
+        "name": "Arcane Meditation",
+        "rank": 3
+       }
+      ],
+      "route_runs": [
+       [
+        "incineration",
+        5
+       ],
+       [
+        "accelerant",
+        5
+       ],
+       [
+        "ignite",
+        5
+       ],
+       [
+        "pyroblast",
+        1
+       ],
+       [
+        "burning_soul",
+        3
+       ],
+       [
+        "heating_up",
+        1
+       ],
+       [
+        "critical_mass",
+        3
+       ],
+       [
+        "improved_scorch",
+        3
+       ],
+       [
+        "fire_power",
+        3
+       ],
+       [
+        "combustion",
+        1
+       ],
+       [
+        "master_of_elements",
+        1
+       ],
+       [
+        "precision",
+        2
+       ],
+       [
+        "improved_channeling",
+        5
+       ],
+       [
+        "arcane_concentration",
+        5
+       ],
+       [
+        "arcane_impact",
+        3
+       ],
+       [
+        "missile_barrage",
+        2
+       ],
+       [
+        "arcane_meditation",
+        3
+       ]
+      ],
+      "order_check": {
+       "ok": false,
+       "errors": [
+        "L39: Combustion row 7 needs 30 above, has 29"
+       ],
+       "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+      },
+      "final": {
+       "code": "0500052030003-55500301030113031-002",
+       "split": "18/31/2",
+       "points": 51,
+       "talents": {
+        "improved_channeling": 5,
+        "arcane_concentration": 5,
+        "missile_barrage": 2,
+        "arcane_impact": 3,
+        "arcane_meditation": 3,
+        "incineration": 5,
+        "accelerant": 5,
+        "ignite": 5,
+        "burning_soul": 3,
+        "pyroblast": 1,
+        "improved_scorch": 3,
+        "heating_up": 1,
+        "master_of_elements": 1,
+        "critical_mass": 3,
+        "fire_power": 3,
+        "combustion": 1,
+        "precision": 2
+       },
+       "legal_on_client_tree": "OK",
+       "order_end_state_equals_final": true
+      },
+      "notes": [
+       "guide text before the link: ...y manage to get 2/3 in Arcane Meditation with this variant since you’ll get 3/3 in Precision , but that still amounts to 33% Mana Regeneration while casting, which is significant when combined with the other effects. Alternatively, you may only go 2/3 in Precision to gain the full Mana Regeneration."
+      ],
+      "spec_assigned_by": "guide label",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Level 60 Fire Mage Frostfire Bolt Build",
+      "source": {
+       "site": "Warcraft Tavern",
+       "url": "https://www.warcrafttavern.com/forever/guides/fire-mage/",
+       "title": "Fire Mage Guide - WoW Forever - Warcraft Tavern",
+       "author": "nevermore",
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "calculator_link": "https://www.warcrafttavern.com/forever/tools/talent-calculator/mage#?t=B111112222244444aebbccchhhmmmC2220044444a8885dfff5iiBf",
+       "data": "Warcraft DB calculator link #?t= (one character per point, in order)",
+       "guide_order": "point by point (the link string is ordered)"
+      },
+      "kind": "level_60_build",
+      "order": [
+       {
+        "level": 10,
+        "id": "incineration",
+        "name": "Incineration",
+        "rank": 1
+       },
+       {
+        "level": 11,
+        "id": "incineration",
+        "name": "Incineration",
+        "rank": 2
+       },
+       {
+        "level": 12,
+        "id": "incineration",
+        "name": "Incineration",
+        "rank": 3
+       },
+       {
+        "level": 13,
+        "id": "incineration",
+        "name": "Incineration",
+        "rank": 4
+       },
+       {
+        "level": 14,
+        "id": "incineration",
+        "name": "Incineration",
+        "rank": 5
+       },
+       {
+        "level": 15,
+        "id": "accelerant",
+        "name": "Accelerant",
+        "rank": 1
+       },
+       {
+        "level": 16,
+        "id": "accelerant",
+        "name": "Accelerant",
+        "rank": 2
+       },
+       {
+        "level": 17,
+        "id": "accelerant",
+        "name": "Accelerant",
+        "rank": 3
+       },
+       {
+        "level": 18,
+        "id": "accelerant",
+        "name": "Accelerant",
+        "rank": 4
+       },
+       {
+        "level": 19,
+        "id": "accelerant",
+        "name": "Accelerant",
+        "rank": 5
+       },
+       {
+        "level": 20,
+        "id": "ignite",
+        "name": "Ignite",
+        "rank": 1
+       },
+       {
+        "level": 21,
+        "id": "ignite",
+        "name": "Ignite",
+        "rank": 2
+       },
+       {
+        "level": 22,
+        "id": "ignite",
+        "name": "Ignite",
+        "rank": 3
+       },
+       {
+        "level": 23,
+        "id": "ignite",
+        "name": "Ignite",
+        "rank": 4
+       },
+       {
+        "level": 24,
+        "id": "ignite",
+        "name": "Ignite",
+        "rank": 5
+       },
+       {
+        "level": 25,
+        "id": "pyroblast",
+        "name": "Pyroblast",
+        "rank": 1
+       },
+       {
+        "level": 26,
+        "id": "heating_up",
+        "name": "Heating Up",
+        "rank": 1
+       },
+       {
+        "level": 27,
+        "id": "improved_fire_blast",
+        "name": "Improved Fire Blast",
+        "rank": 1
+       },
+       {
+        "level": 28,
+        "id": "improved_fire_blast",
+        "name": "Improved Fire Blast",
+        "rank": 2
+       },
+       {
+        "level": 29,
+        "id": "improved_scorch",
+        "name": "Improved Scorch",
+        "rank": 1
+       },
+       {
+        "level": 30,
+        "id": "improved_scorch",
+        "name": "Improved Scorch",
+        "rank": 2
+       },
+       {
+        "level": 31,
+        "id": "improved_scorch",
+        "name": "Improved Scorch",
+        "rank": 3
+       },
+       {
+        "level": 32,
+        "id": "critical_mass",
+        "name": "Critical Mass",
+        "rank": 1
+       },
+       {
+        "level": 33,
+        "id": "critical_mass",
+        "name": "Critical Mass",
+        "rank": 2
+       },
+       {
+        "level": 34,
+        "id": "critical_mass",
+        "name": "Critical Mass",
+        "rank": 3
+       },
+       {
+        "level": 35,
+        "id": "fire_power",
+        "name": "Fire Power",
+        "rank": 1
+       },
+       {
+        "level": 36,
+        "id": "fire_power",
+        "name": "Fire Power",
+        "rank": 2
+       },
+       {
+        "level": 37,
+        "id": "fire_power",
+        "name": "Fire Power",
+        "rank": 3
+       },
+       {
+        "level": 38,
+        "id": "precision",
+        "name": "Precision",
+        "rank": 1
+       },
+       {
+        "level": 39,
+        "id": "precision",
+        "name": "Precision",
+        "rank": 2
+       },
+       {
+        "level": 40,
+        "id": "precision",
+        "name": "Precision",
+        "rank": 3
+       },
+       {
+        "level": 41,
+        "id": "frost_warding",
+        "name": "Frost Warding",
+        "rank": 1
+       },
+       {
+        "level": 42,
+        "id": "frost_warding",
+        "name": "Frost Warding",
+        "rank": 2
+       },
+       {
+        "level": 43,
+        "id": "ice_shards",
+        "name": "Ice Shards",
+        "rank": 1
+       },
+       {
+        "level": 44,
+        "id": "ice_shards",
+        "name": "Ice Shards",
+        "rank": 2
+       },
+       {
+        "level": 45,
+        "id": "ice_shards",
+        "name": "Ice Shards",
+        "rank": 3
+       },
+       {
+        "level": 46,
+        "id": "ice_shards",
+        "name": "Ice Shards",
+        "rank": 4
+       },
+       {
+        "level": 47,
+        "id": "ice_shards",
+        "name": "Ice Shards",
+        "rank": 5
+       },
+       {
+        "level": 48,
+        "id": "ice_lance",
+        "name": "Ice Lance",
+        "rank": 1
+       },
+       {
+        "level": 49,
+        "id": "frost_channeling",
+        "name": "Frost Channeling",
+        "rank": 1
+       },
+       {
+        "level": 50,
+        "id": "frost_channeling",
+        "name": "Frost Channeling",
+        "rank": 2
+       },
+       {
+        "level": 51,
+        "id": "frost_channeling",
+        "name": "Frost Channeling",
+        "rank": 3
+       },
+       {
+        "level": 52,
+        "id": "frostbite",
+        "name": "Frostbite",
+        "rank": 1
+       },
+       {
+        "level": 53,
+        "id": "ice_block",
+        "name": "Ice Block",
+        "rank": 1
+       },
+       {
+        "level": 54,
+        "id": "shatter",
+        "name": "Shatter",
+        "rank": 1
+       },
+       {
+        "level": 55,
+        "id": "shatter",
+        "name": "Shatter",
+        "rank": 2
+       },
+       {
+        "level": 56,
+        "id": "shatter",
+        "name": "Shatter",
+        "rank": 3
+       },
+       {
+        "level": 57,
+        "id": "frostbite",
+        "name": "Frostbite",
+        "rank": 2
+       },
+       {
+        "level": 58,
+        "id": "fingers_of_frost",
+        "name": "Fingers of Frost",
+        "rank": 1
+       },
+       {
+        "level": 59,
+        "id": "fingers_of_frost",
+        "name": "Fingers of Frost",
+        "rank": 2
+       },
+       {
+        "level": 60,
+        "id": "master_of_elements",
+        "name": "Master of Elements",
+        "rank": 1
+       }
+      ],
+      "route_runs": [
+       [
+        "incineration",
+        5
+       ],
+       [
+        "accelerant",
+        5
+       ],
+       [
+        "ignite",
+        5
+       ],
+       [
+        "pyroblast",
+        1
+       ],
+       [
+        "heating_up",
+        1
+       ],
+       [
+        "improved_fire_blast",
+        2
+       ],
+       [
+        "improved_scorch",
+        3
+       ],
+       [
+        "critical_mass",
+        3
+       ],
+       [
+        "fire_power",
+        3
+       ],
+       [
+        "precision",
+        3
+       ],
+       [
+        "frost_warding",
+        2
+       ],
+       [
+        "ice_shards",
+        5
+       ],
+       [
+        "ice_lance",
+        1
+       ],
+       [
+        "frost_channeling",
+        3
+       ],
+       [
+        "frostbite",
+        1
+       ],
+       [
+        "ice_block",
+        1
+       ],
+       [
+        "shatter",
+        3
+       ],
+       [
+        "frostbite",
+        1
+       ],
+       [
+        "fingers_of_frost",
+        2
+       ],
+       [
+        "master_of_elements",
+        1
+       ]
+      ],
+      "order_check": {
+       "ok": true,
+       "errors": [],
+       "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+      },
+      "final": {
+       "code": "-5550000123011303-2035200301013002",
+       "split": "0/29/22",
+       "points": 51,
+       "talents": {
+        "incineration": 5,
+        "accelerant": 5,
+        "ignite": 5,
+        "pyroblast": 1,
+        "improved_fire_blast": 2,
+        "improved_scorch": 3,
+        "heating_up": 1,
+        "master_of_elements": 1,
+        "critical_mass": 3,
+        "fire_power": 3,
+        "frost_warding": 2,
+        "precision": 3,
+        "ice_shards": 5,
+        "frostbite": 2,
+        "frost_channeling": 3,
+        "ice_lance": 1,
+        "ice_block": 1,
+        "shatter": 3,
+        "fingers_of_frost": 2
+       },
+       "legal_on_client_tree": "OK",
+       "order_end_state_equals_final": true
+      },
+      "notes": [
+       "guide text before the link: ...ven further. You’ll want to reach Shatter and Fingers of Frost , grabbing Ice Lance in the process as well. The gist of it is that you’ll be able to consistently proc huge Ignite ticks with Shatter since Frostfire Bolt will trigger Fingers of Frost consistently, resulting in massive crit after crit."
+      ],
+      "spec_assigned_by": "guide label names several specs; the one with most points",
+      "same_final_code_as": [
+       "Method.gg: Frostfire + Shatter"
+      ],
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Frostfire Bolt",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/fire-mage/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/fire-mage/page-data.json, build \"Frostfire Bolt\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "-5550000123010303-2035010311013012",
+       "split": "0/28/23",
+       "points": 51,
+       "talents": {
+        "incineration": 5,
+        "accelerant": 5,
+        "ignite": 5,
+        "pyroblast": 1,
+        "improved_fire_blast": 2,
+        "improved_scorch": 3,
+        "heating_up": 1,
+        "critical_mass": 3,
+        "fire_power": 3,
+        "frost_warding": 2,
+        "precision": 3,
+        "ice_shards": 5,
+        "improved_frost_nova": 1,
+        "frost_channeling": 3,
+        "improved_blizzard": 1,
+        "ice_lance": 1,
+        "ice_block": 1,
+        "shatter": 3,
+        "cold_snap": 1,
+        "fingers_of_frost": 2
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "fire-mage",
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Fireball",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/fire-mage/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/fire-mage/page-data.json, build \"Fireball\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "0502052001002-55500001230123031-003",
+       "split": "17/31/3",
+       "points": 51,
+       "talents": {
+        "improved_channeling": 5,
+        "arcane_subtlety": 2,
+        "arcane_concentration": 5,
+        "missile_barrage": 2,
+        "arcane_blast": 1,
+        "arcane_meditation": 2,
+        "incineration": 5,
+        "accelerant": 5,
+        "ignite": 5,
+        "pyroblast": 1,
+        "improved_fire_blast": 2,
+        "improved_scorch": 3,
+        "heating_up": 1,
+        "master_of_elements": 2,
+        "critical_mass": 3,
+        "fire_power": 3,
+        "combustion": 1,
+        "precision": 3
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "fire-mage",
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     }
+    ]
+   }
+  },
+  "frost": {
+   "name": "Frost",
+   "tree": "frost",
+   "dungeon_roles": [
+    "damage"
+   ],
+   "leveling": [
+    {
+     "name": "Frost",
+     "source": {
+      "site": "Maxroll",
+      "url": "https://maxroll.gg/wow-forever/class-guides/mage-leveling-guide",
+      "title": "Mage Leveling Guide",
+      "author": "maxroll",
+      "published": "October 30, 2026",
+      "updated": "November 4, 2026",
+      "date_seen": "2026-11-08",
+      "data": "planner profile \"Frost\" (uid uuGAG8iw, planner oo3nid0u saved 2026-11-04 03:01:04): talents.history, TraitNodeEntry ids from window.__remixContext",
+      "guide_order": "point by point (the planner history is the guide's own order)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "frostbite",
+       "name": "Frostbite",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "frostbite",
+       "name": "Frostbite",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "frostbite",
+       "name": "Frostbite",
+       "rank": 3
+      },
+      {
+       "level": 20,
+       "id": "ice_lance",
+       "name": "Ice Lance",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "ice_shards",
+       "name": "Ice Shards",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "ice_shards",
+       "name": "Ice Shards",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "ice_shards",
+       "name": "Ice Shards",
+       "rank": 3
+      },
+      {
+       "level": 24,
+       "id": "ice_shards",
+       "name": "Ice Shards",
+       "rank": 4
+      },
+      {
+       "level": 25,
+       "id": "ice_shards",
+       "name": "Ice Shards",
+       "rank": 5
+      },
+      {
+       "level": 26,
+       "id": "ice_block",
+       "name": "Ice Block",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "shatter",
+       "name": "Shatter",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "shatter",
+       "name": "Shatter",
+       "rank": 2
+      },
+      {
+       "level": 29,
+       "id": "shatter",
+       "name": "Shatter",
+       "rank": 3
+      },
+      {
+       "level": 30,
+       "id": "fingers_of_frost",
+       "name": "Fingers of Frost",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "fingers_of_frost",
+       "name": "Fingers of Frost",
+       "rank": 2
+      },
+      {
+       "level": 32,
+       "id": "cold_snap",
+       "name": "Cold Snap",
+       "rank": 1
+      },
+      {
+       "level": 33,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 3
+      },
+      {
+       "level": 34,
+       "id": "frost_channeling",
+       "name": "Frost Channeling",
+       "rank": 1
+      },
+      {
+       "level": 35,
+       "id": "frost_channeling",
+       "name": "Frost Channeling",
+       "rank": 2
+      },
+      {
+       "level": 36,
+       "id": "frost_channeling",
+       "name": "Frost Channeling",
+       "rank": 3
+      },
+      {
+       "level": 37,
+       "id": "permafrost",
+       "name": "Permafrost",
+       "rank": 1
+      },
+      {
+       "level": 38,
+       "id": "permafrost",
+       "name": "Permafrost",
+       "rank": 2
+      },
+      {
+       "level": 39,
+       "id": "permafrost",
+       "name": "Permafrost",
+       "rank": 3
+      },
+      {
+       "level": 40,
+       "id": "ice_barrier",
+       "name": "Ice Barrier",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "arctic_reach",
+       "name": "Arctic Reach",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "arctic_reach",
+       "name": "Arctic Reach",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 1
+      },
+      {
+       "level": 44,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 2
+      },
+      {
+       "level": 45,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 3
+      },
+      {
+       "level": 46,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 4
+      },
+      {
+       "level": 47,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 5
+      },
+      {
+       "level": 48,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 1
+      },
+      {
+       "level": 49,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 2
+      },
+      {
+       "level": 50,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 3
+      },
+      {
+       "level": 51,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 4
+      },
+      {
+       "level": 52,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 5
+      },
+      {
+       "level": 53,
+       "id": "missile_barrage",
+       "name": "Missile Barrage",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "missile_barrage",
+       "name": "Missile Barrage",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "arcane_subtlety",
+       "name": "Arcane Subtlety",
+       "rank": 1
+      },
+      {
+       "level": 56,
+       "id": "arcane_subtlety",
+       "name": "Arcane Subtlety",
+       "rank": 2
+      },
+      {
+       "level": 57,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 1
+      },
+      {
+       "level": 58,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 2
+      },
+      {
+       "level": 59,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 3
+      },
+      {
+       "level": 60,
+       "id": "arcane_blast",
+       "name": "Arcane Blast",
+       "rank": 1
+      }
+     ],
+     "route_runs": [
+      [
+       "improved_frostbolt",
+       5
+      ],
+      [
+       "precision",
+       2
+      ],
+      [
+       "frostbite",
+       3
+      ],
+      [
+       "ice_lance",
+       1
+      ],
+      [
+       "ice_shards",
+       5
+      ],
+      [
+       "ice_block",
+       1
+      ],
+      [
+       "shatter",
+       3
+      ],
+      [
+       "fingers_of_frost",
+       2
+      ],
+      [
+       "cold_snap",
+       1
+      ],
+      [
+       "precision",
+       1
+      ],
+      [
+       "frost_channeling",
+       3
+      ],
+      [
+       "permafrost",
+       3
+      ],
+      [
+       "ice_barrier",
+       1
+      ],
+      [
+       "arctic_reach",
+       2
+      ],
+      [
+       "improved_channeling",
+       5
+      ],
+      [
+       "arcane_concentration",
+       5
+      ],
+      [
+       "missile_barrage",
+       2
+      ],
+      [
+       "arcane_subtlety",
+       2
+      ],
+      [
+       "arcane_meditation",
+       3
+      ],
+      [
+       "arcane_blast",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": false,
+      "errors": [
+       "L57: Arcane Meditation row 4 needs 15 above, has 14",
+       "L58: Arcane Meditation row 4 needs 15 above, has 14",
+       "L59: Arcane Meditation row 4 needs 15 above, has 14"
+      ],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "0502052001003--053530330121301201",
+      "split": "18/0/33",
+      "points": 51,
+      "talents": {
+       "improved_channeling": 5,
+       "arcane_subtlety": 2,
+       "arcane_concentration": 5,
+       "missile_barrage": 2,
+       "arcane_blast": 1,
+       "arcane_meditation": 3,
+       "improved_frostbolt": 5,
+       "precision": 3,
+       "ice_shards": 5,
+       "frostbite": 3,
+       "permafrost": 3,
+       "frost_channeling": 3,
+       "ice_lance": 1,
+       "arctic_reach": 2,
+       "ice_block": 1,
+       "shatter": 3,
+       "cold_snap": 1,
+       "fingers_of_frost": 2,
+       "ice_barrier": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "timesaver.gg (transcription): Frost leveling"
+     ]
+    },
+    {
+     "name": "Recommended Leveling Talents for Mage",
+     "source": {
+      "site": "Method.gg",
+      "url": "https://www.method.gg/wow-forever/wow-forever-mage-leveling-guide-and-talents",
+      "title": "WoW Forever Mage Leveling Guide & Talents",
+      "author": "Celz",
+      "updated": "8th November 2026",
+      "patch": null,
+      "date_seen": "2026-11-08",
+      "data": "data-talent embed #0 (\"Recommended Leveling Talents for Mage\"), decoded with the reader in pipeline/talents/method_decode.py",
+      "guide_order": "point by point (the embed carries the order after \";\")"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "frostbite",
+       "name": "Frostbite",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "frostbite",
+       "name": "Frostbite",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "ice_lance",
+       "name": "Ice Lance",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "frostbite",
+       "name": "Frostbite",
+       "rank": 3
+      },
+      {
+       "level": 22,
+       "id": "ice_shards",
+       "name": "Ice Shards",
+       "rank": 1
+      },
+      {
+       "level": 23,
+       "id": "ice_shards",
+       "name": "Ice Shards",
+       "rank": 2
+      },
+      {
+       "level": 24,
+       "id": "ice_shards",
+       "name": "Ice Shards",
+       "rank": 3
+      },
+      {
+       "level": 25,
+       "id": "ice_block",
+       "name": "Ice Block",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "shatter",
+       "name": "Shatter",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "shatter",
+       "name": "Shatter",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "shatter",
+       "name": "Shatter",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "ice_shards",
+       "name": "Ice Shards",
+       "rank": 4
+      },
+      {
+       "level": 30,
+       "id": "fingers_of_frost",
+       "name": "Fingers of Frost",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "fingers_of_frost",
+       "name": "Fingers of Frost",
+       "rank": 2
+      },
+      {
+       "level": 32,
+       "id": "improved_cone_of_cold",
+       "name": "Improved Cone of Cold",
+       "rank": 1
+      },
+      {
+       "level": 33,
+       "id": "improved_cone_of_cold",
+       "name": "Improved Cone of Cold",
+       "rank": 2
+      },
+      {
+       "level": 34,
+       "id": "cold_snap",
+       "name": "Cold Snap",
+       "rank": 1
+      },
+      {
+       "level": 35,
+       "id": "winters_chill",
+       "name": "Winter's Chill",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "winters_chill",
+       "name": "Winter's Chill",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "winters_chill",
+       "name": "Winter's Chill",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "winters_chill",
+       "name": "Winter's Chill",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "winters_chill",
+       "name": "Winter's Chill",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "ice_barrier",
+       "name": "Ice Barrier",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "improved_cone_of_cold",
+       "name": "Improved Cone of Cold",
+       "rank": 3
+      },
+      {
+       "level": 42,
+       "id": "ice_shards",
+       "name": "Ice Shards",
+       "rank": 5
+      },
+      {
+       "level": 43,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 1
+      },
+      {
+       "level": 44,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 2
+      },
+      {
+       "level": 45,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 3
+      },
+      {
+       "level": 46,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 4
+      },
+      {
+       "level": 47,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 5
+      },
+      {
+       "level": 48,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 1
+      },
+      {
+       "level": 49,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 2
+      },
+      {
+       "level": 50,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 3
+      },
+      {
+       "level": 51,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 4
+      },
+      {
+       "level": 52,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 5
+      },
+      {
+       "level": 53,
+       "id": "missile_barrage",
+       "name": "Missile Barrage",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "missile_barrage",
+       "name": "Missile Barrage",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "arcane_subtlety",
+       "name": "Arcane Subtlety",
+       "rank": 1
+      },
+      {
+       "level": 56,
+       "id": "arcane_subtlety",
+       "name": "Arcane Subtlety",
+       "rank": 2
+      },
+      {
+       "level": 57,
+       "id": "arcane_blast",
+       "name": "Arcane Blast",
+       "rank": 1
+      },
+      {
+       "level": 58,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 1
+      },
+      {
+       "level": 59,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 2
+      },
+      {
+       "level": 60,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 3
+      }
+     ],
+     "route_runs": [
+      [
+       "improved_frostbolt",
+       5
+      ],
+      [
+       "precision",
+       3
+      ],
+      [
+       "frostbite",
+       2
+      ],
+      [
+       "ice_lance",
+       1
+      ],
+      [
+       "frostbite",
+       1
+      ],
+      [
+       "ice_shards",
+       3
+      ],
+      [
+       "ice_block",
+       1
+      ],
+      [
+       "shatter",
+       3
+      ],
+      [
+       "ice_shards",
+       1
+      ],
+      [
+       "fingers_of_frost",
+       2
+      ],
+      [
+       "improved_cone_of_cold",
+       2
+      ],
+      [
+       "cold_snap",
+       1
+      ],
+      [
+       "winters_chill",
+       5
+      ],
+      [
+       "ice_barrier",
+       1
+      ],
+      [
+       "improved_cone_of_cold",
+       1
+      ],
+      [
+       "ice_shards",
+       1
+      ],
+      [
+       "improved_channeling",
+       5
+      ],
+      [
+       "arcane_concentration",
+       5
+      ],
+      [
+       "missile_barrage",
+       2
+      ],
+      [
+       "arcane_subtlety",
+       2
+      ],
+      [
+       "arcane_blast",
+       1
+      ],
+      [
+       "arcane_meditation",
+       3
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "0502052001003--053530000101331251",
+      "split": "18/0/33",
+      "points": 51,
+      "talents": {
+       "improved_channeling": 5,
+       "arcane_subtlety": 2,
+       "arcane_concentration": 5,
+       "missile_barrage": 2,
+       "arcane_blast": 1,
+       "arcane_meditation": 3,
+       "improved_frostbolt": 5,
+       "precision": 3,
+       "ice_shards": 5,
+       "frostbite": 3,
+       "ice_lance": 1,
+       "ice_block": 1,
+       "shatter": 3,
+       "improved_cone_of_cold": 3,
+       "cold_snap": 1,
+       "fingers_of_frost": 2,
+       "winters_chill": 5,
+       "ice_barrier": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "notes": [
+      "guide text after the build: ...-serif;cursor:pointer;background:none;border:1px solid #333;color:#fff;padding:5px 10px}.preview-actions .btn.btn-secondary:hover,.preview-actions .btn.btn-secondary:focus{background:#333}.treeName{box-sizing:border-box;font-weight:bold}.treeIcon{width:20px !important;height:20px !important;margin:0"
+     ],
+     "spec_assigned_by": "tree with most points (guide label names no spec)"
+    },
+    {
+     "name": "Frost Mage Leveling Build",
+     "source": {
+      "site": "Warcraft Tavern",
+      "url": "https://www.warcrafttavern.com/forever/guides/mage-leveling/",
+      "title": "Mage Leveling Guide - WoW Forever - Warcraft Tavern",
+      "author": "nevermore",
+      "updated": null,
+      "date_seen": "2026-11-08",
+      "calculator_link": "https://www.warcrafttavern.com/forever/tools/talent-calculator/mage#?t=A1111177C1111122555a4444dfff4iihggmmmmmp2A66666CgB11111A9",
+      "data": "Warcraft DB calculator link #?t= (one character per point, in order)",
+      "guide_order": "point by point (the link string is ordered)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "missile_barrage",
+       "name": "Missile Barrage",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "missile_barrage",
+       "name": "Missile Barrage",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 3
+      },
+      {
+       "level": 20,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 4
+      },
+      {
+       "level": 21,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 5
+      },
+      {
+       "level": 22,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 1
+      },
+      {
+       "level": 23,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 2
+      },
+      {
+       "level": 24,
+       "id": "frostbite",
+       "name": "Frostbite",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "frostbite",
+       "name": "Frostbite",
+       "rank": 2
+      },
+      {
+       "level": 26,
+       "id": "frostbite",
+       "name": "Frostbite",
+       "rank": 3
+      },
+      {
+       "level": 27,
+       "id": "ice_lance",
+       "name": "Ice Lance",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "ice_shards",
+       "name": "Ice Shards",
+       "rank": 1
+      },
+      {
+       "level": 29,
+       "id": "ice_shards",
+       "name": "Ice Shards",
+       "rank": 2
+      },
+      {
+       "level": 30,
+       "id": "ice_shards",
+       "name": "Ice Shards",
+       "rank": 3
+      },
+      {
+       "level": 31,
+       "id": "ice_shards",
+       "name": "Ice Shards",
+       "rank": 4
+      },
+      {
+       "level": 32,
+       "id": "ice_block",
+       "name": "Ice Block",
+       "rank": 1
+      },
+      {
+       "level": 33,
+       "id": "shatter",
+       "name": "Shatter",
+       "rank": 1
+      },
+      {
+       "level": 34,
+       "id": "shatter",
+       "name": "Shatter",
+       "rank": 2
+      },
+      {
+       "level": 35,
+       "id": "shatter",
+       "name": "Shatter",
+       "rank": 3
+      },
+      {
+       "level": 36,
+       "id": "ice_shards",
+       "name": "Ice Shards",
+       "rank": 5
+      },
+      {
+       "level": 37,
+       "id": "fingers_of_frost",
+       "name": "Fingers of Frost",
+       "rank": 1
+      },
+      {
+       "level": 38,
+       "id": "fingers_of_frost",
+       "name": "Fingers of Frost",
+       "rank": 2
+      },
+      {
+       "level": 39,
+       "id": "cold_snap",
+       "name": "Cold Snap",
+       "rank": 1
+      },
+      {
+       "level": 40,
+       "id": "improved_cone_of_cold",
+       "name": "Improved Cone of Cold",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "improved_cone_of_cold",
+       "name": "Improved Cone of Cold",
+       "rank": 2
+      },
+      {
+       "level": 42,
+       "id": "winters_chill",
+       "name": "Winter's Chill",
+       "rank": 1
+      },
+      {
+       "level": 43,
+       "id": "winters_chill",
+       "name": "Winter's Chill",
+       "rank": 2
+      },
+      {
+       "level": 44,
+       "id": "winters_chill",
+       "name": "Winter's Chill",
+       "rank": 3
+      },
+      {
+       "level": 45,
+       "id": "winters_chill",
+       "name": "Winter's Chill",
+       "rank": 4
+      },
+      {
+       "level": 46,
+       "id": "winters_chill",
+       "name": "Winter's Chill",
+       "rank": 5
+      },
+      {
+       "level": 47,
+       "id": "ice_barrier",
+       "name": "Ice Barrier",
+       "rank": 1
+      },
+      {
+       "level": 48,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 1
+      },
+      {
+       "level": 50,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 2
+      },
+      {
+       "level": 51,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 3
+      },
+      {
+       "level": 52,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 4
+      },
+      {
+       "level": 53,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 5
+      },
+      {
+       "level": 54,
+       "id": "improved_cone_of_cold",
+       "name": "Improved Cone of Cold",
+       "rank": 3
+      },
+      {
+       "level": 55,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 1
+      },
+      {
+       "level": 56,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 2
+      },
+      {
+       "level": 57,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 3
+      },
+      {
+       "level": 58,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 4
+      },
+      {
+       "level": 59,
+       "id": "incineration",
+       "name": "Incineration",
+       "rank": 5
+      },
+      {
+       "level": 60,
+       "id": "arcane_impact",
+       "name": "Arcane Impact",
+       "rank": 1
+      }
+     ],
+     "route_runs": [
+      [
+       "improved_channeling",
+       5
+      ],
+      [
+       "missile_barrage",
+       2
+      ],
+      [
+       "improved_frostbolt",
+       5
+      ],
+      [
+       "precision",
+       2
+      ],
+      [
+       "frostbite",
+       3
+      ],
+      [
+       "ice_lance",
+       1
+      ],
+      [
+       "ice_shards",
+       4
+      ],
+      [
+       "ice_block",
+       1
+      ],
+      [
+       "shatter",
+       3
+      ],
+      [
+       "ice_shards",
+       1
+      ],
+      [
+       "fingers_of_frost",
+       2
+      ],
+      [
+       "cold_snap",
+       1
+      ],
+      [
+       "improved_cone_of_cold",
+       2
+      ],
+      [
+       "winters_chill",
+       5
+      ],
+      [
+       "ice_barrier",
+       1
+      ],
+      [
+       "precision",
+       1
+      ],
+      [
+       "arcane_concentration",
+       5
+      ],
+      [
+       "improved_cone_of_cold",
+       1
+      ],
+      [
+       "incineration",
+       5
+      ],
+      [
+       "arcane_impact",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "050005201-5-053530000101331251",
+      "split": "13/5/33",
+      "points": 51,
+      "talents": {
+       "improved_channeling": 5,
+       "arcane_concentration": 5,
+       "missile_barrage": 2,
+       "arcane_impact": 1,
+       "incineration": 5,
+       "improved_frostbolt": 5,
+       "precision": 3,
+       "ice_shards": 5,
+       "frostbite": 3,
+       "ice_lance": 1,
+       "ice_block": 1,
+       "shatter": 3,
+       "improved_cone_of_cold": 3,
+       "cold_snap": 1,
+       "fingers_of_frost": 2,
+       "winters_chill": 5,
+       "ice_barrier": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "notes": [
+      "guide text before the link: ...y Missile Barrage procs, which will relatively solve some of your mana issues at low levels and increase your DPS. One easy way to get by the first levels until you can get to Ice Lance is to fish for Missile Barrage procs with Frostbolt Rank 1, which will significantly reduce your downtime. Talents"
+     ],
+     "spec_assigned_by": "guide label"
+    },
+    {
+     "name": "Frost leveling",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/mage",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Maxroll",
+       "url": "https://maxroll.gg/wow-forever/class-guides/mage-leveling-guide",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Frost leveling\" in the calculator page payload; mode Leveling",
+      "guide_order": "final build only"
+     },
+     "kind": "final_only",
+     "final": {
+      "code": "0502052001003--053530330121301201",
+      "split": "18/0/33",
+      "points": 51,
+      "talents": {
+       "improved_channeling": 5,
+       "arcane_subtlety": 2,
+       "arcane_concentration": 5,
+       "missile_barrage": 2,
+       "arcane_blast": 1,
+       "arcane_meditation": 3,
+       "improved_frostbolt": 5,
+       "precision": 3,
+       "ice_shards": 5,
+       "frostbite": 3,
+       "permafrost": 3,
+       "frost_channeling": 3,
+       "ice_lance": 1,
+       "arctic_reach": 2,
+       "ice_block": 1,
+       "shatter": 3,
+       "cold_snap": 1,
+       "fingers_of_frost": 2,
+       "ice_barrier": 1
+      },
+      "legal_on_client_tree": "OK"
+     },
+     "secondary": true,
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "Maxroll: Frost"
+     ]
+    },
+    {
+     "name": "Leveling 1-60",
+     "source": {
+      "site": "wowtbc.gg (Warcraft Forever class guide)",
+      "url": "https://wowtbc.gg/warcraftforever/class-guides/frost-mage/",
+      "author": null,
+      "updated": null,
+      "date_seen": "2026-11-08",
+      "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/frost-mage/page-data.json, build \"Leveling 1-60\"",
+      "note": "the page shows no author or date",
+      "guide_order": "point by point (\"Leveling 1-60\" talentBuildPaths)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 1
+      },
+      {
+       "level": 13,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 2
+      },
+      {
+       "level": 14,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 3
+      },
+      {
+       "level": 15,
+       "id": "missile_barrage",
+       "name": "Missile Barrage",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "missile_barrage",
+       "name": "Missile Barrage",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 3
+      },
+      {
+       "level": 20,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 4
+      },
+      {
+       "level": 21,
+       "id": "improved_frostbolt",
+       "name": "Improved Frostbolt",
+       "rank": 5
+      },
+      {
+       "level": 22,
+       "id": "frostbite",
+       "name": "Frostbite",
+       "rank": 1
+      },
+      {
+       "level": 23,
+       "id": "frostbite",
+       "name": "Frostbite",
+       "rank": 2
+      },
+      {
+       "level": 24,
+       "id": "frostbite",
+       "name": "Frostbite",
+       "rank": 3
+      },
+      {
+       "level": 25,
+       "id": "improved_frost_nova",
+       "name": "Improved Frost Nova",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "improved_frost_nova",
+       "name": "Improved Frost Nova",
+       "rank": 2
+      },
+      {
+       "level": 27,
+       "id": "ice_lance",
+       "name": "Ice Lance",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 4
+      },
+      {
+       "level": 29,
+       "id": "improved_channeling",
+       "name": "Improved Channeling",
+       "rank": 5
+      },
+      {
+       "level": 30,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "arcane_blast",
+       "name": "Arcane Blast",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 3
+      },
+      {
+       "level": 34,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 4
+      },
+      {
+       "level": 35,
+       "id": "arcane_concentration",
+       "name": "Arcane Concentration",
+       "rank": 5
+      },
+      {
+       "level": 36,
+       "id": "arcane_wrath",
+       "name": "Arcane Wrath",
+       "rank": 1
+      },
+      {
+       "level": 37,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 1
+      },
+      {
+       "level": 38,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 2
+      },
+      {
+       "level": 39,
+       "id": "arcane_meditation",
+       "name": "Arcane Meditation",
+       "rank": 3
+      },
+      {
+       "level": 40,
+       "id": "frost_channeling",
+       "name": "Frost Channeling",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "frost_channeling",
+       "name": "Frost Channeling",
+       "rank": 2
+      },
+      {
+       "level": 42,
+       "id": "frost_channeling",
+       "name": "Frost Channeling",
+       "rank": 3
+      },
+      {
+       "level": 43,
+       "id": "precision",
+       "name": "Precision",
+       "rank": 1
+      },
+      {
+       "level": 44,
+       "id": "shatter",
+       "name": "Shatter",
+       "rank": 1
+      },
+      {
+       "level": 45,
+       "id": "shatter",
+       "name": "Shatter",
+       "rank": 2
+      },
+      {
+       "level": 46,
+       "id": "shatter",
+       "name": "Shatter",
+       "rank": 3
+      },
+      {
+       "level": 47,
+       "id": "ice_block",
+       "name": "Ice Block",
+       "rank": 1
+      },
+      {
+       "level": 48,
+       "id": "ice_shards",
+       "name": "Ice Shards",
+       "rank": 1
+      },
+      {
+       "level": 49,
+       "id": "fingers_of_frost",
+       "name": "Fingers of Frost",
+       "rank": 1
+      },
+      {
+       "level": 50,
+       "id": "fingers_of_frost",
+       "name": "Fingers of Frost",
+       "rank": 2
+      },
+      {
+       "level": 51,
+       "id": "cold_snap",
+       "name": "Cold Snap",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "improved_cone_of_cold",
+       "name": "Improved Cone of Cold",
+       "rank": 1
+      },
+      {
+       "level": 53,
+       "id": "improved_cone_of_cold",
+       "name": "Improved Cone of Cold",
+       "rank": 2
+      },
+      {
+       "level": 54,
+       "id": "winters_chill",
+       "name": "Winter's Chill",
+       "rank": 1
+      },
+      {
+       "level": 55,
+       "id": "winters_chill",
+       "name": "Winter's Chill",
+       "rank": 2
+      },
+      {
+       "level": 56,
+       "id": "winters_chill",
+       "name": "Winter's Chill",
+       "rank": 3
+      },
+      {
+       "level": 57,
+       "id": "winters_chill",
+       "name": "Winter's Chill",
+       "rank": 4
+      },
+      {
+       "level": 58,
+       "id": "winters_chill",
+       "name": "Winter's Chill",
+       "rank": 5
+      },
+      {
+       "level": 59,
+       "id": "ice_barrier",
+       "name": "Ice Barrier",
+       "rank": 1
+      },
+      {
+       "level": 60,
+       "id": "improved_cone_of_cold",
+       "name": "Improved Cone of Cold",
+       "rank": 3
+      }
+     ],
+     "route_runs": [
+      [
+       "wand_specialization",
+       2
+      ],
+      [
+       "improved_channeling",
+       3
+      ],
+      [
+       "missile_barrage",
+       2
+      ],
+      [
+       "improved_frostbolt",
+       5
+      ],
+      [
+       "frostbite",
+       3
+      ],
+      [
+       "improved_frost_nova",
+       2
+      ],
+      [
+       "ice_lance",
+       1
+      ],
+      [
+       "improved_channeling",
+       2
+      ],
+      [
+       "arcane_concentration",
+       1
+      ],
+      [
+       "arcane_blast",
+       1
+      ],
+      [
+       "arcane_concentration",
+       4
+      ],
+      [
+       "arcane_wrath",
+       1
+      ],
+      [
+       "arcane_meditation",
+       3
+      ],
+      [
+       "frost_channeling",
+       3
+      ],
+      [
+       "precision",
+       1
+      ],
+      [
+       "shatter",
+       3
+      ],
+      [
+       "ice_block",
+       1
+      ],
+      [
+       "ice_shards",
+       1
+      ],
+      [
+       "fingers_of_frost",
+       2
+      ],
+      [
+       "cold_snap",
+       1
+      ],
+      [
+       "improved_cone_of_cold",
+       2
+      ],
+      [
+       "winters_chill",
+       5
+      ],
+      [
+       "ice_barrier",
+       1
+      ],
+      [
+       "improved_cone_of_cold",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "25000520010031--051132030101331251",
+      "split": "19/0/32",
+      "points": 51,
+      "talents": {
+       "wand_specialization": 2,
+       "improved_channeling": 5,
+       "arcane_concentration": 5,
+       "missile_barrage": 2,
+       "arcane_blast": 1,
+       "arcane_meditation": 3,
+       "arcane_wrath": 1,
+       "improved_frostbolt": 5,
+       "precision": 1,
+       "ice_shards": 1,
+       "frostbite": 3,
+       "improved_frost_nova": 2,
+       "frost_channeling": 3,
+       "ice_lance": 1,
+       "ice_block": 1,
+       "shatter": 3,
+       "improved_cone_of_cold": 3,
+       "cold_snap": 1,
+       "fingers_of_frost": 2,
+       "winters_chill": 5,
+       "ice_barrier": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "wowtbc_spec_page": "frost-mage",
+     "spec_assigned_by": "guide page is for this spec"
+    }
+   ],
+   "endgame": {
+    "damage": [
+     {
+      "name": "CoC + Meditation (Raid)",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/frost-mage/talents",
+       "title": "WoW Forever Frost Mage Talents & Builds Guide",
+       "author": "Celz",
+       "updated": "4th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #0 (\"CoC + Meditation (Raid)\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "2032250100003--053500001121331251",
+       "split": "18/0/33",
+       "points": 51,
+       "talents": {
+        "wand_specialization": 2,
+        "arcane_resilience": 3,
+        "arcane_subtlety": 2,
+        "magic_absorption": 2,
+        "arcane_concentration": 5,
+        "arcane_geometry": 1,
+        "arcane_meditation": 3,
+        "improved_frostbolt": 5,
+        "precision": 3,
+        "ice_shards": 5,
+        "improved_blizzard": 1,
+        "ice_lance": 1,
+        "arctic_reach": 2,
+        "ice_block": 1,
+        "shatter": 3,
+        "improved_cone_of_cold": 3,
+        "cold_snap": 1,
+        "fingers_of_frost": 2,
+        "winters_chill": 5,
+        "ice_barrier": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "notes": [
+       "guide text: readonly > CoC + Meditation (Raid) Talent Build This build drops some talents that are unlikely to apply in raids in favor of extra DPS and mana regeneration talents, such as Arcane Meditation , and Improved Cone Of Cold + Winter's Chill ."
+      ],
+      "method_spec_page": "frost-mage",
+      "embedded_order_check": {
+       "ok": true,
+       "errors": [],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "same_final_code_as": [
+       "wowtbc.gg (Warcraft Forever class guide): Standard Build"
+      ],
+      "use_in_build_name": [
+       "raid"
+      ],
+      "use_words_in_guide_text": [
+       "raid"
+      ]
+     },
+     {
+      "name": "Incineration Pure ST",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/frost-mage/talents",
+       "title": "WoW Forever Frost Mage Talents & Builds Guide",
+       "author": "Celz",
+       "updated": "4th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #1 (\"Incineration Pure ST\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "0502052-5-053502030101301251",
+       "split": "14/5/32",
+       "points": 51,
+       "talents": {
+        "improved_channeling": 5,
+        "arcane_subtlety": 2,
+        "arcane_concentration": 5,
+        "missile_barrage": 2,
+        "incineration": 5,
+        "improved_frostbolt": 5,
+        "precision": 3,
+        "ice_shards": 5,
+        "improved_frost_nova": 2,
+        "frost_channeling": 3,
+        "ice_lance": 1,
+        "ice_block": 1,
+        "shatter": 3,
+        "cold_snap": 1,
+        "fingers_of_frost": 2,
+        "winters_chill": 5,
+        "ice_barrier": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "notes": [
+       "guide text: readonly > Incineration Pure ST Talent Build This build provides the highest pure ST on any targets that are able to be frozen."
+      ],
+      "method_spec_page": "frost-mage",
+      "embedded_order_check": {
+       "ok": true,
+       "errors": [],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Dungeon AoE + ST Blend",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/frost-mage/talents",
+       "title": "WoW Forever Frost Mage Talents & Builds Guide",
+       "author": "Celz",
+       "updated": "4th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #2 (\"Dungeon AoE + ST Blend\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "0502002-5-053501033101331251",
+       "split": "9/5/37",
+       "points": 51,
+       "talents": {
+        "improved_channeling": 5,
+        "arcane_subtlety": 2,
+        "missile_barrage": 2,
+        "incineration": 5,
+        "improved_frostbolt": 5,
+        "precision": 3,
+        "ice_shards": 5,
+        "improved_frost_nova": 1,
+        "frost_channeling": 3,
+        "improved_blizzard": 3,
+        "ice_lance": 1,
+        "ice_block": 1,
+        "shatter": 3,
+        "improved_cone_of_cold": 3,
+        "cold_snap": 1,
+        "fingers_of_frost": 2,
+        "winters_chill": 5,
+        "ice_barrier": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "notes": [
+       "guide text: ...height:420px;background-color:#242424;border-radius:4px;overflow:hidden;border:1px solid #333;max-width:100%;flex-grow:1}.talent-holder:before{content:\"\";position:absolute;inset:0;background-image:linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.8)),var(--background-top-left);background-position:0 0,50% 0;background-repeat:no-repeat;background-size:100% 100%,cover;opacity:.9;pointer-events:non"
+      ],
+      "method_spec_page": "frost-mage",
+      "embedded_order_check": {
+       "ok": true,
+       "errors": [],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": [
+       "dungeon"
+      ],
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Level 60 Frost/Arcane Mage Build",
+      "source": {
+       "site": "Warcraft Tavern",
+       "url": "https://www.warcrafttavern.com/forever/guides/frost-mage/",
+       "title": "Frost Mage Guide - WoW Forever - Warcraft Tavern",
+       "author": "nevermore",
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "calculator_link": "https://www.warcrafttavern.com/forever/tools/talent-calculator/mage#?t=C2221111155544444adfffhii888ccmpA111117766666999eeeB11",
+       "data": "Warcraft DB calculator link #?t= (one character per point, in order)",
+       "guide_order": "point by point (the link string is ordered)"
+      },
+      "kind": "level_60_build",
+      "order": [
+       {
+        "level": 10,
+        "id": "precision",
+        "name": "Precision",
+        "rank": 1
+       },
+       {
+        "level": 11,
+        "id": "precision",
+        "name": "Precision",
+        "rank": 2
+       },
+       {
+        "level": 12,
+        "id": "precision",
+        "name": "Precision",
+        "rank": 3
+       },
+       {
+        "level": 13,
+        "id": "improved_frostbolt",
+        "name": "Improved Frostbolt",
+        "rank": 1
+       },
+       {
+        "level": 14,
+        "id": "improved_frostbolt",
+        "name": "Improved Frostbolt",
+        "rank": 2
+       },
+       {
+        "level": 15,
+        "id": "improved_frostbolt",
+        "name": "Improved Frostbolt",
+        "rank": 3
+       },
+       {
+        "level": 16,
+        "id": "improved_frostbolt",
+        "name": "Improved Frostbolt",
+        "rank": 4
+       },
+       {
+        "level": 17,
+        "id": "improved_frostbolt",
+        "name": "Improved Frostbolt",
+        "rank": 5
+       },
+       {
+        "level": 18,
+        "id": "frostbite",
+        "name": "Frostbite",
+        "rank": 1
+       },
+       {
+        "level": 19,
+        "id": "frostbite",
+        "name": "Frostbite",
+        "rank": 2
+       },
+       {
+        "level": 20,
+        "id": "frostbite",
+        "name": "Frostbite",
+        "rank": 3
+       },
+       {
+        "level": 21,
+        "id": "ice_shards",
+        "name": "Ice Shards",
+        "rank": 1
+       },
+       {
+        "level": 22,
+        "id": "ice_shards",
+        "name": "Ice Shards",
+        "rank": 2
+       },
+       {
+        "level": 23,
+        "id": "ice_shards",
+        "name": "Ice Shards",
+        "rank": 3
+       },
+       {
+        "level": 24,
+        "id": "ice_shards",
+        "name": "Ice Shards",
+        "rank": 4
+       },
+       {
+        "level": 25,
+        "id": "ice_shards",
+        "name": "Ice Shards",
+        "rank": 5
+       },
+       {
+        "level": 26,
+        "id": "ice_lance",
+        "name": "Ice Lance",
+        "rank": 1
+       },
+       {
+        "level": 27,
+        "id": "ice_block",
+        "name": "Ice Block",
+        "rank": 1
+       },
+       {
+        "level": 28,
+        "id": "shatter",
+        "name": "Shatter",
+        "rank": 1
+       },
+       {
+        "level": 29,
+        "id": "shatter",
+        "name": "Shatter",
+        "rank": 2
+       },
+       {
+        "level": 30,
+        "id": "shatter",
+        "name": "Shatter",
+        "rank": 3
+       },
+       {
+        "level": 31,
+        "id": "cold_snap",
+        "name": "Cold Snap",
+        "rank": 1
+       },
+       {
+        "level": 32,
+        "id": "fingers_of_frost",
+        "name": "Fingers of Frost",
+        "rank": 1
+       },
+       {
+        "level": 33,
+        "id": "fingers_of_frost",
+        "name": "Fingers of Frost",
+        "rank": 2
+       },
+       {
+        "level": 34,
+        "id": "frost_channeling",
+        "name": "Frost Channeling",
+        "rank": 1
+       },
+       {
+        "level": 35,
+        "id": "frost_channeling",
+        "name": "Frost Channeling",
+        "rank": 2
+       },
+       {
+        "level": 36,
+        "id": "frost_channeling",
+        "name": "Frost Channeling",
+        "rank": 3
+       },
+       {
+        "level": 37,
+        "id": "arctic_reach",
+        "name": "Arctic Reach",
+        "rank": 1
+       },
+       {
+        "level": 38,
+        "id": "arctic_reach",
+        "name": "Arctic Reach",
+        "rank": 2
+       },
+       {
+        "level": 39,
+        "id": "winters_chill",
+        "name": "Winter's Chill",
+        "rank": 1
+       },
+       {
+        "level": 40,
+        "id": "ice_barrier",
+        "name": "Ice Barrier",
+        "rank": 1
+       },
+       {
+        "level": 41,
+        "id": "improved_channeling",
+        "name": "Improved Channeling",
+        "rank": 1
+       },
+       {
+        "level": 42,
+        "id": "improved_channeling",
+        "name": "Improved Channeling",
+        "rank": 2
+       },
+       {
+        "level": 43,
+        "id": "improved_channeling",
+        "name": "Improved Channeling",
+        "rank": 3
+       },
+       {
+        "level": 44,
+        "id": "improved_channeling",
+        "name": "Improved Channeling",
+        "rank": 4
+       },
+       {
+        "level": 45,
+        "id": "improved_channeling",
+        "name": "Improved Channeling",
+        "rank": 5
+       },
+       {
+        "level": 46,
+        "id": "missile_barrage",
+        "name": "Missile Barrage",
+        "rank": 1
+       },
+       {
+        "level": 47,
+        "id": "missile_barrage",
+        "name": "Missile Barrage",
+        "rank": 2
+       },
+       {
+        "level": 48,
+        "id": "arcane_concentration",
+        "name": "Arcane Concentration",
+        "rank": 1
+       },
+       {
+        "level": 49,
+        "id": "arcane_concentration",
+        "name": "Arcane Concentration",
+        "rank": 2
+       },
+       {
+        "level": 50,
+        "id": "arcane_concentration",
+        "name": "Arcane Concentration",
+        "rank": 3
+       },
+       {
+        "level": 51,
+        "id": "arcane_concentration",
+        "name": "Arcane Concentration",
+        "rank": 4
+       },
+       {
+        "level": 52,
+        "id": "arcane_concentration",
+        "name": "Arcane Concentration",
+        "rank": 5
+       },
+       {
+        "level": 53,
+        "id": "arcane_impact",
+        "name": "Arcane Impact",
+        "rank": 1
+       },
+       {
+        "level": 54,
+        "id": "arcane_impact",
+        "name": "Arcane Impact",
+        "rank": 2
+       },
+       {
+        "level": 55,
+        "id": "arcane_impact",
+        "name": "Arcane Impact",
+        "rank": 3
+       },
+       {
+        "level": 56,
+        "id": "arcane_meditation",
+        "name": "Arcane Meditation",
+        "rank": 1
+       },
+       {
+        "level": 57,
+        "id": "arcane_meditation",
+        "name": "Arcane Meditation",
+        "rank": 2
+       },
+       {
+        "level": 58,
+        "id": "arcane_meditation",
+        "name": "Arcane Meditation",
+        "rank": 3
+       },
+       {
+        "level": 59,
+        "id": "incineration",
+        "name": "Incineration",
+        "rank": 1
+       },
+       {
+        "level": 60,
+        "id": "incineration",
+        "name": "Incineration",
+        "rank": 2
+       }
+      ],
+      "route_runs": [
+       [
+        "precision",
+        3
+       ],
+       [
+        "improved_frostbolt",
+        5
+       ],
+       [
+        "frostbite",
+        3
+       ],
+       [
+        "ice_shards",
+        5
+       ],
+       [
+        "ice_lance",
+        1
+       ],
+       [
+        "ice_block",
+        1
+       ],
+       [
+        "shatter",
+        3
+       ],
+       [
+        "cold_snap",
+        1
+       ],
+       [
+        "fingers_of_frost",
+        2
+       ],
+       [
+        "frost_channeling",
+        3
+       ],
+       [
+        "arctic_reach",
+        2
+       ],
+       [
+        "winters_chill",
+        1
+       ],
+       [
+        "ice_barrier",
+        1
+       ],
+       [
+        "improved_channeling",
+        5
+       ],
+       [
+        "missile_barrage",
+        2
+       ],
+       [
+        "arcane_concentration",
+        5
+       ],
+       [
+        "arcane_impact",
+        3
+       ],
+       [
+        "arcane_meditation",
+        3
+       ],
+       [
+        "incineration",
+        2
+       ]
+      ],
+      "order_check": {
+       "ok": true,
+       "errors": [],
+       "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+      },
+      "final": {
+       "code": "0500052030003-2-053530030121301211",
+       "split": "18/2/31",
+       "points": 51,
+       "talents": {
+        "improved_channeling": 5,
+        "arcane_concentration": 5,
+        "missile_barrage": 2,
+        "arcane_impact": 3,
+        "arcane_meditation": 3,
+        "incineration": 2,
+        "improved_frostbolt": 5,
+        "precision": 3,
+        "ice_shards": 5,
+        "frostbite": 3,
+        "frost_channeling": 3,
+        "ice_lance": 1,
+        "arctic_reach": 2,
+        "ice_block": 1,
+        "shatter": 3,
+        "cold_snap": 1,
+        "fingers_of_frost": 2,
+        "winters_chill": 1,
+        "ice_barrier": 1
+       },
+       "legal_on_client_tree": "OK",
+       "order_end_state_equals_final": true
+      },
+      "notes": [
+       "guide text before the link: ...e crits, and then you’ll heavily spend points into the Arcane Tree until you get Arcane Meditation for 50% in-combat Mana Regeneration while casting. Missile Barrage , Arcane Focus , and Arcane Impact are mandatory for extra DPS, while Clearcasting helps with even more sustainability in long fights."
+      ],
+      "spec_assigned_by": "guide label names several specs; the one with most points",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Level 60 Frost Mage Winter’s Chill & Cone of Cold Build",
+      "source": {
+       "site": "Warcraft Tavern",
+       "url": "https://www.warcrafttavern.com/forever/guides/frost-mage/",
+       "title": "Frost Mage Guide - WoW Forever - Warcraft Tavern",
+       "author": "nevermore",
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "calculator_link": "https://www.warcrafttavern.com/forever/tools/talent-calculator/mage#?t=C1111122244444a888fffdiihgggmmmmpA1111177666669CmA99eee",
+       "data": "Warcraft DB calculator link #?t= (one character per point, in order)",
+       "guide_order": "point by point (the link string is ordered)"
+      },
+      "kind": "level_60_build",
+      "order": [
+       {
+        "level": 10,
+        "id": "improved_frostbolt",
+        "name": "Improved Frostbolt",
+        "rank": 1
+       },
+       {
+        "level": 11,
+        "id": "improved_frostbolt",
+        "name": "Improved Frostbolt",
+        "rank": 2
+       },
+       {
+        "level": 12,
+        "id": "improved_frostbolt",
+        "name": "Improved Frostbolt",
+        "rank": 3
+       },
+       {
+        "level": 13,
+        "id": "improved_frostbolt",
+        "name": "Improved Frostbolt",
+        "rank": 4
+       },
+       {
+        "level": 14,
+        "id": "improved_frostbolt",
+        "name": "Improved Frostbolt",
+        "rank": 5
+       },
+       {
+        "level": 15,
+        "id": "precision",
+        "name": "Precision",
+        "rank": 1
+       },
+       {
+        "level": 16,
+        "id": "precision",
+        "name": "Precision",
+        "rank": 2
+       },
+       {
+        "level": 17,
+        "id": "precision",
+        "name": "Precision",
+        "rank": 3
+       },
+       {
+        "level": 18,
+        "id": "ice_shards",
+        "name": "Ice Shards",
+        "rank": 1
+       },
+       {
+        "level": 19,
+        "id": "ice_shards",
+        "name": "Ice Shards",
+        "rank": 2
+       },
+       {
+        "level": 20,
+        "id": "ice_shards",
+        "name": "Ice Shards",
+        "rank": 3
+       },
+       {
+        "level": 21,
+        "id": "ice_shards",
+        "name": "Ice Shards",
+        "rank": 4
+       },
+       {
+        "level": 22,
+        "id": "ice_shards",
+        "name": "Ice Shards",
+        "rank": 5
+       },
+       {
+        "level": 23,
+        "id": "ice_lance",
+        "name": "Ice Lance",
+        "rank": 1
+       },
+       {
+        "level": 24,
+        "id": "frost_channeling",
+        "name": "Frost Channeling",
+        "rank": 1
+       },
+       {
+        "level": 25,
+        "id": "frost_channeling",
+        "name": "Frost Channeling",
+        "rank": 2
+       },
+       {
+        "level": 26,
+        "id": "frost_channeling",
+        "name": "Frost Channeling",
+        "rank": 3
+       },
+       {
+        "level": 27,
+        "id": "shatter",
+        "name": "Shatter",
+        "rank": 1
+       },
+       {
+        "level": 28,
+        "id": "shatter",
+        "name": "Shatter",
+        "rank": 2
+       },
+       {
+        "level": 29,
+        "id": "shatter",
+        "name": "Shatter",
+        "rank": 3
+       },
+       {
+        "level": 30,
+        "id": "ice_block",
+        "name": "Ice Block",
+        "rank": 1
+       },
+       {
+        "level": 31,
+        "id": "fingers_of_frost",
+        "name": "Fingers of Frost",
+        "rank": 1
+       },
+       {
+        "level": 32,
+        "id": "fingers_of_frost",
+        "name": "Fingers of Frost",
+        "rank": 2
+       },
+       {
+        "level": 33,
+        "id": "cold_snap",
+        "name": "Cold Snap",
+        "rank": 1
+       },
+       {
+        "level": 34,
+        "id": "improved_cone_of_cold",
+        "name": "Improved Cone of Cold",
+        "rank": 1
+       },
+       {
+        "level": 35,
+        "id": "improved_cone_of_cold",
+        "name": "Improved Cone of Cold",
+        "rank": 2
+       },
+       {
+        "level": 36,
+        "id": "improved_cone_of_cold",
+        "name": "Improved Cone of Cold",
+        "rank": 3
+       },
+       {
+        "level": 37,
+        "id": "winters_chill",
+        "name": "Winter's Chill",
+        "rank": 1
+       },
+       {
+        "level": 38,
+        "id": "winters_chill",
+        "name": "Winter's Chill",
+        "rank": 2
+       },
+       {
+        "level": 39,
+        "id": "winters_chill",
+        "name": "Winter's Chill",
+        "rank": 3
+       },
+       {
+        "level": 40,
+        "id": "winters_chill",
+        "name": "Winter's Chill",
+        "rank": 4
+       },
+       {
+        "level": 41,
+        "id": "ice_barrier",
+        "name": "Ice Barrier",
+        "rank": 1
+       },
+       {
+        "level": 42,
+        "id": "improved_channeling",
+        "name": "Improved Channeling",
+        "rank": 1
+       },
+       {
+        "level": 43,
+        "id": "improved_channeling",
+        "name": "Improved Channeling",
+        "rank": 2
+       },
+       {
+        "level": 44,
+        "id": "improved_channeling",
+        "name": "Improved Channeling",
+        "rank": 3
+       },
+       {
+        "level": 45,
+        "id": "improved_channeling",
+        "name": "Improved Channeling",
+        "rank": 4
+       },
+       {
+        "level": 46,
+        "id": "improved_channeling",
+        "name": "Improved Channeling",
+        "rank": 5
+       },
+       {
+        "level": 47,
+        "id": "missile_barrage",
+        "name": "Missile Barrage",
+        "rank": 1
+       },
+       {
+        "level": 48,
+        "id": "missile_barrage",
+        "name": "Missile Barrage",
+        "rank": 2
+       },
+       {
+        "level": 49,
+        "id": "arcane_concentration",
+        "name": "Arcane Concentration",
+        "rank": 1
+       },
+       {
+        "level": 50,
+        "id": "arcane_concentration",
+        "name": "Arcane Concentration",
+        "rank": 2
+       },
+       {
+        "level": 51,
+        "id": "arcane_concentration",
+        "name": "Arcane Concentration",
+        "rank": 3
+       },
+       {
+        "level": 52,
+        "id": "arcane_concentration",
+        "name": "Arcane Concentration",
+        "rank": 4
+       },
+       {
+        "level": 53,
+        "id": "arcane_concentration",
+        "name": "Arcane Concentration",
+        "rank": 5
+       },
+       {
+        "level": 54,
+        "id": "arcane_impact",
+        "name": "Arcane Impact",
+        "rank": 1
+       },
+       {
+        "level": 55,
+        "id": "winters_chill",
+        "name": "Winter's Chill",
+        "rank": 5
+       },
+       {
+        "level": 56,
+        "id": "arcane_impact",
+        "name": "Arcane Impact",
+        "rank": 2
+       },
+       {
+        "level": 57,
+        "id": "arcane_impact",
+        "name": "Arcane Impact",
+        "rank": 3
+       },
+       {
+        "level": 58,
+        "id": "arcane_meditation",
+        "name": "Arcane Meditation",
+        "rank": 1
+       },
+       {
+        "level": 59,
+        "id": "arcane_meditation",
+        "name": "Arcane Meditation",
+        "rank": 2
+       },
+       {
+        "level": 60,
+        "id": "arcane_meditation",
+        "name": "Arcane Meditation",
+        "rank": 3
+       }
+      ],
+      "route_runs": [
+       [
+        "improved_frostbolt",
+        5
+       ],
+       [
+        "precision",
+        3
+       ],
+       [
+        "ice_shards",
+        5
+       ],
+       [
+        "ice_lance",
+        1
+       ],
+       [
+        "frost_channeling",
+        3
+       ],
+       [
+        "shatter",
+        3
+       ],
+       [
+        "ice_block",
+        1
+       ],
+       [
+        "fingers_of_frost",
+        2
+       ],
+       [
+        "cold_snap",
+        1
+       ],
+       [
+        "improved_cone_of_cold",
+        3
+       ],
+       [
+        "winters_chill",
+        4
+       ],
+       [
+        "ice_barrier",
+        1
+       ],
+       [
+        "improved_channeling",
+        5
+       ],
+       [
+        "missile_barrage",
+        2
+       ],
+       [
+        "arcane_concentration",
+        5
+       ],
+       [
+        "arcane_impact",
+        1
+       ],
+       [
+        "winters_chill",
+        1
+       ],
+       [
+        "arcane_impact",
+        2
+       ],
+       [
+        "arcane_meditation",
+        3
+       ]
+      ],
+      "order_check": {
+       "ok": true,
+       "errors": [],
+       "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+      },
+      "final": {
+       "code": "0500052030003--053500030101331251",
+       "split": "18/0/33",
+       "points": 51,
+       "talents": {
+        "improved_channeling": 5,
+        "arcane_concentration": 5,
+        "missile_barrage": 2,
+        "arcane_impact": 3,
+        "arcane_meditation": 3,
+        "improved_frostbolt": 5,
+        "precision": 3,
+        "ice_shards": 5,
+        "frost_channeling": 3,
+        "ice_lance": 1,
+        "ice_block": 1,
+        "shatter": 3,
+        "improved_cone_of_cold": 3,
+        "cold_snap": 1,
+        "fingers_of_frost": 2,
+        "winters_chill": 5,
+        "ice_barrier": 1
+       },
+       "legal_on_client_tree": "OK",
+       "order_end_state_equals_final": true
+      },
+      "notes": [
+       "guide text before the link: ...ersion of Mage, weaving in Cone of Cold on cooldown. You’ll follow a similar path, but you won’t take Arctic Reach , and you won’t get to spend points in Incineration either. The rest is exactly the same, getting up to Arcane Meditation to ensure your mana reserves remain healthy during long fights."
+      ],
+      "spec_assigned_by": "guide label",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     },
+     {
+      "name": "Standard Build",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/frost-mage/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/frost-mage/page-data.json, build \"Standard Build\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "2032250100003--053500001121331251",
+       "split": "18/0/33",
+       "points": 51,
+       "talents": {
+        "wand_specialization": 2,
+        "arcane_resilience": 3,
+        "arcane_subtlety": 2,
+        "magic_absorption": 2,
+        "arcane_concentration": 5,
+        "arcane_geometry": 1,
+        "arcane_meditation": 3,
+        "improved_frostbolt": 5,
+        "precision": 3,
+        "ice_shards": 5,
+        "improved_blizzard": 1,
+        "ice_lance": 1,
+        "arctic_reach": 2,
+        "ice_block": 1,
+        "shatter": 3,
+        "improved_cone_of_cold": 3,
+        "cold_snap": 1,
+        "fingers_of_frost": 2,
+        "winters_chill": 5,
+        "ice_barrier": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "frost-mage",
+      "spec_assigned_by": "guide page is for this spec",
+      "same_final_code_as": [
+       "Method.gg: CoC + Meditation (Raid)"
+      ],
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     }
+    ]
+   }
+  }
+ },
+ "excluded": []
+}

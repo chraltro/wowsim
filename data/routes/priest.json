@@ -1,0 +1,5484 @@
+{
+ "class": "priest",
+ "generated": "2026-11-08",
+ "generator": "wowsim/pipeline/talents/build_routes.py",
+ "talents_file": "data/talents/priest.json",
+ "code_format": "see data/talents/priest.json code_format; codes here are re-encoded from each source's own data",
+ "level_rule": "order[i] is the point spent at level 10 + i",
+ "sources_tried": {
+  "Maxroll": "leveling guide planner profiles (point order): fetched",
+  "Method.gg": "leveling guide + spec \"talents\" pages (embeds with point order): fetched",
+  "Warcraft Tavern": "leveling guide + spec guides (Warcraft DB ordered links): fetched",
+  "wowtbc.gg": "Warcraft Forever class guides (page-data JSON: level 60 builds and a \"Leveling 1-60\" point order): fetched",
+  "timesaver.gg": "calculator presets (secondary transcriptions of Maxroll, Wowhead, Icy Veins, Method)",
+  "Wowhead, Icy Veins, Mobalytics": "blocked by Cloudflare from this sandbox (HTTP 403/202 challenge); only timesaver.gg transcriptions of their codes are included, marked secondary",
+  "wowsims-forever": "sim presets are not guides; used only as decode checks (see data/talents/README.md)"
+ },
+ "specs": {
+  "discipline": {
+   "name": "Discipline",
+   "tree": "discipline",
+   "dungeon_roles": [
+    "healer"
+   ],
+   "leveling": [
+    {
+     "name": "Level 1-39",
+     "source": {
+      "site": "Maxroll",
+      "url": "https://maxroll.gg/wow-forever/class-guides/priest-leveling-guide",
+      "title": "Priest Leveling Guide",
+      "author": "maxroll",
+      "published": "October 30, 2026",
+      "updated": "November 4, 2026",
+      "date_seen": "2026-11-08",
+      "data": "planner profile \"Level 1-39\" (uid uuGAG8iw, planner ma3wmd0u saved 2026-11-04 02:50:30): talents.history, TraitNodeEntry ids from window.__remixContext",
+      "guide_order": "point by point (the planner history is the guide's own order)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 1
+      },
+      {
+       "level": 13,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 2
+      },
+      {
+       "level": 14,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 3
+      },
+      {
+       "level": 15,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 4
+      },
+      {
+       "level": 16,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 5
+      },
+      {
+       "level": 17,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 3
+      },
+      {
+       "level": 20,
+       "id": "holy_precision",
+       "name": "Holy Precision",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 4
+      },
+      {
+       "level": 22,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 5
+      },
+      {
+       "level": 23,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 1
+      },
+      {
+       "level": 24,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 2
+      },
+      {
+       "level": 25,
+       "id": "inner_focus",
+       "name": "Inner Focus",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "mental_agility",
+       "name": "Mental Agility",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "mental_agility",
+       "name": "Mental Agility",
+       "rank": 2
+      },
+      {
+       "level": 31,
+       "id": "mental_agility",
+       "name": "Mental Agility",
+       "rank": 3
+      },
+      {
+       "level": 32,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 1
+      },
+      {
+       "level": 33,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 2
+      },
+      {
+       "level": 34,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 3
+      },
+      {
+       "level": 35,
+       "id": "penance",
+       "name": "Penance",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "improved_shadow_word_pain",
+       "name": "Improved Shadow Word: Pain",
+       "rank": 1
+      },
+      {
+       "level": 37,
+       "id": "improved_shadow_word_pain",
+       "name": "Improved Shadow Word: Pain",
+       "rank": 2
+      },
+      {
+       "level": 38,
+       "id": "soul_warding",
+       "name": "Soul Warding",
+       "rank": 1
+      },
+      {
+       "level": 39,
+       "id": "renewed_hope",
+       "name": "Renewed Hope",
+       "rank": 1
+      }
+     ],
+     "route_runs": [
+      [
+       "wand_specialization",
+       2
+      ],
+      [
+       "spirit_tap",
+       5
+      ],
+      [
+       "twin_disciplines",
+       3
+      ],
+      [
+       "holy_precision",
+       1
+      ],
+      [
+       "twin_disciplines",
+       2
+      ],
+      [
+       "mental_strength",
+       2
+      ],
+      [
+       "inner_focus",
+       1
+      ],
+      [
+       "meditation",
+       3
+      ],
+      [
+       "mental_agility",
+       3
+      ],
+      [
+       "improved_power_word_shield",
+       3
+      ],
+      [
+       "penance",
+       1
+      ],
+      [
+       "improved_shadow_word_pain",
+       2
+      ],
+      [
+       "soul_warding",
+       1
+      ],
+      [
+       "renewed_hope",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "0250120313300111--00502",
+      "split": "23/0/7",
+      "points": 30,
+      "talents": {
+       "wand_specialization": 2,
+       "twin_disciplines": 5,
+       "holy_precision": 1,
+       "mental_strength": 2,
+       "mental_agility": 3,
+       "inner_focus": 1,
+       "improved_power_word_shield": 3,
+       "meditation": 3,
+       "soul_warding": 1,
+       "penance": 1,
+       "renewed_hope": 1,
+       "spirit_tap": 5,
+       "improved_shadow_word_pain": 2
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "notes": [
+      "the guide's build has 30 points, so it covers levels 10 to 39"
+     ],
+     "spec_assigned_by": "tree with most points (guide label names no spec)",
+     "same_final_code_as": [
+      "timesaver.gg (transcription): Discipline leveling 1-39"
+     ]
+    },
+    {
+     "name": "Level 40 + Healer",
+     "source": {
+      "site": "Maxroll",
+      "url": "https://maxroll.gg/wow-forever/class-guides/priest-leveling-guide",
+      "title": "Priest Leveling Guide",
+      "author": "maxroll",
+      "published": "October 30, 2026",
+      "updated": "November 4, 2026",
+      "date_seen": "2026-11-08",
+      "data": "planner profile \"Level 40 + Healer\" (uid XM8iF0fV, planner ma3wmd0u saved 2026-11-04 02:50:30): talents.history, TraitNodeEntry ids from window.__remixContext",
+      "guide_order": "point by point (the planner history is the guide's own order)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 1
+      },
+      {
+       "level": 13,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 2
+      },
+      {
+       "level": 14,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 3
+      },
+      {
+       "level": 15,
+       "id": "holy_precision",
+       "name": "Holy Precision",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 4
+      },
+      {
+       "level": 17,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 5
+      },
+      {
+       "level": 18,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "inner_focus",
+       "name": "Inner Focus",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 3
+      },
+      {
+       "level": 24,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 2
+      },
+      {
+       "level": 26,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 3
+      },
+      {
+       "level": 27,
+       "id": "soul_warding",
+       "name": "Soul Warding",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "mental_agility",
+       "name": "Mental Agility",
+       "rank": 1
+      },
+      {
+       "level": 29,
+       "id": "mental_agility",
+       "name": "Mental Agility",
+       "rank": 2
+      },
+      {
+       "level": 30,
+       "id": "penance",
+       "name": "Penance",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "renewed_hope",
+       "name": "Renewed Hope",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "renewed_hope",
+       "name": "Renewed Hope",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "renewed_hope",
+       "name": "Renewed Hope",
+       "rank": 3
+      },
+      {
+       "level": 34,
+       "id": "renewed_hope",
+       "name": "Renewed Hope",
+       "rank": 4
+      },
+      {
+       "level": 35,
+       "id": "renewed_hope",
+       "name": "Renewed Hope",
+       "rank": 5
+      },
+      {
+       "level": 36,
+       "id": "divine_aegis",
+       "name": "Divine Aegis",
+       "rank": 1
+      },
+      {
+       "level": 37,
+       "id": "divine_aegis",
+       "name": "Divine Aegis",
+       "rank": 2
+      },
+      {
+       "level": 38,
+       "id": "divine_aegis",
+       "name": "Divine Aegis",
+       "rank": 3
+      },
+      {
+       "level": 39,
+       "id": "mental_agility",
+       "name": "Mental Agility",
+       "rank": 3
+      },
+      {
+       "level": 40,
+       "id": "power_infusion",
+       "name": "Power Infusion",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 4
+      },
+      {
+       "level": 45,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 4
+      },
+      {
+       "level": 50,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 5
+      },
+      {
+       "level": 51,
+       "id": "twilight_focus",
+       "name": "Twilight Focus",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "twilight_focus",
+       "name": "Twilight Focus",
+       "rank": 2
+      },
+      {
+       "level": 53,
+       "id": "twilight_focus",
+       "name": "Twilight Focus",
+       "rank": 3
+      },
+      {
+       "level": 54,
+       "id": "power_in_light",
+       "name": "Power in Light",
+       "rank": 1
+      },
+      {
+       "level": 55,
+       "id": "power_in_light",
+       "name": "Power in Light",
+       "rank": 2
+      },
+      {
+       "level": 56,
+       "id": "power_in_light",
+       "name": "Power in Light",
+       "rank": 3
+      },
+      {
+       "level": 57,
+       "id": "power_in_light",
+       "name": "Power in Light",
+       "rank": 4
+      },
+      {
+       "level": 58,
+       "id": "power_in_light",
+       "name": "Power in Light",
+       "rank": 5
+      },
+      {
+       "level": 59,
+       "id": "improved_renew",
+       "name": "Improved Renew",
+       "rank": 1
+      },
+      {
+       "level": 60,
+       "id": "improved_renew",
+       "name": "Improved Renew",
+       "rank": 2
+      }
+     ],
+     "route_runs": [
+      [
+       "wand_specialization",
+       2
+      ],
+      [
+       "twin_disciplines",
+       3
+      ],
+      [
+       "holy_precision",
+       1
+      ],
+      [
+       "twin_disciplines",
+       2
+      ],
+      [
+       "mental_strength",
+       2
+      ],
+      [
+       "inner_focus",
+       1
+      ],
+      [
+       "meditation",
+       3
+      ],
+      [
+       "improved_power_word_shield",
+       3
+      ],
+      [
+       "soul_warding",
+       1
+      ],
+      [
+       "mental_agility",
+       2
+      ],
+      [
+       "penance",
+       1
+      ],
+      [
+       "renewed_hope",
+       5
+      ],
+      [
+       "divine_aegis",
+       3
+      ],
+      [
+       "mental_agility",
+       1
+      ],
+      [
+       "power_infusion",
+       1
+      ],
+      [
+       "holy_specialization",
+       5
+      ],
+      [
+       "divine_fury",
+       5
+      ],
+      [
+       "twilight_focus",
+       3
+      ],
+      [
+       "power_in_light",
+       5
+      ],
+      [
+       "improved_renew",
+       2
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "525012031330011531-32505",
+      "split": "36/15/0",
+      "points": 51,
+      "talents": {
+       "power_in_light": 5,
+       "wand_specialization": 2,
+       "twin_disciplines": 5,
+       "holy_precision": 1,
+       "mental_strength": 2,
+       "mental_agility": 3,
+       "inner_focus": 1,
+       "improved_power_word_shield": 3,
+       "meditation": 3,
+       "soul_warding": 1,
+       "penance": 1,
+       "renewed_hope": 5,
+       "divine_aegis": 3,
+       "power_infusion": 1,
+       "twilight_focus": 3,
+       "improved_renew": 2,
+       "holy_specialization": 5,
+       "divine_fury": 5
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "spec_assigned_by": "tree with most points (guide label names no spec)",
+     "same_final_code_as": [
+      "timesaver.gg (transcription): Discipline healer leveling 40-60"
+     ]
+    },
+    {
+     "name": "Level 1-39",
+     "source": {
+      "site": "Method.gg",
+      "url": "https://www.method.gg/wow-forever/wow-forever-priest-leveling-guide-and-talents",
+      "title": "WoW Forever Priest Leveling Guide & Talents",
+      "author": "Amaxagon",
+      "updated": "6th November 2026",
+      "patch": null,
+      "date_seen": "2026-11-08",
+      "data": "data-talent embed #0 (\"Level 1-39\"), decoded with the reader in pipeline/talents/method_decode.py",
+      "guide_order": "point by point (the embed carries the order after \";\")"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 1
+      },
+      {
+       "level": 13,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 2
+      },
+      {
+       "level": 14,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 3
+      },
+      {
+       "level": 15,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 4
+      },
+      {
+       "level": 16,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 5
+      },
+      {
+       "level": 17,
+       "id": "improved_shadow_word_pain",
+       "name": "Improved Shadow Word: Pain",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "improved_shadow_word_pain",
+       "name": "Improved Shadow Word: Pain",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 1
+      },
+      {
+       "level": 20,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 2
+      },
+      {
+       "level": 21,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 3
+      },
+      {
+       "level": 22,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 4
+      },
+      {
+       "level": 23,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 5
+      },
+      {
+       "level": 24,
+       "id": "martyrdom",
+       "name": "Martyrdom",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "martyrdom",
+       "name": "Martyrdom",
+       "rank": 2
+      },
+      {
+       "level": 26,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "inner_focus",
+       "name": "Inner Focus",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 1
+      },
+      {
+       "level": 29,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 2
+      },
+      {
+       "level": 30,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 3
+      },
+      {
+       "level": 31,
+       "id": "mental_agility",
+       "name": "Mental Agility",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "mental_agility",
+       "name": "Mental Agility",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "improved_inner_fire",
+       "name": "Improved Inner Fire",
+       "rank": 1
+      },
+      {
+       "level": 34,
+       "id": "improved_inner_fire",
+       "name": "Improved Inner Fire",
+       "rank": 2
+      },
+      {
+       "level": 35,
+       "id": "improved_inner_fire",
+       "name": "Improved Inner Fire",
+       "rank": 3
+      },
+      {
+       "level": 36,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 1
+      },
+      {
+       "level": 37,
+       "id": "penance",
+       "name": "Penance",
+       "rank": 1
+      },
+      {
+       "level": 38,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 2
+      },
+      {
+       "level": 39,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 3
+      }
+     ],
+     "route_runs": [
+      [
+       "wand_specialization",
+       2
+      ],
+      [
+       "spirit_tap",
+       5
+      ],
+      [
+       "improved_shadow_word_pain",
+       2
+      ],
+      [
+       "twin_disciplines",
+       5
+      ],
+      [
+       "martyrdom",
+       2
+      ],
+      [
+       "mental_strength",
+       1
+      ],
+      [
+       "inner_focus",
+       1
+      ],
+      [
+       "meditation",
+       3
+      ],
+      [
+       "mental_agility",
+       2
+      ],
+      [
+       "improved_inner_fire",
+       3
+      ],
+      [
+       "improved_power_word_shield",
+       1
+      ],
+      [
+       "penance",
+       1
+      ],
+      [
+       "improved_power_word_shield",
+       2
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "025001221333001--00502",
+      "split": "23/0/7",
+      "points": 30,
+      "talents": {
+       "wand_specialization": 2,
+       "twin_disciplines": 5,
+       "mental_strength": 1,
+       "martyrdom": 2,
+       "mental_agility": 2,
+       "inner_focus": 1,
+       "improved_power_word_shield": 3,
+       "meditation": 3,
+       "improved_inner_fire": 3,
+       "penance": 1,
+       "spirit_tap": 5,
+       "improved_shadow_word_pain": 2
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "notes": [
+      "guide text after the build: readonly > Theorycrafting: Please note that all suggested builds beyond this point will be subject to updates as things change and more information becomes available. Level 40 At Level 40 we can now grab Shadowform , so I recommend re-speccing to Shadow with the following build.",
+      "the guide's build has 30 points, so it covers levels 10 to 39"
+     ],
+     "spec_assigned_by": "tree with most points (guide label names no spec)"
+    },
+    {
+     "name": "Discipline leveling 1-39",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/priest",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Maxroll",
+       "url": "https://maxroll.gg/wow-forever/class-guides/priest-leveling-guide",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Discipline leveling 1-39\" in the calculator page payload; mode Leveling",
+      "guide_order": "point by point as transcribed by timesaver.gg"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 1
+      },
+      {
+       "level": 13,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 2
+      },
+      {
+       "level": 14,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 3
+      },
+      {
+       "level": 15,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 4
+      },
+      {
+       "level": 16,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 5
+      },
+      {
+       "level": 17,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 3
+      },
+      {
+       "level": 20,
+       "id": "holy_precision",
+       "name": "Holy Precision",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 4
+      },
+      {
+       "level": 22,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 5
+      },
+      {
+       "level": 23,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 1
+      },
+      {
+       "level": 24,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 2
+      },
+      {
+       "level": 25,
+       "id": "inner_focus",
+       "name": "Inner Focus",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "mental_agility",
+       "name": "Mental Agility",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "mental_agility",
+       "name": "Mental Agility",
+       "rank": 2
+      },
+      {
+       "level": 31,
+       "id": "mental_agility",
+       "name": "Mental Agility",
+       "rank": 3
+      },
+      {
+       "level": 32,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 1
+      },
+      {
+       "level": 33,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 2
+      },
+      {
+       "level": 34,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 3
+      },
+      {
+       "level": 35,
+       "id": "penance",
+       "name": "Penance",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "improved_shadow_word_pain",
+       "name": "Improved Shadow Word: Pain",
+       "rank": 1
+      },
+      {
+       "level": 37,
+       "id": "improved_shadow_word_pain",
+       "name": "Improved Shadow Word: Pain",
+       "rank": 2
+      },
+      {
+       "level": 38,
+       "id": "soul_warding",
+       "name": "Soul Warding",
+       "rank": 1
+      },
+      {
+       "level": 39,
+       "id": "renewed_hope",
+       "name": "Renewed Hope",
+       "rank": 1
+      }
+     ],
+     "route_runs": [
+      [
+       "wand_specialization",
+       2
+      ],
+      [
+       "spirit_tap",
+       5
+      ],
+      [
+       "twin_disciplines",
+       3
+      ],
+      [
+       "holy_precision",
+       1
+      ],
+      [
+       "twin_disciplines",
+       2
+      ],
+      [
+       "mental_strength",
+       2
+      ],
+      [
+       "inner_focus",
+       1
+      ],
+      [
+       "meditation",
+       3
+      ],
+      [
+       "mental_agility",
+       3
+      ],
+      [
+       "improved_power_word_shield",
+       3
+      ],
+      [
+       "penance",
+       1
+      ],
+      [
+       "improved_shadow_word_pain",
+       2
+      ],
+      [
+       "soul_warding",
+       1
+      ],
+      [
+       "renewed_hope",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "0250120313300111--00502",
+      "split": "23/0/7",
+      "points": 30,
+      "talents": {
+       "wand_specialization": 2,
+       "twin_disciplines": 5,
+       "holy_precision": 1,
+       "mental_strength": 2,
+       "mental_agility": 3,
+       "inner_focus": 1,
+       "improved_power_word_shield": 3,
+       "meditation": 3,
+       "soul_warding": 1,
+       "penance": 1,
+       "renewed_hope": 1,
+       "spirit_tap": 5,
+       "improved_shadow_word_pain": 2
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "notes": [
+      "the guide's build has 30 points, so it covers levels 10 to 39"
+     ],
+     "secondary": true,
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "Maxroll: Level 1-39"
+     ]
+    },
+    {
+     "name": "Discipline healer leveling 40-60",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/priest",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Maxroll",
+       "url": "https://maxroll.gg/wow-forever/class-guides/priest-leveling-guide",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Discipline healer leveling 40-60\" in the calculator page payload; mode Leveling",
+      "guide_order": "point by point as transcribed by timesaver.gg"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 1
+      },
+      {
+       "level": 13,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 2
+      },
+      {
+       "level": 14,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 3
+      },
+      {
+       "level": 15,
+       "id": "holy_precision",
+       "name": "Holy Precision",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 4
+      },
+      {
+       "level": 17,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 5
+      },
+      {
+       "level": 18,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "inner_focus",
+       "name": "Inner Focus",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 3
+      },
+      {
+       "level": 24,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 2
+      },
+      {
+       "level": 26,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 3
+      },
+      {
+       "level": 27,
+       "id": "soul_warding",
+       "name": "Soul Warding",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "mental_agility",
+       "name": "Mental Agility",
+       "rank": 1
+      },
+      {
+       "level": 29,
+       "id": "mental_agility",
+       "name": "Mental Agility",
+       "rank": 2
+      },
+      {
+       "level": 30,
+       "id": "penance",
+       "name": "Penance",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "renewed_hope",
+       "name": "Renewed Hope",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "renewed_hope",
+       "name": "Renewed Hope",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "renewed_hope",
+       "name": "Renewed Hope",
+       "rank": 3
+      },
+      {
+       "level": 34,
+       "id": "renewed_hope",
+       "name": "Renewed Hope",
+       "rank": 4
+      },
+      {
+       "level": 35,
+       "id": "renewed_hope",
+       "name": "Renewed Hope",
+       "rank": 5
+      },
+      {
+       "level": 36,
+       "id": "divine_aegis",
+       "name": "Divine Aegis",
+       "rank": 1
+      },
+      {
+       "level": 37,
+       "id": "divine_aegis",
+       "name": "Divine Aegis",
+       "rank": 2
+      },
+      {
+       "level": 38,
+       "id": "divine_aegis",
+       "name": "Divine Aegis",
+       "rank": 3
+      },
+      {
+       "level": 39,
+       "id": "mental_agility",
+       "name": "Mental Agility",
+       "rank": 3
+      },
+      {
+       "level": 40,
+       "id": "power_infusion",
+       "name": "Power Infusion",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 4
+      },
+      {
+       "level": 45,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 4
+      },
+      {
+       "level": 50,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 5
+      },
+      {
+       "level": 51,
+       "id": "twilight_focus",
+       "name": "Twilight Focus",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "twilight_focus",
+       "name": "Twilight Focus",
+       "rank": 2
+      },
+      {
+       "level": 53,
+       "id": "twilight_focus",
+       "name": "Twilight Focus",
+       "rank": 3
+      },
+      {
+       "level": 54,
+       "id": "power_in_light",
+       "name": "Power in Light",
+       "rank": 1
+      },
+      {
+       "level": 55,
+       "id": "power_in_light",
+       "name": "Power in Light",
+       "rank": 2
+      },
+      {
+       "level": 56,
+       "id": "power_in_light",
+       "name": "Power in Light",
+       "rank": 3
+      },
+      {
+       "level": 57,
+       "id": "power_in_light",
+       "name": "Power in Light",
+       "rank": 4
+      },
+      {
+       "level": 58,
+       "id": "power_in_light",
+       "name": "Power in Light",
+       "rank": 5
+      },
+      {
+       "level": 59,
+       "id": "improved_renew",
+       "name": "Improved Renew",
+       "rank": 1
+      },
+      {
+       "level": 60,
+       "id": "improved_renew",
+       "name": "Improved Renew",
+       "rank": 2
+      }
+     ],
+     "route_runs": [
+      [
+       "wand_specialization",
+       2
+      ],
+      [
+       "twin_disciplines",
+       3
+      ],
+      [
+       "holy_precision",
+       1
+      ],
+      [
+       "twin_disciplines",
+       2
+      ],
+      [
+       "mental_strength",
+       2
+      ],
+      [
+       "inner_focus",
+       1
+      ],
+      [
+       "meditation",
+       3
+      ],
+      [
+       "improved_power_word_shield",
+       3
+      ],
+      [
+       "soul_warding",
+       1
+      ],
+      [
+       "mental_agility",
+       2
+      ],
+      [
+       "penance",
+       1
+      ],
+      [
+       "renewed_hope",
+       5
+      ],
+      [
+       "divine_aegis",
+       3
+      ],
+      [
+       "mental_agility",
+       1
+      ],
+      [
+       "power_infusion",
+       1
+      ],
+      [
+       "holy_specialization",
+       5
+      ],
+      [
+       "divine_fury",
+       5
+      ],
+      [
+       "twilight_focus",
+       3
+      ],
+      [
+       "power_in_light",
+       5
+      ],
+      [
+       "improved_renew",
+       2
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "525012031330011531-32505",
+      "split": "36/15/0",
+      "points": 51,
+      "talents": {
+       "power_in_light": 5,
+       "wand_specialization": 2,
+       "twin_disciplines": 5,
+       "holy_precision": 1,
+       "mental_strength": 2,
+       "mental_agility": 3,
+       "inner_focus": 1,
+       "improved_power_word_shield": 3,
+       "meditation": 3,
+       "soul_warding": 1,
+       "penance": 1,
+       "renewed_hope": 5,
+       "divine_aegis": 3,
+       "power_infusion": 1,
+       "twilight_focus": 3,
+       "improved_renew": 2,
+       "holy_specialization": 5,
+       "divine_fury": 5
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "secondary": true,
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "Maxroll: Level 40 + Healer"
+     ]
+    },
+    {
+     "name": "Leveling 1-60",
+     "source": {
+      "site": "wowtbc.gg (Warcraft Forever class guide)",
+      "url": "https://wowtbc.gg/warcraftforever/class-guides/discipline-priest/",
+      "author": null,
+      "updated": null,
+      "date_seen": "2026-11-08",
+      "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/discipline-priest/page-data.json, build \"Leveling 1-60\"",
+      "note": "the page shows no author or date",
+      "guide_order": "point by point (\"Leveling 1-60\" talentBuildPaths)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 1
+      },
+      {
+       "level": 13,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 2
+      },
+      {
+       "level": 14,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 3
+      },
+      {
+       "level": 15,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 4
+      },
+      {
+       "level": 16,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 5
+      },
+      {
+       "level": 17,
+       "id": "improved_shadow_word_pain",
+       "name": "Improved Shadow Word: Pain",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "improved_shadow_word_pain",
+       "name": "Improved Shadow Word: Pain",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "power_in_light",
+       "name": "Power in Light",
+       "rank": 1
+      },
+      {
+       "level": 20,
+       "id": "power_in_light",
+       "name": "Power in Light",
+       "rank": 2
+      },
+      {
+       "level": 21,
+       "id": "power_in_light",
+       "name": "Power in Light",
+       "rank": 3
+      },
+      {
+       "level": 22,
+       "id": "holy_precision",
+       "name": "Holy Precision",
+       "rank": 1
+      },
+      {
+       "level": 23,
+       "id": "power_in_light",
+       "name": "Power in Light",
+       "rank": 4
+      },
+      {
+       "level": 24,
+       "id": "power_in_light",
+       "name": "Power in Light",
+       "rank": 5
+      },
+      {
+       "level": 25,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 2
+      },
+      {
+       "level": 27,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 2
+      },
+      {
+       "level": 29,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 3
+      },
+      {
+       "level": 30,
+       "id": "inner_focus",
+       "name": "Inner Focus",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 3
+      },
+      {
+       "level": 34,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 3
+      },
+      {
+       "level": 35,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 4
+      },
+      {
+       "level": 36,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 5
+      },
+      {
+       "level": 37,
+       "id": "penance",
+       "name": "Penance",
+       "rank": 1
+      },
+      {
+       "level": 38,
+       "id": "twilight_focus",
+       "name": "Twilight Focus",
+       "rank": 1
+      },
+      {
+       "level": 39,
+       "id": "twilight_focus",
+       "name": "Twilight Focus",
+       "rank": 2
+      },
+      {
+       "level": 40,
+       "id": "twilight_focus",
+       "name": "Twilight Focus",
+       "rank": 3
+      },
+      {
+       "level": 41,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 1
+      },
+      {
+       "level": 44,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 2
+      },
+      {
+       "level": 45,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 3
+      },
+      {
+       "level": 46,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 4
+      },
+      {
+       "level": 47,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 5
+      },
+      {
+       "level": 48,
+       "id": "holy_nova",
+       "name": "Holy Nova",
+       "rank": 1
+      },
+      {
+       "level": 49,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 3
+      },
+      {
+       "level": 50,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 4
+      },
+      {
+       "level": 51,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 5
+      },
+      {
+       "level": 52,
+       "id": "blessed_recovery",
+       "name": "Blessed Recovery",
+       "rank": 1
+      },
+      {
+       "level": 53,
+       "id": "searing_light",
+       "name": "Searing Light",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "searing_light",
+       "name": "Searing Light",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "blessed_recovery",
+       "name": "Blessed Recovery",
+       "rank": 2
+      },
+      {
+       "level": 56,
+       "id": "blessed_recovery",
+       "name": "Blessed Recovery",
+       "rank": 3
+      },
+      {
+       "level": 57,
+       "id": "holy_reach",
+       "name": "Holy Reach",
+       "rank": 1
+      },
+      {
+       "level": 58,
+       "id": "spiritual_guidance",
+       "name": "Spiritual Guidance",
+       "rank": 1
+      },
+      {
+       "level": 59,
+       "id": "spiritual_guidance",
+       "name": "Spiritual Guidance",
+       "rank": 2
+      },
+      {
+       "level": 60,
+       "id": "spiritual_guidance",
+       "name": "Spiritual Guidance",
+       "rank": 3
+      }
+     ],
+     "route_runs": [
+      [
+       "wand_specialization",
+       2
+      ],
+      [
+       "spirit_tap",
+       5
+      ],
+      [
+       "improved_shadow_word_pain",
+       2
+      ],
+      [
+       "power_in_light",
+       3
+      ],
+      [
+       "holy_precision",
+       1
+      ],
+      [
+       "power_in_light",
+       2
+      ],
+      [
+       "twin_disciplines",
+       2
+      ],
+      [
+       "meditation",
+       3
+      ],
+      [
+       "inner_focus",
+       1
+      ],
+      [
+       "improved_power_word_shield",
+       3
+      ],
+      [
+       "twin_disciplines",
+       3
+      ],
+      [
+       "penance",
+       1
+      ],
+      [
+       "twilight_focus",
+       3
+      ],
+      [
+       "holy_specialization",
+       2
+      ],
+      [
+       "divine_fury",
+       5
+      ],
+      [
+       "holy_nova",
+       1
+      ],
+      [
+       "holy_specialization",
+       3
+      ],
+      [
+       "blessed_recovery",
+       1
+      ],
+      [
+       "searing_light",
+       2
+      ],
+      [
+       "blessed_recovery",
+       2
+      ],
+      [
+       "holy_reach",
+       1
+      ],
+      [
+       "spiritual_guidance",
+       3
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "525010001330001-305051301020003-00502",
+      "split": "21/23/7",
+      "points": 51,
+      "talents": {
+       "power_in_light": 5,
+       "wand_specialization": 2,
+       "twin_disciplines": 5,
+       "holy_precision": 1,
+       "inner_focus": 1,
+       "improved_power_word_shield": 3,
+       "meditation": 3,
+       "penance": 1,
+       "twilight_focus": 3,
+       "holy_specialization": 5,
+       "divine_fury": 5,
+       "holy_nova": 1,
+       "blessed_recovery": 3,
+       "holy_reach": 1,
+       "searing_light": 2,
+       "spiritual_guidance": 3,
+       "spirit_tap": 5,
+       "improved_shadow_word_pain": 2
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "wowtbc_spec_page": "discipline-priest",
+     "spec_assigned_by": "guide page is for this spec",
+     "same_final_code_as": [
+      "wowtbc.gg (Warcraft Forever class guide): Leveling 1-60"
+     ],
+     "notes": [
+      "listed under Discipline because the guide puts it there, but most points go into Holy"
+     ]
+    }
+   ],
+   "endgame": {
+    "healer": [
+     {
+      "name": "Standard Build",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/discipline-priest/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/discipline-priest/page-data.json, build \"Standard Build\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "005005031330011531-305050030301",
+       "split": "31/20/0",
+       "points": 51,
+       "talents": {
+        "twin_disciplines": 5,
+        "mental_strength": 5,
+        "mental_agility": 3,
+        "inner_focus": 1,
+        "improved_power_word_shield": 3,
+        "meditation": 3,
+        "soul_warding": 1,
+        "penance": 1,
+        "renewed_hope": 5,
+        "divine_aegis": 3,
+        "power_infusion": 1,
+        "twilight_focus": 3,
+        "holy_specialization": 5,
+        "divine_fury": 5,
+        "inspiration": 3,
+        "improved_healing": 3,
+        "holy_binding": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "discipline-priest",
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     }
+    ],
+    "damage": [
+     {
+      "name": "Smite DPS",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/discipline-priest/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/discipline-priest/page-data.json, build \"Smite DPS\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "515335031030001001-30515100002-3",
+       "split": "31/17/3",
+       "points": 51,
+       "talents": {
+        "power_in_light": 5,
+        "wand_specialization": 1,
+        "twin_disciplines": 5,
+        "silent_resolve": 3,
+        "holy_precision": 3,
+        "mental_strength": 5,
+        "mental_agility": 3,
+        "inner_focus": 1,
+        "meditation": 3,
+        "penance": 1,
+        "power_infusion": 1,
+        "twilight_focus": 3,
+        "holy_specialization": 5,
+        "spell_warding": 1,
+        "divine_fury": 5,
+        "holy_nova": 1,
+        "searing_light": 2,
+        "shadow_focus": 3
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "discipline-priest",
+      "role_override": [
+       "damage"
+      ],
+      "notes": [
+       "Smite damage build in the Discipline tree (guide name \"Smite DPS\")"
+      ],
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     }
+    ]
+   }
+  },
+  "holy": {
+   "name": "Holy",
+   "tree": "holy",
+   "dungeon_roles": [
+    "healer"
+   ],
+   "leveling": [
+    {
+     "name": "Holy leveling",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/priest",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Icy Veins",
+       "url": "https://www.icy-veins.com/wow-forever/holy-priest-leveling",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Holy leveling\" in the calculator page payload; mode Leveling",
+      "guide_order": "point by point as transcribed by timesaver.gg"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 1
+      },
+      {
+       "level": 13,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 2
+      },
+      {
+       "level": 14,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 3
+      },
+      {
+       "level": 15,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 4
+      },
+      {
+       "level": 16,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 5
+      },
+      {
+       "level": 17,
+       "id": "twilight_focus",
+       "name": "Twilight Focus",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "twilight_focus",
+       "name": "Twilight Focus",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "twilight_focus",
+       "name": "Twilight Focus",
+       "rank": 3
+      },
+      {
+       "level": 20,
+       "id": "improved_renew",
+       "name": "Improved Renew",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "improved_renew",
+       "name": "Improved Renew",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "improved_renew",
+       "name": "Improved Renew",
+       "rank": 3
+      },
+      {
+       "level": 23,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 1
+      },
+      {
+       "level": 24,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 2
+      },
+      {
+       "level": 25,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 3
+      },
+      {
+       "level": 26,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 4
+      },
+      {
+       "level": 30,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 5
+      },
+      {
+       "level": 31,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 3
+      },
+      {
+       "level": 34,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 1
+      },
+      {
+       "level": 35,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 2
+      },
+      {
+       "level": 36,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 3
+      },
+      {
+       "level": 37,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 4
+      },
+      {
+       "level": 38,
+       "id": "holy_nova",
+       "name": "Holy Nova",
+       "rank": 1
+      },
+      {
+       "level": 39,
+       "id": "inspiration",
+       "name": "Inspiration",
+       "rank": 1
+      },
+      {
+       "level": 40,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 5
+      },
+      {
+       "level": 41,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "searing_light",
+       "name": "Searing Light",
+       "rank": 1
+      },
+      {
+       "level": 44,
+       "id": "searing_light",
+       "name": "Searing Light",
+       "rank": 2
+      },
+      {
+       "level": 45,
+       "id": "improved_healing",
+       "name": "Improved Healing",
+       "rank": 1
+      },
+      {
+       "level": 46,
+       "id": "improved_healing",
+       "name": "Improved Healing",
+       "rank": 2
+      },
+      {
+       "level": 47,
+       "id": "improved_healing",
+       "name": "Improved Healing",
+       "rank": 3
+      },
+      {
+       "level": 48,
+       "id": "spirit_of_redemption",
+       "name": "Spirit of Redemption",
+       "rank": 1
+      },
+      {
+       "level": 49,
+       "id": "litany_of_light",
+       "name": "Litany of Light",
+       "rank": 1
+      },
+      {
+       "level": 50,
+       "id": "litany_of_light",
+       "name": "Litany of Light",
+       "rank": 2
+      },
+      {
+       "level": 51,
+       "id": "spiritual_guidance",
+       "name": "Spiritual Guidance",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "spiritual_guidance",
+       "name": "Spiritual Guidance",
+       "rank": 2
+      },
+      {
+       "level": 53,
+       "id": "spiritual_healing",
+       "name": "Spiritual Healing",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "spiritual_healing",
+       "name": "Spiritual Healing",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "spiritual_healing",
+       "name": "Spiritual Healing",
+       "rank": 3
+      },
+      {
+       "level": 56,
+       "id": "spiritual_guidance",
+       "name": "Spiritual Guidance",
+       "rank": 3
+      },
+      {
+       "level": 57,
+       "id": "spiritual_guidance",
+       "name": "Spiritual Guidance",
+       "rank": 4
+      },
+      {
+       "level": 58,
+       "id": "prayer_of_mending",
+       "name": "Prayer of Mending",
+       "rank": 1
+      },
+      {
+       "level": 59,
+       "id": "spiritual_guidance",
+       "name": "Spiritual Guidance",
+       "rank": 5
+      },
+      {
+       "level": 60,
+       "id": "inner_focus",
+       "name": "Inner Focus",
+       "rank": 1
+      }
+     ],
+     "route_runs": [
+      [
+       "wand_specialization",
+       2
+      ],
+      [
+       "spirit_tap",
+       5
+      ],
+      [
+       "twilight_focus",
+       3
+      ],
+      [
+       "improved_renew",
+       3
+      ],
+      [
+       "twin_disciplines",
+       3
+      ],
+      [
+       "mental_strength",
+       5
+      ],
+      [
+       "meditation",
+       3
+      ],
+      [
+       "divine_fury",
+       4
+      ],
+      [
+       "holy_nova",
+       1
+      ],
+      [
+       "inspiration",
+       1
+      ],
+      [
+       "divine_fury",
+       1
+      ],
+      [
+       "holy_specialization",
+       2
+      ],
+      [
+       "searing_light",
+       2
+      ],
+      [
+       "improved_healing",
+       3
+      ],
+      [
+       "spirit_of_redemption",
+       1
+      ],
+      [
+       "litany_of_light",
+       2
+      ],
+      [
+       "spiritual_guidance",
+       2
+      ],
+      [
+       "spiritual_healing",
+       3
+      ],
+      [
+       "spiritual_guidance",
+       2
+      ],
+      [
+       "prayer_of_mending",
+       1
+      ],
+      [
+       "spiritual_guidance",
+       1
+      ],
+      [
+       "inner_focus",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "02300500103-33205101032021531-005",
+      "split": "14/32/5",
+      "points": 51,
+      "talents": {
+       "wand_specialization": 2,
+       "twin_disciplines": 3,
+       "mental_strength": 5,
+       "inner_focus": 1,
+       "meditation": 3,
+       "twilight_focus": 3,
+       "improved_renew": 3,
+       "holy_specialization": 2,
+       "divine_fury": 5,
+       "holy_nova": 1,
+       "inspiration": 1,
+       "improved_healing": 3,
+       "searing_light": 2,
+       "litany_of_light": 2,
+       "spirit_of_redemption": 1,
+       "spiritual_guidance": 5,
+       "spiritual_healing": 3,
+       "prayer_of_mending": 1,
+       "spirit_tap": 5
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "secondary": true,
+     "notes": [
+      "original Icy Veins page not reachable from this sandbox (Cloudflare); this is timesaver.gg's transcription, unverified against the original"
+     ],
+     "spec_assigned_by": "guide label"
+    },
+    {
+     "name": "Leveling 1-60",
+     "source": {
+      "site": "wowtbc.gg (Warcraft Forever class guide)",
+      "url": "https://wowtbc.gg/warcraftforever/class-guides/holy-priest/",
+      "author": null,
+      "updated": null,
+      "date_seen": "2026-11-08",
+      "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/holy-priest/page-data.json, build \"Leveling 1-60\"",
+      "note": "the page shows no author or date",
+      "guide_order": "point by point (\"Leveling 1-60\" talentBuildPaths)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 1
+      },
+      {
+       "level": 13,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 2
+      },
+      {
+       "level": 14,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 3
+      },
+      {
+       "level": 15,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 4
+      },
+      {
+       "level": 16,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 5
+      },
+      {
+       "level": 17,
+       "id": "improved_shadow_word_pain",
+       "name": "Improved Shadow Word: Pain",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "improved_shadow_word_pain",
+       "name": "Improved Shadow Word: Pain",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "power_in_light",
+       "name": "Power in Light",
+       "rank": 1
+      },
+      {
+       "level": 20,
+       "id": "power_in_light",
+       "name": "Power in Light",
+       "rank": 2
+      },
+      {
+       "level": 21,
+       "id": "power_in_light",
+       "name": "Power in Light",
+       "rank": 3
+      },
+      {
+       "level": 22,
+       "id": "holy_precision",
+       "name": "Holy Precision",
+       "rank": 1
+      },
+      {
+       "level": 23,
+       "id": "power_in_light",
+       "name": "Power in Light",
+       "rank": 4
+      },
+      {
+       "level": 24,
+       "id": "power_in_light",
+       "name": "Power in Light",
+       "rank": 5
+      },
+      {
+       "level": 25,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 2
+      },
+      {
+       "level": 27,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 2
+      },
+      {
+       "level": 29,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 3
+      },
+      {
+       "level": 30,
+       "id": "inner_focus",
+       "name": "Inner Focus",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 3
+      },
+      {
+       "level": 34,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 3
+      },
+      {
+       "level": 35,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 4
+      },
+      {
+       "level": 36,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 5
+      },
+      {
+       "level": 37,
+       "id": "penance",
+       "name": "Penance",
+       "rank": 1
+      },
+      {
+       "level": 38,
+       "id": "twilight_focus",
+       "name": "Twilight Focus",
+       "rank": 1
+      },
+      {
+       "level": 39,
+       "id": "twilight_focus",
+       "name": "Twilight Focus",
+       "rank": 2
+      },
+      {
+       "level": 40,
+       "id": "twilight_focus",
+       "name": "Twilight Focus",
+       "rank": 3
+      },
+      {
+       "level": 41,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 1
+      },
+      {
+       "level": 44,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 2
+      },
+      {
+       "level": 45,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 3
+      },
+      {
+       "level": 46,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 4
+      },
+      {
+       "level": 47,
+       "id": "divine_fury",
+       "name": "Divine Fury",
+       "rank": 5
+      },
+      {
+       "level": 48,
+       "id": "holy_nova",
+       "name": "Holy Nova",
+       "rank": 1
+      },
+      {
+       "level": 49,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 3
+      },
+      {
+       "level": 50,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 4
+      },
+      {
+       "level": 51,
+       "id": "holy_specialization",
+       "name": "Holy Specialization",
+       "rank": 5
+      },
+      {
+       "level": 52,
+       "id": "blessed_recovery",
+       "name": "Blessed Recovery",
+       "rank": 1
+      },
+      {
+       "level": 53,
+       "id": "searing_light",
+       "name": "Searing Light",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "searing_light",
+       "name": "Searing Light",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "blessed_recovery",
+       "name": "Blessed Recovery",
+       "rank": 2
+      },
+      {
+       "level": 56,
+       "id": "blessed_recovery",
+       "name": "Blessed Recovery",
+       "rank": 3
+      },
+      {
+       "level": 57,
+       "id": "holy_reach",
+       "name": "Holy Reach",
+       "rank": 1
+      },
+      {
+       "level": 58,
+       "id": "spiritual_guidance",
+       "name": "Spiritual Guidance",
+       "rank": 1
+      },
+      {
+       "level": 59,
+       "id": "spiritual_guidance",
+       "name": "Spiritual Guidance",
+       "rank": 2
+      },
+      {
+       "level": 60,
+       "id": "spiritual_guidance",
+       "name": "Spiritual Guidance",
+       "rank": 3
+      }
+     ],
+     "route_runs": [
+      [
+       "wand_specialization",
+       2
+      ],
+      [
+       "spirit_tap",
+       5
+      ],
+      [
+       "improved_shadow_word_pain",
+       2
+      ],
+      [
+       "power_in_light",
+       3
+      ],
+      [
+       "holy_precision",
+       1
+      ],
+      [
+       "power_in_light",
+       2
+      ],
+      [
+       "twin_disciplines",
+       2
+      ],
+      [
+       "meditation",
+       3
+      ],
+      [
+       "inner_focus",
+       1
+      ],
+      [
+       "improved_power_word_shield",
+       3
+      ],
+      [
+       "twin_disciplines",
+       3
+      ],
+      [
+       "penance",
+       1
+      ],
+      [
+       "twilight_focus",
+       3
+      ],
+      [
+       "holy_specialization",
+       2
+      ],
+      [
+       "divine_fury",
+       5
+      ],
+      [
+       "holy_nova",
+       1
+      ],
+      [
+       "holy_specialization",
+       3
+      ],
+      [
+       "blessed_recovery",
+       1
+      ],
+      [
+       "searing_light",
+       2
+      ],
+      [
+       "blessed_recovery",
+       2
+      ],
+      [
+       "holy_reach",
+       1
+      ],
+      [
+       "spiritual_guidance",
+       3
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "525010001330001-305051301020003-00502",
+      "split": "21/23/7",
+      "points": 51,
+      "talents": {
+       "power_in_light": 5,
+       "wand_specialization": 2,
+       "twin_disciplines": 5,
+       "holy_precision": 1,
+       "inner_focus": 1,
+       "improved_power_word_shield": 3,
+       "meditation": 3,
+       "penance": 1,
+       "twilight_focus": 3,
+       "holy_specialization": 5,
+       "divine_fury": 5,
+       "holy_nova": 1,
+       "blessed_recovery": 3,
+       "holy_reach": 1,
+       "searing_light": 2,
+       "spiritual_guidance": 3,
+       "spirit_tap": 5,
+       "improved_shadow_word_pain": 2
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "wowtbc_spec_page": "holy-priest",
+     "spec_assigned_by": "guide page is for this spec",
+     "same_final_code_as": [
+      "wowtbc.gg (Warcraft Forever class guide): Leveling 1-60"
+     ]
+    }
+   ],
+   "endgame": {
+    "healer": [
+     {
+      "name": "Standard Build",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/holy-priest/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/holy-priest/page-data.json, build \"Standard Build\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "00500503103-03505003230121531",
+       "split": "17/34/0",
+       "points": 51,
+       "talents": {
+        "twin_disciplines": 5,
+        "mental_strength": 5,
+        "mental_agility": 3,
+        "inner_focus": 1,
+        "meditation": 3,
+        "improved_renew": 3,
+        "holy_specialization": 5,
+        "divine_fury": 5,
+        "inspiration": 3,
+        "holy_reach": 2,
+        "improved_healing": 3,
+        "holy_binding": 1,
+        "litany_of_light": 2,
+        "spirit_of_redemption": 1,
+        "spiritual_guidance": 5,
+        "spiritual_healing": 3,
+        "prayer_of_mending": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "holy-priest",
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     }
+    ]
+   }
+  },
+  "shadow": {
+   "name": "Shadow",
+   "tree": "shadow",
+   "dungeon_roles": [
+    "damage"
+   ],
+   "leveling": [
+    {
+     "name": "Level 40+ Shadow",
+     "source": {
+      "site": "Maxroll",
+      "url": "https://maxroll.gg/wow-forever/class-guides/priest-leveling-guide",
+      "title": "Priest Leveling Guide",
+      "author": "maxroll",
+      "published": "October 30, 2026",
+      "updated": "November 4, 2026",
+      "date_seen": "2026-11-08",
+      "data": "planner profile \"Level 40+ Shadow\" (uid ciOp1IuS, planner ma3wmd0u saved 2026-11-04 02:50:30): talents.history, TraitNodeEntry ids from window.__remixContext",
+      "guide_order": "point by point (the planner history is the guide's own order)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 1
+      },
+      {
+       "level": 14,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 2
+      },
+      {
+       "level": 15,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 3
+      },
+      {
+       "level": 16,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 4
+      },
+      {
+       "level": 17,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 5
+      },
+      {
+       "level": 18,
+       "id": "improved_shadow_word_pain",
+       "name": "Improved Shadow Word: Pain",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "improved_shadow_word_pain",
+       "name": "Improved Shadow Word: Pain",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "mind_flay",
+       "name": "Mind Flay",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "improved_mind_flay",
+       "name": "Improved Mind Flay",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "improved_mind_flay",
+       "name": "Improved Mind Flay",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "shadow_reach",
+       "name": "Shadow Reach",
+       "rank": 1
+      },
+      {
+       "level": 24,
+       "id": "shadow_reach",
+       "name": "Shadow Reach",
+       "rank": 2
+      },
+      {
+       "level": 25,
+       "id": "vampiric_embrace",
+       "name": "Vampiric Embrace",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "shadow_weaving",
+       "name": "Shadow Weaving",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "shadow_weaving",
+       "name": "Shadow Weaving",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "shadow_weaving",
+       "name": "Shadow Weaving",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "dark_inspiration",
+       "name": "Dark Inspiration",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "dark_inspiration",
+       "name": "Dark Inspiration",
+       "rank": 2
+      },
+      {
+       "level": 31,
+       "id": "devouring_contagion",
+       "name": "Devouring Contagion",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "devouring_contagion",
+       "name": "Devouring Contagion",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "dark_inspiration",
+       "name": "Dark Inspiration",
+       "rank": 3
+      },
+      {
+       "level": 34,
+       "id": "silence",
+       "name": "Silence",
+       "rank": 1
+      },
+      {
+       "level": 35,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "shadowform",
+       "name": "Shadowform",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 1
+      },
+      {
+       "level": 44,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 2
+      },
+      {
+       "level": 45,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 3
+      },
+      {
+       "level": 46,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 4
+      },
+      {
+       "level": 47,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 5
+      },
+      {
+       "level": 48,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 1
+      },
+      {
+       "level": 49,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 2
+      },
+      {
+       "level": 50,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 3
+      },
+      {
+       "level": 51,
+       "id": "inner_focus",
+       "name": "Inner Focus",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 1
+      },
+      {
+       "level": 53,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 2
+      },
+      {
+       "level": 54,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 3
+      },
+      {
+       "level": 55,
+       "id": "mental_agility",
+       "name": "Mental Agility",
+       "rank": 1
+      },
+      {
+       "level": 56,
+       "id": "mental_agility",
+       "name": "Mental Agility",
+       "rank": 2
+      },
+      {
+       "level": 57,
+       "id": "mental_agility",
+       "name": "Mental Agility",
+       "rank": 3
+      },
+      {
+       "level": 58,
+       "id": "dark_inspiration",
+       "name": "Dark Inspiration",
+       "rank": 4
+      },
+      {
+       "level": 59,
+       "id": "dark_inspiration",
+       "name": "Dark Inspiration",
+       "rank": 5
+      },
+      {
+       "level": 60,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 4
+      }
+     ],
+     "route_runs": [
+      [
+       "shadow_focus",
+       3
+      ],
+      [
+       "spirit_tap",
+       5
+      ],
+      [
+       "improved_shadow_word_pain",
+       2
+      ],
+      [
+       "mind_flay",
+       1
+      ],
+      [
+       "improved_mind_flay",
+       2
+      ],
+      [
+       "shadow_reach",
+       2
+      ],
+      [
+       "vampiric_embrace",
+       1
+      ],
+      [
+       "shadow_weaving",
+       3
+      ],
+      [
+       "dark_inspiration",
+       2
+      ],
+      [
+       "devouring_contagion",
+       2
+      ],
+      [
+       "dark_inspiration",
+       1
+      ],
+      [
+       "silence",
+       1
+      ],
+      [
+       "darkness",
+       5
+      ],
+      [
+       "shadowform",
+       1
+      ],
+      [
+       "wand_specialization",
+       2
+      ],
+      [
+       "twin_disciplines",
+       5
+      ],
+      [
+       "mental_strength",
+       3
+      ],
+      [
+       "inner_focus",
+       1
+      ],
+      [
+       "meditation",
+       3
+      ],
+      [
+       "mental_agility",
+       3
+      ],
+      [
+       "dark_inspiration",
+       2
+      ],
+      [
+       "shadow_focus",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "02500303103--40502201251312051",
+      "split": "17/0/34",
+      "points": 51,
+      "talents": {
+       "wand_specialization": 2,
+       "twin_disciplines": 5,
+       "mental_strength": 3,
+       "mental_agility": 3,
+       "inner_focus": 1,
+       "meditation": 3,
+       "shadow_focus": 4,
+       "spirit_tap": 5,
+       "improved_shadow_word_pain": 2,
+       "shadow_reach": 2,
+       "mind_flay": 1,
+       "improved_mind_flay": 2,
+       "dark_inspiration": 5,
+       "vampiric_embrace": 1,
+       "shadow_weaving": 3,
+       "silence": 1,
+       "devouring_contagion": 2,
+       "darkness": 5,
+       "shadowform": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "timesaver.gg (transcription): Shadow leveling 40-60"
+     ]
+    },
+    {
+     "name": "Level 40",
+     "source": {
+      "site": "Method.gg",
+      "url": "https://www.method.gg/wow-forever/wow-forever-priest-leveling-guide-and-talents",
+      "title": "WoW Forever Priest Leveling Guide & Talents",
+      "author": "Amaxagon",
+      "updated": "6th November 2026",
+      "patch": null,
+      "date_seen": "2026-11-08",
+      "data": "data-talent embed #1 (\"Level 40\"), decoded with the reader in pipeline/talents/method_decode.py",
+      "guide_order": "point by point (the embed carries the order after \";\")"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "improved_shadow_word_pain",
+       "name": "Improved Shadow Word: Pain",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "improved_shadow_word_pain",
+       "name": "Improved Shadow Word: Pain",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "improved_mind_blast",
+       "name": "Improved Mind Blast",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "improved_mind_blast",
+       "name": "Improved Mind Blast",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "improved_mind_blast",
+       "name": "Improved Mind Blast",
+       "rank": 3
+      },
+      {
+       "level": 20,
+       "id": "mind_flay",
+       "name": "Mind Flay",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "improved_mind_flay",
+       "name": "Improved Mind Flay",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "improved_mind_flay",
+       "name": "Improved Mind Flay",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "improved_mind_blast",
+       "name": "Improved Mind Blast",
+       "rank": 4
+      },
+      {
+       "level": 24,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "vampiric_embrace",
+       "name": "Vampiric Embrace",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "shadow_weaving",
+       "name": "Shadow Weaving",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "shadow_weaving",
+       "name": "Shadow Weaving",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "shadow_weaving",
+       "name": "Shadow Weaving",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 2
+      },
+      {
+       "level": 30,
+       "id": "devouring_contagion",
+       "name": "Devouring Contagion",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "devouring_contagion",
+       "name": "Devouring Contagion",
+       "rank": 2
+      },
+      {
+       "level": 32,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 3
+      },
+      {
+       "level": 33,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 4
+      },
+      {
+       "level": 34,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 5
+      },
+      {
+       "level": 35,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "shadowform",
+       "name": "Shadowform",
+       "rank": 1
+      }
+     ],
+     "route_runs": [
+      [
+       "spirit_tap",
+       5
+      ],
+      [
+       "improved_shadow_word_pain",
+       2
+      ],
+      [
+       "improved_mind_blast",
+       3
+      ],
+      [
+       "mind_flay",
+       1
+      ],
+      [
+       "improved_mind_flay",
+       2
+      ],
+      [
+       "improved_mind_blast",
+       1
+      ],
+      [
+       "shadow_focus",
+       1
+      ],
+      [
+       "vampiric_embrace",
+       1
+      ],
+      [
+       "shadow_weaving",
+       3
+      ],
+      [
+       "shadow_focus",
+       1
+      ],
+      [
+       "devouring_contagion",
+       2
+      ],
+      [
+       "shadow_focus",
+       3
+      ],
+      [
+       "darkness",
+       5
+      ],
+      [
+       "shadowform",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "--50542001201302051",
+      "split": "0/0/31",
+      "points": 31,
+      "talents": {
+       "shadow_focus": 5,
+       "spirit_tap": 5,
+       "improved_mind_blast": 4,
+       "improved_shadow_word_pain": 2,
+       "mind_flay": 1,
+       "improved_mind_flay": 2,
+       "vampiric_embrace": 1,
+       "shadow_weaving": 3,
+       "devouring_contagion": 2,
+       "darkness": 5,
+       "shadowform": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "notes": [
+      "guide text after the build: readonly > Level 41-60 This is my suggested Talent Build for getting from 40-60.",
+      "the guide's build has 31 points, so it covers levels 10 to 40"
+     ],
+     "spec_assigned_by": "tree with most points (guide label names no spec)"
+    },
+    {
+     "name": "Level 41-60",
+     "source": {
+      "site": "Method.gg",
+      "url": "https://www.method.gg/wow-forever/wow-forever-priest-leveling-guide-and-talents",
+      "title": "WoW Forever Priest Leveling Guide & Talents",
+      "author": "Amaxagon",
+      "updated": "6th November 2026",
+      "patch": null,
+      "date_seen": "2026-11-08",
+      "data": "data-talent embed #2 (\"Level 41-60\"), decoded with the reader in pipeline/talents/method_decode.py",
+      "guide_order": "point by point (the embed carries the order after \";\")"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "improved_shadow_word_pain",
+       "name": "Improved Shadow Word: Pain",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "improved_shadow_word_pain",
+       "name": "Improved Shadow Word: Pain",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "improved_mind_blast",
+       "name": "Improved Mind Blast",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "improved_mind_blast",
+       "name": "Improved Mind Blast",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "improved_mind_blast",
+       "name": "Improved Mind Blast",
+       "rank": 3
+      },
+      {
+       "level": 20,
+       "id": "improved_mind_blast",
+       "name": "Improved Mind Blast",
+       "rank": 4
+      },
+      {
+       "level": 21,
+       "id": "mind_flay",
+       "name": "Mind Flay",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "improved_mind_flay",
+       "name": "Improved Mind Flay",
+       "rank": 1
+      },
+      {
+       "level": 23,
+       "id": "improved_mind_flay",
+       "name": "Improved Mind Flay",
+       "rank": 2
+      },
+      {
+       "level": 24,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "shadow_weaving",
+       "name": "Shadow Weaving",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "shadow_weaving",
+       "name": "Shadow Weaving",
+       "rank": 2
+      },
+      {
+       "level": 27,
+       "id": "shadow_weaving",
+       "name": "Shadow Weaving",
+       "rank": 3
+      },
+      {
+       "level": 28,
+       "id": "vampiric_embrace",
+       "name": "Vampiric Embrace",
+       "rank": 1
+      },
+      {
+       "level": 29,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 2
+      },
+      {
+       "level": 30,
+       "id": "devouring_contagion",
+       "name": "Devouring Contagion",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "devouring_contagion",
+       "name": "Devouring Contagion",
+       "rank": 2
+      },
+      {
+       "level": 32,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 3
+      },
+      {
+       "level": 33,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 4
+      },
+      {
+       "level": 34,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 5
+      },
+      {
+       "level": 35,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "shadowform",
+       "name": "Shadowform",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 4
+      },
+      {
+       "level": 45,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "early_demise",
+       "name": "Early Demise",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "early_demise",
+       "name": "Early Demise",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "martyrdom",
+       "name": "Martyrdom",
+       "rank": 1
+      },
+      {
+       "level": 49,
+       "id": "martyrdom",
+       "name": "Martyrdom",
+       "rank": 2
+      },
+      {
+       "level": 50,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 1
+      },
+      {
+       "level": 51,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 2
+      },
+      {
+       "level": 52,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 3
+      },
+      {
+       "level": 53,
+       "id": "inner_focus",
+       "name": "Inner Focus",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 1
+      },
+      {
+       "level": 55,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 2
+      },
+      {
+       "level": 56,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 3
+      },
+      {
+       "level": 57,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 4
+      },
+      {
+       "level": 58,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 5
+      },
+      {
+       "level": 59,
+       "id": "shadow_reach",
+       "name": "Shadow Reach",
+       "rank": 1
+      },
+      {
+       "level": 60,
+       "id": "shadow_reach",
+       "name": "Shadow Reach",
+       "rank": 2
+      }
+     ],
+     "route_runs": [
+      [
+       "shadow_focus",
+       5
+      ],
+      [
+       "improved_shadow_word_pain",
+       2
+      ],
+      [
+       "improved_mind_blast",
+       4
+      ],
+      [
+       "mind_flay",
+       1
+      ],
+      [
+       "improved_mind_flay",
+       2
+      ],
+      [
+       "spirit_tap",
+       1
+      ],
+      [
+       "shadow_weaving",
+       3
+      ],
+      [
+       "vampiric_embrace",
+       1
+      ],
+      [
+       "spirit_tap",
+       1
+      ],
+      [
+       "devouring_contagion",
+       2
+      ],
+      [
+       "spirit_tap",
+       3
+      ],
+      [
+       "darkness",
+       5
+      ],
+      [
+       "shadowform",
+       1
+      ],
+      [
+       "twin_disciplines",
+       5
+      ],
+      [
+       "early_demise",
+       2
+      ],
+      [
+       "martyrdom",
+       2
+      ],
+      [
+       "mental_strength",
+       3
+      ],
+      [
+       "inner_focus",
+       1
+      ],
+      [
+       "meditation",
+       3
+      ],
+      [
+       "mental_strength",
+       2
+      ],
+      [
+       "shadow_reach",
+       2
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "00500520103--50542201201302251",
+      "split": "16/0/35",
+      "points": 51,
+      "talents": {
+       "twin_disciplines": 5,
+       "mental_strength": 5,
+       "martyrdom": 2,
+       "inner_focus": 1,
+       "meditation": 3,
+       "shadow_focus": 5,
+       "spirit_tap": 5,
+       "improved_mind_blast": 4,
+       "improved_shadow_word_pain": 2,
+       "shadow_reach": 2,
+       "mind_flay": 1,
+       "improved_mind_flay": 2,
+       "vampiric_embrace": 1,
+       "shadow_weaving": 3,
+       "devouring_contagion": 2,
+       "early_demise": 2,
+       "darkness": 5,
+       "shadowform": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "notes": [
+      "guide text after the build: ...n > wand ( Smite or Mind Blast if no wand) > melee (if no wand and out of mana). Against tankier mobs, refresh Shadow Word: Pain and Power Word: Shield as necessary. This playstyle lasts basically until you reach level 40 and respec into Shadowform . During this time it is important to be consistent"
+     ],
+     "spec_assigned_by": "tree with most points (guide label names no spec)"
+    },
+    {
+     "name": "Shadow leveling 40-60",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/priest",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Maxroll",
+       "url": "https://maxroll.gg/wow-forever/class-guides/priest-leveling-guide",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Shadow leveling 40-60\" in the calculator page payload; mode Leveling",
+      "guide_order": "point by point as transcribed by timesaver.gg"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 1
+      },
+      {
+       "level": 14,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 2
+      },
+      {
+       "level": 15,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 3
+      },
+      {
+       "level": 16,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 4
+      },
+      {
+       "level": 17,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 5
+      },
+      {
+       "level": 18,
+       "id": "improved_shadow_word_pain",
+       "name": "Improved Shadow Word: Pain",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "improved_shadow_word_pain",
+       "name": "Improved Shadow Word: Pain",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "mind_flay",
+       "name": "Mind Flay",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "improved_mind_flay",
+       "name": "Improved Mind Flay",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "improved_mind_flay",
+       "name": "Improved Mind Flay",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "shadow_reach",
+       "name": "Shadow Reach",
+       "rank": 1
+      },
+      {
+       "level": 24,
+       "id": "shadow_reach",
+       "name": "Shadow Reach",
+       "rank": 2
+      },
+      {
+       "level": 25,
+       "id": "vampiric_embrace",
+       "name": "Vampiric Embrace",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "shadow_weaving",
+       "name": "Shadow Weaving",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "shadow_weaving",
+       "name": "Shadow Weaving",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "shadow_weaving",
+       "name": "Shadow Weaving",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "dark_inspiration",
+       "name": "Dark Inspiration",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "dark_inspiration",
+       "name": "Dark Inspiration",
+       "rank": 2
+      },
+      {
+       "level": 31,
+       "id": "devouring_contagion",
+       "name": "Devouring Contagion",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "devouring_contagion",
+       "name": "Devouring Contagion",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "dark_inspiration",
+       "name": "Dark Inspiration",
+       "rank": 3
+      },
+      {
+       "level": 34,
+       "id": "silence",
+       "name": "Silence",
+       "rank": 1
+      },
+      {
+       "level": 35,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "shadowform",
+       "name": "Shadowform",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 1
+      },
+      {
+       "level": 44,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 2
+      },
+      {
+       "level": 45,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 3
+      },
+      {
+       "level": 46,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 4
+      },
+      {
+       "level": 47,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 5
+      },
+      {
+       "level": 48,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 1
+      },
+      {
+       "level": 49,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 2
+      },
+      {
+       "level": 50,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 3
+      },
+      {
+       "level": 51,
+       "id": "inner_focus",
+       "name": "Inner Focus",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 1
+      },
+      {
+       "level": 53,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 2
+      },
+      {
+       "level": 54,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 3
+      },
+      {
+       "level": 55,
+       "id": "mental_agility",
+       "name": "Mental Agility",
+       "rank": 1
+      },
+      {
+       "level": 56,
+       "id": "mental_agility",
+       "name": "Mental Agility",
+       "rank": 2
+      },
+      {
+       "level": 57,
+       "id": "mental_agility",
+       "name": "Mental Agility",
+       "rank": 3
+      },
+      {
+       "level": 58,
+       "id": "dark_inspiration",
+       "name": "Dark Inspiration",
+       "rank": 4
+      },
+      {
+       "level": 59,
+       "id": "dark_inspiration",
+       "name": "Dark Inspiration",
+       "rank": 5
+      },
+      {
+       "level": 60,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 4
+      }
+     ],
+     "route_runs": [
+      [
+       "shadow_focus",
+       3
+      ],
+      [
+       "spirit_tap",
+       5
+      ],
+      [
+       "improved_shadow_word_pain",
+       2
+      ],
+      [
+       "mind_flay",
+       1
+      ],
+      [
+       "improved_mind_flay",
+       2
+      ],
+      [
+       "shadow_reach",
+       2
+      ],
+      [
+       "vampiric_embrace",
+       1
+      ],
+      [
+       "shadow_weaving",
+       3
+      ],
+      [
+       "dark_inspiration",
+       2
+      ],
+      [
+       "devouring_contagion",
+       2
+      ],
+      [
+       "dark_inspiration",
+       1
+      ],
+      [
+       "silence",
+       1
+      ],
+      [
+       "darkness",
+       5
+      ],
+      [
+       "shadowform",
+       1
+      ],
+      [
+       "wand_specialization",
+       2
+      ],
+      [
+       "twin_disciplines",
+       5
+      ],
+      [
+       "mental_strength",
+       3
+      ],
+      [
+       "inner_focus",
+       1
+      ],
+      [
+       "meditation",
+       3
+      ],
+      [
+       "mental_agility",
+       3
+      ],
+      [
+       "dark_inspiration",
+       2
+      ],
+      [
+       "shadow_focus",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "02500303103--40502201251312051",
+      "split": "17/0/34",
+      "points": 51,
+      "talents": {
+       "wand_specialization": 2,
+       "twin_disciplines": 5,
+       "mental_strength": 3,
+       "mental_agility": 3,
+       "inner_focus": 1,
+       "meditation": 3,
+       "shadow_focus": 4,
+       "spirit_tap": 5,
+       "improved_shadow_word_pain": 2,
+       "shadow_reach": 2,
+       "mind_flay": 1,
+       "improved_mind_flay": 2,
+       "dark_inspiration": 5,
+       "vampiric_embrace": 1,
+       "shadow_weaving": 3,
+       "silence": 1,
+       "devouring_contagion": 2,
+       "darkness": 5,
+       "shadowform": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "secondary": true,
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "Maxroll: Level 40+ Shadow"
+     ]
+    },
+    {
+     "name": "Leveling 1-60",
+     "source": {
+      "site": "wowtbc.gg (Warcraft Forever class guide)",
+      "url": "https://wowtbc.gg/warcraftforever/class-guides/shadow-priest/",
+      "author": null,
+      "updated": null,
+      "date_seen": "2026-11-08",
+      "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/shadow-priest/page-data.json, build \"Leveling 1-60\"",
+      "note": "the page shows no author or date",
+      "guide_order": "point by point (\"Leveling 1-60\" talentBuildPaths)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "wand_specialization",
+       "name": "Wand Specialization",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 1
+      },
+      {
+       "level": 13,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 2
+      },
+      {
+       "level": 14,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 3
+      },
+      {
+       "level": 15,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 4
+      },
+      {
+       "level": 16,
+       "id": "spirit_tap",
+       "name": "Spirit Tap",
+       "rank": 5
+      },
+      {
+       "level": 17,
+       "id": "improved_shadow_word_pain",
+       "name": "Improved Shadow Word: Pain",
+       "rank": 1
+      },
+      {
+       "level": 18,
+       "id": "improved_shadow_word_pain",
+       "name": "Improved Shadow Word: Pain",
+       "rank": 2
+      },
+      {
+       "level": 19,
+       "id": "shadow_reach",
+       "name": "Shadow Reach",
+       "rank": 1
+      },
+      {
+       "level": 20,
+       "id": "shadow_reach",
+       "name": "Shadow Reach",
+       "rank": 2
+      },
+      {
+       "level": 21,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "mind_flay",
+       "name": "Mind Flay",
+       "rank": 1
+      },
+      {
+       "level": 23,
+       "id": "improved_mind_flay",
+       "name": "Improved Mind Flay",
+       "rank": 1
+      },
+      {
+       "level": 24,
+       "id": "improved_mind_flay",
+       "name": "Improved Mind Flay",
+       "rank": 2
+      },
+      {
+       "level": 25,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 2
+      },
+      {
+       "level": 26,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 3
+      },
+      {
+       "level": 27,
+       "id": "vampiric_embrace",
+       "name": "Vampiric Embrace",
+       "rank": 1
+      },
+      {
+       "level": 28,
+       "id": "shadow_weaving",
+       "name": "Shadow Weaving",
+       "rank": 1
+      },
+      {
+       "level": 29,
+       "id": "shadow_weaving",
+       "name": "Shadow Weaving",
+       "rank": 2
+      },
+      {
+       "level": 30,
+       "id": "shadow_weaving",
+       "name": "Shadow Weaving",
+       "rank": 3
+      },
+      {
+       "level": 31,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 4
+      },
+      {
+       "level": 32,
+       "id": "devouring_contagion",
+       "name": "Devouring Contagion",
+       "rank": 1
+      },
+      {
+       "level": 33,
+       "id": "devouring_contagion",
+       "name": "Devouring Contagion",
+       "rank": 2
+      },
+      {
+       "level": 34,
+       "id": "silence",
+       "name": "Silence",
+       "rank": 1
+      },
+      {
+       "level": 35,
+       "id": "dark_inspiration",
+       "name": "Dark Inspiration",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "dark_inspiration",
+       "name": "Dark Inspiration",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 1
+      },
+      {
+       "level": 38,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 2
+      },
+      {
+       "level": 39,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 3
+      },
+      {
+       "level": 40,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 4
+      },
+      {
+       "level": 41,
+       "id": "darkness",
+       "name": "Darkness",
+       "rank": 5
+      },
+      {
+       "level": 42,
+       "id": "shadowform",
+       "name": "Shadowform",
+       "rank": 1
+      },
+      {
+       "level": 43,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 1
+      },
+      {
+       "level": 44,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 2
+      },
+      {
+       "level": 45,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 3
+      },
+      {
+       "level": 46,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 4
+      },
+      {
+       "level": 47,
+       "id": "twin_disciplines",
+       "name": "Twin Disciplines",
+       "rank": 5
+      },
+      {
+       "level": 48,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 1
+      },
+      {
+       "level": 49,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 2
+      },
+      {
+       "level": 50,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 3
+      },
+      {
+       "level": 51,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 2
+      },
+      {
+       "level": 53,
+       "id": "meditation",
+       "name": "Meditation",
+       "rank": 3
+      },
+      {
+       "level": 54,
+       "id": "inner_focus",
+       "name": "Inner Focus",
+       "rank": 1
+      },
+      {
+       "level": 55,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 1
+      },
+      {
+       "level": 56,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 2
+      },
+      {
+       "level": 57,
+       "id": "improved_power_word_shield",
+       "name": "Improved Power Word: Shield",
+       "rank": 3
+      },
+      {
+       "level": 58,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 4
+      },
+      {
+       "level": 59,
+       "id": "mental_strength",
+       "name": "Mental Strength",
+       "rank": 5
+      },
+      {
+       "level": 60,
+       "id": "shadow_focus",
+       "name": "Shadow Focus",
+       "rank": 5
+      }
+     ],
+     "route_runs": [
+      [
+       "wand_specialization",
+       2
+      ],
+      [
+       "spirit_tap",
+       5
+      ],
+      [
+       "improved_shadow_word_pain",
+       2
+      ],
+      [
+       "shadow_reach",
+       2
+      ],
+      [
+       "shadow_focus",
+       1
+      ],
+      [
+       "mind_flay",
+       1
+      ],
+      [
+       "improved_mind_flay",
+       2
+      ],
+      [
+       "shadow_focus",
+       2
+      ],
+      [
+       "vampiric_embrace",
+       1
+      ],
+      [
+       "shadow_weaving",
+       3
+      ],
+      [
+       "shadow_focus",
+       1
+      ],
+      [
+       "devouring_contagion",
+       2
+      ],
+      [
+       "silence",
+       1
+      ],
+      [
+       "dark_inspiration",
+       2
+      ],
+      [
+       "darkness",
+       5
+      ],
+      [
+       "shadowform",
+       1
+      ],
+      [
+       "twin_disciplines",
+       5
+      ],
+      [
+       "mental_strength",
+       3
+      ],
+      [
+       "meditation",
+       3
+      ],
+      [
+       "inner_focus",
+       1
+      ],
+      [
+       "improved_power_word_shield",
+       3
+      ],
+      [
+       "mental_strength",
+       2
+      ],
+      [
+       "shadow_focus",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "02500500133--50502201221312051",
+      "split": "19/0/32",
+      "points": 51,
+      "talents": {
+       "wand_specialization": 2,
+       "twin_disciplines": 5,
+       "mental_strength": 5,
+       "inner_focus": 1,
+       "improved_power_word_shield": 3,
+       "meditation": 3,
+       "shadow_focus": 5,
+       "spirit_tap": 5,
+       "improved_shadow_word_pain": 2,
+       "shadow_reach": 2,
+       "mind_flay": 1,
+       "improved_mind_flay": 2,
+       "dark_inspiration": 2,
+       "vampiric_embrace": 1,
+       "shadow_weaving": 3,
+       "silence": 1,
+       "devouring_contagion": 2,
+       "darkness": 5,
+       "shadowform": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "wowtbc_spec_page": "shadow-priest",
+     "spec_assigned_by": "guide page is for this spec"
+    }
+   ],
+   "endgame": {
+    "damage": [
+     {
+      "name": "General Build",
+      "source": {
+       "site": "Method.gg",
+       "url": "https://www.method.gg/wow-forever/class-guides/shadow-priest/talents",
+       "title": "WoW Forever Shadow Priest Talents & Builds Guide",
+       "author": "Amaxagon",
+       "updated": "4th Nov, 2026",
+       "patch": "Patch 1.60.1",
+       "date_seen": "2026-11-08",
+       "data": "data-talent embed #0 (\"General Build\"), decoded with the reader in pipeline/talents/method_decode.py",
+       "guide_order": "point by point (the embed carries the order after \";\")"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "00530500103--50042101251302251",
+       "split": "17/0/34",
+       "points": 51,
+       "talents": {
+        "twin_disciplines": 5,
+        "silent_resolve": 3,
+        "mental_strength": 5,
+        "inner_focus": 1,
+        "meditation": 3,
+        "shadow_focus": 5,
+        "improved_mind_blast": 4,
+        "improved_shadow_word_pain": 2,
+        "shadow_reach": 1,
+        "mind_flay": 1,
+        "improved_mind_flay": 2,
+        "dark_inspiration": 5,
+        "vampiric_embrace": 1,
+        "shadow_weaving": 3,
+        "devouring_contagion": 2,
+        "early_demise": 2,
+        "darkness": 5,
+        "shadowform": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "notes": [
+       "guide text: ...ur and our party's spirit. This buff will comfortably have 100% uptime. Improved Mind Flay : New addition, a significant buff to our Mind Flay damage Shadow Weaving : Changed, now only applies to our own damage instead of our entire raid's damage. Shadowform : Buffed, now provides 50% mana cost reduction to all shadow spells, and buffs our critical strike damage with shadow spells by 100%. Twin Di"
+      ],
+      "method_spec_page": "shadow-priest",
+      "embedded_order_check": {
+       "ok": true,
+       "errors": [],
+       "note": "the embed also carries a point order; recorded here only as a legality check"
+      },
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": [
+       "raid"
+      ]
+     },
+     {
+      "name": "Standard Build",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/shadow-priest/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/shadow-priest/page-data.json, build \"Standard Build\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "00500500103--50052201251312251",
+       "split": "14/0/37",
+       "points": 51,
+       "talents": {
+        "twin_disciplines": 5,
+        "mental_strength": 5,
+        "inner_focus": 1,
+        "meditation": 3,
+        "shadow_focus": 5,
+        "improved_mind_blast": 5,
+        "improved_shadow_word_pain": 2,
+        "shadow_reach": 2,
+        "mind_flay": 1,
+        "improved_mind_flay": 2,
+        "dark_inspiration": 5,
+        "vampiric_embrace": 1,
+        "shadow_weaving": 3,
+        "silence": 1,
+        "devouring_contagion": 2,
+        "early_demise": 2,
+        "darkness": 5,
+        "shadowform": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "shadow-priest",
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     }
+    ]
+   }
+  }
+ },
+ "excluded": []
+}

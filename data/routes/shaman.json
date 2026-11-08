@@ -1,0 +1,5644 @@
+{
+ "class": "shaman",
+ "generated": "2026-11-08",
+ "generator": "wowsim/pipeline/talents/build_routes.py",
+ "talents_file": "data/talents/shaman.json",
+ "code_format": "see data/talents/shaman.json code_format; codes here are re-encoded from each source's own data",
+ "level_rule": "order[i] is the point spent at level 10 + i",
+ "sources_tried": {
+  "Maxroll": "leveling guide planner profiles (point order): fetched",
+  "Method.gg": "leveling guide + spec \"talents\" pages (embeds with point order): fetched",
+  "Warcraft Tavern": "leveling guide + spec guides (Warcraft DB ordered links): fetched",
+  "wowtbc.gg": "Warcraft Forever class guides (page-data JSON: level 60 builds and a \"Leveling 1-60\" point order): fetched",
+  "timesaver.gg": "calculator presets (secondary transcriptions of Maxroll, Wowhead, Icy Veins, Method)",
+  "Wowhead, Icy Veins, Mobalytics": "blocked by Cloudflare from this sandbox (HTTP 403/202 challenge); only timesaver.gg transcriptions of their codes are included, marked secondary",
+  "wowsims-forever": "sim presets are not guides; used only as decode checks (see data/talents/README.md)"
+ },
+ "specs": {
+  "ele": {
+   "name": "Elemental",
+   "tree": "ele",
+   "dungeon_roles": [
+    "damage"
+   ],
+   "leveling": [
+    {
+     "name": "Elemental",
+     "source": {
+      "site": "Maxroll",
+      "url": "https://maxroll.gg/wow-forever/class-guides/shaman-leveling-guide",
+      "title": "Shaman Leveling Guide",
+      "author": "maxroll",
+      "published": "October 30, 2026",
+      "updated": "November 4, 2026",
+      "date_seen": "2026-11-08",
+      "data": "planner profile \"Elemental\" (uid vocEbGKe, planner 3f3wmh0u saved 2026-11-04 08:36:19): talents.history, TraitNodeEntry ids from window.__remixContext",
+      "guide_order": "point by point (the planner history is the guide's own order)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "ihw",
+       "name": "Improved Healing Wave",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "ihw",
+       "name": "Improved Healing Wave",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "watershield",
+       "name": "Water Shield",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 3
+      },
+      {
+       "level": 24,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 4
+      },
+      {
+       "level": 25,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 5
+      },
+      {
+       "level": 26,
+       "id": "alacrity",
+       "name": "Elemental Alacrity",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "alacrity",
+       "name": "Elemental Alacrity",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "alacrity",
+       "name": "Elemental Alacrity",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 2
+      },
+      {
+       "level": 31,
+       "id": "elefocus",
+       "name": "Elemental Focus",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 3
+      },
+      {
+       "level": 33,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 1
+      },
+      {
+       "level": 34,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 2
+      },
+      {
+       "level": 35,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 3
+      },
+      {
+       "level": 36,
+       "id": "eyestorm",
+       "name": "Eye of the Storm",
+       "rank": 1
+      },
+      {
+       "level": 37,
+       "id": "eyestorm",
+       "name": "Eye of the Storm",
+       "rank": 2
+      },
+      {
+       "level": 38,
+       "id": "eyestorm",
+       "name": "Eye of the Storm",
+       "rank": 3
+      },
+      {
+       "level": 39,
+       "id": "earthbound",
+       "name": "Earthbound",
+       "rank": 1
+      },
+      {
+       "level": 40,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 4
+      },
+      {
+       "level": 41,
+       "id": "callthunder",
+       "name": "Call of Thunder",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "overload",
+       "name": "Lightning Overload",
+       "rank": 1
+      },
+      {
+       "level": 43,
+       "id": "overload",
+       "name": "Lightning Overload",
+       "rank": 2
+      },
+      {
+       "level": 44,
+       "id": "overload",
+       "name": "Lightning Overload",
+       "rank": 3
+      },
+      {
+       "level": 45,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "elefury",
+       "name": "Elemental Fury",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "elefury",
+       "name": "Elemental Fury",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "elefury",
+       "name": "Elemental Fury",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "elefury",
+       "name": "Elemental Fury",
+       "rank": 4
+      },
+      {
+       "level": 50,
+       "id": "elefury",
+       "name": "Elemental Fury",
+       "rank": 5
+      },
+      {
+       "level": 51,
+       "id": "lmastery",
+       "name": "Lightning Mastery",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "trialfire",
+       "name": "Trial by Fire",
+       "rank": 1
+      },
+      {
+       "level": 53,
+       "id": "trialfire",
+       "name": "Trial by Fire",
+       "rank": 2
+      },
+      {
+       "level": 54,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 1
+      },
+      {
+       "level": 55,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 2
+      },
+      {
+       "level": 56,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 3
+      },
+      {
+       "level": 57,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 4
+      },
+      {
+       "level": 58,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 5
+      },
+      {
+       "level": 59,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 1
+      },
+      {
+       "level": 60,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 2
+      }
+     ],
+     "route_runs": [
+      [
+       "tidalfocus",
+       5
+      ],
+      [
+       "mindful",
+       3
+      ],
+      [
+       "ihw",
+       2
+      ],
+      [
+       "watershield",
+       1
+      ],
+      [
+       "concussion",
+       5
+      ],
+      [
+       "alacrity",
+       3
+      ],
+      [
+       "callflame",
+       2
+      ],
+      [
+       "elefocus",
+       1
+      ],
+      [
+       "callflame",
+       1
+      ],
+      [
+       "convection",
+       3
+      ],
+      [
+       "eyestorm",
+       3
+      ],
+      [
+       "earthbound",
+       1
+      ],
+      [
+       "convection",
+       1
+      ],
+      [
+       "callthunder",
+       1
+      ],
+      [
+       "overload",
+       3
+      ],
+      [
+       "convection",
+       1
+      ],
+      [
+       "elefury",
+       5
+      ],
+      [
+       "lmastery",
+       1
+      ],
+      [
+       "trialfire",
+       2
+      ],
+      [
+       "thundering",
+       5
+      ],
+      [
+       "ancknow",
+       2
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "5500331023101351-052-253000001",
+      "split": "33/7/11",
+      "points": 51,
+      "talents": {
+       "convection": 5,
+       "concussion": 5,
+       "alacrity": 3,
+       "callflame": 3,
+       "elefocus": 1,
+       "trialfire": 2,
+       "eyestorm": 3,
+       "earthbound": 1,
+       "callthunder": 1,
+       "overload": 3,
+       "elefury": 5,
+       "lmastery": 1,
+       "thundering": 5,
+       "ancknow": 2,
+       "ihw": 2,
+       "tidalfocus": 5,
+       "mindful": 3,
+       "watershield": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "timesaver.gg (transcription): Elemental leveling (Maxroll)"
+     ]
+    },
+    {
+     "name": "Elemental leveling",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/shaman",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Wowhead",
+       "url": "https://www.wowhead.com/forever/guide/classes/shaman/elemental/dps-leveling-tips",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Elemental leveling\" in the calculator page payload; mode Leveling",
+      "guide_order": "final build only"
+     },
+     "kind": "final_only",
+     "final": {
+      "code": "5500331023101351-052-053020001",
+      "split": "33/7/11",
+      "points": 51,
+      "talents": {
+       "convection": 5,
+       "concussion": 5,
+       "alacrity": 3,
+       "callflame": 3,
+       "elefocus": 1,
+       "trialfire": 2,
+       "eyestorm": 3,
+       "earthbound": 1,
+       "callthunder": 1,
+       "overload": 3,
+       "elefury": 5,
+       "lmastery": 1,
+       "thundering": 5,
+       "ancknow": 2,
+       "tidalfocus": 5,
+       "mindful": 3,
+       "totemicfocus": 2,
+       "watershield": 1
+      },
+      "legal_on_client_tree": "OK"
+     },
+     "secondary": true,
+     "notes": [
+      "original Wowhead page not reachable from this sandbox (Cloudflare); this is timesaver.gg's transcription, unverified against the original"
+     ],
+     "spec_assigned_by": "guide label"
+    },
+    {
+     "name": "Elemental leveling (Maxroll)",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/shaman",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Maxroll",
+       "url": "https://maxroll.gg/wow-forever/class-guides/shaman-leveling-guide",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Elemental leveling (Maxroll)\" in the calculator page payload; mode Leveling",
+      "guide_order": "point by point as transcribed by timesaver.gg"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "ihw",
+       "name": "Improved Healing Wave",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "ihw",
+       "name": "Improved Healing Wave",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "watershield",
+       "name": "Water Shield",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 3
+      },
+      {
+       "level": 24,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 4
+      },
+      {
+       "level": 25,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 5
+      },
+      {
+       "level": 26,
+       "id": "alacrity",
+       "name": "Elemental Alacrity",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "alacrity",
+       "name": "Elemental Alacrity",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "alacrity",
+       "name": "Elemental Alacrity",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 2
+      },
+      {
+       "level": 31,
+       "id": "elefocus",
+       "name": "Elemental Focus",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 3
+      },
+      {
+       "level": 33,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 1
+      },
+      {
+       "level": 34,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 2
+      },
+      {
+       "level": 35,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 3
+      },
+      {
+       "level": 36,
+       "id": "eyestorm",
+       "name": "Eye of the Storm",
+       "rank": 1
+      },
+      {
+       "level": 37,
+       "id": "eyestorm",
+       "name": "Eye of the Storm",
+       "rank": 2
+      },
+      {
+       "level": 38,
+       "id": "eyestorm",
+       "name": "Eye of the Storm",
+       "rank": 3
+      },
+      {
+       "level": 39,
+       "id": "earthbound",
+       "name": "Earthbound",
+       "rank": 1
+      },
+      {
+       "level": 40,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 4
+      },
+      {
+       "level": 41,
+       "id": "callthunder",
+       "name": "Call of Thunder",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "overload",
+       "name": "Lightning Overload",
+       "rank": 1
+      },
+      {
+       "level": 43,
+       "id": "overload",
+       "name": "Lightning Overload",
+       "rank": 2
+      },
+      {
+       "level": 44,
+       "id": "overload",
+       "name": "Lightning Overload",
+       "rank": 3
+      },
+      {
+       "level": 45,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "elefury",
+       "name": "Elemental Fury",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "elefury",
+       "name": "Elemental Fury",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "elefury",
+       "name": "Elemental Fury",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "elefury",
+       "name": "Elemental Fury",
+       "rank": 4
+      },
+      {
+       "level": 50,
+       "id": "elefury",
+       "name": "Elemental Fury",
+       "rank": 5
+      },
+      {
+       "level": 51,
+       "id": "lmastery",
+       "name": "Lightning Mastery",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "trialfire",
+       "name": "Trial by Fire",
+       "rank": 1
+      },
+      {
+       "level": 53,
+       "id": "trialfire",
+       "name": "Trial by Fire",
+       "rank": 2
+      },
+      {
+       "level": 54,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 1
+      },
+      {
+       "level": 55,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 2
+      },
+      {
+       "level": 56,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 3
+      },
+      {
+       "level": 57,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 4
+      },
+      {
+       "level": 58,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 5
+      },
+      {
+       "level": 59,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 1
+      },
+      {
+       "level": 60,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 2
+      }
+     ],
+     "route_runs": [
+      [
+       "tidalfocus",
+       5
+      ],
+      [
+       "mindful",
+       3
+      ],
+      [
+       "ihw",
+       2
+      ],
+      [
+       "watershield",
+       1
+      ],
+      [
+       "concussion",
+       5
+      ],
+      [
+       "alacrity",
+       3
+      ],
+      [
+       "callflame",
+       2
+      ],
+      [
+       "elefocus",
+       1
+      ],
+      [
+       "callflame",
+       1
+      ],
+      [
+       "convection",
+       3
+      ],
+      [
+       "eyestorm",
+       3
+      ],
+      [
+       "earthbound",
+       1
+      ],
+      [
+       "convection",
+       1
+      ],
+      [
+       "callthunder",
+       1
+      ],
+      [
+       "overload",
+       3
+      ],
+      [
+       "convection",
+       1
+      ],
+      [
+       "elefury",
+       5
+      ],
+      [
+       "lmastery",
+       1
+      ],
+      [
+       "trialfire",
+       2
+      ],
+      [
+       "thundering",
+       5
+      ],
+      [
+       "ancknow",
+       2
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "5500331023101351-052-253000001",
+      "split": "33/7/11",
+      "points": 51,
+      "talents": {
+       "convection": 5,
+       "concussion": 5,
+       "alacrity": 3,
+       "callflame": 3,
+       "elefocus": 1,
+       "trialfire": 2,
+       "eyestorm": 3,
+       "earthbound": 1,
+       "callthunder": 1,
+       "overload": 3,
+       "elefury": 5,
+       "lmastery": 1,
+       "thundering": 5,
+       "ancknow": 2,
+       "ihw": 2,
+       "tidalfocus": 5,
+       "mindful": 3,
+       "watershield": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "secondary": true,
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "Maxroll: Elemental"
+     ]
+    },
+    {
+     "name": "Leveling 1-60",
+     "source": {
+      "site": "wowtbc.gg (Warcraft Forever class guide)",
+      "url": "https://wowtbc.gg/warcraftforever/class-guides/elemental-shaman/",
+      "author": null,
+      "updated": null,
+      "date_seen": "2026-11-08",
+      "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/elemental-shaman/page-data.json, build \"Leveling 1-60\"",
+      "note": "the page shows no author or date",
+      "guide_order": "point by point (\"Leveling 1-60\" talentBuildPaths)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "totemicfocus",
+       "name": "Totemic Focus",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "totemicfocus",
+       "name": "Totemic Focus",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "watershield",
+       "name": "Water Shield",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 3
+      },
+      {
+       "level": 24,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 4
+      },
+      {
+       "level": 25,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 5
+      },
+      {
+       "level": 26,
+       "id": "alacrity",
+       "name": "Elemental Alacrity",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "alacrity",
+       "name": "Elemental Alacrity",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "alacrity",
+       "name": "Elemental Alacrity",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 2
+      },
+      {
+       "level": 31,
+       "id": "elefocus",
+       "name": "Elemental Focus",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 3
+      },
+      {
+       "level": 33,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 1
+      },
+      {
+       "level": 34,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 2
+      },
+      {
+       "level": 35,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 3
+      },
+      {
+       "level": 36,
+       "id": "earthbound",
+       "name": "Earthbound",
+       "rank": 1
+      },
+      {
+       "level": 37,
+       "id": "eyestorm",
+       "name": "Eye of the Storm",
+       "rank": 1
+      },
+      {
+       "level": 38,
+       "id": "eyestorm",
+       "name": "Eye of the Storm",
+       "rank": 2
+      },
+      {
+       "level": 39,
+       "id": "eyestorm",
+       "name": "Eye of the Storm",
+       "rank": 3
+      },
+      {
+       "level": 40,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 4
+      },
+      {
+       "level": 41,
+       "id": "callthunder",
+       "name": "Call of Thunder",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "overload",
+       "name": "Lightning Overload",
+       "rank": 1
+      },
+      {
+       "level": 43,
+       "id": "overload",
+       "name": "Lightning Overload",
+       "rank": 2
+      },
+      {
+       "level": 44,
+       "id": "overload",
+       "name": "Lightning Overload",
+       "rank": 3
+      },
+      {
+       "level": 45,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "elefury",
+       "name": "Elemental Fury",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "elefury",
+       "name": "Elemental Fury",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "elefury",
+       "name": "Elemental Fury",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "elefury",
+       "name": "Elemental Fury",
+       "rank": 4
+      },
+      {
+       "level": 50,
+       "id": "elefury",
+       "name": "Elemental Fury",
+       "rank": 5
+      },
+      {
+       "level": 51,
+       "id": "lmastery",
+       "name": "Lightning Mastery",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 1
+      },
+      {
+       "level": 53,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 2
+      },
+      {
+       "level": 54,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 3
+      },
+      {
+       "level": 55,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 4
+      },
+      {
+       "level": 56,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 5
+      },
+      {
+       "level": 57,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 1
+      },
+      {
+       "level": 58,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 2
+      },
+      {
+       "level": 59,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 3
+      },
+      {
+       "level": 60,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 4
+      }
+     ],
+     "route_runs": [
+      [
+       "tidalfocus",
+       5
+      ],
+      [
+       "mindful",
+       3
+      ],
+      [
+       "totemicfocus",
+       2
+      ],
+      [
+       "watershield",
+       1
+      ],
+      [
+       "concussion",
+       5
+      ],
+      [
+       "alacrity",
+       3
+      ],
+      [
+       "callflame",
+       2
+      ],
+      [
+       "elefocus",
+       1
+      ],
+      [
+       "callflame",
+       1
+      ],
+      [
+       "convection",
+       3
+      ],
+      [
+       "earthbound",
+       1
+      ],
+      [
+       "eyestorm",
+       3
+      ],
+      [
+       "convection",
+       1
+      ],
+      [
+       "callthunder",
+       1
+      ],
+      [
+       "overload",
+       3
+      ],
+      [
+       "convection",
+       1
+      ],
+      [
+       "elefury",
+       5
+      ],
+      [
+       "lmastery",
+       1
+      ],
+      [
+       "thundering",
+       5
+      ],
+      [
+       "ancknow",
+       4
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "5500331003101351-054-053020001",
+      "split": "31/9/11",
+      "points": 51,
+      "talents": {
+       "convection": 5,
+       "concussion": 5,
+       "alacrity": 3,
+       "callflame": 3,
+       "elefocus": 1,
+       "eyestorm": 3,
+       "earthbound": 1,
+       "callthunder": 1,
+       "overload": 3,
+       "elefury": 5,
+       "lmastery": 1,
+       "thundering": 5,
+       "ancknow": 4,
+       "tidalfocus": 5,
+       "mindful": 3,
+       "totemicfocus": 2,
+       "watershield": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "wowtbc_spec_page": "elemental-shaman",
+     "spec_assigned_by": "guide page is for this spec",
+     "same_final_code_as": [
+      "wowtbc.gg (Warcraft Forever class guide): Leveling 1-60"
+     ]
+    }
+   ],
+   "endgame": {
+    "damage": [
+     {
+      "name": "Standard Build",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/elemental-shaman/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/elemental-shaman/page-data.json, build \"Standard Build\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "5500331023001351-05500001-053",
+       "split": "32/11/8",
+       "points": 51,
+       "talents": {
+        "convection": 5,
+        "concussion": 5,
+        "alacrity": 3,
+        "callflame": 3,
+        "elefocus": 1,
+        "trialfire": 2,
+        "eyestorm": 3,
+        "callthunder": 1,
+        "overload": 3,
+        "elefury": 5,
+        "lmastery": 1,
+        "thundering": 5,
+        "ancknow": 5,
+        "shamfocus": 1,
+        "tidalfocus": 5,
+        "mindful": 3
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "elemental-shaman",
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     }
+    ]
+   }
+  },
+  "enh": {
+   "name": "Enhancement",
+   "tree": "enh",
+   "dungeon_roles": [
+    "damage"
+   ],
+   "leveling": [
+    {
+     "name": "Enhancement",
+     "source": {
+      "site": "Maxroll",
+      "url": "https://maxroll.gg/wow-forever/class-guides/shaman-leveling-guide",
+      "title": "Shaman Leveling Guide",
+      "author": "maxroll",
+      "published": "October 30, 2026",
+      "updated": "November 4, 2026",
+      "date_seen": "2026-11-08",
+      "data": "planner profile \"Enhancement\" (uid uuGAG8iw, planner 3f3wmh0u saved 2026-11-04 08:36:19): talents.history, TraitNodeEntry ids from window.__remixContext",
+      "guide_order": "point by point (the planner history is the guide's own order)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "mentaldex",
+       "name": "Mental Dexterity",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "mentaldex",
+       "name": "Mental Dexterity",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "mentaldex",
+       "name": "Mental Dexterity",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "implshield",
+       "name": "Improved Lightning Shield",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "implshield",
+       "name": "Improved Lightning Shield",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "eleweapons",
+       "name": "Elemental Weapons",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "eleweapons",
+       "name": "Elemental Weapons",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "eleweapons",
+       "name": "Elemental Weapons",
+       "rank": 3
+      },
+      {
+       "level": 23,
+       "id": "shamfocus",
+       "name": "Shamanistic Focus",
+       "rank": 1
+      },
+      {
+       "level": 24,
+       "id": "anticipation",
+       "name": "Anticipation",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "stormstrike",
+       "name": "Stormstrike",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "impghostwolf",
+       "name": "Improved Ghost Wolf",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "impghostwolf",
+       "name": "Improved Ghost Wolf",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 1
+      },
+      {
+       "level": 29,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 2
+      },
+      {
+       "level": 30,
+       "id": "impstorm",
+       "name": "Improved Stormstrike",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "impstorm",
+       "name": "Improved Stormstrike",
+       "rank": 2
+      },
+      {
+       "level": 32,
+       "id": "mentalquick",
+       "name": "Mental Quickness",
+       "rank": 1
+      },
+      {
+       "level": 33,
+       "id": "mentalquick",
+       "name": "Mental Quickness",
+       "rank": 2
+      },
+      {
+       "level": 34,
+       "id": "spiritweapons",
+       "name": "Spirit Weapons",
+       "rank": 1
+      },
+      {
+       "level": 35,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "eledev",
+       "name": "Elemental Devastation",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "eledev",
+       "name": "Elemental Devastation",
+       "rank": 2
+      },
+      {
+       "level": 42,
+       "id": "eledev",
+       "name": "Elemental Devastation",
+       "rank": 3
+      },
+      {
+       "level": 43,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 1
+      },
+      {
+       "level": 44,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 2
+      },
+      {
+       "level": 45,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 3
+      },
+      {
+       "level": 46,
+       "id": "elefocus",
+       "name": "Elemental Focus",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 1
+      },
+      {
+       "level": 48,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 2
+      },
+      {
+       "level": 49,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 3
+      },
+      {
+       "level": 50,
+       "id": "trialfire",
+       "name": "Trial by Fire",
+       "rank": 1
+      },
+      {
+       "level": 51,
+       "id": "trialfire",
+       "name": "Trial by Fire",
+       "rank": 2
+      },
+      {
+       "level": 52,
+       "id": "earthbound",
+       "name": "Earthbound",
+       "rank": 1
+      },
+      {
+       "level": 53,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 3
+      },
+      {
+       "level": 56,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 4
+      },
+      {
+       "level": 57,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 5
+      },
+      {
+       "level": 58,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 1
+      },
+      {
+       "level": 59,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 2
+      },
+      {
+       "level": 60,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 3
+      }
+     ],
+     "route_runs": [
+      [
+       "thundering",
+       5
+      ],
+      [
+       "mentaldex",
+       3
+      ],
+      [
+       "implshield",
+       2
+      ],
+      [
+       "eleweapons",
+       3
+      ],
+      [
+       "shamfocus",
+       1
+      ],
+      [
+       "anticipation",
+       1
+      ],
+      [
+       "stormstrike",
+       1
+      ],
+      [
+       "impghostwolf",
+       2
+      ],
+      [
+       "flurry",
+       2
+      ],
+      [
+       "impstorm",
+       2
+      ],
+      [
+       "mentalquick",
+       2
+      ],
+      [
+       "spiritweapons",
+       1
+      ],
+      [
+       "concussion",
+       5
+      ],
+      [
+       "eledev",
+       3
+      ],
+      [
+       "callflame",
+       3
+      ],
+      [
+       "elefocus",
+       1
+      ],
+      [
+       "convection",
+       3
+      ],
+      [
+       "trialfire",
+       2
+      ],
+      [
+       "earthbound",
+       1
+      ],
+      [
+       "tidalfocus",
+       5
+      ],
+      [
+       "mindful",
+       3
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "35300310201-0500323110212122-053",
+      "split": "18/25/8",
+      "points": 51,
+      "talents": {
+       "convection": 3,
+       "concussion": 5,
+       "eledev": 3,
+       "callflame": 3,
+       "elefocus": 1,
+       "trialfire": 2,
+       "earthbound": 1,
+       "thundering": 5,
+       "mentaldex": 3,
+       "implshield": 2,
+       "eleweapons": 3,
+       "shamfocus": 1,
+       "anticipation": 1,
+       "flurry": 2,
+       "stormstrike": 1,
+       "impghostwolf": 2,
+       "spiritweapons": 1,
+       "mentalquick": 2,
+       "impstorm": 2,
+       "tidalfocus": 5,
+       "mindful": 3
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "timesaver.gg (transcription): Enhancement leveling"
+     ]
+    },
+    {
+     "name": "Enhancement Mana Focus",
+     "source": {
+      "site": "Maxroll",
+      "url": "https://maxroll.gg/wow-forever/class-guides/shaman-leveling-guide",
+      "title": "Shaman Leveling Guide",
+      "author": "maxroll",
+      "published": "October 30, 2026",
+      "updated": "November 4, 2026",
+      "date_seen": "2026-11-08",
+      "data": "planner profile \"Enhancement Mana Focus\" (uid r7kqvzj3, planner 3f3wmh0u saved 2026-11-04 08:36:19): talents.history, TraitNodeEntry ids from window.__remixContext",
+      "guide_order": "point by point (the planner history is the guide's own order)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "ihw",
+       "name": "Improved Healing Wave",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "ihw",
+       "name": "Improved Healing Wave",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "watershield",
+       "name": "Water Shield",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 3
+      },
+      {
+       "level": 24,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 4
+      },
+      {
+       "level": 25,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 5
+      },
+      {
+       "level": 26,
+       "id": "mentaldex",
+       "name": "Mental Dexterity",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "mentaldex",
+       "name": "Mental Dexterity",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "mentaldex",
+       "name": "Mental Dexterity",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "implshield",
+       "name": "Improved Lightning Shield",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "implshield",
+       "name": "Improved Lightning Shield",
+       "rank": 2
+      },
+      {
+       "level": 31,
+       "id": "eleweapons",
+       "name": "Elemental Weapons",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "eleweapons",
+       "name": "Elemental Weapons",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "eleweapons",
+       "name": "Elemental Weapons",
+       "rank": 3
+      },
+      {
+       "level": 34,
+       "id": "shamfocus",
+       "name": "Shamanistic Focus",
+       "rank": 1
+      },
+      {
+       "level": 35,
+       "id": "anticipation",
+       "name": "Anticipation",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "stormstrike",
+       "name": "Stormstrike",
+       "rank": 1
+      },
+      {
+       "level": 37,
+       "id": "impghostwolf",
+       "name": "Improved Ghost Wolf",
+       "rank": 1
+      },
+      {
+       "level": 38,
+       "id": "impghostwolf",
+       "name": "Improved Ghost Wolf",
+       "rank": 2
+      },
+      {
+       "level": 39,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 1
+      },
+      {
+       "level": 40,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 2
+      },
+      {
+       "level": 41,
+       "id": "impstorm",
+       "name": "Improved Stormstrike",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "impstorm",
+       "name": "Improved Stormstrike",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "mentalquick",
+       "name": "Mental Quickness",
+       "rank": 1
+      },
+      {
+       "level": 44,
+       "id": "mentalquick",
+       "name": "Mental Quickness",
+       "rank": 2
+      },
+      {
+       "level": 45,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 1
+      },
+      {
+       "level": 46,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 2
+      },
+      {
+       "level": 47,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 3
+      },
+      {
+       "level": 48,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 4
+      },
+      {
+       "level": 49,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 5
+      },
+      {
+       "level": 50,
+       "id": "eledev",
+       "name": "Elemental Devastation",
+       "rank": 1
+      },
+      {
+       "level": 51,
+       "id": "eledev",
+       "name": "Elemental Devastation",
+       "rank": 2
+      },
+      {
+       "level": 52,
+       "id": "eledev",
+       "name": "Elemental Devastation",
+       "rank": 3
+      },
+      {
+       "level": 53,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 3
+      },
+      {
+       "level": 56,
+       "id": "elefocus",
+       "name": "Elemental Focus",
+       "rank": 1
+      },
+      {
+       "level": 57,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 1
+      },
+      {
+       "level": 58,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 2
+      },
+      {
+       "level": 59,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 3
+      },
+      {
+       "level": 60,
+       "id": "trialfire",
+       "name": "Trial by Fire",
+       "rank": 1
+      }
+     ],
+     "route_runs": [
+      [
+       "tidalfocus",
+       5
+      ],
+      [
+       "mindful",
+       3
+      ],
+      [
+       "ihw",
+       2
+      ],
+      [
+       "watershield",
+       1
+      ],
+      [
+       "thundering",
+       5
+      ],
+      [
+       "mentaldex",
+       3
+      ],
+      [
+       "implshield",
+       2
+      ],
+      [
+       "eleweapons",
+       3
+      ],
+      [
+       "shamfocus",
+       1
+      ],
+      [
+       "anticipation",
+       1
+      ],
+      [
+       "stormstrike",
+       1
+      ],
+      [
+       "impghostwolf",
+       2
+      ],
+      [
+       "flurry",
+       2
+      ],
+      [
+       "impstorm",
+       2
+      ],
+      [
+       "mentalquick",
+       2
+      ],
+      [
+       "concussion",
+       5
+      ],
+      [
+       "eledev",
+       3
+      ],
+      [
+       "callflame",
+       3
+      ],
+      [
+       "elefocus",
+       1
+      ],
+      [
+       "convection",
+       3
+      ],
+      [
+       "trialfire",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "353003101-0500323110212022-253000001",
+      "split": "16/24/11",
+      "points": 51,
+      "talents": {
+       "convection": 3,
+       "concussion": 5,
+       "eledev": 3,
+       "callflame": 3,
+       "elefocus": 1,
+       "trialfire": 1,
+       "thundering": 5,
+       "mentaldex": 3,
+       "implshield": 2,
+       "eleweapons": 3,
+       "shamfocus": 1,
+       "anticipation": 1,
+       "flurry": 2,
+       "stormstrike": 1,
+       "impghostwolf": 2,
+       "mentalquick": 2,
+       "impstorm": 2,
+       "ihw": 2,
+       "tidalfocus": 5,
+       "mindful": 3,
+       "watershield": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "timesaver.gg (transcription): Enhancement mana focus leveling"
+     ]
+    },
+    {
+     "name": "Recommended Leveling Talents for Shaman in WoW Forever",
+     "source": {
+      "site": "Method.gg",
+      "url": "https://www.method.gg/wow-forever/wow-forever-shaman-leveling-guide-and-talents",
+      "title": "WoW Forever Shaman Leveling Guide & Talents",
+      "author": "Erik",
+      "updated": "8th November 2026",
+      "patch": null,
+      "date_seen": "2026-11-08",
+      "data": "data-talent embed #0 (\"Recommended Leveling Talents for Shaman in WoW Forever\"), decoded with the reader in pipeline/talents/method_decode.py",
+      "guide_order": "point by point (the embed carries the order after \";\")"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "mentaldex",
+       "name": "Mental Dexterity",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "mentaldex",
+       "name": "Mental Dexterity",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "mentaldex",
+       "name": "Mental Dexterity",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "shamfocus",
+       "name": "Shamanistic Focus",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "eleweapons",
+       "name": "Elemental Weapons",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "eleweapons",
+       "name": "Elemental Weapons",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "eleweapons",
+       "name": "Elemental Weapons",
+       "rank": 3
+      },
+      {
+       "level": 24,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 3
+      },
+      {
+       "level": 25,
+       "id": "stormstrike",
+       "name": "Stormstrike",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "impghostwolf",
+       "name": "Improved Ghost Wolf",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "impghostwolf",
+       "name": "Improved Ghost Wolf",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 1
+      },
+      {
+       "level": 29,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 2
+      },
+      {
+       "level": 30,
+       "id": "impstorm",
+       "name": "Improved Stormstrike",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "impstorm",
+       "name": "Improved Stormstrike",
+       "rank": 2
+      },
+      {
+       "level": 32,
+       "id": "mentalquick",
+       "name": "Mental Quickness",
+       "rank": 1
+      },
+      {
+       "level": 33,
+       "id": "mentalquick",
+       "name": "Mental Quickness",
+       "rank": 2
+      },
+      {
+       "level": 34,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 3
+      },
+      {
+       "level": 35,
+       "id": "maelstrom",
+       "name": "Maelstrom Weapon",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "maelstrom",
+       "name": "Maelstrom Weapon",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "maelstrom",
+       "name": "Maelstrom Weapon",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "maelstrom",
+       "name": "Maelstrom Weapon",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "maelstrom",
+       "name": "Maelstrom Weapon",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "farseer",
+       "name": "Rage of the Farseer",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 4
+      },
+      {
+       "level": 42,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 5
+      },
+      {
+       "level": 43,
+       "id": "spiritweapons",
+       "name": "Spirit Weapons",
+       "rank": 1
+      },
+      {
+       "level": 44,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 1
+      },
+      {
+       "level": 45,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 2
+      },
+      {
+       "level": 46,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 3
+      },
+      {
+       "level": 47,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 4
+      },
+      {
+       "level": 48,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 5
+      },
+      {
+       "level": 49,
+       "id": "eledev",
+       "name": "Elemental Devastation",
+       "rank": 1
+      },
+      {
+       "level": 50,
+       "id": "eledev",
+       "name": "Elemental Devastation",
+       "rank": 2
+      },
+      {
+       "level": 51,
+       "id": "eledev",
+       "name": "Elemental Devastation",
+       "rank": 3
+      },
+      {
+       "level": 52,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 1
+      },
+      {
+       "level": 53,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 2
+      },
+      {
+       "level": 54,
+       "id": "elefocus",
+       "name": "Elemental Focus",
+       "rank": 1
+      },
+      {
+       "level": 55,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 3
+      },
+      {
+       "level": 56,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 4
+      },
+      {
+       "level": 57,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 5
+      },
+      {
+       "level": 58,
+       "id": "reverb",
+       "name": "Reverberation",
+       "rank": 1
+      },
+      {
+       "level": 59,
+       "id": "earthbound",
+       "name": "Earthbound",
+       "rank": 1
+      },
+      {
+       "level": 60,
+       "id": "trialfire",
+       "name": "Trial by Fire",
+       "rank": 1
+      }
+     ],
+     "route_runs": [
+      [
+       "thundering",
+       5
+      ],
+      [
+       "mentaldex",
+       3
+      ],
+      [
+       "ancknow",
+       2
+      ],
+      [
+       "shamfocus",
+       1
+      ],
+      [
+       "eleweapons",
+       3
+      ],
+      [
+       "ancknow",
+       1
+      ],
+      [
+       "stormstrike",
+       1
+      ],
+      [
+       "impghostwolf",
+       2
+      ],
+      [
+       "flurry",
+       2
+      ],
+      [
+       "impstorm",
+       2
+      ],
+      [
+       "mentalquick",
+       2
+      ],
+      [
+       "flurry",
+       1
+      ],
+      [
+       "maelstrom",
+       5
+      ],
+      [
+       "farseer",
+       1
+      ],
+      [
+       "flurry",
+       2
+      ],
+      [
+       "spiritweapons",
+       1
+      ],
+      [
+       "concussion",
+       5
+      ],
+      [
+       "eledev",
+       3
+      ],
+      [
+       "convection",
+       2
+      ],
+      [
+       "elefocus",
+       1
+      ],
+      [
+       "convection",
+       3
+      ],
+      [
+       "reverb",
+       1
+      ],
+      [
+       "earthbound",
+       1
+      ],
+      [
+       "trialfire",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "55310010101-053030310051212251",
+      "split": "17/34/0",
+      "points": 51,
+      "talents": {
+       "convection": 5,
+       "concussion": 5,
+       "eledev": 3,
+       "reverb": 1,
+       "elefocus": 1,
+       "trialfire": 1,
+       "earthbound": 1,
+       "thundering": 5,
+       "ancknow": 3,
+       "mentaldex": 3,
+       "eleweapons": 3,
+       "shamfocus": 1,
+       "flurry": 5,
+       "stormstrike": 1,
+       "impghostwolf": 2,
+       "spiritweapons": 1,
+       "mentalquick": 2,
+       "impstorm": 2,
+       "maelstrom": 5,
+       "farseer": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "notes": [
+      "guide text after the build: ...ongue Weapon or Frostbrand Weapon . Levels 30+ Once you hit 30, you’ll want to switch to a 2H with Windfury Weapon . When Windfury Weapon procs, it can hit extremely hard, and honestly, there’s not much more satisfying than watching those big numbers pop up. Key Abilities Flame Shock , Frost Shock ,"
+     ],
+     "spec_assigned_by": "tree with most points (guide label names no spec)"
+    },
+    {
+     "name": "Enhancement leveling",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/shaman",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Maxroll",
+       "url": "https://maxroll.gg/wow-forever/class-guides/shaman-leveling-guide",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Enhancement leveling\" in the calculator page payload; mode Leveling",
+      "guide_order": "point by point as transcribed by timesaver.gg"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "mentaldex",
+       "name": "Mental Dexterity",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "mentaldex",
+       "name": "Mental Dexterity",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "mentaldex",
+       "name": "Mental Dexterity",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "implshield",
+       "name": "Improved Lightning Shield",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "implshield",
+       "name": "Improved Lightning Shield",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "eleweapons",
+       "name": "Elemental Weapons",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "eleweapons",
+       "name": "Elemental Weapons",
+       "rank": 2
+      },
+      {
+       "level": 22,
+       "id": "eleweapons",
+       "name": "Elemental Weapons",
+       "rank": 3
+      },
+      {
+       "level": 23,
+       "id": "shamfocus",
+       "name": "Shamanistic Focus",
+       "rank": 1
+      },
+      {
+       "level": 24,
+       "id": "anticipation",
+       "name": "Anticipation",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "stormstrike",
+       "name": "Stormstrike",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "impghostwolf",
+       "name": "Improved Ghost Wolf",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "impghostwolf",
+       "name": "Improved Ghost Wolf",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 1
+      },
+      {
+       "level": 29,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 2
+      },
+      {
+       "level": 30,
+       "id": "impstorm",
+       "name": "Improved Stormstrike",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "impstorm",
+       "name": "Improved Stormstrike",
+       "rank": 2
+      },
+      {
+       "level": 32,
+       "id": "mentalquick",
+       "name": "Mental Quickness",
+       "rank": 1
+      },
+      {
+       "level": 33,
+       "id": "mentalquick",
+       "name": "Mental Quickness",
+       "rank": 2
+      },
+      {
+       "level": 34,
+       "id": "spiritweapons",
+       "name": "Spirit Weapons",
+       "rank": 1
+      },
+      {
+       "level": 35,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "eledev",
+       "name": "Elemental Devastation",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "eledev",
+       "name": "Elemental Devastation",
+       "rank": 2
+      },
+      {
+       "level": 42,
+       "id": "eledev",
+       "name": "Elemental Devastation",
+       "rank": 3
+      },
+      {
+       "level": 43,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 1
+      },
+      {
+       "level": 44,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 2
+      },
+      {
+       "level": 45,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 3
+      },
+      {
+       "level": 46,
+       "id": "elefocus",
+       "name": "Elemental Focus",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 1
+      },
+      {
+       "level": 48,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 2
+      },
+      {
+       "level": 49,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 3
+      },
+      {
+       "level": 50,
+       "id": "trialfire",
+       "name": "Trial by Fire",
+       "rank": 1
+      },
+      {
+       "level": 51,
+       "id": "trialfire",
+       "name": "Trial by Fire",
+       "rank": 2
+      },
+      {
+       "level": 52,
+       "id": "earthbound",
+       "name": "Earthbound",
+       "rank": 1
+      },
+      {
+       "level": 53,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 3
+      },
+      {
+       "level": 56,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 4
+      },
+      {
+       "level": 57,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 5
+      },
+      {
+       "level": 58,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 1
+      },
+      {
+       "level": 59,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 2
+      },
+      {
+       "level": 60,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 3
+      }
+     ],
+     "route_runs": [
+      [
+       "thundering",
+       5
+      ],
+      [
+       "mentaldex",
+       3
+      ],
+      [
+       "implshield",
+       2
+      ],
+      [
+       "eleweapons",
+       3
+      ],
+      [
+       "shamfocus",
+       1
+      ],
+      [
+       "anticipation",
+       1
+      ],
+      [
+       "stormstrike",
+       1
+      ],
+      [
+       "impghostwolf",
+       2
+      ],
+      [
+       "flurry",
+       2
+      ],
+      [
+       "impstorm",
+       2
+      ],
+      [
+       "mentalquick",
+       2
+      ],
+      [
+       "spiritweapons",
+       1
+      ],
+      [
+       "concussion",
+       5
+      ],
+      [
+       "eledev",
+       3
+      ],
+      [
+       "callflame",
+       3
+      ],
+      [
+       "elefocus",
+       1
+      ],
+      [
+       "convection",
+       3
+      ],
+      [
+       "trialfire",
+       2
+      ],
+      [
+       "earthbound",
+       1
+      ],
+      [
+       "tidalfocus",
+       5
+      ],
+      [
+       "mindful",
+       3
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "35300310201-0500323110212122-053",
+      "split": "18/25/8",
+      "points": 51,
+      "talents": {
+       "convection": 3,
+       "concussion": 5,
+       "eledev": 3,
+       "callflame": 3,
+       "elefocus": 1,
+       "trialfire": 2,
+       "earthbound": 1,
+       "thundering": 5,
+       "mentaldex": 3,
+       "implshield": 2,
+       "eleweapons": 3,
+       "shamfocus": 1,
+       "anticipation": 1,
+       "flurry": 2,
+       "stormstrike": 1,
+       "impghostwolf": 2,
+       "spiritweapons": 1,
+       "mentalquick": 2,
+       "impstorm": 2,
+       "tidalfocus": 5,
+       "mindful": 3
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "secondary": true,
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "Maxroll: Enhancement"
+     ]
+    },
+    {
+     "name": "Enhancement mana focus leveling",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/shaman",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Maxroll",
+       "url": "https://maxroll.gg/wow-forever/class-guides/shaman-leveling-guide",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Enhancement mana focus leveling\" in the calculator page payload; mode Leveling",
+      "guide_order": "point by point as transcribed by timesaver.gg"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "ihw",
+       "name": "Improved Healing Wave",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "ihw",
+       "name": "Improved Healing Wave",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "watershield",
+       "name": "Water Shield",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 3
+      },
+      {
+       "level": 24,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 4
+      },
+      {
+       "level": 25,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 5
+      },
+      {
+       "level": 26,
+       "id": "mentaldex",
+       "name": "Mental Dexterity",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "mentaldex",
+       "name": "Mental Dexterity",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "mentaldex",
+       "name": "Mental Dexterity",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "implshield",
+       "name": "Improved Lightning Shield",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "implshield",
+       "name": "Improved Lightning Shield",
+       "rank": 2
+      },
+      {
+       "level": 31,
+       "id": "eleweapons",
+       "name": "Elemental Weapons",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "eleweapons",
+       "name": "Elemental Weapons",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "eleweapons",
+       "name": "Elemental Weapons",
+       "rank": 3
+      },
+      {
+       "level": 34,
+       "id": "shamfocus",
+       "name": "Shamanistic Focus",
+       "rank": 1
+      },
+      {
+       "level": 35,
+       "id": "anticipation",
+       "name": "Anticipation",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "stormstrike",
+       "name": "Stormstrike",
+       "rank": 1
+      },
+      {
+       "level": 37,
+       "id": "impghostwolf",
+       "name": "Improved Ghost Wolf",
+       "rank": 1
+      },
+      {
+       "level": 38,
+       "id": "impghostwolf",
+       "name": "Improved Ghost Wolf",
+       "rank": 2
+      },
+      {
+       "level": 39,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 1
+      },
+      {
+       "level": 40,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 2
+      },
+      {
+       "level": 41,
+       "id": "impstorm",
+       "name": "Improved Stormstrike",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "impstorm",
+       "name": "Improved Stormstrike",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "mentalquick",
+       "name": "Mental Quickness",
+       "rank": 1
+      },
+      {
+       "level": 44,
+       "id": "mentalquick",
+       "name": "Mental Quickness",
+       "rank": 2
+      },
+      {
+       "level": 45,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 1
+      },
+      {
+       "level": 46,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 2
+      },
+      {
+       "level": 47,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 3
+      },
+      {
+       "level": 48,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 4
+      },
+      {
+       "level": 49,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 5
+      },
+      {
+       "level": 50,
+       "id": "eledev",
+       "name": "Elemental Devastation",
+       "rank": 1
+      },
+      {
+       "level": 51,
+       "id": "eledev",
+       "name": "Elemental Devastation",
+       "rank": 2
+      },
+      {
+       "level": 52,
+       "id": "eledev",
+       "name": "Elemental Devastation",
+       "rank": 3
+      },
+      {
+       "level": 53,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 3
+      },
+      {
+       "level": 56,
+       "id": "elefocus",
+       "name": "Elemental Focus",
+       "rank": 1
+      },
+      {
+       "level": 57,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 1
+      },
+      {
+       "level": 58,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 2
+      },
+      {
+       "level": 59,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 3
+      },
+      {
+       "level": 60,
+       "id": "trialfire",
+       "name": "Trial by Fire",
+       "rank": 1
+      }
+     ],
+     "route_runs": [
+      [
+       "tidalfocus",
+       5
+      ],
+      [
+       "mindful",
+       3
+      ],
+      [
+       "ihw",
+       2
+      ],
+      [
+       "watershield",
+       1
+      ],
+      [
+       "thundering",
+       5
+      ],
+      [
+       "mentaldex",
+       3
+      ],
+      [
+       "implshield",
+       2
+      ],
+      [
+       "eleweapons",
+       3
+      ],
+      [
+       "shamfocus",
+       1
+      ],
+      [
+       "anticipation",
+       1
+      ],
+      [
+       "stormstrike",
+       1
+      ],
+      [
+       "impghostwolf",
+       2
+      ],
+      [
+       "flurry",
+       2
+      ],
+      [
+       "impstorm",
+       2
+      ],
+      [
+       "mentalquick",
+       2
+      ],
+      [
+       "concussion",
+       5
+      ],
+      [
+       "eledev",
+       3
+      ],
+      [
+       "callflame",
+       3
+      ],
+      [
+       "elefocus",
+       1
+      ],
+      [
+       "convection",
+       3
+      ],
+      [
+       "trialfire",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "353003101-0500323110212022-253000001",
+      "split": "16/24/11",
+      "points": 51,
+      "talents": {
+       "convection": 3,
+       "concussion": 5,
+       "eledev": 3,
+       "callflame": 3,
+       "elefocus": 1,
+       "trialfire": 1,
+       "thundering": 5,
+       "mentaldex": 3,
+       "implshield": 2,
+       "eleweapons": 3,
+       "shamfocus": 1,
+       "anticipation": 1,
+       "flurry": 2,
+       "stormstrike": 1,
+       "impghostwolf": 2,
+       "mentalquick": 2,
+       "impstorm": 2,
+       "ihw": 2,
+       "tidalfocus": 5,
+       "mindful": 3,
+       "watershield": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "secondary": true,
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "Maxroll: Enhancement Mana Focus"
+     ]
+    },
+    {
+     "name": "Leveling 1-60",
+     "source": {
+      "site": "wowtbc.gg (Warcraft Forever class guide)",
+      "url": "https://wowtbc.gg/warcraftforever/class-guides/enhancement-shaman/",
+      "author": null,
+      "updated": null,
+      "date_seen": "2026-11-08",
+      "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/enhancement-shaman/page-data.json, build \"Leveling 1-60\"",
+      "note": "the page shows no author or date",
+      "guide_order": "point by point (\"Leveling 1-60\" talentBuildPaths)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "mentaldex",
+       "name": "Mental Dexterity",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "mentaldex",
+       "name": "Mental Dexterity",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "mentaldex",
+       "name": "Mental Dexterity",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "shamfocus",
+       "name": "Shamanistic Focus",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "eleweapons",
+       "name": "Elemental Weapons",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "eleweapons",
+       "name": "Elemental Weapons",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "eleweapons",
+       "name": "Elemental Weapons",
+       "rank": 3
+      },
+      {
+       "level": 24,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 3
+      },
+      {
+       "level": 25,
+       "id": "stormstrike",
+       "name": "Stormstrike",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "impghostwolf",
+       "name": "Improved Ghost Wolf",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "impghostwolf",
+       "name": "Improved Ghost Wolf",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 1
+      },
+      {
+       "level": 29,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 2
+      },
+      {
+       "level": 30,
+       "id": "impstorm",
+       "name": "Improved Stormstrike",
+       "rank": 1
+      },
+      {
+       "level": 31,
+       "id": "spiritweapons",
+       "name": "Spirit Weapons",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "impstorm",
+       "name": "Improved Stormstrike",
+       "rank": 2
+      },
+      {
+       "level": 33,
+       "id": "mentalquick",
+       "name": "Mental Quickness",
+       "rank": 1
+      },
+      {
+       "level": 34,
+       "id": "mentalquick",
+       "name": "Mental Quickness",
+       "rank": 2
+      },
+      {
+       "level": 35,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 3
+      },
+      {
+       "level": 36,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 4
+      },
+      {
+       "level": 37,
+       "id": "flurry",
+       "name": "Flurry",
+       "rank": 5
+      },
+      {
+       "level": 38,
+       "id": "maelstrom",
+       "name": "Maelstrom Weapon",
+       "rank": 1
+      },
+      {
+       "level": 39,
+       "id": "maelstrom",
+       "name": "Maelstrom Weapon",
+       "rank": 2
+      },
+      {
+       "level": 40,
+       "id": "farseer",
+       "name": "Rage of the Farseer",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "maelstrom",
+       "name": "Maelstrom Weapon",
+       "rank": 3
+      },
+      {
+       "level": 42,
+       "id": "maelstrom",
+       "name": "Maelstrom Weapon",
+       "rank": 4
+      },
+      {
+       "level": 43,
+       "id": "maelstrom",
+       "name": "Maelstrom Weapon",
+       "rank": 5
+      },
+      {
+       "level": 44,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 1
+      },
+      {
+       "level": 45,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 2
+      },
+      {
+       "level": 46,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 3
+      },
+      {
+       "level": 47,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 4
+      },
+      {
+       "level": 48,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 5
+      },
+      {
+       "level": 49,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 1
+      },
+      {
+       "level": 50,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 2
+      },
+      {
+       "level": 51,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 3
+      },
+      {
+       "level": 52,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 1
+      },
+      {
+       "level": 53,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 2
+      },
+      {
+       "level": 54,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 3
+      },
+      {
+       "level": 55,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 4
+      },
+      {
+       "level": 56,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 5
+      },
+      {
+       "level": 57,
+       "id": "eledev",
+       "name": "Elemental Devastation",
+       "rank": 1
+      },
+      {
+       "level": 58,
+       "id": "eledev",
+       "name": "Elemental Devastation",
+       "rank": 2
+      },
+      {
+       "level": 59,
+       "id": "eledev",
+       "name": "Elemental Devastation",
+       "rank": 3
+      },
+      {
+       "level": 60,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 4
+      }
+     ],
+     "route_runs": [
+      [
+       "thundering",
+       5
+      ],
+      [
+       "mentaldex",
+       3
+      ],
+      [
+       "ancknow",
+       2
+      ],
+      [
+       "shamfocus",
+       1
+      ],
+      [
+       "eleweapons",
+       3
+      ],
+      [
+       "ancknow",
+       1
+      ],
+      [
+       "stormstrike",
+       1
+      ],
+      [
+       "impghostwolf",
+       2
+      ],
+      [
+       "flurry",
+       2
+      ],
+      [
+       "impstorm",
+       1
+      ],
+      [
+       "spiritweapons",
+       1
+      ],
+      [
+       "impstorm",
+       1
+      ],
+      [
+       "mentalquick",
+       2
+      ],
+      [
+       "flurry",
+       3
+      ],
+      [
+       "maelstrom",
+       2
+      ],
+      [
+       "farseer",
+       1
+      ],
+      [
+       "maelstrom",
+       3
+      ],
+      [
+       "tidalfocus",
+       5
+      ],
+      [
+       "mindful",
+       3
+      ],
+      [
+       "concussion",
+       5
+      ],
+      [
+       "eledev",
+       3
+      ],
+      [
+       "ancknow",
+       1
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "053-054030310051212251-053",
+      "split": "8/35/8",
+      "points": 51,
+      "talents": {
+       "concussion": 5,
+       "eledev": 3,
+       "thundering": 5,
+       "ancknow": 4,
+       "mentaldex": 3,
+       "eleweapons": 3,
+       "shamfocus": 1,
+       "flurry": 5,
+       "stormstrike": 1,
+       "impghostwolf": 2,
+       "spiritweapons": 1,
+       "mentalquick": 2,
+       "impstorm": 2,
+       "maelstrom": 5,
+       "farseer": 1,
+       "tidalfocus": 5,
+       "mindful": 3
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "wowtbc_spec_page": "enhancement-shaman",
+     "spec_assigned_by": "guide page is for this spec"
+    }
+   ],
+   "endgame": {
+    "damage": [
+     {
+      "name": "Standard Build",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/enhancement-shaman/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/enhancement-shaman/page-data.json, build \"Standard Build\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "053303102-053030310051202251-01",
+       "split": "17/33/1",
+       "points": 51,
+       "talents": {
+        "concussion": 5,
+        "eledev": 3,
+        "reverb": 3,
+        "callflame": 3,
+        "elefocus": 1,
+        "trialfire": 2,
+        "thundering": 5,
+        "ancknow": 3,
+        "mentaldex": 3,
+        "eleweapons": 3,
+        "shamfocus": 1,
+        "flurry": 5,
+        "stormstrike": 1,
+        "impghostwolf": 2,
+        "mentalquick": 2,
+        "impstorm": 2,
+        "maelstrom": 5,
+        "farseer": 1,
+        "tidalfocus": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "enhancement-shaman",
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     }
+    ]
+   }
+  },
+  "res": {
+   "name": "Restoration",
+   "tree": "res",
+   "dungeon_roles": [
+    "healer"
+   ],
+   "leveling": [
+    {
+     "name": "Restoration",
+     "source": {
+      "site": "Maxroll",
+      "url": "https://maxroll.gg/wow-forever/class-guides/shaman-leveling-guide",
+      "title": "Shaman Leveling Guide",
+      "author": "maxroll",
+      "published": "October 30, 2026",
+      "updated": "November 4, 2026",
+      "date_seen": "2026-11-08",
+      "data": "planner profile \"Restoration\" (uid UmibwQIr, planner 3f3wmh0u saved 2026-11-04 08:36:19): talents.history, TraitNodeEntry ids from window.__remixContext",
+      "guide_order": "point by point (the planner history is the guide's own order)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "ihw",
+       "name": "Improved Healing Wave",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "ihw",
+       "name": "Improved Healing Wave",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "watershield",
+       "name": "Water Shield",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "ihw",
+       "name": "Improved Healing Wave",
+       "rank": 3
+      },
+      {
+       "level": 22,
+       "id": "ihw",
+       "name": "Improved Healing Wave",
+       "rank": 4
+      },
+      {
+       "level": 23,
+       "id": "ihw",
+       "name": "Improved Healing Wave",
+       "rank": 5
+      },
+      {
+       "level": 24,
+       "id": "anchealing",
+       "name": "Ancestral Healing",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "manatide",
+       "name": "Mana Tide Totem",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "tidalmastery",
+       "name": "Tidal Mastery",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "tidalmastery",
+       "name": "Tidal Mastery",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "tidalmastery",
+       "name": "Tidal Mastery",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "tidalmastery",
+       "name": "Tidal Mastery",
+       "rank": 4
+      },
+      {
+       "level": 30,
+       "id": "tidalmastery",
+       "name": "Tidal Mastery",
+       "rank": 5
+      },
+      {
+       "level": 31,
+       "id": "natswift",
+       "name": "Nature's Swiftness",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "healingway",
+       "name": "Healing Way",
+       "rank": 1
+      },
+      {
+       "level": 33,
+       "id": "healingway",
+       "name": "Healing Way",
+       "rank": 2
+      },
+      {
+       "level": 34,
+       "id": "healingway",
+       "name": "Healing Way",
+       "rank": 3
+      },
+      {
+       "level": 35,
+       "id": "purification",
+       "name": "Purification",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "purification",
+       "name": "Purification",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "purification",
+       "name": "Purification",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "purification",
+       "name": "Purification",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "purification",
+       "name": "Purification",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "riptide",
+       "name": "Riptide",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 4
+      },
+      {
+       "level": 45,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "anchealing",
+       "name": "Ancestral Healing",
+       "rank": 2
+      },
+      {
+       "level": 47,
+       "id": "anchealing",
+       "name": "Ancestral Healing",
+       "rank": 3
+      },
+      {
+       "level": 48,
+       "id": "restotems",
+       "name": "Restorative Totems",
+       "rank": 1
+      },
+      {
+       "level": 49,
+       "id": "restotems",
+       "name": "Restorative Totems",
+       "rank": 2
+      },
+      {
+       "level": 50,
+       "id": "restotems",
+       "name": "Restorative Totems",
+       "rank": 3
+      },
+      {
+       "level": 51,
+       "id": "restotems",
+       "name": "Restorative Totems",
+       "rank": 4
+      },
+      {
+       "level": 52,
+       "id": "restotems",
+       "name": "Restorative Totems",
+       "rank": 5
+      },
+      {
+       "level": 53,
+       "id": "healfocus",
+       "name": "Healing Focus",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "healfocus",
+       "name": "Healing Focus",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "healfocus",
+       "name": "Healing Focus",
+       "rank": 3
+      },
+      {
+       "level": 56,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 1
+      },
+      {
+       "level": 57,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 2
+      },
+      {
+       "level": 58,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 3
+      },
+      {
+       "level": 59,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 4
+      },
+      {
+       "level": 60,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 5
+      }
+     ],
+     "route_runs": [
+      [
+       "tidalfocus",
+       5
+      ],
+      [
+       "mindful",
+       3
+      ],
+      [
+       "ihw",
+       2
+      ],
+      [
+       "watershield",
+       1
+      ],
+      [
+       "ihw",
+       3
+      ],
+      [
+       "anchealing",
+       1
+      ],
+      [
+       "manatide",
+       1
+      ],
+      [
+       "tidalmastery",
+       5
+      ],
+      [
+       "natswift",
+       1
+      ],
+      [
+       "healingway",
+       3
+      ],
+      [
+       "purification",
+       5
+      ],
+      [
+       "riptide",
+       1
+      ],
+      [
+       "thundering",
+       5
+      ],
+      [
+       "anchealing",
+       2
+      ],
+      [
+       "restotems",
+       5
+      ],
+      [
+       "healfocus",
+       3
+      ],
+      [
+       "ancknow",
+       5
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "-055-5530003315513151",
+      "split": "0/10/41",
+      "points": 51,
+      "talents": {
+       "thundering": 5,
+       "ancknow": 5,
+       "ihw": 5,
+       "tidalfocus": 5,
+       "mindful": 3,
+       "anchealing": 3,
+       "healfocus": 3,
+       "watershield": 1,
+       "tidalmastery": 5,
+       "restotems": 5,
+       "manatide": 1,
+       "healingway": 3,
+       "natswift": 1,
+       "purification": 5,
+       "riptide": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "timesaver.gg (transcription): Restoration leveling"
+     ]
+    },
+    {
+     "name": "Restoration leveling",
+     "source": {
+      "site": "timesaver.gg (transcription)",
+      "url": "https://timesaver.gg/tools/wow-forever/talent-calculator/shaman",
+      "date_seen": "2026-11-08",
+      "cites": {
+       "name": "Maxroll",
+       "url": "https://maxroll.gg/wow-forever/class-guides/shaman-leveling-guide",
+       "updated": "2026-11-04"
+      },
+      "data": "preset \"Restoration leveling\" in the calculator page payload; mode Leveling",
+      "guide_order": "point by point as transcribed by timesaver.gg"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "ihw",
+       "name": "Improved Healing Wave",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "ihw",
+       "name": "Improved Healing Wave",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "watershield",
+       "name": "Water Shield",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "ihw",
+       "name": "Improved Healing Wave",
+       "rank": 3
+      },
+      {
+       "level": 22,
+       "id": "ihw",
+       "name": "Improved Healing Wave",
+       "rank": 4
+      },
+      {
+       "level": 23,
+       "id": "ihw",
+       "name": "Improved Healing Wave",
+       "rank": 5
+      },
+      {
+       "level": 24,
+       "id": "anchealing",
+       "name": "Ancestral Healing",
+       "rank": 1
+      },
+      {
+       "level": 25,
+       "id": "manatide",
+       "name": "Mana Tide Totem",
+       "rank": 1
+      },
+      {
+       "level": 26,
+       "id": "tidalmastery",
+       "name": "Tidal Mastery",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "tidalmastery",
+       "name": "Tidal Mastery",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "tidalmastery",
+       "name": "Tidal Mastery",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "tidalmastery",
+       "name": "Tidal Mastery",
+       "rank": 4
+      },
+      {
+       "level": 30,
+       "id": "tidalmastery",
+       "name": "Tidal Mastery",
+       "rank": 5
+      },
+      {
+       "level": 31,
+       "id": "natswift",
+       "name": "Nature's Swiftness",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "healingway",
+       "name": "Healing Way",
+       "rank": 1
+      },
+      {
+       "level": 33,
+       "id": "healingway",
+       "name": "Healing Way",
+       "rank": 2
+      },
+      {
+       "level": 34,
+       "id": "healingway",
+       "name": "Healing Way",
+       "rank": 3
+      },
+      {
+       "level": 35,
+       "id": "purification",
+       "name": "Purification",
+       "rank": 1
+      },
+      {
+       "level": 36,
+       "id": "purification",
+       "name": "Purification",
+       "rank": 2
+      },
+      {
+       "level": 37,
+       "id": "purification",
+       "name": "Purification",
+       "rank": 3
+      },
+      {
+       "level": 38,
+       "id": "purification",
+       "name": "Purification",
+       "rank": 4
+      },
+      {
+       "level": 39,
+       "id": "purification",
+       "name": "Purification",
+       "rank": 5
+      },
+      {
+       "level": 40,
+       "id": "riptide",
+       "name": "Riptide",
+       "rank": 1
+      },
+      {
+       "level": 41,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 2
+      },
+      {
+       "level": 43,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 3
+      },
+      {
+       "level": 44,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 4
+      },
+      {
+       "level": 45,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "anchealing",
+       "name": "Ancestral Healing",
+       "rank": 2
+      },
+      {
+       "level": 47,
+       "id": "anchealing",
+       "name": "Ancestral Healing",
+       "rank": 3
+      },
+      {
+       "level": 48,
+       "id": "restotems",
+       "name": "Restorative Totems",
+       "rank": 1
+      },
+      {
+       "level": 49,
+       "id": "restotems",
+       "name": "Restorative Totems",
+       "rank": 2
+      },
+      {
+       "level": 50,
+       "id": "restotems",
+       "name": "Restorative Totems",
+       "rank": 3
+      },
+      {
+       "level": 51,
+       "id": "restotems",
+       "name": "Restorative Totems",
+       "rank": 4
+      },
+      {
+       "level": 52,
+       "id": "restotems",
+       "name": "Restorative Totems",
+       "rank": 5
+      },
+      {
+       "level": 53,
+       "id": "healfocus",
+       "name": "Healing Focus",
+       "rank": 1
+      },
+      {
+       "level": 54,
+       "id": "healfocus",
+       "name": "Healing Focus",
+       "rank": 2
+      },
+      {
+       "level": 55,
+       "id": "healfocus",
+       "name": "Healing Focus",
+       "rank": 3
+      },
+      {
+       "level": 56,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 1
+      },
+      {
+       "level": 57,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 2
+      },
+      {
+       "level": 58,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 3
+      },
+      {
+       "level": 59,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 4
+      },
+      {
+       "level": 60,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 5
+      }
+     ],
+     "route_runs": [
+      [
+       "tidalfocus",
+       5
+      ],
+      [
+       "mindful",
+       3
+      ],
+      [
+       "ihw",
+       2
+      ],
+      [
+       "watershield",
+       1
+      ],
+      [
+       "ihw",
+       3
+      ],
+      [
+       "anchealing",
+       1
+      ],
+      [
+       "manatide",
+       1
+      ],
+      [
+       "tidalmastery",
+       5
+      ],
+      [
+       "natswift",
+       1
+      ],
+      [
+       "healingway",
+       3
+      ],
+      [
+       "purification",
+       5
+      ],
+      [
+       "riptide",
+       1
+      ],
+      [
+       "thundering",
+       5
+      ],
+      [
+       "anchealing",
+       2
+      ],
+      [
+       "restotems",
+       5
+      ],
+      [
+       "healfocus",
+       3
+      ],
+      [
+       "ancknow",
+       5
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "-055-5530003315513151",
+      "split": "0/10/41",
+      "points": 51,
+      "talents": {
+       "thundering": 5,
+       "ancknow": 5,
+       "ihw": 5,
+       "tidalfocus": 5,
+       "mindful": 3,
+       "anchealing": 3,
+       "healfocus": 3,
+       "watershield": 1,
+       "tidalmastery": 5,
+       "restotems": 5,
+       "manatide": 1,
+       "healingway": 3,
+       "natswift": 1,
+       "purification": 5,
+       "riptide": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "secondary": true,
+     "spec_assigned_by": "guide label",
+     "same_final_code_as": [
+      "Maxroll: Restoration"
+     ]
+    },
+    {
+     "name": "Leveling 1-60",
+     "source": {
+      "site": "wowtbc.gg (Warcraft Forever class guide)",
+      "url": "https://wowtbc.gg/warcraftforever/class-guides/restoration-shaman/",
+      "author": null,
+      "updated": null,
+      "date_seen": "2026-11-08",
+      "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/restoration-shaman/page-data.json, build \"Leveling 1-60\"",
+      "note": "the page shows no author or date",
+      "guide_order": "point by point (\"Leveling 1-60\" talentBuildPaths)"
+     },
+     "kind": "point_by_point",
+     "order": [
+      {
+       "level": 10,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 1
+      },
+      {
+       "level": 11,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 2
+      },
+      {
+       "level": 12,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 3
+      },
+      {
+       "level": 13,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 4
+      },
+      {
+       "level": 14,
+       "id": "tidalfocus",
+       "name": "Tidal Focus",
+       "rank": 5
+      },
+      {
+       "level": 15,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 1
+      },
+      {
+       "level": 16,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 2
+      },
+      {
+       "level": 17,
+       "id": "mindful",
+       "name": "Mindfulness",
+       "rank": 3
+      },
+      {
+       "level": 18,
+       "id": "totemicfocus",
+       "name": "Totemic Focus",
+       "rank": 1
+      },
+      {
+       "level": 19,
+       "id": "totemicfocus",
+       "name": "Totemic Focus",
+       "rank": 2
+      },
+      {
+       "level": 20,
+       "id": "watershield",
+       "name": "Water Shield",
+       "rank": 1
+      },
+      {
+       "level": 21,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 1
+      },
+      {
+       "level": 22,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 2
+      },
+      {
+       "level": 23,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 3
+      },
+      {
+       "level": 24,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 4
+      },
+      {
+       "level": 25,
+       "id": "concussion",
+       "name": "Concussion",
+       "rank": 5
+      },
+      {
+       "level": 26,
+       "id": "alacrity",
+       "name": "Elemental Alacrity",
+       "rank": 1
+      },
+      {
+       "level": 27,
+       "id": "alacrity",
+       "name": "Elemental Alacrity",
+       "rank": 2
+      },
+      {
+       "level": 28,
+       "id": "alacrity",
+       "name": "Elemental Alacrity",
+       "rank": 3
+      },
+      {
+       "level": 29,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 1
+      },
+      {
+       "level": 30,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 2
+      },
+      {
+       "level": 31,
+       "id": "elefocus",
+       "name": "Elemental Focus",
+       "rank": 1
+      },
+      {
+       "level": 32,
+       "id": "callflame",
+       "name": "Call of Flame",
+       "rank": 3
+      },
+      {
+       "level": 33,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 1
+      },
+      {
+       "level": 34,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 2
+      },
+      {
+       "level": 35,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 3
+      },
+      {
+       "level": 36,
+       "id": "earthbound",
+       "name": "Earthbound",
+       "rank": 1
+      },
+      {
+       "level": 37,
+       "id": "eyestorm",
+       "name": "Eye of the Storm",
+       "rank": 1
+      },
+      {
+       "level": 38,
+       "id": "eyestorm",
+       "name": "Eye of the Storm",
+       "rank": 2
+      },
+      {
+       "level": 39,
+       "id": "eyestorm",
+       "name": "Eye of the Storm",
+       "rank": 3
+      },
+      {
+       "level": 40,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 4
+      },
+      {
+       "level": 41,
+       "id": "callthunder",
+       "name": "Call of Thunder",
+       "rank": 1
+      },
+      {
+       "level": 42,
+       "id": "overload",
+       "name": "Lightning Overload",
+       "rank": 1
+      },
+      {
+       "level": 43,
+       "id": "overload",
+       "name": "Lightning Overload",
+       "rank": 2
+      },
+      {
+       "level": 44,
+       "id": "overload",
+       "name": "Lightning Overload",
+       "rank": 3
+      },
+      {
+       "level": 45,
+       "id": "convection",
+       "name": "Convection",
+       "rank": 5
+      },
+      {
+       "level": 46,
+       "id": "elefury",
+       "name": "Elemental Fury",
+       "rank": 1
+      },
+      {
+       "level": 47,
+       "id": "elefury",
+       "name": "Elemental Fury",
+       "rank": 2
+      },
+      {
+       "level": 48,
+       "id": "elefury",
+       "name": "Elemental Fury",
+       "rank": 3
+      },
+      {
+       "level": 49,
+       "id": "elefury",
+       "name": "Elemental Fury",
+       "rank": 4
+      },
+      {
+       "level": 50,
+       "id": "elefury",
+       "name": "Elemental Fury",
+       "rank": 5
+      },
+      {
+       "level": 51,
+       "id": "lmastery",
+       "name": "Lightning Mastery",
+       "rank": 1
+      },
+      {
+       "level": 52,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 1
+      },
+      {
+       "level": 53,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 2
+      },
+      {
+       "level": 54,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 3
+      },
+      {
+       "level": 55,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 4
+      },
+      {
+       "level": 56,
+       "id": "thundering",
+       "name": "Thundering Strikes",
+       "rank": 5
+      },
+      {
+       "level": 57,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 1
+      },
+      {
+       "level": 58,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 2
+      },
+      {
+       "level": 59,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 3
+      },
+      {
+       "level": 60,
+       "id": "ancknow",
+       "name": "Ancestral Knowledge",
+       "rank": 4
+      }
+     ],
+     "route_runs": [
+      [
+       "tidalfocus",
+       5
+      ],
+      [
+       "mindful",
+       3
+      ],
+      [
+       "totemicfocus",
+       2
+      ],
+      [
+       "watershield",
+       1
+      ],
+      [
+       "concussion",
+       5
+      ],
+      [
+       "alacrity",
+       3
+      ],
+      [
+       "callflame",
+       2
+      ],
+      [
+       "elefocus",
+       1
+      ],
+      [
+       "callflame",
+       1
+      ],
+      [
+       "convection",
+       3
+      ],
+      [
+       "earthbound",
+       1
+      ],
+      [
+       "eyestorm",
+       3
+      ],
+      [
+       "convection",
+       1
+      ],
+      [
+       "callthunder",
+       1
+      ],
+      [
+       "overload",
+       3
+      ],
+      [
+       "convection",
+       1
+      ],
+      [
+       "elefury",
+       5
+      ],
+      [
+       "lmastery",
+       1
+      ],
+      [
+       "thundering",
+       5
+      ],
+      [
+       "ancknow",
+       4
+      ]
+     ],
+     "order_check": {
+      "ok": true,
+      "errors": [],
+      "rule": "client tree 1.60.1.70862: row N needs 5 x (N-1) points in rows above, prerequisite at max rank, one point per level from 10"
+     },
+     "final": {
+      "code": "5500331003101351-054-053020001",
+      "split": "31/9/11",
+      "points": 51,
+      "talents": {
+       "convection": 5,
+       "concussion": 5,
+       "alacrity": 3,
+       "callflame": 3,
+       "elefocus": 1,
+       "eyestorm": 3,
+       "earthbound": 1,
+       "callthunder": 1,
+       "overload": 3,
+       "elefury": 5,
+       "lmastery": 1,
+       "thundering": 5,
+       "ancknow": 4,
+       "tidalfocus": 5,
+       "mindful": 3,
+       "totemicfocus": 2,
+       "watershield": 1
+      },
+      "legal_on_client_tree": "OK",
+      "order_end_state_equals_final": true
+     },
+     "wowtbc_spec_page": "restoration-shaman",
+     "spec_assigned_by": "guide page is for this spec",
+     "same_final_code_as": [
+      "wowtbc.gg (Warcraft Forever class guide): Leveling 1-60"
+     ],
+     "notes": [
+      "listed under Restoration because the guide puts it there, but most points go into Elemental"
+     ]
+    }
+   ],
+   "endgame": {
+    "healer": [
+     {
+      "name": "Standard Build",
+      "source": {
+       "site": "wowtbc.gg (Warcraft Forever class guide)",
+       "url": "https://wowtbc.gg/warcraftforever/class-guides/restoration-shaman/",
+       "author": null,
+       "updated": null,
+       "date_seen": "2026-11-08",
+       "data": "https://wowtbc.gg/page-data/warcraftforever/class-guides/restoration-shaman/page-data.json, build \"Standard Build\"",
+       "note": "the page shows no author or date",
+       "guide_order": "final build only"
+      },
+      "kind": "level_60_build",
+      "final": {
+       "code": "-0552000030002-3530003015313151",
+       "split": "0/17/34",
+       "points": 51,
+       "talents": {
+        "thundering": 5,
+        "ancknow": 5,
+        "guardian": 2,
+        "anticipation": 3,
+        "impghostwolf": 2,
+        "ihw": 3,
+        "tidalfocus": 5,
+        "mindful": 3,
+        "anchealing": 3,
+        "watershield": 1,
+        "tidalmastery": 5,
+        "restotems": 3,
+        "manatide": 1,
+        "healingway": 3,
+        "natswift": 1,
+        "purification": 5,
+        "riptide": 1
+       },
+       "legal_on_client_tree": "OK"
+      },
+      "wowtbc_spec_page": "restoration-shaman",
+      "spec_assigned_by": "guide page is for this spec",
+      "use_in_build_name": null,
+      "use_words_in_guide_text": null
+     }
+    ]
+   }
+  }
+ },
+ "excluded": [
+  {
+   "source": "https://www.warcrafttavern.com/forever/guides/elemental-shaman/",
+   "label": "Mid-Level Elemental Talents",
+   "headings": [
+    "Weaknesses",
+    "Talent Builds",
+    "Level 30 Beta Build"
+   ],
+   "calculator_link": "https://www.warcrafttavern.com/forever/tools/talent-calculator/shaman#?t=A222226667787111dddfchiiicm",
+   "code": "350033102310131",
+   "points": 26,
+   "reason": "beta-era build for the level 30 cap (guide says it will be updated for 60)"
+  },
+  {
+   "source": "https://www.warcrafttavern.com/forever/guides/enhancement-shaman/",
+   "label": "Mid-Level Enhancement Talents",
+   "headings": [
+    "Weaknesses",
+    "Talent Builds",
+    "Level 30 Beta Build"
+   ],
+   "calculator_link": "https://www.warcrafttavern.com/forever/tools/talent-calculator/shaman#?t=B1111166555a8887edddddhhiim",
+   "code": "-05003231005100221",
+   "points": 25,
+   "reason": "beta-era build for the level 30 cap (guide says it will be updated for 60); skipped chars ['7']"
+  },
+  {
+   "source": "https://www.warcrafttavern.com/forever/guides/restoration-shaman/",
+   "label": "Mid-level Restoration Talents",
+   "headings": [
+    "Weaknesses",
+    "Talent Builds",
+    "Level 30 Beta Build"
+   ],
+   "calculator_link": "https://www.warcrafttavern.com/forever/tools/talent-calculator/shaman#?t=C1111144422a8882eccccicdddd",
+   "code": "--53300030154101",
+   "points": 26,
+   "reason": "beta-era build for the level 30 cap (guide says it will be updated for 60)"
+  },
+  {
+   "source": "https://www.warcrafttavern.com/forever/guides/shaman-leveling/",
+   "label": "Mid-Level Elemental Build",
+   "headings": [
+    "Leveling Builds",
+    "Early Shaman Leveling Build",
+    "Mid-Level Elemental Build"
+   ],
+   "calculator_link": "https://www.warcrafttavern.com/forever/tools/talent-calculator/shaman#?t=A222226667787111ccdddhiiigm",
+   "code": "350033102301131",
+   "points": 26,
+   "reason": "beta-era build for the level 30 cap (guide says it will be updated for 60)"
+  },
+  {
+   "source": "https://www.warcrafttavern.com/forever/guides/shaman-leveling/",
+   "label": "Mid-Level Enhancement Build",
+   "headings": [
+    "Early Shaman Leveling Build",
+    "Mid-Level Elemental Build",
+    "Mid-Level Enhancement Build"
+   ],
+   "calculator_link": "https://www.warcrafttavern.com/forever/tools/talent-calculator/shaman#?t=B1111155566a8887edddddiihhm",
+   "code": "-05003231005100221",
+   "points": 25,
+   "reason": "beta-era build for the level 30 cap (guide says it will be updated for 60); skipped chars ['7']"
+  },
+  {
+   "source": "https://www.warcrafttavern.com/forever/guides/shaman-leveling/",
+   "label": "Mid-Level Restoration Build",
+   "headings": [
+    "Mid-Level Elemental Build",
+    "Mid-Level Enhancement Build",
+    "Mid-Level Restoration Build"
+   ],
+   "calculator_link": "https://www.warcrafttavern.com/forever/tools/talent-calculator/shaman#?t=C1111144422a8882eccccicdddd",
+   "code": "--53300030154101",
+   "points": 26,
+   "reason": "beta-era build for the level 30 cap (guide says it will be updated for 60)"
+  }
+ ]
+}
