@@ -1,0 +1,3 @@
+[submodule "vendor/mythicsim-forever-engine"]
+	path = vendor/mythicsim-forever-engine
+	url = https://github.com/sage3648/mythicsim-forever-engine.git

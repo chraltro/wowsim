@@ -1,0 +1,21 @@
+[package]
+name = "wowsim-engine"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "MythicSim's Forever engine compiled for the browser, with a small C ABI"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+# MythicSim Forever engine (MIT), pinned as a submodule at b3c5eb6 (2026-11-08)
+forever-engine = { path = "../vendor/mythicsim-forever-engine" }
+serde_json = "1"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true
