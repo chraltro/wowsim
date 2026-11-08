@@ -1,0 +1,7113 @@
+{
+ "meta": {
+  "title": "WoW Forever Shaman spell ranks, every level 1-60",
+  "generated": "2026-11-08",
+  "status_legend": {
+   "forever": "Forever client data (build 1.60.1.70862) as carried by wowsims-forever",
+   "vanilla": "Classic/vanilla fallback",
+   "estimate": "derived or interpolated"
+  },
+  "source": {
+   "repo": "/home/claude/data/repos/wowsims-forever",
+   "commit": "125e534",
+   "client_build": "1.60.1.70862 (latest 'wowf' build on wago.tools, 2026-11-07)",
+   "rank_lists": "sim/shaman/spell_data_auto_gen.go (spelldata.Ranked / spelldata.Talent)",
+   "records": "sim/core/spelldata/spells_auto_gen.go (generator bakes in tools/database/overrides; any override comment is copied to wowsims_overrides)",
+   "book_ranks": "sim/core/spelldata/book_ranks.go"
+  },
+  "formulas": {
+   "value_at_level": "BasePoints + PPL * clamp(min(L, scaling_max_level) - scaling_base_level, 0); scaling_max_level 0 = no cap. Computed in float32 as wowsims Effect.AverageAt does. Damage/heal amounts keep the fraction; every other amount (AP, mana, %) is floored.",
+   "roll_heal_or_spell_damage": "(value + sp_coef * spell_power) * uniform(1 - variance/2, 1 + variance/2)",
+   "tooltip_range": "wowsims MinAt/MaxAt: base points +- |base|*variance/2 rounded half-to-even, plus the level gain, rounded outward. Checked against Wowhead's Forever tooltips (mythicsim test list, 25 Shaman rows): all within 1 point, 22 of 25 exact.",
+   "ticks": "duration_ms // period_ms",
+   "cost_pct_base_mana": "cost = pct_base_mana/100 * base_mana(L) (base mana table in shaman_levels.json)",
+   "learn_level": "SpellLevels.SpellLevel of the rank. Shaman trainers teach at that level; vanilla trainer data (cmangos npc_trainer_template 61) teaches on levels 1, 4 and every even level 6-60, which is the set of SpellLevels here. Per-spell trainer mapping was not checked (emulator trainer rows list teach-spell ids)."
+  },
+  "talent_taught": {
+   "Riptide": "Restoration tier 7 (rank 1, 408521); ranks 2/3 learn at 50/60",
+   "ManaTideTotem": "Restoration tier 4 (rank 1 SpellLevel 1 = usable once the talent is taken); ranks 2-4 at 38/48/58",
+   "WaterShield": "Restoration tier 3 (SpellLevel 20)",
+   "Stormstrike": "Enhancement (SpellLevel 40)",
+   "tier_gate": "vanilla rule: talent tier N needs 5*(N-1) points in the tree, first point at level 10, so tier N opens at level 5N+5 (estimate for Forever: not checked in client data)"
+  },
+  "book_ranks_in_this_file": {
+   "25357": "Healing Wave Rank 10 - Tablet of Healing Wave X",
+   "29228": "Flame Shock Rank 6 - Tablet of Flame Shock VI"
+  },
+  "coefficient_penalties": {
+   "finding": "Neither wowsims-forever nor mythicsim-forever-engine applies the vanilla sub-20 penalty (1 - (20 - spellLevel)*0.0375) or any downrank coefficient penalty. Whether the Forever server applies one is unverified.",
+   "client_data": "The client rows carry unpenalized coefficients on low ranks: Healing Wave R1 (level 1) 0.429 = 1.5/3.5, R2 (level 6) 0.571 = 2.0/3.5, R4 (level 18) 0.857 = 3.0/3.5; Lightning Bolt R1 0.429, R2 0.571.",
+   "wowsims_code": [
+    "resolve_spell.go: config.BonusCoefficient = damage.Coeff() (the client SPCoef, unchanged); spell_result.go adds BonusCoefficient * spell power. No level term anywhere in that path.",
+    "sim/shaman/ranks.go: const minRankLevel = 44, comment: 'In game a rank deals less damage once the caster is far enough past the level it is taught at; at level 60 a rank taught at 44 or later is clear of that.' TODO: cutoff believed 42 or 43. castableRanks() registers only Lightning Bolt, Chain Lightning and the shock ranks with SpellLevel >= 44. It avoids the effect by dropping ranks; it implements no formula.",
+    "sim/core/racials.go (Touch of the Grave): 'The drain takes no downrank scaling from a low-level trigger' - a comment only."
+   ],
+   "mythicsim_code": "docs/levels.md, Open: 'Spell coefficients below level 20: Classic scaled a low-level spell's coefficient down; whether Forever keeps it is unchecked.' src/prepare/spelldata/effect.rs uses only the per-level points; no coefficient scaling.",
+   "in_this_file": "sp_coef is the client value (what both sims use). Ranks learned below 20 also carry sp_coef_if_vanilla_sub20_penalty, so the sim can switch the vanilla rule on. Neither sim applies it."
+  },
+  "forever_vs_vanilla_notes": [
+   "Lightning Bolt, Chain Lightning and the shocks carry the 2-4 Nov 2026 retune (mythicsim hotfix_113554.rs lists the old values); Chain Lightning is 2.5 s, 0.714 coefficient.",
+   "Riptide has no initial heal in 70862 (E_DUMMY base 0); 12 s cooldown.",
+   "Windfury Weapon grants 2 extra attacks at 20% (passive 439431, 1.5 s ICD); Rockbiter grants attack power; Flametongue procs on every hit.",
+   "Lightning Shield and Water Shield hold 3 charges, 3.5 s ICD.",
+   "Healing Stream / Mana Spring totem rows last 300 s."
+  ],
+  "gaps": [
+   "Riptide's removed initial heal: no Forever number exists to use; treat it as 0.",
+   "Rockbiter threat procs below the top rank (20860-20870) not extracted; wowsims uses 20871 for every rank.",
+   "Windfury Weapon: wowsims assumes every rank's enchant uses passive 439431 (20%, 1.5 s). The enchantment rows (misc 283/284/525/1669) were not read.",
+   "Talent tier unlock levels for Forever trees not confirmed from client data."
+  ]
+ },
+ "spells": {
+  "HealingWave": {
+   "name": "Healing Wave",
+   "wowsims_ladder": "spellData.HealingWave = spelldata.Ranked(331, 332, 547, 913, 939, 959, 8005, 10395, 10396, 25357)",
+   "ranks": [
+    {
+     "id": 331,
+     "name": "Healing Wave",
+     "rank": "Rank 1",
+     "status": "forever",
+     "learn_level": 1,
+     "base_level": 1,
+     "max_level": 5,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 1500,
+     "gcd_ms": 1500,
+     "range_yd": 40,
+     "cost": {
+      "mana": 25
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_HEAL",
+       "base_points": 39,
+       "points_per_level": 0.7,
+       "scaling_base_level": 1,
+       "scaling_max_level": 5,
+       "variance": 0.25641,
+       "sp_coef": 0.429,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 39,
+       "value_at_60": 41.8,
+       "values_by_level": {
+        "1": 39,
+        "2": 39.7,
+        "3": 40.4,
+        "4": 41.1,
+        "5": 41.8
+       },
+       "constant_from_level": 5,
+       "tooltip_range_at_learn_level": [
+        34,
+        44
+       ],
+       "tooltip_range_at_60": [
+        36,
+        47
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]",
+       "sp_coef_if_vanilla_sub20_penalty": {
+        "value": 0.123337,
+        "factor": 0.2875,
+        "status": "vanilla",
+        "applied_by_wowsims_or_mythicsim": false
+       }
+      }
+     ]
+    },
+    {
+     "id": 332,
+     "name": "Healing Wave",
+     "rank": "Rank 2",
+     "status": "forever",
+     "learn_level": 6,
+     "base_level": 6,
+     "max_level": 11,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 2000,
+     "gcd_ms": 1500,
+     "range_yd": 40,
+     "cost": {
+      "mana": 45
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_HEAL",
+       "base_points": 71,
+       "points_per_level": 1,
+       "scaling_base_level": 6,
+       "scaling_max_level": 11,
+       "variance": 0.197183,
+       "sp_coef": 0.571,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 71,
+       "value_at_60": 76,
+       "values_by_level": {
+        "6": 71,
+        "7": 72,
+        "8": 73,
+        "9": 74,
+        "10": 75,
+        "11": 76
+       },
+       "constant_from_level": 11,
+       "tooltip_range_at_learn_level": [
+        64,
+        78
+       ],
+       "tooltip_range_at_60": [
+        69,
+        83
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]",
+       "sp_coef_if_vanilla_sub20_penalty": {
+        "value": 0.271225,
+        "factor": 0.475,
+        "status": "vanilla",
+        "applied_by_wowsims_or_mythicsim": false
+       }
+      }
+     ]
+    },
+    {
+     "id": 547,
+     "name": "Healing Wave",
+     "rank": "Rank 3",
+     "status": "forever",
+     "learn_level": 12,
+     "base_level": 12,
+     "max_level": 17,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 2500,
+     "gcd_ms": 1500,
+     "range_yd": 40,
+     "cost": {
+      "mana": 80
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_HEAL",
+       "base_points": 131,
+       "points_per_level": 1.5,
+       "scaling_base_level": 12,
+       "scaling_max_level": 17,
+       "variance": 0.183099,
+       "sp_coef": 0.714,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 131,
+       "value_at_60": 138.5,
+       "values_by_level": {
+        "12": 131,
+        "13": 132.5,
+        "14": 134,
+        "15": 135.5,
+        "16": 137,
+        "17": 138.5
+       },
+       "constant_from_level": 17,
+       "tooltip_range_at_learn_level": [
+        119,
+        143
+       ],
+       "tooltip_range_at_60": [
+        126,
+        151
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]",
+       "sp_coef_if_vanilla_sub20_penalty": {
+        "value": 0.4998,
+        "factor": 0.7,
+        "status": "vanilla",
+        "applied_by_wowsims_or_mythicsim": false
+       }
+      }
+     ]
+    },
+    {
+     "id": 913,
+     "name": "Healing Wave",
+     "rank": "Rank 4",
+     "status": "forever",
+     "learn_level": 18,
+     "base_level": 18,
+     "max_level": 23,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 3000,
+     "gcd_ms": 1500,
+     "range_yd": 40,
+     "cost": {
+      "mana": 155
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_HEAL",
+       "base_points": 256,
+       "points_per_level": 2.3,
+       "scaling_base_level": 18,
+       "scaling_max_level": 23,
+       "variance": 0.164384,
+       "sp_coef": 0.857,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 256,
+       "value_at_60": 267.5,
+       "values_by_level": {
+        "18": 256,
+        "19": 258.3,
+        "20": 260.6,
+        "21": 262.9,
+        "22": 265.2,
+        "23": 267.5
+       },
+       "constant_from_level": 23,
+       "tooltip_range_at_learn_level": [
+        235,
+        277
+       ],
+       "tooltip_range_at_60": [
+        246,
+        289
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]",
+       "sp_coef_if_vanilla_sub20_penalty": {
+        "value": 0.792725,
+        "factor": 0.925,
+        "status": "vanilla",
+        "applied_by_wowsims_or_mythicsim": false
+       }
+      }
+     ]
+    },
+    {
+     "id": 939,
+     "name": "Healing Wave",
+     "rank": "Rank 5",
+     "status": "forever",
+     "learn_level": 24,
+     "base_level": 24,
+     "max_level": 29,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 3000,
+     "gcd_ms": 1500,
+     "range_yd": 40,
+     "cost": {
+      "mana": 200
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_HEAL",
+       "base_points": 342,
+       "points_per_level": 2.7,
+       "scaling_base_level": 24,
+       "scaling_max_level": 29,
+       "variance": 0.156863,
+       "sp_coef": 0.857,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 342,
+       "value_at_60": 355.5,
+       "values_by_level": {
+        "24": 342,
+        "25": 344.7,
+        "26": 347.4,
+        "27": 350.1,
+        "28": 352.8,
+        "29": 355.5
+       },
+       "constant_from_level": 29,
+       "tooltip_range_at_learn_level": [
+        315,
+        369
+       ],
+       "tooltip_range_at_60": [
+        328,
+        383
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 959,
+     "name": "Healing Wave",
+     "rank": "Rank 6",
+     "status": "forever",
+     "learn_level": 32,
+     "base_level": 32,
+     "max_level": 37,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 3000,
+     "gcd_ms": 1500,
+     "range_yd": 40,
+     "cost": {
+      "mana": 265
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_HEAL",
+       "base_points": 484,
+       "points_per_level": 3.3,
+       "scaling_base_level": 32,
+       "scaling_max_level": 37,
+       "variance": 0.148532,
+       "sp_coef": 0.857,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 484,
+       "value_at_60": 500.5,
+       "values_by_level": {
+        "32": 484,
+        "33": 487.3,
+        "34": 490.6,
+        "35": 493.9,
+        "36": 497.2,
+        "37": 500.5
+       },
+       "constant_from_level": 37,
+       "tooltip_range_at_learn_level": [
+        448,
+        520
+       ],
+       "tooltip_range_at_60": [
+        464,
+        537
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 8005,
+     "name": "Healing Wave",
+     "rank": "Rank 7",
+     "status": "forever",
+     "learn_level": 40,
+     "base_level": 40,
+     "max_level": 45,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 3000,
+     "gcd_ms": 1500,
+     "range_yd": 40,
+     "cost": {
+      "mana": 340
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_HEAL",
+       "base_points": 685,
+       "points_per_level": 3.9,
+       "scaling_base_level": 40,
+       "scaling_max_level": 45,
+       "variance": 0.143036,
+       "sp_coef": 0.857,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 685,
+       "value_at_60": 704.5,
+       "values_by_level": {
+        "40": 685,
+        "41": 688.9,
+        "42": 692.8,
+        "43": 696.7,
+        "44": 700.6,
+        "45": 704.5
+       },
+       "constant_from_level": 45,
+       "tooltip_range_at_learn_level": [
+        636,
+        734
+       ],
+       "tooltip_range_at_60": [
+        655,
+        754
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 10395,
+     "name": "Healing Wave",
+     "rank": "Rank 8",
+     "status": "forever",
+     "learn_level": 48,
+     "base_level": 48,
+     "max_level": 53,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 3000,
+     "gcd_ms": 1500,
+     "range_yd": 40,
+     "cost": {
+      "mana": 440
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_HEAL",
+       "base_points": 972,
+       "points_per_level": 4.7,
+       "scaling_base_level": 48,
+       "scaling_max_level": 53,
+       "variance": 0.137363,
+       "sp_coef": 0.857,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 972,
+       "value_at_60": 995.5,
+       "values_by_level": {
+        "48": 972,
+        "49": 976.7,
+        "50": 981.4,
+        "51": 986.1,
+        "52": 990.8,
+        "53": 995.5
+       },
+       "constant_from_level": 53,
+       "tooltip_range_at_learn_level": [
+        905,
+        1039
+       ],
+       "tooltip_range_at_60": [
+        928,
+        1063
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 10396,
+     "name": "Healing Wave",
+     "rank": "Rank 9",
+     "status": "forever",
+     "learn_level": 56,
+     "base_level": 56,
+     "max_level": 61,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 3000,
+     "gcd_ms": 1500,
+     "range_yd": 40,
+     "cost": {
+      "mana": 560
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_HEAL",
+       "base_points": 1344,
+       "points_per_level": 5.5,
+       "scaling_base_level": 56,
+       "scaling_max_level": 61,
+       "variance": 0.132514,
+       "sp_coef": 0.857,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 1344,
+       "value_at_60": 1366,
+       "values_by_level": {
+        "56": 1344,
+        "57": 1349.5,
+        "58": 1355,
+        "59": 1360.5,
+        "60": 1366
+       },
+       "constant_from_level": null,
+       "note_scaling": "keeps scaling past 60 (max_level 61); at 60 it has gained 4 levels",
+       "tooltip_range_at_learn_level": [
+        1255,
+        1433
+       ],
+       "tooltip_range_at_60": [
+        1277,
+        1455
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 25357,
+     "name": "Healing Wave",
+     "rank": "Rank 10",
+     "status": "forever",
+     "learn_level": 60,
+     "base_level": 60,
+     "max_level": 65,
+     "book_rank": true,
+     "book_item": "Tablet of Healing Wave X",
+     "school": "nature",
+     "cast_ms": 3000,
+     "gcd_ms": 1500,
+     "range_yd": 40,
+     "cost": {
+      "mana": 620
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_HEAL",
+       "base_points": 1615,
+       "points_per_level": 5.5,
+       "scaling_base_level": 60,
+       "scaling_max_level": 65,
+       "variance": 0.132565,
+       "sp_coef": 0.857,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 1615,
+       "value_at_60": 1615,
+       "values_by_level": {
+        "60": 1615
+       },
+       "constant_from_level": null,
+       "note_scaling": "keeps scaling past 60 (max_level 65); at 60 it has gained 0 levels",
+       "tooltip_range_at_learn_level": [
+        1508,
+        1722
+       ],
+       "tooltip_range_at_60": [
+        1508,
+        1722
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    }
+   ],
+   "notes": [
+    "Rank 10 (25357) is a book rank: Tablet of Healing Wave X (raid drop), not trainer-taught."
+   ]
+  },
+  "LesserHealingWave": {
+   "name": "Lesser Healing Wave",
+   "wowsims_ladder": "spellData.LesserHealingWave = spelldata.Ranked(8004, 8008, 8010, 10466, 10467, 10468)",
+   "ranks": [
+    {
+     "id": 8004,
+     "name": "Lesser Healing Wave",
+     "rank": "Rank 1",
+     "status": "forever",
+     "learn_level": 20,
+     "base_level": 20,
+     "max_level": 25,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 1500,
+     "gcd_ms": 1500,
+     "range_yd": 40,
+     "cost": {
+      "mana": 105
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_HEAL",
+       "base_points": 153,
+       "points_per_level": 1.7,
+       "scaling_base_level": 20,
+       "scaling_max_level": 25,
+       "variance": 0.137931,
+       "sp_coef": 0.429,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 153,
+       "value_at_60": 161.5,
+       "values_by_level": {
+        "20": 153,
+        "21": 154.7,
+        "22": 156.4,
+        "23": 158.1,
+        "24": 159.8,
+        "25": 161.5
+       },
+       "constant_from_level": 25,
+       "tooltip_range_at_learn_level": [
+        142,
+        164
+       ],
+       "tooltip_range_at_60": [
+        150,
+        173
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 8008,
+     "name": "Lesser Healing Wave",
+     "rank": "Rank 2",
+     "status": "forever",
+     "learn_level": 28,
+     "base_level": 28,
+     "max_level": 33,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 1500,
+     "gcd_ms": 1500,
+     "range_yd": 40,
+     "cost": {
+      "mana": 145
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_HEAL",
+       "base_points": 224,
+       "points_per_level": 2.1,
+       "scaling_base_level": 28,
+       "scaling_max_level": 33,
+       "variance": 0.128788,
+       "sp_coef": 0.429,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 224,
+       "value_at_60": 234.5,
+       "values_by_level": {
+        "28": 224,
+        "29": 226.1,
+        "30": 228.2,
+        "31": 230.3,
+        "32": 232.4,
+        "33": 234.5
+       },
+       "constant_from_level": 33,
+       "tooltip_range_at_learn_level": [
+        210,
+        238
+       ],
+       "tooltip_range_at_60": [
+        220,
+        249
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 8010,
+     "name": "Lesser Healing Wave",
+     "rank": "Rank 3",
+     "status": "forever",
+     "learn_level": 36,
+     "base_level": 36,
+     "max_level": 41,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 1500,
+     "gcd_ms": 1500,
+     "range_yd": 40,
+     "cost": {
+      "mana": 185
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_HEAL",
+       "base_points": 304,
+       "points_per_level": 2.5,
+       "scaling_base_level": 36,
+       "scaling_max_level": 41,
+       "variance": 0.122563,
+       "sp_coef": 0.429,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 304,
+       "value_at_60": 316.5,
+       "values_by_level": {
+        "36": 304,
+        "37": 306.5,
+        "38": 309,
+        "39": 311.5,
+        "40": 314,
+        "41": 316.5
+       },
+       "constant_from_level": 41,
+       "tooltip_range_at_learn_level": [
+        285,
+        323
+       ],
+       "tooltip_range_at_60": [
+        297,
+        336
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 10466,
+     "name": "Lesser Healing Wave",
+     "rank": "Rank 4",
+     "status": "forever",
+     "learn_level": 44,
+     "base_level": 44,
+     "max_level": 49,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 1500,
+     "gcd_ms": 1500,
+     "range_yd": 40,
+     "cost": {
+      "mana": 235
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_HEAL",
+       "base_points": 426,
+       "points_per_level": 3,
+       "scaling_base_level": 44,
+       "scaling_max_level": 49,
+       "variance": 0.115226,
+       "sp_coef": 0.429,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 426,
+       "value_at_60": 441,
+       "values_by_level": {
+        "44": 426,
+        "45": 429,
+        "46": 432,
+        "47": 435,
+        "48": 438,
+        "49": 441
+       },
+       "constant_from_level": 49,
+       "tooltip_range_at_learn_level": [
+        401,
+        451
+       ],
+       "tooltip_range_at_60": [
+        416,
+        466
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 10467,
+     "name": "Lesser Healing Wave",
+     "rank": "Rank 5",
+     "status": "forever",
+     "learn_level": 52,
+     "base_level": 52,
+     "max_level": 57,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 1500,
+     "gcd_ms": 1500,
+     "range_yd": 40,
+     "cost": {
+      "mana": 305
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_HEAL",
+       "base_points": 608,
+       "points_per_level": 3.6,
+       "scaling_base_level": 52,
+       "scaling_max_level": 57,
+       "variance": 0.110778,
+       "sp_coef": 0.429,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 608,
+       "value_at_60": 626,
+       "values_by_level": {
+        "52": 608,
+        "53": 611.6,
+        "54": 615.2,
+        "55": 618.8,
+        "56": 622.4,
+        "57": 626
+       },
+       "constant_from_level": 57,
+       "tooltip_range_at_learn_level": [
+        574,
+        642
+       ],
+       "tooltip_range_at_60": [
+        592,
+        660
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 10468,
+     "name": "Lesser Healing Wave",
+     "rank": "Rank 6",
+     "status": "forever",
+     "learn_level": 60,
+     "base_level": 60,
+     "max_level": 65,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 1500,
+     "gcd_ms": 1500,
+     "range_yd": 40,
+     "cost": {
+      "mana": 380
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_HEAL",
+       "base_points": 820,
+       "points_per_level": 4.2,
+       "scaling_base_level": 60,
+       "scaling_max_level": 65,
+       "variance": 0.109091,
+       "sp_coef": 0.429,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 820,
+       "value_at_60": 820,
+       "values_by_level": {
+        "60": 820
+       },
+       "constant_from_level": null,
+       "note_scaling": "keeps scaling past 60 (max_level 65); at 60 it has gained 0 levels",
+       "tooltip_range_at_learn_level": [
+        775,
+        865
+       ],
+       "tooltip_range_at_60": [
+        775,
+        865
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    }
+   ]
+  },
+  "ChainHeal": {
+   "name": "Chain Heal",
+   "wowsims_ladder": "spellData.ChainHeal = spelldata.Ranked(1064, 10622, 10623)",
+   "ranks": [
+    {
+     "id": 1064,
+     "name": "Chain Heal",
+     "rank": "Rank 1",
+     "status": "forever",
+     "learn_level": 40,
+     "base_level": 40,
+     "max_level": 45,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 2500,
+     "gcd_ms": 1500,
+     "range_yd": 40,
+     "cost": {
+      "mana": 260
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_HEAL",
+       "base_points": 251,
+       "points_per_level": 2.5,
+       "scaling_base_level": 40,
+       "scaling_max_level": 45,
+       "variance": 0.139535,
+       "sp_coef": 0.714,
+       "chain_targets": 3,
+       "chain_amp": 0.5,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 251,
+       "value_at_60": 263.5,
+       "values_by_level": {
+        "40": 251,
+        "41": 253.5,
+        "42": 256,
+        "43": 258.5,
+        "44": 261,
+        "45": 263.5
+       },
+       "constant_from_level": 45,
+       "tooltip_range_at_learn_level": [
+        233,
+        269
+       ],
+       "tooltip_range_at_60": [
+        245,
+        282
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 10622,
+     "name": "Chain Heal",
+     "rank": "Rank 2",
+     "status": "forever",
+     "learn_level": 46,
+     "base_level": 46,
+     "max_level": 51,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 2500,
+     "gcd_ms": 1500,
+     "range_yd": 40,
+     "cost": {
+      "mana": 315
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_HEAL",
+       "base_points": 335,
+       "points_per_level": 2.8,
+       "scaling_base_level": 46,
+       "scaling_max_level": 51,
+       "variance": 0.137931,
+       "sp_coef": 0.714,
+       "chain_targets": 3,
+       "chain_amp": 0.5,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 335,
+       "value_at_60": 349,
+       "values_by_level": {
+        "46": 335,
+        "47": 337.8,
+        "48": 340.6,
+        "49": 343.4,
+        "50": 346.2,
+        "51": 349
+       },
+       "constant_from_level": 51,
+       "tooltip_range_at_learn_level": [
+        312,
+        358
+       ],
+       "tooltip_range_at_60": [
+        326,
+        372
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 10623,
+     "name": "Chain Heal",
+     "rank": "Rank 3",
+     "status": "forever",
+     "learn_level": 54,
+     "base_level": 54,
+     "max_level": 59,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 2500,
+     "gcd_ms": 1500,
+     "range_yd": 40,
+     "cost": {
+      "mana": 405
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_HEAL",
+       "base_points": 490,
+       "points_per_level": 3.3,
+       "scaling_base_level": 54,
+       "scaling_max_level": 59,
+       "variance": 0.132203,
+       "sp_coef": 0.714,
+       "chain_targets": 3,
+       "chain_amp": 0.5,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 490,
+       "value_at_60": 506.5,
+       "values_by_level": {
+        "54": 490,
+        "55": 493.3,
+        "56": 496.6,
+        "57": 499.9,
+        "58": 503.2,
+        "59": 506.5
+       },
+       "constant_from_level": 59,
+       "tooltip_range_at_learn_level": [
+        458,
+        522
+       ],
+       "tooltip_range_at_60": [
+        474,
+        539
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    }
+   ],
+   "notes": [
+    "chain_amp 0.5: each jump heals half the previous target; 3 targets.",
+    "mythicsim-forever-engine notes Forever rules: Chain Heal jumps only to players damaged recently (src/classes/shaman/prepare/heals.rs)."
+   ]
+  },
+  "Riptide": {
+   "name": "Riptide",
+   "wowsims_ladder": "spellData.Riptide = spelldata.Ranked(408521, 1239242, 1239243)",
+   "ranks": [
+    {
+     "id": 408521,
+     "name": "Riptide",
+     "rank": "Rank 1",
+     "status": "forever",
+     "learn_level": 40,
+     "base_level": 40,
+     "max_level": 48,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 12000,
+     "cooldown_category": 1228,
+     "duration_ms": 15000,
+     "range_yd": 40,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 150
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_DUMMY",
+       "base_points": 0,
+       "points_per_level": 3.7,
+       "scaling_base_level": 40,
+       "scaling_max_level": 48,
+       "variance": 0.1,
+       "sp_coef": 0.214,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 0,
+       "value_at_60": 0,
+       "inert_in_forever": true,
+       "raw_note": "E_DUMMY: the initial heal was removed (2 Nov 2026 notes). base_points/points_per_level/sp_coef are the leftover row values; the heal is 0."
+      },
+      {
+       "index": 1,
+       "type": "E_APPLY_AURA",
+       "aura": "A_PERIODIC_HEAL",
+       "base_points": 89,
+       "scaling_base_level": 40,
+       "scaling_max_level": 48,
+       "sp_coef": 0.1,
+       "period_ms": 3000,
+       "ticks": 5,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 89,
+       "value_at_60": 89
+      },
+      {
+       "index": 2,
+       "type": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "base_points": 25,
+       "scaling_base_level": 40,
+       "scaling_max_level": 48,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 25,
+       "value_at_60": 25
+      }
+     ]
+    },
+    {
+     "id": 1239242,
+     "name": "Riptide",
+     "rank": "Rank 2",
+     "status": "forever",
+     "learn_level": 50,
+     "base_level": 50,
+     "max_level": 58,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 12000,
+     "cooldown_category": 1228,
+     "duration_ms": 15000,
+     "range_yd": 40,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 180
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_DUMMY",
+       "base_points": 0,
+       "points_per_level": 4.2,
+       "scaling_base_level": 50,
+       "scaling_max_level": 58,
+       "variance": 0.1,
+       "sp_coef": 0.214,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 0,
+       "value_at_60": 0,
+       "inert_in_forever": true,
+       "raw_note": "E_DUMMY: the initial heal was removed (2 Nov 2026 notes). base_points/points_per_level/sp_coef are the leftover row values; the heal is 0."
+      },
+      {
+       "index": 1,
+       "type": "E_APPLY_AURA",
+       "aura": "A_PERIODIC_HEAL",
+       "base_points": 115,
+       "scaling_base_level": 50,
+       "scaling_max_level": 58,
+       "sp_coef": 0.1,
+       "period_ms": 3000,
+       "ticks": 5,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 115,
+       "value_at_60": 115
+      },
+      {
+       "index": 2,
+       "type": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "base_points": 25,
+       "scaling_base_level": 50,
+       "scaling_max_level": 58,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 25,
+       "value_at_60": 25
+      }
+     ]
+    },
+    {
+     "id": 1239243,
+     "name": "Riptide",
+     "rank": "Rank 3",
+     "status": "forever",
+     "learn_level": 60,
+     "base_level": 60,
+     "max_level": 68,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 12000,
+     "cooldown_category": 1228,
+     "duration_ms": 15000,
+     "range_yd": 40,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 230
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_DUMMY",
+       "base_points": 0,
+       "points_per_level": 4.9,
+       "scaling_base_level": 60,
+       "scaling_max_level": 68,
+       "variance": 0.1,
+       "sp_coef": 0.214,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 0,
+       "value_at_60": 0,
+       "inert_in_forever": true,
+       "raw_note": "E_DUMMY: the initial heal was removed (2 Nov 2026 notes). base_points/points_per_level/sp_coef are the leftover row values; the heal is 0."
+      },
+      {
+       "index": 1,
+       "type": "E_APPLY_AURA",
+       "aura": "A_PERIODIC_HEAL",
+       "base_points": 161,
+       "points_per_level": 3.7,
+       "scaling_base_level": 60,
+       "scaling_max_level": 68,
+       "sp_coef": 0.1,
+       "period_ms": 3000,
+       "ticks": 5,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 161,
+       "value_at_60": 161,
+       "values_by_level": {
+        "60": 161
+       },
+       "constant_from_level": null,
+       "note_scaling": "keeps scaling past 60 (max_level 68); at 60 it has gained 0 levels"
+      },
+      {
+       "index": 2,
+       "type": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "base_points": 25,
+       "scaling_base_level": 60,
+       "scaling_max_level": 68,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 25,
+       "value_at_60": 25
+      }
+     ]
+    }
+   ],
+   "notes": [
+    "Restoration talent (tier 7, wowsims talents_restoration.go applyRiptide); the talent teaches rank 1 (408521). Ranks 2/3 learn levels 50/60 from SpellLevels.",
+    "Effect 0 is E_DUMMY with base 0: the initial heal is gone in this build. Client 1.60.1.70425 had it as E_HEAL 480 (+3.7/lvl) on rank 1 and 841 (+4.9/lvl) on rank 3; Blizzard's 2 Nov 2026 notes removed it (mythicsim src/prepare/hotfix_113554.rs). Treat the direct part as 0.",
+    "Effect 1 is the HoT: 89/115/161 per 3 s tick, 5 ticks, sp_coef 0.1 per tick. Rank 3 tick scales +3.7/level above 60 only.",
+    "Effect 2 (A_DUMMY 25): Chain Heal cast directly on the Riptide target heals 25% more.",
+    "Category cooldown 12 s (was 6 s in 70425); mana 150/180/230 (was 245/300/385).",
+    "wowsims does not implement Riptide (TODO in talents_restoration.go)."
+   ]
+  },
+  "HealingStreamTotem": {
+   "name": "Healing Stream Totem",
+   "wowsims_ladder": "spellData.HealingStreamTotem = spelldata.Ranked(5394, 6375, 6377, 10462, 10463)",
+   "ranks": [
+    {
+     "id": 5394,
+     "name": "Healing Stream Totem",
+     "rank": "Rank 1",
+     "status": "forever",
+     "learn_level": 20,
+     "base_level": 20,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "frost",
+     "gcd_ms": 1000,
+     "duration_ms": 300000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 40
+     },
+     "tooltip_refs": [
+      5672
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SUMMON",
+       "base_points": 5,
+       "scaling_base_level": 20,
+       "scaling_max_level": 0,
+       "misc": 3527,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 5,
+       "value_at_60": 5
+      }
+     ],
+     "linked": [
+      {
+       "id": 5672,
+       "name": "Healing Stream",
+       "rank": "Rank 1",
+       "role": "periodic_heal_aura",
+       "status": "forever",
+       "learn_level": 20,
+       "base_level": 20,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "nature",
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AREA_AURA_PARTY",
+         "aura": "A_PERIODIC_HEAL",
+         "base_points": 5,
+         "scaling_base_level": 20,
+         "scaling_max_level": 0,
+         "sp_coef": 0.022,
+         "period_ms": 2000,
+         "radius_yd": 30,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 5,
+         "value_at_60": 5,
+         "ticks_over_totem_duration": 150
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 6375,
+     "name": "Healing Stream Totem",
+     "rank": "Rank 2",
+     "status": "forever",
+     "learn_level": 30,
+     "base_level": 30,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "frost",
+     "gcd_ms": 1000,
+     "duration_ms": 300000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 50
+     },
+     "tooltip_refs": [
+      6371
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SUMMON",
+       "base_points": 5,
+       "scaling_base_level": 30,
+       "scaling_max_level": 0,
+       "misc": 3906,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 5,
+       "value_at_60": 5
+      }
+     ],
+     "linked": [
+      {
+       "id": 6371,
+       "name": "Healing Stream",
+       "rank": "Rank 2",
+       "role": "periodic_heal_aura",
+       "status": "forever",
+       "learn_level": 30,
+       "base_level": 30,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "nature",
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AREA_AURA_PARTY",
+         "aura": "A_PERIODIC_HEAL",
+         "base_points": 6,
+         "scaling_base_level": 30,
+         "scaling_max_level": 0,
+         "sp_coef": 0.022,
+         "period_ms": 2000,
+         "radius_yd": 30,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 6,
+         "value_at_60": 6,
+         "ticks_over_totem_duration": 150
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 6377,
+     "name": "Healing Stream Totem",
+     "rank": "Rank 3",
+     "status": "forever",
+     "learn_level": 40,
+     "base_level": 40,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "frost",
+     "gcd_ms": 1000,
+     "duration_ms": 300000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 60
+     },
+     "tooltip_refs": [
+      6372
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SUMMON",
+       "base_points": 5,
+       "scaling_base_level": 40,
+       "scaling_max_level": 0,
+       "misc": 3907,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 5,
+       "value_at_60": 5
+      }
+     ],
+     "linked": [
+      {
+       "id": 6372,
+       "name": "Healing Stream",
+       "rank": "Rank 3",
+       "role": "periodic_heal_aura",
+       "status": "forever",
+       "learn_level": 40,
+       "base_level": 40,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "nature",
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AREA_AURA_PARTY",
+         "aura": "A_PERIODIC_HEAL",
+         "base_points": 7,
+         "scaling_base_level": 40,
+         "scaling_max_level": 0,
+         "sp_coef": 0.022,
+         "period_ms": 2000,
+         "radius_yd": 30,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 7,
+         "value_at_60": 7,
+         "ticks_over_totem_duration": 150
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 10462,
+     "name": "Healing Stream Totem",
+     "rank": "Rank 4",
+     "status": "forever",
+     "learn_level": 50,
+     "base_level": 50,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "frost",
+     "gcd_ms": 1000,
+     "duration_ms": 300000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 70
+     },
+     "tooltip_refs": [
+      10460
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SUMMON",
+       "base_points": 5,
+       "scaling_base_level": 50,
+       "scaling_max_level": 0,
+       "misc": 3908,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 5,
+       "value_at_60": 5
+      }
+     ],
+     "linked": [
+      {
+       "id": 10460,
+       "name": "Healing Stream",
+       "rank": "Rank 4",
+       "role": "periodic_heal_aura",
+       "status": "forever",
+       "learn_level": 50,
+       "base_level": 50,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "nature",
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AREA_AURA_PARTY",
+         "aura": "A_PERIODIC_HEAL",
+         "base_points": 9,
+         "scaling_base_level": 50,
+         "scaling_max_level": 0,
+         "sp_coef": 0.022,
+         "period_ms": 2000,
+         "radius_yd": 30,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 9,
+         "value_at_60": 9,
+         "ticks_over_totem_duration": 150
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 10463,
+     "name": "Healing Stream Totem",
+     "rank": "Rank 5",
+     "status": "forever",
+     "learn_level": 60,
+     "base_level": 60,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "frost",
+     "gcd_ms": 1000,
+     "duration_ms": 300000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 80
+     },
+     "tooltip_refs": [
+      10461
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SUMMON",
+       "base_points": 5,
+       "scaling_base_level": 60,
+       "scaling_max_level": 0,
+       "misc": 3909,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 5,
+       "value_at_60": 5
+      }
+     ],
+     "linked": [
+      {
+       "id": 10461,
+       "name": "Healing Stream",
+       "rank": "Rank 5",
+       "role": "periodic_heal_aura",
+       "status": "forever",
+       "learn_level": 60,
+       "base_level": 60,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "nature",
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AREA_AURA_PARTY",
+         "aura": "A_PERIODIC_HEAL",
+         "base_points": 11,
+         "scaling_base_level": 60,
+         "scaling_max_level": 0,
+         "sp_coef": 0.022,
+         "period_ms": 2000,
+         "radius_yd": 30,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 11,
+         "value_at_60": 11,
+         "ticks_over_totem_duration": 150
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "notes": [
+    "The totem cast summons an NPC; the heal is the linked aura spell (RefIDs[0]): party area aura A_PERIODIC_HEAL every 2 s within 30 yd while the totem stands (300 s).",
+    "Tick heal has no level scaling; sp_coef 0.022 per tick (client SPCoef).",
+    "wowsims: registerHealingStreamTotemSpell is commented out (totems.go); mythicsim models it (heals.rs) with these rows."
+   ]
+  },
+  "ManaSpringTotem": {
+   "name": "Mana Spring Totem",
+   "wowsims_ladder": "spellData.ManaSpringTotem = spelldata.Ranked(5675, 10495, 10496, 10497)",
+   "ranks": [
+    {
+     "id": 5675,
+     "name": "Mana Spring Totem",
+     "rank": "Rank 1",
+     "status": "forever",
+     "learn_level": 26,
+     "base_level": 26,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "frost",
+     "gcd_ms": 1000,
+     "duration_ms": 300000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 40
+     },
+     "tooltip_refs": [
+      5677
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SUMMON",
+       "base_points": 5,
+       "scaling_base_level": 26,
+       "scaling_max_level": 0,
+       "misc": 3573,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 5,
+       "value_at_60": 5
+      }
+     ],
+     "linked": [
+      {
+       "id": 5677,
+       "name": "Mana Spring",
+       "rank": "Rank 1",
+       "role": "periodic_energize_aura",
+       "status": "forever",
+       "learn_level": 26,
+       "base_level": 26,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "nature",
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AREA_AURA_PARTY",
+         "aura": "A_PERIODIC_ENERGIZE",
+         "base_points": 4,
+         "scaling_base_level": 26,
+         "scaling_max_level": 0,
+         "period_ms": 2000,
+         "radius_yd": 30,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 4,
+         "value_at_60": 4,
+         "ticks_over_totem_duration": 150
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 10495,
+     "name": "Mana Spring Totem",
+     "rank": "Rank 2",
+     "status": "forever",
+     "learn_level": 36,
+     "base_level": 36,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "frost",
+     "gcd_ms": 1000,
+     "duration_ms": 300000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 60
+     },
+     "tooltip_refs": [
+      10491
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SUMMON",
+       "base_points": 5,
+       "scaling_base_level": 36,
+       "scaling_max_level": 0,
+       "misc": 7414,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 5,
+       "value_at_60": 5
+      }
+     ],
+     "linked": [
+      {
+       "id": 10491,
+       "name": "Mana Spring",
+       "rank": "Rank 2",
+       "role": "periodic_energize_aura",
+       "status": "forever",
+       "learn_level": 36,
+       "base_level": 36,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "nature",
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AREA_AURA_PARTY",
+         "aura": "A_PERIODIC_ENERGIZE",
+         "base_points": 6,
+         "scaling_base_level": 36,
+         "scaling_max_level": 0,
+         "period_ms": 2000,
+         "radius_yd": 30,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 6,
+         "value_at_60": 6,
+         "ticks_over_totem_duration": 150
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 10496,
+     "name": "Mana Spring Totem",
+     "rank": "Rank 3",
+     "status": "forever",
+     "learn_level": 46,
+     "base_level": 46,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "frost",
+     "gcd_ms": 1000,
+     "duration_ms": 300000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 80
+     },
+     "tooltip_refs": [
+      10493
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SUMMON",
+       "base_points": 5,
+       "scaling_base_level": 46,
+       "scaling_max_level": 0,
+       "misc": 7415,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 5,
+       "value_at_60": 5
+      }
+     ],
+     "linked": [
+      {
+       "id": 10493,
+       "name": "Mana Spring",
+       "rank": "Rank 3",
+       "role": "periodic_energize_aura",
+       "status": "forever",
+       "learn_level": 46,
+       "base_level": 46,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "nature",
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AREA_AURA_PARTY",
+         "aura": "A_PERIODIC_ENERGIZE",
+         "base_points": 8,
+         "scaling_base_level": 46,
+         "scaling_max_level": 0,
+         "period_ms": 2000,
+         "radius_yd": 30,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 8,
+         "value_at_60": 8,
+         "ticks_over_totem_duration": 150
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 10497,
+     "name": "Mana Spring Totem",
+     "rank": "Rank 4",
+     "status": "forever",
+     "learn_level": 56,
+     "base_level": 56,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "frost",
+     "gcd_ms": 1000,
+     "duration_ms": 300000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 100
+     },
+     "tooltip_refs": [
+      10494
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SUMMON",
+       "base_points": 5,
+       "scaling_base_level": 56,
+       "scaling_max_level": 0,
+       "misc": 7416,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 5,
+       "value_at_60": 5
+      }
+     ],
+     "linked": [
+      {
+       "id": 10494,
+       "name": "Mana Spring",
+       "rank": "Rank 4",
+       "role": "periodic_energize_aura",
+       "status": "forever",
+       "learn_level": 56,
+       "base_level": 56,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "nature",
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AREA_AURA_PARTY",
+         "aura": "A_PERIODIC_ENERGIZE",
+         "base_points": 10,
+         "scaling_base_level": 56,
+         "scaling_max_level": 0,
+         "period_ms": 2000,
+         "radius_yd": 30,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 10,
+         "value_at_60": 10,
+         "ticks_over_totem_duration": 150
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "notes": [
+    "Linked aura: A_PERIODIC_ENERGIZE mana every 2 s to party within 30 yd, 300 s totem. No level scaling."
+   ]
+  },
+  "ManaTideTotem": {
+   "name": "Mana Tide Totem",
+   "wowsims_ladder": "spellData.ManaTideTotem = spelldata.Ranked(16190, 17354, 17359, 1325256)",
+   "ranks": [
+    {
+     "id": 16190,
+     "name": "Mana Tide Totem",
+     "rank": "Rank 1",
+     "status": "forever",
+     "learn_level": 1,
+     "base_level": 1,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "frost",
+     "gcd_ms": 1000,
+     "category_cooldown_ms": 300000,
+     "cooldown_category": 591,
+     "duration_ms": 13000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 10
+     },
+     "tooltip_refs": [
+      16191
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SUMMON",
+       "base_points": 5,
+       "scaling_base_level": 1,
+       "scaling_max_level": 0,
+       "misc": 10467,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 5,
+       "value_at_60": 5
+      }
+     ],
+     "linked": [
+      {
+       "id": 16191,
+       "name": "Mana Tide",
+       "rank": "Rank 1",
+       "role": "periodic_energize_aura",
+       "status": "forever",
+       "learn_level": 1,
+       "base_level": 1,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "nature",
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AREA_AURA_PARTY",
+         "aura": "A_PERIODIC_ENERGIZE",
+         "base_points": 88,
+         "scaling_base_level": 1,
+         "scaling_max_level": 0,
+         "period_ms": 3000,
+         "radius_yd": 30,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 88,
+         "value_at_60": 88,
+         "ticks_over_totem_duration": 4
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 17354,
+     "name": "Mana Tide Totem",
+     "rank": "Rank 2",
+     "status": "forever",
+     "learn_level": 38,
+     "base_level": 38,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "frost",
+     "gcd_ms": 1000,
+     "category_cooldown_ms": 300000,
+     "cooldown_category": 591,
+     "duration_ms": 13000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 20
+     },
+     "tooltip_refs": [
+      17355
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SUMMON",
+       "base_points": 5,
+       "scaling_base_level": 38,
+       "scaling_max_level": 0,
+       "misc": 11100,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 5,
+       "value_at_60": 5
+      }
+     ],
+     "linked": [
+      {
+       "id": 17355,
+       "name": "Mana Tide",
+       "rank": "Rank 2",
+       "role": "periodic_energize_aura",
+       "status": "forever",
+       "learn_level": 38,
+       "base_level": 38,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "nature",
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AREA_AURA_PARTY",
+         "aura": "A_PERIODIC_ENERGIZE",
+         "base_points": 133,
+         "scaling_base_level": 38,
+         "scaling_max_level": 0,
+         "period_ms": 3000,
+         "radius_yd": 30,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 133,
+         "value_at_60": 133,
+         "ticks_over_totem_duration": 4
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 17359,
+     "name": "Mana Tide Totem",
+     "rank": "Rank 3",
+     "status": "forever",
+     "learn_level": 48,
+     "base_level": 48,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "frost",
+     "gcd_ms": 1000,
+     "category_cooldown_ms": 300000,
+     "cooldown_category": 591,
+     "duration_ms": 13000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 30
+     },
+     "tooltip_refs": [
+      17360
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SUMMON",
+       "base_points": 5,
+       "scaling_base_level": 48,
+       "scaling_max_level": 0,
+       "misc": 11101,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 5,
+       "value_at_60": 5
+      }
+     ],
+     "linked": [
+      {
+       "id": 17360,
+       "name": "Mana Tide",
+       "rank": "Rank 3",
+       "role": "periodic_energize_aura",
+       "status": "forever",
+       "learn_level": 48,
+       "base_level": 48,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "nature",
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "proc": {
+        "chance_column": 100,
+        "chance_source": "Always"
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AREA_AURA_PARTY",
+         "aura": "A_PERIODIC_ENERGIZE",
+         "base_points": 197,
+         "scaling_base_level": 48,
+         "scaling_max_level": 0,
+         "period_ms": 3000,
+         "radius_yd": 30,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 197,
+         "value_at_60": 197,
+         "ticks_over_totem_duration": 4
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 1325256,
+     "name": "Mana Tide Totem",
+     "rank": "Rank 4",
+     "status": "forever",
+     "learn_level": 58,
+     "base_level": 58,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "frost",
+     "gcd_ms": 1000,
+     "category_cooldown_ms": 300000,
+     "cooldown_category": 591,
+     "duration_ms": 13000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 60
+     },
+     "tooltip_refs": [
+      1325257
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SUMMON",
+       "base_points": 5,
+       "scaling_base_level": 58,
+       "scaling_max_level": 0,
+       "misc": 277993,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 5,
+       "value_at_60": 5
+      }
+     ],
+     "linked": [
+      {
+       "id": 1325257,
+       "name": "Mana Tide",
+       "rank": "Rank 4",
+       "role": "periodic_energize_aura",
+       "status": "forever",
+       "learn_level": 58,
+       "base_level": 58,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "nature",
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "proc": {
+        "chance_column": 100,
+        "chance_source": "Always"
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AREA_AURA_PARTY",
+         "aura": "A_PERIODIC_ENERGIZE",
+         "base_points": 290,
+         "scaling_base_level": 58,
+         "scaling_max_level": 0,
+         "period_ms": 3000,
+         "radius_yd": 30,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 290,
+         "value_at_60": 290,
+         "ticks_over_totem_duration": 4
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "notes": [
+    "Restoration talent (tier 4); rank 1 SpellLevel 1 = available when the talent is taken (talent tier gate applies). Ranks 2-4 at 38/48/58. Rank 4 (1325256/1325257) is new in Forever.",
+    "Totem lasts 13 s, energize every 3 s -> 4 ticks of 88/133/197/290 mana to the party. 5 min cooldown."
+   ]
+  },
+  "WaterShield": {
+   "name": "Water Shield",
+   "wowsims_ladder": "spellData.WaterShield = spelldata.Talent(408510, 1)",
+   "ranks": [
+    {
+     "id": 408510,
+     "name": "Water Shield",
+     "status": "forever",
+     "learn_level": 20,
+     "base_level": 20,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "duration_ms": 600000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 0
+     },
+     "proc": {
+      "chance_column": 100,
+      "charges": 3,
+      "icd_ms": 3500,
+      "chance_source": "Always",
+      "proc_flags": {
+       "0": 221864
+      }
+     },
+     "tooltip_refs": [
+      408511
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_APPLY_AURA",
+       "aura": "A_PROC_TRIGGER_SPELL",
+       "base_points": 100,
+       "scaling_base_level": 20,
+       "scaling_max_level": 0,
+       "trigger_spell": 408511,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 100,
+       "value_at_60": 100
+      },
+      {
+       "index": 1,
+       "type": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "base_points": 1,
+       "scaling_base_level": 20,
+       "scaling_max_level": 0,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1,
+       "value_at_60": 1
+      }
+     ],
+     "linked": [
+      {
+       "id": 408511,
+       "name": "Water Shield",
+       "role": "mana_per_globe",
+       "status": "forever",
+       "learn_level": 20,
+       "base_level": 20,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "nature",
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_ENERGIZE_PCT",
+         "base_points": 2,
+         "scaling_base_level": 20,
+         "scaling_max_level": 0,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 2,
+         "value_at_60": 2
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "notes": [
+    "Restoration talent (tier 3, SpellLevel 20). One rank. No mana cost.",
+    "3 globes, 10 min. A hit taken, or one of the shaman's own spell crits (wowsims reading of the tooltip), spends a globe at most once per 3.5 s and restores 408511's 2% of MAXIMUM mana (E_ENERGIZE_PCT 2).",
+    "Mana per globe at level L = 0.02 * max_mana(L); no level term in the data."
+   ]
+  },
+  "LightningShield": {
+   "name": "Lightning Shield",
+   "wowsims_ladder": "spellData.LightningShield = spelldata.Ranked(324, 325, 905, 945, 8134, 10431, 10432)",
+   "ranks": [
+    {
+     "id": 324,
+     "name": "Lightning Shield",
+     "rank": "Rank 1",
+     "status": "forever",
+     "learn_level": 8,
+     "base_level": 8,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "duration_ms": 600000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 45
+     },
+     "proc": {
+      "chance_column": 100,
+      "charges": 3,
+      "icd_ms": 3500,
+      "chance_source": "Always",
+      "proc_flags": {
+       "0": 139944
+      }
+     },
+     "tooltip_refs": [
+      26364
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_APPLY_AURA",
+       "aura": "A_PROC_TRIGGER_SPELL",
+       "base_points": 1,
+       "scaling_base_level": 8,
+       "scaling_max_level": 0,
+       "trigger_spell": 26545,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1,
+       "value_at_60": 1
+      }
+     ],
+     "linked": [
+      {
+       "id": 26364,
+       "name": "Lightning Shield",
+       "rank": "Rank 1",
+       "role": "orb_damage",
+       "status": "forever",
+       "learn_level": 8,
+       "base_level": 8,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "nature",
+       "range_yd": 100,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_SCHOOL_DAMAGE",
+         "base_points": 13,
+         "scaling_base_level": 8,
+         "scaling_max_level": 0,
+         "sp_coef": 0.267,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 13,
+         "value_at_60": 13
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 325,
+     "name": "Lightning Shield",
+     "rank": "Rank 2",
+     "status": "forever",
+     "learn_level": 16,
+     "base_level": 16,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "duration_ms": 600000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 80
+     },
+     "proc": {
+      "chance_column": 100,
+      "charges": 3,
+      "icd_ms": 3500,
+      "chance_source": "Always",
+      "proc_flags": {
+       "0": 139944
+      }
+     },
+     "tooltip_refs": [
+      26365
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_APPLY_AURA",
+       "aura": "A_PROC_TRIGGER_SPELL",
+       "base_points": 1,
+       "scaling_base_level": 16,
+       "scaling_max_level": 0,
+       "trigger_spell": 26545,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1,
+       "value_at_60": 1
+      }
+     ],
+     "linked": [
+      {
+       "id": 26365,
+       "name": "Lightning Shield",
+       "rank": "Rank 2",
+       "role": "orb_damage",
+       "status": "forever",
+       "learn_level": 16,
+       "base_level": 16,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "nature",
+       "range_yd": 100,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_SCHOOL_DAMAGE",
+         "base_points": 24,
+         "scaling_base_level": 16,
+         "scaling_max_level": 0,
+         "sp_coef": 0.267,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 24,
+         "value_at_60": 24
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 905,
+     "name": "Lightning Shield",
+     "rank": "Rank 3",
+     "status": "forever",
+     "learn_level": 24,
+     "base_level": 24,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "duration_ms": 600000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 125
+     },
+     "proc": {
+      "chance_column": 100,
+      "charges": 3,
+      "icd_ms": 3500,
+      "chance_source": "Always",
+      "proc_flags": {
+       "0": 139944
+      }
+     },
+     "tooltip_refs": [
+      26366
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_APPLY_AURA",
+       "aura": "A_PROC_TRIGGER_SPELL",
+       "base_points": 1,
+       "scaling_base_level": 24,
+       "scaling_max_level": 0,
+       "trigger_spell": 26545,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1,
+       "value_at_60": 1
+      }
+     ],
+     "linked": [
+      {
+       "id": 26366,
+       "name": "Lightning Shield",
+       "rank": "Rank 3",
+       "role": "orb_damage",
+       "status": "forever",
+       "learn_level": 24,
+       "base_level": 24,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "nature",
+       "range_yd": 100,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_SCHOOL_DAMAGE",
+         "base_points": 40,
+         "scaling_base_level": 24,
+         "scaling_max_level": 0,
+         "sp_coef": 0.267,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 40,
+         "value_at_60": 40
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 945,
+     "name": "Lightning Shield",
+     "rank": "Rank 4",
+     "status": "forever",
+     "learn_level": 32,
+     "base_level": 32,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "duration_ms": 600000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 180
+     },
+     "proc": {
+      "chance_column": 100,
+      "charges": 3,
+      "icd_ms": 3500,
+      "chance_source": "Always",
+      "proc_flags": {
+       "0": 139944
+      }
+     },
+     "tooltip_refs": [
+      26367
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_APPLY_AURA",
+       "aura": "A_PROC_TRIGGER_SPELL",
+       "base_points": 1,
+       "scaling_base_level": 32,
+       "scaling_max_level": 0,
+       "trigger_spell": 26545,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1,
+       "value_at_60": 1
+      }
+     ],
+     "linked": [
+      {
+       "id": 26367,
+       "name": "Lightning Shield",
+       "rank": "Rank 4",
+       "role": "orb_damage",
+       "status": "forever",
+       "learn_level": 32,
+       "base_level": 32,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "nature",
+       "range_yd": 100,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_SCHOOL_DAMAGE",
+         "base_points": 64,
+         "scaling_base_level": 32,
+         "scaling_max_level": 0,
+         "sp_coef": 0.267,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 64,
+         "value_at_60": 64
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 8134,
+     "name": "Lightning Shield",
+     "rank": "Rank 5",
+     "status": "forever",
+     "learn_level": 40,
+     "base_level": 40,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "duration_ms": 600000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 240
+     },
+     "proc": {
+      "chance_column": 100,
+      "charges": 3,
+      "icd_ms": 3500,
+      "chance_source": "Always",
+      "proc_flags": {
+       "0": 139944
+      }
+     },
+     "tooltip_refs": [
+      26369
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_APPLY_AURA",
+       "aura": "A_PROC_TRIGGER_SPELL",
+       "base_points": 1,
+       "scaling_base_level": 40,
+       "scaling_max_level": 0,
+       "trigger_spell": 26545,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1,
+       "value_at_60": 1
+      }
+     ],
+     "linked": [
+      {
+       "id": 26369,
+       "name": "Lightning Shield",
+       "rank": "Rank 5",
+       "role": "orb_damage",
+       "status": "forever",
+       "learn_level": 40,
+       "base_level": 40,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "nature",
+       "range_yd": 100,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_SCHOOL_DAMAGE",
+         "base_points": 96,
+         "scaling_base_level": 40,
+         "scaling_max_level": 0,
+         "sp_coef": 0.267,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 96,
+         "value_at_60": 96
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 10431,
+     "name": "Lightning Shield",
+     "rank": "Rank 6",
+     "status": "forever",
+     "learn_level": 48,
+     "base_level": 48,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "duration_ms": 600000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 305
+     },
+     "proc": {
+      "chance_column": 100,
+      "charges": 3,
+      "icd_ms": 3500,
+      "chance_source": "Always",
+      "proc_flags": {
+       "0": 139944
+      }
+     },
+     "tooltip_refs": [
+      26370
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_APPLY_AURA",
+       "aura": "A_PROC_TRIGGER_SPELL",
+       "base_points": 1,
+       "scaling_base_level": 48,
+       "scaling_max_level": 0,
+       "trigger_spell": 26545,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1,
+       "value_at_60": 1
+      }
+     ],
+     "linked": [
+      {
+       "id": 26370,
+       "name": "Lightning Shield",
+       "rank": "Rank 6",
+       "role": "orb_damage",
+       "status": "forever",
+       "learn_level": 48,
+       "base_level": 48,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "nature",
+       "range_yd": 100,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_SCHOOL_DAMAGE",
+         "base_points": 134,
+         "scaling_base_level": 48,
+         "scaling_max_level": 0,
+         "sp_coef": 0.267,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 134,
+         "value_at_60": 134
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 10432,
+     "name": "Lightning Shield",
+     "rank": "Rank 7",
+     "status": "forever",
+     "learn_level": 56,
+     "base_level": 56,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "duration_ms": 600000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 370
+     },
+     "proc": {
+      "chance_column": 100,
+      "charges": 3,
+      "icd_ms": 3500,
+      "chance_source": "Always",
+      "proc_flags": {
+       "0": 139944
+      }
+     },
+     "tooltip_refs": [
+      26363
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_APPLY_AURA",
+       "aura": "A_PROC_TRIGGER_SPELL",
+       "base_points": 1,
+       "scaling_base_level": 56,
+       "scaling_max_level": 0,
+       "trigger_spell": 26545,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1,
+       "value_at_60": 1
+      }
+     ],
+     "linked": [
+      {
+       "id": 26363,
+       "name": "Lightning Shield",
+       "rank": "Rank 7",
+       "role": "orb_damage",
+       "status": "forever",
+       "learn_level": 56,
+       "base_level": 56,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "nature",
+       "range_yd": 100,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_SCHOOL_DAMAGE",
+         "base_points": 178,
+         "scaling_base_level": 56,
+         "scaling_max_level": 0,
+         "sp_coef": 0.267,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 178,
+         "value_at_60": 178
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "notes": [
+    "Forever rows: 3 charges, 10 min, ICD 3.5 s between orb discharges.",
+    "The shield's proc effect fires 26545 (a dummy, SPCoef 1); the damage spell is the rank's orb named in RefIDs[0] (wowsims shields.go reads Refs()[0]). Orb damage has no level scaling, sp_coef 0.267, cannot crit (wowsims)."
+   ]
+  },
+  "LightningBolt": {
+   "name": "Lightning Bolt",
+   "wowsims_ladder": "spellData.LightningBolt = spelldata.Ranked(403, 529, 548, 915, 943, 6041, 10391, 10392, 15207, 15208)",
+   "ranks": [
+    {
+     "id": 403,
+     "name": "Lightning Bolt",
+     "rank": "Rank 1",
+     "status": "forever",
+     "learn_level": 1,
+     "base_level": 1,
+     "max_level": 6,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 1500,
+     "gcd_ms": 1500,
+     "range_yd": 30,
+     "missile_speed": 20,
+     "cost": {
+      "mana": 15
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 16,
+       "points_per_level": 0.1,
+       "scaling_base_level": 1,
+       "scaling_max_level": 6,
+       "variance": 0.142857,
+       "sp_coef": 0.429,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 16,
+       "value_at_60": 16.5,
+       "values_by_level": {
+        "1": 16,
+        "2": 16.1,
+        "3": 16.2,
+        "4": 16.3,
+        "5": 16.4,
+        "6": 16.5
+       },
+       "constant_from_level": 6,
+       "tooltip_range_at_learn_level": [
+        15,
+        17
+       ],
+       "tooltip_range_at_60": [
+        15,
+        18
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]",
+       "sp_coef_if_vanilla_sub20_penalty": {
+        "value": 0.123337,
+        "factor": 0.2875,
+        "status": "vanilla",
+        "applied_by_wowsims_or_mythicsim": false
+       }
+      }
+     ]
+    },
+    {
+     "id": 529,
+     "name": "Lightning Bolt",
+     "rank": "Rank 2",
+     "status": "forever",
+     "learn_level": 8,
+     "base_level": 8,
+     "max_level": 13,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 2000,
+     "gcd_ms": 1500,
+     "range_yd": 30,
+     "missile_speed": 20,
+     "cost": {
+      "mana": 30
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 30,
+       "points_per_level": 0.1,
+       "scaling_base_level": 8,
+       "scaling_max_level": 13,
+       "variance": 0.142857,
+       "sp_coef": 0.571,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 30,
+       "value_at_60": 30.5,
+       "values_by_level": {
+        "8": 30,
+        "9": 30.1,
+        "10": 30.2,
+        "11": 30.3,
+        "12": 30.4,
+        "13": 30.5
+       },
+       "constant_from_level": 13,
+       "tooltip_range_at_learn_level": [
+        28,
+        32
+       ],
+       "tooltip_range_at_60": [
+        28,
+        33
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]",
+       "sp_coef_if_vanilla_sub20_penalty": {
+        "value": 0.31405,
+        "factor": 0.55,
+        "status": "vanilla",
+        "applied_by_wowsims_or_mythicsim": false
+       }
+      }
+     ]
+    },
+    {
+     "id": 548,
+     "name": "Lightning Bolt",
+     "rank": "Rank 3",
+     "status": "forever",
+     "learn_level": 14,
+     "base_level": 14,
+     "max_level": 19,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 2500,
+     "gcd_ms": 1500,
+     "range_yd": 30,
+     "missile_speed": 20,
+     "cost": {
+      "mana": 45
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 52,
+       "points_per_level": 0.3,
+       "scaling_base_level": 14,
+       "scaling_max_level": 19,
+       "variance": 0.163265,
+       "sp_coef": 0.714,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 52,
+       "value_at_60": 53.5,
+       "values_by_level": {
+        "14": 52,
+        "15": 52.3,
+        "16": 52.6,
+        "17": 52.9,
+        "18": 53.2,
+        "19": 53.5
+       },
+       "constant_from_level": 19,
+       "tooltip_range_at_learn_level": [
+        48,
+        56
+       ],
+       "tooltip_range_at_60": [
+        49,
+        58
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]",
+       "sp_coef_if_vanilla_sub20_penalty": {
+        "value": 0.55335,
+        "factor": 0.775,
+        "status": "vanilla",
+        "applied_by_wowsims_or_mythicsim": false
+       }
+      }
+     ]
+    },
+    {
+     "id": 915,
+     "name": "Lightning Bolt",
+     "rank": "Rank 4",
+     "status": "forever",
+     "learn_level": 20,
+     "base_level": 20,
+     "max_level": 25,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 2500,
+     "gcd_ms": 1500,
+     "range_yd": 30,
+     "missile_speed": 20,
+     "cost": {
+      "mana": 60
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 73,
+       "points_per_level": 0.5,
+       "scaling_base_level": 20,
+       "scaling_max_level": 25,
+       "variance": 0.134831,
+       "sp_coef": 0.714,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 73,
+       "value_at_60": 75.5,
+       "values_by_level": {
+        "20": 73,
+        "21": 73.5,
+        "22": 74,
+        "23": 74.5,
+        "24": 75,
+        "25": 75.5
+       },
+       "constant_from_level": 25,
+       "tooltip_range_at_learn_level": [
+        68,
+        78
+       ],
+       "tooltip_range_at_60": [
+        70,
+        81
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 943,
+     "name": "Lightning Bolt",
+     "rank": "Rank 5",
+     "status": "forever",
+     "learn_level": 26,
+     "base_level": 26,
+     "max_level": 31,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 2500,
+     "gcd_ms": 1500,
+     "range_yd": 30,
+     "missile_speed": 20,
+     "cost": {
+      "mana": 85
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 109,
+       "points_per_level": 0.7,
+       "scaling_base_level": 26,
+       "scaling_max_level": 31,
+       "variance": 0.134328,
+       "sp_coef": 0.714,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 109,
+       "value_at_60": 112.5,
+       "values_by_level": {
+        "26": 109,
+        "27": 109.7,
+        "28": 110.4,
+        "29": 111.1,
+        "30": 111.8,
+        "31": 112.5
+       },
+       "constant_from_level": 31,
+       "tooltip_range_at_learn_level": [
+        102,
+        116
+       ],
+       "tooltip_range_at_60": [
+        105,
+        120
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 6041,
+     "name": "Lightning Bolt",
+     "rank": "Rank 6",
+     "status": "forever",
+     "learn_level": 32,
+     "base_level": 32,
+     "max_level": 37,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 2500,
+     "gcd_ms": 1500,
+     "range_yd": 30,
+     "missile_speed": 20,
+     "cost": {
+      "mana": 110
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 148,
+       "points_per_level": 1,
+       "scaling_base_level": 32,
+       "scaling_max_level": 37,
+       "variance": 0.120219,
+       "sp_coef": 0.714,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 148,
+       "value_at_60": 153,
+       "values_by_level": {
+        "32": 148,
+        "33": 149,
+        "34": 150,
+        "35": 151,
+        "36": 152,
+        "37": 153
+       },
+       "constant_from_level": 37,
+       "tooltip_range_at_learn_level": [
+        139,
+        157
+       ],
+       "tooltip_range_at_60": [
+        144,
+        162
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 10391,
+     "name": "Lightning Bolt",
+     "rank": "Rank 7",
+     "status": "forever",
+     "learn_level": 38,
+     "base_level": 38,
+     "max_level": 43,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 2500,
+     "gcd_ms": 1500,
+     "range_yd": 30,
+     "missile_speed": 20,
+     "cost": {
+      "mana": 135
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 194,
+       "points_per_level": 1,
+       "scaling_base_level": 38,
+       "scaling_max_level": 43,
+       "variance": 0.116183,
+       "sp_coef": 0.714,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 194,
+       "value_at_60": 199,
+       "values_by_level": {
+        "38": 194,
+        "39": 195,
+        "40": 196,
+        "41": 197,
+        "42": 198,
+        "43": 199
+       },
+       "constant_from_level": 43,
+       "tooltip_range_at_learn_level": [
+        183,
+        205
+       ],
+       "tooltip_range_at_60": [
+        188,
+        210
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 10392,
+     "name": "Lightning Bolt",
+     "rank": "Rank 8",
+     "status": "forever",
+     "learn_level": 44,
+     "base_level": 44,
+     "max_level": 49,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 2500,
+     "gcd_ms": 1500,
+     "range_yd": 30,
+     "missile_speed": 20,
+     "cost": {
+      "mana": 160
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 240,
+       "points_per_level": 1.5,
+       "scaling_base_level": 44,
+       "scaling_max_level": 49,
+       "variance": 0.113712,
+       "sp_coef": 0.714,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 240,
+       "value_at_60": 247.5,
+       "values_by_level": {
+        "44": 240,
+        "45": 241.5,
+        "46": 243,
+        "47": 244.5,
+        "48": 246,
+        "49": 247.5
+       },
+       "constant_from_level": 49,
+       "tooltip_range_at_learn_level": [
+        226,
+        254
+       ],
+       "tooltip_range_at_60": [
+        233,
+        262
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 15207,
+     "name": "Lightning Bolt",
+     "rank": "Rank 9",
+     "status": "forever",
+     "learn_level": 50,
+     "base_level": 50,
+     "max_level": 55,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 2500,
+     "gcd_ms": 1500,
+     "range_yd": 30,
+     "missile_speed": 20,
+     "cost": {
+      "mana": 190
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 295,
+       "points_per_level": 1.6,
+       "scaling_base_level": 50,
+       "scaling_max_level": 55,
+       "variance": 0.11413,
+       "sp_coef": 0.714,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 295,
+       "value_at_60": 303,
+       "values_by_level": {
+        "50": 295,
+        "51": 296.6,
+        "52": 298.2,
+        "53": 299.8,
+        "54": 301.4,
+        "55": 303
+       },
+       "constant_from_level": 55,
+       "tooltip_range_at_learn_level": [
+        278,
+        312
+       ],
+       "tooltip_range_at_60": [
+        286,
+        320
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 15208,
+     "name": "Lightning Bolt",
+     "rank": "Rank 10",
+     "status": "forever",
+     "learn_level": 56,
+     "base_level": 56,
+     "max_level": 61,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 2500,
+     "gcd_ms": 1500,
+     "range_yd": 30,
+     "missile_speed": 20,
+     "cost": {
+      "mana": 220
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 353,
+       "points_per_level": 2.1,
+       "scaling_base_level": 56,
+       "scaling_max_level": 61,
+       "variance": 0.108352,
+       "sp_coef": 0.714,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 353,
+       "value_at_60": 361.4,
+       "values_by_level": {
+        "56": 353,
+        "57": 355.1,
+        "58": 357.2,
+        "59": 359.3,
+        "60": 361.4
+       },
+       "constant_from_level": null,
+       "note_scaling": "keeps scaling past 60 (max_level 61); at 60 it has gained 4 levels",
+       "tooltip_range_at_learn_level": [
+        334,
+        372
+       ],
+       "tooltip_range_at_60": [
+        342,
+        381
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    }
+   ],
+   "notes": [
+    "Values are the Forever 2 Nov 2026 retune (about 78% of Classic Era per Blizzard's notes, as quoted in mythicsim hotfix_113554.rs); wowsims 125e534 already carries them.",
+    "wowsims registers only ranks with SpellLevel >= 44 at level 60 (ranks.go minRankLevel) because of an unquantified in-game downrank effect; see meta.coefficient_penalties."
+   ]
+  },
+  "ChainLightning": {
+   "name": "Chain Lightning",
+   "wowsims_ladder": "spellData.ChainLightning = spelldata.Ranked(421, 930, 2860, 10605)",
+   "ranks": [
+    {
+     "id": 421,
+     "name": "Chain Lightning",
+     "rank": "Rank 1",
+     "status": "forever",
+     "learn_level": 32,
+     "base_level": 32,
+     "max_level": 37,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 2500,
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 6000,
+     "cooldown_category": 85,
+     "range_yd": 30,
+     "cost": {
+      "mana": 245
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 215,
+       "points_per_level": 1.4,
+       "scaling_base_level": 32,
+       "scaling_max_level": 37,
+       "variance": 0.127451,
+       "sp_coef": 0.714,
+       "chain_targets": 3,
+       "chain_amp": 0.7,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 215,
+       "value_at_60": 222,
+       "values_by_level": {
+        "32": 215,
+        "33": 216.4,
+        "34": 217.8,
+        "35": 219.2,
+        "36": 220.6,
+        "37": 222
+       },
+       "constant_from_level": 37,
+       "tooltip_range_at_learn_level": [
+        201,
+        229
+       ],
+       "tooltip_range_at_60": [
+        208,
+        236
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 930,
+     "name": "Chain Lightning",
+     "rank": "Rank 2",
+     "status": "forever",
+     "learn_level": 40,
+     "base_level": 40,
+     "max_level": 45,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 2500,
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 6000,
+     "cooldown_category": 85,
+     "range_yd": 30,
+     "cost": {
+      "mana": 360
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 348,
+       "points_per_level": 2.2,
+       "scaling_base_level": 40,
+       "scaling_max_level": 45,
+       "variance": 0.115646,
+       "sp_coef": 0.714,
+       "chain_targets": 3,
+       "chain_amp": 0.7,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 348,
+       "value_at_60": 359,
+       "values_by_level": {
+        "40": 348,
+        "41": 350.2,
+        "42": 352.4,
+        "43": 354.6,
+        "44": 356.8,
+        "45": 359
+       },
+       "constant_from_level": 45,
+       "tooltip_range_at_learn_level": [
+        328,
+        368
+       ],
+       "tooltip_range_at_60": [
+        339,
+        379
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 2860,
+     "name": "Chain Lightning",
+     "rank": "Rank 3",
+     "status": "forever",
+     "learn_level": 48,
+     "base_level": 48,
+     "max_level": 53,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 2500,
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 6000,
+     "cooldown_category": 85,
+     "range_yd": 30,
+     "cost": {
+      "mana": 425
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 428,
+       "points_per_level": 2.7,
+       "scaling_base_level": 48,
+       "scaling_max_level": 53,
+       "variance": 0.114713,
+       "sp_coef": 0.714,
+       "chain_targets": 3,
+       "chain_amp": 0.7,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 428,
+       "value_at_60": 441.5,
+       "values_by_level": {
+        "48": 428,
+        "49": 430.7,
+        "50": 433.4,
+        "51": 436.1,
+        "52": 438.8,
+        "53": 441.5
+       },
+       "constant_from_level": 53,
+       "tooltip_range_at_learn_level": [
+        403,
+        453
+       ],
+       "tooltip_range_at_60": [
+        416,
+        467
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 10605,
+     "name": "Chain Lightning",
+     "rank": "Rank 4",
+     "status": "forever",
+     "learn_level": 56,
+     "base_level": 56,
+     "max_level": 61,
+     "book_rank": false,
+     "school": "nature",
+     "cast_ms": 2500,
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 6000,
+     "cooldown_category": 85,
+     "range_yd": 30,
+     "cost": {
+      "mana": 495
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 510,
+       "points_per_level": 3.3,
+       "scaling_base_level": 56,
+       "scaling_max_level": 61,
+       "variance": 0.111111,
+       "sp_coef": 0.714,
+       "chain_targets": 3,
+       "chain_amp": 0.7,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 510,
+       "value_at_60": 523.2,
+       "values_by_level": {
+        "56": 510,
+        "57": 513.3,
+        "58": 516.6,
+        "59": 519.9,
+        "60": 523.2
+       },
+       "constant_from_level": null,
+       "note_scaling": "keeps scaling past 60 (max_level 61); at 60 it has gained 4 levels",
+       "tooltip_range_at_learn_level": [
+        482,
+        538
+       ],
+       "tooltip_range_at_60": [
+        495,
+        552
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    }
+   ],
+   "notes": [
+    "2.5 s cast, sp_coef 0.714, 6 s category cooldown, 3 targets, each jump 70% of the previous (chain_amp 0.7). Costs are the live 6 Nov 2026 values."
+   ]
+  },
+  "EarthShock": {
+   "name": "Earth Shock",
+   "wowsims_ladder": "spellData.EarthShock = spelldata.Ranked(8042, 8044, 8045, 8046, 10412, 10413, 10414)",
+   "ranks": [
+    {
+     "id": 8042,
+     "name": "Earth Shock",
+     "rank": "Rank 1",
+     "status": "forever",
+     "learn_level": 4,
+     "base_level": 4,
+     "max_level": 9,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 6000,
+     "cooldown_category": 19,
+     "duration_ms": 2000,
+     "range_yd": 20,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 30
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 20,
+       "points_per_level": 0.5,
+       "scaling_base_level": 4,
+       "scaling_max_level": 9,
+       "variance": 0.111111,
+       "sp_coef": 0.386,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 20,
+       "value_at_60": 22.5,
+       "values_by_level": {
+        "4": 20,
+        "5": 20.5,
+        "6": 21,
+        "7": 21.5,
+        "8": 22,
+        "9": 22.5
+       },
+       "constant_from_level": 9,
+       "tooltip_range_at_learn_level": [
+        19,
+        21
+       ],
+       "tooltip_range_at_60": [
+        21,
+        24
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]",
+       "sp_coef_if_vanilla_sub20_penalty": {
+        "value": 0.1544,
+        "factor": 0.4,
+        "status": "vanilla",
+        "applied_by_wowsims_or_mythicsim": false
+       }
+      },
+      {
+       "index": 1,
+       "type": "E_INTERRUPT_CAST",
+       "base_points": 0,
+       "scaling_base_level": 4,
+       "scaling_max_level": 9,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 0,
+       "value_at_60": 0
+      }
+     ]
+    },
+    {
+     "id": 8044,
+     "name": "Earth Shock",
+     "rank": "Rank 2",
+     "status": "forever",
+     "learn_level": 8,
+     "base_level": 8,
+     "max_level": 13,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 6000,
+     "cooldown_category": 19,
+     "duration_ms": 2000,
+     "range_yd": 20,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 50
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 36,
+       "points_per_level": 0.7,
+       "scaling_base_level": 8,
+       "scaling_max_level": 13,
+       "variance": 0.060606,
+       "sp_coef": 0.386,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 36,
+       "value_at_60": 39.5,
+       "values_by_level": {
+        "8": 36,
+        "9": 36.7,
+        "10": 37.4,
+        "11": 38.1,
+        "12": 38.8,
+        "13": 39.5
+       },
+       "constant_from_level": 13,
+       "tooltip_range_at_learn_level": [
+        35,
+        37
+       ],
+       "tooltip_range_at_60": [
+        38,
+        41
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]",
+       "sp_coef_if_vanilla_sub20_penalty": {
+        "value": 0.2123,
+        "factor": 0.55,
+        "status": "vanilla",
+        "applied_by_wowsims_or_mythicsim": false
+       }
+      },
+      {
+       "index": 1,
+       "type": "E_INTERRUPT_CAST",
+       "base_points": 0,
+       "scaling_base_level": 8,
+       "scaling_max_level": 13,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 0,
+       "value_at_60": 0
+      }
+     ]
+    },
+    {
+     "id": 8045,
+     "name": "Earth Shock",
+     "rank": "Rank 3",
+     "status": "forever",
+     "learn_level": 14,
+     "base_level": 14,
+     "max_level": 19,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 6000,
+     "cooldown_category": 19,
+     "duration_ms": 2000,
+     "range_yd": 20,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 85
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 67,
+       "points_per_level": 0.9,
+       "scaling_base_level": 14,
+       "scaling_max_level": 19,
+       "variance": 0.064516,
+       "sp_coef": 0.386,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 67,
+       "value_at_60": 71.5,
+       "values_by_level": {
+        "14": 67,
+        "15": 67.9,
+        "16": 68.8,
+        "17": 69.7,
+        "18": 70.6,
+        "19": 71.5
+       },
+       "constant_from_level": 19,
+       "tooltip_range_at_learn_level": [
+        65,
+        69
+       ],
+       "tooltip_range_at_60": [
+        69,
+        74
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]",
+       "sp_coef_if_vanilla_sub20_penalty": {
+        "value": 0.29915,
+        "factor": 0.775,
+        "status": "vanilla",
+        "applied_by_wowsims_or_mythicsim": false
+       }
+      },
+      {
+       "index": 1,
+       "type": "E_INTERRUPT_CAST",
+       "base_points": 0,
+       "scaling_base_level": 14,
+       "scaling_max_level": 19,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 0,
+       "value_at_60": 0
+      }
+     ]
+    },
+    {
+     "id": 8046,
+     "name": "Earth Shock",
+     "rank": "Rank 4",
+     "status": "forever",
+     "learn_level": 24,
+     "base_level": 24,
+     "max_level": 29,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 6000,
+     "cooldown_category": 19,
+     "duration_ms": 2000,
+     "range_yd": 20,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 145
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 130,
+       "points_per_level": 1.1,
+       "scaling_base_level": 24,
+       "scaling_max_level": 29,
+       "variance": 0.065041,
+       "sp_coef": 0.386,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 130,
+       "value_at_60": 135.5,
+       "values_by_level": {
+        "24": 130,
+        "25": 131.1,
+        "26": 132.2,
+        "27": 133.3,
+        "28": 134.4,
+        "29": 135.5
+       },
+       "constant_from_level": 29,
+       "tooltip_range_at_learn_level": [
+        126,
+        134
+       ],
+       "tooltip_range_at_60": [
+        131,
+        140
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      },
+      {
+       "index": 1,
+       "type": "E_INTERRUPT_CAST",
+       "base_points": 0,
+       "scaling_base_level": 24,
+       "scaling_max_level": 29,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 0,
+       "value_at_60": 0
+      }
+     ]
+    },
+    {
+     "id": 10412,
+     "name": "Earth Shock",
+     "rank": "Rank 5",
+     "status": "forever",
+     "learn_level": 36,
+     "base_level": 36,
+     "max_level": 41,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 6000,
+     "cooldown_category": 19,
+     "duration_ms": 2000,
+     "range_yd": 20,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 240
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 242,
+       "points_per_level": 1.3,
+       "scaling_base_level": 36,
+       "scaling_max_level": 41,
+       "variance": 0.060345,
+       "sp_coef": 0.386,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 242,
+       "value_at_60": 248.5,
+       "values_by_level": {
+        "36": 242,
+        "37": 243.3,
+        "38": 244.6,
+        "39": 245.9,
+        "40": 247.2,
+        "41": 248.5
+       },
+       "constant_from_level": 41,
+       "tooltip_range_at_learn_level": [
+        235,
+        249
+       ],
+       "tooltip_range_at_60": [
+        241,
+        256
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      },
+      {
+       "index": 1,
+       "type": "E_INTERRUPT_CAST",
+       "base_points": 0,
+       "scaling_base_level": 36,
+       "scaling_max_level": 41,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 0,
+       "value_at_60": 0
+      }
+     ]
+    },
+    {
+     "id": 10413,
+     "name": "Earth Shock",
+     "rank": "Rank 6",
+     "status": "forever",
+     "learn_level": 48,
+     "base_level": 48,
+     "max_level": 53,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 6000,
+     "cooldown_category": 19,
+     "duration_ms": 2000,
+     "range_yd": 20,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 345
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 383,
+       "points_per_level": 1.6,
+       "scaling_base_level": 48,
+       "scaling_max_level": 53,
+       "variance": 0.059459,
+       "sp_coef": 0.386,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 383,
+       "value_at_60": 391,
+       "values_by_level": {
+        "48": 383,
+        "49": 384.6,
+        "50": 386.2,
+        "51": 387.8,
+        "52": 389.4,
+        "53": 391
+       },
+       "constant_from_level": 53,
+       "tooltip_range_at_learn_level": [
+        372,
+        394
+       ],
+       "tooltip_range_at_60": [
+        380,
+        402
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      },
+      {
+       "index": 1,
+       "type": "E_INTERRUPT_CAST",
+       "base_points": 0,
+       "scaling_base_level": 48,
+       "scaling_max_level": 53,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 0,
+       "value_at_60": 0
+      }
+     ]
+    },
+    {
+     "id": 10414,
+     "name": "Earth Shock",
+     "rank": "Rank 7",
+     "status": "forever",
+     "learn_level": 60,
+     "base_level": 60,
+     "max_level": 65,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 6000,
+     "cooldown_category": 19,
+     "duration_ms": 2000,
+     "range_yd": 20,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 450
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 531,
+       "points_per_level": 3.4,
+       "scaling_base_level": 60,
+       "scaling_max_level": 65,
+       "variance": 0.052731,
+       "sp_coef": 0.386,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 531,
+       "value_at_60": 531,
+       "values_by_level": {
+        "60": 531
+       },
+       "constant_from_level": null,
+       "note_scaling": "keeps scaling past 60 (max_level 65); at 60 it has gained 0 levels",
+       "tooltip_range_at_learn_level": [
+        517,
+        545
+       ],
+       "tooltip_range_at_60": [
+        517,
+        545
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      },
+      {
+       "index": 1,
+       "type": "E_INTERRUPT_CAST",
+       "base_points": 0,
+       "scaling_base_level": 60,
+       "scaling_max_level": 65,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 0,
+       "value_at_60": 0
+      }
+     ]
+    }
+   ],
+   "notes": [
+    "Shared shock category 19, 6 s cooldown. duration_ms 2000 is the interrupt lockout."
+   ]
+  },
+  "FlameShock": {
+   "name": "Flame Shock",
+   "wowsims_ladder": "spellData.FlameShock = spelldata.Ranked(8050, 8052, 8053, 10447, 10448, 29228)",
+   "ranks": [
+    {
+     "id": 8050,
+     "name": "Flame Shock",
+     "rank": "Rank 1",
+     "status": "forever",
+     "learn_level": 10,
+     "base_level": 10,
+     "max_level": 15,
+     "book_rank": false,
+     "school": "fire",
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 6000,
+     "cooldown_category": 19,
+     "duration_ms": 12000,
+     "range_yd": 20,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 55
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 25,
+       "points_per_level": 0.8,
+       "scaling_base_level": 10,
+       "scaling_max_level": 15,
+       "sp_coef": 0.214,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 25,
+       "value_at_60": 29,
+       "values_by_level": {
+        "10": 25,
+        "11": 25.8,
+        "12": 26.6,
+        "13": 27.4,
+        "14": 28.2,
+        "15": 29
+       },
+       "constant_from_level": 15,
+       "sp_coef_if_vanilla_sub20_penalty": {
+        "value": 0.13375,
+        "factor": 0.625,
+        "status": "vanilla",
+        "applied_by_wowsims_or_mythicsim": false
+       }
+      },
+      {
+       "index": 1,
+       "type": "E_APPLY_AURA",
+       "aura": "A_PERIODIC_DAMAGE",
+       "base_points": 7,
+       "scaling_base_level": 10,
+       "scaling_max_level": 15,
+       "sp_coef": 0.1,
+       "period_ms": 3000,
+       "ticks": 4,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 7,
+       "value_at_60": 7,
+       "sp_coef_if_vanilla_sub20_penalty": {
+        "value": 0.0625,
+        "factor": 0.625,
+        "status": "vanilla",
+        "applied_by_wowsims_or_mythicsim": false
+       }
+      },
+      {
+       "index": 2,
+       "type": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "base_points": 0,
+       "scaling_base_level": 10,
+       "scaling_max_level": 15,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 0,
+       "value_at_60": 0
+      }
+     ]
+    },
+    {
+     "id": 8052,
+     "name": "Flame Shock",
+     "rank": "Rank 2",
+     "status": "forever",
+     "learn_level": 18,
+     "base_level": 18,
+     "max_level": 23,
+     "book_rank": false,
+     "school": "fire",
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 6000,
+     "cooldown_category": 19,
+     "duration_ms": 12000,
+     "range_yd": 20,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 95
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 51,
+       "points_per_level": 1,
+       "scaling_base_level": 18,
+       "scaling_max_level": 23,
+       "sp_coef": 0.214,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 51,
+       "value_at_60": 56,
+       "values_by_level": {
+        "18": 51,
+        "19": 52,
+        "20": 53,
+        "21": 54,
+        "22": 55,
+        "23": 56
+       },
+       "constant_from_level": 23,
+       "sp_coef_if_vanilla_sub20_penalty": {
+        "value": 0.19795,
+        "factor": 0.925,
+        "status": "vanilla",
+        "applied_by_wowsims_or_mythicsim": false
+       }
+      },
+      {
+       "index": 1,
+       "type": "E_APPLY_AURA",
+       "aura": "A_PERIODIC_DAMAGE",
+       "base_points": 12,
+       "scaling_base_level": 18,
+       "scaling_max_level": 23,
+       "sp_coef": 0.1,
+       "period_ms": 3000,
+       "ticks": 4,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 12,
+       "value_at_60": 12,
+       "sp_coef_if_vanilla_sub20_penalty": {
+        "value": 0.0925,
+        "factor": 0.925,
+        "status": "vanilla",
+        "applied_by_wowsims_or_mythicsim": false
+       }
+      },
+      {
+       "index": 2,
+       "type": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "base_points": 0,
+       "scaling_base_level": 18,
+       "scaling_max_level": 23,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 0,
+       "value_at_60": 0
+      }
+     ]
+    },
+    {
+     "id": 8053,
+     "name": "Flame Shock",
+     "rank": "Rank 3",
+     "status": "forever",
+     "learn_level": 28,
+     "base_level": 28,
+     "max_level": 33,
+     "book_rank": false,
+     "school": "fire",
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 6000,
+     "cooldown_category": 19,
+     "duration_ms": 12000,
+     "range_yd": 20,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 160
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 95,
+       "points_per_level": 1.2,
+       "scaling_base_level": 28,
+       "scaling_max_level": 33,
+       "sp_coef": 0.214,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 95,
+       "value_at_60": 101,
+       "values_by_level": {
+        "28": 95,
+        "29": 96.2,
+        "30": 97.4,
+        "31": 98.6,
+        "32": 99.8,
+        "33": 101
+       },
+       "constant_from_level": 33
+      },
+      {
+       "index": 1,
+       "type": "E_APPLY_AURA",
+       "aura": "A_PERIODIC_DAMAGE",
+       "base_points": 24,
+       "scaling_base_level": 28,
+       "scaling_max_level": 33,
+       "sp_coef": 0.1,
+       "period_ms": 3000,
+       "ticks": 4,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 24,
+       "value_at_60": 24
+      },
+      {
+       "index": 2,
+       "type": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "base_points": 0,
+       "scaling_base_level": 28,
+       "scaling_max_level": 33,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 0,
+       "value_at_60": 0
+      }
+     ]
+    },
+    {
+     "id": 10447,
+     "name": "Flame Shock",
+     "rank": "Rank 4",
+     "status": "forever",
+     "learn_level": 40,
+     "base_level": 40,
+     "max_level": 45,
+     "book_rank": false,
+     "school": "fire",
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 6000,
+     "cooldown_category": 19,
+     "duration_ms": 12000,
+     "range_yd": 20,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 250
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 164,
+       "points_per_level": 1.4,
+       "scaling_base_level": 40,
+       "scaling_max_level": 45,
+       "sp_coef": 0.214,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 164,
+       "value_at_60": 171,
+       "values_by_level": {
+        "40": 164,
+        "41": 165.4,
+        "42": 166.8,
+        "43": 168.2,
+        "44": 169.6,
+        "45": 171
+       },
+       "constant_from_level": 45
+      },
+      {
+       "index": 1,
+       "type": "E_APPLY_AURA",
+       "aura": "A_PERIODIC_DAMAGE",
+       "base_points": 42,
+       "scaling_base_level": 40,
+       "scaling_max_level": 45,
+       "sp_coef": 0.1,
+       "period_ms": 3000,
+       "ticks": 4,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 42,
+       "value_at_60": 42
+      },
+      {
+       "index": 2,
+       "type": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "base_points": 0,
+       "scaling_base_level": 40,
+       "scaling_max_level": 45,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 0,
+       "value_at_60": 0
+      }
+     ]
+    },
+    {
+     "id": 10448,
+     "name": "Flame Shock",
+     "rank": "Rank 5",
+     "status": "forever",
+     "learn_level": 52,
+     "base_level": 52,
+     "max_level": 57,
+     "book_rank": false,
+     "school": "fire",
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 6000,
+     "cooldown_category": 19,
+     "duration_ms": 12000,
+     "range_yd": 20,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 345
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 245,
+       "points_per_level": 1.7,
+       "scaling_base_level": 52,
+       "scaling_max_level": 57,
+       "sp_coef": 0.214,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 245,
+       "value_at_60": 253.5,
+       "values_by_level": {
+        "52": 245,
+        "53": 246.7,
+        "54": 248.4,
+        "55": 250.1,
+        "56": 251.8,
+        "57": 253.5
+       },
+       "constant_from_level": 57
+      },
+      {
+       "index": 1,
+       "type": "E_APPLY_AURA",
+       "aura": "A_PERIODIC_DAMAGE",
+       "base_points": 64,
+       "scaling_base_level": 52,
+       "scaling_max_level": 57,
+       "sp_coef": 0.1,
+       "period_ms": 3000,
+       "ticks": 4,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 64,
+       "value_at_60": 64
+      },
+      {
+       "index": 2,
+       "type": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "base_points": 0,
+       "scaling_base_level": 52,
+       "scaling_max_level": 57,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 0,
+       "value_at_60": 0
+      }
+     ]
+    },
+    {
+     "id": 29228,
+     "name": "Flame Shock",
+     "rank": "Rank 6",
+     "status": "forever",
+     "learn_level": 60,
+     "base_level": 60,
+     "max_level": 67,
+     "book_rank": true,
+     "book_item": "Tablet of Flame Shock VI",
+     "school": "fire",
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 6000,
+     "cooldown_category": 19,
+     "duration_ms": 12000,
+     "range_yd": 20,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 410
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 292,
+       "points_per_level": 3.8,
+       "scaling_base_level": 60,
+       "scaling_max_level": 67,
+       "sp_coef": 0.214,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 292,
+       "value_at_60": 292,
+       "values_by_level": {
+        "60": 292
+       },
+       "constant_from_level": null,
+       "note_scaling": "keeps scaling past 60 (max_level 67); at 60 it has gained 0 levels"
+      },
+      {
+       "index": 1,
+       "type": "E_APPLY_AURA",
+       "aura": "A_PERIODIC_DAMAGE",
+       "base_points": 80,
+       "scaling_base_level": 60,
+       "scaling_max_level": 67,
+       "sp_coef": 0.1,
+       "period_ms": 3000,
+       "ticks": 4,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 80,
+       "value_at_60": 80
+      },
+      {
+       "index": 2,
+       "type": "E_APPLY_AURA",
+       "aura": "A_DUMMY",
+       "base_points": 0,
+       "scaling_base_level": 60,
+       "scaling_max_level": 67,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 0,
+       "value_at_60": 0
+      }
+     ]
+    }
+   ],
+   "notes": [
+    "Effect 0 direct hit (scales per level), effect 1 DoT: 4 ticks every 3 s over 12 s, tick has no per-level scaling, sp_coef 0.1 per tick.",
+    "Rank 6 (29228) is a book rank: Tablet of Flame Shock VI."
+   ]
+  },
+  "FrostShock": {
+   "name": "Frost Shock",
+   "wowsims_ladder": "spellData.FrostShock = spelldata.Ranked(8056, 8058, 10472, 10473)",
+   "ranks": [
+    {
+     "id": 8056,
+     "name": "Frost Shock",
+     "rank": "Rank 1",
+     "status": "forever",
+     "learn_level": 20,
+     "base_level": 20,
+     "max_level": 25,
+     "book_rank": false,
+     "school": "frost",
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 6000,
+     "cooldown_category": 19,
+     "duration_ms": 8000,
+     "range_yd": 20,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 115
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_APPLY_AURA",
+       "aura": "A_MOD_DECREASE_SPEED",
+       "base_points": -50,
+       "scaling_base_level": 20,
+       "scaling_max_level": 25,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": -50,
+       "value_at_60": -50
+      },
+      {
+       "index": 1,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 98,
+       "points_per_level": 0.9,
+       "scaling_base_level": 20,
+       "scaling_max_level": 25,
+       "variance": 0.065217,
+       "sp_coef": 0.386,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 98,
+       "value_at_60": 102.5,
+       "values_by_level": {
+        "20": 98,
+        "21": 98.9,
+        "22": 99.8,
+        "23": 100.7,
+        "24": 101.6,
+        "25": 102.5
+       },
+       "constant_from_level": 25,
+       "tooltip_range_at_learn_level": [
+        95,
+        101
+       ],
+       "tooltip_range_at_60": [
+        99,
+        106
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 8058,
+     "name": "Frost Shock",
+     "rank": "Rank 2",
+     "status": "forever",
+     "learn_level": 34,
+     "base_level": 34,
+     "max_level": 39,
+     "book_rank": false,
+     "school": "frost",
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 6000,
+     "cooldown_category": 19,
+     "duration_ms": 8000,
+     "range_yd": 20,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 225
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_APPLY_AURA",
+       "aura": "A_MOD_DECREASE_SPEED",
+       "base_points": -50,
+       "scaling_base_level": 34,
+       "scaling_max_level": 39,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": -50,
+       "value_at_60": -50
+      },
+      {
+       "index": 1,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 222,
+       "points_per_level": 1.3,
+       "scaling_base_level": 34,
+       "scaling_max_level": 39,
+       "variance": 0.065728,
+       "sp_coef": 0.386,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 222,
+       "value_at_60": 228.5,
+       "values_by_level": {
+        "34": 222,
+        "35": 223.3,
+        "36": 224.6,
+        "37": 225.9,
+        "38": 227.2,
+        "39": 228.5
+       },
+       "constant_from_level": 39,
+       "tooltip_range_at_learn_level": [
+        215,
+        229
+       ],
+       "tooltip_range_at_60": [
+        221,
+        236
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 10472,
+     "name": "Frost Shock",
+     "rank": "Rank 3",
+     "status": "forever",
+     "learn_level": 46,
+     "base_level": 46,
+     "max_level": 51,
+     "book_rank": false,
+     "school": "frost",
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 6000,
+     "cooldown_category": 19,
+     "duration_ms": 8000,
+     "range_yd": 20,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 325
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_APPLY_AURA",
+       "aura": "A_MOD_DECREASE_SPEED",
+       "base_points": -50,
+       "scaling_base_level": 46,
+       "scaling_max_level": 51,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": -50,
+       "value_at_60": -50
+      },
+      {
+       "index": 1,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 355,
+       "points_per_level": 1.5,
+       "scaling_base_level": 46,
+       "scaling_max_level": 51,
+       "variance": 0.058309,
+       "sp_coef": 0.386,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 355,
+       "value_at_60": 362.5,
+       "values_by_level": {
+        "46": 355,
+        "47": 356.5,
+        "48": 358,
+        "49": 359.5,
+        "50": 361,
+        "51": 362.5
+       },
+       "constant_from_level": 51,
+       "tooltip_range_at_learn_level": [
+        345,
+        365
+       ],
+       "tooltip_range_at_60": [
+        352,
+        373
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    },
+    {
+     "id": 10473,
+     "name": "Frost Shock",
+     "rank": "Rank 4",
+     "status": "forever",
+     "learn_level": 58,
+     "base_level": 58,
+     "max_level": 63,
+     "book_rank": false,
+     "school": "frost",
+     "gcd_ms": 1500,
+     "category_cooldown_ms": 6000,
+     "cooldown_category": 19,
+     "duration_ms": 8000,
+     "range_yd": 20,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 430
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_APPLY_AURA",
+       "aura": "A_MOD_DECREASE_SPEED",
+       "base_points": -50,
+       "scaling_base_level": 58,
+       "scaling_max_level": 63,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": -50,
+       "value_at_60": -50
+      },
+      {
+       "index": 1,
+       "type": "E_SCHOOL_DAMAGE",
+       "base_points": 506,
+       "points_per_level": 1.8,
+       "scaling_base_level": 58,
+       "scaling_max_level": 63,
+       "variance": 0.056,
+       "sp_coef": 0.386,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 506,
+       "value_at_60": 509.6,
+       "values_by_level": {
+        "58": 506,
+        "59": 507.8,
+        "60": 509.6
+       },
+       "constant_from_level": null,
+       "note_scaling": "keeps scaling past 60 (max_level 63); at 60 it has gained 2 levels",
+       "tooltip_range_at_learn_level": [
+        492,
+        520
+       ],
+       "tooltip_range_at_60": [
+        495,
+        524
+       ],
+       "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+      }
+     ]
+    }
+   ],
+   "notes": [
+    "Effect 0 is the 50% slow (8 s); effect 1 is the damage."
+   ]
+  },
+  "Stormstrike": {
+   "name": "Stormstrike",
+   "wowsims_ladder": "spellData.Stormstrike = spelldata.Ranked(17364)",
+   "ranks": [
+    {
+     "id": 17364,
+     "name": "Stormstrike",
+     "status": "forever",
+     "learn_level": 40,
+     "base_level": 40,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "physical",
+     "gcd_ms": 1500,
+     "cooldown_ms": 6000,
+     "duration_ms": 12000,
+     "range_yd": 5,
+     "cast_ms": 0,
+     "cost": {
+      "pct_base_mana": 8
+     },
+     "proc": {
+      "chance_column": 100,
+      "charges": 1,
+      "chance_source": "Always",
+      "proc_flags": {
+       "0": 131072
+      }
+     },
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_NORMALIZED_WEAPON_DMG",
+       "base_points": 0,
+       "scaling_base_level": 40,
+       "scaling_max_level": 0,
+       "amount_rounding": "exact (fractional, damage/heal)",
+       "value_at_learn_level": 0,
+       "value_at_60": 0
+      },
+      {
+       "index": 1,
+       "type": "E_APPLY_AURA",
+       "aura": "A_MOD_SPELL_DAMAGE_FROM_CASTER",
+       "base_points": 20,
+       "scaling_base_level": 40,
+       "scaling_max_level": 0,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 20,
+       "value_at_60": 20
+      },
+      {
+       "index": 2,
+       "type": "E_WEAPON_PERCENT_DAMAGE",
+       "base_points": 150,
+       "scaling_base_level": 40,
+       "scaling_max_level": 0,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 150,
+       "value_at_60": 150
+      }
+     ]
+    }
+   ],
+   "notes": [
+    "Enhancement talent (SpellLevel 40). Effects: normalized weapon damage, then 150% weapon percent damage (E_WEAPON_PERCENT_DAMAGE 150); A_MOD_SPELL_DAMAGE_FROM_CASTER +20% Nature damage taken from the shaman for 12 s, 1 charge (ProcCharges 1).",
+    "Cooldown 6 s (8 s in client 70425), cost 8% of base mana."
+   ]
+  },
+  "WindfuryWeapon": {
+   "name": "Windfury Weapon",
+   "wowsims_ladder": "spellData.WindfuryWeapon = spelldata.Ranked(8232, 8235, 10486, 16362)",
+   "ranks": [
+    {
+     "id": 8232,
+     "name": "Windfury Weapon",
+     "rank": "Rank 1",
+     "status": "forever",
+     "learn_level": 30,
+     "base_level": 30,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 90
+     },
+     "tooltip_refs": [
+      8233
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_360",
+       "base_points": 1800,
+       "scaling_base_level": 30,
+       "scaling_max_level": 0,
+       "misc": 283,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1800,
+       "value_at_60": 1800
+      }
+     ],
+     "linked": [
+      {
+       "id": 8233,
+       "name": "Windfury Weapon",
+       "rank": "Rank 1",
+       "role": "proc_attack",
+       "status": "forever",
+       "learn_level": 30,
+       "base_level": 30,
+       "max_level": 38,
+       "book_rank": false,
+       "school": "nature",
+       "duration_ms": 1500,
+       "range_yd": 100,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "proc": {
+        "chance_column": 100,
+        "charges": 3,
+        "chance_source": "Always",
+        "proc_flags": {
+         "0": 4
+        }
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AURA",
+         "aura": "A_MOD_ATTACK_POWER",
+         "base_points": 46,
+         "points_per_level": 7.2,
+         "scaling_base_level": 30,
+         "scaling_max_level": 38,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 46,
+         "value_at_60": 103,
+         "values_by_level": {
+          "30": 46,
+          "31": 53,
+          "32": 60,
+          "33": 67,
+          "34": 74,
+          "35": 82,
+          "36": 89,
+          "37": 96,
+          "38": 103
+         },
+         "constant_from_level": 38
+        },
+        {
+         "index": 1,
+         "type": "E_ADD_EXTRA_ATTACKS",
+         "base_points": 2,
+         "scaling_base_level": 30,
+         "scaling_max_level": 38,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 2,
+         "value_at_60": 2
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 8235,
+     "name": "Windfury Weapon",
+     "rank": "Rank 2",
+     "status": "forever",
+     "learn_level": 40,
+     "base_level": 40,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 115
+     },
+     "tooltip_refs": [
+      8236
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_360",
+       "base_points": 1800,
+       "scaling_base_level": 40,
+       "scaling_max_level": 0,
+       "misc": 284,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1800,
+       "value_at_60": 1800
+      }
+     ],
+     "linked": [
+      {
+       "id": 8236,
+       "name": "Windfury Weapon",
+       "rank": "Rank 2",
+       "role": "proc_attack",
+       "status": "forever",
+       "learn_level": 40,
+       "base_level": 40,
+       "max_level": 48,
+       "book_rank": false,
+       "school": "nature",
+       "duration_ms": 1500,
+       "range_yd": 100,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "proc": {
+        "chance_column": 100,
+        "charges": 3,
+        "chance_source": "Always",
+        "proc_flags": {
+         "0": 4
+        }
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AURA",
+         "aura": "A_MOD_ATTACK_POWER",
+         "base_points": 119,
+         "points_per_level": 12.8,
+         "scaling_base_level": 40,
+         "scaling_max_level": 48,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 119,
+         "value_at_60": 221,
+         "values_by_level": {
+          "40": 119,
+          "41": 131,
+          "42": 144,
+          "43": 157,
+          "44": 170,
+          "45": 183,
+          "46": 195,
+          "47": 208,
+          "48": 221
+         },
+         "constant_from_level": 48
+        },
+        {
+         "index": 1,
+         "type": "E_ADD_EXTRA_ATTACKS",
+         "base_points": 2,
+         "scaling_base_level": 40,
+         "scaling_max_level": 48,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 2,
+         "value_at_60": 2
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 10486,
+     "name": "Windfury Weapon",
+     "rank": "Rank 3",
+     "status": "forever",
+     "learn_level": 50,
+     "base_level": 50,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 140
+     },
+     "tooltip_refs": [
+      10484
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_360",
+       "base_points": 1800,
+       "scaling_base_level": 50,
+       "scaling_max_level": 0,
+       "misc": 525,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1800,
+       "value_at_60": 1800
+      }
+     ],
+     "linked": [
+      {
+       "id": 10484,
+       "name": "Windfury Weapon",
+       "rank": "Rank 3",
+       "role": "proc_attack",
+       "status": "forever",
+       "learn_level": 50,
+       "base_level": 50,
+       "max_level": 58,
+       "book_rank": false,
+       "school": "nature",
+       "duration_ms": 1500,
+       "range_yd": 100,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "proc": {
+        "chance_column": 100,
+        "charges": 3,
+        "chance_source": "Always",
+        "proc_flags": {
+         "0": 4
+        }
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AURA",
+         "aura": "A_MOD_ATTACK_POWER",
+         "base_points": 249,
+         "points_per_level": 8.3,
+         "scaling_base_level": 50,
+         "scaling_max_level": 58,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 249,
+         "value_at_60": 315,
+         "values_by_level": {
+          "50": 249,
+          "51": 257,
+          "52": 265,
+          "53": 273,
+          "54": 282,
+          "55": 290,
+          "56": 298,
+          "57": 307,
+          "58": 315
+         },
+         "constant_from_level": 58
+        },
+        {
+         "index": 1,
+         "type": "E_ADD_EXTRA_ATTACKS",
+         "base_points": 2,
+         "scaling_base_level": 50,
+         "scaling_max_level": 58,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 2,
+         "value_at_60": 2
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 16362,
+     "name": "Windfury Weapon",
+     "rank": "Rank 4",
+     "status": "forever",
+     "learn_level": 60,
+     "base_level": 60,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 165
+     },
+     "tooltip_refs": [
+      16361
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_360",
+       "base_points": 1800,
+       "scaling_base_level": 60,
+       "scaling_max_level": 0,
+       "misc": 1669,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1800,
+       "value_at_60": 1800
+      }
+     ],
+     "linked": [
+      {
+       "id": 16361,
+       "name": "Windfury Weapon",
+       "rank": "Rank 4",
+       "role": "proc_attack",
+       "status": "forever",
+       "learn_level": 60,
+       "base_level": 60,
+       "max_level": 68,
+       "book_rank": false,
+       "school": "nature",
+       "duration_ms": 1500,
+       "range_yd": 100,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "proc": {
+        "chance_column": 100,
+        "charges": 3,
+        "chance_source": "Always",
+        "proc_flags": {
+         "0": 4
+        }
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AURA",
+         "aura": "A_MOD_ATTACK_POWER",
+         "base_points": 333,
+         "points_per_level": 12.5,
+         "scaling_base_level": 60,
+         "scaling_max_level": 68,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 333,
+         "value_at_60": 333,
+         "values_by_level": {
+          "60": 333
+         },
+         "constant_from_level": null,
+         "note_scaling": "keeps scaling past 60 (max_level 68); at 60 it has gained 0 levels"
+        },
+        {
+         "index": 1,
+         "type": "E_ADD_EXTRA_ATTACKS",
+         "base_points": 2,
+         "scaling_base_level": 60,
+         "scaling_max_level": 68,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 2,
+         "value_at_60": 2
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "notes": [
+    "Each rank's cast enchants the weapon (E_360, misc = SpellItemEnchantment id, 1800 = 30 min).",
+    "The proc roll is the shared passive 439431: 20% chance (ProcChance 20) on main-hand melee hits, ICD 1.5 s. wowsims uses this passive for every rank (weapon_imbues.go).",
+    "On proc the rank's triggered spell (RefIDs[0]) grants 2 extra attacks (E_ADD_EXTRA_ATTACKS 2) with +AP (A_MOD_ATTACK_POWER, scales per level up to max_level) for those attacks. Vanilla gave 1 extra attack."
+   ],
+   "shared_passive": {
+    "id": 439431,
+    "name": "Windfury Weapon",
+    "rank": "Rank 1",
+    "role": "proc_roll_passive",
+    "status": "forever",
+    "learn_level": 30,
+    "base_level": 30,
+    "max_level": 38,
+    "book_rank": false,
+    "school": "nature",
+    "gcd_ms": 1500,
+    "cast_ms": 0,
+    "cost": {
+     "mana": 0
+    },
+    "proc": {
+     "chance_column": 20,
+     "icd_ms": 1500,
+     "proc_flags": {
+      "0": 20
+     }
+    },
+    "tooltip_refs": [
+     8233
+    ],
+    "effects": [
+     {
+      "index": 0,
+      "type": "E_APPLY_AURA",
+      "aura": "A_DUMMY",
+      "base_points": 46,
+      "points_per_level": 7.2,
+      "scaling_base_level": 30,
+      "scaling_max_level": 38,
+      "amount_rounding": "floor (whole number)",
+      "value_at_learn_level": 46,
+      "value_at_60": 103,
+      "values_by_level": {
+       "30": 46,
+       "31": 53,
+       "32": 60,
+       "33": 67,
+       "34": 74,
+       "35": 82,
+       "36": 89,
+       "37": 96,
+       "38": 103
+      },
+      "constant_from_level": 38
+     }
+    ]
+   }
+  },
+  "FlametongueWeapon": {
+   "name": "Flametongue Weapon",
+   "wowsims_ladder": "spellData.FlametongueWeapon = spelldata.Ranked(8024, 8027, 8030, 16339, 16341, 16342)",
+   "ranks": [
+    {
+     "id": 8024,
+     "name": "Flametongue Weapon",
+     "rank": "Rank 1",
+     "status": "forever",
+     "learn_level": 10,
+     "base_level": 0,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "fire",
+     "gcd_ms": 1500,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 30
+     },
+     "tooltip_refs": [
+      8026,
+      29469
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_360",
+       "base_points": 1800,
+       "scaling_base_level": 0,
+       "scaling_max_level": 0,
+       "misc": 5,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1800,
+       "value_at_60": 1800
+      }
+     ],
+     "linked": [
+      {
+       "id": 8026,
+       "name": "Flametongue Weapon Proc",
+       "rank": "Rank 1",
+       "role": "proc_value",
+       "status": "forever",
+       "learn_level": 10,
+       "base_level": 10,
+       "max_level": 16,
+       "book_rank": false,
+       "school": "fire",
+       "range_yd": 100,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_DUMMY",
+         "base_points": 326,
+         "points_per_level": 19,
+         "scaling_base_level": 10,
+         "scaling_max_level": 16,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 326,
+         "value_at_60": 440,
+         "values_by_level": {
+          "10": 326,
+          "11": 345,
+          "12": 364,
+          "13": 383,
+          "14": 402,
+          "15": 421,
+          "16": 440
+         },
+         "constant_from_level": 16
+        }
+       ]
+      },
+      {
+       "id": 29469,
+       "name": "Flametongue Attack",
+       "rank": "Rank 1",
+       "role": "attack",
+       "status": "forever",
+       "learn_level": 1,
+       "base_level": 1,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "fire",
+       "range_yd": 50000,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_SCHOOL_DAMAGE",
+         "base_points": 0,
+         "scaling_base_level": 1,
+         "scaling_max_level": 0,
+         "sp_coef": 0.1,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 0,
+         "value_at_60": 0
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 8027,
+     "name": "Flametongue Weapon",
+     "rank": "Rank 2",
+     "status": "forever",
+     "learn_level": 18,
+     "base_level": 0,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "fire",
+     "gcd_ms": 1500,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 55
+     },
+     "tooltip_refs": [
+      8028,
+      29470
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_360",
+       "base_points": 1800,
+       "scaling_base_level": 0,
+       "scaling_max_level": 0,
+       "misc": 4,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1800,
+       "value_at_60": 1800
+      }
+     ],
+     "linked": [
+      {
+       "id": 8028,
+       "name": "Flametongue Weapon Proc",
+       "rank": "Rank 2",
+       "role": "proc_value",
+       "status": "forever",
+       "learn_level": 18,
+       "base_level": 18,
+       "max_level": 24,
+       "book_rank": false,
+       "school": "fire",
+       "range_yd": 100,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_DUMMY",
+         "base_points": 479,
+         "points_per_level": 29,
+         "scaling_base_level": 18,
+         "scaling_max_level": 24,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 479,
+         "value_at_60": 653,
+         "values_by_level": {
+          "18": 479,
+          "19": 508,
+          "20": 537,
+          "21": 566,
+          "22": 595,
+          "23": 624,
+          "24": 653
+         },
+         "constant_from_level": 24
+        }
+       ]
+      },
+      {
+       "id": 29470,
+       "name": "Flametongue Attack",
+       "rank": "Rank 2",
+       "role": "attack",
+       "status": "forever",
+       "learn_level": 1,
+       "base_level": 1,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "fire",
+       "range_yd": 50000,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_SCHOOL_DAMAGE",
+         "base_points": 0,
+         "scaling_base_level": 1,
+         "scaling_max_level": 0,
+         "sp_coef": 0.1,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 0,
+         "value_at_60": 0
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 8030,
+     "name": "Flametongue Weapon",
+     "rank": "Rank 3",
+     "status": "forever",
+     "learn_level": 26,
+     "base_level": 0,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "fire",
+     "gcd_ms": 1500,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 80
+     },
+     "tooltip_refs": [
+      8029,
+      10444
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_360",
+       "base_points": 1800,
+       "scaling_base_level": 0,
+       "scaling_max_level": 0,
+       "misc": 3,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1800,
+       "value_at_60": 1800
+      }
+     ],
+     "linked": [
+      {
+       "id": 8029,
+       "name": "Flametongue Weapon Proc",
+       "rank": "Rank 3",
+       "role": "proc_value",
+       "status": "forever",
+       "learn_level": 26,
+       "base_level": 26,
+       "max_level": 34,
+       "book_rank": false,
+       "school": "fire",
+       "range_yd": 100,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_DUMMY",
+         "base_points": 716,
+         "points_per_level": 42,
+         "scaling_base_level": 26,
+         "scaling_max_level": 34,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 716,
+         "value_at_60": 1052,
+         "values_by_level": {
+          "26": 716,
+          "27": 758,
+          "28": 800,
+          "29": 842,
+          "30": 884,
+          "31": 926,
+          "32": 968,
+          "33": 1010,
+          "34": 1052
+         },
+         "constant_from_level": 34
+        }
+       ]
+      },
+      {
+       "id": 10444,
+       "name": "Flametongue Attack",
+       "rank": "Rank 3",
+       "role": "attack",
+       "status": "forever",
+       "learn_level": 1,
+       "base_level": 1,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "fire",
+       "range_yd": 50000,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_SCHOOL_DAMAGE",
+         "base_points": 0,
+         "scaling_base_level": 1,
+         "scaling_max_level": 0,
+         "sp_coef": 0.1,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 0,
+         "value_at_60": 0
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 16339,
+     "name": "Flametongue Weapon",
+     "rank": "Rank 4",
+     "status": "forever",
+     "learn_level": 36,
+     "base_level": 0,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "fire",
+     "gcd_ms": 1500,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 105
+     },
+     "tooltip_refs": [
+      10445,
+      10444
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_360",
+       "base_points": 1800,
+       "scaling_base_level": 0,
+       "scaling_max_level": 0,
+       "misc": 523,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1800,
+       "value_at_60": 1800
+      }
+     ],
+     "linked": [
+      {
+       "id": 10445,
+       "name": "Flametongue Weapon Proc",
+       "rank": "Rank 4",
+       "role": "proc_value",
+       "status": "forever",
+       "learn_level": 36,
+       "base_level": 36,
+       "max_level": 44,
+       "book_rank": false,
+       "school": "fire",
+       "range_yd": 100,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_DUMMY",
+         "base_points": 1144,
+         "points_per_level": 73,
+         "scaling_base_level": 36,
+         "scaling_max_level": 44,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 1144,
+         "value_at_60": 1728,
+         "values_by_level": {
+          "36": 1144,
+          "37": 1217,
+          "38": 1290,
+          "39": 1363,
+          "40": 1436,
+          "41": 1509,
+          "42": 1582,
+          "43": 1655,
+          "44": 1728
+         },
+         "constant_from_level": 44
+        }
+       ]
+      },
+      {
+       "id": 10444,
+       "name": "Flametongue Attack",
+       "rank": "Rank 3",
+       "role": "attack",
+       "status": "forever",
+       "learn_level": 1,
+       "base_level": 1,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "fire",
+       "range_yd": 50000,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_SCHOOL_DAMAGE",
+         "base_points": 0,
+         "scaling_base_level": 1,
+         "scaling_max_level": 0,
+         "sp_coef": 0.1,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 0,
+         "value_at_60": 0
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 16341,
+     "name": "Flametongue Weapon",
+     "rank": "Rank 5",
+     "status": "forever",
+     "learn_level": 46,
+     "base_level": 0,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "fire",
+     "gcd_ms": 1500,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 130
+     },
+     "tooltip_refs": [
+      16343,
+      10444
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_360",
+       "base_points": 1800,
+       "scaling_base_level": 0,
+       "scaling_max_level": 0,
+       "misc": 1665,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1800,
+       "value_at_60": 1800
+      }
+     ],
+     "linked": [
+      {
+       "id": 16343,
+       "name": "Flametongue Weapon Proc",
+       "rank": "Rank 5",
+       "role": "proc_value",
+       "status": "forever",
+       "learn_level": 46,
+       "base_level": 46,
+       "max_level": 54,
+       "book_rank": false,
+       "school": "fire",
+       "range_yd": 100,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_DUMMY",
+         "base_points": 1876,
+         "points_per_level": 62,
+         "scaling_base_level": 46,
+         "scaling_max_level": 54,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 1876,
+         "value_at_60": 2372,
+         "values_by_level": {
+          "46": 1876,
+          "47": 1938,
+          "48": 2000,
+          "49": 2062,
+          "50": 2124,
+          "51": 2186,
+          "52": 2248,
+          "53": 2310,
+          "54": 2372
+         },
+         "constant_from_level": 54
+        }
+       ]
+      },
+      {
+       "id": 10444,
+       "name": "Flametongue Attack",
+       "rank": "Rank 3",
+       "role": "attack",
+       "status": "forever",
+       "learn_level": 1,
+       "base_level": 1,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "fire",
+       "range_yd": 50000,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_SCHOOL_DAMAGE",
+         "base_points": 0,
+         "scaling_base_level": 1,
+         "scaling_max_level": 0,
+         "sp_coef": 0.1,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 0,
+         "value_at_60": 0
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 16342,
+     "name": "Flametongue Weapon",
+     "rank": "Rank 6",
+     "status": "forever",
+     "learn_level": 56,
+     "base_level": 0,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "fire",
+     "gcd_ms": 1500,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 155
+     },
+     "tooltip_refs": [
+      16344,
+      10444
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_360",
+       "base_points": 1800,
+       "scaling_base_level": 0,
+       "scaling_max_level": 0,
+       "misc": 1666,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1800,
+       "value_at_60": 1800
+      }
+     ],
+     "linked": [
+      {
+       "id": 16344,
+       "name": "Flametongue Weapon Proc",
+       "rank": "Rank 6",
+       "role": "proc_value",
+       "status": "forever",
+       "learn_level": 56,
+       "base_level": 56,
+       "max_level": 64,
+       "book_rank": false,
+       "school": "fire",
+       "range_yd": 100,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_DUMMY",
+         "base_points": 2498,
+         "points_per_level": 78,
+         "scaling_base_level": 56,
+         "scaling_max_level": 64,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 2498,
+         "value_at_60": 2810,
+         "values_by_level": {
+          "56": 2498,
+          "57": 2576,
+          "58": 2654,
+          "59": 2732,
+          "60": 2810
+         },
+         "constant_from_level": null,
+         "note_scaling": "keeps scaling past 60 (max_level 64); at 60 it has gained 4 levels"
+        }
+       ]
+      },
+      {
+       "id": 10444,
+       "name": "Flametongue Attack",
+       "rank": "Rank 3",
+       "role": "attack",
+       "status": "forever",
+       "learn_level": 1,
+       "base_level": 1,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "fire",
+       "range_yd": 50000,
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_SCHOOL_DAMAGE",
+         "base_points": 0,
+         "scaling_base_level": 1,
+         "scaling_max_level": 0,
+         "sp_coef": 0.1,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 0,
+         "value_at_60": 0
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "notes": [
+    "Passive 436519 (ProcChance 100): every main-hand melee hit casts the Flametongue Attack.",
+    "Damage per hit (wowsims weapon_imbues.go newFlametongueImbueSpell) = proc.m1(L) * MH_swing_speed_s / 100 + attack.m1 (0), fire, sp_coef 0.1 (attack spell), can crit.",
+    "proc.m1(L) = the linked 'Flametongue Weapon Proc' spell's E_DUMMY value at level L (RefIDs[0]); attack spell = RefIDs[1] (29469, 29470, then 10444 for ranks 3-6).",
+    "Tooltip check: rank 6 at 60 is 2498+78*4=2810 -> 36.5 (1.3 s) to 112.4 (4.0 s) per hit."
+   ],
+   "shared_passive": {
+    "id": 436519,
+    "name": "Flametongue Weapon",
+    "role": "proc_every_hit_passive",
+    "status": "forever",
+    "learn_level": 1,
+    "base_level": 0,
+    "max_level": 0,
+    "book_rank": false,
+    "school": "physical",
+    "cast_ms": 0,
+    "cost": {
+     "mana": 0
+    },
+    "proc": {
+     "chance_column": 100,
+     "chance_source": "Always",
+     "proc_flags": {
+      "0": 20
+     }
+    },
+    "effects": [
+     {
+      "index": 0,
+      "type": "E_APPLY_AURA",
+      "aura": "A_DUMMY",
+      "base_points": 0,
+      "scaling_base_level": 0,
+      "scaling_max_level": 0,
+      "amount_rounding": "floor (whole number)",
+      "value_at_learn_level": 0,
+      "value_at_60": 0
+     }
+    ]
+   }
+  },
+  "RockbiterWeapon": {
+   "name": "Rockbiter Weapon",
+   "wowsims_ladder": "spellData.RockbiterWeapon = spelldata.Ranked(8017, 8018, 8019, 10399, 16314, 16315, 16316)",
+   "ranks": [
+    {
+     "id": 8017,
+     "name": "Rockbiter Weapon",
+     "rank": "Rank 1",
+     "status": "forever",
+     "learn_level": 1,
+     "base_level": 0,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 15
+     },
+     "tooltip_refs": [
+      10400
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_360",
+       "base_points": 1800,
+       "scaling_base_level": 0,
+       "scaling_max_level": 0,
+       "misc": 29,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1800,
+       "value_at_60": 1800
+      }
+     ],
+     "linked": [
+      {
+       "id": 10400,
+       "name": "Rockbiter Weapon (Passive)",
+       "rank": "Rank 1",
+       "role": "ap_passive",
+       "status": "forever",
+       "learn_level": 1,
+       "base_level": 1,
+       "max_level": 6,
+       "book_rank": false,
+       "school": "nature",
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "proc": {
+        "chance_column": 100,
+        "chance_source": "Always",
+        "proc_flags": {
+         "0": 20
+        }
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AURA",
+         "aura": "A_MOD_ATTACK_POWER",
+         "base_points": 29,
+         "points_per_level": 4.1,
+         "scaling_base_level": 1,
+         "scaling_max_level": 6,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 29,
+         "value_at_60": 49,
+         "values_by_level": {
+          "1": 29,
+          "2": 33,
+          "3": 37,
+          "4": 41,
+          "5": 45,
+          "6": 49
+         },
+         "constant_from_level": 6
+        },
+        {
+         "index": 1,
+         "type": "E_APPLY_AURA",
+         "aura": "A_MOD_THREAT",
+         "base_points": 0,
+         "scaling_base_level": 1,
+         "scaling_max_level": 6,
+         "misc": 127,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 0,
+         "value_at_60": 0
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 8018,
+     "name": "Rockbiter Weapon",
+     "rank": "Rank 2",
+     "status": "forever",
+     "learn_level": 8,
+     "base_level": 0,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 25
+     },
+     "tooltip_refs": [
+      15567
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_360",
+       "base_points": 1800,
+       "scaling_base_level": 0,
+       "scaling_max_level": 0,
+       "misc": 6,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1800,
+       "value_at_60": 1800
+      }
+     ],
+     "linked": [
+      {
+       "id": 15567,
+       "name": "Rockbiter Weapon (Passive)",
+       "rank": "Rank 2",
+       "role": "ap_passive",
+       "status": "forever",
+       "learn_level": 8,
+       "base_level": 8,
+       "max_level": 14,
+       "book_rank": false,
+       "school": "nature",
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "proc": {
+        "chance_column": 100,
+        "chance_source": "Always",
+        "proc_flags": {
+         "0": 20
+        }
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AURA",
+         "aura": "A_MOD_ATTACK_POWER",
+         "base_points": 58,
+         "points_per_level": 3.5,
+         "scaling_base_level": 8,
+         "scaling_max_level": 14,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 58,
+         "value_at_60": 79,
+         "values_by_level": {
+          "8": 58,
+          "9": 61,
+          "10": 65,
+          "11": 68,
+          "12": 72,
+          "13": 75,
+          "14": 79
+         },
+         "constant_from_level": 14
+        },
+        {
+         "index": 1,
+         "type": "E_APPLY_AURA",
+         "aura": "A_MOD_THREAT",
+         "base_points": 0,
+         "scaling_base_level": 8,
+         "scaling_max_level": 14,
+         "misc": 127,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 0,
+         "value_at_60": 0
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 8019,
+     "name": "Rockbiter Weapon",
+     "rank": "Rank 3",
+     "status": "forever",
+     "learn_level": 16,
+     "base_level": 0,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 50
+     },
+     "tooltip_refs": [
+      15568
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_360",
+       "base_points": 1800,
+       "scaling_base_level": 0,
+       "scaling_max_level": 0,
+       "misc": 1,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1800,
+       "value_at_60": 1800
+      }
+     ],
+     "linked": [
+      {
+       "id": 15568,
+       "name": "Rockbiter Weapon (Passive)",
+       "rank": "Rank 3",
+       "role": "ap_passive",
+       "status": "forever",
+       "learn_level": 16,
+       "base_level": 16,
+       "max_level": 22,
+       "book_rank": false,
+       "school": "nature",
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "proc": {
+        "chance_column": 100,
+        "chance_source": "Always",
+        "proc_flags": {
+         "0": 20
+        }
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AURA",
+         "aura": "A_MOD_ATTACK_POWER",
+         "base_points": 88,
+         "points_per_level": 5,
+         "scaling_base_level": 16,
+         "scaling_max_level": 22,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 88,
+         "value_at_60": 118,
+         "values_by_level": {
+          "16": 88,
+          "17": 93,
+          "18": 98,
+          "19": 103,
+          "20": 108,
+          "21": 113,
+          "22": 118
+         },
+         "constant_from_level": 22
+        },
+        {
+         "index": 1,
+         "type": "E_APPLY_AURA",
+         "aura": "A_MOD_THREAT",
+         "base_points": 0,
+         "scaling_base_level": 16,
+         "scaling_max_level": 22,
+         "misc": 127,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 0,
+         "value_at_60": 0
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 10399,
+     "name": "Rockbiter Weapon",
+     "rank": "Rank 4",
+     "status": "forever",
+     "learn_level": 24,
+     "base_level": 0,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 75
+     },
+     "tooltip_refs": [
+      15569
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_360",
+       "base_points": 1800,
+       "scaling_base_level": 0,
+       "scaling_max_level": 0,
+       "misc": 503,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1800,
+       "value_at_60": 1800
+      }
+     ],
+     "linked": [
+      {
+       "id": 15569,
+       "name": "Rockbiter Weapon (Passive)",
+       "rank": "Rank 4",
+       "role": "ap_passive",
+       "status": "forever",
+       "learn_level": 24,
+       "base_level": 24,
+       "max_level": 32,
+       "book_rank": false,
+       "school": "nature",
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "proc": {
+        "chance_column": 100,
+        "chance_source": "Always",
+        "proc_flags": {
+         "0": 20
+        }
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AURA",
+         "aura": "A_MOD_ATTACK_POWER",
+         "base_points": 129,
+         "points_per_level": 8.1,
+         "scaling_base_level": 24,
+         "scaling_max_level": 32,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 129,
+         "value_at_60": 193,
+         "values_by_level": {
+          "24": 129,
+          "25": 137,
+          "26": 145,
+          "27": 153,
+          "28": 161,
+          "29": 169,
+          "30": 177,
+          "31": 185,
+          "32": 193
+         },
+         "constant_from_level": 32
+        },
+        {
+         "index": 1,
+         "type": "E_APPLY_AURA",
+         "aura": "A_MOD_THREAT",
+         "base_points": 0,
+         "scaling_base_level": 24,
+         "scaling_max_level": 32,
+         "misc": 127,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 0,
+         "value_at_60": 0
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 16314,
+     "name": "Rockbiter Weapon",
+     "rank": "Rank 5",
+     "status": "forever",
+     "learn_level": 34,
+     "base_level": 0,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 100
+     },
+     "tooltip_refs": [
+      16311
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_360",
+       "base_points": 1800,
+       "scaling_base_level": 0,
+       "scaling_max_level": 0,
+       "misc": 1663,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1800,
+       "value_at_60": 1800
+      }
+     ],
+     "linked": [
+      {
+       "id": 16311,
+       "name": "Rockbiter Weapon (Passive)",
+       "rank": "Rank 5",
+       "role": "ap_passive",
+       "status": "forever",
+       "learn_level": 34,
+       "base_level": 34,
+       "max_level": 42,
+       "book_rank": false,
+       "school": "nature",
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "proc": {
+        "chance_column": 100,
+        "chance_source": "Always",
+        "proc_flags": {
+         "0": 20
+        }
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AURA",
+         "aura": "A_MOD_ATTACK_POWER",
+         "base_points": 211,
+         "points_per_level": 18,
+         "scaling_base_level": 34,
+         "scaling_max_level": 42,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 211,
+         "value_at_60": 355,
+         "values_by_level": {
+          "34": 211,
+          "35": 229,
+          "36": 247,
+          "37": 265,
+          "38": 283,
+          "39": 301,
+          "40": 319,
+          "41": 337,
+          "42": 355
+         },
+         "constant_from_level": 42
+        },
+        {
+         "index": 1,
+         "type": "E_APPLY_AURA",
+         "aura": "A_MOD_THREAT",
+         "base_points": 0,
+         "scaling_base_level": 34,
+         "scaling_max_level": 42,
+         "misc": 127,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 0,
+         "value_at_60": 0
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 16315,
+     "name": "Rockbiter Weapon",
+     "rank": "Rank 6",
+     "status": "forever",
+     "learn_level": 44,
+     "base_level": 0,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 125
+     },
+     "tooltip_refs": [
+      16312
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_360",
+       "base_points": 1800,
+       "scaling_base_level": 0,
+       "scaling_max_level": 0,
+       "misc": 683,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1800,
+       "value_at_60": 1800
+      }
+     ],
+     "linked": [
+      {
+       "id": 16312,
+       "name": "Rockbiter Weapon (Passive)",
+       "rank": "Rank 6",
+       "role": "ap_passive",
+       "status": "forever",
+       "learn_level": 44,
+       "base_level": 44,
+       "max_level": 52,
+       "book_rank": false,
+       "school": "nature",
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "proc": {
+        "chance_column": 100,
+        "chance_source": "Always",
+        "proc_flags": {
+         "0": 20
+        }
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AURA",
+         "aura": "A_MOD_ATTACK_POWER",
+         "base_points": 393,
+         "points_per_level": 16.1,
+         "scaling_base_level": 44,
+         "scaling_max_level": 52,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 393,
+         "value_at_60": 521,
+         "values_by_level": {
+          "44": 393,
+          "45": 409,
+          "46": 425,
+          "47": 441,
+          "48": 457,
+          "49": 473,
+          "50": 489,
+          "51": 505,
+          "52": 521
+         },
+         "constant_from_level": 52
+        },
+        {
+         "index": 1,
+         "type": "E_APPLY_AURA",
+         "aura": "A_MOD_THREAT",
+         "base_points": 0,
+         "scaling_base_level": 44,
+         "scaling_max_level": 52,
+         "misc": 127,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 0,
+         "value_at_60": 0
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": 16316,
+     "name": "Rockbiter Weapon",
+     "rank": "Rank 7",
+     "status": "forever",
+     "learn_level": 54,
+     "base_level": 0,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "nature",
+     "gcd_ms": 1500,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 150
+     },
+     "tooltip_refs": [
+      16313
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_360",
+       "base_points": 1800,
+       "scaling_base_level": 0,
+       "scaling_max_level": 0,
+       "misc": 1664,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 1800,
+       "value_at_60": 1800
+      }
+     ],
+     "linked": [
+      {
+       "id": 16313,
+       "name": "Rockbiter Weapon (Passive)",
+       "rank": "Rank 7",
+       "role": "ap_passive",
+       "status": "forever",
+       "learn_level": 54,
+       "base_level": 54,
+       "max_level": 62,
+       "book_rank": false,
+       "school": "nature",
+       "cast_ms": 0,
+       "cost": {
+        "mana": 0
+       },
+       "proc": {
+        "chance_column": 100,
+        "chance_source": "Always",
+        "proc_flags": {
+         "0": 20
+        }
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_APPLY_AURA",
+         "aura": "A_MOD_ATTACK_POWER",
+         "base_points": 554,
+         "points_per_level": 16.5,
+         "scaling_base_level": 54,
+         "scaling_max_level": 62,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 554,
+         "value_at_60": 653,
+         "values_by_level": {
+          "54": 554,
+          "55": 570,
+          "56": 587,
+          "57": 603,
+          "58": 620,
+          "59": 636,
+          "60": 653
+         },
+         "constant_from_level": null,
+         "note_scaling": "keeps scaling past 60 (max_level 62); at 60 it has gained 6 levels"
+        },
+        {
+         "index": 1,
+         "type": "E_APPLY_AURA",
+         "aura": "A_MOD_THREAT",
+         "base_points": 0,
+         "scaling_base_level": 54,
+         "scaling_max_level": 62,
+         "misc": 127,
+         "amount_rounding": "floor (whole number)",
+         "value_at_learn_level": 0,
+         "value_at_60": 0
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "notes": [
+    "The linked passive (RefIDs[0], e.g. 10400) applies A_MOD_ATTACK_POWER = base_points + points_per_level*(min(L,max_level)-base_level), floored.",
+    "Rank 1 (10400): 29 + 4.1/level from 1 to 6. Rank 7 (16313): 554 + 16.5/level from 54 to 62 (653 at 60).",
+    "Threat: every MH hit casts a Rockbiter Weapon Proc (wowsims uses 20871, the top of the 20860-20871 ladder: 72 threat per second of swing). Lower-rank threat procs were not extracted."
+   ],
+   "threat_proc_top_rank": {
+    "id": 20871,
+    "name": "Rockbiter Weapon Proc",
+    "rank": "Rank 7",
+    "role": "threat_proc",
+    "status": "forever",
+    "learn_level": 54,
+    "base_level": 54,
+    "max_level": 62,
+    "book_rank": false,
+    "school": "physical",
+    "range_yd": 100,
+    "cast_ms": 0,
+    "cost": {
+     "mana": 0
+    },
+    "effects": [
+     {
+      "index": 0,
+      "type": "E_SCRIPT_EFFECT",
+      "base_points": 72,
+      "scaling_base_level": 54,
+      "scaling_max_level": 62,
+      "amount_rounding": "floor (whole number)",
+      "value_at_learn_level": 72,
+      "value_at_60": 72
+     }
+    ]
+   }
+  },
+  "SearingTotem": {
+   "name": "Searing Totem",
+   "wowsims_ladder": "spellData.SearingTotem = spelldata.Ranked(3599, 6363, 6364, 6365, 10437, 10438)",
+   "ranks": [
+    {
+     "id": 3599,
+     "name": "Searing Totem",
+     "rank": "Rank 1",
+     "status": "forever",
+     "learn_level": 10,
+     "base_level": 10,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "fire",
+     "gcd_ms": 1000,
+     "duration_ms": 30000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 25
+     },
+     "tooltip_refs": [
+      3606
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SUMMON",
+       "base_points": 5,
+       "scaling_base_level": 10,
+       "scaling_max_level": 0,
+       "misc": 2523,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 5,
+       "value_at_60": 5
+      }
+     ],
+     "linked": [
+      {
+       "id": 3606,
+       "name": "Attack",
+       "rank": "Rank 1",
+       "role": "attack",
+       "status": "forever",
+       "learn_level": 10,
+       "base_level": 10,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "fire",
+       "cast_ms": 2200,
+       "range_yd": 20,
+       "missile_speed": 19,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_SCHOOL_DAMAGE",
+         "base_points": 10,
+         "scaling_base_level": 10,
+         "scaling_max_level": 0,
+         "variance": 0.2,
+         "sp_coef": 0.017,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 10,
+         "value_at_60": 10,
+         "tooltip_range_at_learn_level": [
+          9,
+          11
+         ],
+         "tooltip_range_at_60": [
+          9,
+          11
+         ],
+         "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+        }
+       ],
+       "attack_interval_ms": 2200,
+       "attacks_over_totem_duration": 13
+      }
+     ]
+    },
+    {
+     "id": 6363,
+     "name": "Searing Totem",
+     "rank": "Rank 2",
+     "status": "forever",
+     "learn_level": 20,
+     "base_level": 20,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "fire",
+     "gcd_ms": 1000,
+     "duration_ms": 35000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 45
+     },
+     "tooltip_refs": [
+      6350
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SUMMON",
+       "base_points": 5,
+       "scaling_base_level": 20,
+       "scaling_max_level": 0,
+       "misc": 3902,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 5,
+       "value_at_60": 5
+      }
+     ],
+     "linked": [
+      {
+       "id": 6350,
+       "name": "Attack",
+       "rank": "Rank 2",
+       "role": "attack",
+       "status": "forever",
+       "learn_level": 20,
+       "base_level": 20,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "fire",
+       "cast_ms": 2200,
+       "range_yd": 20,
+       "missile_speed": 19,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_SCHOOL_DAMAGE",
+         "base_points": 15,
+         "scaling_base_level": 20,
+         "scaling_max_level": 0,
+         "variance": 0.266667,
+         "sp_coef": 0.017,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 15,
+         "value_at_60": 15,
+         "tooltip_range_at_learn_level": [
+          13,
+          17
+         ],
+         "tooltip_range_at_60": [
+          13,
+          17
+         ],
+         "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+        }
+       ],
+       "attack_interval_ms": 2200,
+       "attacks_over_totem_duration": 15
+      }
+     ]
+    },
+    {
+     "id": 6364,
+     "name": "Searing Totem",
+     "rank": "Rank 3",
+     "status": "forever",
+     "learn_level": 30,
+     "base_level": 30,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "fire",
+     "gcd_ms": 1000,
+     "duration_ms": 40000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 75
+     },
+     "tooltip_refs": [
+      6351
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SUMMON",
+       "base_points": 5,
+       "scaling_base_level": 30,
+       "scaling_max_level": 0,
+       "misc": 3903,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 5,
+       "value_at_60": 5
+      }
+     ],
+     "linked": [
+      {
+       "id": 6351,
+       "name": "Attack",
+       "rank": "Rank 3",
+       "role": "attack",
+       "status": "forever",
+       "learn_level": 30,
+       "base_level": 30,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "fire",
+       "cast_ms": 2200,
+       "range_yd": 20,
+       "missile_speed": 19,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_SCHOOL_DAMAGE",
+         "base_points": 22,
+         "scaling_base_level": 30,
+         "scaling_max_level": 0,
+         "variance": 0.272727,
+         "sp_coef": 0.017,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 22,
+         "value_at_60": 22,
+         "tooltip_range_at_learn_level": [
+          19,
+          25
+         ],
+         "tooltip_range_at_60": [
+          19,
+          25
+         ],
+         "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+        }
+       ],
+       "attack_interval_ms": 2200,
+       "attacks_over_totem_duration": 18
+      }
+     ]
+    },
+    {
+     "id": 6365,
+     "name": "Searing Totem",
+     "rank": "Rank 4",
+     "status": "forever",
+     "learn_level": 40,
+     "base_level": 40,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "fire",
+     "gcd_ms": 1000,
+     "duration_ms": 45000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 110
+     },
+     "tooltip_refs": [
+      6352
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SUMMON",
+       "base_points": 5,
+       "scaling_base_level": 40,
+       "scaling_max_level": 0,
+       "misc": 3904,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 5,
+       "value_at_60": 5
+      }
+     ],
+     "linked": [
+      {
+       "id": 6352,
+       "name": "Attack",
+       "rank": "Rank 4",
+       "role": "attack",
+       "status": "forever",
+       "learn_level": 40,
+       "base_level": 40,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "fire",
+       "cast_ms": 2200,
+       "range_yd": 20,
+       "missile_speed": 19,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_SCHOOL_DAMAGE",
+         "base_points": 30,
+         "scaling_base_level": 40,
+         "scaling_max_level": 0,
+         "variance": 0.266667,
+         "sp_coef": 0.017,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 30,
+         "value_at_60": 30,
+         "tooltip_range_at_learn_level": [
+          26,
+          34
+         ],
+         "tooltip_range_at_60": [
+          26,
+          34
+         ],
+         "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+        }
+       ],
+       "attack_interval_ms": 2200,
+       "attacks_over_totem_duration": 20
+      }
+     ]
+    },
+    {
+     "id": 10437,
+     "name": "Searing Totem",
+     "rank": "Rank 5",
+     "status": "forever",
+     "learn_level": 50,
+     "base_level": 50,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "fire",
+     "gcd_ms": 1000,
+     "duration_ms": 50000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 145
+     },
+     "tooltip_refs": [
+      10435
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SUMMON",
+       "base_points": 5,
+       "scaling_base_level": 50,
+       "scaling_max_level": 0,
+       "misc": 7400,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 5,
+       "value_at_60": 5
+      }
+     ],
+     "linked": [
+      {
+       "id": 10435,
+       "name": "Attack",
+       "rank": "Rank 5",
+       "role": "attack",
+       "status": "forever",
+       "learn_level": 50,
+       "base_level": 50,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "fire",
+       "cast_ms": 2200,
+       "range_yd": 20,
+       "missile_speed": 19,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_SCHOOL_DAMAGE",
+         "base_points": 39,
+         "scaling_base_level": 50,
+         "scaling_max_level": 0,
+         "variance": 0.307692,
+         "sp_coef": 0.017,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 39,
+         "value_at_60": 39,
+         "tooltip_range_at_learn_level": [
+          33,
+          45
+         ],
+         "tooltip_range_at_60": [
+          33,
+          45
+         ],
+         "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+        }
+       ],
+       "attack_interval_ms": 2200,
+       "attacks_over_totem_duration": 22
+      }
+     ]
+    },
+    {
+     "id": 10438,
+     "name": "Searing Totem",
+     "rank": "Rank 6",
+     "status": "forever",
+     "learn_level": 60,
+     "base_level": 60,
+     "max_level": 0,
+     "book_rank": false,
+     "school": "fire",
+     "gcd_ms": 1000,
+     "duration_ms": 55000,
+     "cast_ms": 0,
+     "cost": {
+      "mana": 170
+     },
+     "tooltip_refs": [
+      10436
+     ],
+     "effects": [
+      {
+       "index": 0,
+       "type": "E_SUMMON",
+       "base_points": 5,
+       "scaling_base_level": 60,
+       "scaling_max_level": 0,
+       "misc": 7402,
+       "amount_rounding": "floor (whole number)",
+       "value_at_learn_level": 5,
+       "value_at_60": 5
+      }
+     ],
+     "linked": [
+      {
+       "id": 10436,
+       "name": "Attack",
+       "rank": "Rank 6",
+       "role": "attack",
+       "status": "forever",
+       "learn_level": 60,
+       "base_level": 60,
+       "max_level": 0,
+       "book_rank": false,
+       "school": "fire",
+       "cast_ms": 2200,
+       "range_yd": 20,
+       "missile_speed": 19,
+       "cost": {
+        "mana": 0
+       },
+       "effects": [
+        {
+         "index": 0,
+         "type": "E_SCHOOL_DAMAGE",
+         "base_points": 47,
+         "scaling_base_level": 60,
+         "scaling_max_level": 0,
+         "variance": 0.297872,
+         "sp_coef": 0.017,
+         "amount_rounding": "exact (fractional, damage/heal)",
+         "value_at_learn_level": 47,
+         "value_at_60": 47,
+         "tooltip_range_at_learn_level": [
+          40,
+          54
+         ],
+         "tooltip_range_at_60": [
+          40,
+          54
+         ],
+         "roll_rule": "whole amount (value + sp_coef*bonus) * uniform(1 - variance/2, 1 + variance/2)  [wowsims DirectVariance]"
+        }
+       ],
+       "attack_interval_ms": 2200,
+       "attacks_over_totem_duration": 25
+      }
+     ]
+    }
+   ],
+   "notes": [
+    "Totem attack: linked 'Attack' spell (RefIDs[0]), cast every 2.2 s (its CastTimeMs; wowsims fire_totems.go Period = CastTime), fire, 20 yd, sp_coef 0.017, no level scaling.",
+    "Totem duration 30/35/40/45/50/55 s by rank."
+   ]
+  }
+ }
+}

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shaman Sim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one stone-dark workbench. A shared setup (builds, gear, buffs), then three tools as tabs: simulate, upgrades, combat log. */
+:root{
+  --bg:#0c1318; --panel:#121b21; --panel-2:#17232a; --line:#26353e; --line-2:#33454f;
+  --text:#e7e9e3; --muted:#8e9ea3; --gold:#d9b46c;
+  --pure:#2fa893; --hybrid:#b5832f; --mq:#9085e9; --ele:#d55181; --custom:#5f8fd6;
+  --good:#5fbf72; --warn:#d6a24a; --bad:#d96a5a;
+  --q2:#3fbf4f; --q3:#4f8fe8; --q4:#a66be6;
+  --display:'Cinzel','Trajan Pro',Georgia,serif;
+  --body:'IBM Plex Sans',-apple-system,'Segoe UI',Roboto,sans-serif;
+  --ease:cubic-bezier(.2,.75,.2,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box;font-style:normal}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body{background:radial-gradient(1200px 600px at 50% -220px,#16232b 0%,var(--bg) 70%) fixed,var(--bg)}
+a{color:var(--gold);text-underline-offset:3px}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:26px 18px 72px;display:grid;gap:18px}
+header h1{font-family:var(--display);font-weight:600;font-size:clamp(26px,4.2vw,36px);letter-spacing:.02em;margin:0;text-wrap:balance}
+header p{margin:4px 0 0;color:var(--muted);max-width:70ch}
+h2{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:.03em;margin:0}
+h3{font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.muted{color:var(--muted)} .small{font-size:13px} .num{font-variant-numeric:tabular-nums}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+/* Tabs */
+.tabs{display:flex;gap:6px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:5px;position:sticky;top:8px;z-index:20;backdrop-filter:blur(8px)}
+.tab{flex:1;border:0;background:transparent;border-radius:10px;padding:10px 8px;cursor:pointer;font-weight:600;font-size:14px;color:var(--muted);transition:background .25s var(--ease),color .25s}
+.tab[aria-selected="true"]{background:var(--panel-2);color:var(--text);box-shadow:inset 0 0 0 1px var(--line-2)}
+.view{display:none;gap:18px}
+.view.on{display:grid}
+
+/* Controls */
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--panel-2);border-radius:999px;padding:6px 12px;cursor:pointer;font-size:13.5px;font-weight:500;transition:border-color .2s,background .2s,opacity .2s}
+.chip .dot{width:10px;height:10px;border-radius:50%}
+.chip[aria-pressed="false"]{opacity:.55}
+.chip[aria-pressed="true"]{border-color:var(--line-2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 14px;border-radius:10px;border:1px solid var(--line-2);background:var(--panel-2);cursor:pointer;font-weight:600;font-size:14px;text-decoration:none;color:var(--text);transition:border-color .2s,background .2s,transform .15s}
+.btn:hover{border-color:var(--gold)}
+.btn:active{transform:scale(.98)}
+.btn.primary{background:linear-gradient(180deg,#e3c27d,#c9a052);color:#1a1408;border-color:#e2c27c}
+.btn.primary:hover{filter:brightness(1.05)}
+.btn[disabled]{opacity:.5;cursor:default}
+.btn.sm{padding:5px 10px;font-size:12.5px;font-weight:500;border-radius:8px}
+label.f{display:grid;gap:4px;font-size:12.5px;color:var(--muted);font-weight:500}
+input[type=number],input[type=text],input[type=search],select{background:#0e161b;border:1px solid var(--line);border-radius:9px;padding:8px 10px;color:var(--text);min-width:0;width:100%}
+input[type=number]{font-variant-numeric:tabular-nums}
+.check{display:flex;gap:9px;align-items:flex-start;font-size:14px;cursor:pointer}
+.check input{margin-top:3px;accent-color:var(--gold)}
+.check small{display:block;color:var(--muted);font-size:12px}
+input[type=range]{width:100%;accent-color:var(--gold)}
+details.fold{border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+details.fold>summary{list-style:none;cursor:pointer;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+details.fold>summary::-webkit-details-marker{display:none}
+details.fold>summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .25s var(--ease);margin-right:4px}
+details.fold[open]>summary::after{transform:rotate(-135deg)}
+details.fold .inner{padding:0 18px 18px;display:grid;gap:14px}
+.sumline{color:var(--muted);font-size:13px}
+
+/* Gear list */
+.gear{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px}
+.slot{display:grid;grid-template-columns:78px 1fr auto;gap:8px;align-items:center;padding:7px 8px;border-radius:10px;border:1px solid transparent;transition:background .2s,border-color .2s}
+.slot:hover{background:#151f25;border-color:var(--line)}
+.slot .sn{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.slot .in{min-width:0}
+.slot .nm{font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.slot .st{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q2{color:var(--q2)} .q3{color:var(--q3)} .q4{color:var(--q4)} .q1{color:var(--text)} .empty{color:#5d6d74}
+.sheet{width:100%;border-collapse:collapse;font-size:13.5px}
+.sheet th,.sheet td{text-align:right;padding:5px 8px;border-bottom:1px solid #1d2a31;font-variant-numeric:tabular-nums}
+.sheet th:first-child,.sheet td:first-child{text-align:left;color:var(--muted);font-weight:500}
+.sheet thead th{color:var(--text);font-weight:600}
+.bdot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:0}
+
+/* Results */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.kpi{background:var(--panel-2);border:1px solid var(--line);border-radius:14px;padding:14px 16px;position:relative;overflow:hidden}
+.kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--bc)}
+.kpi .lb{font-size:12.5px;color:var(--muted);font-weight:500}
+.kpi .v{font-family:var(--display);font-size:30px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.15;margin-top:2px}
+.kpi .v small{font-family:var(--body);font-size:13px;color:var(--muted);font-weight:500;margin-left:6px}
+.kpi .d{font-size:12.5px;color:var(--muted);margin-top:4px}
+.cmp{width:100%;border-collapse:collapse;font-size:14px}
+.cmp th,.cmp td{padding:8px 10px;border-bottom:1px solid #1d2a31;text-align:right;font-variant-numeric:tabular-nums}
+.cmp th:first-child,.cmp td:first-child{text-align:left}
+.cmp thead th{font-weight:600;font-size:13px}
+.cmp td:first-child{color:#c9d0cb}
+.cmp td .sub{display:block;font-size:11.5px;color:var(--muted)}
+.tablewrap{overflow-x:auto}
+.chart{position:relative}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart .tip{position:absolute;pointer-events:none;background:#0a1013;border:1px solid var(--line-2);border-radius:9px;padding:7px 10px;font-size:12.5px;white-space:nowrap;opacity:0;transition:opacity .12s;transform:translate(-50%,-110%);z-index:5}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block}
+.bars{display:grid;gap:8px}
+.bar{display:grid;grid-template-columns:150px 1fr 70px;gap:10px;align-items:center;font-size:13px}
+.bar .track{height:16px;display:flex;flex-direction:column;gap:2px}
+.bar .seg{height:7px;border-radius:0 4px 4px 0;transition:width .5s var(--ease)}
+.bar .val{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums;font-size:12px;line-height:1.25}
+.busy{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:13px}
+.spin{width:14px;height:14px;border-radius:50%;border:2px solid var(--line-2);border-top-color:var(--gold);animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.status{display:inline-block;padding:1px 7px;border-radius:999px;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border:1px solid;margin-right:8px;vertical-align:1px;white-space:nowrap}
+.s-forever{color:var(--good);border-color:color-mix(in srgb,var(--good) 45%,transparent)}
+.s-sim{color:var(--custom);border-color:color-mix(in srgb,var(--custom) 45%,transparent)}
+.s-vanilla{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 45%,transparent)}
+.s-est{color:#c79ad8;border-color:color-mix(in srgb,#c79ad8 45%,transparent)}
+.assum{display:grid;gap:6px;font-size:13px;margin:0;padding:0;list-style:none}
+
+/* Level */
+.lvcard{display:grid;gap:12px}
+.lvtop{display:flex;justify-content:space-between;align-items:center;gap:14px}
+.stepper{display:flex;align-items:center;gap:6px;flex:none}
+.stepper input{width:70px;text-align:center;font-family:var(--display);font-size:24px;font-weight:600;padding:5px 4px;-moz-appearance:textfield}
+.stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.stepper .btn{width:42px;height:42px;padding:0;font-size:20px;border-radius:12px}
+.unlocks{display:grid;gap:7px;font-size:13px}
+.ul{display:grid;grid-template-columns:52px 1fr;gap:8px;align-items:baseline}
+.ul .k{color:var(--muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.ul .v{display:flex;gap:6px;flex-wrap:wrap}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;background:var(--panel-2);border:1px solid var(--line);font-size:12.5px;white-space:nowrap}
+.pill.new{border-color:color-mix(in srgb,var(--gold) 50%,transparent);color:var(--gold)}
+.pill b{font-weight:600;color:var(--muted);margin-right:4px}
+.routes{display:grid;gap:8px}
+.rt{padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--panel-2);display:grid;gap:4px;font-size:13px}
+.rt .hd{display:flex;gap:8px;align-items:center;font-weight:600}
+.rt .tk{color:var(--muted)}
+.rt .nx{color:var(--gold)}
+.warnline{color:var(--warn);font-size:12.5px}
+.needlv{color:var(--warn);font-size:11.5px;font-weight:600;margin-left:6px}
+.note{padding:9px 12px;border-radius:10px;background:#15202a;border-left:3px solid var(--custom);font-size:13px}
+
+/* Upgrades */
+.ups{display:grid;gap:8px}
+.up{display:grid;grid-template-columns:1fr auto;gap:4px 14px;padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:var(--panel-2)}
+.up .nm{font-weight:600}
+.up .meta{font-size:12.5px;color:var(--muted)}
+.up .gain{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;font-size:16px;color:var(--good)}
+.up .gain small{display:block;font-weight:500;font-size:11.5px;color:var(--muted)}
+.ease{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:600;margin-right:6px;border:1px solid}
+.e1{color:var(--good);border-color:color-mix(in srgb,var(--good) 40%,transparent)}
+.e2{color:#9ccf6a;border-color:color-mix(in srgb,#9ccf6a 40%,transparent)}
+.e3{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 40%,transparent)}
+.e4{color:var(--bad);border-color:color-mix(in srgb,var(--bad) 40%,transparent)}
+.slotgroup{border-top:1px solid var(--line);padding-top:12px;margin-top:4px}
+.slotgroup h4{margin:0 0 8px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+
+/* Picker */
+.modal{position:fixed;inset:0;background:rgba(4,8,10,.6);display:none;align-items:flex-end;justify-content:center;z-index:50;padding:0}
+.modal.on{display:flex}
+.sheetbox{background:var(--panel);border:1px solid var(--line-2);border-radius:18px 18px 0 0;width:100%;max-width:720px;max-height:86vh;display:flex;flex-direction:column;animation:up .28s var(--ease)}
+@keyframes up{from{transform:translateY(24px);opacity:.6}to{transform:none;opacity:1}}
+@media (min-width:760px){.modal{align-items:center}.sheetbox{border-radius:18px}}
+.sheetbox .hd{padding:14px 16px;border-bottom:1px solid var(--line);display:grid;gap:10px}
+.sheetbox .list{overflow:auto;padding:8px}
+.pick{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:9px 10px;border-radius:10px;cursor:pointer;border:1px solid transparent}
+.pick:hover,.pick:focus{background:#18232a;border-color:var(--line)}
+.pick .st{font-size:12px;color:var(--muted)}
+.pick .sc{font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--muted);text-align:right}
+
+/* Log */
+.drop{border:1.5px dashed var(--line-2);border-radius:14px;padding:26px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s}
+.drop.over{border-color:var(--gold);background:#141f25}
+.fights{display:grid;gap:8px}
+.fight{border:1px solid var(--line);border-radius:12px;background:var(--panel-2)}
+.fight summary{list-style:none;cursor:pointer;padding:11px 14px;display:grid;grid-template-columns:1fr auto;gap:10px}
+.fight summary::-webkit-details-marker{display:none}
+.fight .body{padding:0 14px 14px;display:grid;gap:12px}
+.flag{padding:9px 12px;border-radius:10px;background:#15202a;border-left:3px solid var(--warn);font-size:13.5px}
+.flag.death{border-left-color:var(--bad)}
+.flag b{color:var(--text)}
+textarea{width:100%;min-height:160px;background:#0e161b;border:1px solid var(--line);border-radius:10px;color:var(--text);padding:10px;font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0a1013;border:1px solid var(--line-2);padding:10px 14px;border-radius:10px;font-size:13.5px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:60}
+.toast.on{opacity:1}
+
+@media (max-width:900px){
+  .grid3{grid-template-columns:1fr}
+  .gear{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .wrap{padding:18px 12px 60px;gap:14px}
+  .grid2{grid-template-columns:1fr}
+  .bar{grid-template-columns:110px 1fr 60px}
+  .card{padding:14px}
+  details.fold .inner{padding:0 14px 14px}
+  .tab{font-size:13px;padding:9px 4px}
+  .sumline{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Shaman Sim</h1>
+    <p>Restoration Shaman in WoW Forever, level 1 to 60: questing speed, dungeon healing, the easiest real upgrades at your level, and your combat logs.</p>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Tools">
+    <button class="tab" role="tab" id="t-sim" data-v="simulate" aria-selected="true">Simulate</button>
+    <button class="tab" role="tab" id="t-up" data-v="upgrades" aria-selected="false">Upgrades</button>
+    <button class="tab" role="tab" id="t-log" data-v="log" aria-selected="false">Combat log</button>
+  </nav>
+
+  <!-- Shared setup -->
+  <div id="setup" class="view on" style="gap:12px">
+    <div class="card lvcard">
+      <div class="lvtop">
+        <div style="min-width:0"><h2>Your level</h2><div class="small muted" id="lvSub"></div></div>
+        <div class="stepper"><button class="btn" id="lvDown" aria-label="One level down">&minus;</button><input type="number" id="level" min="1" max="60" value="8" inputmode="numeric" aria-label="Your level"><button class="btn" id="lvUp" aria-label="One level up">+</button></div>
+      </div>
+      <div class="unlocks" id="lvUnlocks"></div>
+    </div>
+    <details class="fold" open id="f-builds">
+      <summary><h2>Builds</h2><span class="sumline" id="sum-builds"></span></summary>
+      <div class="inner">
+        <div class="row" id="buildChips"></div>
+        <div class="routes" id="routes"></div>
+        <div class="grid2">
+          <label class="f">Add a build from a talent calculator link or code
+            <input type="text" id="customCode" placeholder="timesaver.gg ...?b=-055-5530003315513151" autocomplete="off">
+          </label>
+          <div class="row" style="align-items:flex-end"><button class="btn sm" id="addCustom">Add as custom build</button><span class="small muted" id="customMsg"></span></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="fold" id="f-gear">
+      <summary><h2>Gear</h2><span class="sumline" id="sum-gear"></span></summary>
+      <div class="inner">
+        <div class="row">
+          <label class="f" style="min-width:240px;flex:1">Start from
+            <select id="preset"></select>
+          </label>
+          <div class="small muted" style="flex:2;min-width:240px" id="presetNote"></div>
+        </div>
+        <div id="gearWarn"></div>
+        <div class="gear" id="gearList"></div>
+        <div class="small muted" id="setNote"></div>
+      </div>
+    </details>
+
+    <details class="fold" id="f-opts">
+      <summary><h2>Buffs and stats</h2><span class="sumline" id="sum-opts"></span></summary>
+      <div class="inner">
+        <div class="grid2">
+          <div style="display:grid;gap:10px">
+            <label class="check"><input type="checkbox" id="o-motw" checked><span>Mark of the Wild from Nicklas<small id="l-motw"></small></span></label>
+            <label class="check"><input type="checkbox" id="o-ai" checked><span>Arcane Intellect from Cornelius<small id="l-ai"></small></span></label>
+            <label class="check"><input type="checkbox" id="o-pot" checked><span><span id="l-potT">Mana potions</span><small id="l-pot"></small></span></label>
+            <label class="check" id="tabRow"><input type="checkbox" id="o-tab"><span>Tablet of Healing Wave X<small>Raid book at 60: rank 10 heals about 18% more for 11% more mana</small></span></label>
+          </div>
+          <div style="display:grid;gap:10px;align-content:start">
+            <div class="small muted">Extra stats from enchants or anything not in the item list</div>
+            <div class="grid3" style="grid-template-columns:repeat(3,1fr);gap:8px">
+              <label class="f">Intellect<input type="number" id="x-int" value="0"></label>
+              <label class="f">Spirit<input type="number" id="x-spi" value="0"></label>
+              <label class="f">Healing<input type="number" id="x-healing" value="0"></label>
+              <label class="f">Mana per 5<input type="number" id="x-mp5" value="0"></label>
+              <label class="f">Crit rating<input type="number" id="x-critRating" value="0"></label>
+              <label class="f">Stamina<input type="number" id="x-sta" value="0"></label>
+            </div>
+          </div>
+        </div>
+        <div class="tablewrap"><table class="sheet" id="sheet"></table></div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Simulate -->
+  <section class="view on" id="v-simulate" role="tabpanel" aria-labelledby="t-sim">
+    <div class="card" style="display:grid;gap:14px">
+      <div class="row" style="justify-content:space-between"><h2>Questing</h2><span class="small muted">One normal mob at a time, then walk to the next and rest when needed</span></div>
+      <div class="grid3">
+        <label class="f">Mob level<select id="qDiff"><option value="-2">2 below you</option><option value="-1">1 below you</option><option value="0" selected>Your level</option><option value="1">1 above you</option><option value="2">2 above you</option><option value="3">3 above you</option></select></label>
+        <label class="f">Walking between pulls: <b class="num" id="qTravelVal" style="color:var(--text)">10 s</b><input type="range" id="qTravel" min="0" max="40" step="1" value="10"></label>
+        <div style="display:grid;gap:8px;align-content:end">
+          <label class="check"><input type="checkbox" id="qLS" checked><span>Lightning Shield up<small id="l-ls"></small></span></label>
+          <label class="check" id="qMageRow"><input type="checkbox" id="qMage"><span>Water and food from Cornelius<small>Conjured Crystal Water and Cinnamon Rolls at 55</small></span></label>
+        </div>
+      </div>
+      <div id="questOut" style="display:grid;gap:14px"></div>
+    </div>
+
+    <div class="card" style="display:grid;gap:14px">
+      <div class="row" style="justify-content:space-between"><h2>Dungeon fight</h2><span class="small muted">Five-player group: a tank, three damage dealers and you</span></div>
+      <div id="dungNote"></div>
+      <div class="grid3">
+        <label class="f">Damage to the tank per second: <b class="num" id="dtpsVal" style="color:var(--text)">300</b><input type="range" id="dtps" min="90" max="900" step="5" value="300"></label>
+        <label class="f">Group-wide hit every 15 s: <b class="num" id="aoeVal" style="color:var(--text)">500</b><input type="range" id="aoe" min="0" max="1500" step="50" value="500"></label>
+        <label class="f">Fight length: <b class="num" id="lenVal" style="color:var(--text)">120 s</b><input type="range" id="len" min="45" max="300" step="15" value="120"></label>
+      </div>
+      <div class="grid3">
+        <label class="f">Tank health<input type="number" id="tankHP" value="6500" step="100"></label>
+        <label class="f">Damage dealer health<input type="number" id="dpsHP" value="3800" step="100"></label>
+        <label class="f">Target for damage numbers<select id="mobLvl"><option value="0">Your level</option><option value="3">3 levels above (boss)</option></select></label>
+      </div>
+      <div class="row"><button class="btn primary" id="run">Run simulation</button><span id="runState"></span></div>
+    </div>
+    <div id="results" style="display:grid;gap:14px"></div>
+    <details class="fold">
+      <summary><h2>How the sim works</h2><span class="sumline">Model, numbers and sources</span></summary>
+      <div class="inner">
+        <p class="small" style="margin:0;max-width:80ch">Questing: you fight one normal mob of the chosen level. Its health and damage come from the Forever client tables for that level; your armor and dodge cut the damage. Four ways to fight are compared: melee, melee with Earth Shock on cooldown, a Lightning Bolt pull before melee, and Lightning Bolt only. Each uses whichever weapon imbue you have that does the most damage, and Lightning Shield when it is on. If a fight would take you under 30% health, you cast Healing Wave mid-fight. After each kill you walk to the next mob, regenerating, then eat and drink at the same time for whatever you still need, using the best vendor food and water for your level. Healing Wave between pulls is used when it shortens the rest. Kills per hour is 3,600 divided by the seconds per kill. A style is marked unsafe if you run out of mana mid-fight or the mob out-damages Healing Wave.</p>
+        <p class="small" style="margin:0;max-width:80ch">Each fight is played out second by second, 40 times with different random rolls. The boss swings at the tank every 2 s; 30% of swings are avoided, 10% hit 50% harder. Every 15 s the whole group takes a hit. Your Shaman drops Healing Stream and Mana Spring once you have them, keeps Water Shield up when talented, uses Riptide on the tank, Chain Heal when three or more people are hurt, Healing Wave on the tank sized for the damage that lands during the cast, Nature's Swiftness or Lesser Healing Wave below 35% health, Mana Tide below 55% mana, and a potion when it fits. Healing that lands on full health counts as overheal. "Most tank damage you can heal through" is found by searching for the highest damage where nobody dies in at least 90% of fights.</p>
+        <p class="small" style="margin:0;max-width:80ch">Healing over 5 minutes is a separate calculation used for upgrades: how much you can heal with 70% Healing Wave and 30% Chain Heal before mana runs out, then at the rate your regen allows. Damage numbers are expected values against one target: melee with your best weapon imbue, Stormstrike when talented, and Earth Shock on cooldown while mana lasts.</p>
+        <p class="small" style="margin:0;max-width:80ch">Every spell uses the highest rank you have at your level, with its level scaling, and talents are the first points of each build's leveling route. Below 40 there is no Chain Heal, so healing over 5 minutes uses Healing Wave alone. Default fight numbers scale with an elite of your level: change them freely.</p>
+        <p class="small" style="margin:0;max-width:80ch">Not modelled: healing threat and pulling aggro, cast pushback (Healing Focus), Ancestral Healing's armor, movement, dispels, item procs and on-use trinkets, totem placement outside range, Searing Totem, adds and running mobs while questing, and health regeneration outside eating.</p>
+        <ul class="assum" id="assum"></ul>
+        <p class="small muted" style="margin:0" id="dataNote"></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- Upgrades -->
+  <section class="view" id="v-upgrades" role="tabpanel" aria-labelledby="t-up">
+    <div class="card" style="display:grid;gap:14px">
+      <div class="row" style="justify-content:space-between"><h2>Upgrade finder</h2><span class="small muted" id="upBase"></span></div>
+      <div class="grid3">
+        <label class="f">Rank upgrades for<select id="upBuild"></select></label>
+        <label class="f">What gets faster or better<select id="upMode"><option value="quest">Questing: kills per hour</option><option value="heal">Dungeon healing</option></select></label>
+        <label class="f">Highest level to look at<input type="number" id="maxLvl" value="8" min="1" max="60" inputmode="numeric"></label>
+      </div>
+      <div class="grid3" id="wRow">
+        <label class="f">What counts: <b id="wVal" style="color:var(--text)">healing only</b><input type="range" id="wDmg" min="0" max="50" step="5" value="0"></label>
+      </div>
+      <div class="row" id="srcChips"></div>
+    </div>
+    <div class="card" style="display:grid;gap:12px">
+      <h3 style="margin:0">Best value for the effort</h3>
+      <div class="small muted" style="margin-top:-6px">Gain divided by how hard the item is to get. Quests and vendors count as easiest, then crafting, then dungeon drops by drop chance, then reputation and raids.</div>
+      <div class="ups" id="bestUps"></div>
+    </div>
+    <div class="card" style="display:grid;gap:6px">
+      <h3 style="margin:0">Biggest gain per slot</h3>
+      <div id="slotUps"></div>
+    </div>
+  </section>
+
+  <!-- Combat log -->
+  <section class="view" id="v-log" role="tabpanel" aria-labelledby="t-log">
+    <div class="card" style="display:grid;gap:14px">
+      <h2>Read a combat log</h2>
+      <p class="small" style="margin:0;max-width:80ch">Type <b>/combatlog</b> in game before a dungeon, and again after. The file is <b>WoWCombatLog.txt</b> in the Logs folder of your WoW Forever install. Turn on Advanced Combat Logging in the game's network settings so mana shows up. The file is read here in your browser and never uploaded.</p>
+      <div class="grid2">
+        <label class="f">Your character name (optional, found automatically)<input type="text" id="logName" placeholder="e.g. Thordun" autocomplete="off"></label>
+        <label class="f">Split pulls after this many quiet seconds<input type="number" id="logGap" value="8" min="3" max="30"></label>
+      </div>
+      <label class="drop" id="drop" for="logFile">
+        <input type="file" id="logFile" accept=".txt,.log,text/plain" hidden>
+        <div style="font-weight:600">Choose WoWCombatLog.txt or drop it here</div>
+        <div class="small muted" style="margin-top:4px">Large files take a few seconds</div>
+      </label>
+      <div id="logState"></div>
+    </div>
+    <div id="logOut" style="display:grid;gap:14px"></div>
+  </section>
+</div>
+
+<div class="modal" id="picker" role="dialog" aria-modal="true" aria-labelledby="pickTitle">
+  <div class="sheetbox">
+    <div class="hd">
+      <div class="row" style="justify-content:space-between"><h2 id="pickTitle">Choose item</h2><button class="btn sm" id="pickClose">Close</button></div>
+      <input type="search" id="pickSearch" placeholder="Search by name" autocomplete="off">
+      <div class="small muted" id="pickNote">Sorted by how much they add for your first build. Values compare to an empty slot.</div>
+    </div>
+    <div class="list" id="pickList"></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>/*DATA_JS*/</script>
+<script>/*ITEMS_JS*/</script>
+<script>/*ENGINE_JS*/</script>
+<script>/*LOG_JS*/</script>
+<script id="worker-src" type="text/plain">/*WORKER_JS*/</script>
+<script>/*MAIN_JS*/</script>
+</body>
+</html>

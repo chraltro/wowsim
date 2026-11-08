@@ -1,0 +1,2016 @@
+{
+ "resto_timesaver": {
+  "title": "Timesaver.gg Resto Shaman L60 pre-raid BiS, Alliance column (data checked 2026-11-06)",
+  "rows": [
+   {
+    "slot": "Head",
+    "id": 252561,
+    "name": "Living Crown",
+    "ilvl": 61,
+    "reqLvl": 56,
+    "stats": {
+     "int": 18,
+     "spi": 14,
+     "healing": 73,
+     "spellDamage": 25,
+     "armor": 152
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Leatherworking",
+      "skill": 300
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Neck",
+    "id": 19426,
+    "name": "Orb of the Darkmoon",
+    "ilvl": 65,
+    "reqLvl": 60,
+    "stats": {
+     "spi": 8,
+     "sta": 11,
+     "healing": 22,
+     "spellDamage": 22
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "quest",
+      "quest": "1200 Tickets - Orb of the Darkmoon",
+      "questLevel": 60,
+      "zone": "Darkmoon Faire"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Shoulder",
+    "id": 16718,
+    "name": "Wildheart Spaulders",
+    "ilvl": 60,
+    "reqLvl": 55,
+    "stats": {
+     "int": 18,
+     "spi": 8,
+     "sta": 9,
+     "healing": 20,
+     "spellDamage": 7,
+     "armor": 127
+    },
+    "weapon": null,
+    "set": "Wildheart Raiment",
+    "effects": [],
+    "source": [
+     {
+      "type": "drop",
+      "npc": "Gizrul the Slavener",
+      "zone": "Blackrock Spire",
+      "dropChancePct": 18.21
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Back",
+    "id": 18510,
+    "name": "Hide of the Wild",
+    "ilvl": 62,
+    "reqLvl": 57,
+    "stats": {
+     "int": 10,
+     "sta": 8,
+     "healing": 42,
+     "spellDamage": 14,
+     "armor": 48
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Leatherworking",
+      "skill": 300
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Chest",
+    "id": 16666,
+    "name": "Vest of Elements",
+    "ilvl": 63,
+    "reqLvl": 58,
+    "stats": {
+     "int": 20,
+     "sta": 13,
+     "healing": 23,
+     "spellDamage": 23,
+     "armor": 370
+    },
+    "weapon": null,
+    "set": "The Elements",
+    "effects": [],
+    "source": [
+     {
+      "type": "drop",
+      "npc": "General Drakkisath",
+      "zone": "Blackrock Spire",
+      "dropChancePct": 5.1
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Wrist",
+    "id": 252573,
+    "name": "Mender's Mail Bracers",
+    "ilvl": 50,
+    "reqLvl": 45,
+    "stats": {
+     "int": 7,
+     "spi": 6,
+     "sta": 5,
+     "healing": 19,
+     "spellDamage": 6,
+     "armor": 131
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Leatherworking",
+      "skill": 225
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Hands",
+    "id": 20296,
+    "name": "Green Dragonscale Gauntlets",
+    "ilvl": 56,
+    "reqLvl": 51,
+    "stats": {
+     "sta": 5,
+     "healing": 40,
+     "spellDamage": 14,
+     "armor": 208
+    },
+    "weapon": null,
+    "set": "Green Dragon Mail",
+    "effects": [],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Leatherworking",
+      "skill": null
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Waist",
+    "id": 279252,
+    "name": "Elderwild Waistcord",
+    "ilvl": 65,
+    "reqLvl": 60,
+    "stats": {
+     "spi": 18,
+     "sta": 21,
+     "healing": 30,
+     "spellDamage": 10,
+     "armor": 111
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Leatherworking",
+      "skill": 300
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Legs",
+    "id": 16719,
+    "name": "Wildheart Kilt",
+    "ilvl": 61,
+    "reqLvl": 56,
+    "stats": {
+     "int": 14,
+     "spi": 14,
+     "sta": 14,
+     "healing": 24,
+     "spellDamage": 8,
+     "str": 12,
+     "armor": 150
+    },
+    "weapon": null,
+    "set": "Wildheart Raiment",
+    "effects": [],
+    "source": [
+     {
+      "type": "drop",
+      "npc": "Baron Rivendare",
+      "zone": "Stratholme",
+      "dropChancePct": 10.24
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Feet",
+    "id": 16715,
+    "name": "Wildheart Boots",
+    "ilvl": 59,
+    "reqLvl": 54,
+    "stats": {
+     "int": 9,
+     "spi": 17,
+     "sta": 10,
+     "healing": 11,
+     "spellDamage": 4,
+     "armor": 115
+    },
+    "weapon": null,
+    "set": "Wildheart Raiment",
+    "effects": [],
+    "source": [
+     {
+      "type": "drop",
+      "npc": "Mother Smolderweb",
+      "zone": "Blackrock Spire",
+      "dropChancePct": 15.65
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Finger1",
+    "id": 281635,
+    "name": "Philanthropist's Ring",
+    "ilvl": 35,
+    "reqLvl": null,
+    "stats": {
+     "int": 5,
+     "healing": 10,
+     "spellDamage": 10
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "quest",
+      "quest": "Greater Friend of the Library",
+      "questLevel": 35,
+      "zone": "Special"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Finger2",
+    "id": 273031,
+    "name": "Runemender's Seal",
+    "ilvl": 32,
+    "reqLvl": 27,
+    "stats": {
+     "int": 6,
+     "spi": 6,
+     "healing": 9,
+     "spellDamage": 3
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "drop",
+      "npc": "Arcane Anomaly",
+      "dropChancePct": 35.44
+     }
+    ],
+    "outsideDatasetScope": true,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Trinket1",
+    "id": 10659,
+    "name": "Shard of the Splithooves",
+    "ilvl": 57,
+    "reqLvl": null,
+    "stats": {
+     "mp5": 6
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [
+     "Equip: +21 Attack Power against Demons."
+    ],
+    "source": [
+     {
+      "type": "quest",
+      "quest": "Heroes of Old",
+      "questLevel": 57,
+      "zone": "Blasted Lands"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Trinket2",
+    "id": 744,
+    "name": "Thunderbrew's Boot Flask",
+    "ilvl": 44,
+    "reqLvl": null,
+    "stats": {
+     "spi": 8
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [
+     "Use: Deals 75 Fire damage every 1 sec for 5 sec to all enemies in front of you. Deals 2 times as much damage to Plants. Gets you quite drunk too! (5 Min Cooldown)"
+    ],
+    "source": [
+     {
+      "type": "quest",
+      "quest": "Sweet Amber",
+      "questLevel": 44,
+      "zone": "Westfall"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Main Hand",
+    "id": 7721,
+    "name": "Hand of Righteousness",
+    "ilvl": 44,
+    "reqLvl": 39,
+    "stats": {
+     "spi": 8,
+     "sta": 7,
+     "healing": 94,
+     "spellDamage": 31
+    },
+    "weapon": {
+     "min": 37,
+     "max": 70,
+     "speed": 2.7,
+     "dps": 19.94
+    },
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "drop",
+      "npc": "High Inquisitor Whitemane",
+      "dropChancePct": 18.71
+     }
+    ],
+    "outsideDatasetScope": true,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Off Hand",
+    "id": 279262,
+    "name": "Evergreen Shield",
+    "ilvl": 65,
+    "reqLvl": 60,
+    "stats": {
+     "sta": 16,
+     "healing": 23,
+     "spellDamage": 8,
+     "critRating": 14,
+     "armor": 2468
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Blacksmithing",
+      "skill": 300
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   }
+  ],
+  "totals_items_only": {
+   "int": 107,
+   "spi": 107,
+   "sta": 119,
+   "healing": 440,
+   "spellDamage": 185,
+   "mp5": 6,
+   "critRating": 14,
+   "hitRating": 0,
+   "str": 12,
+   "agi": 0,
+   "ap": 0,
+   "armor": 3880
+  },
+  "activeSetBonuses": [
+   "Wildheart Raiment 3pc: (2) Set: +8 All Resistances.",
+   "Wildheart Raiment 3pc: (3) Set: Increases damage and healing done by magical spells and effects by up to 18.",
+   "Wildheart Raiment 3pc: (3) Set: +30 Attack Power."
+  ],
+  "derived": {
+   "critPct_fromRating": 1.0,
+   "hitPct_fromRating": 0.0
+  }
+ },
+ "resto_timesaver_l55": {
+  "title": "Timesaver.gg Resto Shaman level-55 gear, Alliance column (data checked 2026-11-06)",
+  "rows": [
+   {
+    "slot": "Head",
+    "id": 12018,
+    "name": "Conservator Helm",
+    "ilvl": 54,
+    "reqLvl": null,
+    "stats": {
+     "spi": 20,
+     "sta": 22,
+     "armor": 262
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "quest",
+      "quest": "Abandoned Hope",
+      "questLevel": 54,
+      "zone": "Blackrock Depths"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Neck",
+    "id": 10769,
+    "name": "Glowing Eye of Mordresh",
+    "ilvl": 41,
+    "reqLvl": 36,
+    "stats": {
+     "int": 8,
+     "healing": 20,
+     "spellDamage": 7
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "drop",
+      "npc": "Mordresh Fire Eye",
+      "dropChancePct": 32.5
+     }
+    ],
+    "outsideDatasetScope": true,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Shoulder",
+    "id": 9411,
+    "name": "Rockshard Pauldrons",
+    "ilvl": 46,
+    "reqLvl": 41,
+    "stats": {
+     "int": 13,
+     "spi": 6,
+     "healing": 12,
+     "spellDamage": 12,
+     "str": 3,
+     "armor": 209
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "drop",
+      "npc": "Ancient Stone Keeper",
+      "zone": "Uldaman",
+      "dropChancePct": 46.91
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Back",
+    "id": 273825,
+    "name": "Red Wool Cloak",
+    "ilvl": 31,
+    "reqLvl": 26,
+    "stats": {
+     "healing": 9,
+     "spellDamage": 3,
+     "mp5": 3,
+     "armor": 24
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "drop",
+      "npc": "Bazil Thredd",
+      "dropChancePct": 1.02
+     }
+    ],
+    "outsideDatasetScope": true,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Chest",
+    "id": 11194,
+    "name": "Prismscale Hauberk",
+    "ilvl": 57,
+    "reqLvl": null,
+    "stats": {
+     "int": 4,
+     "spi": 23,
+     "sta": 3,
+     "armor": 307
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "quest",
+      "quest": "Tremors of the Earth",
+      "questLevel": 50,
+      "zone": "Badlands"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Wrist",
+    "id": 18449,
+    "name": "Sergeant Major's Chain Armguards",
+    "ilvl": 50,
+    "reqLvl": 45,
+    "stats": {
+     "int": 6,
+     "sta": 14,
+     "armor": 131
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [],
+    "outsideDatasetScope": true,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Hands",
+    "id": 16672,
+    "name": "Gauntlets of Elements",
+    "ilvl": 59,
+    "reqLvl": 54,
+    "stats": {
+     "int": 10,
+     "spi": 16,
+     "sta": 4,
+     "healing": 6,
+     "spellDamage": 6,
+     "hitRating": 9,
+     "armor": 218
+    },
+    "weapon": null,
+    "set": "The Elements",
+    "effects": [],
+    "source": [
+     {
+      "type": "drop",
+      "npc": "Pyroguard Emberseer",
+      "zone": "Blackrock Spire",
+      "dropChancePct": 18.43
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Waist",
+    "id": 15813,
+    "name": "Gold Link Belt",
+    "ilvl": 56,
+    "reqLvl": null,
+    "stats": {
+     "int": 12,
+     "sta": 12,
+     "armor": 170
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "quest",
+      "quest": "A Matter of Time",
+      "questLevel": 56,
+      "zone": "Western Plaguelands"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Legs",
+    "id": 274161,
+    "name": "Quillord Mail Leggings",
+    "ilvl": 34,
+    "reqLvl": 29,
+    "stats": {
+     "spi": 8,
+     "sta": 11,
+     "armor": 202
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [
+     "Equip: Increases your chance to Block attacks with a shield by 2.0%."
+    ],
+    "source": [
+     {
+      "type": "drop",
+      "npc": "Overlord Ramtusk",
+      "dropChancePct": 2.69
+     }
+    ],
+    "outsideDatasetScope": true,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Feet",
+    "id": 273042,
+    "name": "Manascale Treads",
+    "ilvl": 33,
+    "reqLvl": 28,
+    "stats": {
+     "int": 7,
+     "critRating": 7,
+     "str": 7,
+     "armor": 157
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "drop",
+      "npc": "Mana Devourer",
+      "dropChancePct": 34.64
+     }
+    ],
+    "outsideDatasetScope": true,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Finger1",
+    "id": 281635,
+    "name": "Philanthropist's Ring",
+    "ilvl": 35,
+    "reqLvl": null,
+    "stats": {
+     "int": 5,
+     "healing": 10,
+     "spellDamage": 10
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "quest",
+      "quest": "Greater Friend of the Library",
+      "questLevel": 35,
+      "zone": "Special"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Finger2",
+    "id": 273031,
+    "name": "Runemender's Seal",
+    "ilvl": 32,
+    "reqLvl": 27,
+    "stats": {
+     "int": 6,
+     "spi": 6,
+     "healing": 9,
+     "spellDamage": 3
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "drop",
+      "npc": "Arcane Anomaly",
+      "dropChancePct": 35.44
+     }
+    ],
+    "outsideDatasetScope": true,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Trinket1",
+    "id": 10659,
+    "name": "Shard of the Splithooves",
+    "ilvl": 57,
+    "reqLvl": null,
+    "stats": {
+     "mp5": 6
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [
+     "Equip: +21 Attack Power against Demons."
+    ],
+    "source": [
+     {
+      "type": "quest",
+      "quest": "Heroes of Old",
+      "questLevel": 57,
+      "zone": "Blasted Lands"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Trinket2",
+    "id": 744,
+    "name": "Thunderbrew's Boot Flask",
+    "ilvl": 44,
+    "reqLvl": null,
+    "stats": {
+     "spi": 8
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [
+     "Use: Deals 75 Fire damage every 1 sec for 5 sec to all enemies in front of you. Deals 2 times as much damage to Plants. Gets you quite drunk too! (5 Min Cooldown)"
+    ],
+    "source": [
+     {
+      "type": "quest",
+      "quest": "Sweet Amber",
+      "questLevel": 44,
+      "zone": "Westfall"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Main Hand",
+    "id": 7721,
+    "name": "Hand of Righteousness",
+    "ilvl": 44,
+    "reqLvl": 39,
+    "stats": {
+     "spi": 8,
+     "sta": 7,
+     "healing": 94,
+     "spellDamage": 31
+    },
+    "weapon": {
+     "min": 37,
+     "max": 70,
+     "speed": 2.7,
+     "dps": 19.94
+    },
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "drop",
+      "npc": "High Inquisitor Whitemane",
+      "dropChancePct": 18.71
+     }
+    ],
+    "outsideDatasetScope": true,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Off Hand",
+    "id": 274290,
+    "name": "Painwalker Buckler",
+    "ilvl": 34,
+    "reqLvl": 29,
+    "stats": {
+     "sta": 6,
+     "healing": 13,
+     "spellDamage": 5,
+     "armor": 738
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [
+     "Equip: 17% chance when struck in combat to gain 12 mana per 5 sec for 10 sec. (Proc chance: 17%)"
+    ],
+    "source": [
+     {
+      "type": "drop",
+      "npc": "Interrogator Vishas",
+      "dropChancePct": 1.31
+     }
+    ],
+    "outsideDatasetScope": true,
+    "dataOrigin": null
+   }
+  ],
+  "totals_items_only": {
+   "int": 71,
+   "spi": 95,
+   "sta": 79,
+   "healing": 173,
+   "spellDamage": 77,
+   "mp5": 9,
+   "critRating": 7,
+   "hitRating": 9,
+   "str": 10,
+   "agi": 0,
+   "ap": 0,
+   "armor": 2418
+  },
+  "activeSetBonuses": [],
+  "derived": {
+   "critPct_fromRating": 0.5,
+   "hitPct_fromRating": 0.9
+  }
+ },
+ "resto_wowgg": {
+  "title": "wow.gg Resto Shaman BiS (published 2026-11-04), 9 slots only",
+  "rows": [
+   {
+    "slot": "Head",
+    "id": 13216,
+    "name": "Crown of the Penitent",
+    "ilvl": 61,
+    "reqLvl": null,
+    "stats": {
+     "int": 20,
+     "healing": 10,
+     "spellDamage": 3,
+     "mp5": 6,
+     "armor": 64
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "quest",
+      "quest": "Houses of the Holy",
+      "questLevel": 60,
+      "zone": "Stratholme"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Shoulder",
+    "id": 16718,
+    "name": "Wildheart Spaulders",
+    "ilvl": 60,
+    "reqLvl": 55,
+    "stats": {
+     "int": 18,
+     "spi": 8,
+     "sta": 9,
+     "healing": 20,
+     "spellDamage": 7,
+     "armor": 127
+    },
+    "weapon": null,
+    "set": "Wildheart Raiment",
+    "effects": [],
+    "source": [
+     {
+      "type": "drop",
+      "npc": "Gizrul the Slavener",
+      "zone": "Blackrock Spire",
+      "dropChancePct": 18.21
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Chest",
+    "id": 15047,
+    "name": "Red Dragonscale Breastplate",
+    "ilvl": 61,
+    "reqLvl": 56,
+    "stats": {
+     "healing": 57,
+     "spellDamage": 19,
+     "armor": 360
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Leatherworking",
+      "skill": 290
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Wrist",
+    "id": 22079,
+    "name": "Virtuous Bracers",
+    "ilvl": 65,
+    "reqLvl": null,
+    "stats": {
+     "int": 8,
+     "spi": 8,
+     "sta": 8,
+     "healing": 9,
+     "spellDamage": 9,
+     "mp5": 2,
+     "armor": 40
+    },
+    "weapon": null,
+    "set": "Vestments of the Virtuous",
+    "effects": [],
+    "source": [
+     {
+      "type": "quest",
+      "quest": "An Earnest Proposition",
+      "questLevel": 60,
+      "zone": "Ironforge"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Hands",
+    "id": 20296,
+    "name": "Green Dragonscale Gauntlets",
+    "ilvl": 56,
+    "reqLvl": 51,
+    "stats": {
+     "sta": 5,
+     "healing": 40,
+     "spellDamage": 14,
+     "armor": 208
+    },
+    "weapon": null,
+    "set": "Green Dragon Mail",
+    "effects": [],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Leatherworking",
+      "skill": null
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Waist",
+    "id": 19047,
+    "name": "Wisdom of the Timbermaw",
+    "ilvl": 58,
+    "reqLvl": 53,
+    "stats": {
+     "int": 14,
+     "spi": 9,
+     "healing": 31,
+     "spellDamage": 11,
+     "armor": 46
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Tailoring",
+      "skill": 255
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Legs",
+    "id": 11841,
+    "name": "Senior Designer's Pantaloons",
+    "ilvl": 55,
+    "reqLvl": 50,
+    "stats": {
+     "int": 7,
+     "spi": 18,
+     "sta": 8,
+     "healing": 37,
+     "spellDamage": 12,
+     "armor": 69
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "drop",
+      "npc": "Fineous Darkvire",
+      "dropChancePct": 52.87,
+      "zone": null
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": "NOT in wowsims db: stats parsed from Wowhead Forever tooltip; slot/ilvl/reqLvl from Warcraft DB list (lower confidence)"
+   },
+   {
+    "slot": "Feet",
+    "id": 22084,
+    "name": "Virtuous Sandals",
+    "ilvl": 60,
+    "reqLvl": null,
+    "stats": {
+     "int": 13,
+     "spi": 12,
+     "sta": 12,
+     "healing": 12,
+     "spellDamage": 12,
+     "mp5": 7,
+     "armor": 64
+    },
+    "weapon": null,
+    "set": "Vestments of the Virtuous",
+    "effects": [],
+    "source": [
+     {
+      "type": "quest",
+      "quest": "Anthion's Parting Words",
+      "questLevel": 60,
+      "zone": "Ironforge"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Two-Hand",
+    "id": 250613,
+    "name": "Thorium Greatmace",
+    "ilvl": 55,
+    "reqLvl": 50,
+    "stats": {
+     "healing": 23,
+     "spellDamage": 23,
+     "str": 21
+    },
+    "weapon": {
+     "min": 136,
+     "max": 205,
+     "speed": 3.6,
+     "dps": 47.45
+    },
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Blacksmithing",
+      "skill": 250
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   }
+  ],
+  "totals_items_only": {
+   "int": 80,
+   "spi": 55,
+   "sta": 42,
+   "healing": 239,
+   "spellDamage": 110,
+   "mp5": 15,
+   "critRating": 0,
+   "hitRating": 0,
+   "str": 21,
+   "agi": 0,
+   "ap": 0,
+   "armor": 978
+  },
+  "activeSetBonuses": [
+   "Vestments of the Virtuous 2pc: (2) Set: +8 All Resistances."
+  ],
+  "derived": {
+   "critPct_fromRating": 0.0,
+   "hitPct_fromRating": 0.0
+  }
+ },
+ "enh_timesaver": {
+  "title": "Timesaver.gg Enhancement Shaman L60 pre-raid BiS, Alliance column (data checked 2026-11-06)",
+  "rows": [
+   {
+    "slot": "Head",
+    "id": 252605,
+    "name": "Black Dragonscale Helm",
+    "ilvl": 61,
+    "reqLvl": 56,
+    "stats": {
+     "int": 38,
+     "critRating": 14,
+     "agi": 21,
+     "armor": 319
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Leatherworking",
+      "skill": 300
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Neck",
+    "id": 22150,
+    "name": "Beads of Ogre Might",
+    "ilvl": 63,
+    "reqLvl": null,
+    "stats": {
+     "sta": 7,
+     "hitRating": 10,
+     "ap": 24
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "quest",
+      "quest": "Falrin's Vendetta",
+      "questLevel": 60,
+      "zone": "Dire Maul"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Shoulder",
+    "id": 15067,
+    "name": "Ironfeather Shoulders",
+    "ilvl": 54,
+    "reqLvl": 49,
+    "stats": {
+     "int": 20,
+     "spi": 8,
+     "healing": 15,
+     "spellDamage": 15,
+     "armor": 117
+    },
+    "weapon": null,
+    "set": "Ironfeather Armor",
+    "effects": [],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Leatherworking",
+      "skill": 245
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Back",
+    "id": 286994,
+    "name": "Tattered Kirin Tor Cloak",
+    "ilvl": 33,
+    "reqLvl": 28,
+    "stats": {
+     "int": 8,
+     "hitRating": 5,
+     "armor": 25
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "drop",
+      "npc": "Seeking Remnant",
+      "dropChancePct": 0.14
+     }
+    ],
+    "outsideDatasetScope": true,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Chest",
+    "id": 16666,
+    "name": "Vest of Elements",
+    "ilvl": 63,
+    "reqLvl": 58,
+    "stats": {
+     "int": 20,
+     "sta": 13,
+     "healing": 23,
+     "spellDamage": 23,
+     "armor": 370
+    },
+    "weapon": null,
+    "set": "The Elements",
+    "effects": [],
+    "source": [
+     {
+      "type": "drop",
+      "npc": "General Drakkisath",
+      "zone": "Blackrock Spire",
+      "dropChancePct": 5.1
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Wrist",
+    "id": 279256,
+    "name": "Tranquil Wristguards",
+    "ilvl": 65,
+    "reqLvl": 60,
+    "stats": {
+     "int": 10,
+     "sta": 14,
+     "str": 16,
+     "armor": 182
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Leatherworking",
+      "skill": 300
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Hands",
+    "id": 15063,
+    "name": "Devilsaur Gauntlets",
+    "ilvl": 58,
+    "reqLvl": 53,
+    "stats": {
+     "sta": 9,
+     "critRating": 14,
+     "ap": 28,
+     "armor": 103
+    },
+    "weapon": null,
+    "set": "Devilsaur Armor",
+    "effects": [],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Leatherworking",
+      "skill": 265
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Waist",
+    "id": 18504,
+    "name": "Girdle of Insight",
+    "ilvl": 62,
+    "reqLvl": 57,
+    "stats": {
+     "int": 23,
+     "sta": 9,
+     "healing": 15,
+     "spellDamage": 15,
+     "armor": 98
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Leatherworking",
+      "skill": 290
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Legs",
+    "id": 15062,
+    "name": "Devilsaur Leggings",
+    "ilvl": 60,
+    "reqLvl": 55,
+    "stats": {
+     "sta": 12,
+     "critRating": 14,
+     "ap": 46,
+     "armor": 148
+    },
+    "weapon": null,
+    "set": "Devilsaur Armor",
+    "effects": [],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Leatherworking",
+      "skill": 290
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Feet",
+    "id": 16670,
+    "name": "Boots of Elements",
+    "ilvl": 59,
+    "reqLvl": 54,
+    "stats": {
+     "spi": 17,
+     "healing": 14,
+     "spellDamage": 14,
+     "agi": 9,
+     "armor": 240
+    },
+    "weapon": null,
+    "set": "The Elements",
+    "effects": [],
+    "source": [
+     {
+      "type": "drop",
+      "npc": "Highlord Omokk",
+      "zone": "Blackrock Spire",
+      "dropChancePct": 10.7
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Finger1",
+    "id": 281635,
+    "name": "Philanthropist's Ring",
+    "ilvl": 35,
+    "reqLvl": null,
+    "stats": {
+     "int": 5,
+     "healing": 10,
+     "spellDamage": 10
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "quest",
+      "quest": "Greater Friend of the Library",
+      "questLevel": 35,
+      "zone": "Special"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Finger2",
+    "id": 18402,
+    "name": "Glowing Crystal Ring",
+    "ilvl": 57,
+    "reqLvl": null,
+    "stats": {
+     "int": 12,
+     "sta": 5
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "quest",
+      "quest": "Uncovering Past Secrets",
+      "questLevel": 57,
+      "zone": "Moonglade"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Trinket1",
+    "id": 249469,
+    "name": "Frozen Heart of the Mountain",
+    "ilvl": 55,
+    "reqLvl": 50,
+    "stats": {
+     "hitRating": 9
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [
+     "Use: Increases Frost and Shadow spell damage done by up to 29 for 15 sec. This effect is doubled in Snowy areas. (5 Min Cooldown)"
+    ],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Enchanting",
+      "skill": 265
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Trinket2",
+    "id": 10659,
+    "name": "Shard of the Splithooves",
+    "ilvl": 57,
+    "reqLvl": null,
+    "stats": {
+     "mp5": 6
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [
+     "Equip: +21 Attack Power against Demons."
+    ],
+    "source": [
+     {
+      "type": "quest",
+      "quest": "Heroes of Old",
+      "questLevel": 57,
+      "zone": "Blasted Lands"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Main Hand",
+    "id": 279260,
+    "name": "Forest Defender's Axe",
+    "ilvl": 65,
+    "reqLvl": 60,
+    "stats": {
+     "sta": 27,
+     "healing": 28,
+     "spellDamage": 28,
+     "str": 18
+    },
+    "weapon": {
+     "min": 162,
+     "max": 244,
+     "speed": 3.3,
+     "dps": 61.54
+    },
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Blacksmithing",
+      "skill": 300
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   }
+  ],
+  "totals_items_only": {
+   "int": 136,
+   "spi": 25,
+   "sta": 96,
+   "healing": 105,
+   "spellDamage": 105,
+   "mp5": 6,
+   "critRating": 42,
+   "hitRating": 24,
+   "str": 34,
+   "agi": 30,
+   "ap": 98,
+   "armor": 1602
+  },
+  "activeSetBonuses": [
+   "The Elements 2pc: (2) Set: +8 All Resistances.",
+   "Devilsaur Armor 2pc: (2) Set: Improves your chance to hit by 2.0%."
+  ],
+  "derived": {
+   "critPct_fromRating": 3.0,
+   "hitPct_fromRating": 2.4
+  }
+ },
+ "enh_wowsims_testing": {
+  "title": "wowsims/forever Enhancement \"Testing\" gear set (devOnly preset, ui/specs/shaman/enhancement/builds/testing.build.json, commit 125e534 2026-11-08); enchants ignored",
+  "rows": [
+   {
+    "slot": "Head",
+    "id": 252604,
+    "name": "Blue Dragonscale Helm",
+    "ilvl": 61,
+    "reqLvl": 56,
+    "stats": {
+     "int": 18,
+     "healing": 25,
+     "spellDamage": 25,
+     "hitRating": 10,
+     "armor": 319
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Leatherworking",
+      "skill": 300
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Neck",
+    "id": 22149,
+    "name": "Beads of Ogre Mojo",
+    "ilvl": 63,
+    "reqLvl": null,
+    "stats": {
+     "int": 12,
+     "sta": 7,
+     "healing": 13,
+     "spellDamage": 13
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "quest",
+      "quest": "Falrin's Vendetta",
+      "questLevel": 60,
+      "zone": "Dire Maul"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Shoulder",
+    "id": 19050,
+    "name": "Mantle of the Timbermaw",
+    "ilvl": 61,
+    "reqLvl": 56,
+    "stats": {
+     "int": 13,
+     "healing": 17,
+     "spellDamage": 17,
+     "critRating": 14,
+     "armor": 65
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Tailoring",
+      "skill": 290
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Back",
+    "id": 279270,
+    "name": "Cloak of Earth and Sky",
+    "ilvl": 65,
+    "reqLvl": 60,
+    "stats": {
+     "spi": 14,
+     "sta": 16,
+     "armor": 50
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [
+     "Equip: Increases damage done by Fire spells and effects by up to 15.",
+     "Equip: Increases damage done by Nature spells and effects by up to 15.",
+     "Equip: Increases damage done by Arcane spells and effects by up to 15."
+    ],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Tailoring",
+      "skill": 300
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Chest",
+    "id": 22102,
+    "name": "Vest of The Five Thunders",
+    "ilvl": 60,
+    "reqLvl": null,
+    "stats": {
+     "int": 17,
+     "spi": 16,
+     "sta": 17,
+     "healing": 14,
+     "spellDamage": 14,
+     "critRating": 14,
+     "str": 12,
+     "armor": 387
+    },
+    "weapon": null,
+    "set": "The Five Thunders",
+    "effects": [],
+    "source": [
+     {
+      "type": "quest",
+      "quest": "Saving the Best for Last",
+      "questLevel": 60,
+      "zone": "Orgrimmar"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Wrist",
+    "id": 22095,
+    "name": "Bindings of The Five Thunders",
+    "ilvl": 65,
+    "reqLvl": null,
+    "stats": {
+     "int": 9,
+     "spi": 9,
+     "sta": 10,
+     "healing": 8,
+     "spellDamage": 8,
+     "armor": 167
+    },
+    "weapon": null,
+    "set": "The Five Thunders",
+    "effects": [],
+    "source": [
+     {
+      "type": "quest",
+      "quest": "An Earnest Proposition",
+      "questLevel": 60,
+      "zone": "Orgrimmar"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Hands",
+    "id": 12632,
+    "name": "Storm Gauntlets",
+    "ilvl": 59,
+    "reqLvl": 54,
+    "stats": {
+     "sta": 7,
+     "healing": 18,
+     "spellDamage": 18,
+     "hitRating": 10,
+     "armor": 218
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [
+     "Equip: Adds 3 Lightning damage to your melee attacks."
+    ],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Leatherworking",
+      "skill": 270
+     },
+     {
+      "type": "crafted",
+      "profession": "Blacksmithing",
+      "skill": 270
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Waist",
+    "id": 18405,
+    "name": "Belt of the Archmage",
+    "ilvl": 62,
+    "reqLvl": 57,
+    "stats": {
+     "int": 16,
+     "sta": 10,
+     "healing": 20,
+     "spellDamage": 20,
+     "critRating": 14,
+     "armor": 54
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Tailoring",
+      "skill": 295
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Legs",
+    "id": 252486,
+    "name": "Ironfeather Leggings",
+    "ilvl": 61,
+    "reqLvl": 56,
+    "stats": {
+     "int": 18,
+     "healing": 38,
+     "spellDamage": 38,
+     "critRating": 14,
+     "armor": 164
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Leatherworking",
+      "skill": 300
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Feet",
+    "id": 22096,
+    "name": "Boots of The Five Thunders",
+    "ilvl": 60,
+    "reqLvl": null,
+    "stats": {
+     "int": 12,
+     "spi": 10,
+     "sta": 13,
+     "healing": 12,
+     "spellDamage": 12,
+     "mp5": 4,
+     "str": 12,
+     "armor": 266
+    },
+    "weapon": null,
+    "set": "The Five Thunders",
+    "effects": [],
+    "source": [
+     {
+      "type": "quest",
+      "quest": "Anthion's Parting Words",
+      "questLevel": 60,
+      "zone": "Orgrimmar"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Finger1",
+    "id": 275972,
+    "name": "Tracker's Signet of Ferocity",
+    "ilvl": 68,
+    "reqLvl": 60,
+    "stats": {
+     "sta": 11,
+     "hitRating": 10,
+     "ap": 24
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "reputation",
+      "faction": "The Watchers",
+      "standing": "Honored"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Finger2",
+    "id": 272406,
+    "name": "Channeler's Ring",
+    "ilvl": 65,
+    "reqLvl": 60,
+    "stats": {
+     "int": 14,
+     "spi": 8,
+     "hitRating": 10
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [],
+    "source": [
+     {
+      "type": "vendor",
+      "npc": "Pix Xizzix",
+      "zone": "Stranglethorn Vale"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Trinket1",
+    "id": 272438,
+    "name": "Weakness Analyzer",
+    "ilvl": 65,
+    "reqLvl": 60,
+    "stats": {
+     "healing": 18,
+     "spellDamage": 18
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [
+     "Use: Increases your critical strike chance with all spells and attacks by 5% for 20 sec or until you deal a non-periodic critical effect. (6 Min Cooldown)"
+    ],
+    "source": [
+     {
+      "type": "vendor",
+      "npc": "Pix Xizzix",
+      "zone": "Stranglethorn Vale"
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Trinket2",
+    "id": 249469,
+    "name": "Frozen Heart of the Mountain",
+    "ilvl": 55,
+    "reqLvl": 50,
+    "stats": {
+     "hitRating": 9
+    },
+    "weapon": null,
+    "set": null,
+    "effects": [
+     "Use: Increases Frost and Shadow spell damage done by up to 29 for 15 sec. This effect is doubled in Snowy areas. (5 Min Cooldown)"
+    ],
+    "source": [
+     {
+      "type": "crafted",
+      "profession": "Enchanting",
+      "skill": 265
+     }
+    ],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Main Hand",
+    "id": 9449,
+    "name": "Manual Crowd Pummeler",
+    "ilvl": 34,
+    "reqLvl": 29,
+    "stats": {
+     "str": 16,
+     "agi": 5
+    },
+    "weapon": {
+     "min": 46,
+     "max": 70,
+     "speed": 2,
+     "dps": 29.01
+    },
+    "set": null,
+    "effects": [
+     "Use: Increases your attack speed by 50% for 30 sec. (3 Min Cooldown)"
+    ],
+    "source": [
+     {
+      "type": "drop",
+      "npc": "Crowd Pummeler 9-60",
+      "dropChancePct": 33.06
+     }
+    ],
+    "outsideDatasetScope": true,
+    "dataOrigin": null
+   },
+   {
+    "slot": "Relic",
+    "id": 23199,
+    "name": "Totem of the Storm",
+    "ilvl": 65,
+    "reqLvl": 60,
+    "stats": {},
+    "weapon": null,
+    "set": null,
+    "effects": [
+     "Equip: Increases damage done by Chain Lightning and Lightning Bolt by up to 33."
+    ],
+    "source": [],
+    "outsideDatasetScope": false,
+    "dataOrigin": null
+   }
+  ],
+  "totals_items_only": {
+   "int": 129,
+   "spi": 57,
+   "sta": 91,
+   "healing": 183,
+   "spellDamage": 183,
+   "mp5": 4,
+   "critRating": 56,
+   "hitRating": 49,
+   "str": 40,
+   "agi": 5,
+   "ap": 24,
+   "armor": 1690
+  },
+  "activeSetBonuses": [
+   "The Five Thunders 3pc: (2) Set: +8 All Resistances."
+  ],
+  "derived": {
+   "critPct_fromRating": 4.0,
+   "hitPct_fromRating": 4.9
+  }
+ }
+}

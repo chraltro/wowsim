@@ -1,0 +1,937 @@
+{
+  "generated": "2026-11-08",
+  "game": "World of Warcraft: Forever, level 60 Shaman (Dwarf)",
+  "primary_data": "wowsims/forever @ 125e534 (2026-11-08), spell store regenerated from the live client (1.60.1.70862 and its hotfix cache); cross-checked against wowforevertalents.com tooltips (same build) and mythicsim-forever-engine @ b3c5eb6",
+  "value_conventions": "mean_at_60 = BasePoints + PointsPerLevel*(min(60, MaxLevel) - BaseLevel). min/max = mean*(1 -/+ variance/2), rounded; the game applies the roll after adding bonus healing/damage. Coefficients are EffectBonusCoefficient (per tick for periodic effects).",
+  "spells": {
+    "Healing Wave": {
+      "spell_id": 10396,
+      "rank": "Rank 9",
+      "learned_level": 56,
+      "cast_time_s": 3.0,
+      "mana": 560,
+      "mana_pct_of_base_mana": null,
+      "cooldown_s": null,
+      "duration_s": null,
+      "gcd_s": 1.5,
+      "mean_at_60": 1366.0,
+      "min": 1275,
+      "max": 1457,
+      "variance_full_width": 0.13251,
+      "variance_rule": "game rolls the whole amount incl. bonus: (mean + coef*bonus) * U(1-v/2, 1+v/2) (wowsims core/spell_result.go CalcDamage/CalcHealing)",
+      "base_points": 1344.0,
+      "points_per_level": 5.5,
+      "effect_level_range": [
+        56,
+        61
+      ],
+      "coefficient": 0.857,
+      "coefficient_applies_to": "bonus healing",
+      "max_trainable": true,
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:7322 (spell 10396)",
+        "https://wowforevertalents.com/abilities/shaman/ (client 1.60.1.70862 + 7 Nov 2026 hotfix cache) (Rank 9: 1275 to 1457)"
+      ],
+      "notes": "Rank 9 is the highest trainer rank. Rank 10 (25357) is taught by the AQ20 book Tablet of Healing Wave X (data/repos/wowsims-forever/sim/core/spelldata/book_ranks.go:21; data/repos/mythicsim-forever-engine/src/prepare/spelldata/book_ranks.rs:52). Forever values are lower than Classic Era (Era R10 1620-1850).",
+      "rank_10_book": {
+        "spell_id": 25357,
+        "rank": "Rank 10",
+        "learned_level": 60,
+        "cast_time_s": 3.0,
+        "mana": 620,
+        "mana_pct_of_base_mana": null,
+        "cooldown_s": null,
+        "duration_s": null,
+        "gcd_s": 1.5,
+        "mean_at_60": 1615.0,
+        "min": 1508,
+        "max": 1722,
+        "variance_full_width": 0.13256,
+        "variance_rule": "game rolls the whole amount incl. bonus: (mean + coef*bonus) * U(1-v/2, 1+v/2) (wowsims core/spell_result.go CalcDamage/CalcHealing)",
+        "base_points": 1615.0,
+        "points_per_level": 5.5,
+        "effect_level_range": [
+          60,
+          65
+        ],
+        "coefficient": 0.857,
+        "coefficient_applies_to": "bonus healing",
+        "status": "forever-confirmed",
+        "source": [
+          "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:21311 (spell 25357)",
+          "https://wowforevertalents.com/abilities/shaman/ (client 1.60.1.70862 + 7 Nov 2026 hotfix cache) (Rank 10: 1508 to 1722)"
+        ]
+      }
+    },
+    "Lesser Healing Wave": {
+      "spell_id": 10468,
+      "rank": "Rank 6",
+      "learned_level": 60,
+      "cast_time_s": 1.5,
+      "mana": 380,
+      "mana_pct_of_base_mana": null,
+      "cooldown_s": null,
+      "duration_s": null,
+      "gcd_s": 1.5,
+      "mean_at_60": 820.0,
+      "min": 775,
+      "max": 865,
+      "variance_full_width": 0.10909,
+      "variance_rule": "game rolls the whole amount incl. bonus: (mean + coef*bonus) * U(1-v/2, 1+v/2) (wowsims core/spell_result.go CalcDamage/CalcHealing)",
+      "base_points": 820.0,
+      "points_per_level": 4.2,
+      "effect_level_range": [
+        60,
+        65
+      ],
+      "coefficient": 0.429,
+      "coefficient_applies_to": "bonus healing",
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:7500 (spell 10468)",
+        "https://wowforevertalents.com/abilities/shaman/ (client 1.60.1.70862 + 7 Nov 2026 hotfix cache) (775 to 865)"
+      ]
+    },
+    "Chain Heal": {
+      "spell_id": 10623,
+      "rank": "Rank 3",
+      "learned_level": 54,
+      "cast_time_s": 2.5,
+      "mana": 405,
+      "mana_pct_of_base_mana": null,
+      "cooldown_s": null,
+      "duration_s": null,
+      "gcd_s": 1.5,
+      "mean_at_60": 506.5,
+      "min": 473,
+      "max": 540,
+      "variance_full_width": 0.1322,
+      "variance_rule": "game rolls the whole amount incl. bonus: (mean + coef*bonus) * U(1-v/2, 1+v/2) (wowsims core/spell_result.go CalcDamage/CalcHealing)",
+      "base_points": 490.0,
+      "points_per_level": 3.3,
+      "effect_level_range": [
+        54,
+        59
+      ],
+      "coefficient": 0.714,
+      "coefficient_applies_to": "bonus healing",
+      "targets": 3,
+      "jump_multiplier": 0.5,
+      "jump_rule": "each jump heals 50% of the previous target's heal (bonus healing included); target 2 = 0.5, target 3 = 0.25",
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:7720 (spell 10623)",
+        "https://wowforevertalents.com/abilities/shaman/ (client 1.60.1.70862 + 7 Nov 2026 hotfix cache) (473 to 540, 'Each jump is 50% as effective as the previous target')"
+      ],
+      "notes": "Riptide on the primary target: +25% to that target only (Riptide effect 3). Under MythicSim's Forever rules jumps go only to recently damaged party members (data/repos/mythicsim-forever-engine/src/classes/shaman/prepare/heals.rs)."
+    },
+    "Riptide": {
+      "spell_id": 1239243,
+      "rank": "Rank 3",
+      "learned_level": 60,
+      "cast_time_s": 0.0,
+      "mana": 230,
+      "mana_pct_of_base_mana": null,
+      "cooldown_s": 12.0,
+      "duration_s": 15.0,
+      "gcd_s": 1.5,
+      "per_tick_at_60": 161.0,
+      "tick_period_s": 3.0,
+      "ticks": 5,
+      "total": 805.0,
+      "coefficient_per_tick": 0.1,
+      "coefficient_total": 0.5,
+      "coefficient_applies_to": "bonus healing",
+      "direct_heal": null,
+      "chain_heal_bonus_pct": 25.0,
+      "talent": "Restoration 31-point talent (rank 1 at 40, rank 2 at 50, rank 3 at 60)",
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:32737 (spell 1239243)",
+        "https://wowforevertalents.com/abilities/shaman/ (client 1.60.1.70862 + 7 Nov 2026 hotfix cache) (Rank 3: 805 over 15 sec, 230 mana, 12 sec cooldown)",
+        "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes/2360696 (2 Nov 2026 notes, posted 3 Nov)",
+        "data/repos/mythicsim-forever-engine/src/prepare/hotfix_113554.rs"
+      ],
+      "notes": "Since the 2 Nov 2026 notes: no initial heal, cooldown 12 s (was 6), mana -40% (was 385). The row's former direct heal is an inert E_DUMMY. Sept 24 notes: Riptide can crit; whether HoT ticks crit is not stated."
+    },
+    "Healing Stream Totem": {
+      "spell_id": 10463,
+      "rank": "Rank 5",
+      "learned_level": 60,
+      "cast_time_s": 0.0,
+      "mana": 80,
+      "mana_pct_of_base_mana": null,
+      "cooldown_s": null,
+      "duration_s": 300.0,
+      "gcd_s": 1.0,
+      "per_tick_at_60": 11.0,
+      "tick_period_s": 2.0,
+      "ticks": 150,
+      "total": null,
+      "coefficient_per_tick": 0.022,
+      "coefficient_total": null,
+      "coefficient_applies_to": "bonus healing",
+      "targets": "party members within 30 yd",
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:7485 (spell 10463)",
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:7476 (spell 10461)",
+        "https://wowforevertalents.com/abilities/shaman/ (client 1.60.1.70862 + 7 Nov 2026 hotfix cache) (11 every 2 seconds, 5 min, 80 mana)"
+      ],
+      "notes": "Era: 14 per 2 s for 1 min. Restorative Totems +50% at 5/5 (applies to the whole tick incl. bonus since Oct 16)."
+    },
+    "Mana Spring Totem": {
+      "spell_id": 10497,
+      "rank": "Rank 4",
+      "learned_level": 56,
+      "cast_time_s": 0.0,
+      "mana": 100,
+      "mana_pct_of_base_mana": null,
+      "cooldown_s": null,
+      "duration_s": 300.0,
+      "gcd_s": 1.0,
+      "mana_per_tick": 10.0,
+      "tick_period_s": 2.0,
+      "mp5_equivalent": 25.0,
+      "targets": "party members within 30 yd",
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:7567 (spell 10497)",
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:7553 (spell 10494)",
+        "https://wowforevertalents.com/abilities/shaman/ (client 1.60.1.70862 + 7 Nov 2026 hotfix cache) (10 mana every 2 seconds, 5 min, 100 mana)"
+      ]
+    },
+    "Mana Tide Totem": {
+      "spell_id": 1325256,
+      "rank": "Rank 4",
+      "learned_level": 58,
+      "cast_time_s": 0.0,
+      "mana": 60,
+      "mana_pct_of_base_mana": null,
+      "cooldown_s": 300.0,
+      "duration_s": 13.0,
+      "gcd_s": 1.0,
+      "mana_per_tick": 290.0,
+      "tick_period_s": 3.0,
+      "ticks": 4,
+      "total_mana_per_target": 1160.0,
+      "duration_s_row": 13.0,
+      "duration_s_tooltip": 12,
+      "talent": "Restoration 16-point talent; ranks at 25, 38, 48, 58",
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:38386 (spell 1325256)",
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:38391 (spell 1325257)",
+        "https://wowforevertalents.com/abilities/shaman/ (client 1.60.1.70862 + 7 Nov 2026 hotfix cache) (Rank 4, level 58: 290 mana every 3 seconds for 12 sec, 60 mana, 5 min cooldown)"
+      ],
+      "rank_3": {
+        "spell_id": 17359,
+        "learned_level": 48,
+        "mana_per_tick": 197.0,
+        "mana": 30
+      }
+    },
+    "Water Shield": {
+      "spell_id": 408510,
+      "rank": null,
+      "learned_level": 20,
+      "cast_time_s": 0.0,
+      "mana": null,
+      "mana_pct_of_base_mana": null,
+      "cooldown_s": null,
+      "duration_s": 600.0,
+      "gcd_s": 1.5,
+      "globes": 3,
+      "mana_per_globe_pct_max_mana": 2.0,
+      "internal_cooldown_s": 3.5,
+      "triggers": "a spell/melee/ranged hit taken, or any critical spell (damage or heal) the shaman casts",
+      "talent": "Restoration 11-point talent",
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:24276 (spell 408510)",
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:24281 (spell 408511)",
+        "https://forever.warcraftdb.com/api/v1/talents/shaman (talent text)",
+        "data/repos/wowsims-forever/sim/shaman/shields.go",
+        "data/repos/mythicsim-forever-engine/src/classes/shaman/prepare/shields.rs"
+      ],
+      "notes": "No mana cost on the row. 15 s cooldown removed in client 70532 (Oct 8 notes: it 'didn't have one'). Oct 16 notes: any critical spell triggers (was only critical heals). Effect 2 (A_DUMMY 1) has no known use. Exclusive with Lightning Shield."
+    },
+    "Lightning Shield": {
+      "spell_id": 10432,
+      "rank": "Rank 7",
+      "learned_level": 56,
+      "cast_time_s": 0.0,
+      "mana": 370,
+      "mana_pct_of_base_mana": null,
+      "cooldown_s": null,
+      "duration_s": 600.0,
+      "gcd_s": 1.5,
+      "orbs": 3,
+      "damage_per_orb": 178.0,
+      "coefficient": 0.267,
+      "coefficient_applies_to": "bonus damage (nature)",
+      "internal_cooldown_s": 3.5,
+      "can_crit": false,
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:7408 (spell 10432)",
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:21756 (spell 26363)",
+        "https://wowforevertalents.com/abilities/shaman/ (client 1.60.1.70862 + 7 Nov 2026 hotfix cache) (Rank 7: 178 Nature damage, 370 mana)",
+        "data/repos/wowsims-forever/sim/shaman/shields.go"
+      ],
+      "notes": "Era R7 198. Orb fires on being hit, one per 3.5 s."
+    },
+    "Lightning Bolt": {
+      "spell_id": 15208,
+      "rank": "Rank 10",
+      "learned_level": 56,
+      "cast_time_s": 2.5,
+      "mana": 220,
+      "mana_pct_of_base_mana": null,
+      "cooldown_s": null,
+      "duration_s": null,
+      "gcd_s": 1.5,
+      "mean_at_60": 361.4,
+      "min": 342,
+      "max": 381,
+      "variance_full_width": 0.10835,
+      "variance_rule": "game rolls the whole amount incl. bonus: (mean + coef*bonus) * U(1-v/2, 1+v/2) (wowsims core/spell_result.go CalcDamage/CalcHealing)",
+      "base_points": 353.0,
+      "points_per_level": 2.1,
+      "effect_level_range": [
+        56,
+        61
+      ],
+      "coefficient": 0.714,
+      "coefficient_applies_to": "bonus damage (nature)",
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:12636 (spell 15208)",
+        "https://wowforevertalents.com/abilities/shaman/ (client 1.60.1.70862 + 7 Nov 2026 hotfix cache) (342 to 381, 220 mana, 2.5 sec cast)",
+        "data/repos/mythicsim-forever-engine/src/prepare/hotfix_113554.rs SHAMAN_ROWS_20261104"
+      ],
+      "notes": "Base raised by the 2 Nov notes (was 196 base, 1.2/level). Ranks 4+ are 2.5 s casts with coefficient 0.714 (Shaman deep dive)."
+    },
+    "Chain Lightning": {
+      "spell_id": 10605,
+      "rank": "Rank 4",
+      "learned_level": 56,
+      "cast_time_s": 2.5,
+      "mana": 495,
+      "mana_pct_of_base_mana": null,
+      "cooldown_s": 6.0,
+      "duration_s": null,
+      "gcd_s": 1.5,
+      "mean_at_60": 523.2,
+      "min": 494,
+      "max": 552,
+      "variance_full_width": 0.11111,
+      "variance_rule": "game rolls the whole amount incl. bonus: (mean + coef*bonus) * U(1-v/2, 1+v/2) (wowsims core/spell_result.go CalcDamage/CalcHealing)",
+      "base_points": 510.0,
+      "points_per_level": 3.3,
+      "effect_level_range": [
+        56,
+        61
+      ],
+      "coefficient": 0.714,
+      "coefficient_applies_to": "bonus damage (nature)",
+      "targets": 3,
+      "jump_multiplier": 0.7,
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:7678 (spell 10605)",
+        "https://wowforevertalents.com/abilities/shaman/ (client 1.60.1.70862 + 7 Nov 2026 hotfix cache) (494 to 552, 495 mana, 2.5 sec cast, 6 sec cooldown)",
+        "data/repos/mythicsim-forever-engine/src/prepare/hotfix_113554.rs"
+      ],
+      "notes": "Each jump -30%. 2 Nov notes: cast 2.5 s, primary damage and mana raised. Coefficient 0.714 per mythicsim CHAIN_LIGHTNING_COEFFICIENTS_20261102."
+    },
+    "Earth Shock": {
+      "spell_id": 10414,
+      "rank": "Rank 7",
+      "learned_level": 60,
+      "cast_time_s": 0.0,
+      "mana": 450,
+      "mana_pct_of_base_mana": null,
+      "cooldown_s": 6.0,
+      "duration_s": 2.0,
+      "gcd_s": 1.5,
+      "mean_at_60": 531.0,
+      "min": 517,
+      "max": 545,
+      "variance_full_width": 0.05273,
+      "variance_rule": "game rolls the whole amount incl. bonus: (mean + coef*bonus) * U(1-v/2, 1+v/2) (wowsims core/spell_result.go CalcDamage/CalcHealing)",
+      "base_points": 531.0,
+      "points_per_level": 3.4,
+      "effect_level_range": [
+        60,
+        65
+      ],
+      "coefficient": 0.386,
+      "coefficient_applies_to": "bonus damage (nature)",
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:7379 (spell 10414)",
+        "https://wowforevertalents.com/abilities/shaman/ (client 1.60.1.70862 + 7 Nov 2026 hotfix cache) (517 to 545, 450 mana, 6 sec cooldown)"
+      ],
+      "notes": "Shocks share one 6 s cooldown (category 19). 2 Nov notes reverted shock base damage to Classic Era. Interrupt 2 s lockout."
+    },
+    "Flame Shock": {
+      "spell_id": 29228,
+      "rank": "Rank 6",
+      "learned_level": 60,
+      "cast_time_s": 0.0,
+      "mana": 410,
+      "mana_pct_of_base_mana": null,
+      "cooldown_s": 6.0,
+      "duration_s": 12.0,
+      "gcd_s": 1.5,
+      "direct": {
+        "mean_at_60": 292.0,
+        "min": 292,
+        "max": 292,
+        "variance_full_width": 0.0,
+        "variance_rule": null,
+        "base_points": 292.0,
+        "points_per_level": 3.8,
+        "effect_level_range": [
+          60,
+          67
+        ],
+        "coefficient": 0.214,
+        "coefficient_applies_to": "bonus damage (fire)"
+      },
+      "dot": {
+        "per_tick_at_60": 80.0,
+        "tick_period_s": 3.0,
+        "duration_s": 12.0,
+        "ticks": 4,
+        "total": 320.0,
+        "coefficient_per_tick": 0.1,
+        "coefficient_total": 0.4,
+        "coefficient_applies_to": "bonus damage (fire)"
+      },
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:22768 (spell 29228)",
+        "https://wowforevertalents.com/abilities/shaman/ (client 1.60.1.70862 + 7 Nov 2026 hotfix cache) (292 immediately and 320 over 12 sec, 410 mana)"
+      ],
+      "notes": "Rank 6 trainability disputed: wowsims book_ranks.go:22 lists 29228 as 'Tablet of Flame Shock VI' (yet still sims it); mythicsim's AQ20 book list and the wowforevertalents trainer list do not. Rank 5 below.",
+      "rank_5": {
+        "spell_id": 10448,
+        "rank": "Rank 5",
+        "learned_level": 52,
+        "cast_time_s": 0.0,
+        "mana": 345,
+        "mana_pct_of_base_mana": null,
+        "cooldown_s": 6.0,
+        "duration_s": 12.0,
+        "gcd_s": 1.5,
+        "direct": {
+          "mean_at_60": 253.5,
+          "min": 254,
+          "max": 254,
+          "variance_full_width": 0.0,
+          "variance_rule": null,
+          "base_points": 245.0,
+          "points_per_level": 1.7,
+          "effect_level_range": [
+            52,
+            57
+          ],
+          "coefficient": 0.214,
+          "coefficient_applies_to": "bonus damage (fire)"
+        },
+        "dot": {
+          "per_tick_at_60": 64.0,
+          "tick_period_s": 3.0,
+          "duration_s": 12.0,
+          "ticks": 4,
+          "total": 256.0,
+          "coefficient_per_tick": 0.1,
+          "coefficient_total": 0.4,
+          "coefficient_applies_to": "bonus damage (fire)"
+        },
+        "source": [
+          "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:7455 (spell 10448)"
+        ]
+      }
+    },
+    "Frost Shock": {
+      "spell_id": 10473,
+      "rank": "Rank 4",
+      "learned_level": 58,
+      "cast_time_s": 0.0,
+      "mana": 430,
+      "mana_pct_of_base_mana": null,
+      "cooldown_s": 6.0,
+      "duration_s": 8.0,
+      "gcd_s": 1.5,
+      "mean_at_60": 509.6,
+      "min": 495,
+      "max": 524,
+      "variance_full_width": 0.056,
+      "variance_rule": "game rolls the whole amount incl. bonus: (mean + coef*bonus) * U(1-v/2, 1+v/2) (wowsims core/spell_result.go CalcDamage/CalcHealing)",
+      "base_points": 506.0,
+      "points_per_level": 1.8,
+      "effect_level_range": [
+        58,
+        63
+      ],
+      "coefficient": 0.386,
+      "coefficient_applies_to": "bonus damage (frost)",
+      "slow_pct": 50,
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:7511 (spell 10473)",
+        "https://wowforevertalents.com/abilities/shaman/ (client 1.60.1.70862 + 7 Nov 2026 hotfix cache) (495 to 524, 430 mana)"
+      ]
+    },
+    "Stormstrike": {
+      "spell_id": 17364,
+      "rank": null,
+      "learned_level": 40,
+      "cast_time_s": 0.0,
+      "mana": null,
+      "mana_pct_of_base_mana": 8.0,
+      "cooldown_s": 6.0,
+      "duration_s": 12.0,
+      "gcd_s": 1.5,
+      "weapon_damage_pct": 150.0,
+      "weapon_damage_kind": "normalized (2.4 one-hand, 3.3 two-hand, 1.7 dagger)",
+      "debuff": {
+        "nature_damage_taken_from_caster_pct": 20.0,
+        "affects": "Lightning Bolt, Chain Lightning, Earth Shock",
+        "duration_s": 12,
+        "charges": 1,
+        "consumed_only_if_spell_lands": true
+      },
+      "talent": "Enhancement 16-point talent",
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:14340 (spell 17364)",
+        "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes/2360696 (2 Nov 2026 notes, posted 3 Nov) (150% normalized, cooldown 8 to 6 s)",
+        "data/repos/wowsims-forever/sim/shaman/stormstrike.go"
+      ],
+      "notes": "Mana 8% of base mana (Oct 16 notes); 1520 base -> 121.6."
+    },
+    "Windfury Weapon": {
+      "spell_id": 16362,
+      "rank": "Rank 4",
+      "learned_level": 60,
+      "cast_time_s": 0.0,
+      "mana": 165,
+      "mana_pct_of_base_mana": null,
+      "cooldown_s": null,
+      "duration_s": 3600,
+      "gcd_s": 1.5,
+      "proc_chance_pct": 20,
+      "proc_icd_s": 1.5,
+      "extra_attacks": 2,
+      "extra_attack_power": 333.0,
+      "extra_attack_rules": "each extra swing = main-hand weapon damage with +333 AP; rolls the special-attack table (no glancing); counts as white for procs; spends no Flurry charge (wowsims)",
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:13474 (spell 16362)",
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:13469 (spell 16361)",
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:27283 (spell 439431)",
+        "https://wowforevertalents.com/abilities/shaman/ (client 1.60.1.70862 + 7 Nov 2026 hotfix cache) (20% chance of 2 extra attacks with 333 extra AP, 60 min, 165 mana)",
+        "data/repos/wowsims-forever/sim/shaman/weapon_imbues.go"
+      ],
+      "notes": "Main-hand imbue disables your own Windfury Totem benefit. 1.5 s ICD is the passive row's."
+    },
+    "Flametongue Weapon": {
+      "spell_id": 16342,
+      "rank": "Rank 6",
+      "learned_level": 56,
+      "cast_time_s": 0.0,
+      "mana": 155,
+      "mana_pct_of_base_mana": null,
+      "cooldown_s": null,
+      "duration_s": 3600,
+      "gcd_s": 1.5,
+      "proc_chance_pct": 100,
+      "damage_per_hit_formula": "2810 * weapon_speed / 100 (+ 0.10 * bonus fire damage)",
+      "damage_at_speed": {
+        "2.6": 73.06,
+        "3.6": 101.16
+      },
+      "coefficient": 0.1,
+      "coefficient_applies_to": "bonus damage (fire)",
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:13436 (spell 16342)",
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:13445 (spell 16344)",
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:7440 (spell 10444)",
+        "https://wowforevertalents.com/abilities/shaman/ (client 1.60.1.70862 + 7 Nov 2026 hotfix cache) (35.49 to 112.4 per hit by weapon speed)",
+        "data/repos/wowsims-forever/sim/shaman/weapon_imbues.go"
+      ],
+      "notes": "Every main-hand melee hit (passive 436519, no roll). Spell hit/crit table. Does not stack with Flametongue Totem."
+    },
+    "Rockbiter Weapon": {
+      "spell_id": 16316,
+      "rank": "Rank 7",
+      "learned_level": 54,
+      "cast_time_s": 0.0,
+      "mana": 150,
+      "mana_pct_of_base_mana": null,
+      "cooldown_s": null,
+      "duration_s": 3600,
+      "gcd_s": 1.5,
+      "attack_power": 653.0,
+      "threat": "extra threat on hits (20871: 72 threat per second of swing)",
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:13412 (spell 16316)",
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:13397 (spell 16313)",
+        "https://wowforevertalents.com/abilities/shaman/ (client 1.60.1.70862 + 7 Nov 2026 hotfix cache) (Rank 7: +653 melee AP, 150 mana)"
+      ]
+    },
+    "Searing Totem": {
+      "spell_id": 10438,
+      "rank": "Rank 6",
+      "learned_level": 60,
+      "cast_time_s": 0.0,
+      "mana": 170,
+      "mana_pct_of_base_mana": null,
+      "cooldown_s": null,
+      "duration_s": 55.0,
+      "gcd_s": 1.0,
+      "mean_at_60": 47.0,
+      "min": 40,
+      "max": 54,
+      "variance_full_width": 0.29787,
+      "variance_rule": "game rolls the whole amount incl. bonus: (mean + coef*bonus) * U(1-v/2, 1+v/2) (wowsims core/spell_result.go CalcDamage/CalcHealing)",
+      "base_points": 47.0,
+      "points_per_level": 0.0,
+      "effect_level_range": [
+        60,
+        0
+      ],
+      "coefficient": 0.017,
+      "coefficient_applies_to": "bonus damage (fire)",
+      "attack_interval_s": 2.2,
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:7426 (spell 10438)",
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:7417 (spell 10436)",
+        "https://wowforevertalents.com/abilities/shaman/ (client 1.60.1.70862 + 7 Nov 2026 hotfix cache) (Rank 6: 40 to 54, 55 sec, 170 mana)",
+        "data/repos/wowsims-forever/sim/shaman/fire_totems.go"
+      ]
+    },
+    "Call of the Elements": {
+      "spell_id": 66842,
+      "rank": null,
+      "learned_level": 20,
+      "cast_time_s": 3.0,
+      "mana": null,
+      "mana_pct_of_base_mana": null,
+      "cooldown_s": null,
+      "duration_s": null,
+      "gcd_s": 1.5,
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:23060 (spell 66842)",
+        "https://news.blizzard.com/en-us/article/24302097"
+      ],
+      "notes": "Summons the four pre-set totems; costs the sum of their mana. Call of the Spirits (66844, lvl 40 row) and Call of the Ancestors (66843, lvl 30 row) are the 2nd/3rd sets; the deep dive gives the opposite levels."
+    },
+    "Totemic Call": {
+      "spell_id": 437009,
+      "rank": null,
+      "learned_level": 22,
+      "cast_time_s": 0.0,
+      "mana": null,
+      "mana_pct_of_base_mana": 25.0,
+      "cooldown_s": 30.0,
+      "duration_s": 1.0,
+      "gcd_s": 1.5,
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:27227 (spell 437009)",
+        "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes/2360696 (2 Nov 2026 notes, posted 3 Nov)"
+      ],
+      "notes": "Renamed from Totemic Projection; moves your totems to you; 30 s cooldown; 25% of base mana."
+    },
+    "Totemic Recall": {
+      "spell_id": 36936,
+      "rank": null,
+      "learned_level": 20,
+      "cast_time_s": 0.0,
+      "mana": null,
+      "mana_pct_of_base_mana": null,
+      "cooldown_s": null,
+      "duration_s": null,
+      "gcd_s": 1.5,
+      "mana_refund_pct": 25.0,
+      "status": "forever-confirmed",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go:23056 (spell 36936)"
+      ]
+    }
+  },
+  "formulas": {
+    "level": 60,
+    "base_stats_dwarf_shaman_60": {
+      "value": {
+        "health": 1280,
+        "mana": 1520,
+        "strength": 87,
+        "agility": 51,
+        "stamina": 98,
+        "intellect": 89,
+        "spirit": 99,
+        "attack_power": 100,
+        "spell_crit_pct": 2.3,
+        "melee_crit_pct": 1.7,
+        "dodge_pct_base": 1.7
+      },
+      "status": "mixed: base mana and race offsets forever-confirmed; class attributes/health from sim tables; base crit vanilla fallback",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/base_stats.go (ClassBaseStats, RaceOffsets, ClassBaseDodge)",
+        "data/repos/wowsims-forever/sim/core/base_stats_auto_gen.go (ExtraClassBaseStats)",
+        "data/repos/mythicsim-forever-engine/data/go-tables.json (base_stats.ClassShaman.RaceDwarf, identical)",
+        "https://github.com/wowsims/forever PR #619 (Forever confirmed original race offsets, ClassicWoWCommunity/forever-bugs#414)"
+      ],
+      "notes": "Dwarf offsets Str +2, Agi -4, Sta +3, Int -1, Spi -1 on class base Str 85/Agi 55/Sta 95/Int 90/Spi 100. Base crit comes from hand-kept vanilla tables (tools/base_stats_parser.py)."
+    },
+    "health_per_stamina": {
+      "value": "first 20 Stamina give 1 HP each, every point above 20 gives 10 HP",
+      "status": "vanilla fallback (sim model)",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/base_stats.go comment on ClassBaseStats"
+      ]
+    },
+    "mana_per_intellect": {
+      "value": "first 20 Int give 1 mana each, every point above 20 gives 15 mana (mana = base + 20 + 15*(Int-20))",
+      "status": "vanilla fallback (sim model)",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/mana.go EnableManaBarWithModifier",
+        "data/repos/mythicsim-forever-engine/src/prepare/character.rs:502-505"
+      ]
+    },
+    "spell_crit_per_intellect_pct": {
+      "value": 0.0169,
+      "int_per_1pct": 59.2,
+      "status": "forever-confirmed (PlayerExpectedStat, Forever game files)",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/base_stats_auto_gen.go CritPerIntMaxLevel",
+        "data/repos/mythicsim-forever-engine/data/go-tables.json"
+      ]
+    },
+    "melee_crit_per_agility_pct": {
+      "value": 0.0508,
+      "agi_per_1pct": 19.7,
+      "status": "forever-confirmed (PlayerExpectedStat)",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/base_stats_auto_gen.go CritPerAgiMaxLevel",
+        "data/repos/wowsims-forever/sim/shaman/shaman.go:34"
+      ],
+      "notes": "Dodge per Agility is the same 0.0508%."
+    },
+    "base_spell_crit_pct": {
+      "value": 2.3,
+      "status": "vanilla fallback (hand-kept table; no Forever game file ships it)",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/base_stats_auto_gen.go ExtraClassBaseStats",
+        "data/repos/wowsims-forever/tools/base_stats_parser.py"
+      ]
+    },
+    "base_melee_crit_pct": {
+      "value": 1.7,
+      "status": "vanilla fallback",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/base_stats_auto_gen.go ExtraClassBaseStats"
+      ]
+    },
+    "attack_power": {
+      "value": "AP = 100 + 2*Strength (Agility gives no AP to a Shaman); Mental Dexterity adds 50/100/150% of Int",
+      "status": "vanilla fallback (sim model) + forever talent",
+      "source": [
+        "data/repos/wowsims-forever/sim/shaman/shaman.go:37 (Str->AP 2.0)",
+        "data/repos/wowsims-forever/sim/core/base_stats.go (AttackPower 100)",
+        "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes/2360696 (2 Nov 2026 notes, posted 3 Nov)"
+      ]
+    },
+    "ap_to_dps": {
+      "value": 14.0,
+      "formula": "weapon damage + weapon_speed * AP / 14; specials use normalized speed (2.4 1H, 3.3 2H, 1.7 dagger)",
+      "status": "vanilla fallback (sim model)",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/constants.go DefaultAttackPowerPerDPS",
+        "data/repos/wowsims-forever/sim/core/attack.go"
+      ]
+    },
+    "combat_ratings_at_60": {
+      "value": {
+        "hit_rating_per_1pct": 10,
+        "crit_rating_per_1pct": 14,
+        "haste_rating_per_1pct": 10,
+        "expertise_rating_per_1pct": 10,
+        "dodge": 12,
+        "parry": 15,
+        "block": 5,
+        "defense_per_skill": 1
+      },
+      "status": "forever-confirmed (CombatRatings gametable from the Forever client)",
+      "source": [
+        "data/repos/wowsims-forever/assets/db_inputs/basestats-forever/CombatRatings.txt (row 60)",
+        "data/repos/wowsims-forever/sim/core/base_stats_auto_gen.go"
+      ]
+    },
+    "hit_and_crit_merged": {
+      "value": "one Hit Rating feeds melee, ranged and spell hit; one Crit Rating feeds melee, ranged and spell crit. Agility still gives melee crit and Intellect spell crit separately.",
+      "status": "forever-confirmed (Blizzard) / sim model for the split",
+      "source": [
+        "https://worldofwarcraft.blizzard.com/news/24303313 ('Spell, melee, and ranged hit chance are combined')",
+        "data/repos/wowsims-forever/sim/core/unit.go RatingChannelTable"
+      ]
+    },
+    "bonus_healing_to_damage": {
+      "value": "Applied on items: a 'bonus healing' item row also states spell damage of about 1/3 of it, rounded (e.g. Benediction 195 healing / 65 damage). The sim keeps HealingPower and SpellDamage as two stats; heals use HealingPower x coefficient, damage spells use SpellDamage (+ school damage) x coefficient.",
+      "status": "forever-confirmed (Blizzard text + item data)",
+      "source": [
+        "https://worldofwarcraft.blizzard.com/news/24303313 ('Bonus healing now also includes one third as much bonus damage')",
+        "data/repos/wowsims-forever/assets/database/db.json (stat 4 HealingPower, stat 5 SpellDamage)",
+        "data/repos/wowsims-forever/sim/core/spell_result.go HealingPower/CalcHealing"
+      ],
+      "notes": "A few items (e.g. Pure Elementium Band 19382, Rejuvenating Gem 19395) carry healing with no damage in the current data."
+    },
+    "spirit_mana_regen": {
+      "value": "6.25 + Spirit/8 mana per second (= 2.5*(12.5 + Spirit/4) per 5 s), for every class",
+      "status": "forever-measured (community, in-game tooltips across classes)",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/mana.go:76",
+        "https://github.com/wowsims/forever/pull/299 ('all mana classes were moved to the formula that was just for Mage/Priests')"
+      ],
+      "disagreement": "mythicsim (frozen Go reference) uses 7.5 + Spirit/10 per second for Shaman: data/repos/mythicsim-forever-engine/src/prepare/character.rs:518-522. Vanilla fallback for Shaman: 17 + Spirit/5 per 2 s tick (8.5 + Spirit/10 per second)."
+    },
+    "five_second_rule": {
+      "value": "Spirit regen stops for 5 s after any mana spend (or until a hard cast ends, whichever is later); MP5 continues. Mindfulness lets 50% continue while casting; Improved Stormstrike 50% for 15 s.",
+      "status": "sim model (vanilla rule retained; no Forever statement found)",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/mana.go SpendCost (FiveSecondRuleRefreshTime) and creditManaRegen",
+        "https://forever.warcraftdb.com/api/v1/talents/shaman (Mindfulness)"
+      ]
+    },
+    "mp5": {
+      "value": "MP5/5 mana per second, continuous, unaffected by the 5-second rule",
+      "status": "sim model",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/mana.go MP5ManaRegenPerSecond"
+      ]
+    },
+    "regen_tick": {
+      "value": "about 2.02 s per-player tick in combat logs; wowsims credits regen continuously every 100 ms",
+      "status": "forever-measured (community)",
+      "source": [
+        "https://github.com/wowsims/forever/pull/655",
+        "data/repos/wowsims-forever/sim/core/mana.go manaTickDuration"
+      ]
+    },
+    "crit_multipliers": {
+      "value": {
+        "spell_damage": 1.5,
+        "heal": 1.5,
+        "melee_ranged": 2.0
+      },
+      "status": "vanilla fallback (sim model)",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/spell.go:955 CritDamageMultiplier",
+        "data/repos/mythicsim-forever-engine/src/core/fight/healing.rs:222"
+      ],
+      "notes": "Elemental Fury 5/5: +100% crit bonus for Fire/Frost/Nature spells and fire totems (2.0x). Dwarf Earth Fury (2% crit damage) removed 26 Oct; Tauren 2% crit bonus removed."
+    },
+    "spell_hit_table": {
+      "value": {
+        "miss_vs_60_pct": 4,
+        "miss_vs_61_pct": 5,
+        "miss_vs_62_pct": 6,
+        "miss_vs_63_pct": 17,
+        "minimum_miss_pct": 0
+      },
+      "status": "vanilla fallback for the level table; 'no 1% floor' is a wowsims Forever rule without a cited source",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/target.go spellMissChance",
+        "data/repos/wowsims-forever/sim/core/spell_result.go spellChanceToMiss",
+        "wowsims commit 0301ba3421 'No 1% spell miss floor in Forever'"
+      ]
+    },
+    "melee_hit_table_vs_63": {
+      "value": {
+        "miss_pct_1h_special_or_2h": 8.0,
+        "miss_pct_dual_wield_white": 27.0,
+        "dodge_pct": 6.5,
+        "parry_pct_front": 14.0,
+        "glance_chance_pct": 40,
+        "glance_damage_pct": "55-75 (avg 65)",
+        "crit_suppression_pct": 3.0,
+        "aura_crit_suppression_pct": 1.8
+      },
+      "assumes": "300 weapon skill (60 x 5)",
+      "status": "vanilla fallback (sim model)",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/target.go newAttackTableHand, NewAttackTable",
+        "data/repos/wowsims-forever/sim/core/spell_outcome.go:546 (DW +19%)"
+      ]
+    },
+    "melee_hit_table_vs_60": {
+      "value": {
+        "miss_pct": 5.0,
+        "miss_pct_dual_wield_white": 24.0,
+        "dodge_pct": 5.0,
+        "parry_pct": 5.0,
+        "glance_chance_pct": 10,
+        "glance_damage_pct": "91-99"
+      },
+      "status": "vanilla fallback (sim model)",
+      "source": [
+        "data/repos/wowsims-forever/sim/core/target.go newAttackTableHand"
+      ]
+    },
+    "dwarf_racials": {
+      "value": "Artisan's Precision +1% hit with spells and attacks; Stoneform -10% physical damage taken 8 s, 3 min cd; Earth Fury removed",
+      "status": "forever-confirmed",
+      "source": [
+        "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes/2360696 (2 Nov 2026 notes, posted 3 Nov) (26 Oct racial post)",
+        "data/repos/wowsims-forever/sim/core/racials.go:14-16"
+      ]
+    },
+    "gcd": {
+      "value": {
+        "spells_s": 1.5,
+        "totems_s": 1.0,
+        "min_s": 1.0
+      },
+      "status": "forever-confirmed (row GCDMs; Shaman deep dive 'All totems now have a 1.0 second global cooldown')",
+      "source": [
+        "https://news.blizzard.com/en-us/article/24302097",
+        "data/repos/wowsims-forever/sim/core/spelldata/spells_auto_gen.go (GCDMs 1000 on every totem row)",
+        "data/repos/wowsims-forever/sim/core/constants.go"
+      ],
+      "notes": "wowsims lets spell haste shorten the GCD down to 1.0 s (sim model)."
+    }
+  },
+  "worked_examples": {
+    "naked_dwarf_shaman_60": {
+      "max_mana": 2575,
+      "max_health": 2080,
+      "spell_crit_pct": 3.804,
+      "melee_crit_pct": 4.291,
+      "attack_power": 274,
+      "spirit_regen_mp_per_s_wowsims": 18.625,
+      "spirit_regen_mp5_wowsims": 93.12,
+      "status": "derived from the formulas above"
+    }
+  },
+  "gaps": [
+    "Healing Wave / Lesser Healing Wave / Chain Heal: no Blizzard note explains why Forever values are below Classic Era; the numbers are client data.",
+    "Riptide HoT tick crits: not stated anywhere checked.",
+    "Spirit regen formula: wowsims (6.25+Spi/8 per s, measured) and mythicsim (7.5+Spi/10 per s) disagree; no Blizzard statement.",
+    "Five-second rule and attack tables (glancing, crit suppression, DW penalty) are vanilla rules kept by the sims; no Forever-specific confirmation found.",
+    "Base spell/melee crit (2.3% / 1.7%) and class base attributes/health come from hand-kept tables, not Forever game files.",
+    "Flame Shock rank 6 trainer vs book: sources disagree.",
+    "No 1% spell-miss floor: wowsims rule, evidence not cited in the commit.",
+    "Mana Tide row duration 13 s vs tooltip 12 s; 4 ticks assumed."
+  ]
+}

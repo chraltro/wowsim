@@ -1,0 +1,233 @@
+{
+ "preset": "resto_timesaver",
+ "known": {
+  "pure": {
+   "split": "0/10/41",
+   "code": "-055-5530003315513151",
+   "H": 114921.66419396726,
+   "D": 68.73911265262143
+  },
+  "hybrid": {
+   "split": "0/20/31",
+   "code": "-055030310021-5530000115513101",
+   "H": 104474.24017633386,
+   "D": 174.03771962213506
+  },
+  "kryhavoc": {
+   "split": "0/25/26",
+   "code": "-0052303130012122-05300233105031",
+   "H": 95234.4184433594,
+   "D": 162.18825347214573
+  }
+ },
+ "healOpt": {
+  "split": "0/22/29",
+  "code": "-055000313001202-553010001151304",
+  "H": 116825.63308347511,
+  "D": 111.25977975103578,
+  "t": {
+   "eleweapons": 3,
+   "shamfocus": 1,
+   "anticipation": 3,
+   "stormstrike": 1,
+   "impghostwolf": 2,
+   "mentalquick": 2,
+   "tidalfocus": 5,
+   "mindful": 3,
+   "watershield": 1,
+   "restotems": 5,
+   "healingway": 3,
+   "thundering": 5,
+   "ancknow": 5,
+   "manatide": 1,
+   "ihw": 5,
+   "totemicfocus": 1,
+   "purification": 4,
+   "tidalmastery": 1
+  }
+ },
+ "frontier": [
+  {
+   "tau": 0.98,
+   "split": "0/23/28",
+   "code": "-055030200051002-553010001151303",
+   "H": 114662.1954337811,
+   "D": 177.62095131954143,
+   "t": {
+    "eleweapons": 2,
+    "stormstrike": 1,
+    "mentalquick": 2,
+    "tidalfocus": 5,
+    "mindful": 3,
+    "watershield": 1,
+    "restotems": 5,
+    "healingway": 3,
+    "thundering": 5,
+    "ancknow": 5,
+    "manatide": 1,
+    "ihw": 5,
+    "totemicfocus": 1,
+    "purification": 3,
+    "tidalmastery": 1,
+    "mentaldex": 3,
+    "flurry": 5
+   }
+  },
+  {
+   "tau": 0.96,
+   "split": "0/21/30",
+   "code": "-054030300051-253000131151305",
+   "H": 112337.38834357877,
+   "D": 177.9814886886677,
+   "t": {
+    "thundering": 5,
+    "ancknow": 4,
+    "ihw": 2,
+    "tidalfocus": 5,
+    "mindful": 3,
+    "anchealing": 1,
+    "healfocus": 3,
+    "watershield": 1,
+    "tidalmastery": 1,
+    "restotems": 5,
+    "manatide": 1,
+    "healingway": 3,
+    "purification": 5,
+    "mentaldex": 3,
+    "eleweapons": 3,
+    "stormstrike": 1,
+    "flurry": 5
+   }
+  },
+  {
+   "tau": 0.94,
+   "split": "0/22/29",
+   "code": "-055030300051-253000131051314",
+   "H": 110049.99953361508,
+   "D": 179.11546040879523,
+   "t": {
+    "thundering": 5,
+    "ancknow": 5,
+    "ihw": 2,
+    "tidalfocus": 5,
+    "mindful": 3,
+    "anchealing": 1,
+    "healfocus": 3,
+    "watershield": 1,
+    "restotems": 5,
+    "manatide": 1,
+    "healingway": 3,
+    "natswift": 1,
+    "purification": 4,
+    "mentaldex": 3,
+    "eleweapons": 3,
+    "stormstrike": 1,
+    "flurry": 5
+   }
+  },
+  {
+   "tau": 0.92,
+   "split": "0/22/29",
+   "code": "-055030300051-253000131051314",
+   "H": 110049.99953361508,
+   "D": 179.11546040879523,
+   "t": {
+    "thundering": 5,
+    "ancknow": 5,
+    "ihw": 2,
+    "tidalfocus": 5,
+    "mindful": 3,
+    "anchealing": 1,
+    "healfocus": 3,
+    "watershield": 1,
+    "restotems": 5,
+    "manatide": 1,
+    "healingway": 3,
+    "natswift": 1,
+    "purification": 4,
+    "mentaldex": 3,
+    "eleweapons": 3,
+    "stormstrike": 1,
+    "flurry": 5
+   }
+  },
+  {
+   "tau": 0.9,
+   "split": "0/22/29",
+   "code": "-055030300051-253000131051314",
+   "H": 110049.99953361508,
+   "D": 179.11546040879523,
+   "t": {
+    "thundering": 5,
+    "ancknow": 5,
+    "ihw": 2,
+    "tidalfocus": 5,
+    "mindful": 3,
+    "anchealing": 1,
+    "healfocus": 3,
+    "watershield": 1,
+    "restotems": 5,
+    "manatide": 1,
+    "healingway": 3,
+    "natswift": 1,
+    "purification": 4,
+    "mentaldex": 3,
+    "eleweapons": 3,
+    "stormstrike": 1,
+    "flurry": 5
+   }
+  },
+  {
+   "tau": 0.88,
+   "split": "0/22/29",
+   "code": "-055030300051-253000131051314",
+   "H": 110049.99953361508,
+   "D": 179.11546040879523,
+   "t": {
+    "thundering": 5,
+    "ancknow": 5,
+    "ihw": 2,
+    "tidalfocus": 5,
+    "mindful": 3,
+    "anchealing": 1,
+    "healfocus": 3,
+    "watershield": 1,
+    "restotems": 5,
+    "manatide": 1,
+    "healingway": 3,
+    "natswift": 1,
+    "purification": 4,
+    "mentaldex": 3,
+    "eleweapons": 3,
+    "stormstrike": 1,
+    "flurry": 5
+   }
+  },
+  {
+   "tau": 0.85,
+   "split": "0/22/29",
+   "code": "-055030300051-253000131051314",
+   "H": 110049.99953361508,
+   "D": 179.11546040879523,
+   "t": {
+    "thundering": 5,
+    "ancknow": 5,
+    "ihw": 2,
+    "tidalfocus": 5,
+    "mindful": 3,
+    "anchealing": 1,
+    "healfocus": 3,
+    "watershield": 1,
+    "restotems": 5,
+    "manatide": 1,
+    "healingway": 3,
+    "natswift": 1,
+    "purification": 4,
+    "mentaldex": 3,
+    "eleweapons": 3,
+    "stormstrike": 1,
+    "flurry": 5
+   }
+  }
+ ]
+}
