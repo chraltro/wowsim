@@ -1,0 +1,46 @@
+diff --git a/src/classes/hunter/prepare/pet.rs b/src/classes/hunter/prepare/pet.rs
+index dd25ae07..e070f4fb 100644
+--- a/src/classes/hunter/prepare/pet.rs
++++ b/src/classes/hunter/prepare/pet.rs
+@@ -125,10 +125,12 @@ fn pet_attack_speed(name: &str) -> f64 {
+ /// equal to their ranged hit, and their spell hit to their pet equal to 17/8ths of their ranged hit."
+ pub(crate) const PET_SPELL_HIT_PER_RANGED_HIT: f64 = 17.0 / 8.0;
+ 
+-/// The client's creature auto attack dps for the character level, 60 (`ExpectedStat`, content set
+-/// 0, Lvl 60, CreatureAutoAttackDps, from wago.tools' wowf tables on 6 November 2026; the
+-/// reference's `CreatureAutoAttackDpsMaxLevel`).
+-const CREATURE_AUTO_ATTACK_DPS: f64 = 60.452_915_191_650_39;
++/// The client's creature auto attack dps for each level 1 to 60 (`ExpectedStat`, content set 0,
++/// expansion -2, CreatureAutoAttackDps, client build 1.60.1.70862 from wago.tools). Level 60 is
++/// the reference's `CreatureAutoAttackDpsMaxLevel`. wowsim patch: the pet of a levelling hunter
++/// scales with its own level's row instead of level 60's (the comments below already read the
++/// level 11, 17 and 30 pet sheets against their own rows).
++const CREATURE_AUTO_ATTACK_DPS_BY_LEVEL: [f64; 60] = [0.77037197351, 1.15746355057, 1.62908411026, 2.25077462196, 3.0063495636, 4.00402402878, 5.18357181549, 6.024061203, 6.90567064285, 7.61957216263, 8.59953212738, 9.83585453033, 10.71273612976, 11.80829143524, 12.85480499268, 13.58711147308, 14.5638589859, 15.25296020508, 16.18219947815, 17.10286331177, 17.74541282654, 18.59864997864, 19.22664260864, 20.05244827271, 20.82846641541, 21.48515129089, 22.34799003601, 22.99615097046, 23.8218421936, 24.69375419617, 25.3156375885, 26.08427619934, 26.73922920227, 27.51086425781, 28.2556438446, 28.94437217712, 29.85236167908, 30.62602043152, 31.58934211731, 32.58558273315, 34.14254760742, 36.28594970703, 38.70747375488, 41.91373825073, 43.99250793457, 44.89542007446, 46.0213508606, 46.92918395996, 48.02968597412, 49.20170593262, 50.15997314453, 51.38513946533, 52.36908340454, 53.56260681152, 54.68286895752, 55.76281738281, 56.9397315979, 58.03160476685, 59.21518325806, 60.45291519165];
+ 
+ /// A tamed pet's own attack power is this share of the creature dps, 14 attack power a point of
+ /// dps, with nothing from Strength: the pet sheets of a level 11, a level 17 and a level 30 pet
+@@ -147,12 +149,13 @@ const PET_SWING_SPREAD: f64 = 0.2;
+ 
+ /// The creature auto attack dps the Forever pet and hawk models scale with.
+ pub(super) fn creature_auto_attack_dps() -> f64 {
+-    CREATURE_AUTO_ATTACK_DPS
++    let level = character_level().clamp(1, 60) as usize;
++    CREATURE_AUTO_ATTACK_DPS_BY_LEVEL[level - 1]
+ }
+ 
+ /// A tamed pet's own attack power under Forever's rules: 4.2 a point of the creature dps.
+ pub(super) fn tamed_pet_attack_power() -> f64 {
+-    PET_OWN_ATTACK_POWER_SHARE * ATTACK_POWER_PER_DPS * CREATURE_AUTO_ATTACK_DPS
++    PET_OWN_ATTACK_POWER_SHARE * ATTACK_POWER_PER_DPS * creature_auto_attack_dps()
+ }
+ 
+ /// A tamed pet's swing before attack power under Forever's rules, as (low, high) damage a
+@@ -165,7 +168,7 @@ pub(super) fn tamed_pet_attack_power() -> f64 {
+ /// the weapon puts 131 of those 152 outside the range. That the same shares hold at level 60 is
+ /// an extrapolation: the client's creature dps row is the only level 60 input.
+ pub(super) fn tamed_pet_weapon_dps() -> (f64, f64) {
+-    let average = CREATURE_AUTO_ATTACK_DPS - tamed_pet_attack_power() / ATTACK_POWER_PER_DPS;
++    let average = creature_auto_attack_dps() - tamed_pet_attack_power() / ATTACK_POWER_PER_DPS;
+     (
+         average * (1.0 - PET_SWING_SPREAD),
+         average * (1.0 + PET_SWING_SPREAD),

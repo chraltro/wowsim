@@ -2,8 +2,12 @@
 const fs = require('fs');
 const path = require('path');
 const wasmPath = path.join(__dirname, '../target/wasm32-unknown-unknown/release/wowsim_engine.wasm');
-async function load(){ const {instance} = await WebAssembly.instantiate(fs.readFileSync(wasmPath), {}); return instance.exports; }
-function sim(ex, reqText){
+// The engine keeps state between runs that a second run in the same instance trips over,
+// so every run gets a fresh instance of the compiled module (instantiating takes a few ms).
+let MODULE = null;
+async function load(){ if(!MODULE) MODULE = await WebAssembly.compile(fs.readFileSync(wasmPath)); return {fresh: () => new WebAssembly.Instance(MODULE, {}).exports}; }
+function sim(eng, reqText){
+  const ex = eng.fresh ? eng.fresh() : eng;
   const bytes = Buffer.from(reqText, 'utf8');
   const p = ex.ws_alloc(bytes.length);
   new Uint8Array(ex.memory.buffer, p, bytes.length).set(bytes);
@@ -12,7 +16,7 @@ function sim(ex, reqText){
   const out = Buffer.from(new Uint8Array(ex.memory.buffer, ex.ws_out_ptr(), n)).toString('utf8');
   return JSON.parse(out);
 }
-(async () => {
+if(require.main === module) (async () => {
   const ex = await load();
   for(const f of process.argv.slice(2)){
     const t0 = Date.now(); const r = sim(ex, fs.readFileSync(f, 'utf8')); const ms = Date.now() - t0;
