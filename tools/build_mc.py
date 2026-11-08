@@ -16,5 +16,6 @@ for k, v in [('/*SHARED_CSS*/', css), ('/*DATA_JS*/', data), ('/*MC_JS*/', mc), 
 out = os.path.join(ROOT, 'dist/forever')
 os.makedirs(out, exist_ok=True)
 open(os.path.join(out, 'index.html'), 'w').write(html)
-shutil.copyfile(os.path.join(ROOT, 'dist/engine.wasm.gz'), os.path.join(out, 'engine.wasm.gz'))
-print('index.html', len(html), 'bytes; engine.wasm.gz', os.path.getsize(os.path.join(out, 'engine.wasm.gz')))
+# The gzipped engine, named .wasm because artifact hosting serves that extension; the page checks the gzip header
+shutil.copyfile(os.path.join(ROOT, 'dist/engine.wasm.gz'), os.path.join(out, 'engine.gz.wasm'))
+print('index.html', len(html), 'bytes; engine.gz.wasm', os.path.getsize(os.path.join(out, 'engine.gz.wasm')))

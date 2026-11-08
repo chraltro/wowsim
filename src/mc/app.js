@@ -44,13 +44,15 @@ function startEngine(){
   if(engineReady) return engineReady;
   engineReady = (async () => {
     setEngineState('<div class="loader"><span class="spin"></span>Loading MythicSim\'s engine (5.6 MB)<span class="prog"><i id="eprog"></i></span></div>');
-    const res = await fetch('engine.wasm.gz');
-    if(!res.ok) throw new Error('could not load engine.wasm.gz ('+res.status+')');
+    const res = await fetch('engine.gz.wasm');   // the gzipped module; named .wasm so the host serves it
+    if(!res.ok) throw new Error('could not load the engine ('+res.status+')');
     const total = +res.headers.get('content-length') || 5593068;
     let got = 0; const reader = res.body.getReader(); const parts = [];
     for(;;){ const {done, value} = await reader.read(); if(done) break; parts.push(value); got += value.length; const p = $('#eprog'); if(p) p.style.width = Math.min(100, got/total*100)+'%'; }
-    const gz = new Blob(parts);
-    const bytes = await new Response(gz.stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer();
+    const blob = new Blob(parts);
+    const head = new Uint8Array(await blob.slice(0, 4).arrayBuffer());
+    // Gzipped unless the host already decoded it (then it starts with the wasm magic "\0asm")
+    const bytes = head[0] === 0x1f && head[1] === 0x8b ? await new Response(blob.stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer() : await blob.arrayBuffer();
     const module = await WebAssembly.compile(bytes);
     worker = new Worker(URL.createObjectURL(new Blob([$('#worker-src').textContent], {type: 'text/javascript'})));
     worker.onmessage = e => { const j = jobs[e.data.id]; if(!j) return; if(e.data.progress != null){ j.onProgress && j.onProgress(e.data.progress); return; } delete jobs[e.data.id]; e.data.error ? j.reject(new Error(e.data.error)) : j.resolve(e.data.result); };
@@ -212,7 +214,8 @@ function renderResults(){
   const dv = d && d.ok ? fmt(d.role === 'healer' ? d.hps : d.dps) : '–';
   const du = d && d.role === 'healer' ? 'healing per second' : 'damage per second';
   const dd = d && d.ok ? 'Boss two levels above you, 2 minutes'+(d.petDps ? ', pet '+fmt(d.petDps)+' of it' : '')+(d.role === 'tank' ? '. Tanking is simmed as damage for now' : '') : esc(d ? d.why : '');
-  $('#charKpis').innerHTML = kpi('Questing', qv, 'kills per hour', qd) + kpi('Dungeon', dv, du, dd);
+  $('#charKpis').innerHTML = kpi('Questing', qv, 'kills per hour', qd) + kpi('Dungeon', dv, du, dd)
+    + (c.cls === 'shaman' && specOf(c) === 'res' ? '<div class="note" style="grid-column:1/-1">Whether you keep the tank alive, mana over a pull and Resto talents compared: <a href="https://claude.ai/artifact/HmiNY3CyCiiMqAeMS6kPRU" target="_blank" rel="noopener">Shaman Sim</a>.</div>' : '');
   if(pending || !q || !q.ok){ $('#charDetails').innerHTML = ''; return; }
   const rows = [
     ['Mob', 'Level '+q.mob.level+', '+fmt(q.mob.hp)+' health, '+fmt(q.mob.dps,1)+' damage per second'],
@@ -293,7 +296,9 @@ $('#runUps').addEventListener('click', async () => {
     if(res.base == null){ $('#upState').innerHTML = '<span class="warnline">'+esc(res.why || 'No baseline')+'</span>'; return; }
     const rows = res.items.filter(x => x.v != null && x.v > res.base*1.002).map(x => { const it = ITEMS_ALL[x.id]; const gain = (x.v - res.base)/res.base*100; const eff = effortOf(it); return {x, it, gain, eff, rank: gain/eff.cost}; }).sort((a, b) => b.rank - a.rank);
     const unit = obj === 'quest' ? 'kills per hour' : 'dungeon';
-    $('#upState').innerHTML = '<span class="small muted">Now: '+fmt(res.base, obj === 'quest' ? 0 : 1)+' '+(obj === 'quest' ? 'kills per hour' : 'per second in the dungeon')+'. '+rows.length+' of '+res.items.length+' items are upgrades.</span>';
+    // Gains compare like with like (each item and the baseline simmed the same way); "now" is the character's own number
+    const now = obj === 'quest' ? (r.quest && r.quest.ok ? fmt(r.quest.perHour)+' kills per hour' : '') : (r.dungeon && r.dungeon.ok ? fmt(r.dungeon.role === 'healer' ? r.dungeon.hps : r.dungeon.dps)+' per second in the dungeon' : '');
+    $('#upState').innerHTML = '<span class="small muted">Now: '+now+'. '+rows.length+' of '+res.items.length+' items simmed are upgrades.</span>';
     $('#upList').innerHTML = rows.slice(0, 15).map(({x, it, gain, eff}) => {
       const was = ITEMS_ALL[ctx.gear[x.slot]];
       return '<div class="up"><div><div class="nm q'+it.q+'">'+esc(it.n)+'</div><div class="meta"><span class="ease e'+eff.lvl+'">'+esc(eff.label)+'</span>'+esc(srcOne(eff.s) || 'Source not in the data')+'</div><div class="meta">'+SLOT_LABEL[x.slot]+(was ? ', replaces '+esc(was.n) : ', empty slot')+' · '+esc(statText(it))+(it.rl ? ' · req '+it.rl : '')+'</div></div><div class="gain">+'+fmt(gain,1)+'%<small>'+unit+'</small></div></div>';

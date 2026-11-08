@@ -10,7 +10,7 @@ async def main():
             pg = await b.new_page(viewport={'width':w,'height':h})
             errs=[]; pg.on('pageerror', lambda e: errs.append(str(e))); pg.on('console', lambda m: errs.append(m.type+': '+m.text) if m.type in ('error',) else None)
             await pg.goto(URL); 
-            await pg.fill('#gLevel','20'); await pg.dispatch_event('#gLevel','change')
+            await pg.evaluate('localStorage.clear()'); await pg.reload()
             await pg.wait_for_function("document.querySelectorAll('#grpTable .skel').length===0", timeout=120000)
             print(name,'GROUP:', (await pg.inner_text('#grpTable')).replace('\n',' | ')[:1500])
             await pg.screenshot(path=f'{SHOTS}/mc_{name}_group.png', full_page=True)

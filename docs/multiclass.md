@@ -22,8 +22,8 @@ Class combat runs on MythicSim's Forever engine (MIT), compiled to WebAssembly. 
 | Request builder | `src/mc/request.js`: class, race, spec, level, talents from the route, gear, a character sheet from our class data, level-dependent class options, and a target from the client mob tables | Done for every spec at levels 1 to 60. Tank specs get `raid.tanks` and a target that swings at them; presets get a low-level filler where their own is not learned yet |
 | Typical gear for a level | `src/mc/gear.js` `typicalGear()` | Done. Rough stat weights per style, easy sources only, weapon types per spec where the rotation needs them |
 | Check of every spec | `test/mc_levels.js` | 162 runs at levels 10 to 60 and 162 at 1, 2, 5, 8, 9 and 10: no failures. The drops left are explained below |
-| Questing model for all classes | uses engine damage per second over the kill time, plus our damage-taken, resting and walking loop from the Shaman model | Next |
-| Page | class and race per character, group view | After that |
+| Questing model for all classes | `src/mc/quest.js`: engine damage per second over the kill time, plus our damage-taken, resting and walking loop | Done |
+| Page | `src/mc/app.html`, `app.js`, `worker.js`; `tools/build_mc.py` builds `dist/forever/` (the engine ships gzipped as `engine.gz.wasm`, since artifact hosting does not serve `.gz`) | Published: https://claude.ai/artifact/8jyCtNWjmQr2Gjfx9iN7pJ |
 
 ## Engine fixes we carry
 
