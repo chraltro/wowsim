@@ -17,6 +17,16 @@ const STYLE_OF = {
   mage: {arcane:'caster', fire:'caster', frost:'caster'}, warlock: {affliction:'caster', demonology:'caster', destruction:'caster'},
   druid: {balance:'caster', feral_combat:'agile', restoration:'healer'}
 };
+// Weapon types a spec's engine rotation needs, by hand. From the engine (MythicSim Forever, b3c5eb6):
+// Mutilate needs a dagger in both hands (classes/rogue/prepare/export_specs.rs: "daggers": has_dagger(Main) && has_dagger(Off);
+// talents/assassination.rs: "Every rank, and both hand strikes, require a Dagger in the beta client"); Backstab and Ambush need
+// a main hand dagger (export.rs and export_specs.rs "main_hand_dagger"), and Hemorrhage takes its larger weapon share with one
+// (talents/subtlety.rs, effect 4). Assassination's preset (rogue/dps/forever_mutilate) builds with Mutilate, Subtlety's
+// (rogue/dps/forever_hemorrhage) opens with Ambush and builds with Hemorrhage; Combat's Sinister Strike takes any weapon.
+// A hand with no wearable weapon of the type falls back to the best of any type.
+const WEAPON_PREF = {
+  rogue: {assassination: {mainhand: 'Dagger', offhand: 'Dagger'}, subtlety: {mainhand: 'Dagger'}}
+};
 function srcLevel(it){ let lv = null; (it.src||[]).forEach(s => { const m = s.lv ? String(s.lv).match(/\d+/) : null; if(m){ const v = +m[0]; if(lv === null || v < lv) lv = v; } }); return lv; }
 // Level from which this class can wear the item in this slot, or null if never
 function wearFrom(it, cls, slot){
@@ -37,11 +47,14 @@ function score(it, w){ let v = 0; for(const k in it.s) v += (w[k]||0)*it.s[k]; i
 function typicalGear(items, cls, spec, level, opts){
   opts = opts || {};
   const w = STYLE[(STYLE_OF[cls]||{})[spec] || 'melee'];
+  const pref = (WEAPON_PREF[cls]||{})[spec] || {};
   const gear = {}, used = new Set();
-  const pick = slot => {
+  const pick = (slot, type) => {
+    if(type === undefined && pref[slot]) return pick(slot, pref[slot]) || pick(slot, null);
     let best = null, bv = -1;
     for(const id in items){
       const it = items[id];
+      if(type && it.wt !== type) continue;
       if(used.has(id) && it.u) continue;
       const from = wearFrom(it, cls, slot); if(from === null || from > level) continue;
       if(reachLevel(it) > level) continue;
@@ -69,6 +82,6 @@ function typicalGear(items, cls, spec, level, opts){
   }
   return gear;
 }
-const api = {SLOTS, STYLE, STYLE_OF, wearFrom, reachLevel, srcLevel, typicalGear};
+const api = {SLOTS, STYLE, STYLE_OF, WEAPON_PREF, wearFrom, reachLevel, srcLevel, typicalGear};
 if(typeof module !== 'undefined' && module.exports) module.exports = api; else root.MCGear = api;
 })(typeof window !== 'undefined' ? window : (typeof self !== 'undefined' ? self : this));

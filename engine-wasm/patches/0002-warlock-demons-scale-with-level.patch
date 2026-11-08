@@ -1,0 +1,355 @@
+diff --git a/src/classes/warlock/prepare/export.rs b/src/classes/warlock/prepare/export.rs
+index 899a33ea..ea7eb896 100644
+--- a/src/classes/warlock/prepare/export.rs
++++ b/src/classes/warlock/prepare/export.rs
+@@ -139,14 +139,17 @@ fn with_kind(kind: &str, mut fields: Map<String, Value>) -> Value {
+     Value::Object(fields)
+ }
+ 
+-/// The Imp's Firebolt rank 7 damage effect (`impFireboltEffect`), client 1.60.1.70094 11763.
++/// The Imp's Firebolt damage effect (`impFireboltEffect`) of the rank the warlock's level
++/// allows (client 1.60.1.70862; rank 7 is 1.60.1.70094's 11763, as before). wowsim patch: the
++/// engine used rank 7 at every level.
+ fn imp_firebolt_effect() -> Effect {
++    let rank = super::pets::firebolt_rank();
+     Effect {
+-        base_points: 44.0,
+-        ppl: 0.6000000238418579,
+-        variance: 0.11363636702,
+-        spell_level: 58,
+-        max_level: 63,
++        base_points: rank.base_points,
++        ppl: rank.ppl,
++        variance: rank.variance,
++        spell_level: rank.spell_level,
++        max_level: rank.max_level,
+         ..Effect::default()
+     }
+ }
+@@ -445,8 +448,10 @@ impl Warlock {
+             }));
+         }
+         if self.pets.succubus.is_some() {
+-            // pets.go registerLashOfPainSpell: a Go literal base
+-            effects.push(json!({"kind": "lash_of_pain", "base_damage": 50.0}));
++            // pets.go registerLashOfPainSpell: a Go literal base, 50, rank 6's. wowsim patch: the
++            // base of the rank the warlock's level allows (the client's fixed amount).
++            effects.push(json!({"kind": "lash_of_pain",
++                "base_damage": super::pets::lash_of_pain_rank().base_points}));
+         }
+         // talents_demonology.go applyFelEnergy: the Voidwalker's sacrifice restores a share of
+         // maximum mana every period, from a periodic action its permanent aura starts.
+diff --git a/src/classes/warlock/prepare/pets.rs b/src/classes/warlock/prepare/pets.rs
+index 4551be5c..28e090d1 100644
+--- a/src/classes/warlock/prepare/pets.rs
++++ b/src/classes/warlock/prepare/pets.rs
+@@ -5,6 +5,7 @@
+ use std::rc::Rc;
+ 
+ use crate::prepare::attack::{AutoAttackOptions, Weapon};
++use crate::prepare::levels::character_level;
+ use crate::prepare::pet::PetConfig;
+ use crate::prepare::sim::{Cooldown, Rules, Sim, SpellId, UnitId, MILLISECOND, SECOND};
+ use crate::prepare::spell::{
+@@ -26,6 +27,144 @@ const PET_ATTACK_POWER_FRACTION: f64 = 0.17;
+ /// spell hit equal to their spell hit, and melee hit equal to 8/17ths of their spell hit."
+ pub(crate) const DEMON_MELEE_HIT_PER_SPELL_HIT: f64 = 8.0 / 17.0;
+ 
++/// The client's creature auto attack dps for each level 1 to 60 (`ExpectedStat`, content set 0,
++/// expansion -2, CreatureAutoAttackDps, client build 1.60.1.70862 from wago.tools), the row
++/// wowsim patch 0001 scales the hunter's pet with.
++const CREATURE_AUTO_ATTACK_DPS_BY_LEVEL: [f64; 60] = [0.77037197351, 1.15746355057, 1.62908411026, 2.25077462196, 3.0063495636, 4.00402402878, 5.18357181549, 6.024061203, 6.90567064285, 7.61957216263, 8.59953212738, 9.83585453033, 10.71273612976, 11.80829143524, 12.85480499268, 13.58711147308, 14.5638589859, 15.25296020508, 16.18219947815, 17.10286331177, 17.74541282654, 18.59864997864, 19.22664260864, 20.05244827271, 20.82846641541, 21.48515129089, 22.34799003601, 22.99615097046, 23.8218421936, 24.69375419617, 25.3156375885, 26.08427619934, 26.73922920227, 27.51086425781, 28.2556438446, 28.94437217712, 29.85236167908, 30.62602043152, 31.58934211731, 32.58558273315, 34.14254760742, 36.28594970703, 38.70747375488, 41.91373825073, 43.99250793457, 44.89542007446, 46.0213508606, 46.92918395996, 48.02968597412, 49.20170593262, 50.15997314453, 51.38513946533, 52.36908340454, 53.56260681152, 54.68286895752, 55.76281738281, 56.9397315979, 58.03160476685, 59.21518325806, 60.45291519165];
++
++const IMP_LEVEL_STATS: [[f64; 6]; 60] = [
++    [20.0, 5.0, 20.0, 24.0, 23.0, 48.0], [21.0, 5.0, 2.0, 25.0, 24.0, 59.0], [15.0, 5.0, 4.0, 26.0, 25.0, 70.0], [17.0, 5.0, 8.0, 27.0, 26.0, 81.0],
++    [18.0, 5.0, 12.0, 28.0, 27.0, 92.0], [20.0, 7.0, 16.0, 29.0, 27.0, 103.0], [22.0, 7.0, 21.0, 30.0, 28.0, 114.0], [23.0, 8.0, 25.0, 31.0, 29.0, 125.0],
++    [25.0, 9.0, 27.0, 32.0, 30.0, 136.0], [29.0, 10.0, 29.0, 33.0, 31.0, 147.0], [30.0, 11.0, 32.0, 37.0, 35.0, 158.0], [31.0, 12.0, 36.0, 41.0, 39.0, 180.0],
++    [32.0, 13.0, 43.0, 50.0, 43.0, 203.0], [33.0, 13.0, 44.0, 54.0, 47.0, 227.0], [34.0, 13.0, 48.0, 57.0, 52.0, 251.0], [36.0, 13.0, 52.0, 62.0, 56.0, 275.0],
++    [38.0, 13.0, 55.0, 65.0, 65.0, 300.0], [39.0, 13.0, 59.0, 70.0, 70.0, 314.0], [40.0, 13.0, 63.0, 74.0, 75.0, 351.0], [42.0, 13.0, 67.0, 87.0, 78.0, 377.0],
++    [44.0, 13.0, 80.0, 91.0, 83.0, 393.0], [46.0, 13.0, 84.0, 95.0, 86.0, 420.0], [47.0, 13.0, 89.0, 96.0, 90.0, 447.0], [49.0, 13.0, 93.0, 97.0, 95.0, 476.0],
++    [50.0, 13.0, 97.0, 98.0, 100.0, 504.0], [52.0, 13.0, 101.0, 60.0, 78.0, 534.0], [53.0, 14.0, 105.0, 61.0, 81.0, 564.0], [55.0, 15.0, 110.0, 62.0, 86.0, 592.0],
++    [57.0, 16.0, 114.0, 62.0, 89.0, 620.0], [57.0, 16.0, 118.0, 63.0, 92.0, 648.0], [59.0, 16.0, 123.0, 64.0, 95.0, 676.0], [60.0, 17.0, 127.0, 64.0, 98.0, 720.0],
++    [62.0, 18.0, 131.0, 65.0, 101.0, 742.0], [63.0, 19.0, 135.0, 65.0, 104.0, 793.0], [64.0, 19.0, 136.0, 66.0, 107.0, 845.0], [67.0, 19.0, 137.0, 66.0, 110.0, 879.0],
++    [69.0, 19.0, 138.0, 68.0, 112.0, 916.0], [70.0, 19.0, 139.0, 68.0, 115.0, 952.0], [72.0, 19.0, 142.0, 69.0, 118.0, 988.0], [74.0, 20.0, 147.0, 156.0, 142.0, 1026.0],
++    [77.0, 20.0, 152.0, 160.0, 143.0, 1063.0], [81.0, 20.0, 156.0, 163.0, 144.0, 1103.0], [87.0, 20.0, 160.0, 167.0, 145.0, 1187.0], [91.0, 21.0, 164.0, 170.0, 146.0, 1214.0],
++    [96.0, 21.0, 169.0, 174.0, 148.0, 1240.0], [98.0, 22.0, 173.0, 177.0, 149.0, 1267.0], [100.0, 22.0, 177.0, 181.0, 151.0, 1294.0], [102.0, 22.0, 181.0, 184.0, 152.0, 1320.0],
++    [105.0, 22.0, 186.0, 188.0, 155.0, 1347.0], [107.0, 22.0, 190.0, 194.0, 158.0, 1391.0], [109.0, 22.0, 194.0, 202.0, 161.0, 1435.0], [112.0, 24.0, 198.0, 208.0, 165.0, 1481.0],
++    [114.0, 25.0, 203.0, 215.0, 168.0, 1527.0], [115.0, 26.0, 207.0, 222.0, 172.0, 1573.0], [119.0, 26.0, 211.0, 229.0, 177.0, 1620.0], [121.0, 27.0, 215.0, 236.0, 181.0, 1666.0],
++    [123.0, 27.0, 220.0, 243.0, 185.0, 1714.0], [125.0, 27.0, 224.0, 250.0, 189.0, 1763.0], [127.0, 27.0, 230.0, 258.0, 192.0, 1824.0], [122.0, 35.0, 86.0, 264.0, 260.0, 1898.0],
++];
++const VOIDWALKER_LEVEL_STATS: [[f64; 6]; 60] = [
++    [12.0, 14.0, 1.0, 1.0, 0.0, 48.0], [14.0, 15.0, 2.0, 1.0, 0.0, 59.0], [15.0, 16.0, 4.0, 1.0, 0.0, 70.0], [17.0, 17.0, 8.0, 2.0, 0.0, 81.0],
++    [18.0, 18.0, 12.0, 2.0, 0.0, 92.0], [20.0, 19.0, 16.0, 3.0, 0.0, 103.0], [22.0, 20.0, 21.0, 3.0, 0.0, 114.0], [23.0, 21.0, 25.0, 4.0, 0.0, 125.0],
++    [25.0, 22.0, 27.0, 4.0, 0.0, 136.0], [29.0, 25.0, 29.0, 22.0, 26.0, 147.0], [30.0, 25.0, 32.0, 22.0, 28.0, 158.0], [31.0, 26.0, 36.0, 24.0, 31.0, 180.0],
++    [32.0, 28.0, 43.0, 26.0, 32.0, 203.0], [33.0, 28.0, 44.0, 25.0, 35.0, 227.0], [34.0, 30.0, 48.0, 26.0, 37.0, 251.0], [36.0, 30.0, 52.0, 27.0, 39.0, 275.0],
++    [38.0, 31.0, 55.0, 28.0, 42.0, 300.0], [39.0, 33.0, 59.0, 28.0, 38.0, 314.0], [40.0, 33.0, 63.0, 30.0, 46.0, 351.0], [42.0, 35.0, 67.0, 31.0, 49.0, 377.0],
++    [44.0, 36.0, 80.0, 32.0, 39.0, 393.0], [46.0, 36.0, 84.0, 33.0, 41.0, 420.0], [47.0, 38.0, 89.0, 34.0, 42.0, 447.0], [49.0, 39.0, 93.0, 35.0, 43.0, 476.0],
++    [50.0, 40.0, 97.0, 36.0, 44.0, 504.0], [52.0, 41.0, 101.0, 37.0, 46.0, 534.0], [53.0, 42.0, 105.0, 38.0, 47.0, 564.0], [55.0, 43.0, 110.0, 39.0, 48.0, 592.0],
++    [57.0, 44.0, 114.0, 40.0, 49.0, 620.0], [57.0, 46.0, 118.0, 41.0, 51.0, 648.0], [59.0, 47.0, 123.0, 42.0, 52.0, 676.0], [60.0, 47.0, 127.0, 43.0, 53.0, 720.0],
++    [62.0, 49.0, 131.0, 45.0, 54.0, 742.0], [63.0, 50.0, 135.0, 46.0, 56.0, 793.0], [64.0, 51.0, 136.0, 46.0, 57.0, 845.0], [67.0, 52.0, 137.0, 47.0, 58.0, 879.0],
++    [69.0, 53.0, 138.0, 48.0, 59.0, 916.0], [70.0, 55.0, 139.0, 49.0, 61.0, 952.0], [72.0, 56.0, 142.0, 49.0, 62.0, 988.0], [74.0, 57.0, 147.0, 50.0, 64.0, 1026.0],
++    [77.0, 58.0, 152.0, 51.0, 66.0, 1063.0], [81.0, 59.0, 156.0, 51.0, 67.0, 1103.0], [87.0, 60.0, 160.0, 52.0, 69.0, 1187.0], [91.0, 61.0, 164.0, 54.0, 71.0, 1214.0],
++    [96.0, 64.0, 169.0, 55.0, 72.0, 1240.0], [98.0, 65.0, 173.0, 57.0, 73.0, 1267.0], [100.0, 66.0, 177.0, 57.0, 75.0, 1294.0], [102.0, 68.0, 181.0, 57.0, 76.0, 1320.0],
++    [105.0, 69.0, 186.0, 58.0, 78.0, 1347.0], [107.0, 71.0, 190.0, 59.0, 123.0, 1391.0], [109.0, 72.0, 194.0, 60.0, 127.0, 1435.0], [112.0, 74.0, 198.0, 62.0, 128.0, 1481.0],
++    [114.0, 75.0, 203.0, 63.0, 131.0, 1527.0], [115.0, 76.0, 207.0, 64.0, 133.0, 1573.0], [119.0, 79.0, 211.0, 65.0, 135.0, 1620.0], [121.0, 80.0, 215.0, 66.0, 139.0, 1666.0],
++    [123.0, 81.0, 220.0, 67.0, 142.0, 1714.0], [125.0, 82.0, 224.0, 68.0, 144.0, 1763.0], [127.0, 83.0, 230.0, 69.0, 147.0, 1824.0], [129.0, 85.0, 234.0, 70.0, 150.0, 1874.0],
++];
++const SUCCUBUS_LEVEL_STATS: [[f64; 6]; 60] = [
++    [12.0, 14.0, 1.0, 1.0, 25.0, 48.0], [14.0, 15.0, 2.0, 1.0, 26.0, 59.0], [15.0, 16.0, 4.0, 1.0, 27.0, 70.0], [17.0, 17.0, 8.0, 2.0, 27.0, 81.0],
++    [18.0, 18.0, 12.0, 2.0, 28.0, 92.0], [20.0, 19.0, 16.0, 3.0, 29.0, 103.0], [22.0, 20.0, 21.0, 3.0, 29.0, 114.0], [23.0, 21.0, 25.0, 4.0, 30.0, 125.0],
++    [25.0, 22.0, 29.0, 4.0, 31.0, 136.0], [26.0, 23.0, 33.0, 5.0, 31.0, 147.0], [28.0, 25.0, 38.0, 6.0, 32.0, 158.0], [29.0, 26.0, 42.0, 8.0, 33.0, 180.0],
++    [31.0, 27.0, 46.0, 9.0, 34.0, 203.0], [33.0, 28.0, 50.0, 11.0, 35.0, 227.0], [34.0, 29.0, 55.0, 14.0, 35.0, 251.0], [36.0, 30.0, 59.0, 16.0, 36.0, 275.0],
++    [37.0, 31.0, 63.0, 20.0, 37.0, 300.0], [39.0, 32.0, 67.0, 24.0, 38.0, 314.0], [40.0, 33.0, 72.0, 29.0, 39.0, 351.0], [42.0, 35.0, 67.0, 31.0, 49.0, 377.0],
++    [44.0, 36.0, 80.0, 53.0, 39.0, 393.0], [46.0, 36.0, 84.0, 54.0, 41.0, 420.0], [47.0, 38.0, 89.0, 56.0, 42.0, 447.0], [49.0, 39.0, 93.0, 57.0, 43.0, 476.0],
++    [50.0, 40.0, 97.0, 60.0, 44.0, 504.0], [52.0, 41.0, 101.0, 62.0, 46.0, 534.0], [53.0, 42.0, 105.0, 63.0, 47.0, 564.0], [55.0, 43.0, 110.0, 65.0, 48.0, 592.0],
++    [57.0, 44.0, 114.0, 67.0, 49.0, 620.0], [57.0, 46.0, 118.0, 69.0, 51.0, 648.0], [59.0, 47.0, 123.0, 71.0, 52.0, 676.0], [60.0, 47.0, 127.0, 73.0, 53.0, 720.0],
++    [62.0, 49.0, 131.0, 74.0, 54.0, 742.0], [64.0, 50.0, 135.0, 76.0, 56.0, 793.0], [63.0, 51.0, 136.0, 73.0, 57.0, 845.0], [67.0, 52.0, 137.0, 72.0, 58.0, 879.0],
++    [69.0, 53.0, 138.0, 70.0, 59.0, 916.0], [70.0, 55.0, 139.0, 69.0, 61.0, 952.0], [72.0, 56.0, 142.0, 68.0, 62.0, 988.0], [74.0, 57.0, 147.0, 67.0, 64.0, 1026.0],
++    [77.0, 58.0, 152.0, 68.0, 66.0, 1063.0], [81.0, 59.0, 156.0, 70.0, 67.0, 1103.0], [87.0, 60.0, 160.0, 72.0, 69.0, 1187.0], [91.0, 61.0, 164.0, 74.0, 71.0, 1214.0],
++    [96.0, 64.0, 169.0, 75.0, 72.0, 1240.0], [98.0, 65.0, 173.0, 77.0, 73.0, 1267.0], [100.0, 66.0, 177.0, 78.0, 75.0, 1294.0], [102.0, 68.0, 181.0, 80.0, 76.0, 1320.0],
++    [105.0, 69.0, 186.0, 82.0, 78.0, 1347.0], [107.0, 71.0, 190.0, 84.0, 80.0, 1391.0], [109.0, 72.0, 194.0, 86.0, 81.0, 1435.0], [112.0, 74.0, 198.0, 88.0, 83.0, 1481.0],
++    [114.0, 75.0, 203.0, 90.0, 85.0, 1527.0], [116.0, 77.0, 207.0, 92.0, 87.0, 1573.0], [119.0, 79.0, 211.0, 94.0, 88.0, 1620.0], [121.0, 80.0, 215.0, 96.0, 90.0, 1666.0],
++    [123.0, 82.0, 220.0, 99.0, 92.0, 1714.0], [125.0, 84.0, 224.0, 101.0, 94.0, 1763.0], [128.0, 86.0, 228.0, 103.0, 96.0, 1824.0], [129.0, 85.0, 234.0, 70.0, 150.0, 1874.0],
++];
++const FELHUNTER_LEVEL_STATS: [[f64; 6]; 60] = [
++    [11.0, 17.0, 12.0, 11.0, 22.0, 48.0], [12.0, 18.0, 14.0, 13.0, 23.0, 59.0], [14.0, 19.0, 17.0, 15.0, 24.0, 70.0], [15.0, 20.0, 19.0, 17.0, 25.0, 81.0],
++    [17.0, 21.0, 22.0, 19.0, 26.0, 92.0], [19.0, 22.0, 24.0, 21.0, 27.0, 103.0], [20.0, 23.0, 27.0, 23.0, 28.0, 114.0], [22.0, 24.0, 29.0, 25.0, 29.0, 125.0],
++    [23.0, 25.0, 32.0, 27.0, 30.0, 136.0], [25.0, 26.0, 34.0, 29.0, 31.0, 147.0], [27.0, 27.0, 37.0, 31.0, 32.0, 158.0], [28.0, 28.0, 41.0, 33.0, 33.0, 180.0],
++    [30.0, 29.0, 45.0, 35.0, 34.0, 203.0], [31.0, 30.0, 50.0, 37.0, 35.0, 227.0], [33.0, 31.0, 54.0, 39.0, 36.0, 251.0], [35.0, 32.0, 58.0, 41.0, 37.0, 275.0],
++    [36.0, 33.0, 62.0, 43.0, 38.0, 300.0], [38.0, 34.0, 67.0, 45.0, 39.0, 314.0], [39.0, 35.0, 71.0, 47.0, 40.0, 351.0], [41.0, 36.0, 75.0, 49.0, 41.0, 377.0],
++    [43.0, 37.0, 80.0, 51.0, 42.0, 400.0], [44.0, 38.0, 84.0, 53.0, 43.0, 423.0], [46.0, 39.0, 88.0, 55.0, 44.0, 447.0], [47.0, 40.0, 93.0, 57.0, 45.0, 476.0],
++    [49.0, 41.0, 97.0, 59.0, 46.0, 504.0], [51.0, 42.0, 101.0, 61.0, 47.0, 543.0], [52.0, 43.0, 105.0, 63.0, 48.0, 564.0], [54.0, 44.0, 110.0, 65.0, 49.0, 592.0],
++    [55.0, 45.0, 114.0, 67.0, 50.0, 620.0], [57.0, 46.0, 118.0, 69.0, 51.0, 648.0], [59.0, 47.0, 123.0, 71.0, 52.0, 676.0], [60.0, 47.0, 127.0, 73.0, 53.0, 720.0],
++    [62.0, 49.0, 131.0, 74.0, 54.0, 742.0], [63.0, 50.0, 135.0, 76.0, 56.0, 793.0], [65.0, 52.0, 137.0, 73.0, 57.0, 845.0], [67.0, 53.0, 138.0, 72.0, 58.0, 879.0],
++    [68.0, 54.0, 138.0, 70.0, 60.0, 916.0], [70.0, 55.0, 139.0, 69.0, 61.0, 952.0], [71.0, 56.0, 142.0, 68.0, 62.0, 988.0], [73.0, 57.0, 146.0, 67.0, 64.0, 1026.0],
++    [76.0, 58.0, 151.0, 68.0, 65.0, 1063.0], [81.0, 59.0, 156.0, 70.0, 67.0, 1103.0], [87.0, 60.0, 160.0, 71.0, 68.0, 1187.0], [91.0, 61.0, 164.0, 73.0, 70.0, 1214.0],
++    [95.0, 64.0, 168.0, 75.0, 71.0, 1240.0], [98.0, 65.0, 173.0, 77.0, 73.0, 1267.0], [100.0, 66.0, 177.0, 78.0, 75.0, 1294.0], [102.0, 68.0, 181.0, 80.0, 76.0, 1320.0],
++    [104.0, 69.0, 186.0, 82.0, 78.0, 1347.0], [107.0, 71.0, 190.0, 84.0, 80.0, 1391.0], [109.0, 72.0, 195.0, 86.0, 82.0, 1435.0], [111.0, 74.0, 199.0, 88.0, 84.0, 1481.0],
++    [113.0, 75.0, 204.0, 90.0, 86.0, 1527.0], [116.0, 77.0, 208.0, 92.0, 88.0, 1573.0], [118.0, 78.0, 213.0, 94.0, 90.0, 1620.0], [120.0, 80.0, 217.0, 96.0, 92.0, 1666.0],
++    [123.0, 82.0, 222.0, 99.0, 94.0, 1714.0], [125.0, 83.0, 226.0, 101.0, 97.0, 1763.0], [127.0, 85.0, 231.0, 103.0, 99.0, 1824.0], [129.0, 85.0, 234.0, 70.0, 150.0, 1874.0],
++];
++
++/// One rank of a demon's damage spell, from the client build 1.60.1.70862 (wago.tools):
++/// SpellEffect (base points, points per level, variance, bonus coefficient), SpellLevels (spell
++/// level, max level) and SpellPower (mana cost), the rows wowsims-forever's spells_auto_gen.go
++/// carries. The coefficients 0.571 and 0.429 are the client's 0.57099997997 and 0.42899999022
++/// as the engine already wrote them for ranks 7 and 6.
++#[derive(Clone, Copy, Debug)]
++pub(super) struct DemonSpellRank {
++    pub id: i32,
++    pub spell_level: i16,
++    pub max_level: i16,
++    pub base_points: f64,
++    pub ppl: f64,
++    pub variance: f64,
++    pub coefficient: f64,
++    pub cost: i32,
++}
++
++/// Firebolt's seven ranks (wowsims-forever `spellData.Firebolt = spelldata.Ranked(3110, 7799,
++/// 7800, 7801, 7802, 11762, 11763)`). Rank 7 holds the values the engine used before.
++const FIREBOLT_RANKS: [DemonSpellRank; 7] = [
++    DemonSpellRank { id: 3110, spell_level: 1, max_level: 5, base_points: 4.0, ppl: 0.10000000149, variance: 0.28571429849, coefficient: 0.164, cost: 10 },
++    DemonSpellRank { id: 7799, spell_level: 8, max_level: 13, base_points: 7.0, ppl: 0.20000000298, variance: 0.15384615958, coefficient: 0.314, cost: 20 },
++    DemonSpellRank { id: 7800, spell_level: 18, max_level: 23, base_points: 12.0, ppl: 0.30000001192, variance: 0.16666667163, coefficient: 0.529, cost: 35 },
++    DemonSpellRank { id: 7801, spell_level: 28, max_level: 33, base_points: 17.0, ppl: 0.30000001192, variance: 0.11428570747, coefficient: 0.571, cost: 50 },
++    DemonSpellRank { id: 7802, spell_level: 38, max_level: 43, base_points: 25.0, ppl: 0.40000000596, variance: 0.11764705926, coefficient: 0.571, cost: 70 },
++    DemonSpellRank { id: 11762, spell_level: 48, max_level: 53, base_points: 35.0, ppl: 0.5, variance: 0.11267604679, coefficient: 0.571, cost: 95 },
++    DemonSpellRank { id: 11763, spell_level: 58, max_level: 63, base_points: 44.0, ppl: 0.6000000238418579, variance: 0.11363636702, coefficient: 0.571, cost: 115 },
++];
++
++/// Lash of Pain's six ranks (wowsims-forever `spellData.LashOfPain = spelldata.Ranked(7814,
++/// 7815, 7816, 11778, 11779, 11780)`): a fixed amount, no level scaling. Rank 6 holds the
++/// values the engine used before.
++const LASH_OF_PAIN_RANKS: [DemonSpellRank; 6] = [
++    DemonSpellRank { id: 7814, spell_level: 20, max_level: 0, base_points: 16.0, ppl: 0.0, variance: 0.0, coefficient: 0.429, cost: 65 },
++    DemonSpellRank { id: 7815, spell_level: 28, max_level: 0, base_points: 22.0, ppl: 0.0, variance: 0.0, coefficient: 0.429, cost: 80 },
++    DemonSpellRank { id: 7816, spell_level: 36, max_level: 0, base_points: 30.0, ppl: 0.0, variance: 0.0, coefficient: 0.429, cost: 105 },
++    DemonSpellRank { id: 11778, spell_level: 44, max_level: 0, base_points: 36.0, ppl: 0.0, variance: 0.0, coefficient: 0.429, cost: 125 },
++    DemonSpellRank { id: 11779, spell_level: 52, max_level: 0, base_points: 43.0, ppl: 0.0, variance: 0.0, coefficient: 0.429, cost: 145 },
++    DemonSpellRank { id: 11780, spell_level: 60, max_level: 0, base_points: 50.0, ppl: 0.0, variance: 0.0, coefficient: 0.429, cost: 160 },
++];
++
++/// The highest rank the warlock's level allows (the rank's spell level at or below it), the
++/// first rank below that. A demon learns its ranks from Grimoires, which the warlock is taken
++/// to have bought as the level allows. wowsim patch: the engine used the top rank at every
++/// level.
++fn rank_for_level(ranks: &'static [DemonSpellRank]) -> &'static DemonSpellRank {
++    let level = character_level();
++    ranks
++        .iter()
++        .rev()
++        .find(|rank| i32::from(rank.spell_level) <= level)
++        .unwrap_or(&ranks[0])
++}
++
++/// The Imp's Firebolt rank at the warlock's level.
++pub(super) fn firebolt_rank() -> &'static DemonSpellRank {
++    rank_for_level(&FIREBOLT_RANKS)
++}
++
++/// The Succubus's Lash of Pain rank at the warlock's level.
++pub(super) fn lash_of_pain_rank() -> &'static DemonSpellRank {
++    rank_for_level(&LASH_OF_PAIN_RANKS)
++}
++
+ /// Go `proto.WarlockOptions_Summon` of the four demons the warlock registers.
+ #[derive(Clone, Copy, Debug, PartialEq, Eq)]
+ pub(super) enum Summon {
+@@ -46,8 +185,45 @@ impl Summon {
+         }
+     }
+ 
+-    /// Go `petBaseStats`: level 60 pet stats, from our Forever sim.
++    /// The demon's stats at the warlock's level. At 60 they are Go's `petBaseStats` (below);
++    /// below 60 the attributes are the demon's own vanilla row for the level and its base mana
++    /// follows the same rows. wowsim patch: the engine used the level 60 stats at every level.
+     fn base_stats(self) -> Stats {
++        let level = character_level();
++        if level >= 60 {
++            return self.base_stats_60();
++        }
++        let rows = self.level_stats();
++        let row = rows[(level.max(1) - 1) as usize];
++        let mut stats = self.base_stats_60();
++        // Go's level 60 attributes are the vanilla row for level 60 exactly (pet_levelstats
++        // 416, 1860, 1863 and 417), so the rows below 60 are the same source.
++        stats[Stat::Strength] = row[0];
++        stats[Stat::Agility] = row[1];
++        stats[Stat::Stamina] = row[2];
++        stats[Stat::Intellect] = row[3];
++        stats[Stat::Spirit] = row[4];
++        // Go's base mana (576 for the Imp, 1,066 for the others) is no vanilla value, so it is
++        // scaled by the vanilla row's mana for the level over its mana at 60 (an estimate).
++        stats[Stat::Mana] = self.base_stats_60()[Stat::Mana] * row[5] / rows[59][5];
++        stats
++    }
++
++    /// The demon's vanilla row for each level 1 to 60: Strength, Agility, Stamina, Intellect,
++    /// Spirit and mana from cmangos classic-db `pet_levelstats` (ClassicDB_1_12_1_z2815,
++    /// creature entries 416 Imp, 1860 Voidwalker, 1863 Succubus, 417 Felhunter; the
++    /// pipeline's data/classes/pets.json `vanilla_cmangos`).
++    fn level_stats(self) -> &'static [[f64; 6]; 60] {
++        match self {
++            Summon::Imp => &IMP_LEVEL_STATS,
++            Summon::Voidwalker => &VOIDWALKER_LEVEL_STATS,
++            Summon::Succubus => &SUCCUBUS_LEVEL_STATS,
++            Summon::Felhunter => &FELHUNTER_LEVEL_STATS,
++        }
++    }
++
++    /// Go `petBaseStats`: level 60 pet stats, from our Forever sim.
++    fn base_stats_60(self) -> Stats {
+         match self {
+             Summon::Imp => Stats::from_pairs(&[
+                 (Stat::Strength, 122.0),
+@@ -79,8 +255,24 @@ impl Summon {
+         }
+     }
+ 
+-    /// Go `petAutoAttacks`: the demon's melee damage range; the Imp has none.
++    /// The demon's melee damage range at the warlock's level: Go's level 60 range (below)
++    /// times the client's creature auto attack dps for the level over its level 60 value.
++    /// wowsims-forever sim/warlock/pets.go reads a demon's weapon as a fixed share of the
++    /// creature dps for its level ("read at levels 20 and 30"); the share kept here is Go's
++    /// level 60 one, so level 60 is unchanged. wowsim patch: the engine used the level 60 range
++    /// at every level.
+     fn auto_attack(self) -> Option<(f64, f64)> {
++        let (min, max) = self.auto_attack_60()?;
++        let level = character_level().clamp(1, 60) as usize;
++        if level == 60 {
++            return Some((min, max));
++        }
++        let scale = CREATURE_AUTO_ATTACK_DPS_BY_LEVEL[level - 1] / CREATURE_AUTO_ATTACK_DPS_BY_LEVEL[59];
++        Some((min * scale, max * scale))
++    }
++
++    /// Go `petAutoAttacks`: the demon's level 60 melee damage range; the Imp has none.
++    fn auto_attack_60(self) -> Option<(f64, f64)> {
+         match self {
+             Summon::Imp => None,
+             Summon::Voidwalker => Some((31.0, 46.0)),
+@@ -239,27 +431,29 @@ impl Warlock {
+         }
+     }
+ 
+-    /// The generator makes no table for pet spells, so Firebolt carries our client-verified
+-    /// beta 1.60.1 values (rank 7). Firebolt's cooldown is the Imp's pause between casts: beta
++    /// The generator makes no table for pet spells, so Firebolt carries the client's values of
++    /// the rank the warlock's level allows ([`firebolt_rank`]; rank 7, our client-verified beta
++    /// 1.60.1 values, at 58 and above). Firebolt's cooldown is the Imp's pause between casts: beta
+     /// logs time 281 Firebolts 2.435 sec apart (median, 2.0 sec cast, next one starting 0.43 sec
+     /// after the last lands). The rotation polls every 100 ms, so 400 ms lands the next cast
+     /// 2.4 sec after the last; 430 would round up to 2.5. Improved Imp rides on its talent as a
+     /// SpellMod.
+     fn register_firebolt_spell(&mut self, sim: &mut Sim, pet: UnitId) {
++        let rank = firebolt_rank();
+         if let Some(state) = self.pets.state_mut(pet) {
+-            state.min_mana = 115.0;
++            state.min_mana = f64::from(rank.cost);
+         }
+         let timer = sim.new_timer(pet);
+         let spell = sim.register_spell(
+             pet,
+             SpellConfig {
+-                action_id: spell_action(11763),
++                action_id: spell_action(rank.id),
+                 spell_school: school::FIRE,
+                 defense_type: DefenseType::Magic,
+                 proc_mask: ProcMask::SPELL_DAMAGE,
+                 class_spell_mask: masks::IMP_FIRE_BOLT,
+                 cost: CostOptions {
+-                    mana_flat_cost: 115,
++                    mana_flat_cost: rank.cost,
+                     ..CostOptions::default()
+                 },
+                 cast: CastConfig {
+@@ -277,7 +471,7 @@ impl Warlock {
+                 damage_multiplier_additive: 1.0,
+                 damage_multiplier: 1.0,
+                 threat_multiplier: 1.0,
+-                bonus_coefficient: 0.571,
++                bonus_coefficient: rank.coefficient,
+                 ..SpellConfig::default()
+             },
+         );
+@@ -286,23 +480,25 @@ impl Warlock {
+         }
+     }
+ 
+-    /// Lash of Pain carries our client-verified beta 1.60.1 values (rank 6). Improved Sayaad
+-    /// rides on its talent as a SpellMod.
++    /// Lash of Pain carries the client's values of the rank the warlock's level allows
++    /// ([`lash_of_pain_rank`]; rank 6, our client-verified beta 1.60.1 values, at 60). Improved
++    /// Sayaad rides on its talent as a SpellMod.
+     fn register_lash_of_pain_spell(&mut self, sim: &mut Sim, pet: UnitId) {
++        let rank = lash_of_pain_rank();
+         if let Some(state) = self.pets.state_mut(pet) {
+-            state.min_mana = 160.0;
++            state.min_mana = f64::from(rank.cost);
+         }
+         let timer = sim.new_timer(pet);
+         let spell = sim.register_spell(
+             pet,
+             SpellConfig {
+-                action_id: spell_action(11780),
++                action_id: spell_action(rank.id),
+                 spell_school: school::SHADOW,
+                 defense_type: DefenseType::Magic,
+                 proc_mask: ProcMask::SPELL_DAMAGE,
+                 class_spell_mask: masks::SUCCUBUS_LASH_OF_PAIN,
+                 cost: CostOptions {
+-                    mana_flat_cost: 160,
++                    mana_flat_cost: rank.cost,
+                     ..CostOptions::default()
+                 },
+                 cast: CastConfig {
+@@ -320,7 +516,7 @@ impl Warlock {
+                 damage_multiplier_additive: 1.0,
+                 damage_multiplier: 1.0,
+                 threat_multiplier: 1.0,
+-                bonus_coefficient: 0.429,
++                bonus_coefficient: rank.coefficient,
+                 ..SpellConfig::default()
+             },
+         );

@@ -1,0 +1,37 @@
+diff --git a/src/prepare/levels.rs b/src/prepare/levels.rs
+--- a/src/prepare/levels.rs
++++ b/src/prepare/levels.rs
+@@ -20,9 +20,11 @@ use crate::contracts::request::Message;
+ /// Forever's level cap, the level every reference build plays at.
+ pub(crate) const MAX_LEVEL: i32 = 60;
+ 
+-/// The lowest level a levelling character sims at: below 10 a character has no talents and
+-/// almost no rotation to speak of.
+-pub(crate) const MIN_LEVEL: i32 = 10;
++/// The lowest level a levelling character sims at. Upstream refused below 10, where a character
++/// has no talents and almost no rotation to speak of. wowsim patch: from level 1, since a
++/// levelling group starts there; ranks resolve by spell level as above 10 and a request below
++/// 10 names no talents.
++pub(crate) const MIN_LEVEL: i32 = 1;
+ 
+ /// The classes whose preparation has been checked below level 60: every spell they register
+ /// is one the character has learned, or falls back to one it has. A class not listed refuses a
+diff --git a/tests/levels_20261108.rs b/tests/levels_20261108.rs
+index dbf09fcd..24b0fb90 100644
+--- a/tests/levels_20261108.rs
++++ b/tests/levels_20261108.rs
+@@ -116,9 +116,11 @@ fn a_levelling_character_needs_its_sheet_and_ten_levels() {
+         .as_object_mut()
+         .unwrap()
+         .remove("characterSheet");
+-    let mut level_five = request("frost-mage-L20");
+-    player(&mut level_five)["level"] = 5.into();
+-    for (request, says) in [(without_sheet, "character sheet"), (level_five, "level 5")] {
++    // wowsim patch: levels 1 to 9 prepare (prepare::levels::MIN_LEVEL), so the refused level is
++    // one above the cap (a request without a level is a level 60 character).
++    let mut level_61 = request("frost-mage-L20");
++    player(&mut level_61)["level"] = 61.into();
++    for (request, says) in [(without_sheet, "character sheet"), (level_61, "level 61")] {
+         match prepare(&request) {
+             Err(PrepareError::Refused(refusal)) => {
+                 assert_eq!(refusal.code, "level_unsupported");

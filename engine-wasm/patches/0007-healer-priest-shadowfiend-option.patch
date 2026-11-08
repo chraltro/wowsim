@@ -1,0 +1,32 @@
+diff --git a/src/classes/priest/prepare.rs b/src/classes/priest/prepare.rs
+index 6496e87e..3cc4662e 100644
+--- a/src/classes/priest/prepare.rs
++++ b/src/classes/priest/prepare.rs
+@@ -167,14 +167,20 @@ pub(crate) fn new_priest(
+         }
+     } else if let Some(healer) = player.message("healer_priest") {
+         // Gear planner only: the healer always has the Shadowfiend and takes only the armor.
+-        let armor = healer
++        let options = healer
+             .message("options")
+-            .and_then(|options| options.message("class_options"))
+-            .map_or_else(
+-                || "NoArmor".to_string(),
+-                |options| options.enum_name("armor"),
+-            );
+-        (true, false, armor)
++            .and_then(|options| options.message("class_options"));
++        let armor = options.map_or_else(
++            || "NoArmor".to_string(),
++            |options| options.enum_name("armor"),
++        );
++        // wowsim patch: below level 60 the healer has the Shadowfiend only when its class
++        // options ask for it, as the DPS priest does; it summoned one from level 10 (client 401977
++        // has spell level 1 and no trainer level). At 60 the healer keeps it, as before.
++        let use_shadowfiend = crate::prepare::levels::character_level()
++            >= crate::prepare::levels::MAX_LEVEL
++            || options.is_some_and(|options| options.bool("use_shadowfiend"));
++        (use_shadowfiend, false, armor)
+     } else {
+         return Err(Refusal::new(
+             "class_option",

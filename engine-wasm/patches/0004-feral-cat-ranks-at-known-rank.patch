@@ -1,0 +1,21 @@
+diff --git a/src/classes/druid/prepare/feral.rs b/src/classes/druid/prepare/feral.rs
+index ecd5787f..d198ee87 100644
+--- a/src/classes/druid/prepare/feral.rs
++++ b/src/classes/druid/prepare/feral.rs
+@@ -92,9 +92,14 @@ pub(super) fn rip_attack_power_share_per_combo_point(rules: Rules) -> f64 {
+     }
+ }
+ 
+-/// The row of a cat spell's highest rank under `rules`: the live row under Forever's rules.
++/// The row of the cat spell's rank the druid knows under `rules`: the live row under Forever's
++/// rules. wowsim patch: upstream took the top rank at every level, so a levelling druid's Rake
++/// (9904, level 54), Rip (9896) and Ferocious Bite (31018, both level 60) were ranks above its
++/// level, which the export leaves out of the rotation as unlearned: below 54 the druid never
++/// raked, below 60 it never spent its combo points. The known rank is the ladder's
++/// (`prepare::levels::known_rank`), which at 60 is the top rank as before.
+ pub(super) fn cat_rank(rules: Rules, ranks: &[i32]) -> &'static Spell {
+-    hotfix_113554::row(rules, *ranks.last().expect("ranks"))
++    hotfix_113554::row(rules, Ladder::ranked(ranks).highest().id)
+ }
+ 
+ /// Rend and Tear's damage multiplier at a rank: 2% a rank in the client rows, 3% a rank under

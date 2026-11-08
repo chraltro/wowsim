@@ -54,6 +54,11 @@ function optionsFor(cls, engineSpec, level, gear, items, want){
   }
   if(cls === 'mage') co.defaultMageArmor = 'MageArmorFrostArmor';
   if(cls === 'priest' && engineSpec === 'dpsPriest'){ co.armor = level >= 12 ? 'InnerFire' : 'NoArmor'; co.useShadowfiend = level >= 40; }
+  // The healer follows the same Shadowfiend rule as the DPS priest. The engine gave every healer the Shadowfiend
+  // (classes/priest/prepare.rs "the healer always has the Shadowfiend"); engine patch 0007 lets the option turn it off below 60.
+  // The level 40 is this builder's own rule, not a verified Forever learn level: client 401977 has spell level 1
+  // and no trainer level, and wowsims-forever (125e534) has no Shadowfiend at all.
+  if(cls === 'priest' && engineSpec === 'healerPriest'){ co.armor = level >= 12 ? 'InnerFire' : 'NoArmor'; co.useShadowfiend = level >= 40; }
   if(engineSpec === 'enhancementShaman'){
     co.imbueMh = want.imbue || (level >= 30 ? 'WindfuryWeapon' : level >= 10 ? 'FlametongueWeapon' : 'RockbiterWeapon');
     delete o.imbueOh; delete o.syncType;
@@ -66,9 +71,46 @@ function target(level, opts){
   stats[30] = LEVELS.mobArmor[Lm-1];
   stats[32] = opts.boss ? Math.round(LEVELS.eliteHP[Math.min(59, Lm-1)]*20) : LEVELS.mobHP[Lm-1];
   stats[17] = 0;
-  return {id: 31146, name: 'Level '+Lm, level: Lm, mobType: opts.mobType || 'MobTypeUnknown', stats, minBaseDamage: 0, swingSpeed: 2, damageSpread: 0.3333, canCrush: false, parryHaste: !!opts.boss};
+  const t = {id: 31146, name: 'Level '+Lm, level: Lm, mobType: opts.mobType || 'MobTypeUnknown', stats, minBaseDamage: 0, swingSpeed: 2, damageSpread: 0.3333, canCrush: false, parryHaste: !!opts.boss};
+  if(opts.tank){
+    // A tank's target swings at it. The engine rolls a swing as minBaseDamage * (1 + damageSpread * roll) with no attack power
+    // (stats[17] = 0), so the average swing is minBaseDamage * (1 + spread/2). The average is the client's creature auto attack
+    // dps for the target's level times the 2.0 s swing (ExpectedStat CreatureAutoAttackDps, LEVELS.mobDPS), or the elite
+    // estimate for a dungeon mob (LEVELS.eliteDPS: the client row times the cmangos elite median ratio, an estimate).
+    // canCrush as the engine's tank fixtures set it; its attack table (prepare/attack.rs) crushes only from 3 levels up (15%).
+    const dps = (opts.elite || opts.boss ? LEVELS.eliteDPS : LEVELS.mobDPS)[Lm-1];
+    t.minBaseDamage = Math.round(dps * t.swingSpeed / (1 + t.damageSpread/2) * 100) / 100;
+    t.canCrush = true;
+  }
+  return t;
 }
-// o: {cls, race, spec, level, talents (object) or route, gear {slot: id}, targetLevel, boss, duration, iterations, seed, role, petType, summon, imbue}
+// The engine specs that tank: the engine prepares a tank only when the raid names it in raid.tanks (proto.UnitReference)
+// and the target swings at it (tests/classes/warrior/prepare.rs, a_tanking_warrior_is_prepared_with_the_target_swing).
+const TANK_SPECS = new Set(['protectionWarrior', 'protectionPaladin', 'feralBearDruid']);
+// Builders and fillers a preset leaves out before its own is learned. Each entry: the preset, what makes its own
+// filler known (a talent in the route, or a level), and the spells appended to the end of the priority list
+// (the engine casts a named spell at the highest rank the character knows).
+//  - Arcane (mage/dps/arcane) fills with Arcane Blast, rank 1 at level 20 (engine data/spells.jsonl 400574); below 20
+//    it cast nothing. Arcane Missiles (5143, level 8) then Frostbolt (116, level 4) then Fireball (133, level 1).
+//  - Assassination (rogue/dps/forever_mutilate) builds only with Mutilate, a 31 point talent; before it, Backstab (53,
+//    level 4, main hand dagger, from behind as the template stands) then Sinister Strike (1752, level 1).
+//  - Subtlety (rogue/dps/forever_hemorrhage) builds with Hemorrhage, a talent; before it the same Backstab, Sinister Strike.
+//  - Frost (mage/dps/frost) fills with Frostbolt, rank 1 at level 4; below it Fireball (133, level 1).
+//  - Shadow (priest/dps/shadow) fills with Mind Flay, a talent (15407, level 20); before it Smite (585, level 1).
+const LOW_FILLERS = {
+  'mage/dps/arcane': {knownFrom: {level: 20}, spells: [5143, 116, 133]},
+  'mage/dps/frost': {knownFrom: {level: 4}, spells: [133]},
+  'priest/dps/shadow': {knownFrom: {talent: 'mind_flay'}, spells: [585]},
+  'rogue/dps/forever_mutilate': {knownFrom: {talent: 'mutilate'}, spells: [53, 1752]},
+  'rogue/dps/forever_hemorrhage': {knownFrom: {talent: 'hemorrhage'}, spells: [53, 1752]}
+};
+function addLowFillers(rotation, preset, level, talents){
+  const f = LOW_FILLERS[preset]; if(!f) return;
+  const known = f.knownFrom.level ? level >= f.knownFrom.level : (talents[f.knownFrom.talent]||0) > 0;
+  if(known || !rotation.priorityList) return;
+  for(const id of f.spells) rotation.priorityList.push({action: {castSpell: {spellId: {spellId: id}}}});
+}
+// o: {cls, race, spec, level, talents (object) or route, gear {slot: id}, targetLevel, boss, elite (a tank's target swings as an elite), duration, iterations, seed, role, petType, summon, imbue}
 function buildRequest(o){
   const cd = CLASSDATA[o.cls], sp = cd.specs[o.spec];
   const roleSpec = o.role && sp.roleSpec && sp.roleSpec[o.role];
@@ -90,11 +132,15 @@ function buildRequest(o){
   if(t.inFrontOfTarget) player.inFrontOfTarget = true;
   if(t.channelClipDelayMs) player.channelClipDelayMs = t.channelClipDelayMs;
   player[engineSpec] = options;
+  addLowFillers(player.rotation, preset, o.level, talents);
   const tl = o.targetLevel || o.level;
+  const tank = TANK_SPECS.has(engineSpec);
+  const raid = {buffs: {}, debuffs: {}, parties: [{buffs: {}, players: [player]}]};
+  if(tank) raid.tanks = [{index: 0, type: 'Player'}];
   return {
     encounter: {duration: o.duration || 60, durationVariation: 0, executeProportion20: 0.2, executeProportion25: 0.25, executeProportion35: 0.35, executeProportion45: 0.45, executeProportion90: 0.9, noHitSuppression: true,
-      targets: [target(tl, {boss: o.boss})]},
-    raid: {buffs: {}, debuffs: {}, parties: [{buffs: {}, players: [player]}]},
+      targets: [target(tl, {boss: o.boss, elite: o.elite, tank})]},
+    raid,
     simOptions: {iterations: o.iterations || 200, randomSeed: String(o.seed || 42)}
   };
 }
@@ -111,6 +157,6 @@ function summarize(res){
   return {ok: true, dps, ownDps: dps - petDps, petDps, total: dps, hps: p.hps && p.hps.avg || 0, dtps: p.dtps && p.dtps.avg || 0,
     oom: p.secondsOomAvg || 0, manaSpent: manaSpent/its, manaGained: manaGained/its, duration: res.report.result.avgIterationDuration};
 }
-const api = {SLOT_ORDER, talentsAt, talentCode, gearStats, sheet, buildRequest, summarize, ammoFor};
+const api = {SLOT_ORDER, TANK_SPECS, LOW_FILLERS, talentsAt, talentCode, gearStats, sheet, buildRequest, summarize, ammoFor};
 if(typeof module !== 'undefined' && module.exports) module.exports = api; else root.MCRequest = api;
 })(typeof window !== 'undefined' ? window : (typeof self !== 'undefined' ? self : this));

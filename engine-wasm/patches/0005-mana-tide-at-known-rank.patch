@@ -1,0 +1,77 @@
+diff --git a/src/classes/shaman/prepare/totems.rs b/src/classes/shaman/prepare/totems.rs
+index 01e5def0..f0969827 100644
+--- a/src/classes/shaman/prepare/totems.rs
++++ b/src/classes/shaman/prepare/totems.rs
+@@ -302,7 +302,9 @@ impl Shaman {
+         let rank = data.mana_tide_totem.highest();
+         let duration = rank.duration();
+         // The raid's external Mana Tide Totem reads the same row, so it is the same MP5 to the bit.
+-        let value = MANA_TIDE_TOTEMS.value(0);
++        // wowsim patch: the row of the rank a levelling shaman knows, as the external aura's
++        // (`value(0)` gave a level 30 shaman's own totem the level 60 rank's 483.3 MP5).
++        let value = MANA_TIDE_TOTEMS.known_value(sim.rules, 0);
+         let mut config = rank_totem_config(rank, masks::BASIC_TOTEM);
+         config.cast.cd = Cooldown {
+             timer: Some(sim.new_timer(unit)),
+diff --git a/src/prepare/buffs.rs b/src/prepare/buffs.rs
+index fe671386..7b2919ff 100644
+--- a/src/prepare/buffs.rs
++++ b/src/prepare/buffs.rs
+@@ -110,6 +110,25 @@ impl Meta {
+         options
+     }
+ 
++    /// [`Meta::value`] of the rank [`Meta::aura`] builds the aura from: under Forever's rules
++    /// Forever's own rank, then the rank a levelling character knows. At level 60 it is
++    /// [`Meta::value`]. wowsim patch: Mana Tide Totem's checks read the level 60 row's value
++    /// against a levelling shaman's lower rank and refused it.
++    pub(crate) fn known_value(&self, rules: Rules, talent_points: i32) -> f64 {
++        if rules == Rules::Forever {
++            let forever = forever_buff_rank(self.spell).unwrap_or(self.spell);
++            let known = super::levels::known_buff_rank(forever);
++            if known != self.spell {
++                let meta = Meta {
++                    spell: known,
++                    ..*self
++                };
++                return meta.value(talent_points);
++            }
++        }
++        self.value(talent_points)
++    }
++
+     /// Go `Meta.Value`.
+     pub(crate) fn value(&self, talent_points: i32) -> f64 {
+         let row = self.row();
+diff --git a/src/prepare/stat_auras.rs b/src/prepare/stat_auras.rs
+index e62b8857..d8c131e7 100644
+--- a/src/prepare/stat_auras.rs
++++ b/src/prepare/stat_auras.rs
+@@ -402,7 +402,7 @@ pub(crate) fn stat_auras_effect_reading(
+     if layout.stacks.iter().any(|&stacks| stacks > 0) {
+         effect["stacks"] = json!(layout.stacks);
+     }
+-    let raw = raw_mp5_bonuses(layout, &raw_mp5)?;
++    let raw = raw_mp5_bonuses(layout, &raw_mp5, env.sim.rules)?;
+     if !raw.is_empty() {
+         effect["raw_mp5"] = json!(raw);
+     }
+@@ -425,6 +425,7 @@ const SELF_MANA_TIDE_LABEL: &str = "Mana Tide Totem (Self)";
+ fn raw_mp5_bonuses(
+     layout: &StatLayout,
+     raw: &[f64],
++    rules: crate::prepare::sim::Rules,
+ ) -> Result<std::collections::BTreeMap<String, f64>, Refusal> {
+     let mut bonuses = std::collections::BTreeMap::new();
+     for (j, label) in layout.labels.iter().enumerate() {
+@@ -435,7 +436,9 @@ fn raw_mp5_bonuses(
+         {
+             continue;
+         }
+-        let value = MANA_TIDE_TOTEMS.value(0);
++        // wowsim patch: the value of the rank the aura was built from, a levelling shaman's
++        // lower rank below 60 (`value(0)` read the level 60 row and refused levels 30 to 59).
++        let value = MANA_TIDE_TOTEMS.known_value(rules, 0);
+         if (label == EXTERNAL_MANA_TIDE_LABEL || label == SELF_MANA_TIDE_LABEL)
+             && raw[0] + value == first
+         {

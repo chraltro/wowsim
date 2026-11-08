@@ -1,0 +1,46 @@
+diff --git a/src/classes/rogue/prepare/spells.rs b/src/classes/rogue/prepare/spells.rs
+index 0e4775d8..9b86eeb7 100644
+--- a/src/classes/rogue/prepare/spells.rs
++++ b/src/classes/rogue/prepare/spells.rs
+@@ -318,7 +318,10 @@ impl Rogue {
+ 
+     /// Go `registerSliceAndDice`.
+     pub(super) fn register_slice_and_dice(&mut self, sim: &mut Sim, unit: UnitId) {
+-        let rank = spell_data().slice_and_dice.by_id(6774);
++        // wowsim patch: the rank the rogue knows. Go registers rank 2 (6774, level 42) at every
++        // level, which a rogue below 42 has not learned, so the export left Slice and Dice out
++        // of the rotation; rank 1 (5171) is learned at 10. 6774 from 42, as before.
++        let rank = spell_data().slice_and_dice.highest();
+         let action = spell_action(rank.id);
+         let state = Rc::clone(&self.state);
+ 
+diff --git a/src/classes/warrior/prepare/export.rs b/src/classes/warrior/prepare/export.rs
+index b3c5b1fb..97c9fafe 100644
+--- a/src/classes/warrior/prepare/export.rs
++++ b/src/classes/warrior/prepare/export.rs
+@@ -484,7 +484,8 @@ impl Warrior {
+             "tick_can_crit": rend.periodic_can_crit(),
+             "tick_magic": rend.defense_type_core() == DefenseType::Magic}));
+         // overpower.go: the client base on normalized main hand damage.
+-        let overpower = data.overpower.by_id(11585);
++        // wowsim patch: the rank the warrior knows, as registered (spells.rs register_overpower).
++        let overpower = data.overpower.highest();
+         effects.push(json!({"kind": "overpower", "spell_id": overpower.id,
+             "base_damage": overpower.damage_effect().average(level)}));
+         if self.has_talent("mortal_strike") {
+diff --git a/src/classes/warrior/prepare/spells.rs b/src/classes/warrior/prepare/spells.rs
+index 8185ab3c..c8bb57ce 100644
+--- a/src/classes/warrior/prepare/spells.rs
++++ b/src/classes/warrior/prepare/spells.rs
+@@ -561,7 +561,10 @@ impl Warrior {
+ 
+     /// Go `registerOverpower`.
+     pub(super) fn register_overpower(&self, sim: &mut Sim, unit: UnitId) {
+-        let rank = spell_data().overpower.by_id(11585);
++        // wowsim patch: the rank the warrior knows. Go registers rank 4 (11585, level 60) at
++        // every level, which a levelling warrior has not learned, so the export left Overpower
++        // out of the rotation below 60. 11585 at 60, as before.
++        let rank = spell_data().overpower.highest();
+         let window = spell_data().offensive_state_triggered.highest();
+         let cd = new_cooldown(sim, unit, cooldown_of(rank));
+ 

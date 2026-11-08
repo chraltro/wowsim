@@ -1,0 +1,21 @@
+diff --git a/src/prepare/levels.rs b/src/prepare/levels.rs
+--- a/src/prepare/levels.rs
++++ b/src/prepare/levels.rs
+@@ -359,9 +359,17 @@ pub(crate) fn known_buff_rank(spell: i32) -> i32 {
+     if row.id == 0 {
+         return spell;
+     }
++    // wowsim patch: a row of the same name from another spell family is not a rank the
++    // character learns. The Dazzling Longsword's proc 13752 is "Faerie Fire" Rank 2 at spell
++    // level 45 with no class family (client SpellClassOptions), where the druid's ranks 770,
++    // 778, 9749 and 9907 are family 7, so a level 45 to 53 druid's own Faerie Fire debuff
++    // became 13752, which the rotation's `auraIsActive` of its own rank never saw, and it cast
++    // Faerie Fire every global cooldown instead of Shred.
++    let family = row.class_flags.family;
+     let highest_known = |name: &str| -> Option<i32> {
+         let mut ranks: Vec<&Spell> = crate::prepare::spelldata::all()
+             .filter(|candidate| candidate.name == name)
++            .filter(|candidate| family == 0 || candidate.class_flags.family == family)
+             .filter(|candidate| knows_buff_row(&character, candidate))
+             .collect();
+         ranks.sort_by_key(|candidate| (candidate.spell_level, candidate.id));

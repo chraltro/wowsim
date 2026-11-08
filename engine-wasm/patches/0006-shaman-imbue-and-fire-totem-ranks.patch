@@ -1,0 +1,134 @@
+diff --git a/src/classes/shaman/prepare/export.rs b/src/classes/shaman/prepare/export.rs
+index fba37277..ae095903 100644
+--- a/src/classes/shaman/prepare/export.rs
++++ b/src/classes/shaman/prepare/export.rs
+@@ -197,7 +197,8 @@ impl Shaman {
+         }
+         // fire_totems.go registerFireNovaSpell: one hit on each target from the nova's damage
+         // row average.
+-        let nova = data.fire_nova_triggered.by_id(408428);
++        // wowsim patch: the hit of the rank the shaman knows (super::spells::fire_nova_hit_rank).
++        let nova = super::spells::fire_nova_hit_rank();
+         let mut fire_nova = json!({
+             "kind": "fire_nova", "spell_id": data.fire_nova.highest().id,
+             "base_damage": nova.damage_effect().average(character_level()),
+@@ -420,7 +421,8 @@ impl Shaman {
+         // registerMagmaTotemSpell: an area dot on the shaman whose pulses roll hit and crit on
+         // each target from the pulse's damage row average.
+         let magma = data.magma_totem.highest();
+-        let pulse = data.magma_totem_triggered.by_id(10581);
++        // wowsim patch: the pulse of the rank the shaman knows (super::spells::magma_totem_pulse_rank).
++        let pulse = super::spells::magma_totem_pulse_rank();
+         let mut magma_totem = json!({
+             "kind": "magma_totem", "spell_id": magma.id,
+             "pulse_damage": pulse.damage_effect().average(character_level()),
+@@ -658,7 +660,8 @@ impl Shaman {
+         // RegisterFlametongueImbue: one trigger and one hit spell for each imbued weapon, main
+         // hand first, registered in that order, the hit from the weapon's speed held to 1.3 to
+         // 4.0.
+-        let imbue_hit = data.flametongue_weapon_triggered.by_id(16344);
++        // wowsim patch: the rank the level allows (super::imbues::flametongue_proc_rank).
++        let imbue_hit = super::imbues::flametongue_proc_rank();
+         let hits = spell_positions(env, &spell_id_action(imbue_hit.id));
+         let equipment = &sim.character(player).equipment;
+         let mut flametongue: Vec<Value> = Vec::new();
+diff --git a/src/classes/shaman/prepare/imbues.rs b/src/classes/shaman/prepare/imbues.rs
+index d7e54f8e..ce61c753 100644
+--- a/src/classes/shaman/prepare/imbues.rs
++++ b/src/classes/shaman/prepare/imbues.rs
+@@ -14,6 +14,7 @@ use crate::prepare::levels::character_level;
+ use crate::prepare::shared_items::current_proc_mask_for;
+ use crate::prepare::sim::{AuraConfig, EventCallbacks, Sim, UnitId, MILLISECOND, NEVER_EXPIRES};
+ use crate::prepare::spell::{school, DefenseType, ProcMask, SpellConfig, SpellFlag};
++use crate::prepare::spelldata::{Ladder, Spell as Row};
+ use crate::prepare::stats::{Stat, Stats};
+ 
+ use super::spell_data::spell_data;
+@@ -27,6 +28,16 @@ pub(super) const ROCKBITER_ENCHANT_ID: i32 = 3021;
+ /// Rockbiter Weapon Proc, which no row triggers and the store does not carry (patch 181).
+ pub(super) const ROCKBITER_THREAT_SPELL_ID: i32 = 20871;
+ 
++/// The Flametongue Weapon Proc rank the shaman's level allows: ranks 1 to 6 (8026, 8028, 8029,
++/// 10445, 16343, 16344 at spell levels 10, 18, 26, 36, 46 and 56 in the client's SpellLevels),
++/// leaving out the ladder's Flametongue Attack rows (10444, 29469, 29470), which carry no amount.
++/// wowsim patch: Go reads rank 6 (16344) at every level, so a level 10 shaman's imbue hit for
++/// the level 56 rank's damage. Rank 6 at 56 and above, as before.
++pub(super) fn flametongue_proc_rank() -> &'static Row {
++    let known = Ladder::ranked(&[8026, 8028, 8029, 10445, 16343, 16344]).highest();
++    spell_data().flametongue_weapon_triggered.by_id(known.id)
++}
++
+ impl Shaman {
+     /// Go `getWindfuryFixedProcChance`.
+     const WINDFURY_FIXED_PROC_CHANCE: f64 = 0.2;
+@@ -193,7 +204,7 @@ impl Shaman {
+     /// totem's base damage, so a shaman's carries the imbue's class mask and the shaman spell
+     /// flag.
+     fn new_flametongue_imbue_spell(&self, sim: &mut Sim, unit: UnitId) {
+-        let imbue = spell_data().flametongue_weapon_triggered.by_id(16344);
++        let imbue = flametongue_proc_rank();
+         sim.register_spell(
+             unit,
+             SpellConfig {
+diff --git a/src/classes/shaman/prepare/spells.rs b/src/classes/shaman/prepare/spells.rs
+index c3b12620..f5ef9342 100644
+--- a/src/classes/shaman/prepare/spells.rs
++++ b/src/classes/shaman/prepare/spells.rs
+@@ -141,6 +141,35 @@ fn electric_spell_config(config: &ElectricConfig) -> SpellConfig {
+     spell
+ }
+ 
++/// The pulse row of the Magma Totem rank the shaman knows. Each totem rank casts the pulse of
++/// its own spell level (client SpellLevels): 8190, 10585, 10586 and 10587 (levels 26, 36, 46,
++/// 56) cast 8187, 10579, 10580 and 10581. wowsim patch: Go reads 10581 at every level, so a
++/// levelling shaman's totem pulsed for the level 56 rank's damage. 10581 at 56 and above, as
++/// before.
++pub(super) fn magma_totem_pulse_rank() -> &'static Row {
++    const PULSES: [(i32, i32); 4] = [(8190, 8187), (10585, 10579), (10586, 10580), (10587, 10581)];
++    let cast = spell_data().magma_totem.highest().id;
++    let pulse = PULSES.iter().find(|(totem, _)| *totem == cast).map_or(10581, |(_, pulse)| *pulse);
++    spell_data().magma_totem_triggered.by_id(pulse)
++}
++
++/// The damage row of the Fire Nova rank the shaman knows. Each rank's dummy casts the hit of
++/// its own spell level (client SpellLevels): 408341 to 408345 (levels 12, 22, 32, 42, 52) cast
++/// 408423, 408424, 408426, 408427 and 408428. wowsim patch: Go reads 408428 at every level.
++/// 408428 at 52 and above, as before.
++pub(super) fn fire_nova_hit_rank() -> &'static Row {
++    const HITS: [(i32, i32); 5] = [
++        (408341, 408423),
++        (408342, 408424),
++        (408343, 408426),
++        (408344, 408427),
++        (408345, 408428),
++    ];
++    let cast = spell_data().fire_nova.highest().id;
++    let hit = HITS.iter().find(|(nova, _)| *nova == cast).map_or(408428, |(_, hit)| *hit);
++    spell_data().fire_nova_triggered.by_id(hit)
++}
++
+ impl Shaman {
+     /// Go `registerChainLightningSpell`.
+     pub(super) fn register_chain_lightning_spell(&self, sim: &mut Sim, unit: UnitId) {
+@@ -436,7 +465,7 @@ impl Shaman {
+     pub(super) fn register_magma_totem_spell(&mut self, sim: &mut Sim, unit: UnitId) {
+         let data = spell_data();
+         let rank = data.magma_totem.highest();
+-        let pulse = data.magma_totem_triggered.by_id(10581);
++        let pulse = magma_totem_pulse_rank();
+         // Trial by Fire (client 70425) lengthens it by 10 sec a point.
+         let duration = rank.duration() + magma_totem_bonus(self.talent("trial_by_fire"));
+         let tick_length = crate::prepare::sim::seconds(2.0);
+@@ -500,11 +529,7 @@ impl Shaman {
+                 damage_multiplier: 1.0,
+                 threat_multiplier: 1.0,
+                 // The 16 October 2026 beta notes cut it to 0.143; client 70425's row carries it.
+-                bonus_coefficient: data
+-                    .fire_nova_triggered
+-                    .by_id(408428)
+-                    .damage_effect()
+-                    .coeff(),
++                bonus_coefficient: fire_nova_hit_rank().damage_effect().coeff(),
+                 ..SpellConfig::default()
+             },
+         );
