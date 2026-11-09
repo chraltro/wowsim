@@ -25,6 +25,8 @@ The engine is [MythicSim's Forever engine](https://github.com/sage3648/mythicsim
 ## Forever Craft Profits
 
 - **Crafts.** Profit per craft for every recipe up to the skill you set, in any profession. Materials count at the cheaper of vendor and auction house, and materials you can make yourself, like cured hides or bolts, at the cheaper of buying and crafting. Sales count after the 5% cut, or at the vendor price when the vendor pays more.
+- **Skill-ups.** Pick one profession and your skill, and sort by cheapest skill-ups: each recipe's net cost per skill point, with the game's orange, yellow, green and grey shown per recipe.
+- **Shopping list.** Open a recipe, set how many to make, and copy the list: what to buy on the auction house, what to buy from a vendor and what to craft first, with crafted materials expanded.
 - **Thin houses.** A sale price more than twice the median of the other houses in your region counts at twice that median, and items listed once or twice that no other house backs up are hidden. Both can be switched off.
 - **Vendor flips.** Auction listings below what a vendor pays, crafts a vendor pays more for than their materials cost, and vendor goods that list above vendor price. A setting takes 10% or 20% off vendor prices for reputation.
 - **Prices.** The page opens on a built-in scan, then loads the latest scan for your house from AHledger. Any ruleset, faction and region. Where AHledger cannot be reached, a price table can be pasted in.
