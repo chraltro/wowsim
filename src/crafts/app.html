@@ -6,308 +6,250 @@
 <title>Forever Craft Profits</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* Same world as the other WoW Forever sims: night slate, Cinzel titles, coin-gold accent. One dark theme. Profit in green, loss in red; cards open in place. */
+/* An auctioneer's ledger in the world of the other WoW Forever sims: night slate, Cinzel title, coin gold.
+   One continuous list on hairlines, no cards. The filter is a sentence you edit; the answer is the ledger under it.
+   One dark theme. Green is profit, red is loss, and recipe difficulty uses the game's orange, yellow, green, grey. */
 :root {
   --bg: #0c1318;
-  --surface: #121b21;
+  --band: #111a20;
   --raised: #17232a;
-  --sunk: #0f171c;
+  --line: #1f2d35;
+  --line-2: #33454f;
   --ink: #e7e9e3;
   --muted: #8e9ea3;
-  --line: #26353e;
-  --line-2: #33454f;
   --accent: #d9b46c;
   --accent-ink: #1a1405;
-  --accent-soft: rgba(217, 180, 108, .13);
   --good: #5fbf72;
   --bad: #d96a5a;
   --warn: #d6a24a;
-  --gold: #d9b46c;
-  --silver: #b5bfca;
-  --copper: #d98b52;
+  --gold: #d9b46c; --silver: #b5bfca; --copper: #d98b52;
   --q0: #8d939c; --q1: #e7e9e3; --q2: #3fbf4f; --q3: #4f8fe8; --q4: #a66be6; --q5: #ff9c33;
-  --shadow: 0 1px 2px rgba(0, 0, 0, .25);
-  --font-display: "Cinzel", "Trajan Pro", Georgia, serif;
-  --font-body: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --d-orange: #f08a3c; --d-yellow: #e6cf4a; --d-green: #4fbf5f; --d-grey: #5d6a70;
+  --display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --body: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   --ease: cubic-bezier(.2, .75, .2, 1);
-  --radius: 14px;
+  --gutter: max(16px, env(safe-area-inset-left));
   color-scheme: dark;
 }
-* { box-sizing: border-box; }
+* { box-sizing: border-box; font-style: normal; }
 html, body { margin: 0; }
 body {
-  background: radial-gradient(1200px 600px at 50% -220px, #16232b 0%, var(--bg) 70%) fixed, var(--bg); min-height: 100vh; color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.45;
-  -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; font-style: normal;
+  background: radial-gradient(1200px 600px at 50% -220px, #16232b 0%, var(--bg) 70%) fixed, var(--bg); min-height: 100vh;
+  color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.45;
+  -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent;
 }
 button, input, select, textarea { font: inherit; color: inherit; }
 button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 .app {
-  max-width: 780px; margin: 0 auto;
-  padding: max(18px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(28px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
-  display: flex; flex-direction: column; gap: 14px;
+  max-width: 720px; margin: 0 auto;
+  padding: max(18px, env(safe-area-inset-top)) var(--gutter) max(32px, env(safe-area-inset-bottom));
 }
-.num { font-variant-numeric: tabular-nums; }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 8px; }
+.num, .amt, .coin { font-variant-numeric: tabular-nums; }
 
 /* Header */
-.top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-.brand h1 {
-  font-family: var(--font-display); font-weight: 600; font-size: clamp(26px, 6vw, 34px); line-height: 1.1; letter-spacing: .02em; margin: 0;
-  text-wrap: balance;
+.back { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; text-decoration: none; min-height: 28px; }
+.back:hover { color: var(--accent); }
+h1 { font-family: var(--display); font-weight: 600; font-size: 24px; letter-spacing: .03em; line-height: 1.15; margin: 6px 0 0; }
+.house {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 0 12px; width: 100%; text-align: left;
+  border: 0; background: none; padding: 8px 0 10px; margin-top: 2px; font-size: 14px; color: var(--muted);
 }
-.back { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); font-weight: 600; font-size: 13px; text-decoration: none; margin-bottom: 8px; min-height: 28px; }
-.back:hover { text-decoration: underline; text-underline-offset: 3px; }
-.sub { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
-.sub b { color: var(--ink); font-weight: 600; display: block; margin-bottom: 2px; }
-.fresh { display: inline; }
-.fresh .dot { margin-right: 6px; vertical-align: 1px; }
-.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--warn); display: inline-block; }
-.dot.ok { background: var(--good); }
-.btn {
-  border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 9px 14px; font-weight: 600; font-size: 13.5px;
-  white-space: nowrap; transition: transform .12s ease, background .2s ease, border-color .2s ease; min-height: 40px;
-}
-.btn:active { transform: scale(.97); }
-.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-.btn.ghost { background: transparent; }
+.house b { color: var(--ink); font-weight: 600; }
+.house .age { grid-column: 1; font-size: 13px; }
+.house .age.stale { color: var(--warn); }
+.house .chg { grid-column: 2; grid-row: 1; color: var(--accent); font-weight: 500; }
 
 /* Tabs */
-.tabs { display: grid; grid-template-columns: 1fr 1fr; background: var(--sunk); border: 1px solid var(--line); border-radius: 12px; padding: 3px; gap: 3px; position: relative; }
-.tabs button { border: 0; background: transparent; padding: 9px 10px; border-radius: 9px; font-weight: 600; color: var(--muted); min-height: 40px; position: relative; z-index: 1; transition: color .2s ease; }
+.tabs { position: relative; display: flex; gap: 22px; border-bottom: 1px solid var(--line-2); margin-top: 4px; }
+.tabs button { border: 0; background: none; padding: 10px 0 11px; font-weight: 600; font-size: 15px; color: var(--muted); transition: color .2s; }
 .tabs button[aria-selected="true"] { color: var(--ink); }
-.tabs .thumb { position: absolute; top: 3px; bottom: 3px; left: 3px; width: calc(50% - 4.5px); background: var(--raised); border-radius: 9px; box-shadow: inset 0 0 0 1px var(--line-2); transition: transform .28s cubic-bezier(.2,.8,.2,1); }
-.tabs[data-at="flips"] .thumb { transform: translateX(calc(100% + 3px)); }
+.tabs .ink { position: absolute; bottom: -1px; left: 0; height: 2px; width: 40px; background: var(--accent); transition: transform .28s var(--ease), width .28s var(--ease); }
 
-/* Panels and controls */
-.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; display: flex; flex-direction: column; gap: 14px; box-shadow: var(--shadow); }
-.ctl { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-.ctl-label { display: flex; justify-content: space-between; align-items: baseline; font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: .4px; text-transform: uppercase; }
-.ctl-label output { font-family: var(--font-body); font-weight: 600; font-size: 17px; color: var(--ink); letter-spacing: 0; text-transform: none; }
-.chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.chip {
-  border: 1px solid var(--line); background: var(--sunk); color: var(--muted); border-radius: 999px; padding: 6px 11px; font-size: 13.5px; font-weight: 500;
-  min-height: 34px; transition: background .18s ease, color .18s ease, border-color .18s ease, transform .12s ease;
+/* The question */
+.ask { margin: 18px 0 0; font-size: 19px; line-height: 1.75; font-weight: 400; color: var(--muted); text-wrap: pretty; }
+.ask select, .ask input {
+  appearance: none; -webkit-appearance: none; border: 0; border-radius: 0; background: none; padding: 0 0 1px; margin: 0;
+  font-weight: 600; color: var(--accent); border-bottom: 1px dashed color-mix(in srgb, var(--accent) 55%, transparent);
+  line-height: 1.3; cursor: pointer; max-width: 100%;
 }
-.chip:active { transform: scale(.96); }
-.chip[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--ink); }
-.chip .ct { color: var(--muted); font-variant-numeric: tabular-nums; margin-left: 4px; font-size: 12px; }
-input[type="range"] { width: 100%; accent-color: var(--accent); height: 28px; margin: 0; }
-.ticks { display: flex; justify-content: space-between; gap: 6px; }
-.ticks button { flex: 1; border: 1px solid var(--line); background: transparent; border-radius: 8px; padding: 5px 0; font-size: 12.5px; color: var(--muted); min-height: 32px; }
-.ticks button[aria-pressed="true"] { color: var(--ink); border-color: var(--accent); background: var(--accent-soft); }
-.ctl-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
-@media (min-width: 640px) { .ctl-grid { grid-template-columns: 1fr 1fr; } }
-.hint { margin: 0; color: var(--muted); font-size: 12px; }
-.seg { display: flex; background: var(--sunk); border: 1px solid var(--line); border-radius: 10px; padding: 2px; gap: 2px; }
-.seg button { flex: 1; border: 0; background: transparent; border-radius: 8px; padding: 7px 6px; font-size: 13px; font-weight: 600; color: var(--muted); min-height: 36px; transition: background .18s ease, color .18s ease; }
-.seg button[aria-pressed="true"] { background: var(--raised); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line-2); }
-.toggles { display: flex; flex-wrap: wrap; gap: 8px 18px; }
-.switch { display: inline-flex; align-items: center; gap: 9px; font-size: 14px; cursor: pointer; min-height: 32px; }
-.switch input { appearance: none; -webkit-appearance: none; width: 38px; height: 22px; border-radius: 999px; background: var(--line); position: relative; transition: background .2s ease; margin: 0; flex: none; }
-.switch input::after { content: ""; position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.25); transition: transform .22s cubic-bezier(.2,.8,.2,1); }
-.switch input:checked { background: var(--accent); }
-.switch input:checked::after { transform: translateX(16px); }
-.search { width: 100%; border: 1px solid var(--line); background: var(--sunk); border-radius: 10px; padding: 10px 12px; font-size: 15px; min-height: 42px; }
+.ask select:hover, .ask input:hover, .ask select:focus-visible, .ask input:focus-visible { border-bottom-style: solid; outline: 0; }
+.ask input { width: 3.2ch; text-align: center; -moz-appearance: textfield; cursor: text; }
+.ask input::-webkit-outer-spin-button, .ask input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.ask option { color: var(--ink); background: var(--raised); font-weight: 400; }
+#measure { position: absolute; visibility: hidden; white-space: pre; font-size: 19px; font-weight: 600; pointer-events: none; left: -9999px; top: 0; }
+
+.tools { display: flex; align-items: center; gap: 14px; margin-top: 14px; }
+.search {
+  flex: 1; min-width: 0; border: 1px solid var(--line-2); background: transparent; border-radius: 8px; padding: 9px 12px; font-size: 16px; min-height: 42px;
+  transition: border-color .2s, background .2s;
+}
+.search:focus { background: var(--band); border-color: var(--accent); outline: 0; }
 .search::placeholder { color: var(--muted); }
+.textbtn { border: 0; background: none; padding: 8px 0; color: var(--accent); font-weight: 500; font-size: 15px; white-space: nowrap; min-height: 40px; }
+.textbtn:hover { text-decoration: underline; text-underline-offset: 3px; }
+.tally { margin: 14px 0 8px; color: var(--muted); font-size: 13.5px; max-width: 68ch; }
+.tally b { color: var(--ink); font-weight: 600; }
+.tally .textbtn { padding: 0; min-height: 0; font-size: inherit; }
 
-/* Summary */
-.summary { display: flex; flex-direction: column; gap: 4px; padding: 2px 4px; }
-.summary .big { font-family: var(--font-body); font-size: 20px; font-weight: 600; line-height: 1.15; text-wrap: balance; }
-.summary .big b { color: var(--good); font-weight: 700; }
-.summary .small { color: var(--muted); font-size: 13px; }
-.linkish { border: 0; background: none; padding: 0; color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; font-size: inherit; }
-
-/* Cards */
-.list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; content-visibility: auto; contain-intrinsic-size: auto 86px; }
-.card-head { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; width: 100%; text-align: left; border: 0; background: transparent; padding: 12px 14px; align-items: center; }
-.card-head:hover { background: var(--raised); }
-.card-head:active { background: var(--sunk); }
-.nm { font-weight: 600; font-size: 15.5px; line-height: 1.25; overflow-wrap: anywhere; }
-.nm .yield { color: var(--muted); font-weight: 500; font-size: 13px; margin-left: 4px; }
-.meta { grid-column: 1; color: var(--muted); font-size: 12.5px; display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; }
-.meta .sep { opacity: .5; }
-.fig { grid-row: 1 / span 2; grid-column: 2; text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
-.fig .profit { font-family: var(--font-body); font-weight: 600; font-size: 17.5px; line-height: 1.1; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.fig .pct { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
-.fig .chev { width: 14px; height: 14px; color: var(--muted); transition: transform .24s cubic-bezier(.2,.8,.2,1); margin-top: 2px; }
-.card.open .chev { transform: rotate(180deg); }
-.warnTxt { color: var(--warn); font-weight: 600; }
-.pos { color: var(--good); }
-.neg { color: var(--bad); }
-.tag { display: inline-flex; align-items: center; border-radius: 6px; padding: 1px 6px; font-size: 11.5px; font-weight: 600; border: 1px solid var(--line); color: var(--muted); background: var(--sunk); line-height: 1.5; white-space: nowrap; }
-.tag.recipe { border-color: color-mix(in srgb, var(--q3) 40%, var(--line)); color: var(--q3); }
-.tag.vendor { border-color: color-mix(in srgb, var(--good) 35%, var(--line)); color: var(--good); }
-.tag.craft { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); color: var(--accent); }
-.tag.none { border-color: color-mix(in srgb, var(--bad) 40%, var(--line)); color: var(--bad); }
-.tag.warn { border-color: color-mix(in srgb, var(--warn) 45%, var(--line)); color: var(--warn); }
-.q0 { color: var(--q0); } .q1 { color: var(--q1); } .q2 { color: var(--q2); } .q3 { color: var(--q3); } .q4 { color: var(--q4); } .q5, .q6, .q7 { color: var(--q5); }
-.body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .26s cubic-bezier(.2,.8,.2,1); }
-.card.open .body { grid-template-rows: 1fr; }
+/* Ledger */
+.ledger { list-style: none; margin: 0 calc(-1 * var(--gutter)); padding: 0; border-top: 1px solid var(--line); }
+.row { border-bottom: 1px solid var(--line); transition: background .25s; content-visibility: auto; contain-intrinsic-size: auto 62px; }
+.row.open { background: var(--band); }
+.row-head {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1px 14px; width: 100%; text-align: left;
+  border: 0; background: none; padding: 11px var(--gutter) 11px;
+}
+button.row-head:hover { background: color-mix(in srgb, var(--raised) 55%, transparent); }
+.row-head[style*="--tick"]::before { content: ""; position: absolute; left: 5px; top: 13px; bottom: 13px; width: 3px; border-radius: 2px; background: var(--tick); }
+.nm { font-weight: 500; font-size: 15.5px; line-height: 1.3; overflow-wrap: anywhere; }
+.nm .yield { color: var(--muted); font-weight: 400; font-size: 13px; margin-left: 5px; }
+.row-head .amt { font-weight: 600; font-size: 15.5px; white-space: nowrap; text-align: right; }
+.sub { color: var(--muted); font-size: 13px; line-height: 1.35; }
+.sub.r { text-align: right; white-space: nowrap; }
+.pos { color: var(--good); } .neg { color: var(--bad); } .warn { color: var(--warn); }
+.q0 { color: var(--q0); } .q1 { color: var(--q1); } .q2 { color: var(--q2); } .q3 { color: var(--q3); } .q4 { color: var(--q4); } .q5 { color: var(--q5); }
+.coin { white-space: nowrap; }
+.coin span { font-size: .8em; font-weight: 600; margin: 0 .28em 0 .06em; }
+.coin span:last-child { margin-right: 0; }
+.coin .g { color: var(--gold); } .coin .s { color: var(--silver); } .coin .c { color: var(--copper); }
+.body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .28s var(--ease); }
+.row.open .body { grid-template-rows: 1fr; }
 .body > .inner { min-height: 0; overflow: hidden; }
-.detail { border-top: 1px solid var(--line); margin: 0 14px; padding: 12px 0 14px; display: flex; flex-direction: column; gap: 12px; }
-.calc { width: 100%; border-collapse: collapse; font-size: 13.5px; }
-.calc td { padding: 5px 0; vertical-align: baseline; border-bottom: 1px dashed var(--line); }
-.calc td.qn { color: var(--muted); width: 2.6em; font-variant-numeric: tabular-nums; white-space: nowrap; padding-right: 6px; }
-.calc td.src { padding: 0 8px; white-space: nowrap; text-align: right; }
-.calc td.amt { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
-.calc td .each { display: block; color: var(--muted); font-size: 11.5px; }
-.calc tr.sum td { border-bottom: 1px solid var(--line); font-weight: 600; }
-.calc tr.total td { border-bottom: 0; font-weight: 700; padding-top: 8px; font-size: 14.5px; }
-.facts { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; margin: 0; font-size: 13px; }
-.facts dt { color: var(--muted); }
-.facts dd { margin: 0; overflow-wrap: anywhere; }
-.ext { color: var(--accent); font-weight: 600; font-size: 13.5px; text-decoration: none; align-self: flex-start; padding: 4px 0; }
-.ext:hover { text-decoration: underline; }
-.coin { white-space: nowrap; font-variant-numeric: tabular-nums; }
-.coin .u { font-size: .78em; font-weight: 700; margin-left: 1px; margin-right: 3px; }
-.coin .u:last-child { margin-right: 0; }
-.coin .ug { color: var(--gold); } .coin .us { color: var(--silver); } .coin .uc { color: var(--copper); }
-.more { display: flex; justify-content: center; }
-.empty { background: var(--surface); border: 1px dashed var(--line); border-radius: var(--radius); padding: 22px 16px; text-align: center; color: var(--muted); }
+.detail { padding: 2px var(--gutter) 16px; display: grid; gap: 12px; }
+
+.make { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); }
+.stepper { display: inline-flex; align-items: center; border: 1px solid var(--line-2); border-radius: 8px; overflow: hidden; }
+.stepper button { border: 0; background: none; width: 38px; height: 34px; font-size: 18px; line-height: 1; color: var(--ink); }
+.stepper button:active { background: var(--raised); }
+.stepper output { min-width: 34px; text-align: center; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+.make .stock { margin-left: auto; text-align: right; font-size: 13px; }
+
+.bill { width: 100%; border-collapse: collapse; font-size: 14px; }
+.bill td { padding: 6px 0; vertical-align: baseline; border-top: 1px solid var(--line); }
+.bill tr:first-child td { border-top: 0; }
+.bill .qn { color: var(--muted); width: 2.8em; padding-right: 8px; white-space: nowrap; text-align: right; font-variant-numeric: tabular-nums; }
+.bill .src { color: var(--muted); padding: 0 12px; white-space: nowrap; font-size: 13px; }
+.bill .amt { text-align: right; white-space: nowrap; }
+.bill small { display: block; color: var(--muted); font-size: 12.5px; }
+.bill .sum td { border-top-color: var(--line-2); }
+.bill .total td { border-top: 1px solid var(--line-2); font-weight: 600; font-size: 15px; padding-top: 9px; }
+.notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 5px; font-size: 13.5px; color: var(--muted); max-width: 62ch; }
+.notes .warn { color: var(--warn); }
+.acts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; }
+.btn { border: 1px solid var(--line-2); background: none; border-radius: 8px; padding: 8px 14px; font-weight: 500; font-size: 14px; min-height: 40px; transition: background .2s, border-color .2s, transform .12s; }
+.btn:hover { border-color: var(--accent); }
+.btn:active { transform: scale(.98); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; }
+.btn[disabled] { opacity: .6; cursor: progress; }
+.ext { color: var(--accent); font-size: 14px; text-decoration: none; }
+.ext:hover { text-decoration: underline; text-underline-offset: 3px; }
+.more { display: flex; justify-content: center; padding: 16px 0 0; }
+.more:empty { display: none; }
+.empty { padding: 22px var(--gutter); color: var(--muted); }
 
 /* Flips */
-.sect { display: flex; flex-direction: column; gap: 8px; }
-.sect h2 { font-family: var(--font-display); font-size: 20px; font-weight: 600; letter-spacing: .02em; margin: 6px 4px 0; text-wrap: balance; }
-.sect .note { margin: 0 4px; color: var(--muted); font-size: 13.5px; max-width: 65ch; }
-.frow { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 11px 14px; display: grid; grid-template-columns: 1fr auto; gap: 3px 12px; align-items: center; box-shadow: var(--shadow); }
-.frow .nm { font-size: 15px; }
-.frow .meta { font-size: 12.5px; }
-.frow .fig { grid-row: 1 / span 2; }
-.frow a { color: inherit; text-decoration: none; }
+.sect { margin-top: 26px; }
+.sect h2 { font-family: var(--body); font-size: 17px; font-weight: 600; margin: 0 0 4px; text-wrap: balance; }
+.sect .note { margin: 0 0 10px; color: var(--muted); font-size: 13.5px; max-width: 64ch; }
 
-/* Footer */
-footer { color: var(--muted); font-size: 12.5px; display: flex; flex-direction: column; gap: 6px; padding: 8px 4px 0; border-top: 1px solid var(--line); margin-top: 8px; }
+footer { color: var(--muted); font-size: 12.5px; display: grid; gap: 6px; padding-top: 18px; margin-top: 30px; border-top: 1px solid var(--line-2); }
 footer p { margin: 0; max-width: 70ch; }
-footer a { color: var(--accent); font-weight: 600; }
+footer a { color: var(--accent); }
 
 /* Sheet */
-.sheet-bg { position: fixed; inset: 0; background: rgba(8,10,14,.45); opacity: 0; transition: opacity .25s ease; z-index: 20; }
+.sheet-bg { position: fixed; inset: 0; background: rgba(4, 8, 10, .6); opacity: 0; transition: opacity .25s; z-index: 20; }
 .sheet-bg.show { opacity: 1; }
 .sheet {
-  position: fixed; left: 0; right: 0; bottom: 0; margin: 0 auto; max-width: 600px; max-height: 88vh; overflow: auto; z-index: 21;
-  background: var(--surface); border: 1px solid var(--line); border-bottom: 0; border-radius: 18px 18px 0 0; box-shadow: 0 -8px 40px rgba(0,0,0,.25);
-  padding: 18px max(18px, env(safe-area-inset-right)) max(22px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left));
-  transform: translateY(105%); transition: transform .32s cubic-bezier(.2,.8,.2,1); display: flex; flex-direction: column; gap: 12px;
+  position: fixed; left: 0; right: 0; bottom: 0; margin: 0 auto; max-width: 560px; max-height: 90vh; overflow: auto; overscroll-behavior: contain; z-index: 21;
+  background: var(--band); border: 1px solid var(--line-2); border-bottom: 0; border-radius: 16px 16px 0 0;
+  padding: 6px var(--gutter) max(24px, env(safe-area-inset-bottom));
+  transform: translateY(105%); transition: transform .32s var(--ease);
 }
 .sheet.show { transform: translateY(0); }
-.sheet h2 { font-family: var(--font-display); font-size: 22px; font-weight: 600; letter-spacing: .02em; margin: 0; }
-.sheet p { margin: 0; color: var(--muted); font-size: 14px; }
-.sheet ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
-.house { display: grid; grid-template-columns: 1.2fr 1fr .8fr; gap: 8px; }
-.house label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); font-weight: 600; }
-.house select { border: 1px solid var(--line); background: var(--sunk); border-radius: 10px; padding: 8px 10px; min-height: 40px; }
-.linkrow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-.linkrow a.btn { text-decoration: none; display: inline-flex; align-items: center; }
-textarea { width: 100%; border: 1px solid var(--line); background: var(--sunk); border-radius: 10px; padding: 10px 12px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; resize: vertical; min-height: 96px; }
-.err { color: var(--bad) !important; font-weight: 600; min-height: 1em; }
-.sheet-actions { display: flex; flex-wrap: wrap; gap: 8px; }
-.fine { font-size: 12.5px !important; }
-.pastebox { border: 1px solid var(--line); border-radius: 12px; background: var(--sunk); }
-.pastebox summary { cursor: pointer; padding: 11px 14px; font-weight: 600; font-size: 14px; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; min-height: 44px; }
+.sheet-head { position: sticky; top: -6px; display: flex; align-items: center; justify-content: space-between; background: var(--band); padding: 12px 0 8px; z-index: 1; }
+.sheet h2 { font-family: var(--body); font-size: 18px; font-weight: 600; margin: 0; }
+.sheet h3 { font-size: 13px; font-weight: 500; color: var(--muted); margin: 20px 0 4px; }
+.sheet h3:first-of-type { margin-top: 6px; }
+.fine { margin: 0 0 8px; color: var(--muted); font-size: 13px; max-width: 62ch; }
+.srow { display: flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 48px; border-top: 1px solid var(--line); font-size: 15px; cursor: pointer; }
+h3 + .srow, .fine + .srow { border-top: 0; }
+.srow > span { min-width: 0; }
+.srow select {
+  appearance: none; -webkit-appearance: none; border: 0; background: none; color: var(--accent); font-weight: 500; text-align: right; text-align-last: right;
+  padding: 10px 0 10px 8px; max-width: 58%; cursor: pointer;
+}
+.srow select option { color: var(--ink); background: var(--raised); }
+.srow input[type="checkbox"] { appearance: none; -webkit-appearance: none; flex: none; width: 44px; height: 26px; border-radius: 999px; background: var(--line-2); position: relative; margin: 0; transition: background .2s; cursor: pointer; }
+.srow input[type="checkbox"]::after { content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: #f2f4f0; transition: transform .22s var(--ease); }
+.srow input[type="checkbox"]:checked { background: var(--accent); }
+.srow input[type="checkbox"]:checked::after { transform: translateX(18px); }
+.sheet .btn.primary { width: 100%; margin-top: 10px; min-height: 46px; font-size: 15px; }
+.err { margin: 8px 0 0; color: var(--bad); font-size: 13.5px; min-height: 0; }
+.err:empty { display: none; }
+.pastebox { margin-top: 12px; border-top: 1px solid var(--line); }
+.pastebox summary { cursor: pointer; padding: 13px 0; color: var(--accent); font-weight: 500; list-style: none; }
 .pastebox summary::-webkit-details-marker { display: none; }
-.pastebox summary::after { content: ""; width: 8px; height: 8px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg) translateY(-2px); transition: transform .24s var(--ease); }
-.pastebox[open] summary::after { transform: rotate(-135deg) translateY(-2px); }
-.pasteinner { display: flex; flex-direction: column; gap: 10px; padding: 0 14px 14px; }
-.btn[disabled] { opacity: .6; cursor: progress; }
+.pastebox ol { margin: 0 0 10px; padding-left: 20px; display: grid; gap: 8px; font-size: 14px; }
+.linkrow { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.linkrow a.btn { text-decoration: none; display: inline-flex; align-items: center; }
+textarea { width: 100%; border: 1px solid var(--line-2); background: var(--bg); border-radius: 8px; padding: 10px 12px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; resize: vertical; min-height: 90px; }
+.pastebox .acts { margin-top: 10px; padding-bottom: 6px; }
 
-/* Toast */
-.toast { position: fixed; left: 50%; bottom: max(18px, env(safe-area-inset-bottom)); transform: translate(-50%, 20px); background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 999px; font-size: 13.5px; font-weight: 600; opacity: 0; pointer-events: none; transition: opacity .25s ease, transform .3s cubic-bezier(.2,.8,.2,1); z-index: 30; max-width: calc(100vw - 32px); text-align: center; }
+.toast { position: fixed; left: 50%; bottom: max(18px, env(safe-area-inset-bottom)); transform: translate(-50%, 16px); background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 8px; font-size: 14px; font-weight: 500; opacity: 0; pointer-events: none; transition: opacity .22s, transform .28s var(--ease); z-index: 30; max-width: calc(100vw - 32px); text-align: center; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; }
-}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0s !important; } }
 </style>
 </head>
 <body>
 <div class="app">
-  <header class="top">
-    <div class="brand">
-      <a class="back" id="siteLink" href="https://chraltro.github.io/wowsim/"><svg width="12" height="12" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>WoW Forever sims</a>
-      <h1>Forever Craft Profits</h1>
-      <p class="sub" id="marketLine"></p>
-    </div>
-    <button class="btn" id="updateBtn" type="button">Update prices</button>
+  <header>
+    <a class="back" id="siteLink" href="https://chraltro.github.io/wowsim/"><svg width="11" height="11" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>WoW Forever sims</a>
+    <h1>Craft Profits</h1>
+    <button class="house" id="houseBtn" type="button" aria-haspopup="dialog"></button>
   </header>
 
-  <nav class="tabs" role="tablist" id="tabs" data-at="crafts">
-    <span class="thumb" aria-hidden="true"></span>
+  <nav class="tabs" role="tablist" id="tabs">
     <button role="tab" id="tab-crafts" aria-selected="true" aria-controls="view-crafts" type="button">Crafts</button>
     <button role="tab" id="tab-flips" aria-selected="false" aria-controls="view-flips" type="button">Vendor flips</button>
+    <span class="ink" id="tabInk" aria-hidden="true"></span>
   </nav>
 
   <section id="view-crafts" role="tabpanel" aria-labelledby="tab-crafts">
-    <div class="panel">
-      <div class="ctl">
-        <div class="ctl-label"><span>Professions</span></div>
-        <div class="chips" id="profChips"></div>
-      </div>
-      <div class="ctl">
-        <div class="ctl-label"><label for="skill">Max skill to learn</label><output id="skillOut" for="skill" class="num">150</output></div>
-        <input type="range" id="skill" min="5" max="300" step="5" value="150">
-        <div class="ticks" id="skillTicks">
-          <button type="button" data-skill="75">75</button>
-          <button type="button" data-skill="150">150</button>
-          <button type="button" data-skill="225">225</button>
-          <button type="button" data-skill="300">300</button>
-        </div>
-      </div>
-      <div class="ctl-grid">
-        <div class="ctl"><div class="ctl-label"><span>Prices</span></div>
-          <div class="seg" data-key="basis" role="group" aria-label="Price basis"><button type="button" data-v="med">Median</button><button type="button" data-v="min">Cheapest</button></div></div>
-        <div class="ctl"><div class="ctl-label"><span>Sell to</span></div>
-          <div class="seg" data-key="sellTo" role="group" aria-label="Sell to"><button type="button" data-v="ah">Auction house</button><button type="button" data-v="vendor">Vendor</button><button type="button" data-v="best">Best</button></div></div>
-        <div class="ctl"><div class="ctl-label"><span>Sort by</span></div>
-          <div class="seg" data-key="sort" role="group" aria-label="Sort by"><button type="button" data-v="profit">Profit</button><button type="button" data-v="margin">Margin</button><button type="button" data-v="day">Per day</button></div></div>
-        <div class="ctl"><div class="ctl-label"><span>Vendor discount</span></div>
-          <div class="seg" data-key="disc" role="group" aria-label="Vendor discount"><button type="button" data-v="0">None</button><button type="button" data-v="0.1">10%</button><button type="button" data-v="0.2">20%</button></div>
-          <p class="hint">10% at Honored with the vendor's faction. In Classic, PvP rank 3 adds 10% more.</p></div>
-      </div>
-      <div class="toggles">
-        <label class="switch" for="onlyProfit"><input type="checkbox" id="onlyProfit"><span>Profitable only</span></label>
-        <label class="switch" for="trainerOnly"><input type="checkbox" id="trainerOnly"><span>Skip recipes that need a recipe item</span></label>
-        <label class="switch" for="hideThin"><input type="checkbox" id="hideThin"><span>Hide one-off listings no other house backs up</span></label>
-        <label class="switch" for="trim"><input type="checkbox" id="trim"><span>Count sales at most 2× other <span class="regionName">EU</span> houses</span></label>
-      </div>
+    <p class="ask">Show <select id="prof" aria-label="Profession"></select> <span id="skillWord">up to skill</span> <input id="skill" type="number" min="1" max="300" inputmode="numeric" aria-label="Skill">, sold <select id="sellTo" aria-label="Where to sell"><option value="best">where it pays more</option><option value="ah">on the auction house</option><option value="vendor">to a vendor</option></select>, by <select id="sort" aria-label="Sort by"><option value="profit">profit</option><option value="margin">margin</option><option value="skill">cheapest skill-ups</option></select>.</p>
+    <div class="tools">
       <input class="search" type="search" id="q" placeholder="Search recipes or materials" autocomplete="off" aria-label="Search recipes or materials">
+      <button class="textbtn" type="button" data-settings>Settings</button>
     </div>
-    <div class="summary" id="summary" aria-live="polite"></div>
-    <ol class="list" id="list"></ol>
+    <p class="tally" id="summary" aria-live="polite"></p>
+    <ol class="ledger" id="list"></ol>
     <div class="more" id="more"></div>
   </section>
 
   <section id="view-flips" role="tabpanel" aria-labelledby="tab-flips" hidden>
-    <div class="panel">
-      <div class="ctl-grid">
-        <div class="ctl"><div class="ctl-label"><span>Auction house prices</span></div>
-          <div class="seg" data-key="fbasis" role="group" aria-label="Auction house price basis"><button type="button" data-v="med">Median</button><button type="button" data-v="min">Cheapest</button></div></div>
-        <div class="ctl"><div class="ctl-label"><span>Vendor discount</span></div>
-          <div class="seg" data-key="disc" role="group" aria-label="Vendor discount"><button type="button" data-v="0">None</button><button type="button" data-v="0.1">10%</button><button type="button" data-v="0.2">20%</button></div></div>
-      </div>
-      <div class="toggles">
-        <label class="switch" for="ftrim"><input type="checkbox" id="ftrim"><span>Count sales at most 2× other <span class="regionName">EU</span> houses</span></label>
-      </div>
+    <div class="tools" style="margin-top:18px">
       <input class="search" type="search" id="fq" placeholder="Search items" autocomplete="off" aria-label="Search items">
+      <button class="textbtn" type="button" data-settings>Settings</button>
     </div>
     <div class="sect">
       <h2>Buy on the auction house, sell to a vendor</h2>
-      <p class="note">These listings sit below what any vendor pays for the item. Buy the cheapest one and sell it to a vendor. The scan can be hours old, so check the price before you buy.</p>
-      <ol class="list" id="flipA"></ol>
+      <p class="note">Any listing under the vendor price is a sure profit. A scan gives only the cheapest and the median listing, so when the median is above the vendor price, fewer than half the listings qualify.</p>
+      <ol class="ledger" id="flipA"></ol>
       <div class="more" id="moreA"></div>
     </div>
     <div class="sect">
       <h2>Buy materials, craft, sell to a vendor</h2>
-      <p class="note">A vendor pays more for these than their materials cost. Auction materials count at the price setting above, vendor goods at vendor price after your discount, and in-between materials like cured hides at whichever is cheaper, buying or crafting. Tap one for the full bill.</p>
-      <ol class="list" id="flipC"></ol>
+      <p class="note">A vendor pays more for these than their materials cost. Tap one for the bill and a shopping list.</p>
+      <ol class="ledger" id="flipC"></ol>
       <div class="more" id="moreC"></div>
     </div>
     <div class="sect">
       <h2>Buy from a vendor, sell on the auction house</h2>
-      <p class="note">Vendors sell these at a fixed price that your faction can reach. The auction price is what sellers ask, after the 5% cut. Few sales get recorded on small houses, so a high price is no promise that it sells.</p>
-      <ol class="list" id="flipB"></ol>
+      <p class="note">Vendors your faction can reach sell these at a fixed price. The auction price is what sellers ask, after the 5% cut, so a high price is no promise that it sells.</p>
+      <ol class="ledger" id="flipB"></ol>
       <div class="more" id="moreB"></div>
     </div>
   </section>
@@ -318,39 +260,46 @@ textarea { width: 100%; border: 1px solid var(--line); background: var(--sunk); 
     <p>Profit counts the 5% auction house cut. Listing deposits come back when an item sells and are left out.</p>
   </footer>
 </div>
+<span id="measure" aria-hidden="true"></span>
 
 <div class="sheet-bg" id="sheetBg" hidden></div>
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
-  <h2 id="sheetTitle">Prices</h2>
-  <p id="sheetIntro"></p>
-  <div class="house">
-    <label for="hRuleset">Ruleset<select id="hRuleset"><option value="normal">Normal</option><option value="pvp">PvP</option><option value="rp">RP</option><option value="rppvp">RP-PvP</option></select></label>
-    <label for="hFaction">Faction<select id="hFaction"><option value="alliance">Alliance</option><option value="horde">Horde</option></select></label>
-    <label for="hRegion">Region<select id="hRegion"><option value="eu">EU</option><option value="us">US</option></select></label>
-  </div>
-  <div class="sheet-actions">
-    <button class="btn primary" type="button" id="loadLive">Load the latest scan</button>
-    <button class="btn ghost" type="button" id="closeSheet">Close</button>
-  </div>
+  <div class="sheet-head"><h2 id="sheetTitle">Prices and settings</h2><button class="textbtn" type="button" id="closeSheet">Done</button></div>
+
+  <h3>Auction house</h3>
+  <p class="fine" id="sheetIntro"></p>
+  <label class="srow" for="hRuleset"><span>Ruleset</span><select id="hRuleset"><option value="normal">Normal</option><option value="pvp">PvP</option><option value="rp">RP</option><option value="rppvp">RP-PvP</option></select></label>
+  <label class="srow" for="hFaction"><span>Faction</span><select id="hFaction"><option value="alliance">Alliance</option><option value="horde">Horde</option></select></label>
+  <label class="srow" for="hRegion"><span>Region</span><select id="hRegion"><option value="eu">EU</option><option value="us">US</option></select></label>
+  <button class="btn primary" type="button" id="loadLive">Load the latest scan</button>
   <p class="err" id="liveErr" role="alert"></p>
   <details class="pastebox" id="pasteBox">
     <summary>Paste a price table instead</summary>
-    <div class="pasteinner">
-      <ol>
-        <li>Open the price table for the house above.
-          <div class="linkrow" style="margin-top:6px"><a class="btn" id="ptLink" href="#" target="_blank" rel="noopener">Open price table</a><button class="btn ghost" type="button" id="copyLink">Copy link</button></div></li>
-        <li>Select all the text on that page and copy it.</li>
-        <li>Paste it below.</li>
-      </ol>
-      <textarea id="paste" rows="4" placeholder="AHL1|forever/rppvp/alliance/eu|…" aria-label="Paste the price table here" spellcheck="false"></textarea>
-      <p class="err" id="pasteErr" role="alert"></p>
-      <div class="sheet-actions">
-        <button class="btn" type="button" id="usePaste">Use pasted prices</button>
-        <button class="btn ghost" type="button" id="restore">Use built-in prices</button>
-      </div>
+    <ol>
+      <li>Open the price table for the house above.
+        <div class="linkrow"><a class="btn" id="ptLink" href="#" target="_blank" rel="noopener">Open price table</a><button class="btn" type="button" id="copyLink">Copy link</button></div></li>
+      <li>Select all the text on that page and copy it.</li>
+      <li>Paste it below.</li>
+    </ol>
+    <textarea id="paste" rows="4" placeholder="AHL1|forever/rppvp/alliance/eu|…" aria-label="Paste the price table here" spellcheck="false"></textarea>
+    <p class="err" id="pasteErr" role="alert"></p>
+    <div class="acts">
+      <button class="btn" type="button" id="usePaste">Use pasted prices</button>
+      <button class="btn" type="button" id="restore">Use built-in prices</button>
     </div>
   </details>
-  <p class="fine">Scans come from players who run the AHledger addon. Running it on your own auction house visits keeps your house fresh for everyone.</p>
+
+  <h3>Prices</h3>
+  <label class="srow" for="basis"><span>Auction prices</span><select id="basis"><option value="med">Median listing</option><option value="min">Cheapest listing</option></select></label>
+  <label class="srow" for="disc"><span>Vendor discount</span><select id="disc"><option value="0">None</option><option value="0.1">10%, Honored</option><option value="0.2">20%, with PvP rank 3</option></select></label>
+  <label class="srow" for="trim"><span>Count a sale at no more than twice the other <span class="regionName">EU</span> houses</span><input type="checkbox" id="trim"></label>
+
+  <h3>Crafts list</h3>
+  <label class="srow" for="onlyProfit"><span>Only recipes that make money</span><input type="checkbox" id="onlyProfit"></label>
+  <label class="srow" for="trainerOnly"><span>Skip recipes taught by a recipe item</span><input type="checkbox" id="trainerOnly"></label>
+  <label class="srow" for="hideThin"><span>Hide one-off listings no other house backs up</span><input type="checkbox" id="hideThin"></label>
+
+  <p class="fine" style="margin-top:16px">Scans come from players who run the AHledger addon. Running it on your own auction house visits keeps your house fresh for everyone.</p>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 

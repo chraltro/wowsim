@@ -141,7 +141,7 @@ function makeEngine(D) {
         const it = items.get(id);
         if (!it || p.min == null) continue;
         const sell = it[2];
-        if (sell > p.min) out.push({ id, buy: p.min, sell, profit: sell - p.min, qty: p.qty });
+        if (sell > p.min) out.push({ id, buy: p.min, med: p.med, sell, profit: sell - p.min, qty: p.qty });
       }
       return out.sort((a, b) => b.profit - a.profit);
     }
@@ -176,9 +176,48 @@ function makeEngine(D) {
       }
       return out.filter((e) => e.profit != null && e.profit >= 1).sort((a, b) => b.profit - a.profit);
     }
-    return { evalRecipe, ahToVendor, vendorToAh, craftToVendor, ahUnit, saleUnit, vendorUnit };
+    // Everything to buy and every craft to make first for n crafts of r, with crafted materials expanded.
+    function plan(r, n) {
+      const buy = new Map();
+      const steps = new Map();
+      let ok = true;
+      const add = (id, q, src, u) => {
+        const k = id + '|' + src;
+        const cur = buy.get(k);
+        if (cur) cur.q += q; else buy.set(k, { id, q, src, u });
+      };
+      (function walk(rec, crafts, stack) {
+        for (const [id, q] of rec.reag) {
+          const need = q * crafts;
+          const b = reagentUnit(id, rec.prof, stack);
+          if (!b) { ok = false; add(id, need, null, null); continue; }
+          if (b.src !== 'craft') { add(id, need, b.src, b.u); continue; }
+          const sub = Math.ceil(need / ((b.via.qmin + b.via.qmax) / 2) - 1e-9);
+          walk(b.via, sub, [...stack, b.via.sid]);
+          const st = steps.get(b.via.sid);
+          if (st) st.n += sub; else steps.set(b.via.sid, { r: b.via, n: sub });
+        }
+      })(r, n, [r.sid]);
+      const list = [...buy.values()];
+      let stock = Infinity;
+      for (const b of list) {
+        if (b.src !== 'ah') continue;
+        const have = (pt.map.get(b.id) || {}).qty || 0;
+        stock = Math.min(stock, Math.floor(have / (b.q / n)));
+      }
+      return { buy: list, steps: [...steps.values()], cost: ok ? list.reduce((t, b) => t + b.u * b.q, 0) : null, stock };
+    }
+    return { evalRecipe, ahToVendor, vendorToAh, craftToVendor, plan, ahUnit, saleUnit, vendorUnit };
   }
   return { items, recipes, craftIndex, context };
+}
+
+// Chance of a skill point from one craft at this skill: 1 while orange, falling to 0 at grey. Null when unknown.
+function skillChance(r, skill) {
+  if (!r.yellow || !r.grey || r.grey <= r.yellow) return null;
+  if (skill >= r.grey) return 0;
+  if (skill < r.yellow) return 1;
+  return (r.grey - skill) / (r.grey - r.yellow);
 }
 
 function coins(c) {
@@ -194,4 +233,4 @@ function coins(c) {
   return { neg, parts };
 }
 
-if (typeof module !== 'undefined') module.exports = { parsePriceTable, marketLabel, makeEngine, coins, CUT, TRIM };
+if (typeof module !== 'undefined') module.exports = { parsePriceTable, marketLabel, makeEngine, coins, skillChance, CUT, TRIM };

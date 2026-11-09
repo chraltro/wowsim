@@ -1,5 +1,5 @@
 // Craft Profits pricing checks against a fixed price table, so the numbers do not move with new scans.
-const { parsePriceTable, makeEngine, coins } = require('../src/crafts/core.js');
+const { parsePriceTable, makeEngine, coins, skillChance } = require('../src/crafts/core.js');
 const D = require('../data/crafts.json');
 const E = makeEngine(D);
 // Hand-written table in AHledger's format: id:median:min:qty:med7:med30:low30:high30:sold10
@@ -25,6 +25,16 @@ eq('Light Leather Pants cost', e.c.cost, 565); eq('Light Leather Pants vendor', 
 ctx = E.context(PT, { basis: 'med', sellTo: 'vendor', maxSkill: 300, trim: false, disc: 0.1 });
 e = ctx.evalRecipe(find('Light Leather Pants'));
 eq('Light Leather Pants cost at Honored', e.c.cost, 550); eq('Light Leather Pants profit at Honored', e.profit, 49);
+// Shopping plan for 3 pairs: the cured hides expand into Light Hide and Salt, crafted first.
+const pl = ctx.plan(find('Light Leather Pants'), 3);
+const got = (name, src) => { const b = pl.buy.find((x) => E.items.get(x.id)[0] === name && x.src === src); return b ? b.q : 0; };
+eq('plan Light Leather', got('Light Leather', 'ah'), 30); eq('plan Light Hide', got('Light Hide', 'ah'), 3);
+eq('plan Salt', got('Salt', 'vendor'), 3); eq('plan Fine Thread', got('Fine Thread', 'vendor'), 3);
+eq('plan steps', pl.steps.length === 1 && pl.steps[0].r.name === 'Cured Light Hide' ? pl.steps[0].n : -1, 3);
+eq('plan cost', pl.cost, 1650); eq('plan stock', pl.stock, 40); // 40 Light Hide listed, one per pair
+// Skill-up chance: Light Leather Pants turn yellow and grey at the client's levels.
+const llp = find('Light Leather Pants');
+eq('chance while orange', skillChance(llp, llp.yellow - 1), 1); eq('chance at grey', skillChance(llp, llp.grey), 0);
 // Coins formatting
 const f = (c) => { const k = coins(c); return (k.neg ? '-' : '') + k.parts.map(([n, u]) => n + u).join(' '); };
 const fo = (name, got, want) => { const ok = got === want; if (!ok) fails++; console.log((ok ? 'ok   ' : 'FAIL ') + name + ': ' + got + (ok ? '' : ' want ' + want)); };
