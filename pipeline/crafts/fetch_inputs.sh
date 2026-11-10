@@ -27,6 +27,11 @@ done
 for p in alchemy blacksmithing cooking enchanting engineering first-aid leatherworking mining herbalism skinning tailoring; do
   curl -sS -m 120 -A "$UA" -o "mbprof/$p.html" "https://metabot.gg/en/wow-forever/professions/$p"; sleep 1
 done
+# Waylaid Crates (Method) and favor per crate, Craftsman's Writs and favor recipes (wow.gg) -> guides.json
+mkdir -p guides
+curl -sS -m 60 -A "Mozilla/5.0 ($UA)" -o guides/method_crates.html "https://www.method.gg/wow-forever/how-to-get-waylaid-crates-and-merchants-favor-in-wow-forever"
+curl -sS -m 60 -A "Mozilla/5.0 ($UA)" -o guides/wowgg_favor.html "https://wow.gg/guides/merchants-favor"
+python3 "$HERE/parse_guides.py" "$RAW"
 python3 "$HERE/prepare_lists.py" "$RAW"
 xargs -P 4 -L 1 "$HERE/fetch_mb.sh" "$RAW" < mb_list.tsv
 xargs -P 2 -L 1 "$HERE/fetch_ahl_item.sh" "$RAW" < ahl_need.txt

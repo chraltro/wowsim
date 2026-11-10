@@ -24,6 +24,9 @@ The engine is [MythicSim's Forever engine](https://github.com/sage3648/mythicsim
 
 ## Forever Craft Profits
 
+- **Expected profit.** Recipes rank by what a craft brings on average, and the paper profit is a second sort. An item's sell speed is AHledger's estimate of units sold a day against units listed, from your house's scans when it has them and otherwise from the region's other houses. The expectation posts for 48 hours up to three times, loses a deposit of 60% of the vendor price on each expired listing, and sells to a vendor after the third miss.
+- **Plan.** Give it a gold budget and your professions with their skill. It lists sure auction-to-vendor flips and crafts, best return per gold first, never buying more materials than are listed and never adding more than a quarter of what is already on the auction house. The plan copies as one shopping list.
+- **Market.** What a Merchant's Favor costs through each Waylaid Crate (empty crate plus cheapest fill), and how material prices moved against their 7-day median by level bracket.
 - **Crafts.** Profit per craft for every recipe up to the skill you set, in any profession. Materials count at the cheaper of vendor and auction house, and materials you can make yourself, like cured hides or bolts, at the cheaper of buying and crafting. Sales count after the 5% cut, or at the vendor price when the vendor pays more.
 - **Skill-ups.** Pick one profession and your skill, and sort by cheapest skill-ups: each recipe's net cost per skill point, with the game's orange, yellow, green and grey shown per recipe.
 - **Shopping list.** Open a recipe, set how many to make, and copy the list: what to buy on the auction house, what to buy from a vendor and what to craft first, with crafted materials expanded.
@@ -118,6 +121,7 @@ Sources:
 - Per-level player and mob stats: the Forever client tables PlayerExpectedStat and ExpectedStat via wago.tools, with gaps filled from cmangos and vmangos.
 - Talents and leveling routes: the public talent calculators and leveling guides named on each route in the page.
 - Drop chances: Wowhead Forever and Warcraft DB. Quest rewards: QuestieDB-Forever.
+- Craft Profits crates, writs and favor recipes: [Method](https://www.method.gg/wow-forever/how-to-get-waylaid-crates-and-merchants-favor-in-wow-forever) and [wow.gg](https://wow.gg/guides/merchants-favor), credited on the page.
 - Craft Profits: recipes and auction prices from [AHledger](https://ahledger.com/) (free API, credited on the page); item names, vendor prices, recipe items and skill-up levels from the Forever client tables via wago.tools; which vendors sell an item, and learn skill for trainer recipes, from [MetaBot](https://metabot.gg/en/wow-forever) (Classic vendor lists). See `pipeline/crafts/README.md`.
 
 ## Licence

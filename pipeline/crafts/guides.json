@@ -1,0 +1,3682 @@
+{
+ "sources": {
+  "crates": "https://www.method.gg/wow-forever/how-to-get-waylaid-crates-and-merchants-favor-in-wow-forever",
+  "favor, writs and favor recipes": "https://wow.gg/guides/merchants-favor"
+ },
+ "crates": [
+  {
+   "name": "Waylaid Crate: Apprentice Ore",
+   "tier": "Apprentice",
+   "level": 10,
+   "fills": [
+    [
+     "Copper Ore",
+     20
+    ],
+    [
+     "Tin Ore",
+     20
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Journeyman Ore",
+   "tier": "Journeyman",
+   "level": 10,
+   "fills": [
+    [
+     "Silver Ore",
+     10
+    ],
+    [
+     "Iron Ore",
+     20
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Expert Ore",
+   "tier": "Expert",
+   "level": 20,
+   "fills": [
+    [
+     "Gold Ore",
+     10
+    ],
+    [
+     "Mithril Ore",
+     20
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Artisan Ore",
+   "tier": "Artisan",
+   "level": 35,
+   "fills": [
+    [
+     "Truesilver Ore",
+     10
+    ],
+    [
+     "Thorium Ore",
+     20
+    ],
+    [
+     "Dark Iron Ore",
+     20
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Apprentice Ingots",
+   "tier": "Apprentice",
+   "level": 10,
+   "fills": [
+    [
+     "Copper Bar",
+     20
+    ],
+    [
+     "Tin Bar",
+     20
+    ],
+    [
+     "Bronze Bar",
+     10
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Journeyman Ingots",
+   "tier": "Journeyman",
+   "level": 10,
+   "fills": [
+    [
+     "Silver Bar",
+     10
+    ],
+    [
+     "Iron Bar",
+     20
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Expert Ingots",
+   "tier": "Expert",
+   "level": 20,
+   "fills": [
+    [
+     "Mithril Bar",
+     20
+    ],
+    [
+     "Steel Bar",
+     15
+    ],
+    [
+     "Gold Bar",
+     10
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Artisan Ingots",
+   "tier": "Artisan",
+   "level": 35,
+   "fills": [
+    [
+     "Dark Iron Bar",
+     2
+    ],
+    [
+     "Truesilver Bar",
+     10
+    ],
+    [
+     "Thorium Bar",
+     20
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Apprentice Herbs",
+   "tier": "Apprentice",
+   "level": 10,
+   "fills": [
+    [
+     "Peacebloom",
+     20
+    ],
+    [
+     "Silverleaf",
+     20
+    ],
+    [
+     "Earthroot",
+     10
+    ],
+    [
+     "Mageroyal",
+     10
+    ],
+    [
+     "Briarthorn",
+     10
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Journeyman Herbs",
+   "tier": "Journeyman",
+   "level": 10,
+   "fills": [
+    [
+     "Stranglekelp",
+     10
+    ],
+    [
+     "Bruiseweed",
+     10
+    ],
+    [
+     "Wild Steelbloom",
+     10
+    ],
+    [
+     "Grave Moss",
+     10
+    ],
+    [
+     "Kingsblood",
+     10
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Earthly Expert Herbs",
+   "tier": "Expert",
+   "level": 20,
+   "fills": [
+    [
+     "Liferoot",
+     20
+    ],
+    [
+     "Fadeleaf",
+     10
+    ],
+    [
+     "Goldthorn",
+     10
+    ],
+    [
+     "Khadgar's Whisker",
+     10
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Flowering Expert Herbs",
+   "tier": "Expert",
+   "level": 20,
+   "fills": [
+    [
+     "Wintersbite",
+     10
+    ],
+    [
+     "Firebloom",
+     10
+    ],
+    [
+     "Purple Lotus",
+     20
+    ],
+    [
+     "Arthas' Tears",
+     10
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Earthly Artisan Herbs",
+   "tier": "Artisan",
+   "level": 35,
+   "fills": [
+    [
+     "Golden Sansam",
+     10
+    ],
+    [
+     "Sungrass",
+     20
+    ],
+    [
+     "Blindweed",
+     10
+    ],
+    [
+     "Ghost Mushroom",
+     10
+    ],
+    [
+     "Gromsblood",
+     10
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Flowering Artisan Herbs",
+   "tier": "Artisan",
+   "level": 35,
+   "fills": [
+    [
+     "Dreamfoil",
+     20
+    ],
+    [
+     "Mountain Silversage",
+     20
+    ],
+    [
+     "Plaguebloom",
+     20
+    ],
+    [
+     "Icecap",
+     20
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Apprentice Parts",
+   "tier": "Apprentice",
+   "level": 10,
+   "fills": [
+    [
+     "Handful Of Copper Bolts",
+     16
+    ],
+    [
+     "Copper Tube",
+     16
+    ],
+    [
+     "Copper Modulator",
+     4
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Journeyman Parts",
+   "tier": "Journeyman",
+   "level": 10,
+   "fills": [
+    [
+     "Bronze Tube",
+     8
+    ],
+    [
+     "Whirring Bronze Gizmo",
+     7
+    ],
+    [
+     "Bronze Framework",
+     4
+    ],
+    [
+     "Gold Power Core",
+     45
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Expert Parts",
+   "tier": "Expert",
+   "level": 20,
+   "fills": [
+    [
+     "Iron Strut",
+     8
+    ],
+    [
+     "Mithril Tube",
+     5
+    ],
+    [
+     "Unstable Trigger",
+     12
+    ],
+    [
+     "Mithril Casing",
+     5
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Artisan Parts",
+   "tier": "Artisan",
+   "level": 35,
+   "fills": [
+    [
+     "Thorium Widget",
+     5
+    ],
+    [
+     "Truesilver Transformer",
+     5
+    ],
+    [
+     "Thorium Tube",
+     2
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Apprentice Textiles",
+   "tier": "Apprentice",
+   "level": 10,
+   "fills": [
+    [
+     "Linen Cloth",
+     40
+    ],
+    [
+     "Light Leather",
+     20
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Journeyman Textiles",
+   "tier": "Journeyman",
+   "level": 10,
+   "fills": [
+    [
+     "Wool Cloth",
+     20
+    ],
+    [
+     "Silk Cloth",
+     40
+    ],
+    [
+     "Medium Leather",
+     20
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Expert Textiles",
+   "tier": "Expert",
+   "level": 20,
+   "fills": [
+    [
+     "Mageweave Cloth",
+     40
+    ],
+    [
+     "Heavy Leather",
+     20
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Artisan Textiles",
+   "tier": "Artisan",
+   "level": 35,
+   "fills": [
+    [
+     "Runecloth",
+     40
+    ],
+    [
+     "Thick Leather",
+     20
+    ],
+    [
+     "Rugged Leather",
+     20
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Apprentice Fabrics",
+   "tier": "Apprentice",
+   "level": 10,
+   "fills": [
+    [
+     "Cured Light Hide",
+     2
+    ],
+    [
+     "Bolt Of Linen Cloth",
+     20
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Journeyman Fabrics",
+   "tier": "Journeyman",
+   "level": 10,
+   "fills": [
+    [
+     "Bolt Of Woolen Cloth",
+     6
+    ],
+    [
+     "Bolt Of Silk Cloth",
+     10
+    ],
+    [
+     "Cured Medium Hide",
+     2
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Expert Fabrics",
+   "tier": "Expert",
+   "level": 20,
+   "fills": [
+    [
+     "Bolt Of Mageweave",
+     8
+    ],
+    [
+     "Cured Heavy Hide",
+     2
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Artisan Fabrics",
+   "tier": "Artisan",
+   "level": 35,
+   "fills": [
+    [
+     "Bolt Of Runecloth",
+     8
+    ],
+    [
+     "Cured Thick Hide",
+     2
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Apprentice Curiosities",
+   "tier": "Apprentice",
+   "level": 10,
+   "fills": [
+    [
+     "Strange Dust",
+     20
+    ],
+    [
+     "Greater Magic Essence",
+     4
+    ],
+    [
+     "Small Glimmering Shard",
+     6
+    ],
+    [
+     "Large Glimmering Shard",
+     2
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Journeyman Curiosities",
+   "tier": "Journeyman",
+   "level": 10,
+   "fills": [
+    [
+     "Soul Dust",
+     20
+    ],
+    [
+     "Greater Astral Essence",
+     4
+    ],
+    [
+     "Small Glowing Shard",
+     6
+    ],
+    [
+     "Large Glowing Shard",
+     2
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Expert Curiosities",
+   "tier": "Expert",
+   "level": 20,
+   "fills": [
+    [
+     "Vision Dust",
+     20
+    ],
+    [
+     "Greater Mystic Essence",
+     4
+    ],
+    [
+     "Small Radiant Shard",
+     6
+    ],
+    [
+     "Large Radiant Shard",
+     2
+    ]
+   ]
+  },
+  {
+   "name": "Waylaid Crate: Artisan Curiosities",
+   "tier": "Artisan",
+   "level": 35,
+   "fills": [
+    [
+     "Dream Dust",
+     20
+    ],
+    [
+     "Greater Nether Essence",
+     4
+    ],
+    [
+     "Small Brilliant Shard",
+     6
+    ],
+    [
+     "Large Brilliant Shard",
+     2
+    ]
+   ]
+  }
+ ],
+ "favor_per_crate": {
+  "Apprentice": {
+   "1": 5,
+   "2": 10
+  },
+  "Journeyman": {
+   "1": 10,
+   "2": 20
+  }
+ },
+ "writs": [
+  {
+   "item": "Elixir of Wisdom",
+   "qty": 1,
+   "skill": 120,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Draught of Water Breathing",
+   "qty": 1,
+   "skill": 120,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Lesser Mana Potion",
+   "qty": 1,
+   "skill": 145,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Lesser Troll's Blood Elixir",
+   "qty": 1,
+   "skill": 150,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Shadow Protection Potion",
+   "qty": 1,
+   "skill": 160,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Elixir of Lesser Agility",
+   "qty": 1,
+   "skill": 165,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Elixir of Ogre Strength",
+   "qty": 1,
+   "skill": 175,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Free Action Potion",
+   "qty": 1,
+   "skill": 175,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Elixir of Defense",
+   "qty": 1,
+   "skill": 215,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Mana Potion",
+   "qty": 1,
+   "skill": 180,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Lesser Invisibility Potion",
+   "qty": 1,
+   "skill": 185,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Shadow Oil",
+   "qty": 1,
+   "skill": 190,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Great Rage Potion",
+   "qty": 1,
+   "skill": 195,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Frost Protection Potion",
+   "qty": 1,
+   "skill": 205,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Elixir of Agility",
+   "qty": 1,
+   "skill": 205,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Nature Protection Potion",
+   "qty": 1,
+   "skill": 210,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Fire Protection Potion",
+   "qty": 1,
+   "skill": 210,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Catseye Draught",
+   "qty": 1,
+   "skill": 220,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Goblin Rocket Fuel",
+   "qty": 1,
+   "skill": 225,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Wildvine Potion",
+   "qty": 1,
+   "skill": 225,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Lesser Stoneshield Potion",
+   "qty": 1,
+   "skill": 230,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Dreamless Sleep Potion",
+   "qty": 1,
+   "skill": 245,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Gift of Arthas",
+   "qty": 1,
+   "skill": 255,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Distilled Firewater",
+   "qty": 1,
+   "skill": 260,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Potion of Demon Slaying",
+   "qty": 1,
+   "skill": 265,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Draught of Detect Demon",
+   "qty": 1,
+   "skill": 265,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Limited Invulnerability Potion",
+   "qty": 1,
+   "skill": 275,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Greater Fire Protection Potion",
+   "qty": 1,
+   "skill": 305,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Major Rejuvenation Potion",
+   "qty": 1,
+   "skill": 310,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Flask of Chromatic Resistance",
+   "qty": 1,
+   "skill": 315,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Alchemy"
+  },
+  {
+   "item": "Silver Skeleton Key",
+   "qty": 1,
+   "skill": 75,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Big Bronze Knife",
+   "qty": 1,
+   "skill": 110,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Pearl-handled Dagger",
+   "qty": 1,
+   "skill": 115,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Rough Bronze Leggings",
+   "qty": 1,
+   "skill": 120,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Golden Rod",
+   "qty": 1,
+   "skill": 130,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Heavy Bronze Mace",
+   "qty": 1,
+   "skill": 135,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Iridescent Hammer",
+   "qty": 1,
+   "skill": 145,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Green Iron Boots",
+   "qty": 1,
+   "skill": 150,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Green Iron Gauntlets",
+   "qty": 1,
+   "skill": 155,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Solid Sharpening Stone",
+   "qty": 1,
+   "skill": 175,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Moonsteel Broadsword",
+   "qty": 1,
+   "skill": 180,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Truesilver Rod",
+   "qty": 1,
+   "skill": 180,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Steel Weapon Chain",
+   "qty": 1,
+   "skill": 190,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Golden Scale Coif",
+   "qty": 1,
+   "skill": 190,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Inlaid Mithril Cylinder",
+   "qty": 1,
+   "skill": 200,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Golden Scale Gauntlets",
+   "qty": 1,
+   "skill": 200,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Steel Plate Helm",
+   "qty": 1,
+   "skill": 210,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Heavy Mithril Axe",
+   "qty": 1,
+   "skill": 210,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Ornate Mithril Shoulders",
+   "qty": 1,
+   "skill": 220,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Blue Glittering Axe",
+   "qty": 1,
+   "skill": 220,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Wicked Mithril Blade",
+   "qty": 1,
+   "skill": 225,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Orcish War Leggings",
+   "qty": 1,
+   "skill": 225,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Mithril Spurs",
+   "qty": 1,
+   "skill": 230,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Arcanite Skeleton Key",
+   "qty": 1,
+   "skill": 250,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Radiant Belt",
+   "qty": 1,
+   "skill": 255,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Ebon Shiv",
+   "qty": 1,
+   "skill": 255,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Huge Thorium Battleaxe",
+   "qty": 1,
+   "skill": 280,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Radiant Circlet",
+   "qty": 1,
+   "skill": 290,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Imperial Plate Chest",
+   "qty": 1,
+   "skill": 295,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Darkrune Gauntlets",
+   "qty": 1,
+   "skill": 320,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Blacksmithing"
+  },
+  {
+   "item": "Practice Lock",
+   "qty": 1,
+   "skill": 115,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Crafted Solid Shot",
+   "qty": 200,
+   "skill": 125,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Big Bronze Bomb",
+   "qty": 1,
+   "skill": 140,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Shadow Goggles",
+   "qty": 1,
+   "skill": 145,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Gnomish Universal Remote",
+   "qty": 1,
+   "skill": 150,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Ornate Spyglass",
+   "qty": 1,
+   "skill": 160,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Minor Recombobulator",
+   "qty": 1,
+   "skill": 165,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Moonsight Rifle",
+   "qty": 1,
+   "skill": 170,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Explosive Sheep",
+   "qty": 1,
+   "skill": 175,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Gyromatic Micro-Adjustor",
+   "qty": 1,
+   "skill": 175,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Advanced Target Dummy",
+   "qty": 1,
+   "skill": 185,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Flash Bomb",
+   "qty": 1,
+   "skill": 185,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Unstable Trigger",
+   "qty": 1,
+   "skill": 200,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Mechanical Repair Kit",
+   "qty": 1,
+   "skill": 200,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Craftsman's Monocle",
+   "qty": 1,
+   "skill": 205,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Goblin Land Mine",
+   "qty": 1,
+   "skill": 215,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Mithril Frag Bomb",
+   "qty": 1,
+   "skill": 215,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Mechanical Dragonling",
+   "qty": 1,
+   "skill": 220,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Fire Goggles",
+   "qty": 1,
+   "skill": 225,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Catseye Ultra Goggles",
+   "qty": 1,
+   "skill": 240,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Dark Iron Bomb",
+   "qty": 1,
+   "skill": 305,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Sniper Scope",
+   "qty": 1,
+   "skill": 260,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Green Lens",
+   "qty": 1,
+   "skill": 265,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Truesilver Transformer",
+   "qty": 1,
+   "skill": 270,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Gnomish Alarm-O-Bot",
+   "qty": 1,
+   "skill": 275,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Lifelike Mechanical Toad",
+   "qty": 1,
+   "skill": 285,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Goblin Jumper Cables XL",
+   "qty": 1,
+   "skill": 285,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Masterwork Target Dummy",
+   "qty": 1,
+   "skill": 295,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Field Repair Bot 74A",
+   "qty": 1,
+   "skill": 320,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Tranquil Mechanical Yeti",
+   "qty": 1,
+   "skill": 320,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Engineering"
+  },
+  {
+   "item": "Dark Leather Tunic",
+   "qty": 1,
+   "skill": 100,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Fine Leather Pants",
+   "qty": 1,
+   "skill": 105,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Red Whelp Gloves",
+   "qty": 1,
+   "skill": 120,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Heavy Leather Ball",
+   "qty": 1,
+   "skill": 125,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Herbalist's Gloves",
+   "qty": 1,
+   "skill": 135,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Pilferer's Gloves",
+   "qty": 1,
+   "skill": 140,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Dark Leather Shoulders",
+   "qty": 1,
+   "skill": 140,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Heavy Quiver",
+   "qty": 1,
+   "skill": 145,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Barbaric Gloves",
+   "qty": 1,
+   "skill": 150,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Guardian Cloak",
+   "qty": 1,
+   "skill": 180,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Dusky Bracers",
+   "qty": 1,
+   "skill": 180,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Comfortable Leather Hat",
+   "qty": 1,
+   "skill": 195,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Swift Boots",
+   "qty": 1,
+   "skill": 195,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Nightscape Shoulders",
+   "qty": 1,
+   "skill": 205,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Turtle Scale Breastplate",
+   "qty": 1,
+   "skill": 205,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Big Voodoo Robe",
+   "qty": 1,
+   "skill": 210,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Wild Leather Shoulders",
+   "qty": 1,
+   "skill": 215,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Big Voodoo Mask",
+   "qty": 1,
+   "skill": 215,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Wild Leather Helmet",
+   "qty": 1,
+   "skill": 220,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Quickdraw Quiver",
+   "qty": 1,
+   "skill": 220,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Thick Leather Ammo Pouch",
+   "qty": 1,
+   "skill": 220,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Wicked Leather Bracers",
+   "qty": 1,
+   "skill": 260,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Runic Leather Bracers",
+   "qty": 1,
+   "skill": 270,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Frostsaber Boots",
+   "qty": 1,
+   "skill": 270,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Volcanic Breastplate",
+   "qty": 1,
+   "skill": 280,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Wicked Leather Pants",
+   "qty": 1,
+   "skill": 285,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Gordok Ogre Suit",
+   "qty": 1,
+   "skill": 285,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Runic Leather Headband",
+   "qty": 1,
+   "skill": 285,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Chimeric Vest",
+   "qty": 1,
+   "skill": 285,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Heavy Scorpid Helm",
+   "qty": 1,
+   "skill": 290,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Leatherworking"
+  },
+  {
+   "item": "Red Woolen Boots",
+   "qty": 1,
+   "skill": 80,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Colorful Kilt",
+   "qty": 1,
+   "skill": 95,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Blue Overalls",
+   "qty": 1,
+   "skill": 100,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Greater Adept's Robe",
+   "qty": 1,
+   "skill": 115,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Phoenix Pants",
+   "qty": 1,
+   "skill": 125,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Lesser Wizard's Robe",
+   "qty": 1,
+   "skill": 130,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Azure Silk Hood",
+   "qty": 1,
+   "skill": 130,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Spider Silk Slippers",
+   "qty": 1,
+   "skill": 135,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Small Silk Pack",
+   "qty": 1,
+   "skill": 145,
+   "tier": "Journeyman",
+   "rep": 75,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Earthen Silk Belt",
+   "qty": 1,
+   "skill": 180,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Crimson Silk Robe",
+   "qty": 1,
+   "skill": 185,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Star Belt",
+   "qty": 1,
+   "skill": 185,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Black Mageweave Vest",
+   "qty": 1,
+   "skill": 185,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "White Bandit Mask",
+   "qty": 1,
+   "skill": 185,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Orange Martial Shirt",
+   "qty": 1,
+   "skill": 190,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Shadoweave Robe",
+   "qty": 1,
+   "skill": 195,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Red Mageweave Pants",
+   "qty": 1,
+   "skill": 195,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Mageweave Bag",
+   "qty": 1,
+   "skill": 205,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Shadoweave Gloves",
+   "qty": 1,
+   "skill": 205,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Enchanted Mageweave Pouch",
+   "qty": 1,
+   "skill": 205,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Cindercloth Robe",
+   "qty": 1,
+   "skill": 205,
+   "tier": "Expert",
+   "rep": 125,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Tuxedo Jacket",
+   "qty": 1,
+   "skill": 155,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Shadoweave Mask",
+   "qty": 1,
+   "skill": 215,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Runecloth Bag",
+   "qty": 1,
+   "skill": 230,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Soul Pouch",
+   "qty": 1,
+   "skill": 230,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Ghostweave Vest",
+   "qty": 1,
+   "skill": 240,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Cenarion Herb Bag",
+   "qty": 1,
+   "skill": 245,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Runecloth Boots",
+   "qty": 1,
+   "skill": 250,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Felcloth Boots",
+   "qty": 1,
+   "skill": 255,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Tailoring"
+  },
+  {
+   "item": "Wizardweave Turban",
+   "qty": 1,
+   "skill": 275,
+   "tier": "Artisan",
+   "rep": 200,
+   "prof": "Tailoring"
+  }
+ ],
+ "favor_recipes": [
+  {
+   "name": "Formula: Tenets of the Silver Hand",
+   "skill": 130,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Mystic Mushroom",
+   "skill": 130,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Polished Driftwood Icon",
+   "skill": 130,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Glimmering Staff",
+   "skill": 140,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Soulstaff",
+   "skill": 140,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Orb of Souls",
+   "skill": 140,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Orb of Mystic Insight",
+   "skill": 140,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Enchant Weapon - Recovery",
+   "skill": 140,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Enchant Weapon - Insight",
+   "skill": 140,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Enchant Weapon - Revelation",
+   "skill": 140,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Talons of Wrath",
+   "skill": 210,
+   "favor": 120,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Libram of Invocation",
+   "skill": 210,
+   "favor": 120,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Totem of Ancestral Protection",
+   "skill": 210,
+   "favor": 120,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Enchant Necklace - Agility",
+   "skill": 210,
+   "favor": 120,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Enchant Necklace - Deflection",
+   "skill": 210,
+   "favor": 120,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Enchant Necklace - Strength",
+   "skill": 210,
+   "favor": 120,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Enchant Necklace - Spell Power",
+   "skill": 210,
+   "favor": 120,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Enchant Necklace - Healing Power",
+   "skill": 210,
+   "favor": 120,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Twisting Essence Jar",
+   "skill": 220,
+   "favor": 120,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Dreamstaff",
+   "skill": 220,
+   "favor": 120,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Truesilver Conduit",
+   "skill": 220,
+   "favor": 120,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Radiant Staff",
+   "skill": 220,
+   "favor": 120,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Enchant Chest - Absorption",
+   "skill": 220,
+   "favor": 120,
+   "rep": ""
+  },
+  {
+   "name": "Formula: Brilliant Wand",
+   "skill": 275,
+   "favor": 180,
+   "rep": "Honored"
+  },
+  {
+   "name": "Formula: Enchant 2H Weapon - Mighty Healing Power",
+   "skill": 300,
+   "favor": 240,
+   "rep": "Honored"
+  },
+  {
+   "name": "Formula: Enchant 2H Weapon - Mighty Spell Power",
+   "skill": 300,
+   "favor": 240,
+   "rep": "Honored"
+  },
+  {
+   "name": "Formula: Idol of the Dream",
+   "skill": 300,
+   "favor": 240,
+   "rep": "Honored"
+  },
+  {
+   "name": "Formula: Libram of Holy Alacrity",
+   "skill": 300,
+   "favor": 240,
+   "rep": "Honored"
+  },
+  {
+   "name": "Formula: Totem of Thunder",
+   "skill": 300,
+   "favor": 240,
+   "rep": "Honored"
+  },
+  {
+   "name": "Formula: Enchant 2H Weapon - Spellblasting",
+   "skill": 300,
+   "favor": 240,
+   "rep": "Honored"
+  },
+  {
+   "name": "Formula: Enchant Bracer - Greater Spellpower",
+   "skill": 300,
+   "favor": 240,
+   "rep": "Honored"
+  },
+  {
+   "name": "Formula: Enchant Bracer - Superior Intellect",
+   "skill": 300,
+   "favor": 240,
+   "rep": "Honored"
+  },
+  {
+   "name": "Formula: Enchant Bracer - Superior Deflection",
+   "skill": 300,
+   "favor": 240,
+   "rep": "Honored"
+  },
+  {
+   "name": "Formula: Enchant Gloves - Superior Strength",
+   "skill": 300,
+   "favor": 240,
+   "rep": "Honored"
+  },
+  {
+   "name": "Formula: Enchant Gloves - Arcane Power",
+   "skill": 300,
+   "favor": 240,
+   "rep": "Honored"
+  },
+  {
+   "name": "Formula: Enchant Gloves - Holy Power",
+   "skill": 300,
+   "favor": 240,
+   "rep": "Honored"
+  },
+  {
+   "name": "Formula: Enchant Gloves - Natural Power",
+   "skill": 300,
+   "favor": 240,
+   "rep": "Honored"
+  },
+  {
+   "name": "Formula: Enchant Cloak - Agility",
+   "skill": 300,
+   "favor": 240,
+   "rep": "Honored"
+  },
+  {
+   "name": "Formula: Enchant Off Hand - Wisdom",
+   "skill": 300,
+   "favor": 240,
+   "rep": "Honored"
+  },
+  {
+   "name": "Recipe: Elixir of Lesser Spirit",
+   "skill": 65,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Recipe: Lesser Mageblood Elixir",
+   "skill": 75,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Recipe: Elixir of Lesser Intellect",
+   "skill": 95,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Recipe: Lesser Cleric's Elixir",
+   "skill": 95,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Recipe: Lesser Arcane Elixir",
+   "skill": 120,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Recipe: Mender's Potion",
+   "skill": 130,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Recipe: Spellblasting Potion",
+   "skill": 135,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Recipe: Frenzy Potion",
+   "skill": 140,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Recipe: Elixir of Greater Spirit",
+   "skill": 165,
+   "favor": 120,
+   "rep": ""
+  },
+  {
+   "name": "Recipe: Greater Mageblood Elixir",
+   "skill": 175,
+   "favor": 120,
+   "rep": ""
+  },
+  {
+   "name": "Recipe: Disorienting Smog Potion",
+   "skill": 180,
+   "favor": 120,
+   "rep": ""
+  },
+  {
+   "name": "Recipe: Greater Cleric's Elixir",
+   "skill": 195,
+   "favor": 120,
+   "rep": ""
+  },
+  {
+   "name": "Recipe: Elixir of Greater Fortitude",
+   "skill": 200,
+   "favor": 120,
+   "rep": ""
+  },
+  {
+   "name": "Recipe: Dragonfire Potion",
+   "skill": 245,
+   "favor": 120,
+   "rep": ""
+  },
+  {
+   "name": "Recipe: Elixir of the Phalanx",
+   "skill": 250,
+   "favor": 180,
+   "rep": "Honored"
+  },
+  {
+   "name": "Recipe: Caustic Smog Potion",
+   "skill": 265,
+   "favor": 180,
+   "rep": "Honored"
+  },
+  {
+   "name": "Recipe: Potion of Venomous Blood",
+   "skill": 275,
+   "favor": 180,
+   "rep": "Honored"
+  },
+  {
+   "name": "Recipe: Elixir of the Whale",
+   "skill": 275,
+   "favor": 180,
+   "rep": "Honored"
+  },
+  {
+   "name": "Recipe: Elixir of Sages",
+   "skill": 275,
+   "favor": 180,
+   "rep": "Honored"
+  },
+  {
+   "name": "Recipe: Elixir of Ferocity",
+   "skill": 275,
+   "favor": 180,
+   "rep": "Honored"
+  },
+  {
+   "name": "Recipe: Elixir of Cunning",
+   "skill": 275,
+   "favor": 180,
+   "rep": "Honored"
+  },
+  {
+   "name": "Recipe: Major Mender's Potion",
+   "skill": 280,
+   "favor": 180,
+   "rep": "Honored"
+  },
+  {
+   "name": "Recipe: Potion of Elemental Purging",
+   "skill": 280,
+   "favor": 180,
+   "rep": "Honored"
+  },
+  {
+   "name": "Recipe: Elixir of the Owl",
+   "skill": 280,
+   "favor": 180,
+   "rep": "Honored"
+  },
+  {
+   "name": "Recipe: Major Spellblasting Potion",
+   "skill": 285,
+   "favor": 180,
+   "rep": "Honored"
+  },
+  {
+   "name": "Recipe: Elixir of Wicked Regeneration",
+   "skill": 285,
+   "favor": 180,
+   "rep": "Honored"
+  },
+  {
+   "name": "Recipe: Elixir of Nature Power",
+   "skill": 285,
+   "favor": 180,
+   "rep": "Honored"
+  },
+  {
+   "name": "Recipe: Major Frenzy Potion",
+   "skill": 290,
+   "favor": 240,
+   "rep": "Honored"
+  },
+  {
+   "name": "Recipe: Elixir of the Grizzly",
+   "skill": 300,
+   "favor": 240,
+   "rep": "Honored"
+  },
+  {
+   "name": "Plans: Veteran's Chain Belt",
+   "skill": 45,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Protector's Chain Belt",
+   "skill": 45,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Acolyte's Chain Belt",
+   "skill": 45,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Crusader's Chain Belt",
+   "skill": 45,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Guard's Chain Belt",
+   "skill": 45,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Veteran's Gloves",
+   "skill": 80,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Protector's Gloves",
+   "skill": 80,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Acolyte's Gloves",
+   "skill": 80,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Crusader's Gloves",
+   "skill": 80,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Guard's Gloves",
+   "skill": 80,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Veteran's Boots",
+   "skill": 85,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Protector's Boots",
+   "skill": 85,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Acolyte's Boots",
+   "skill": 85,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Crusader's Boots",
+   "skill": 85,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Guard's Boots",
+   "skill": 85,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Veteran's Silvered Chain Helm",
+   "skill": 95,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Protector's Silvered Chain Helm",
+   "skill": 95,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Acolyte's Silvered Chain Helm",
+   "skill": 95,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Crusader's Silvered Chain Helm",
+   "skill": 95,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Guard's Silvered Chain Helm",
+   "skill": 95,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Veteran's Silvered Chain Shirt",
+   "skill": 110,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Protector's Silvered Chain Shirt",
+   "skill": 110,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Acolyte's Silvered Chain Shirt",
+   "skill": 110,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Crusader's Silvered Chain Shirt",
+   "skill": 110,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Guard's Silvered Chain Shirt",
+   "skill": 110,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Veteran's Silvered Chain Leggings",
+   "skill": 125,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Protector's Silvered Chain Leggings",
+   "skill": 125,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Acolyte's Silvered Chain Leggings",
+   "skill": 125,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Crusader's Silvered Chain Leggings",
+   "skill": 125,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Guard's Silvered Chain Leggings",
+   "skill": 125,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Justicar's Gauntlet",
+   "skill": 175,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Officer's Gauntlet",
+   "skill": 175,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Prefect's Gauntlet",
+   "skill": 175,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Warder's Gauntlet",
+   "skill": 175,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Sentinel's Gauntlet",
+   "skill": 175,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Justicar's Pauldrons",
+   "skill": 210,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Officer's Pauldrons",
+   "skill": 210,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Prefect's Pauldrons",
+   "skill": 210,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Warder's Pauldrons",
+   "skill": 210,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Sentinel's Pauldrons",
+   "skill": 210,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Plans: Justicar's Wristguards",
+   "skill": 225,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Plans: Officer's Wristguard",
+   "skill": 225,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Plans: Prefect's Wristguard",
+   "skill": 225,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Plans: Warder's Wristguard",
+   "skill": 225,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Plans: Sentinel's Wristguard",
+   "skill": 225,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Plans: Justicar's Sabatons",
+   "skill": 240,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Plans: Officer's Sabatons",
+   "skill": 240,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Plans: Prefect's Sabatons",
+   "skill": 240,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Plans: Warder's Sabatons",
+   "skill": 240,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Plans: Sentinel's Sabatons",
+   "skill": 240,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Plans: Justicar's Waistguard",
+   "skill": 250,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Plans: Officer's Waistguard",
+   "skill": 250,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Plans: Warder's Waistguard",
+   "skill": 250,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Plans: Sentinel's Waistguard",
+   "skill": 250,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Plans: Thorium Greatmace",
+   "skill": 250,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Plans: Thorium Cestus",
+   "skill": 250,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Plans: Prefect's Waistguard",
+   "skill": 250,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Plans: Enriched Thorium Breastplate",
+   "skill": 300,
+   "favor": 120,
+   "rep": "Honored"
+  },
+  {
+   "name": "Plans: Legionite Glaive",
+   "skill": 300,
+   "favor": 120,
+   "rep": "Honored"
+  },
+  {
+   "name": "Plans: Enriched Thorium Leggings",
+   "skill": 300,
+   "favor": 120,
+   "rep": "Honored"
+  },
+  {
+   "name": "Plans: Enriched Thorium Helm",
+   "skill": 300,
+   "favor": 120,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Brawler's Leather Belt",
+   "skill": 60,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Defender's Leather Belt",
+   "skill": 60,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Trapper's Leather Belt",
+   "skill": 60,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Wisdom's Leather Belt",
+   "skill": 60,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Stormrider's Leather Belt",
+   "skill": 60,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Totemic Leather Belt",
+   "skill": 60,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Brawler's Leather Gloves",
+   "skill": 75,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Defender's Leather Gloves",
+   "skill": 75,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Trapper's Leather Gloves",
+   "skill": 75,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Wisdom's Leather Gloves",
+   "skill": 75,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Stormrider's Leather Gloves",
+   "skill": 75,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Totemic Leather Gloves",
+   "skill": 75,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Brawler's Leather Boots",
+   "skill": 85,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Defender's Leather Boots",
+   "skill": 85,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Trapper's Leather Boots",
+   "skill": 85,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Wisdom's Leather Boots",
+   "skill": 85,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Stormrider's Leather Boots",
+   "skill": 85,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Totemic Leather Boots",
+   "skill": 85,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Brawler's Leather Hood",
+   "skill": 100,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Defender's Leather Hood",
+   "skill": 100,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Trapper's Leather Hood",
+   "skill": 100,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Wisdom's Leather Hood",
+   "skill": 100,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Stormrider's Leather Hood",
+   "skill": 100,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Totemic Leather Hood",
+   "skill": 100,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Brawler's Leather Tunic",
+   "skill": 110,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Defender's Leather Tunic",
+   "skill": 110,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Trapper's Leather Tunic",
+   "skill": 110,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Wisdom's Leather Tunic",
+   "skill": 110,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Stormrider's Leather Tunic",
+   "skill": 110,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Totemic Leather Tunic",
+   "skill": 110,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Brawler's Leather Legguards",
+   "skill": 125,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Trapper's Leather Legguards",
+   "skill": 125,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Wisdom's Leather Leggings",
+   "skill": 125,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Defender's Leather Kilt",
+   "skill": 125,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Stormrider's Leather Kilt",
+   "skill": 125,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Totemic Leather Leggings",
+   "skill": 125,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Skirmisher's Leather Gloves",
+   "skill": 175,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Stalker's Leather Gloves",
+   "skill": 175,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Skycaller's Leather Gloves",
+   "skill": 175,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Warden's Leather Gloves",
+   "skill": 175,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Skulker's Leather Gloves",
+   "skill": 175,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Prowler's Leather Gloves",
+   "skill": 175,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Mender's Leather Gloves",
+   "skill": 175,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Forceful Thick Armor Kit",
+   "skill": 185,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Skycaller's Leather Shoulders",
+   "skill": 210,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Warden's Leather Shoulders",
+   "skill": 210,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Skulker's Leather Shoulder",
+   "skill": 210,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Prowler's Leather Shoulders",
+   "skill": 210,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Mender's Leather Shoulders",
+   "skill": 210,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Skirmisher's Mail Shoulders",
+   "skill": 210,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Stalker's Mail Shoulders",
+   "skill": 210,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Skycaller's Mail Shoulders",
+   "skill": 210,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Mender's Mail Shoulders",
+   "skill": 210,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Skycaller's Leather Bracers",
+   "skill": 225,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Warden's Leather Bracers",
+   "skill": 225,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Skulker's Leather Bracers",
+   "skill": 225,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Prowler's Leather Bracers",
+   "skill": 225,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Mender's Leather Bracers",
+   "skill": 225,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Skirmisher's Mail Bracers",
+   "skill": 225,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Stalker's Mail Bracers",
+   "skill": 225,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Skycaller's Mail Bracers",
+   "skill": 225,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Mender's Mail Bracers",
+   "skill": 225,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Skycaller's Leather Boots",
+   "skill": 235,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Warden's Leather Boots",
+   "skill": 235,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Skulker's Leather Boots",
+   "skill": 235,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Prowler's Leather Boots",
+   "skill": 235,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Mender's Leather Boots",
+   "skill": 235,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Skirmisher's Mail Sabatons",
+   "skill": 235,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Stalker's Mail Sabatons",
+   "skill": 235,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Skycaller's Mail Sabatons",
+   "skill": 235,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Mender's Mail Sabatons",
+   "skill": 235,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Mystic Rugged Armor Kit",
+   "skill": 235,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Skycaller's Leather Waistguard",
+   "skill": 250,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Warden's Leather Waistguard",
+   "skill": 250,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Skulker's Leather Waistguard",
+   "skill": 250,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Prowler's Leather Waistguard",
+   "skill": 250,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Mender's Leather Waistguard",
+   "skill": 250,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Skirmisher's Mail Belt",
+   "skill": 250,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Stalker's Mail Belt",
+   "skill": 250,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Skycaller's Mail Belt",
+   "skill": 250,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Mender's Mail Belt",
+   "skill": 250,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Pristine Boots",
+   "skill": 60,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Pearly Boots",
+   "skill": 60,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Flame Boots",
+   "skill": 60,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Shining Boots",
+   "skill": 60,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Shadow Boots",
+   "skill": 60,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Silky Boots",
+   "skill": 60,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Pristine Gloves",
+   "skill": 75,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Pearly Gloves",
+   "skill": 75,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Flame Gloves",
+   "skill": 75,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Shining Gloves",
+   "skill": 75,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Shadow Gloves",
+   "skill": 75,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Silky Gloves",
+   "skill": 75,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Pristine Sash",
+   "skill": 85,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Pearly Sash",
+   "skill": 85,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Flame Sash",
+   "skill": 85,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Shining Sash",
+   "skill": 85,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Shadow Sash",
+   "skill": 85,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Silky Sash",
+   "skill": 85,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Pristine Circlet",
+   "skill": 100,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Pearly Circlet",
+   "skill": 100,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Flame Circlet",
+   "skill": 100,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Shining Circlet",
+   "skill": 100,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Shadow Circlet",
+   "skill": 100,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Silky Circlet",
+   "skill": 100,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Pristine Gown",
+   "skill": 110,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Pearly Gown",
+   "skill": 110,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Flame Gown",
+   "skill": 110,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Shining Gown",
+   "skill": 110,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Shadow Gown",
+   "skill": 110,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Silky Gown",
+   "skill": 110,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Pristine Leggings",
+   "skill": 125,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Pearly Leggings",
+   "skill": 125,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Flame Leggings",
+   "skill": 125,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Shining Leggings",
+   "skill": 125,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Shadow Leggings",
+   "skill": 125,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Silky Leggings",
+   "skill": 125,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Golden Handwraps",
+   "skill": 165,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Fiery Handwraps",
+   "skill": 165,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Frothing Handwraps",
+   "skill": 165,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Radiant Handwraps",
+   "skill": 165,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Black Handwraps",
+   "skill": 165,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Mageweave Reagent Bag",
+   "skill": 190,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Netherpearl Shoulders",
+   "skill": 195,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Netherfroth Shoulders",
+   "skill": 195,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Netherflame Shoulders",
+   "skill": 195,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Nethergeld Shoulders",
+   "skill": 195,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Netherlight Shoulders",
+   "skill": 195,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Nethershine Shoulders",
+   "skill": 195,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Netherpearl Cuffs",
+   "skill": 205,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Netherfroth Cuffs",
+   "skill": 205,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Netherflame Cuffs",
+   "skill": 205,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Nethergeld Cuffs",
+   "skill": 205,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Netherlight Cuffs",
+   "skill": 205,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Nethershine Cuffs",
+   "skill": 205,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Golden Waistcord",
+   "skill": 215,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Gilded Waistcord",
+   "skill": 215,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Fiery Waistcord",
+   "skill": 215,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Frothing Waistcord",
+   "skill": 215,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Radiant Waistcord",
+   "skill": 215,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Runecloth Reagent Bag",
+   "skill": 215,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Black Waistcord",
+   "skill": 215,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Pattern: Golden Sandals",
+   "skill": 235,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Gilded Sandals",
+   "skill": 235,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Fiery Sandals",
+   "skill": 235,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Frothing Sandals",
+   "skill": 235,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Radiant Sandals",
+   "skill": 235,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Pattern: Black Sandals",
+   "skill": 235,
+   "favor": 90,
+   "rep": "Honored"
+  },
+  {
+   "name": "Schematic: SAF-T Dynamite",
+   "skill": 25,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Schematic: SAF-T Tabs",
+   "skill": 25,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Schematic: SAF-T Copper Bomb",
+   "skill": 55,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Schematic: Satchel of Copper Bombs",
+   "skill": 85,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Schematic: EZ-Thro Wrap",
+   "skill": 100,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Schematic: EZ-Thro Copper Bomb XL",
+   "skill": 130,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Schematic: No Slip SAF-T Padding",
+   "skill": 145,
+   "favor": 45,
+   "rep": ""
+  },
+  {
+   "name": "Schematic: Satchel of Bronze Bombs",
+   "skill": 165,
+   "favor": 180,
+   "rep": ""
+  },
+  {
+   "name": "Schematic: Clanking Cord",
+   "skill": 175,
+   "favor": 180,
+   "rep": ""
+  },
+  {
+   "name": "Schematic: SAF-T Bell",
+   "skill": 175,
+   "favor": 180,
+   "rep": ""
+  },
+  {
+   "name": "Schematic: Whimsical Waistwrap",
+   "skill": 175,
+   "favor": 180,
+   "rep": ""
+  },
+  {
+   "name": "Schematic: Gizmo Girdle",
+   "skill": 175,
+   "favor": 180,
+   "rep": ""
+  },
+  {
+   "name": "Schematic: EZ-Thro Fireproof Fuse",
+   "skill": 190,
+   "favor": 180,
+   "rep": ""
+  },
+  {
+   "name": "Schematic: Floppy Goggles",
+   "skill": 200,
+   "favor": 180,
+   "rep": ""
+  },
+  {
+   "name": "Schematic: Stuckbutton Goggles",
+   "skill": 200,
+   "favor": 180,
+   "rep": ""
+  },
+  {
+   "name": "Schematic: Dented Goggles",
+   "skill": 200,
+   "favor": 180,
+   "rep": ""
+  },
+  {
+   "name": "Schematic: Bent Goggles",
+   "skill": 200,
+   "favor": 180,
+   "rep": ""
+  },
+  {
+   "name": "Schematic: Compact Critter Carrier",
+   "skill": 225,
+   "favor": 270,
+   "rep": "Honored"
+  },
+  {
+   "name": "Schematic: Emergency Field Cloak",
+   "skill": 225,
+   "favor": 270,
+   "rep": "Honored"
+  },
+  {
+   "name": "Schematic: Satchel of Iron Bombs",
+   "skill": 230,
+   "favor": 270,
+   "rep": "Honored"
+  },
+  {
+   "name": "Schematic: Gnomish Army Knife",
+   "skill": 250,
+   "favor": 270,
+   "rep": "Honored"
+  },
+  {
+   "name": "Schematic: SAF-T Disposable Parachute",
+   "skill": 250,
+   "favor": 270,
+   "rep": "Honored"
+  },
+  {
+   "name": "Schematic: Loot-A-Rang",
+   "skill": 275,
+   "favor": 270,
+   "rep": "Honored"
+  },
+  {
+   "name": "Schematic: Satchel of Dark Iron Bombs",
+   "skill": 285,
+   "favor": 270,
+   "rep": "Honored"
+  },
+  {
+   "name": "Schematic: Gnomish Poultryizer",
+   "skill": 300,
+   "favor": 360,
+   "rep": "Honored"
+  },
+  {
+   "name": "Schematic: Stealthman 52",
+   "skill": 300,
+   "favor": 360,
+   "rep": "Honored"
+  },
+  {
+   "name": "Schematic: Ultrasafe Rechargeable Battery",
+   "skill": 300,
+   "favor": 360,
+   "rep": "Honored"
+  },
+  {
+   "name": "Schematic: Ultralight Goblin Glider",
+   "skill": 300,
+   "favor": 360,
+   "rep": "Honored"
+  },
+  {
+   "name": "Recipe: Venomous Smoothie",
+   "skill": 25,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Recipe: Slimy Smoothie",
+   "skill": 100,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Recipe: Mrrggl Smrrthle",
+   "skill": 125,
+   "favor": 30,
+   "rep": ""
+  },
+  {
+   "name": "Recipe: Calcified Smoothie",
+   "skill": 180,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Recipe: Spicy Smoothie",
+   "skill": 200,
+   "favor": 60,
+   "rep": ""
+  },
+  {
+   "name": "Recipe: Wicked Smoothie",
+   "skill": 250,
+   "favor": 90,
+   "rep": "Honored"
+  }
+ ]
+}

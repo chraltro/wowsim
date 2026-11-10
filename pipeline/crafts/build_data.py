@@ -101,7 +101,38 @@ def pt_ids(path):
 mine=set(pt_ids('pt/'+MARKET+'.txt'))
 union=set()
 for f in glob.glob('pt/*.txt'): union|=set(pt_ids(f))
-ids=need_items|mine|(union&set(sp))
+# --- crates, writs and Merchant's Favor recipes (guides.json, from parse_guides.py)
+G=json.load(open(os.path.join(HERE,'guides.json')))
+byname={}
+for i,row in sp.items(): byname.setdefault(row['Display_lang'].lower(),i)
+gmiss=[]
+def find(name):
+    i=byname.get(name.lower())
+    if i is None: gmiss.append(name)
+    return i
+TIERS=['Apprentice','Journeyman','Expert','Artisan']
+CRATES=[]
+for c in G['crates']:
+    cid=find(c['name'])
+    if cid is None: continue
+    fills=[]
+    for nm,qty in c['fills']:
+        fid=find(nm)
+        if fid is not None: fills+=[fid,qty]
+    quality=sp[cid]['OverallQualityID']
+    CRATES.append([cid,TIERS.index(c['tier']),c['level'],G['favor_per_crate'].get(c['tier'],{}).get(quality,0),fills])
+WRIT={}
+for w in G['writs']:
+    wid=find(w['item'])
+    if wid is not None: WRIT[wid]=w['rep']
+FAV={}
+for r in G['favor_recipes']:
+    fid=find(r['name'])
+    if fid is not None: FAV[fid]=[r['favor'],1 if r['rep'] else 0]
+guide_ids=set(c[0] for c in CRATES)|set(i for c in CRATES for i in c[4][0::2])|set(WRIT)|set(FAV)
+print('guides: crates',len(CRATES),'writ items',len(WRIT),'favor recipes',len(FAV),'unresolved',len(gmiss),gmiss[:12])
+ids=need_items|mine|(union&set(sp))|guide_ids
+CLSNAME={'Consumable':0,'Container':1,'Weapon':2,'Armor':4,'Reagent':5,'Projectile':6,'Trade Goods':7,'Tradeskill':7,'Recipe':9,'Quiver':11,'Quest':12,'Key':13,'Miscellaneous':15}
 I={}; vstats=collections.Counter()
 for i in sorted(ids):
     row=sp.get(i); a=ahl.get(i)
@@ -132,7 +163,9 @@ for i in sorted(ids):
                 vunit=v.get('desc_price') or v.get('faq_price') or 0
             if vunit and fac: vstats['vendor_sold']+=1
             else: fac=0
-    I[i]=[name,q,sell,round(vunit,2) if vunit else 0,fac,lim,bop]
+    kind=icls[i][0] if i in icls else CLSNAME.get((a or {}).get('itemClass',''),15)
+    ilvl=int(row['ItemLevel'] or 0) if row else int((a or {}).get('level') or 0)
+    I[i]=[name,q,sell,round(vunit,2) if vunit else 0,fac,lim,bop,kind,ilvl]
 print(vstats, 'items',len(I))
 snap=open('pt/'+MARKET+'.txt').read().strip()
 # --- cross-house reference prices: median of each house's median, per region, needs 3+ houses
@@ -147,12 +180,27 @@ for f in glob.glob('pt/*.txt'):
         p=l.split(':')
         if len(p)>2 and p[1]:
             reg_vals[region][int(p[0])].append(int(p[1]))
-sale_ids=set(r[8] for r in R)|set(i for i,v in I.items() if v[3])|set(r[7] for r in R if r[7])
+sale_ids=set(r[8] for r in R)|set(i for i,v in I.items() if v[3])|set(r[7] for r in R if r[7])|guide_ids
 REF={}
 for region,vals in reg_vals.items():
     REF[region]={i:round(statistics.median(v)) for i,v in vals.items() if i in sale_ids and len(v)>=3}
 print('refs',{k:len(v) for k,v in REF.items()})
-out={'build':BUILD,'generated':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'profs':PROFS,'R':R,'I':I,'ref':REF,'snap':snap}
+# --- how fast things sell: units sold a day per unit listed, median over the region's houses that report sales
+turn={'eu':collections.defaultdict(list),'us':collections.defaultdict(list)}
+for f in glob.glob('pt/*.txt'):
+    lines=open(f).read().strip().split('\n')
+    region=lines[0].split('|')[1].split('/')[3]
+    if region not in turn: continue
+    rows=[l.split(':') for l in lines[1:]]
+    if not any(len(p)>8 and p[8]!='' for p in rows): continue      # this house has no sales estimate yet
+    for p in rows:
+        if len(p)>8 and p[8]!='' and p[3] not in ('','0'):
+            turn[region][int(p[0])].append(int(p[8])/10/int(p[3]))
+TURN={}
+for region,vals in turn.items():
+    TURN[region]={i:round(statistics.median(v),3) for i,v in vals.items() if i in sale_ids and len(v)>=2}
+print('turnover',{k:len(v) for k,v in TURN.items()})
+out={'build':BUILD,'generated':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'profs':PROFS,'R':R,'I':I,'ref':REF,'turn':TURN,'crates':CRATES,'writ':WRIT,'fav':FAV,'snap':snap}
 dest=os.path.join(ROOT,'data','crafts.json')
 json.dump(out,open(dest,'w'),separators=(',',':'),ensure_ascii=False)
 print('bytes',os.path.getsize(dest))

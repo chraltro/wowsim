@@ -13,5 +13,8 @@
 | Profession tables | MetaBot | learn skill for trainer recipes, trainer or recipe item |
 | Item pages | MetaBot (Classic vendor lists) | whether a vendor sells an item, and to which faction |
 | Item endpoint | AHledger `/v1/items/{id}` | sell price for items the client tables lack |
+| Sales estimates | the last field of each AHledger price table | units sold a day per unit listed, the median over a region's houses that report sales |
+| Crate guide | Method | every Waylaid Crate and the fills it accepts (`guides.json`) |
+| Favor guide | wow.gg | Merchant's Favor per crate, Craftsman's Writ items, recipes sold for favor (`guides.json`) |
 
 AHledger's API is free to use with credit; the page says "Prices from AHledger" and links to ahledger.com.
