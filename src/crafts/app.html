@@ -63,10 +63,18 @@ h1 { font-family: var(--display); font-weight: 600; font-size: 24px; letter-spac
 .house .chg { grid-column: 2; grid-row: 1; color: var(--accent); font-weight: 500; }
 
 /* Tabs */
-.tabs { position: relative; display: flex; gap: 22px; border-bottom: 1px solid var(--line-2); margin-top: 4px; }
-.tabs button { border: 0; background: none; padding: 10px 0 11px; font-weight: 600; font-size: 15px; color: var(--muted); transition: color .2s; }
+.tabs {
+  position: relative; display: flex; gap: clamp(13px, 3.9vw, 24px); margin: 4px calc(-1 * var(--gutter)) 0; padding: 0 var(--gutter);
+  box-shadow: inset 0 -1px 0 var(--line-2); overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain;
+}
+/* When the bar is wider than the screen, the cut-off side fades so it reads as more to scroll to. */
+.tabs.more-r { -webkit-mask-image: linear-gradient(to left, transparent, #000 34px); mask-image: linear-gradient(to left, transparent, #000 34px); }
+.tabs.more-l { -webkit-mask-image: linear-gradient(to right, transparent, #000 34px); mask-image: linear-gradient(to right, transparent, #000 34px); }
+.tabs.more-l.more-r { -webkit-mask-image: linear-gradient(to right, transparent, #000 34px, #000 calc(100% - 34px), transparent); mask-image: linear-gradient(to right, transparent, #000 34px, #000 calc(100% - 34px), transparent); }
+.tabs::-webkit-scrollbar { display: none; }
+.tabs button { flex: none; border: 0; background: none; padding: 10px 0 11px; font-weight: 600; font-size: 15px; color: var(--muted); white-space: nowrap; transition: color .2s; }
 .tabs button[aria-selected="true"] { color: var(--ink); }
-.tabs .ink { position: absolute; bottom: -1px; left: 0; height: 2px; width: 40px; background: var(--accent); transition: transform .28s var(--ease), width .28s var(--ease); }
+.tabs .ink { position: absolute; bottom: 0; left: 0; height: 2px; width: 40px; background: var(--accent); transition: transform .28s var(--ease), width .28s var(--ease); }
 
 /* The question */
 .ask { margin: 18px 0 0; font-size: 19px; line-height: 1.75; font-weight: 400; color: var(--muted); text-wrap: pretty; }
@@ -77,7 +85,6 @@ h1 { font-family: var(--display); font-weight: 600; font-size: 24px; letter-spac
 }
 .ask select:hover, .ask input:hover, .ask select:focus-visible, .ask input:focus-visible { border-bottom-style: solid; outline: 0; }
 .ask input { width: 3.2ch; text-align: center; -moz-appearance: textfield; cursor: text; }
-.ask #budget { width: 3.8ch; }
 .ask input::-webkit-outer-spin-button, .ask input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 .ask option { color: var(--ink); background: var(--raised); font-weight: 400; }
 #measure { position: absolute; visibility: hidden; white-space: pre; font-size: 19px; font-weight: 600; pointer-events: none; left: -9999px; top: 0; }
@@ -109,6 +116,7 @@ h1 { font-family: var(--display); font-weight: 600; font-size: 24px; letter-spac
 .textbtn:hover { text-decoration: underline; text-underline-offset: 3px; }
 .tally { margin: 14px 0 8px; color: var(--muted); font-size: 13.5px; max-width: 68ch; }
 .tally b { color: var(--ink); font-weight: 600; }
+.tally b.pos { color: var(--good); }
 .tally .textbtn { padding: 0; min-height: 0; font-size: inherit; }
 
 /* Ledger */
@@ -170,7 +178,7 @@ button.row-head:hover { background: color-mix(in srgb, var(--raised) 55%, transp
 /* Flips */
 .sect { margin-top: 26px; }
 .sect h2 { font-family: var(--body); font-size: 17px; font-weight: 600; margin: 0 0 4px; text-wrap: balance; }
-.sect .note { margin: 0 0 10px; color: var(--muted); font-size: 13.5px; max-width: 64ch; }
+.sect .note, p.note { margin: 0 0 10px; color: var(--muted); font-size: 13.5px; max-width: 64ch; }
 
 footer { color: var(--muted); font-size: 12.5px; display: grid; gap: 6px; padding-top: 18px; margin-top: 30px; border-top: 1px solid var(--line-2); }
 footer p { margin: 0; max-width: 70ch; }
@@ -233,6 +241,8 @@ textarea { width: 100%; border: 1px solid var(--line-2); background: var(--bg); 
     <button role="tab" id="tab-crafts" aria-selected="true" aria-controls="view-crafts" type="button">Crafts</button>
     <button role="tab" id="tab-flips" aria-selected="false" aria-controls="view-flips" type="button">Flips</button>
     <button role="tab" id="tab-plan" aria-selected="false" aria-controls="view-plan" type="button">Plan</button>
+    <button role="tab" id="tab-recipes" aria-selected="false" aria-controls="view-recipes" type="button">Recipes</button>
+    <button role="tab" id="tab-leveling" aria-selected="false" aria-controls="view-leveling" type="button">Leveling</button>
     <button role="tab" id="tab-market" aria-selected="false" aria-controls="view-market" type="button">Market</button>
     <span class="ink" id="tabInk" aria-hidden="true"></span>
   </nav>
@@ -282,6 +292,33 @@ textarea { width: 100%; border: 1px solid var(--line-2); background: var(--bg); 
     <p class="note" style="margin-top:14px">Sure auction-to-vendor flips and crafts from your professions, best return per gold first. Crafts for the auction house stop at a quarter of what is already listed, and anything gaining less than 1% of the budget is left out.</p>
   </section>
 
+  <section id="view-recipes" role="tabpanel" aria-labelledby="tab-recipes" hidden>
+    <p class="ask">Recipes worth buying for <select id="rbProf" aria-label="Profession"></select>.</p>
+    <div class="tools">
+      <input class="search" type="search" id="rq" placeholder="Search recipes" autocomplete="off" aria-label="Search recipes">
+      <button class="textbtn" type="button" data-settings>Settings</button>
+    </div>
+    <p class="tally" id="rbTally" aria-live="polite"></p>
+    <ol class="ledger" id="rbList"></ol>
+    <div class="more" id="rbMore"></div>
+    <div class="sect" id="rbWatchSect" hidden>
+      <h2>Would pay, but nobody is selling one</h2>
+      <p class="note">For when one drops or turns up on the auction house. The figure is the expected gain per craft.</p>
+      <ol class="ledger" id="rbWatch"></ol>
+      <div class="more" id="rbWatchMore"></div>
+    </div>
+    <p class="note" style="margin-top:16px">The figure is what a first batch of crafts is expected to make, less the price of the recipe. A batch is a quarter of what is already listed, or 20 when the result goes to a vendor. Recipes sold for Merchant's Favor are priced through the cheapest crates.</p>
+  </section>
+
+  <section id="view-leveling" role="tabpanel" aria-labelledby="tab-leveling" hidden>
+    <p class="ask">Level <select id="lvProf" aria-label="Profession"></select> from <input id="lvFrom" type="number" min="1" max="299" inputmode="numeric" aria-label="Skill now"> to <input id="lvTo" type="number" min="2" max="300" inputmode="numeric" aria-label="Target skill">.</p>
+    <label class="check" for="lvBought"><input type="checkbox" id="lvBought"> Use recipes I would have to buy</label>
+    <p class="tally" id="lvTally" aria-live="polite"></p>
+    <ol class="ledger" id="lvList"></ol>
+    <div class="acts" id="lvActs" style="margin-top:14px"></div>
+    <p class="note" style="margin-top:16px">The cheapest recipe for each skill point at this scan's prices, from recipes a trainer teaches. What you make sells where it is expected to bring more. The auction house counts for a quarter of what is already listed, and anything a later step needs is kept. A recipe is dropped once it gives a point less than one time in four, and a switch of recipe has to save 1% of the materials. Enchanting and the gathering professions level without a price, so they are left out.</p>
+  </section>
+
   <section id="view-market" role="tabpanel" aria-labelledby="tab-market" hidden>
     <div class="sect" style="margin-top:18px">
       <h2>What a Merchant's Favor costs</h2>
@@ -299,6 +336,7 @@ textarea { width: 100%; border: 1px solid var(--line-2); background: var(--bg); 
   <footer>
     <p><a href="https://ahledger.com/?utm_source=forever_craft_profits" target="_blank" rel="noopener">Prices from AHledger</a>, built from player scans. Prices are what sellers ask, not what sold.</p>
     <p>Recipes, skill levels and vendor prices come from the Forever game files (build <span id="buildNo"></span>). Which vendors sell an item comes from MetaBot's Classic vendor lists, so a few may differ in Forever.</p>
+    <p>When a trainer teaches a recipe, and for how much, is Classic's level and fee from the MissingTradeSkillsList addon, moved by as much as Forever moved that recipe's skill colors. For recipes new in Forever it is MetaBot's estimate.</p>
     <p>Expected profit assumes a 48-hour listing, tried up to three times, then a vendor. It counts the 5% cut and a deposit of 60% of the vendor price per expired listing. How fast things sell is AHledger's estimate from consecutive scans.</p>
     <p>Crate fills from <a href="https://www.method.gg/wow-forever/how-to-get-waylaid-crates-and-merchants-favor-in-wow-forever" target="_blank" rel="noopener">Method</a>. Favor per crate, writs and favor recipes from <a href="https://wow.gg/guides/merchants-favor" target="_blank" rel="noopener">wow.gg</a>.</p>
   </footer>

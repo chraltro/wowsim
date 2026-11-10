@@ -6,6 +6,7 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 RAW="$HERE/raw"
 UA="wowsim-crafts (personal tool; prices from AHledger)"
 BUILD=1.60.1.70862
+ERA_BUILD=1.15.9.70576
 MARKET=forever.rppvp.alliance.eu
 mkdir -p "$RAW/pt" "$RAW/mb" "$RAW/mbprof" "$RAW/ahl_items"
 cd "$RAW"
@@ -23,7 +24,11 @@ while read -r mid; do curl -sS -m 40 -A "$UA" -o "pt/$mid.txt" "https://api.ahle
 for t in ItemSparse Item SkillLineAbility ItemEffect ItemXItemEffect; do
   curl -sS -m 180 -o "$t.csv" "https://wago.tools/db2/$t/csv?build=$BUILD"
 done
-# MetaBot recipe tables: learn skill and whether a recipe comes from a trainer or a recipe item
+# Classic Era: the same skill table one game back, and when a Classic trainer teaches each recipe and for how much.
+# Forever moved recipes down the skill range; build_data.py moves the Classic learn skill by the same amount.
+curl -sS -m 180 -o SkillLineAbility_era.csv "https://wago.tools/db2/SkillLineAbility/csv?build=$ERA_BUILD"
+curl -sS -m 60 -o mtsl_skills.lua "https://raw.githubusercontent.com/Thumbkin/MissingTradeSkillsList_Classic/master/data/skills.lua"
+# MetaBot recipe tables: whether a recipe comes from a trainer or a recipe item, and a learn skill for recipes new in Forever
 for p in alchemy blacksmithing cooking enchanting engineering first-aid leatherworking mining herbalism skinning tailoring; do
   curl -sS -m 120 -A "$UA" -o "mbprof/$p.html" "https://metabot.gg/en/wow-forever/professions/$p"; sleep 1
 done

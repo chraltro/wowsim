@@ -61,13 +61,16 @@ function makeEngine(D) {
     return {
       sid: r[0], name: r[1] || (res ? res[0] : `Item ${r[8]}`), prof: r[2], learn: r[3],
       yellow: r[4], grey: r[5], src: r[6], ritem: r[7], res: r[8], qmin: r[9], qmax: r[10], reag,
+      est: r[12] ? 1 : 0, fee: r[13] || 0,
     };
   });
   const craftIndex = D.profs.map(() => new Map());
+  const isReagent = new Set();
   for (const r of recipes) {
     const m = craftIndex[r.prof];
     if (!m.has(r.res)) m.set(r.res, []);
     m.get(r.res).push(r);
+    for (const [id] of r.reag) isReagent.add(id);
   }
 
   function context(pt, opts) {
@@ -84,12 +87,13 @@ function makeEngine(D) {
     };
     // Which recipes may supply a material: opts.mine (profession -> skill) when set, else the recipe's own profession.
     const mine = opts.mine || null;
+    const usable = (r) => !(opts.trainerMats && r.src === 2); // trainerMats: materials only from recipes a trainer teaches
     const makers = (id, prof) => {
       const out = [];
       if (mine) {
-        for (const k of Object.keys(mine)) for (const r of craftIndex[k].get(id) || []) if (r.learn <= mine[k]) out.push(r);
+        for (const k of Object.keys(mine)) for (const r of craftIndex[k].get(id) || []) if (r.learn <= mine[k] && usable(r)) out.push(r);
       } else {
-        for (const r of craftIndex[prof].get(id) || []) if (r.learn <= opts.maxSkill) out.push(r);
+        for (const r of craftIndex[prof].get(id) || []) if (r.learn <= opts.maxSkill && usable(r)) out.push(r);
       }
       return out;
     };
@@ -221,9 +225,11 @@ function makeEngine(D) {
       return out.filter((e) => e.profit != null && e.profit >= 1).sort((a, b) => b.profit - a.profit);
     }
     // Everything to buy and every craft to make first for n crafts of r, with crafted materials expanded.
-    function plan(r, n) {
+    // own: Map of item -> count already in the bags. Those are used first and taken out of the map.
+    function plan(r, n, own) {
       const buy = new Map();
       const steps = new Map();
+      const used = new Map();
       let ok = true;
       const add = (id, q, src, u) => {
         const k = id + '|' + src;
@@ -232,7 +238,13 @@ function makeEngine(D) {
       };
       (function walk(rec, crafts, stack) {
         for (const [id, q] of rec.reag) {
-          const need = q * crafts;
+          let need = q * crafts;
+          const mineNow = own ? own.get(id) || 0 : 0;
+          if (mineNow > 0) {
+            const take = Math.min(mineNow, need);
+            own.set(id, mineNow - take); used.set(id, (used.get(id) || 0) + take); need -= take;
+            if (need <= 0) continue;
+          }
           const b = reagentUnit(id, rec.prof, stack);
           if (!b) { ok = false; add(id, need, null, null); continue; }
           if (b.src !== 'craft') { add(id, need, b.src, b.u); continue; }
@@ -246,10 +258,10 @@ function makeEngine(D) {
       let stock = Infinity;
       for (const b of list) {
         if (b.src !== 'ah') continue;
-        const have = (pt.map.get(b.id) || {}).qty || 0;
-        stock = Math.min(stock, Math.floor(have / (b.q / n)));
+        const listed = (pt.map.get(b.id) || {}).qty || 0;
+        stock = Math.min(stock, Math.floor(listed / (b.q / n)));
       }
-      return { buy: list, steps: [...steps.values()], cost: ok ? list.reduce((t, b) => t + b.u * b.q, 0) : null, stock };
+      return { buy: list, steps: [...steps.values()], cost: ok ? list.reduce((t, b) => t + b.u * b.q, 0) : null, stock, used };
     }
     // Skill ranges where a trainer recipe is one of the two cheapest skill-ups of its profession: levelers keep making it.
     const fodderMemo = new Map();
@@ -280,9 +292,10 @@ function makeEngine(D) {
         const fills = [];
         for (let i = 0; i < flat.length; i += 2) {
           const fid = flat[i], q = flat[i + 1];
-          const buyU = [vendorUnit(fid), ahUnit(fid)].filter((x) => x != null).sort((a, b) => a - b)[0];
+          const vu = vendorUnit(fid), au = ahUnit(fid);
+          const buyU = [vu, au].filter((x) => x != null).sort((a, b) => a - b)[0];
           const b = reagentUnit(fid, 0, []);
-          fills.push({ id: fid, q, buy: buyU != null ? buyU * q : null, listed: (pt.map.get(fid) || {}).qty || 0,
+          fills.push({ id: fid, q, buy: buyU != null ? buyU * q : null, listed: (pt.map.get(fid) || {}).qty || 0, vendor: vu != null && buyU === vu,
             craft: b && b.src === 'craft' ? b.u * q : null, via: b && b.src === 'craft' ? b.via : null });
         }
         const priced = fills.filter((f) => f.buy != null).sort((a, b) => a.buy - b.buy);
@@ -292,6 +305,20 @@ function makeEngine(D) {
         const total = best && crate != null ? best.buy + crate : null;
         return { id, tier, level, favor, fills, best, crate, listed: p ? p.qty : 0, total, perFavor: total != null && favor ? total / favor : null };
       });
+    }
+    // What an amount of Merchant's Favor costs here: the cheapest crates per favor first, as many as are listed.
+    function favor(need) {
+      const cs = crates().filter((c) => c.perFavor != null).sort((a, b) => a.perFavor - b.perFavor);
+      let left = need, cost = 0;
+      const used = [];
+      for (const c of cs) {
+        if (left <= 0) break;
+        const can = Math.min(c.listed, c.best.vendor ? Infinity : Math.floor(c.best.listed / c.best.q));
+        const n = Math.min(can, Math.ceil(left / c.favor));
+        if (n < 1) continue;
+        cost += n * c.total; left -= n * c.favor; used.push({ c, n });
+      }
+      return left > 0 ? null : { cost, used };
     }
     // Price of trade materials against their 7-day median, grouped by item level in tens. The middle item of each group.
     function trend() {
@@ -309,8 +336,12 @@ function makeEngine(D) {
       }
       return rows;
     }
-    return { evalRecipe, ahToVendor, vendorToAh, craftToVendor, plan, fodder, crates, trend, turnOf, ahUnit, saleUnit, vendorUnit };
+    return { evalRecipe, ahToVendor, vendorToAh, craftToVendor, plan, fodder, crates, favor, trend, turnOf, ahUnit, saleUnit, vendorUnit };
   }
+  // A one-off asking price nobody else backs up is no plan.
+  const thinSale = (e) => e.via === 'ah' && e.listed <= 2 && (!e.sale || e.sale.ref == null);
+  // One batch of crafts: a quarter of what is already listed when it goes to the auction house, 20 for a vendor.
+  const batchCap = (e) => (e.via === 'vendor' ? 20 : Math.max(1, Math.floor(e.listed * 0.25 / e.y)));
   // What to do with a gold budget: sure auction-to-vendor flips and crafts in your professions, best return per gold first.
   // mine: { professionIndex: skill }. Crafts taught by a recipe item are left out unless withRecipes is set.
   function spend(pt, opts, mine, budget, withRecipes) {
@@ -321,9 +352,8 @@ function makeEngine(D) {
       if (mine[r.prof] == null || r.learn > mine[r.prof] || (r.src === 2 && !withRecipes)) continue;
       const e = ctx.evalRecipe(r);
       if (e.exp == null || e.exp <= 0 || !(e.c.cost > 0)) continue;
-      if (e.via === 'ah' && e.listed <= 2 && (!e.sale || e.sale.ref == null)) continue; // a one-off asking price is no plan
-      const cap = e.via === 'vendor' ? 20 : Math.max(1, Math.floor(e.listed * 0.25 / e.y));
-      cands.push({ kind: 'craft', e, cost: e.c.cost, gain: e.exp, cap, sure: e.via === 'vendor', needs: ctx.plan(r, 1).buy });
+      if (thinSale(e)) continue;
+      cands.push({ kind: 'craft', e, cost: e.c.cost, gain: e.exp, cap: batchCap(e), sure: e.via === 'vendor', needs: ctx.plan(r, 1).buy });
     }
     cands.sort((a, b) => b.gain / b.cost - a.gain / a.cost);
     const minLine = Math.max(50, budget * 0.01);
@@ -348,7 +378,226 @@ function makeEngine(D) {
     const sum = (f) => lines.reduce((t, l) => t + f(l), 0);
     return { ctx, lines, spent: budget - left, gain: sum((l) => l.n * l.gain), sure: sum((l) => (l.sure ? l.n * l.gain : 0)), minLine };
   }
-  return { items, recipes, craftIndex, context, spend };
+
+  // Recipe items and what buying one is worth: its price here against the expected gain of a first batch of crafts.
+  // Each row: the ways to get the recipe (auction house, vendor, Merchant's Favor through crates), the cheapest of
+  // them, the batch size, and what is left after the batch has paid for the recipe.
+  function recipeBuys(pt, opts) {
+    const base = Object.assign({}, opts, { sellTo: 'best', mine: null });
+    const byLearn = new Map();
+    const ctxFor = (skill) => {
+      if (!byLearn.has(skill)) byLearn.set(skill, context(pt, Object.assign({}, base, { maxSkill: skill })));
+      return byLearn.get(skill);
+    };
+    const any = ctxFor(300);
+    const favorMemo = new Map();
+    const favorCost = (n) => { if (!favorMemo.has(n)) favorMemo.set(n, any.favor(n)); return favorMemo.get(n); };
+    const rows = [];
+    for (const r of recipes) {
+      if (r.src !== 2 || !r.ritem) continue;
+      const ctx = ctxFor(r.learn); // materials from this profession's recipes up to the skill the recipe itself needs
+      const e = ctx.evalRecipe(r);
+      if (e.exp == null) continue;
+      const it = items.get(r.ritem), p = pt.map.get(r.ritem);
+      const ways = [];
+      if (p && p.min != null) ways.push({ src: 'ah', price: p.min, listed: p.qty });
+      const vu = ctx.vendorUnit(r.ritem);
+      if (vu != null) ways.push({ src: 'vendor', price: vu, limited: !!(it && it[5]) });
+      const fv = D.fav && D.fav[r.ritem];
+      if (fv) {
+        const f = favorCost(fv[0]);
+        ways.push({ src: 'favor', price: f ? f.cost : null, favor: fv[0], honored: !!fv[1], crates: f ? f.used : null });
+      }
+      const way = ways.filter((w) => w.price != null).sort((a, b) => a.price - b.price)[0] || null;
+      const cap = batchCap(e);
+      const stock = ctx.plan(r, 1).stock;
+      const n = Math.max(0, Math.min(cap, stock));
+      rows.push({ r, e, ctx, ways, way, price: way ? way.price : null, cap, stock, n, thin: thinSale(e),
+        net: way ? e.exp * n - way.price : null, payback: way && e.exp > 0 ? Math.ceil(way.price / e.exp - 1e-9) : null });
+    }
+    return rows;
+  }
+
+  // The cheapest climb from one skill to another at this scan's prices, with recipes a trainer teaches.
+  // bought: also allow recipes taught by a recipe item that a vendor sells or the auction house lists.
+  // A step is one recipe made for a run of skill points, while it still gives a point at least one time in four.
+  // Learning a recipe costs once: Classic's trainer fee, or the recipe item's price. Results sell where they are
+  // expected to bring more, but the auction house only counts for a quarter of what is already listed; the rest goes
+  // to a vendor. Results a later step needs are kept instead.
+  const GAP = 1e12;
+  function levelPath(pt, opts, prof, from, to, mine, bought) {
+    from = Math.max(1, Math.round(from) || 1); to = Math.round(to) || 0;
+    const N = to - from;
+    if (!(N > 0)) return { prof, from, to, steps: [], gaps: [], buy: [], short: [], mats: 0, fees: 0, back: 0, net: 0, missed: 0 };
+    const base = Object.assign({}, opts, { sellTo: 'best', maxSkill: 300, trainerMats: true });
+    // Materials can be crafted with this profession at the skill reached so far, and with the other professions given.
+    const marks = [...new Set(recipes.filter((r) => r.prof === prof && r.src !== 2 && isReagent.has(r.res)).map((r) => r.learn))].sort((a, b) => a - b);
+    const segOf = (s) => { let k = 0; while (k < marks.length && marks[k] <= s) k++; return k; };
+    const ctxs = new Map();
+    const ctxAt = (s) => {
+      const k = segOf(s);
+      if (!ctxs.has(k)) ctxs.set(k, context(pt, Object.assign({}, base, { mine: Object.assign({}, mine, { [prof]: k ? marks[k - 1] : 0 }) })));
+      return ctxs.get(k);
+    };
+    const feeOf = new Map();
+    const pool = [];
+    for (const r of recipes) {
+      if (r.prof !== prof || !r.yellow || !r.grey || r.learn >= to || r.grey <= from) continue;
+      if (r.src !== 2) { feeOf.set(r.sid, { cost: r.fee, kind: r.fee ? 'trainer' : null }); pool.push(r); continue; }
+      if (!bought || !r.ritem) continue;
+      const p = pt.map.get(r.ritem), vu = ctxAt(from).vendorUnit(r.ritem);
+      const ways = [];
+      if (p && p.min != null) ways.push({ cost: p.min, kind: 'ah' });
+      if (vu != null) ways.push({ cost: vu, kind: 'vendor' });
+      if (!ways.length) continue;
+      feeOf.set(r.sid, ways.sort((a, b) => a.cost - b.cost)[0]); pool.push(r);
+    }
+    // Per recipe and skill point: crafts for one point, and the prices in force at that skill.
+    const infos = new Map();
+    const info = (r, s) => {
+      const key = segOf(s) + '|' + r.sid;
+      if (!infos.has(key)) {
+        const ctx = ctxAt(s), e = ctx.evalRecipe(r);
+        let d = null;
+        const stock = e.c.cost != null ? ctx.plan(r, 1).stock : 0;
+        if (stock >= 1) { // the listed materials cover at least one craft
+          const ah = e.via === 'ah' && !thinSale(e);
+          d = { e, ctx, cost: e.c.cost, vend: e.vend, best: ah ? e.exp + e.c.cost : e.vend, cap: ah ? Math.floor(e.listed * 0.25 / e.y) : 0, stock };
+        }
+        infos.set(key, d);
+      }
+      return infos.get(key);
+    };
+    const table = pool.map((r) => {
+      const row = new Array(N).fill(null);
+      for (let j = 0; j < N; j++) {
+        const s = from + j;
+        if (r.learn > s) continue;
+        const ch = skillChance(r, s);
+        if (!ch) break;
+        const d = info(r, s);
+        if (d) row[j] = { n: 1 / ch, d };
+      }
+      return row;
+    });
+    // A recipe that gives a point less than one time in four is nearly grey: it only counts where nothing better does.
+    for (let j = 0; j < N; j++) {
+      if (!table.some((row) => row[j] && row[j].n <= 4)) continue;
+      for (const row of table) if (row[j] && row[j].n > 4) row[j] = null;
+    }
+    // Shortest path over skill points. A run of recipe r from point i to j costs its crafts, rounded up, plus its fee
+    // the first time. Each point remembers what its cheapest way there has already made, so a recipe picked up a
+    // second time pays no second fee and gets no second auction-house quarter. Crafts past the listed materials
+    // count a quarter dearer, which steers toward what can be bought today. bother[i]: what a step starting at point i
+    // has to save to be worth switching recipes for.
+    function solve(bother) {
+      const cost = new Float64Array(N + 1).fill(Infinity);
+      const prev = new Array(N + 1).fill(null);
+      const done = new Array(N + 1).fill(null); // done[i]: recipe index -> crafts made on the cheapest way to point i
+      cost[0] = 0; done[0] = new Map();
+      for (let i = 0; i < N; i++) {
+        if (i > 0) {
+          const p = prev[i];
+          done[i] = new Map(done[p.i]);
+          if (p.ri >= 0) {
+            let crafts = 0;
+            for (let j = p.i; j < i; j++) crafts += table[p.ri][j].n;
+            done[i].set(p.ri, (done[i].get(p.ri) || 0) + crafts);
+          }
+        }
+        if (cost[i] + GAP < cost[i + 1]) { cost[i + 1] = cost[i] + GAP; prev[i + 1] = { i, ri: -1 }; } // no priced recipe gives this point
+        const last = prev[i] ? prev[i].ri : -1;
+        for (let ri = 0; ri < pool.length; ri++) {
+          const row = table[ri];
+          if (ri === last || !row[i]) continue;
+          const had = done[i].get(ri) || 0;
+          let made = had;
+          let acc = (done[i].has(ri) ? 0 : feeOf.get(pool[ri].sid).cost) + bother[i];
+          for (let j = i; j < N && row[j]; j++) {
+            const n = row[j].n, d = row[j].d;
+            const ahN = Math.max(0, Math.min(n, d.cap - made));
+            const over = Math.max(0, Math.min(n, made + n - d.stock));
+            acc += n * d.cost - ahN * d.best - (n - ahN) * d.vend + over * d.cost * 0.25;
+            made += n;
+            const whole = Math.ceil(made - had - 1e-9) - (made - had); // the part of a craft a step is rounded up by
+            const t = cost[i] + acc + whole * (d.cost - d.vend);
+            if (t < cost[j + 1]) { cost[j + 1] = t; prev[j + 1] = { i, ri }; }
+          }
+        }
+      }
+      const runs = [];
+      for (let j = N; j > 0; j = prev[j].i) runs.push({ i: prev[j].i, j, ri: prev[j].ri });
+      return runs.reverse();
+    }
+    // Walk the runs in order: buy materials, keep what later steps need, sell the rest.
+    function account(runs) {
+      const out = { prof, from, to, steps: [], gaps: [], buy: [], short: [], mats: 0, fees: 0, back: 0, net: 0, missed: 0 };
+      const madeSoFar = new Map(), bags = new Map(), buyAll = new Map();
+      for (const run of runs) {
+        const s0 = from + run.i, s1 = from + run.j;
+        if (run.ri < 0) {
+          const g = out.gaps[out.gaps.length - 1];
+          if (g && g[1] === s0) g[1] = s1; else out.gaps.push([s0, s1]);
+          out.missed += s1 - s0;
+          continue;
+        }
+        const r = pool[run.ri], row = table[run.ri], d = row[run.i].d;
+        let crafts = 0;
+        for (let j = run.i; j < run.j; j++) crafts += row[j].n;
+        const n = Math.ceil(crafts - 1e-9);
+        const own = new Map();
+        for (const [id, lots] of bags) { const q = lots.reduce((t, l) => t + l.q, 0); if (q > 0) own.set(id, q); }
+        const pl = d.ctx.plan(r, n, own);
+        for (const [id, q] of pl.used) {
+          let left = q;
+          for (const lot of bags.get(id)) { const t = Math.min(lot.q, left); lot.q -= t; lot.step.keep += t; left -= t; if (left <= 0) break; }
+        }
+        const before = madeSoFar.get(r.sid) || 0;
+        const fee = before > 0 ? { cost: 0, kind: null } : feeOf.get(r.sid);
+        const step = { r, e: d.e, d, ctx: d.ctx, from: s0, to: s1, n, buy: pl.buy, pre: pl.steps, mats: pl.cost,
+          kept: [...pl.used].map(([id, q]) => ({ id, q })), fee: fee.cost, feeKind: fee.kind,
+          made: n * d.e.y, keep: 0, before, short: false };
+        madeSoFar.set(r.sid, before + n);
+        if (isReagent.has(r.res)) { if (!bags.has(r.res)) bags.set(r.res, []); bags.get(r.res).push({ step, q: step.made }); }
+        for (const b of pl.buy) {
+          const k = b.id + '|' + b.src, cur = buyAll.get(k);
+          if (cur) cur.q += b.q; else buyAll.set(k, { id: b.id, q: b.q, src: b.src, u: b.u });
+        }
+        out.steps.push(step);
+      }
+      out.buy = [...buyAll.values()];
+      const shortIds = new Set();
+      for (const b of out.buy) {
+        if (b.src !== 'ah') continue;
+        const listed = (pt.map.get(b.id) || {}).qty || 0;
+        if (b.q > listed) { out.short.push({ id: b.id, need: b.q, listed }); shortIds.add(b.id); }
+      }
+      for (const st of out.steps) {
+        const y = st.e.y, sell = Math.max(0, st.made - st.keep);
+        st.ah = Math.min(sell, Math.max(0, st.d.cap - st.before) * y);
+        st.vendor = sell - st.ah;
+        st.back = (st.ah * st.d.best + st.vendor * st.d.vend) / y;
+        st.net = st.mats + st.fee - st.back;
+        st.short = st.buy.some((b) => b.src === 'ah' && shortIds.has(b.id));
+        out.mats += st.mats; out.fees += st.fee; out.back += st.back;
+      }
+      out.net = out.mats + out.fees - out.back;
+      return out;
+    }
+    // A switch of recipe has to save 50 copper, or half of what a skill point's materials cost around that skill
+    // (the 25 points around it on a first pass), whichever is more. That keeps one-craft detours out.
+    const first = account(solve(new Float64Array(N).fill(50)));
+    const perPoint = new Float64Array(N);
+    for (const st of first.steps) for (let j = st.from - from; j < st.to - from; j++) perPoint[j] = st.mats / (st.to - st.from);
+    const bother = new Float64Array(N);
+    for (let i = 0; i < N; i++) {
+      let sum = 0, n = 0;
+      for (let j = Math.max(0, i - 12); j <= Math.min(N - 1, i + 12); j++) { sum += perPoint[j]; n++; }
+      bother[i] = Math.max(50, 0.5 * sum / n);
+    }
+    return account(solve(bother));
+  }
+  return { items, recipes, craftIndex, context, spend, recipeBuys, levelPath };
 }
 
 // Chance of a skill point from one craft at this skill: 1 while orange, falling to 0 at grey. Null when unknown.

@@ -1,45 +1,52 @@
-import re, html, json, sys, collections
-def tokens(path):
-    s=open(path,encoding='utf-8',errors='ignore').read()
-    s=re.sub(r'<script.*?</script>','',s,flags=re.S); s=re.sub(r'<style.*?</style>','',s,flags=re.S)
-    s=re.sub(r'<[^>]+>',' | ',s); s=html.unescape(s)
-    return [x.strip() for x in s.split('|') if x.strip()]
-def isint(x):
-    return re.fullmatch(r'\d+',x) is not None
+"""Parse a MetaBot profession page into one dict per recipe row.
+
+Every recipe row carries an aria-label like "Learn at 175; yellow from 200, green from 213, grey at 225".
+A learn skill followed by * is MetaBot's own estimate: the client does not say when a trainer offers the recipe.
+"""
+import re, html, sys, collections
+
+ROW = re.compile(r'<tr[^>]*>(.*?)</tr>', re.S)
+LABEL = re.compile(r'aria-label="Learn at (\d+); yellow from (\d+), green from (\d+), grey at (\d+)"')
+NAME = re.compile(r'<bdi class="[^"]*nameText[^"]*">(.*?)</bdi>', re.S)
+REAGENT = re.compile(r'<li>.*?<bdi class="[^"]*nameText[^"]*">(.*?)</bdi>.*?<span class="[^"]*qty[^"]*">×(?:<!-- -->)?(\d+)</span>.*?</li>', re.S)
+SOURCE = re.compile(r'<span class="[^"]*srcTag[^"]*"[^>]*>(.*?)</span>', re.S)
+CELL = re.compile(r'<td[^>]*>(.*?)</td>', re.S)
+
+
+def text(s):
+    return html.unescape(re.sub(r'<[^>]+>', '', s)).strip()
+
+
 def parse(path):
-    t=tokens(path)
-    # find header 'Reagents','Source'
-    starts=[i for i in range(len(t)-1) if t[i]=='Reagents' and t[i+1]=='Source']
-    rows=[]
-    for st in starts:
-        i=st+2
-        while i < len(t)-6:
-            try:
-                name=t[i]; j=i+1; new=False
-                if t[j]=='New': new=True; j+=1
-                if not isint(t[j]): break
-                learn=int(t[j]); j+=1
-                if t[j]=='*': j+=1
-                o,y,g,gr=t[j:j+4]
-                if not all(isint(v) for v in (o,y,g,gr)): break
-                j+=4; reag=[]
-                while j+2 < len(t) and t[j+1]=='×' and isint(t[j+2]):
-                    reag.append((t[j],int(t[j+2]))); j+=3
-                src=t[j]; j+=1
-                rows.append({'name':name,'new':new,'learn':learn,'orange':int(o),'yellow':int(y),'green':int(g),'grey':int(gr),'reagents':reag,'source':src})
-                i=j
-            except Exception as e:
-                break
-    # dedupe identical rows (page may repeat table)
-    seen=set(); out=[]
-    for r in rows:
-        k=(r['name'],tuple(r['reagents']),r['learn'])
-        if k in seen: continue
-        seen.add(k); out.append(r)
-    return out
-if __name__=='__main__':
-    rows=parse(sys.argv[1])
-    print(len(rows), collections.Counter(r['source'] for r in rows))
-    for r in rows[:3]: print(r)
-    for r in rows:
-        if r['name'] in ('Red Linen Bag','Linen Bag','Spidersilk Boots'): print(r)
+    s = open(path, encoding='utf-8', errors='ignore').read()
+    s = re.sub(r'<script.*?</script>', '', s, flags=re.S)
+    rows, seen = [], set()
+    for body in ROW.findall(s):
+        lab = LABEL.search(body)
+        if not lab:
+            continue
+        cells = CELL.findall(body)
+        name = NAME.search(cells[0]) if cells else None
+        if not name or len(cells) < 4:
+            continue
+        learn, yellow, green, grey = (int(x) for x in lab.groups())
+        reagents = [(text(a), int(q)) for a, q in REAGENT.findall(body)]
+        src = SOURCE.search(body)
+        row = {
+            'name': text(name.group(1)), 'new': '>New<' in cells[0], 'learn': learn, 'est': '*' in text(cells[1]),
+            'orange': learn, 'yellow': yellow, 'green': green, 'grey': grey, 'reagents': reagents,
+            'source': text(src.group(1)) if src else '—',
+        }
+        key = (row['name'], tuple(reagents), learn, yellow, grey)
+        if key in seen:   # the page repeats its tables
+            continue
+        seen.add(key)
+        rows.append(row)
+    return rows
+
+
+if __name__ == '__main__':
+    out = parse(sys.argv[1])
+    print(len(out), collections.Counter(r['source'] for r in out), 'estimated learn:', sum(r['est'] for r in out))
+    for r in out[:3]:
+        print(r)

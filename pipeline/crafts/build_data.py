@@ -2,7 +2,8 @@
 
 Recipes and reagents: AHledger's crafting endpoint. Skill levels, recipe items, item names, qualities and
 vendor prices: the Forever client tables (via wago.tools). Which vendors sell an item, per faction: MetaBot's
-item pages (Classic vendor lists). Learn skill for trainer recipes: MetaBot's profession tables.
+item pages (Classic vendor lists). Learn skill for trainer recipes: Classic's trainer levels (MissingTradeSkillsList), moved by as much as Forever
+moved the recipe's skill colors; MetaBot's estimate where a recipe is new in Forever.
 Reference prices for trimming: the median of each house's median, per region, from AHledger price tables.
 """
 import json, csv, glob, re, os, sys, collections, time
@@ -11,6 +12,7 @@ ROOT = os.path.dirname(os.path.dirname(HERE))
 sys.path.insert(0, HERE)
 from parse_mb import parse as parse_mb
 from parse_prof import parse as parse_prof
+from parse_mtsl import parse as parse_mtsl
 csv.field_size_limit(10**9)
 RAW = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, 'raw')
 MARKET = 'forever.rppvp.alliance.eu'   # the house whose scan is built into the page
@@ -23,6 +25,11 @@ icls={int(r['ID']):(int(r['ClassID']),int(r['SubclassID'])) for r in csv.DictRea
 sla={}
 for r in csv.DictReader(open('SkillLineAbility.csv')):
     sla.setdefault(int(r['Spell']),r)
+# Classic Era: the same table one game back, and when a Classic trainer teaches each recipe and for how much
+era={}
+for r in csv.DictReader(open('SkillLineAbility_era.csv')):
+    era.setdefault(int(r['Spell']),r)
+mtsl=parse_mtsl('mtsl_skills.lua')
 eff={}
 for r in csv.DictReader(open('ItemEffect.csv')):
     if r['TriggerType']=='6': eff[int(r['ID'])]=int(r['SpellID'])
@@ -42,10 +49,19 @@ recs=list(byspell.values())
 mbrows=[]
 for f in glob.glob('mbprof/*.html'):
     mbrows+=parse_prof(f)
-mb_by_key={}; mb_by_name=collections.defaultdict(list)
-for r in mbrows:
-    k=(r['name'].lower(), tuple(sorted((a.lower(),q) for a,q in r['reagents'])))
-    mb_by_key.setdefault(k,r); mb_by_name[r['name'].lower()].append(r)
+mb_by_name=collections.defaultdict(list)
+for r in mbrows: mb_by_name[r['name'].lower()].append(r)
+def mb_match(name, reagents, yellow, grey):
+    """The MetaBot row for a recipe: same name, then same skill colors, then same reagents."""
+    rows=mb_by_name.get(name.lower(),[])
+    if not rows: return None
+    same=[r for r in rows if r['yellow']==yellow and r['grey']==grey]
+    key=sorted((a.lower(),q) for a,q in reagents)
+    for pool in (same, rows):
+        for r in pool:
+            if sorted((a.lower(),q) for a,q in r['reagents'])==key: return r
+        if len(pool)==1: return pool[0]
+    return None
 # --- AHledger item fallbacks
 ahl={}
 for f in glob.glob('ahl_items/*.json'):
@@ -75,32 +91,52 @@ for x in recs:
     ritems=[i for i in spell2items.get(sid,[]) if icls.get(i,(0,0))[0]==9]
     ritem=ritems[0] if ritems else 0
     rlearn=int(sp[ritem]['RequiredSkillRank']) if ritem and ritem in sp and sp[ritem]['RequiredSkillRank'] not in ('','0') else None
-    key=(rc['name'].lower(), tuple(sorted((g['name'].lower(),g['qty']) for g in x['reagents'])))
-    m=mb_by_key.get(key)
-    if not m and len(mb_by_name.get(rc['name'].lower(),[]))==1: m=mb_by_name[rc['name'].lower()][0]
+    m=mb_match(rc['name'],[(g['name'],g['qty']) for g in x['reagents']],yellow,grey)
+    if m: stats['metabot_row']+=1
+    if not yellow and m: yellow=m['yellow']; grey=m['grey']
+    # Forever moved whole recipes down the skill range: where yellow and grey moved by the same amount, so did learn.
+    c=mtsl.get(sid); e=era.get(sid); shifted=None
+    if c and e and yellow and grey:
+        dy=yellow-int(e['TrivialSkillLineRankLow']); dg=grey-int(e['TrivialSkillLineRankHigh'])
+        if dy==dg: shifted=max(1,c['learn']+dy)
+    est=0
     if rlearn: learn=rlearn; stats['learn_item']+=1
-    elif m: learn=m['learn']; stats['learn_mb']+=1
-    elif yellow: learn=max(1,yellow-40); stats['learn_est']+=1
-    else: learn=rc['skillRequired'] or 1; stats['learn_ahl']+=1
-    if acq==1 or (m and m['source']=='Auto'): src=0
-    elif ritem or (m and m['source']=='Recipe'): src=2
+    elif m and not m['est']: learn=m['learn']; stats['learn_metabot']+=1
+    elif shifted is not None: learn=shifted; stats['learn_classic']+=1
+    elif m: learn=m['learn']; est=1; stats['learn_metabot_estimate']+=1
+    elif yellow: learn=max(1,yellow-40); est=1; stats['learn_guess']+=1
+    else: learn=rc['skillRequired'] or 1; est=1; stats['learn_ahl']+=1
+    if acq==1 or (m and m['source']=='Auto') or (not m and c and c['kind']=='auto'): src=0
+    elif ritem or (m and m['source']!='Trainer') or (not m and c and c['kind'] in ('item','other')): src=2
     else: src=1
     stats[('src',src)]+=1
-    if not yellow and m: yellow=m['yellow']; grey=m['grey']
+    fee=c['fee'] if c and src==1 else 0
     reag=[]
     for g in x['reagents']:
         reag+= [g['id'],g['qty']]; need_items.add(g['id'])
     need_items.add(res['id'])
     if ritem: need_items.add(ritem)
     nm=rc['name'] if rc['name']!=res['name'] else 0
-    R.append([sid,nm,PROFS.index(rc['profession']),learn,yellow or 0,grey or 0,src,ritem,res['id'],res['qtyMin'],res['qtyMax'],reag])
+    R.append([sid,nm,PROFS.index(rc['profession']),learn,yellow or 0,grey or 0,src,ritem,res['id'],res['qtyMin'],res['qtyMax'],reag,est,fee])
 print(stats)
 # --- price tables
 def pt_ids(path):
     return [int(l.split(':')[0]) for l in open(path).read().strip().split('\n')[1:] if l]
 mine=set(pt_ids('pt/'+MARKET+'.txt'))
-union=set()
-for f in glob.glob('pt/*.txt'): union|=set(pt_ids(f))
+union=set(); houses=collections.Counter()
+for f in glob.glob('pt/*.txt'):
+    ids=set(pt_ids(f)); union|=ids; houses.update(ids)
+# The tables still hold an older copy of some recipes under the same name, making an item no house has ever listed.
+# Where a namesake's item is on three or more houses, the copy nobody can make is dropped.
+twins=collections.defaultdict(list)
+for r in R: twins[(r[2], r[1] or cname.get(r[8]))].append(r)
+dead=set()
+for g in twins.values():
+    if len(g)>1 and any(houses[r[8]]>=3 for r in g):
+        dead|={r[0] for r in g if houses[r[8]]==0}
+R=[r for r in R if r[0] not in dead]
+need_items=set(i for r in R for i in [r[8]]+r[11][0::2]+([r[7]] if r[7] else []))
+print('dropped',len(dead),'recipes whose item no house lists while a namesake sells')
 # --- crates, writs and Merchant's Favor recipes (guides.json, from parse_guides.py)
 G=json.load(open(os.path.join(HERE,'guides.json')))
 byname={}
