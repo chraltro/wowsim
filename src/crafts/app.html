@@ -77,10 +77,27 @@ h1 { font-family: var(--display); font-weight: 600; font-size: 24px; letter-spac
 }
 .ask select:hover, .ask input:hover, .ask select:focus-visible, .ask input:focus-visible { border-bottom-style: solid; outline: 0; }
 .ask input { width: 3.2ch; text-align: center; -moz-appearance: textfield; cursor: text; }
+.ask #budget { width: 3.8ch; }
 .ask input::-webkit-outer-spin-button, .ask input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 .ask option { color: var(--ink); background: var(--raised); font-weight: 400; }
 #measure { position: absolute; visibility: hidden; white-space: pre; font-size: 19px; font-weight: 600; pointer-events: none; left: -9999px; top: 0; }
 
+.mine { white-space: nowrap; }
+.mine button { border: 0; background: none; color: var(--muted); padding: 0 0 0 3px; font-size: 16px; line-height: 1; }
+.mine button:hover { color: var(--bad); }
+.ask .sepr { color: var(--muted); }
+.check { display: inline-flex; align-items: center; gap: 9px; margin-top: 12px; color: var(--muted); font-size: 14px; cursor: pointer; min-height: 32px; }
+.check input { appearance: none; -webkit-appearance: none; width: 18px; height: 18px; border: 1.5px solid var(--line-2); border-radius: 4px; margin: 0; flex: none; position: relative; cursor: pointer; transition: background .15s, border-color .15s; }
+.check input:checked { background: var(--accent); border-color: var(--accent); }
+.check input:checked::after { content: ""; position: absolute; left: 5px; top: 1px; width: 5px; height: 10px; border: solid var(--accent-ink); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.wave { display: grid; gap: 9px; margin: 4px 0 6px; }
+.wrow { display: grid; grid-template-columns: 7.2em minmax(0, 1fr) 3.4em; align-items: center; gap: 12px; font-size: 13.5px; color: var(--muted); }
+.wrow b { color: var(--ink); font-weight: 500; text-align: right; font-variant-numeric: tabular-nums; }
+.wbar { position: relative; height: 10px; }
+.wbar::before { content: ""; position: absolute; left: 50%; top: -3px; bottom: -3px; width: 1px; background: var(--line-2); }
+.wbar i { position: absolute; top: 0; bottom: 0; border-radius: 2px; }
+.wbar i.up { left: 50%; background: var(--good); }
+.wbar i.dn { right: 50%; background: var(--bad); }
 .tools { display: flex; align-items: center; gap: 14px; margin-top: 14px; }
 .search {
   flex: 1; min-width: 0; border: 1px solid var(--line-2); background: transparent; border-radius: 8px; padding: 9px 12px; font-size: 16px; min-height: 42px;
@@ -214,12 +231,14 @@ textarea { width: 100%; border: 1px solid var(--line-2); background: var(--bg); 
 
   <nav class="tabs" role="tablist" id="tabs">
     <button role="tab" id="tab-crafts" aria-selected="true" aria-controls="view-crafts" type="button">Crafts</button>
-    <button role="tab" id="tab-flips" aria-selected="false" aria-controls="view-flips" type="button">Vendor flips</button>
+    <button role="tab" id="tab-flips" aria-selected="false" aria-controls="view-flips" type="button">Flips</button>
+    <button role="tab" id="tab-plan" aria-selected="false" aria-controls="view-plan" type="button">Plan</button>
+    <button role="tab" id="tab-market" aria-selected="false" aria-controls="view-market" type="button">Market</button>
     <span class="ink" id="tabInk" aria-hidden="true"></span>
   </nav>
 
   <section id="view-crafts" role="tabpanel" aria-labelledby="tab-crafts">
-    <p class="ask">Show <select id="prof" aria-label="Profession"></select> <span id="skillWord">up to skill</span> <input id="skill" type="number" min="1" max="300" inputmode="numeric" aria-label="Skill">, sold <select id="sellTo" aria-label="Where to sell"><option value="best">where it pays more</option><option value="ah">on the auction house</option><option value="vendor">to a vendor</option></select>, by <select id="sort" aria-label="Sort by"><option value="profit">profit</option><option value="margin">margin</option><option value="skill">cheapest skill-ups</option></select>.</p>
+    <p class="ask">Show <select id="prof" aria-label="Profession"></select> <span id="skillWord">up to skill</span> <input id="skill" type="number" min="1" max="300" inputmode="numeric" aria-label="Skill">, sold <select id="sellTo" aria-label="Where to sell"><option value="best">where it pays more</option><option value="ah">on the auction house</option><option value="vendor">to a vendor</option></select>, by <select id="sort" aria-label="Sort by"><option value="expected">expected profit</option><option value="profit">profit if it sells</option><option value="margin">margin</option><option value="skill">cheapest skill-ups</option></select>.</p>
     <div class="tools">
       <input class="search" type="search" id="q" placeholder="Search recipes or materials" autocomplete="off" aria-label="Search recipes or materials">
       <button class="textbtn" type="button" data-settings>Settings</button>
@@ -248,16 +267,40 @@ textarea { width: 100%; border: 1px solid var(--line-2); background: var(--bg); 
     </div>
     <div class="sect">
       <h2>Buy from a vendor, sell on the auction house</h2>
-      <p class="note">Vendors your faction can reach sell these at a fixed price. The auction price is what sellers ask, after the 5% cut, so a high price is no promise that it sells.</p>
+      <p class="note">Vendors your faction can reach sell these at a fixed price. The figure is what to expect after the 5% cut, the deposits lost on listings that expire, and selling leftovers back to a vendor.</p>
       <ol class="ledger" id="flipB"></ol>
       <div class="more" id="moreB"></div>
+    </div>
+  </section>
+
+  <section id="view-plan" role="tabpanel" aria-labelledby="tab-plan" hidden>
+    <p class="ask">Spend up to <input id="budget" type="number" min="0" max="9999" step="1" inputmode="decimal" aria-label="Gold to spend"> gold with <span id="mineChips"></span><select id="addProf" aria-label="Add a profession"></select>.</p>
+    <label class="check" for="planRecipes"><input type="checkbox" id="planRecipes"> Include recipes taught by a recipe item</label>
+    <p class="tally" id="planTally" aria-live="polite"></p>
+    <ol class="ledger" id="planList"></ol>
+    <div class="acts" id="planActs" style="margin-top:14px"></div>
+    <p class="note" style="margin-top:14px">Sure auction-to-vendor flips and crafts from your professions, best return per gold first. Crafts for the auction house stop at a quarter of what is already listed, and anything gaining less than 1% of the budget is left out.</p>
+  </section>
+
+  <section id="view-market" role="tabpanel" aria-labelledby="tab-market" hidden>
+    <div class="sect" style="margin-top:18px">
+      <h2>What a Merchant's Favor costs</h2>
+      <p class="note">An empty Waylaid Crate plus its cheapest fill, at your house's prices. Any one fill completes a crate. Tap a crate for every fill.</p>
+      <ol class="ledger" id="crateList"></ol>
+      <p class="note" id="crateNote" style="margin-top:10px"></p>
+    </div>
+    <div class="sect">
+      <h2>Material prices against their 7-day median</h2>
+      <p class="note">Trade materials on your house, grouped by item level. Each bar is the group's middle price change. A group with under five materials shows as few.</p>
+      <div class="wave" id="wave"></div>
     </div>
   </section>
 
   <footer>
     <p><a href="https://ahledger.com/?utm_source=forever_craft_profits" target="_blank" rel="noopener">Prices from AHledger</a>, built from player scans. Prices are what sellers ask, not what sold.</p>
     <p>Recipes, skill levels and vendor prices come from the Forever game files (build <span id="buildNo"></span>). Which vendors sell an item comes from MetaBot's Classic vendor lists, so a few may differ in Forever.</p>
-    <p>Profit counts the 5% auction house cut. Listing deposits come back when an item sells and are left out.</p>
+    <p>Expected profit assumes a 48-hour listing, tried up to three times, then a vendor. It counts the 5% cut and a deposit of 60% of the vendor price per expired listing. How fast things sell is AHledger's estimate from consecutive scans.</p>
+    <p>Crate fills from <a href="https://www.method.gg/wow-forever/how-to-get-waylaid-crates-and-merchants-favor-in-wow-forever" target="_blank" rel="noopener">Method</a>. Favor per crate, writs and favor recipes from <a href="https://wow.gg/guides/merchants-favor" target="_blank" rel="noopener">wow.gg</a>.</p>
   </footer>
 </div>
 <span id="measure" aria-hidden="true"></span>
