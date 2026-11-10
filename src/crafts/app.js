@@ -157,9 +157,10 @@
       amount: coin(shown, true), cls: sign(shown), left: esc(left) + (short ? ', <span class="warn">materials short</span>' : ''), right, detail: () => detail(e, view) });
   }
 
-  function detail(e, view) {
+  // `fixed` is a count the plan has already chosen: no stepper, and the plan's own button copies the list.
+  function detail(e, view, fixed) {
     const r = e.r;
-    const n = qty.get(r.sid) || 1;
+    const n = fixed ?? (qty.get(r.sid) || 1);
     const plan = view.ctx.plan(r, n);
     const WORD = { vendor: 'vendor', ah: 'AH', craft: 'craft' };
     let rows = '';
@@ -230,13 +231,16 @@
     else if (e.ahNet != null) notes.push('On the AH it would bring ' + coin(e.ahNet / e.y) + ' each after the cut.');
     if (r.yellow && r.grey) notes.push('Gives a skill point every time below ' + r.yellow + ', none from ' + r.grey + '.');
     if (r.est && r.src !== 2) notes.push('The skill a trainer teaches this at is an estimate.');
+    if (fixed != null && plan.steps.length) notes.unshift(craftFirst(plan));
 
     return '<div class="detail">' +
-      '<div class="make"><span>Make</span><span class="stepper"><button type="button" data-step="-1" aria-label="One fewer">−</button><output>' + n + '</output><button type="button" data-step="1" aria-label="One more">+</button></span>' +
+      '<div class="make"><span>Make</span>' + (fixed == null
+        ? '<span class="stepper"><button type="button" data-step="-1" aria-label="One fewer">−</button><output>' + n + '</output><button type="button" data-step="1" aria-label="One more">+</button></span>'
+        : '<output>' + n + '</output>') +
         '<span class="stock">' + stock + '</span></div>' +
       '<table class="bill">' + rows + '</table>' +
       (notes.length ? '<ul class="notes">' + notes.map((x) => '<li>' + x + '</li>').join('') + '</ul>' : '') +
-      '<div class="acts"><button type="button" class="btn" data-copy>Copy shopping list</button>' +
+      '<div class="acts">' + (fixed == null ? '<button type="button" class="btn" data-copy>Copy shopping list</button>' : '') +
         '<a class="ext" href="' + ahlLink(r.res) + '" target="_blank" rel="noopener">Price history on AHledger</a></div>' +
     '</div>';
   }
@@ -433,6 +437,18 @@
     $('planRecipes').checked = !!S.planRecipes;
     fitNums();
   }
+  const openP = new Set();
+  let planRows = new Map();
+  function planDetail(l) {
+    if (l.kind === 'buyVendor') {
+      const rows = '<tr><td class="qn">1</td><td><span class="q' + itemQ(l.id) + '">' + esc(itemName(l.id)) + '</span><small>' + fmtInt(listedQty(l.id)) + ' listed</small></td><td class="src">AH</td><td class="amt">' + coin(l.cost) + '</td></tr>' +
+        '<tr><td></td><td colspan="2">A vendor pays</td><td class="amt">' + coin(l.sell) + '</td></tr>' +
+        '<tr class="total"><td></td><td colspan="2">Gain, certain</td><td class="amt pos">' + coin(l.gain, true) + '</td></tr>';
+      return '<div class="detail"><table class="bill">' + rows + '</table><ul class="notes"><li>The scan shows only the cheapest listing, so the plan counts one. More may be listed at similar prices.</li></ul>' +
+        '<div class="acts"><a class="ext" href="' + ahlLink(l.id) + '" target="_blank" rel="noopener">Price history on AHledger</a></div></div>';
+    }
+    return detail(l.e, { ctx: lastPlan.ctx }, l.n);
+  }
   function renderPlan() {
     const budget = Math.max(0, Number(S.budget) || 0) * 10000;
     const mine = {};
@@ -449,12 +465,15 @@
     }
     $('planTally').innerHTML = 'Spend <b>' + coin(P.spent) + '</b> to expect <b class="pos">' + coin(P.gain, true) + '</b>.' +
       (P.sure > 0 ? ' ' + coin(P.sure) + ' of that is certain.' : '') + (noProf ? ' Add your professions to bring crafts in. A friend\'s profession counts too, if they craft for you.' : '');
+    planRows = new Map();
     $('planList').innerHTML = P.lines.map((l) => {
-      if (l.kind === 'buyVendor') return line({ q: itemQ(l.id), name: 'Buy ' + esc(itemName(l.id)) + ', sell to a vendor', amount: coin(l.gain, true), cls: 'pos',
-        left: 'AH under ' + coin(l.sell) + ', cheapest is ' + coin(l.cost), right: 'certain' });
+      const key = l.kind === 'buyVendor' ? -l.id : l.e.r.sid;
+      planRows.set(key, l);
+      if (l.kind === 'buyVendor') return line({ sid: key, open: openP.has(key), q: itemQ(l.id), name: 'Buy ' + esc(itemName(l.id)) + ', sell to a vendor', amount: coin(l.gain, true), cls: 'pos',
+        left: 'AH under ' + coin(l.sell) + ', cheapest is ' + coin(l.cost), right: 'certain', detail: () => planDetail(l) });
       const e = l.e;
-      return line({ q: itemQ(e.r.res), name: 'Craft ' + l.n + ' × ' + esc(e.r.name), amount: coin(l.gain * l.n, true), cls: 'pos',
-        left: esc(PROFS[e.r.prof]) + ', materials ' + coin(l.cost * l.n), right: e.via === 'vendor' ? 'vendor, certain' : 'list 48h, ' + speedText(e) });
+      return line({ sid: key, open: openP.has(key), q: itemQ(e.r.res), name: 'Craft ' + l.n + ' × ' + esc(e.r.name), amount: coin(l.gain * l.n, true), cls: 'pos',
+        left: esc(PROFS[e.r.prof]) + ', materials ' + coin(l.cost * l.n), right: e.via === 'vendor' ? 'vendor, certain' : 'list 48h, ' + speedText(e), detail: () => planDetail(l) });
     }).join('');
     $('planActs').innerHTML = '<button type="button" class="btn" id="copyPlan">Copy the plan</button>';
   }
@@ -903,7 +922,14 @@
     save(); renderMine(); renderPlan();
   }
   $('addProf').addEventListener('change', (ev) => { if (ev.target.value !== '') addProf(ev.target.value); });
-  $('planList').addEventListener('click', (ev) => { const b = ev.target.closest('[data-addprof]'); if (b) addProf(b.dataset.addprof); });
+  $('planList').addEventListener('click', (ev) => {
+    const add = ev.target.closest('[data-addprof]');
+    if (add) { addProf(add.dataset.addprof); return; }
+    const head = ev.target.closest('.row-head'), li = ev.target.closest('.row');
+    if (!head || !li || !li.dataset.sid) return;
+    const l = planRows.get(Number(li.dataset.sid));
+    if (l) toggle(li, head, () => planDetail(l), openP);
+  });
   $('mineChips').addEventListener('input', (ev) => {
     const k = ev.target.dataset.mine;
     const v = Math.round(Number(ev.target.value));
