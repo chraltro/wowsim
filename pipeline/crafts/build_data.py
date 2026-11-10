@@ -216,7 +216,9 @@ for f in glob.glob('pt/*.txt'):
         p=l.split(':')
         if len(p)>2 and p[1]:
             reg_vals[region][int(p[0])].append(int(p[1]))
-sale_ids=set(r[8] for r in R)|set(i for i,v in I.items() if v[3])|set(r[7] for r in R if r[7])|guide_ids
+# Reference prices and sell speeds for every item the page can name (crafts, vendor goods, and anything on a scanned house), so the
+# item check can price a drop as well as the crafts tab prices a result.
+sale_ids=set(r[8] for r in R)|set(i for i,v in I.items() if v[3])|set(r[7] for r in R if r[7])|guide_ids|set(I)
 REF={}
 for region,vals in reg_vals.items():
     REF[region]={i:round(statistics.median(v)) for i,v in vals.items() if i in sale_ids and len(v)>=3}

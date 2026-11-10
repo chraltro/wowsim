@@ -329,6 +329,64 @@
     $('more').innerHTML = shown.length > limit ? '<button type="button" class="btn" id="moreBtn">Show ' + Math.min(60, shown.length - limit) + ' more</button>' : '';
   }
 
+  // ---------- item check ----------
+  const openK = new Set();
+  let checkRows = new Map();
+  const CHECK_SHOWN = 8;
+  // Items whose name holds the search: ones listed on this house first, names that start with it before names that only hold it.
+  function checkMatches(s) {
+    const out = [];
+    for (const [id, it] of E.items) {
+      const at = it[0].toLowerCase().indexOf(s);
+      if (at < 0) continue;
+      out.push({ id, rank: (PT.map.has(id) ? 0 : 2) + (at === 0 ? 0 : 1), listed: listedQty(id) });
+    }
+    return out.sort((a, b) => a.rank - b.rank || b.listed - a.listed || a.id - b.id);
+  }
+  function checkWhy(c) {
+    if (c.bop) return 'Soulbound items cannot be posted.';
+    if (c.listAt == null) return c.sell > 0 ? 'Nobody lists it on this house or any other in the scan, so there is no price to post at.' : 'A vendor will not take it and nobody lists it.';
+    if (c.verdict === 'post') return 'Posting beats a vendor by about ' + coin(c.gain) + ' a unit, counting the 5% cut and the deposits lost on listings that expire.';
+    return c.net <= c.sell ? 'After the 5% cut the auction house pays no more than a vendor does.'
+      : 'The extra ' + coin(c.net - c.sell) + ' a sale does not cover the deposit: about ' + Math.round((1 - c.chance) * 100) + '% of listings expire and lose ' + coin(c.deposit) + '.';
+  }
+  function checkDetail(c) {
+    const cheap = c.min ?? c.med;
+    let rows = '';
+    if (c.listed > 0) rows += '<tr><td>Cheapest listing here</td><td class="amt">' + coin(cheap) + '<small>' + fmtInt(c.listed) + ' listed' + (c.med != null && c.med !== cheap ? ', median ' + coin(c.med) : '') + '</small></td></tr>';
+    if (c.ref != null) rows += '<tr><td>Other ' + esc(region()) + ' houses</td><td class="amt">' + coin(c.ref) + '<small>median of their listings</small></td></tr>';
+    if (c.listAt != null) {
+      rows += '<tr><td>Post at about</td><td class="amt">' + coin(c.listAt) + '<small>' + (c.unlisted ? 'what other houses ask, no one here to undercut' : c.trimmed ? 'twice what other houses ask' : 'just under the cheapest') + '</small></td></tr>' +
+        '<tr><td>After the 5% cut</td><td class="amt">' + coin(c.net) + '</td></tr>' +
+        '<tr><td>Chance it sells in 48 hours</td><td class="amt">' + Math.round(c.chance * 100) + '%<small>' + (c.band ? SPEED[c.band] + (c.ownTurn ? '' : ', from other houses') : 'no sales data') + '</small></td></tr>' +
+        '<tr><td>Deposit lost if it expires</td><td class="amt">' + coin(c.deposit) + '</td></tr>' +
+        '<tr class="sum"><td>Expected a unit</td><td class="amt">' + coin(c.exp) + '<small>up to three listings, then a vendor</small></td></tr>';
+    }
+    rows += '<tr class="' + (c.listAt != null ? '' : 'sum') + '"><td>A vendor pays</td><td class="amt">' + (c.sell > 0 ? coin(c.sell) : '<span class="sub">nothing</span>') + '</td></tr>';
+    const notes = [checkWhy(c)];
+    if (c.thin) notes.push('One listing here and no other house to compare with, so the price may be a guess.');
+    if (c.trimmed) notes.push('The cheapest listing here is far above other houses, so it counts at twice theirs.');
+    return '<div class="detail"><table class="bill">' + rows + '</table><ul class="notes">' + notes.map((x) => '<li>' + x + '</li>').join('') + '</ul>' +
+      (c.listed > 0 || c.ref != null ? '<div class="acts"><a class="ext" href="' + ahlLink(c.id) + '" target="_blank" rel="noopener">Price history on AHledger</a></div>' : '') + '</div>';
+  }
+  function checkRow(c) {
+    const post = c.verdict === 'post';
+    const word = c.bop ? 'soulbound' : post ? 'post it' + (c.band ? ', ' + SPEED[c.band] : '') : c.verdict === 'none' ? 'no buyer' : 'vendor it';
+    return line({ sid: c.id, q: itemQ(c.id), name: esc(itemName(c.id)), amount: post ? coin(c.exp) : c.sell > 0 ? coin(c.sell) : '<span class="coin">–</span>', cls: post ? 'pos' : '',
+      left: (c.sell > 0 ? 'Vendor ' + coin(c.sell) : 'No vendor price') + (c.listAt != null ? ', post at ' + coin(c.listAt) : c.bop ? '' : ', not on the AH'),
+      right: '<span class="' + (post && (c.band === 'barely' || !c.band) ? 'warn' : '') + '">' + word + '</span>', open: openK.has(c.id), detail: () => checkDetail(c) });
+  }
+  function renderCheck(ctx, s) {
+    const sect = $('chkSect');
+    if (s.length < 2) { sect.hidden = true; $('chkList').innerHTML = ''; return; }
+    const all = checkMatches(s).slice(0, 80).map((m) => ctx.sellCheck(m.id)).filter((c) => c && (c.listAt != null || c.bop || c.sell > 0));
+    sect.hidden = !all.length;
+    if (!all.length) { $('chkList').innerHTML = ''; return; }
+    checkRows = new Map(all.map((c) => [c.id, c]));
+    $('chkList').innerHTML = all.slice(0, CHECK_SHOWN).map(checkRow).join('');
+    $('chkMore').textContent = all.length > CHECK_SHOWN ? 'Showing ' + CHECK_SHOWN + ' of ' + (all.length >= 80 ? 'more than 80' : all.length) + ' matches. Type more of the name to narrow it.' : '';
+  }
+
   // ---------- flips ----------
   let flipView = null, flipEvals = new Map();
   function renderFlips() {
@@ -336,6 +394,7 @@
     const vctx = E.context(PT, ctxOpts({ sellTo: 'vendor', maxSkill: 300 }));
     flipView = { ctx: vctx, single: false, skill: 300, sort: 'expected' };
     const s = fq.trim().toLowerCase();
+    renderCheck(ctx, s);
     const match = (id) => !s || itemName(id).toLowerCase().includes(s);
     const A = ctx.ahToVendor().filter((x) => match(x.id));
     $('flipA').innerHTML = A.length ? A.slice(0, limA).map((x) => {
@@ -382,8 +441,9 @@
     const noProf = !Object.keys(mine).length;
     if (!P.lines.length) {
       $('planTally').innerHTML = '';
+      const picks = noProf && budget > 0 ? '<div class="picks">' + PROFS.map((p, i) => (hasRecipes[i] ? '<button type="button" class="btn" data-addprof="' + i + '">' + esc(p) + '</button>' : '')).join('') + '</div>' : '';
       $('planList').innerHTML = '<li class="empty">' + (budget <= 0 ? 'Enter how much gold you want to put to work.'
-        : 'Nothing gains at least ' + coin(P.minLine) + ' with this budget' + (noProf ? '. Add your professions to bring crafts in.' : '.')) + '</li>';
+        : 'Nothing gains at least ' + coin(P.minLine) + ' with this budget' + (noProf ? '. Tap the professions you have to bring crafts in.' : '.')) + picks + '</li>';
       $('planActs').innerHTML = '';
       return;
     }
@@ -785,6 +845,12 @@
   }
   $('list').addEventListener('click', (ev) => onLedgerClick(ev, () => craftsEvals, () => craftsView));
   $('flipC').addEventListener('click', (ev) => onLedgerClick(ev, () => flipEvals, () => flipView));
+  $('chkList').addEventListener('click', (ev) => {
+    const head = ev.target.closest('.row-head'), li = ev.target.closest('.row');
+    if (!head || !li || !li.dataset.sid) return;
+    const c = checkRows.get(Number(li.dataset.sid));
+    if (c) toggle(li, head, () => checkDetail(c), openK);
+  });
   $('crateList').addEventListener('click', (ev) => {
     const head = ev.target.closest('.row-head'), li = ev.target.closest('.row');
     if (!head || !li || !li.dataset.sid) return;
@@ -832,12 +898,12 @@
 
   // plan inputs
   $('budget').addEventListener('input', (ev) => { const v = Number(ev.target.value); if (!(v >= 0)) return; S.budget = v; save(); renderPlan(); });
-  $('addProf').addEventListener('change', (ev) => {
-    const k = ev.target.value;
-    if (k === '') return;
+  function addProf(k) {
     S.mine[k] = clampSkill(S.skills[k] ?? 75);
     save(); renderMine(); renderPlan();
-  });
+  }
+  $('addProf').addEventListener('change', (ev) => { if (ev.target.value !== '') addProf(ev.target.value); });
+  $('planList').addEventListener('click', (ev) => { const b = ev.target.closest('[data-addprof]'); if (b) addProf(b.dataset.addprof); });
   $('mineChips').addEventListener('input', (ev) => {
     const k = ev.target.dataset.mine;
     const v = Math.round(Number(ev.target.value));

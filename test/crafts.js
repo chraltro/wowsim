@@ -105,6 +105,27 @@ eq('recipe: expected a craft', rb.e.exp, expectedSale(1900, 160, 2) - 660); eq('
 // Favor: 25 favor takes 3 green Apprentice crates (10 each) at 50s plus 16s of bolts. Only 12 crates are listed, so 500 has no price.
 const fc = E.context(PT3, { basis: 'med', sellTo: 'best', maxSkill: 300, trim: false, disc: 0 });
 eq('favor: 25 costs three crates', fc.favor(25).cost, 3 * 6600); fo('favor: more than is listed', String(fc.favor(500)), 'null');
+// Post or vendor, for a Linen Bag a vendor pays 2s for. Posted just under the cheapest listing (2s 90c, so 2s 87c) with 300 sold
+// a day against 90 listed, it sells every time and each unit brings its net 2s 87c less 5%, well over the vendor's 2s.
+const sc = (pt, id, o) => E.context(pt, Object.assign({ basis: 'med', sellTo: 'best', maxSkill: 300, trim: false, disc: 0 }, o)).sellCheck(id);
+let ck = sc(PT2, 4238);
+fo('check: a fast bag is posted', ck.verdict + ' ' + ck.listAt + ' ' + ck.band + ' ' + ck.ownTurn + ' ' + ck.thin, 'post 287 fast true false');
+eq('check: expected', ck.exp, expectedSale(287 * 0.95, 200, 300 / 90)); eq('check: gain over the vendor', ck.gain, ck.exp - 200);
+// Listed at 1s 20c, under the 2s a vendor pays: vendor it.
+const cheap = parsePriceTable(['AHL1|forever/pvp/alliance/eu|1794052222|1', '4238:150:120:10:150:150:120:150:'].join('\n'));
+fo('check: under the vendor price goes to the vendor', sc(cheap, 4238).verdict, 'vendor');
+// Nobody lists it here: priced at the region's other houses, with no undercut.
+const none = parsePriceTable(['AHL1|forever/pvp/alliance/eu|1794052222|1', '2996:80:76:300:80:80:76:90:'].join('\n'));
+if (D.ref.eu[4238] != null) { ck = sc(none, 4238); fo('check: unlisted uses the region price', ck.unlisted + ' ' + ck.listAt, 'true ' + D.ref.eu[4238]); eq('check: unlisted expected', ck.exp, expectedSale(D.ref.eu[4238] * 0.95, 200, D.turn.eu[4238] ?? 1 / 14)); }
+// A listing far above the region is counted at twice the region's price when trimming is on.
+const high = parsePriceTable(['AHL1|forever/pvp/alliance/eu|1794052222|1', '4238:900:900:5:900:900:900:900:'].join('\n'));
+if (D.ref.eu[4238] != null) { ck = sc(high, 4238, { trim: true }); fo('check: trimmed', ck.trimmed + ' ' + ck.listAt, 'true ' + D.ref.eu[4238] * 2); }
+// A region without reference prices: one lone listing is flagged as thin, and with no sales data the bag barely sells.
+const cn = parsePriceTable(['AHL1|forever/pvp/alliance/cn|1794052222|1', '4238:9000:9000:1:9000:9000:9000:9000:'].join('\n'));
+ck = sc(cn, 4238); fo('check: one listing nobody backs up', ck.thin + ' ' + ck.band + ' ' + ck.verdict, 'true null post');
+// Soulbound items cannot be posted.
+fo('check: fixture is soulbound', String(!!E.items.get(3734)[6]), 'true');
+ck = sc(PT2, 3734); fo('check: soulbound goes to the vendor', ck.verdict + ' ' + ck.listAt, 'vendor null');
 // Coins formatting
 const f = (c) => { const k = coins(c); return (k.neg ? '-' : '') + k.parts.map(([n, u]) => n + u).join(' '); };
 fo('coins 12345', f(12345), '1g 23s 45c'); fo('coins -99', f(-99), '-99c'); fo('coins 10005', f(10005), '1g 5c');

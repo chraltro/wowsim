@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Forever Craft Profits</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c1318'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23d9b46c'/%3E%3Ccircle cx='16' cy='16' r='5.5' fill='none' stroke='%230c1318' stroke-width='1.6'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -174,6 +175,8 @@ button.row-head:hover { background: color-mix(in srgb, var(--raised) 55%, transp
 .more { display: flex; justify-content: center; padding: 16px 0 0; }
 .more:empty { display: none; }
 .empty { padding: 22px var(--gutter); color: var(--muted); }
+.picks { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.picks .btn { color: var(--ink); }
 
 /* Flips */
 .sect { margin-top: 26px; }
@@ -260,8 +263,14 @@ textarea { width: 100%; border: 1px solid var(--line-2); background: var(--bg); 
 
   <section id="view-flips" role="tabpanel" aria-labelledby="tab-flips" hidden>
     <div class="tools" style="margin-top:18px">
-      <input class="search" type="search" id="fq" placeholder="Search items" autocomplete="off" aria-label="Search items">
+      <input class="search" type="search" id="fq" placeholder="Search items, or check a drop" autocomplete="off" aria-label="Search items, or check a drop">
       <button class="textbtn" type="button" data-settings>Settings</button>
+    </div>
+    <div class="sect" id="chkSect" hidden>
+      <h2>Post it or vendor it?</h2>
+      <p class="note">One unit posted just under the cheapest listing, against what a vendor pays. Tap one for the numbers.</p>
+      <ol class="ledger" id="chkList"></ol>
+      <p class="note" id="chkMore"></p>
     </div>
     <div class="sect">
       <h2>Buy on the auction house, sell to a vendor</h2>
