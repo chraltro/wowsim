@@ -1,8 +1,8 @@
 ## Interface: 16001
 ## Title: Claude Export
-## Notes: /claude dumps your character (gear, bags, bank, quests, talents, skills, reps, spells) as text to paste into Claude.
+## Notes: /claude shows your character export to copy, /claudeexport saves it to disk. Gear, bags, bank, quests, talents, skills, reps, spells.
 ## Author: Demant
-## Version: 1.2
+## Version: 1.3
 ## SavedVariablesPerCharacter: ClaudeExportDB
 
 ClaudeExport.lua

@@ -26,7 +26,8 @@ Tools and notes for a five-man group playing World of Warcraft: Forever (Blizzar
 The ClaudeExport addon writes everything about the character as text: stats, equipped gear with full tooltips, bags, bank, quest log with reward choices, talents, skills, reputation, spellbook, buffs, group.
 
 - In game, `/claude` opens a window with the text selected. Christian may paste it straight into the chat.
-- The same text is saved to SavedVariables, which the game writes to disk on `/reload` or logout. The file is `ClaudeExport.lua` under the WoW install, in `WTF/Account/<account>/<realm>/<character>/SavedVariables/`. Find it by name. The text is in `ClaudeExportDB.export`, stamped by `ClaudeExportDB.exportTime`. Check the stamp before trusting it.
+- `/claudeexport` saves the text and reloads the UI, which makes the game write it to disk. An addon cannot write files anywhere else. `tools/export_watch.py` watches for that and writes each export as `<Character>_<date>_<time>.txt` plus `latest.txt`, by default in `C:\Gits\wow\pastes`. Read `latest.txt` there when he says he exported, and check its date.
+- The raw save is `ClaudeExport.lua` under the WoW install, in `WTF/Account/<account>/<realm>/<character>/SavedVariables/`, with the text in `ClaudeExportDB.export` and the time in `ClaudeExportDB.exportTime`.
 - The bank part is a snapshot from the last time the bank was open. Quests, reputations and skills under a collapsed header are missing and marked as such.
 - A section that reads `(section failed: ...)` means an API call does not exist on the Forever client. Fix it in `addon/ClaudeExport/ClaudeExport.lua`. The addon has not been verified against the live client; it tries both the Classic and the modern API for each section.
 - To install or update the addon, copy `addon/ClaudeExport/` into `Interface/AddOns/` in the Forever client folder.

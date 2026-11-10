@@ -623,9 +623,15 @@ local function preload()
   end
 end
 
-SLASH_CLAUDEEXPORT1 = "/claude"
-SLASH_CLAUDEEXPORT2 = "/claudeexport"
-SlashCmdList.CLAUDEEXPORT = function()
+local function store(text)
+  -- kept in SavedVariables; the game writes that file on /reload or logout
+  ClaudeExportDB.export = text
+  ClaudeExportDB.exportTime = date("%Y-%m-%d %H:%M:%S")
+end
+
+-- /claude: window to copy from.
+SLASH_CLAUDEWINDOW1 = "/claude"
+SlashCmdList.CLAUDEWINDOW = function()
   if InCombatLockdown() then
     print("|cffd97757Claude Export:|r leave combat first.")
     return
@@ -633,11 +639,21 @@ SlashCmdList.CLAUDEEXPORT = function()
   preload()
   C_Timer.After(0.5, function()
     local text = build()
-    -- also kept in SavedVariables, so it can be read from disk after a /reload or logout
-    ClaudeExportDB.export = text
-    ClaudeExportDB.exportTime = date("%Y-%m-%d %H:%M")
+    store(text)
     showWindow(text)
   end)
+end
+
+-- /claudeexport: save and reload the UI, so the export is on disk right away
+-- for tools/export_watch.py to turn into a text file.
+SLASH_CLAUDEEXPORT1 = "/claudeexport"
+SlashCmdList.CLAUDEEXPORT = function()
+  if InCombatLockdown() then
+    print("|cffd97757Claude Export:|r leave combat first.")
+    return
+  end
+  store(build())
+  ReloadUI()
 end
 
 local ev = CreateFrame("Frame")

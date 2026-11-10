@@ -61,7 +61,7 @@ The engine is [MythicSim's Forever engine](https://github.com/sage3648/mythicsim
 | `pipeline/` | The one-off crawlers that produced `data/`. They do not run as they are; see `pipeline/README.md`. |
 | `docs/multiclass.md` | Group Sim design notes, engine patches and known gaps. |
 | `docs/knowledge-bank.md` | Notes on Forever itself: the group, leveling path and dungeons, XP rules, Shaman and Paladin notes, systems, gold making, raids, sources. A copy of a Claude doc, exported 2026-11-10. |
-| `addon/ClaudeExport/` | In-game addon. `/claude` dumps the whole character as text to paste into Claude, and saves it to SavedVariables. |
+| `addon/ClaudeExport/` | In-game addon. `/claude` shows the whole character as text to paste into Claude. `/claudeexport` saves it and reloads, and `tools/export_watch.py` writes each save as a text file. |
 | `CLAUDE.md` | Context for Claude Code sessions started in this folder. |
 | `dist/` | The built site: `index.html`, `shaman/index.html`, `forever/index.html`, `forever/engine.gz.wasm` and `crafts/index.html`. |
 
