@@ -21,9 +21,9 @@
 
 ## Learn skill
 
-The client does not say at what skill a trainer teaches a recipe. Forever moved most Classic recipes down the skill
-range by a fixed amount each: yellow and grey moved together in 412 of 413 recipes both games share. So the learn
-skill is Classic's, moved by the same amount. For the 669 recipes taught by a recipe item, where Forever's requirement
+The client does not say at what skill a trainer teaches a recipe. Forever moved about half of Classic's recipes down
+the skill range (576 of the 1,092 both games share), each by a fixed amount, most often 25 points: yellow and grey
+moved together in 1,085 of the 1,092. So the learn skill is Classic's, moved by the same amount. For the 669 recipes taught by a recipe item, where Forever's requirement
 is in the client, that rule gives the right number 644 times. Recipes new in Forever fall back to MetaBot's estimate
 and are flagged in the data (`R[12]`). Trainer fees are Classic's (`R[13]`, copper).
 
