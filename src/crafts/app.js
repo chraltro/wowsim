@@ -30,7 +30,8 @@
   })();
 
   // ---------- state ----------
-  const DEF = { prof: 'all', skills: { all: 150 }, basis: 'med', sellTo: 'best', sort: 'expected', onlyProfit: true, trainerOnly: false, trim: true, hideThin: true, disc: '0', mine: {}, budget: 5, planRecipes: false };
+  const DEF = { prof: 'all', skills: { all: 150 }, basis: 'med', sellTo: 'best', sort: 'expected', onlyProfit: true, trainerOnly: false, trim: true, hideThin: true, disc: '0', mine: {}, budget: 5, planRecipes: false,
+    rbProf: 'all', lv: null };
   let saved = {};
   try { saved = JSON.parse(store.get('fcp.ui') || '{}') || {}; } catch (e) { saved = {}; }
   const S = Object.assign({}, DEF, saved);
@@ -39,12 +40,13 @@
   if (S.prof !== 'all' && !(Number(S.prof) >= 0 && Number(S.prof) < PROFS.length)) S.prof = 'all';
   if (!saved.v2 && S.sort === 'profit') S.sort = 'expected'; // first visit after expected profit arrived
   if (!['expected', 'profit', 'margin', 'skill'].includes(S.sort)) S.sort = 'expected';
-  let q = '', fq = '';
-  const open = new Set();
+  let q = '', fq = '', rq = '';
+  const open = new Set(), openR = new Set(), openL = new Set();
   const qty = new Map();
   let limit = 60, limA = 25, limB = 25, limC = 15;
   const save = () => store.set('fcp.ui', JSON.stringify({ v2: 1, prof: S.prof, skills: S.skills, basis: S.basis, sellTo: S.sellTo, sort: S.sort, onlyProfit: S.onlyProfit,
-    trainerOnly: S.trainerOnly, trim: S.trim, hideThin: S.hideThin, disc: S.disc, mine: S.mine, budget: S.budget, planRecipes: S.planRecipes }));
+    trainerOnly: S.trainerOnly, trim: S.trim, hideThin: S.hideThin, disc: S.disc, mine: S.mine, budget: S.budget, planRecipes: S.planRecipes,
+    rbProf: S.rbProf, lv: S.lv }));
   const single = () => S.prof !== 'all';
   const clampSkill = (v) => Math.min(300, Math.max(1, Math.round(Number(v)) || 150));
   const skillNow = () => clampSkill(S.skills[S.prof] ?? S.skills.all);
@@ -62,6 +64,7 @@
   const fmtInt = (n) => (n == null ? '–' : n >= 10000 ? Math.round(n / 1000) + 'k' : n >= 1000 ? (n / 1000).toFixed(1) + 'k' : String(n));
   const pct = (x) => (x == null ? '' : (x > 0 ? '+' : x < 0 ? '−' : '') + Math.abs(Math.round(x * 100)) + '%');
   const trimNum = (x) => (Number.isInteger(x) ? String(x) : x.toFixed(1));
+  const fmtQty = (x) => fmtInt(Math.ceil(x - 1e-9));
   const itemName = (id) => { const it = E.items.get(id); return it ? it[0] : 'Item ' + id; };
   const itemQ = (id) => { const it = E.items.get(id); return it ? Math.min(it[1], 5) : 1; };
   const listedQty = (id) => (PT.map.get(id) || {}).qty || 0;
@@ -92,6 +95,8 @@
   }
   const hasRecipes = PROFS.map(() => false);
   for (const r of E.recipes) hasRecipes[r.prof] = true;
+  const fitNum = (el) => { el.style.width = (Math.max(1, String(el.value).length) + 0.35) + 'ch'; };
+  const fitNums = () => document.querySelectorAll('.ask input[type="number"]').forEach(fitNum);
   function buildProfSelect() {
     $('prof').innerHTML = '<option value="all">all professions</option>' +
       PROFS.map((p, i) => (hasRecipes[i] ? '<option value="' + i + '">' + esc(p) + '</option>' : '')).join('');
@@ -105,6 +110,7 @@
     so.querySelector('[value="skill"]').disabled = !single();
     so.value = S.sort === 'skill' && !single() ? 'expected' : S.sort;
     ['prof', 'sellTo', 'sort'].forEach((id) => fit($(id)));
+    fitNum($('skill'));
   }
   function syncSettings() {
     $('basis').value = S.basis; $('disc').value = S.disc;
@@ -223,6 +229,7 @@
     if (e.via === 'ah') notes.push(e.vend > 0 ? 'A vendor pays ' + coin(e.vend / e.y) + ' each.' : 'Vendors do not buy it.');
     else if (e.ahNet != null) notes.push('On the AH it would bring ' + coin(e.ahNet / e.y) + ' each after the cut.');
     if (r.yellow && r.grey) notes.push('Gives a skill point every time below ' + r.yellow + ', none from ' + r.grey + '.');
+    if (r.est && r.src !== 2) notes.push('The skill a trainer teaches this at is an estimate.');
 
     return '<div class="detail">' +
       '<div class="make"><span>Make</span><span class="stepper"><button type="button" data-step="-1" aria-label="One fewer">−</button><output>' + n + '</output><button type="button" data-step="1" aria-label="One more">+</button></span>' +
@@ -236,6 +243,21 @@
   const crateFor = new Map();
   for (const c of D.crates || []) for (let i = 0; i < c[4].length; i += 2) if (!crateFor.has(c[4][i])) crateFor.set(c[4][i], { id: c[0], q: c[4][i + 1] });
 
+  // Table rows for everything a plan buys, and a line for what it crafts first.
+  function buyRows(pl) {
+    const WORD = { vendor: 'vendor', ah: 'AH' };
+    let rows = '';
+    const order = { ah: 0, vendor: 1 };
+    for (const b of pl.buy.slice().sort((x, y) => (order[x.src] ?? 2) - (order[y.src] ?? 2))) {
+      const bits = [];
+      if (b.u != null && b.q > 1) bits.push(coin(b.u) + ' each');
+      if (b.src === 'ah') { const l = listedQty(b.id); bits.push(l < b.q ? '<span class="warn">only ' + fmtInt(l) + ' listed</span>' : fmtInt(l) + ' listed'); }
+      rows += '<tr><td class="qn">' + fmtQty(b.q) + '</td><td><span class="q' + itemQ(b.id) + '">' + esc(itemName(b.id)) + '</span>' + (bits.length ? '<small>' + bits.join(', ') + '</small>' : '') + '</td>' +
+        '<td class="src">' + (b.src ? WORD[b.src] : '<span class="neg">no price</span>') + '</td><td class="amt">' + (b.u != null ? coin(b.u * b.q) : '–') + '</td></tr>';
+    }
+    return rows;
+  }
+  const craftFirst = (pl) => (pl.steps.length ? 'Craft first: ' + pl.steps.map((x) => x.n + ' × ' + esc(x.r.name)).join(', ') + '.' : '');
   function buyLines(buy, lines) {
     const group = (src, title) => {
       const xs = buy.filter((b) => b.src === src);
@@ -350,6 +372,7 @@
     fit($('addProf'));
     $('budget').value = S.budget;
     $('planRecipes').checked = !!S.planRecipes;
+    fitNums();
   }
   function renderPlan() {
     const budget = Math.max(0, Number(S.budget) || 0) * 10000;
@@ -438,19 +461,267 @@
     }).join('') || '<p class="note">This scan has no 7-day medians yet.</p>';
   }
 
+  // ---------- recipes worth buying ----------
+  let rbRows = new Map(), rbAll = false, limR = 30, limW = 10;
+  const haveSkill = (prof) => (S.mine[prof] != null ? clampSkill(S.mine[prof]) : null);
+  function wayText(w) {
+    if (w.src === 'ah') return coin(w.price) + ' on the AH';
+    if (w.src === 'vendor') return coin(w.price) + ' from a vendor';
+    return w.favor + ' favor' + (w.price != null ? ', about ' + coin(w.price) : '');
+  }
+  function buildRbSelect() {
+    const mine = Object.keys(S.mine).length;
+    $('rbProf').innerHTML = '<option value="all">every profession</option>' + (mine ? '<option value="mine">my professions</option>' : '') +
+      PROFS.map((p, i) => (hasRecipes[i] ? '<option value="' + i + '">' + esc(p) + '</option>' : '')).join('');
+    if (S.rbProf === 'mine' && !mine) S.rbProf = 'all';
+    $('rbProf').value = S.rbProf;
+    fit($('rbProf'));
+  }
+  function recipeDetail(x) {
+    const r = x.r, e = x.e, w = x.way;
+    const n = Math.max(1, x.n);
+    const pl = x.ctx.plan(r, n);
+    const notesTop = [];
+    let rows = '';
+    if (w) {
+      const small = w.src === 'ah' ? fmtInt(w.listed) + ' listed, this is the cheapest'
+        : w.src === 'vendor' ? (w.limited ? 'limited stock' : '')
+        : w.favor + ' Merchant\'s Favor' + (w.honored ? ', needs Honored' : '');
+      rows += '<tr><td class="qn">1</td><td><span class="q' + itemQ(r.ritem) + '">' + esc(itemName(r.ritem)) + '</span>' + (small ? '<small>' + small + '</small>' : '') + '</td>' +
+        '<td class="src">' + { ah: 'AH', vendor: 'vendor', favor: 'crates' }[w.src] + '</td><td class="amt">' + coin(w.price) + '</td></tr>';
+    }
+    rows += buyRows(pl);
+    const mats = pl.cost;
+    rows += '<tr class="sum"><td></td><td colspan="2">Materials for ' + n + (n === 1 ? ' craft' : ' crafts') + '</td><td class="amt">' + coin(mats) + '</td></tr>';
+    const made = e.y * n;
+    rows += e.via === 'vendor'
+      ? '<tr><td></td><td colspan="2">A vendor pays ' + (made !== 1 ? trimNum(made) + ' at ' : '') + coin(e.vend / e.y) + '</td><td class="amt">' + coin(e.vend * n) + '</td></tr>'
+      : '<tr><td></td><td colspan="2">' + (made !== 1 ? trimNum(made) + ' sell' : 'Sells') + ' on the AH at about ' + coin(e.a) + ' less 5%<small>' + (e.band ? SPEED[e.band] : 'no sales data') + ', expected ' + coin(e.exp, true) + ' a craft after expired listings</small></td><td class="amt">' + coin(e.ahNet * n) + '</td></tr>';
+    if (e.via === 'ah' && e.sale && e.sale.trimmed) notesTop.push('Listed here at ' + coin(e.sale.raw) + '. Other ' + esc(region()) + ' houses sit near ' + coin(e.sale.ref) + ', so a sale counts at twice that.');
+    const after = e.exp * n - (w ? w.price : 0);
+    rows += '<tr class="total"><td></td><td colspan="2">' + (w ? 'Expected after ' + (x.n > 1 ? 'the first batch' : 'the first craft') : 'Expected for ' + n) + '</td><td class="amt ' + sign(after) + '">' + coin(after, true) + '</td></tr>';
+
+    const notes = [];
+    const have = haveSkill(r.prof);
+    notes.push('Needs ' + esc(PROFS[r.prof]) + ' ' + r.learn + (have != null && have < r.learn ? ', <span class="warn">you are at ' + have + '</span>' : '') + '. Makes <span class="q' + itemQ(r.res) + '">' + esc(r.name) + '</span>.');
+    if (x.n < 1) notes.push('<span class="warn">The materials for even one craft are not all listed right now.</span>');
+    else if (e.via === 'vendor') notes.push('A batch is ' + x.n + (x.stock < x.cap ? ', as far as the listed materials go.' : ' when the result goes to a vendor.'));
+    else notes.push(x.stock < x.cap ? 'A batch is ' + x.n + ', as far as the listed materials go.' : 'A batch is ' + x.n + ': a quarter of the ' + fmtInt(e.listed) + ' already listed.');
+    notes.push(...notesTop);
+    const cf = craftFirst(pl);
+    if (cf) notes.push(cf);
+    if (w && w.src === 'favor' && w.crates) notes.push('The favor comes from ' + w.crates.map((k) => k.n + ' × ' + esc(itemName(k.c.id).replace('Waylaid Crate: ', ''))).join(', ') + ', each bought empty and filled. The Market tab has the crates.');
+    for (const o of x.ways) {
+      if (o === w) continue;
+      if (o.src === 'ah') notes.push('The AH also has it from ' + coin(o.price) + '.');
+      else if (o.src === 'vendor') notes.push('A vendor also sells it for ' + coin(o.price) + (o.limited ? ' in limited stock.' : '.'));
+      else notes.push('Also sold for ' + o.favor + ' Merchant\'s Favor' + (o.honored ? ' at Honored' : '') + (o.price != null ? ', about ' + coin(o.price) + ' through crates.' : '. No crate is listed to price that.'));
+    }
+    if (!w) notes.push('Nobody sells the recipe here right now.');
+    if (x.thin) notes.push('<span class="warn">Only ' + e.listed + ' listed here and no other house backs up the price.</span>');
+    return '<div class="detail"><table class="bill">' + rows + '</table><ul class="notes">' + notes.map((t) => '<li>' + t + '</li>').join('') + '</ul>' +
+      '<div class="acts"><button type="button" class="btn" data-copy>Copy shopping list</button>' +
+      '<a class="ext" href="' + ahlLink(r.res) + '" target="_blank" rel="noopener">Price history on AHledger</a></div></div>';
+  }
+  function recipeText(x) {
+    const r = x.r, n = Math.max(1, x.n), pl = x.ctx.plan(r, n);
+    const lines = [itemName(r.ritem) + ' (' + PROFS[r.prof] + ' ' + r.learn + ')'];
+    if (x.way) lines.push('Buy the recipe: ' + (x.way.src === 'favor' ? x.way.favor + ' Merchant\'s Favor, about ' + coinText(x.way.price) + ' through crates' : coinText(x.way.price) + (x.way.src === 'ah' ? ' on the auction house' : ' from a vendor')));
+    lines.push('', 'For ' + n + ' x ' + r.name + ':');
+    buyLines(pl.buy, lines);
+    if (pl.steps.length) { lines.push('', 'Craft first:'); for (const st of pl.steps) lines.push(st.n + ' x ' + st.r.name); }
+    if (x.way) lines.push('', 'Expected ' + coinText(x.e.exp * n - x.way.price) + ' after the first batch.');
+    return lines.join('\n');
+  }
+  function renderRecipes() {
+    buildRbSelect();
+    const all = E.recipeBuys(PT, ctxOpts({}));
+    const s = rq.trim().toLowerCase();
+    const inProf = (x) => (S.rbProf === 'all' ? true : S.rbProf === 'mine' ? S.mine[x.r.prof] != null : x.r.prof === Number(S.rbProf));
+    const pool = all.filter((x) => inProf(x) && x.e.exp > 0 && !(S.hideThin && x.thin) &&
+      (!s || itemName(x.r.ritem).toLowerCase().includes(s) || x.r.name.toLowerCase().includes(s)));
+    const sale = pool.filter((x) => x.way).sort((a, b) => b.net - a.net);
+    const pay = sale.filter((x) => x.net > 0);
+    const slow = sale.length - pay.length;
+    const shown = rbAll ? sale : pay;
+    rbRows = new Map(pool.map((x) => [x.r.sid, x]));
+    $('rbTally').innerHTML = '<b>' + pay.length + '</b> ' + (pay.length === 1 ? 'recipe for sale pays' : 'recipes for sale pay') + ' for ' + (pay.length === 1 ? 'itself' : 'themselves') + ' with the first batch of crafts.' +
+      (slow ? ' <button type="button" class="textbtn" id="rbToggle">' + (rbAll ? 'Hide' : 'Show') + ' ' + slow + ' that ' + (slow === 1 ? 'takes' : 'take') + ' longer</button>' : '');
+    const rowOf = (x) => {
+      const have = haveSkill(x.r.prof);
+      const behind = have != null && have < x.r.learn;
+      let right;
+      if (!x.way) right = SPEED[x.e.band] || (x.e.via === 'vendor' ? 'to a vendor' : 'no sales data');
+      else if (x.n < 1) right = '<span class="warn">materials short</span>';
+      else right = x.payback <= x.n ? 'pays back in ' + x.payback + (x.payback === 1 ? ' craft' : ' crafts') : x.payback + ' crafts to pay back';
+      return line({ sid: x.r.sid, open: openR.has(x.r.sid), q: itemQ(x.r.ritem), name: esc(itemName(x.r.ritem)),
+        amount: x.way ? coin(x.net, true) : coin(x.e.exp, true) + ' a craft', cls: sign(x.way ? x.net : x.e.exp),
+        left: esc(PROFS[x.r.prof]) + ' ' + (behind ? '<span class="warn">' + x.r.learn + '</span>' : x.r.learn) + (x.way ? ', ' + wayText(x.way) : ''), right, detail: () => recipeDetail(x) });
+    };
+    $('rbList').innerHTML = shown.length ? shown.slice(0, limR).map(rowOf).join('')
+      : '<li class="empty">' + (s ? 'Nothing matches “' + esc(rq) + '”.' : 'No recipe for sale pays for itself in one batch right now.') + '</li>';
+    $('rbMore').innerHTML = shown.length > limR ? '<button type="button" class="btn" id="rbMoreBtn">Show ' + Math.min(30, shown.length - limR) + ' more</button>' : '';
+    const watch = pool.filter((x) => !x.way).sort((a, b) => b.e.exp - a.e.exp);
+    $('rbWatchSect').hidden = !watch.length;
+    $('rbWatch').innerHTML = watch.slice(0, limW).map(rowOf).join('');
+    $('rbWatchMore').innerHTML = watch.length > limW ? '<button type="button" class="btn" id="rbWatchBtn">Show ' + Math.min(20, watch.length - limW) + ' more</button>' : '';
+  }
+
+  // ---------- leveling ----------
+  const NO_PATH = ['Enchanting', 'Mining', 'Herbalism', 'Skinning']; // these level by enchanting or gathering, which has no price
+  const LEVELERS = PROFS.map((p, i) => i).filter((i) => hasRecipes[i] && !NO_PATH.includes(PROFS[i]));
+  const TIER = [75, 150, 225, 300];
+  let lastPath = null;
+  function knownSkill(prof) { return S.mine[prof] != null ? clampSkill(S.mine[prof]) : S.skills[prof] != null ? clampSkill(S.skills[prof]) : null; }
+  function lvDefaults(prof) {
+    const k = knownSkill(prof);
+    const from = k != null && k < 300 ? k : 1;
+    return { prof, from, to: TIER.find((t) => t > from) || 300, bought: !!(S.lv && S.lv.bought) };
+  }
+  function lvState() {
+    if (!S.lv || !LEVELERS.includes(Number(S.lv.prof))) {
+      const mine = Object.keys(S.mine).map(Number).find((i) => LEVELERS.includes(i));
+      S.lv = lvDefaults(mine != null ? mine : single() && LEVELERS.includes(Number(S.prof)) ? Number(S.prof) : PROFS.indexOf('Tailoring'));
+    }
+    return S.lv;
+  }
+  function syncLeveling() {
+    const L = lvState();
+    $('lvProf').innerHTML = LEVELERS.map((i) => '<option value="' + i + '">' + esc(PROFS[i]) + '</option>').join('');
+    $('lvProf').value = L.prof; fit($('lvProf'));
+    $('lvFrom').value = L.from; $('lvTo').value = L.to; $('lvBought').checked = !!L.bought;
+    fitNum($('lvFrom')); fitNum($('lvTo'));
+  }
+  const whole = (x) => Math.round(x);
+  function sellText(st) {
+    const k = whole(st.keep), a = whole(st.ah), v = whole(st.vendor);
+    if (k && !a && !v) return 'keep for later';
+    const bits = [];
+    if (k) bits.push('keep ' + fmtInt(k));
+    if (a && !v && !k) return 'sell on the AH';
+    if (v && !a && !k) return 'to a vendor';
+    if (a) bits.push('AH ' + fmtInt(a));
+    if (v) bits.push('vendor ' + fmtInt(v));
+    return bits.join(', ') || 'nothing to sell';
+  }
+  const costCoin = (c) => (c < -0.5 ? coin(-c, true) : c < 0.5 ? coin(0) : coin(-c));
+  const costCls = (c) => (c < -0.5 ? 'pos' : '');
+  function stepDetail(st, P) {
+    const r = st.r, e = st.e, y = e.y;
+    let rows = buyRows(st);
+    for (const k of st.kept) rows += '<tr><td class="qn">' + fmtQty(k.q) + '</td><td><span class="q' + itemQ(k.id) + '">' + esc(itemName(k.id)) + '</span><small>made in an earlier step</small></td><td class="src">kept</td><td class="amt">–</td></tr>';
+    rows += '<tr class="sum"><td></td><td colspan="2">Materials for ' + st.n + (st.n === 1 ? ' craft' : ' crafts') + '</td><td class="amt">' + coin(st.mats) + '</td></tr>';
+    if (st.fee > 0) rows += '<tr><td></td><td colspan="2">' + (st.feeKind === 'trainer' ? 'Trainer fee, at Classic\'s price' : 'Buy <span class="q' + itemQ(r.ritem) + '">' + esc(itemName(r.ritem)) + '</span> ' + (st.feeKind === 'ah' ? 'on the AH' : 'from a vendor')) + '</td><td class="amt">' + coin(st.fee) + '</td></tr>';
+    if (whole(st.ah)) rows += '<tr><td></td><td colspan="2">' + fmtInt(whole(st.ah)) + ' to the AH at about ' + coin(e.a) + ' less 5%<small>' + (e.band ? SPEED[e.band] : 'no sales data') + ', so ' + coin(st.d.best / y) + ' each is what to expect</small></td><td class="amt pos">' + coin(st.ah * st.d.best / y, true) + '</td></tr>';
+    if (whole(st.vendor)) rows += '<tr><td></td><td colspan="2">' + fmtInt(whole(st.vendor)) + ' to a vendor at ' + coin(st.d.vend / y) + '</td><td class="amt pos">' + coin(st.vendor * st.d.vend / y, true) + '</td></tr>';
+    if (whole(st.keep)) rows += '<tr><td></td><td colspan="2">' + fmtInt(whole(st.keep)) + ' kept for later steps</td><td class="amt">–</td></tr>';
+    rows += '<tr class="total"><td></td><td colspan="2">' + (st.net < -0.5 ? 'This step is expected to gain' : 'This step costs about') + '</td><td class="amt ' + costCls(st.net) + '">' + coin(Math.abs(st.net)) + '</td></tr>';
+    const notes = [];
+    const pts = st.to - st.from;
+    notes.push(st.to <= r.yellow ? 'Orange the whole way: every craft gives a point.'
+      : 'Gives a point every time below ' + r.yellow + ' and none from ' + r.grey + ', so ' + pts + (pts === 1 ? ' point takes' : ' points take') + ' about ' + st.n + (st.n === 1 ? ' craft.' : ' crafts.'));
+    const cf = craftFirst({ steps: st.pre });
+    if (cf) notes.push(cf);
+    if (whole(st.ah) && whole(st.vendor)) notes.push('The AH counts for a quarter of the ' + fmtInt(e.listed) + ' already listed. The rest goes to a vendor.');
+    if (st.short) {
+      const mine = P.short.filter((x) => st.buy.some((b) => b.src === 'ah' && b.id === x.id));
+      notes.push('<span class="warn">The whole plan needs more than is listed of ' + mine.map((x) => esc(itemName(x.id)) + ' (' + fmtQty(x.need) + ', ' + fmtInt(x.listed) + ' listed)').join(' and ') + '.</span>');
+    }
+    if (r.est && r.src !== 2) notes.push('The skill a trainer teaches this at is an estimate.');
+    return '<div class="detail"><table class="bill">' + rows + '</table><ul class="notes">' + notes.map((t) => '<li>' + t + '</li>').join('') + '</ul>' +
+      '<div class="acts"><button type="button" class="btn" data-copy>Copy this step</button>' +
+      '<a class="ext" href="' + ahlLink(r.res) + '" target="_blank" rel="noopener">Price history on AHledger</a></div></div>';
+  }
+  function sellLine(st) {
+    const k = whole(st.keep), a = whole(st.ah), v = whole(st.vendor);
+    const bits = [];
+    if (k) bits.push('keep ' + k);
+    if (a) bits.push(a + ' to the AH at about ' + coinText(st.e.a));
+    if (v) bits.push(v + ' to a vendor');
+    return bits.join(', ');
+  }
+  function stepText(st) {
+    const lines = [st.n + ' x ' + st.r.name + ' (' + PROFS[st.r.prof] + ' ' + st.from + ' to ' + st.to + ')'];
+    if (st.fee > 0) lines.push(st.feeKind === 'trainer' ? 'Learn it from a trainer, about ' + coinText(st.fee) : 'Buy ' + itemName(st.r.ritem) + (st.feeKind === 'ah' ? ' on the auction house, ' : ' from a vendor, ') + coinText(st.fee));
+    buyLines(st.buy, lines);
+    if (st.kept.length) { lines.push('', 'From earlier steps:'); for (const k of st.kept) lines.push(Math.ceil(k.q - 1e-9) + ' ' + itemName(k.id)); }
+    if (st.pre.length) { lines.push('', 'Craft first:'); for (const x of st.pre) lines.push(x.n + ' x ' + x.r.name); }
+    const sl = sellLine(st);
+    if (sl) lines.push('', 'Then: ' + sl + '.');
+    return lines.join('\n');
+  }
+  function pathText(P) {
+    const lines = [PROFS[P.prof] + ' ' + P.from + ' to ' + P.to + ' on ' + marketLabel(PT)];
+    buyLines(P.buy, lines);
+    lines.push('', 'Steps:');
+    for (const st of P.steps) {
+      const sl = sellLine(st);
+      lines.push(st.from + ' to ' + st.to + ': ' + st.n + ' x ' + st.r.name + (st.fee > 0 && st.feeKind !== 'trainer' ? ' (buy ' + itemName(st.r.ritem) + ')' : '') + (st.pre.length ? ' (first ' + st.pre.map((x) => x.n + ' x ' + x.r.name).join(', ') + ')' : '') + (sl ? ', ' + sl : ''));
+    }
+    for (const g of P.gaps) lines.push(g[0] + ' to ' + g[1] + ': nothing with listed materials gives points');
+    lines.push('', 'Materials about ' + coinText(P.mats) + (P.fees > 0 ? ', learning the recipes about ' + coinText(P.fees) : '') + ', expected back from sales ' + coinText(P.back) + '.');
+    return lines.join('\n');
+  }
+  function renderLeveling() {
+    const L = lvState();
+    const from = Math.round(Number(L.from)), to = Math.round(Number(L.to));
+    if (!(from >= 1 && to <= 300 && to > from)) {
+      lastPath = null;
+      $('lvTally').innerHTML = '';
+      $('lvList').innerHTML = '<li class="empty">Set a target above your skill, up to 300.</li>';
+      $('lvActs').innerHTML = '';
+      return;
+    }
+    const mine = {};
+    for (const k of Object.keys(S.mine)) mine[k] = clampSkill(S.mine[k]);
+    const P = lastPath = E.levelPath(PT, ctxOpts({}), Number(L.prof), from, to, mine, !!L.bought);
+    const ahead = P.net < -0.5;
+    const spend = 'Materials ' + coin(P.mats) + (P.fees > 0 ? ' and ' + coin(P.fees) + ' to learn the recipes' : '');
+    let tally = !P.steps.length ? '' : ahead
+      ? 'Expected to come out <b class="pos">' + coin(-P.net) + '</b> ahead. ' + spend + ', against ' + coin(P.back) + ' expected from selling what you make.'
+      : 'About <b>' + coin(P.net) + '</b> all in. ' + spend + ', less ' + coin(P.back) + ' expected from selling what you make.';
+    if (P.gaps.length) tally += ' <span class="warn">Nothing with listed materials gives points from ' + P.gaps.map((g) => g[0] + ' to ' + g[1]).join(' or ') + '.</span>' + (L.bought ? '' : ' Recipes you would have to buy may cover it.');
+    if (P.short.length) {
+      const top = P.short.slice().sort((a, b) => b.need / Math.max(1, b.listed) - a.need / Math.max(1, a.listed));
+      tally += ' <span class="warn">The auction house lists ' + fmtInt(top[0].listed) + ' ' + esc(itemName(top[0].id)) + ' and this needs ' + fmtQty(top[0].need) + (top.length > 1 ? ', and ' + (top.length - 1) + ' more ' + (top.length === 2 ? 'material is' : 'materials are') + ' short' : '') + '.</span>';
+    }
+    $('lvTally').innerHTML = tally;
+    if (!P.steps.length) {
+      $('lvList').innerHTML = '<li class="empty">Nothing with listed materials gives ' + esc(PROFS[P.prof]) + ' points between ' + from + ' and ' + to + ' in this scan.</li>';
+      $('lvActs').innerHTML = '';
+      return;
+    }
+    $('lvList').innerHTML = P.steps.map((st, i) => {
+      const diff = difficulty(st.r, st.from);
+      return line({ sid: i, open: openL.has(i), tick: diff && diff.tick, q: itemQ(st.r.res),
+        name: st.n + ' × ' + esc(st.r.name), amount: costCoin(st.net), cls: costCls(st.net),
+        left: 'Skill ' + st.from + ' to ' + st.to + (st.short ? ', <span class="warn">materials short</span>' : '') + (st.fee > 0 && st.feeKind !== 'trainer' ? ', buy the recipe' : ''),
+        right: sellText(st), detail: () => stepDetail(st, P) });
+    }).join('');
+    $('lvActs').innerHTML = '<button type="button" class="btn" id="copyPath">Copy the whole plan</button>';
+  }
+
   // ---------- tabs ----------
-  const TABS = ['crafts', 'flips', 'plan', 'market'];
-  const RENDER = { flips: renderFlips, plan: () => { renderMine(); renderPlan(); }, market: renderMarket };
+  const TABS = ['crafts', 'flips', 'plan', 'recipes', 'leveling', 'market'];
+  const RENDER = { flips: renderFlips, plan: () => { renderMine(); renderPlan(); }, recipes: renderRecipes, leveling: () => { syncLeveling(); renderLeveling(); }, market: renderMarket };
   let tab = 'crafts';
+  function tabEdges() {
+    const bar = $('tabs'), over = bar.scrollWidth - bar.clientWidth;
+    bar.classList.toggle('more-l', over > 2 && bar.scrollLeft > 6);
+    bar.classList.toggle('more-r', over > 2 && bar.scrollLeft < over - 6);
+  }
   function moveInk() {
     const b = $('tab-' + tab);
     $('tabInk').style.width = b.offsetWidth + 'px';
     $('tabInk').style.transform = 'translateX(' + b.offsetLeft + 'px)';
+    tabEdges();
   }
   function setTab(t, push) {
     tab = TABS.includes(t) ? t : 'crafts';
     for (const k of TABS) { $('view-' + k).hidden = k !== tab; $('tab-' + k).setAttribute('aria-selected', String(k === tab)); }
     moveInk();
+    const bar = $('tabs'), btn = $('tab-' + tab);
+    if (bar.scrollWidth > bar.clientWidth) bar.scrollTo({ left: btn.offsetLeft - (bar.clientWidth - btn.offsetWidth) / 2, behavior: 'smooth' });
     if (RENDER[tab]) RENDER[tab]();
     if (push && location.hash !== '#' + tab) { try { history.replaceState(null, '', '#' + tab); } catch (e) { location.hash = tab; } }
   }
@@ -469,6 +740,8 @@
   });
   $('skill').addEventListener('blur', () => { $('skill').value = skillNow(); });
   document.addEventListener('focusin', (ev) => { if (ev.target.matches && ev.target.matches('.ask input[type="number"]')) ev.target.select(); });
+  document.addEventListener('input', (ev) => { if (ev.target.matches && ev.target.matches('.ask input[type="number"]')) fitNum(ev.target); });
+  document.addEventListener('focusout', (ev) => { if (ev.target.matches && ev.target.matches('.ask input[type="number"]')) requestAnimationFrame(() => fitNum(ev.target)); });
   $('sellTo').addEventListener('change', (ev) => { S.sellTo = ev.target.value; save(); syncAsk(); rerender(); });
   $('sort').addEventListener('change', (ev) => { S.sort = ev.target.value; save(); syncAsk(); rerender(); });
   $('q').addEventListener('input', (ev) => { q = ev.target.value; limit = 60; schedule(); });
@@ -479,13 +752,14 @@
   $('moreB').addEventListener('click', (ev) => { if (ev.target.id === 'moreB_btn') { limB += 25; renderFlips(); } });
   $('moreC').addEventListener('click', (ev) => { if (ev.target.id === 'moreC_btn') { limC += 15; renderFlips(); } });
 
-  function toggle(li, head, html) {
+  function toggle(li, head, html, set) {
     const sid = Number(li.dataset.sid);
+    set = set || open;
     if (li.classList.contains('open')) {
-      open.delete(sid); li.classList.remove('open'); head.setAttribute('aria-expanded', 'false');
+      set.delete(sid); li.classList.remove('open'); head.setAttribute('aria-expanded', 'false');
     } else {
       li.querySelector('.inner').innerHTML = html();
-      open.add(sid);
+      set.add(sid);
       void li.offsetHeight; // paint the closed state first so the opening animates
       li.classList.add('open'); head.setAttribute('aria-expanded', 'true');
     }
@@ -517,9 +791,44 @@
     const c = crateRows.get(Number(li.dataset.sid));
     if (c) toggle(li, head, () => crateDetail(c));
   });
+  // recipes worth buying
+  $('rbProf').addEventListener('change', (ev) => { S.rbProf = ev.target.value; save(); openR.clear(); limR = 30; limW = 10; renderRecipes(); });
+  $('rq').addEventListener('input', (ev) => { rq = ev.target.value; limR = 30; limW = 10; renderRecipes(); });
+  $('rbTally').addEventListener('click', (ev) => { if (ev.target.id === 'rbToggle') { rbAll = !rbAll; renderRecipes(); } });
+  $('rbMore').addEventListener('click', (ev) => { if (ev.target.id === 'rbMoreBtn') { limR += 30; renderRecipes(); } });
+  $('rbWatchMore').addEventListener('click', (ev) => { if (ev.target.id === 'rbWatchBtn') { limW += 20; renderRecipes(); } });
+  const onRecipeClick = (ev) => {
+    const li = ev.target.closest('.row');
+    if (!li || !li.dataset.sid) return;
+    const x = rbRows.get(Number(li.dataset.sid));
+    if (!x) return;
+    if (ev.target.closest('[data-copy]')) { copy(recipeText(x), 'Shopping list copied'); return; }
+    const head = ev.target.closest('.row-head');
+    if (head) toggle(li, head, () => recipeDetail(x), openR);
+  };
+  $('rbList').addEventListener('click', onRecipeClick);
+  $('rbWatch').addEventListener('click', onRecipeClick);
+  // leveling
+  const lvChanged = () => { save(); openL.clear(); renderLeveling(); };
+  $('lvProf').addEventListener('change', (ev) => { S.lv = lvDefaults(Number(ev.target.value)); syncLeveling(); lvChanged(); });
+  $('lvFrom').addEventListener('input', (ev) => { const v = Math.round(Number(ev.target.value)); if (!(v >= 1 && v <= 299)) return; S.lv.from = v; lvChanged(); });
+  $('lvTo').addEventListener('input', (ev) => { const v = Math.round(Number(ev.target.value)); if (!(v >= 2 && v <= 300)) return; S.lv.to = v; lvChanged(); });
+  ['lvFrom', 'lvTo'].forEach((id) => $(id).addEventListener('blur', () => { $('lvFrom').value = S.lv.from; $('lvTo').value = S.lv.to; }));
+  $('lvBought').addEventListener('change', (ev) => { S.lv.bought = ev.target.checked; lvChanged(); });
+  $('lvList').addEventListener('click', (ev) => {
+    const li = ev.target.closest('.row');
+    if (!li || !li.dataset.sid || !lastPath) return;
+    const st = lastPath.steps[Number(li.dataset.sid)];
+    if (!st) return;
+    if (ev.target.closest('[data-copy]')) { copy(stepText(st), 'Step copied'); return; }
+    const head = ev.target.closest('.row-head');
+    if (head) toggle(li, head, () => stepDetail(st, lastPath), openL);
+  });
+  $('lvActs').addEventListener('click', (ev) => { if (ev.target.id === 'copyPath' && lastPath) copy(pathText(lastPath), 'Plan copied'); });
   for (const k of TABS) $('tab-' + k).addEventListener('click', () => setTab(k, true));
   window.addEventListener('hashchange', () => setTab(location.hash.slice(1), false));
   window.addEventListener('resize', moveInk);
+  $('tabs').addEventListener('scroll', tabEdges, { passive: true });
 
   // plan inputs
   $('budget').addEventListener('input', (ev) => { const v = Number(ev.target.value); if (!(v >= 0)) return; S.budget = v; save(); renderPlan(); });
@@ -568,7 +877,7 @@
     clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 2600);
   }
   function applyPrices(p, src) {
-    PT = p; source = src;
+    PT = p; source = src; openL.clear();
     renderHouse(); render();
     if (RENDER[tab]) RENDER[tab]();
   }
@@ -631,7 +940,7 @@
   renderHouse(); syncAsk(); syncSettings();
   render();
   setTab(location.hash.slice(1), false);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { syncAsk(); if (tab === 'plan') renderMine(); moveInk(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { syncAsk(); if (tab === 'plan') renderMine(); if (tab === 'recipes') fit($('rbProf')); if (tab === 'leveling') fit($('lvProf')); moveInk(); });
   // Fetch the latest scan where the page may reach AHledger (GitHub Pages); elsewhere keep the copy we have.
   if (source !== 'paste' && /^https?:$/.test(location.protocol)) {
     checking = true; renderHouse();

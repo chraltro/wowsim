@@ -63,6 +63,48 @@ const sp = E.spend(PT2, { basis: 'med', trim: false, disc: 0 }, mineT, 2000, fal
 fo('plan within budget', String(sp.spent <= 2000 && sp.lines.length > 0), 'true');
 const lb = sp.lines.find((l) => l.kind === 'craft' && l.e.r.name === 'Linen Bag');
 fo('plan crafts Linen Bags', String(!!lb && lb.n >= 1 && lb.n * 3 <= 300 && lb.n <= Math.floor(90 * 0.25)), 'true');
+// A plan uses what is already in the bags first: 2 Linen Bags need 6 bolts, 4 are owned, so 2 are made from 4 Linen Cloth.
+const opts = { basis: 'med', trim: false, disc: 0 };
+const linen = (price, qty, more) => parsePriceTable(['AHL1|forever/pvp/alliance/eu|1794052222|1', '2589:' + price + ':' + price + ':' + qty + ':' + price + ':' + price + ':' + price + ':' + price + ':90000'].concat(more || []).join('\n'));
+const own = new Map([[2996, 4]]);
+const po = E.context(linen(10, 5000), Object.assign({ sellTo: 'vendor', maxSkill: 300 }, opts)).plan(find('Linen Bag'), 2, own);
+eq('owned bolts used', po.used.get(2996), 4); eq('cloth still to buy', po.buy.find((b) => b.id === 2589).q, 4); eq('bags emptied', own.get(2996), 0);
+// Leveling. Only Linen Cloth is listed, at 10c. A Linen Bag is 3 bolts (2 cloth each) and 3 Coarse Thread: 90c, and a
+// vendor pays 2s. It stays orange to 30, so Tailoring 1 to 11 is 10 bags: 9s in, 20s back.
+const T = D.profs.indexOf('Tailoring');
+let lp = E.levelPath(linen(10, 5000), opts, T, 1, 11, {}, false);
+fo('level: one step of Linen Bags', lp.steps.map((s) => s.n + ' ' + s.r.name + ' ' + s.from + '-' + s.to).join('|'), '10 Linen Bag 1-11');
+eq('level: materials', lp.mats, 900); eq('level: back', lp.back, 2000); eq('level: net', lp.net, -1100);
+fo('level: bolts crafted first', lp.steps[0].pre.map((x) => x.n + ' ' + x.r.name).join(), '30 Bolt of Linen Cloth');
+// With only 30 cloth listed the plan still stands, and says the 60 it needs are not there. With 1 listed nothing can be made.
+lp = E.levelPath(linen(10, 30), opts, T, 1, 11, {}, false);
+fo('level: short material flagged', lp.short.map((x) => x.id + ' ' + x.need + ' of ' + x.listed).join(), '2589 60 of 30');
+lp = E.levelPath(linen(10, 1), opts, T, 1, 11, {}, false);
+fo('level: nothing listed is a gap', JSON.stringify(lp.gaps) + ' ' + lp.steps.length + ' ' + lp.missed, '[[1,11]] 0 10');
+// Keeping what later steps need. Cloth at 1s, bolts list at 3s with 80 up and 160 sold a day, so the auction house
+// counts for 20 bolts. Past those a bolt and a White Linen Shirt cost the same per point, and the bolts run on to 24.
+// The 12 shirts and 4 Simple Linen Pants after them use 16 of the 23 bolts, so 7 are sold and the later steps only buy
+// bleach and thread.
+const boltRow = '2996:300:300:80:300:300:300:300:1600';
+lp = E.levelPath(linen(100, 5000, [boltRow]), opts, T, 1, 40, {}, false);
+fo('level: steps', lp.steps.map((s) => s.n + ' ' + s.r.name).join('|'), '23 Bolt of Linen Cloth|12 White Linen Shirt|4 Simple Linen Pants');
+eq('level: bolts kept', lp.steps[0].keep, 16); eq('level: bolts sold', lp.steps[0].ah, 7);
+eq('level: seven bolts on the AH', lp.steps[0].back, 7 * expectedSale(285, 40, 2));
+eq('level: shirts buy bleach and thread only', lp.steps[1].mats, 12 * 35); eq('level: pants buy thread only', lp.steps[2].mats, 40);
+eq('level: trainer fee once', lp.fees, 25); eq('level: total', lp.net, 4600 + 420 + 40 + 25 - 7 * expectedSale(285, 40, 2) - 12 * 75 - 4 * 23);
+// A recipe that has to be bought only joins when asked. Pattern: Red Linen Vest is listed at 5c, the vest at 20s.
+const vest = ['6271:5:5:3:5:5:5:5:10', '6239:2000:1900:400:2000:2000:1900:2100:8000'];
+fo('level: no bought recipes by default', String(E.levelPath(linen(100, 5000, vest), opts, T, 30, 50, {}, false).steps.some((s) => s.r.src === 2)), 'false');
+const rv = E.levelPath(linen(100, 5000, vest), opts, T, 30, 50, {}, true).steps.find((s) => s.r.name === 'Red Linen Vest');
+fo('level: bought recipe joins', rv ? rv.from + '-' + rv.to + ' ' + rv.n + ' ' + rv.feeKind + ' ' + rv.fee + ' ' + rv.ah : 'missing', '35-50 15 ah 5 15');
+// Recipes worth buying. The vest: 3 bolts (2s each to make), thread 10c, Red Dye 50c = 6s 60c. 400 listed, 800 sold a day.
+// A batch is a quarter of the 400 listed. Each sale is expected at just under 19s, so the pattern pays back in one craft.
+const rb = E.recipeBuys(linen(100, 5000, vest), opts).find((x) => x.r.name === 'Red Linen Vest');
+fo('recipe: cheapest way', rb.way.src + ' ' + rb.price, 'ah 5'); eq('recipe: batch', rb.n, 100); eq('recipe: payback', rb.payback, 1);
+eq('recipe: expected a craft', rb.e.exp, expectedSale(1900, 160, 2) - 660); eq('recipe: after the batch', rb.net, (expectedSale(1900, 160, 2) - 660) * 100 - 5);
+// Favor: 25 favor takes 3 green Apprentice crates (10 each) at 50s plus 16s of bolts. Only 12 crates are listed, so 500 has no price.
+const fc = E.context(PT3, { basis: 'med', sellTo: 'best', maxSkill: 300, trim: false, disc: 0 });
+eq('favor: 25 costs three crates', fc.favor(25).cost, 3 * 6600); fo('favor: more than is listed', String(fc.favor(500)), 'null');
 // Coins formatting
 const f = (c) => { const k = coins(c); return (k.neg ? '-' : '') + k.parts.map(([n, u]) => n + u).join(' '); };
 fo('coins 12345', f(12345), '1g 23s 45c'); fo('coins -99', f(-99), '-99c'); fo('coins 10005', f(10005), '1g 5c');
