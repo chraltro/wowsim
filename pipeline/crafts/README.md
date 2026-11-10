@@ -3,10 +3,12 @@
 `fetch_inputs.sh` downloads everything into `raw/` (not committed) and runs `build_data.py`, which writes
 `data/crafts.json`. `tools/build_crafts.py` then builds the page from it.
 
+After that first download, `refresh.sh` brings the data up to date in a minute or two: it re-downloads every house's price table, fetches pages only for items it has not seen, and rebuilds. Use it when scans have moved on or new items have appeared. The reference prices and sell speeds cover every named item, so the item check can price a drop. Recipes and client tables only change with a game build, which needs `fetch_inputs.sh` again.
+
 | Input | Source | Used for |
 | --- | --- | --- |
 | Recipes, reagents, yields | AHledger `/v1/crafting/{house}?all=1` | every recipe on the page |
-| Price tables, every house | AHledger `/v1/pricetable/{house}` | the built-in scan, and reference prices for trimming |
+| Price tables, every house | AHledger `/v1/pricetable/{house}` | the built-in scan, and reference prices and sell speeds for every named item |
 | ItemSparse, Item | Forever client build 1.60.1.70862 via wago.tools | names, quality, vendor buy and sell prices, binding |
 | SkillLineAbility | same | when a recipe turns yellow and grey |
 | ItemEffect, ItemXItemEffect | same | which recipe item teaches a recipe, and its required skill |

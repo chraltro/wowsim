@@ -336,7 +336,38 @@ function makeEngine(D) {
       }
       return rows;
     }
-    return { evalRecipe, ahToVendor, vendorToAh, craftToVendor, plan, fodder, crates, favor, trend, turnOf, ahUnit, saleUnit, vendorUnit };
+    // Post an item or vendor it? One unit posted just under the cheapest listing, which is the price a new listing has to
+    // meet to sell, against what a vendor pays. Soulbound items cannot be posted. An item nobody lists on this house is
+    // priced at what the region's other houses ask, with no undercut.
+    function sellCheck(id) {
+      const it = items.get(id);
+      if (!it) return null;
+      const p = pt.map.get(id) || null;
+      const sell = it[2];
+      const ref = refs[id] ?? null;
+      const out = { id, sell, bop: !!it[6], listed: p ? p.qty : 0, min: p ? p.min : null, med: p ? p.med : null, ref, listAt: null,
+        trimmed: false, unlisted: false, turn: null, ownTurn: false, band: null, chance: null, deposit: DEPOSIT * sell,
+        net: null, exp: null, gain: null, thin: false, verdict: sell > 0 ? 'vendor' : 'none' };
+      if (out.bop) return out;
+      let post = p ? (p.min ?? p.med) : null;
+      if (post == null && ref != null) { post = ref; out.unlisted = true; }
+      if (post == null) return out;
+      if (!out.unlisted && opts.trim && ref != null && post > ref * TRIM) { post = ref * TRIM; out.trimmed = true; }
+      const listAt = out.unlisted || out.trimmed ? post : post > 100 ? Math.floor(post * 0.99) : Math.max(1, post - 1);
+      const tn = turnOf(id);
+      out.listAt = listAt;
+      out.net = listAt * CUT;
+      out.turn = tn ? tn.t : null;
+      out.ownTurn = !!(tn && tn.own);
+      out.band = speedBand(out.turn);
+      out.chance = sellChance(tn ? tn.t : NO_DATA_TURN);
+      out.exp = expectedSale(listAt * CUT, sell, tn ? tn.t : NO_DATA_TURN);
+      out.gain = out.exp - sell;
+      out.thin = !out.unlisted && out.listed <= 2 && ref == null;
+      if (out.exp > sell + Math.max(1, sell * 0.05)) out.verdict = 'post';
+      return out;
+    }
+    return { evalRecipe, ahToVendor, vendorToAh, craftToVendor, plan, fodder, crates, favor, trend, turnOf, ahUnit, saleUnit, vendorUnit, sellCheck };
   }
   // A one-off asking price nobody else backs up is no plan.
   const thinSale = (e) => e.via === 'ah' && e.listed <= 2 && (!e.sale || e.sale.ref == null);
