@@ -2,12 +2,12 @@
 
 Two simulators, a crafting profit tool, a knowledge bank and a character check for a group leveling together in World of Warcraft: Forever, from level 1 to 60. They share one set of data and engines.
 
-**Live: https://chraltro.github.io/wowsim/**
+**Live: https://chraltro.github.io/wowsim/** (Craft Profits only. The two sims show the group's names, so they are not published; `./tools/build_local.sh` builds them into `local/site/` on your own machine.)
 
 | Tool | What it does | Page |
 | --- | --- | --- |
-| Forever Group Sim | Every class and spec. Kills per hour while questing, dungeon damage and healing, talents from leveling routes, upgrades ranked by effort. Class combat runs on MythicSim's Forever engine, compiled to WebAssembly and run in your browser. | [/forever/](https://chraltro.github.io/wowsim/forever/) |
-| Shaman Sim | A Restoration Shaman in depth: a second-by-second healer AI for dungeons, questing with four fighting styles, upgrades by effort and a combat log parser. Its own engine, in JavaScript. | [/shaman/](https://chraltro.github.io/wowsim/shaman/) |
+| Forever Group Sim | Every class and spec. Kills per hour while questing, dungeon damage and healing, talents from leveling routes, upgrades ranked by effort. Class combat runs on MythicSim's Forever engine, compiled to WebAssembly and run in your browser. | local only |
+| Shaman Sim | A Restoration Shaman in depth: a second-by-second healer AI for dungeons, questing with four fighting styles, upgrades by effort and a combat log parser. Its own engine, in JavaScript. | local only |
 | Forever Craft Profits | Every recipe ranked by what it makes on your auction house after the 5% cut, with vendor materials at vendor price. Flips between vendor and auction house, including crafting to sell to a vendor. Recipes worth buying, and the cheapest way to level a profession. Prices load from AHledger. | [/crafts/](https://chraltro.github.io/wowsim/crafts/) |
 
 | Character check | Not on the site: a command that reads your character export from the in-game addon and says what to do next. Upgrades in your bags, the best auction buys for your gold, quests you have not done, recipes to learn, what to vendor. | `node tools/check.js` |

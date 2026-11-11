@@ -18,15 +18,19 @@ PAGES = [
 ]
 
 
-def shell(page_html, key):
+PUBLISHED = {'crafts'}   # the only page on the public site; the others are built into local/site/ for your own use
+
+
+def shell(page_html, key, local=False):
     up = '' if key == 'start' else '../'
     me = next(p for p in PAGES if p[0] == key)
+    shown = [p for p in PAGES if local or p[0] in PUBLISHED]
     top = ('<header class="xl-top"><a class="doc" href="%s">wowsim</a><span class="where">WoW: Forever, Alliance RP-PvP EU</span></header>\n'
            '<div class="xl-fx" role="note"><span class="nb">%s</span><span class="fx" aria-hidden="true">fx</span><span class="tx">%s</span></div>'
            % (up or './', html.escape(me[1]), html.escape(me[3])))
     tabs = '<nav class="xl-tabs" aria-label="Pages">%s<span class="gap"></span></nav>' % ''.join(
         '<a href="%s"%s>%s</a>' % (up + (p[2] or './') if up or p[2] else './', ' aria-current="page"' if p[0] == key else '', html.escape(p[1]))
-        for p in PAGES)
+        for p in shown)
     css = open(os.path.join(ROOT, 'src', 'site', 'sheet.css'), encoding='utf-8').read()
     for marker, value in (('/*__SHEET_CSS__*/', css), ('<!--__SHEET_TOP__-->', top), ('<!--__SHEET_TABS__-->', tabs)):
         if marker not in page_html:
