@@ -1,0 +1,13 @@
+{
+  "about": "Changes Blizzard made after the item files were built, laid over data/items_forever_all.json and data/items_all.json when tools/build_items.py and tools/build_items_all.py run. One entry per item. 'set' replaces whole fields of the item record ('stats' replaces every stat, 'weapon' is merged). Give the date, the source and, where a number is worked out and not stated by Blizzard, say so in 'note'. Remove an entry once a rebuilt item file carries the change.",
+  "items": [
+    {
+      "id": 280604,
+      "name": "Rage of the Storm",
+      "date": "2026-11-10",
+      "source": "https://news.blizzard.com/en-us/article/24315281/wow-forever-hotfixes-november-10-2026",
+      "note": "Blizzard: 16 Strength (was 16 Intellect), weapon speed 3.6 (was 3.2). Our record had 12 Intellect and 15 Stamina from an older build; Stamina is kept as it was. The damage range is the old one scaled to the new speed at the same damage per second (35.7), not read from the client.",
+      "set": { "stats": { "sta": 15, "str": 16 }, "weapon": { "min": 102, "max": 154, "speed": 3.6 } }
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "about": "Pages checked every morning by tools/watch_sources.py. 'forum' entries are Blizzard forum threads (Discourse): the check reads how many posts the thread has and when the last one came, so only threads where Blizzard alone posts belong here. 'page' entries are fetched whole and compared by their text. 'index' entries are news indexes, read for links that contain 'match'. 'pages' says which knowledge bank pages to revisit when the source changes.",
+  "sources": [
+    {
+      "id": "hotfixes",
+      "kind": "page",
+      "title": "Blizzard: WoW Forever hotfixes",
+      "url": "https://news.blizzard.com/en-us/article/24315281/wow-forever-hotfixes-november-10-2026",
+      "pages": [
+        "shaman.md",
+        "classes.md",
+        "leveling.md",
+        "gold.md",
+        "systems.md"
+      ]
+    },
+    {
+      "id": "dev-notes",
+      "kind": "forum",
+      "title": "Blizzard forums: development notes (Kaivax)",
+      "url": "https://us.forums.blizzard.com/en/wow/t/wow-forever-beta-development-notes/2360696",
+      "pages": [
+        "shaman.md",
+        "paladin.md",
+        "classes.md"
+      ]
+    },
+    {
+      "id": "dungeon-levels",
+      "kind": "forum",
+      "title": "Blizzard forums: dungeon level ranges",
+      "url": "https://us.forums.blizzard.com/en/wow/t/2349672",
+      "pages": [
+        "leveling.md"
+      ]
+    },
+    {
+      "id": "raids",
+      "kind": "page",
+      "title": "Blizzard: raid overview",
+      "url": "https://worldofwarcraft.blizzard.com/news/24303009",
+      "pages": [
+        "raids.md"
+      ]
+    },
+    {
+      "id": "rulesets",
+      "kind": "page",
+      "title": "Blizzard: rulesets",
+      "url": "https://news.blizzard.com/en-us/article/24302070/",
+      "pages": [
+        "systems.md"
+      ]
+    },
+    {
+      "id": "news",
+      "kind": "index",
+      "title": "Blizzard: new WoW Forever articles",
+      "url": "https://news.blizzard.com/en-us/world-of-warcraft",
+      "pages": [
+        "changelog.md"
+      ],
+      "match": "forever"
+    }
+  ]
+}

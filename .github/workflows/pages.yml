@@ -1,0 +1,39 @@
+name: Publish the site
+# Rebuild dist/ and publish it to the gh-pages branch whenever something the site is built from changes on main.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'data/**'
+      - 'docs/kb/*.md'
+      - 'opt/talents_meta.json'
+      - 'engine-wasm/engine.wasm.gz'
+      - 'tools/**'
+      - 'NOTICE.md'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checks
+        run: |
+          node test/routes.js
+          node test/crafts.js
+          node test/check.js
+      - name: Build
+        run: ./tools/build_site.sh
+      - name: Publish to gh-pages
+        run: |
+          cd dist
+          git init -q -b gh-pages
+          git add -A
+          git -c user.name="wowsim pages" -c user.email="actions@users.noreply.github.com" commit -q -m "Site built from ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" gh-pages

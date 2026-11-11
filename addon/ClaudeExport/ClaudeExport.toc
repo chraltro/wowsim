@@ -1,8 +1,8 @@
 ## Interface: 16001
 ## Title: Claude Export
-## Notes: /claude shows your character export to copy, /claudeexport saves it to disk. Gear, bags, bank, quests, talents, skills, reps, spells.
+## Notes: /claude shows your character export to copy, /claudeexport saves it to disk, /claudeah scans the auction house. Gear, bags, bank, quests done and open, talents, skills, recipes, reps, spells.
 ## Author: Demant
-## Version: 1.3
+## Version: 1.4
 ## SavedVariablesPerCharacter: ClaudeExportDB
 
 ClaudeExport.lua

@@ -78,7 +78,8 @@ function character(opts, D){
   const mq = 0.15*(t.mentalquick||0)*intT;
   const healing = g.healing + (x.healing||0) + mq;
   const spellDamage = g.spellDamage + (g.natureDamage||0) + (x.spellDamage||0) + mq;
-  const ap = apBase + D.ap.perStr*strT + g.ap + (x.ap||0) + 0.5*(t.mentaldex||0)*intT;
+  const mdex = D.talents && D.talents.mentaldex ? (D.talents.mentaldex[t.mentaldex||0] || 0) : 0.5*(t.mentaldex||0);
+  const ap = apBase + D.ap.perStr*strT + g.ap + (x.ap||0) + mdex*intT;
   const mp5 = g.mp5 + (x.mp5||0);
   const spiritRegen = D.regen.spiritBase + spiT/D.regen.spiritDiv;
   const mindful = [0,0.17,0.33,0.5][t.mindful||0];
@@ -306,9 +307,10 @@ function damage(c, D, o){
   out.parts['Melee'] = swingsPerSec * swingDmg(ap) * whiteMult * armorMult;
   let specialHitsPerSec = 0;
   if(t.stormstrike){
-    out.parts['Stormstrike'] = 1.5*(avgW + ap/14*norm) * yellowMult * armorMult / 6;
-    specialHitsPerSec += land/6;
-    out.mana += 0.08*c.baseMana / 6;
+    const ss = D.spells.stormstrike, ssCd = ss.cd || 6, ssW = ss.weapon || 1.5;
+    out.parts['Stormstrike'] = ssW*(avgW + ap/14*norm) * yellowMult * armorMult / ssCd;
+    specialHitsPerSec += land/ssCd;
+    out.mana += (ss.manaPctBase || 0.08)*c.baseMana / ssCd;
   }
   const hitsPerSec = swingsPerSec*land + specialHitsPerSec;
   if(imbue === 'windfury'){

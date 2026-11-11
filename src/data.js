@@ -1,7 +1,9 @@
 // Shaman data for WoW Forever, levels 1-60 (per-level tables live in levels.js). Status: forever = client data or Blizzard text;
 // sim = rule used by the wowsims Forever simulator; vanilla = Classic fallback, not confirmed for Forever.
 const DATA = {
-  version: 'Spell data: wowsims/forever commit 125e534 (client build 1.60.1.70862), checked Nov 8, 2026',
+  version: 'Spell data: wowsims/forever commit 125e534 (client build 1.60.1.70862), checked Nov 8, 2026; Enhancement talents as hotfixed Nov 10, 2026',
+  // Talents whose numbers Blizzard changed after that build. [per rank], index = points spent.
+  talents: {mentaldex: [0, 0.33, 0.66, 1.0]},
   base: {hp:1280, mana:1520, str:87, agi:51, sta:98, int:89, spi:99},
   ap: {base:100, perStr:2},
   ratings: {hit:10, crit:14},
@@ -35,7 +37,7 @@ const DATA = {
     lightningbolt: {avg:361.4, cast:2.5, mana:220, coef:0.714},
     earthshock: {avg:531, coef:0.386, mana:450, cd:6},
     flameshock: {direct:292, coefDirect:0.214, dot:320, ticks:4, coefTick:0.10, mana:410, cd:6},
-    stormstrike: {cd:6, manaPctBase:0.08}
+    stormstrike: {cd:8, weapon:1.0, manaPctBase:0.08}
   },
   imbue: {
     windfury: {chance:0.20, icd:1.5, attacks:2, ap:333},
@@ -64,7 +66,9 @@ const DATA = {
     ['Spirit regen 6.25 + Spirit/8 per second, stopped for 5 s after spending mana (Mindfulness keeps up to 50%)','sim'],
     ['Crits: heals and spells 1.5x, melee 2x','vanilla'],
     ['Attack power 100 + 2 per Str; weapon damage + AP/14 per second of weapon speed','vanilla'],
-    ['Stormstrike: 150% normalized weapon damage, 6 s cooldown, 8% of base mana; next Earth Shock +20%','forever'],
+    ['Stormstrike: 100% normalized weapon damage, 8 s cooldown (Nov 10 hotfix; was 150% and 6 s), 8% of base mana; next Earth Shock +20%','forever'],
+    ['Mental Dexterity: attack power equal to 33/66/100% of Intellect (Nov 10 hotfix; was 50/100/150%)','forever'],
+    ['Weapon imbues and weapon totems work together since Nov 10 (Windfury Weapon with Windfury Totem). The sim counts your own imbue only, no totem','est'],
     ['Windfury Weapon: 20% per hit, 1.5 s internal cooldown, 2 extra attacks at +333 AP','forever'],
     ['Melee vs level 60: 5% miss, 5% dodge, 5% parry from the front, 10% glancing at 95%','vanilla'],
     ['Melee vs level 63: 8% miss, 6.5% dodge, 14% parry, 40% glancing at 65%, crit -4.8%','vanilla'],

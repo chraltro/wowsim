@@ -1,6 +1,6 @@
 # WoW Forever sims
 
-Two simulators and a crafting profit tool for a group leveling together in World of Warcraft: Forever, from level 1 to 60.
+Two simulators, a crafting profit tool, a knowledge bank and a character check for a group leveling together in World of Warcraft: Forever, from level 1 to 60. They share one set of data and engines.
 
 **Live: https://chraltro.github.io/wowsim/**
 
@@ -10,7 +10,10 @@ Two simulators and a crafting profit tool for a group leveling together in World
 | Shaman Sim | A Restoration Shaman in depth: a second-by-second healer AI for dungeons, questing with four fighting styles, upgrades by effort and a combat log parser. Its own engine, in JavaScript. | [/shaman/](https://chraltro.github.io/wowsim/shaman/) |
 | Forever Craft Profits | Every recipe ranked by what it makes on your auction house after the 5% cut, with vendor materials at vendor price. Flips between vendor and auction house, including crafting to sell to a vendor. Recipes worth buying, and the cheapest way to level a profession. Prices load from AHledger. | [/crafts/](https://chraltro.github.io/wowsim/crafts/) |
 
-All three run in the browser. Characters and settings are kept in the browser's local storage. Craft Profits fetches the latest price scan from AHledger when it opens.
+| Knowledge bank | What we know about Forever, one page per topic, checked against Blizzard's notes and kept current as hotfixes land. Searchable. | [/kb/](https://chraltro.github.io/wowsim/kb/) |
+| Character check | Not on the site: a command that reads your character export from the in-game addon and says what to do next. Upgrades in your bags, the best auction buys for your gold, quests you have not done, recipes to learn, what to vendor. | `node tools/check.js` |
+
+The first three run in the browser. Characters and settings are kept in the browser's local storage. Craft Profits fetches the latest price scan from AHledger when it opens.
 
 ## Forever Group Sim
 
@@ -43,6 +46,40 @@ The engine is [MythicSim's Forever engine](https://github.com/sage3648/mythicsim
 - **Upgrades.** The easiest real upgrades for your level, ranked by what they add to questing speed or healing over the effort to get them.
 - **Combat log.** Parses a WoW combat log file in the browser and writes a summary you can paste to Claude for a critique.
 
+## Character check
+
+```sh
+python tools/fetch_quests.py     # once: quest data from QuestieDB, kept on your machine under local/
+node tools/check.js              # newest export in your pastes folder
+node tools/check.js export.txt --mode heal
+```
+
+It needs an export from the ClaudeExport addon (`addon/ClaudeExport/`, copy it into `Interface/AddOns/`):
+
+- `/claude` shows the character as text to copy. `/claudeexport` saves it and reloads, and `tools/export_watch.py` turns each save into a text file.
+- `/claudeah` with the auction house open scans every listing, so the next export knows what is for sale. Without a scan, prices come from AHledger's latest scan of the house.
+- Open your bank and each profession window once, so the addon can remember what is in them.
+
+What it reports:
+
+- **Gear.** Scored by the Shaman Sim engine with your level, talents and worn gear (healing over a 5 minute fight and kills per hour while questing, half each for a Restoration build). First what you already own, then everything else compared with your gear after that is on: quest rewards to pick, auction buys ranked by gain per coin, what you can craft with what you hold, rewards of quests you can pick up now, vendors, and drops with a 10% chance or better.
+- **Quests.** Every quest you can pick up and have not done, from five levels below you to three above: your zone first, then class quests, zones you already have quests in, and dungeons of your level with the quests to collect before going in.
+- **Professions.** Trainer recipes you have the skill for and do not know, the cheapest way to the next 25 points with a shopping list (Craft Profits' leveling path), what is expected to pay, and a warning at the cap.
+- **Bags.** Keep (material for your next points), post or vendor.
+
+Shaman is the class with an engine behind the gear scores. Other classes get quests, professions and bags, and gear ranked by rough stat values among the items in the export.
+
+The quest data is QuestieDB's, which may not be republished, so `tools/fetch_quests.py` downloads it to `local/cache/` on your machine. `local/`, `pastes/` and `CLAUDE.local.md` are ignored by git: reports, exports and personal notes never leave your PC.
+
+## Knowledge bank
+
+`docs/kb/` holds the notes, one Markdown file per topic, and `tools/build_kb.py` turns them into the page. Keeping them current:
+
+- `docs/kb/watch.json` lists the pages Blizzard posts changes on. `.github/workflows/watch.yml` runs `tools/watch_sources.py` every morning and opens an issue when one changed.
+- `data/hotfixes.json` holds item changes made after the item files were built. `tools/build_items.py` and `tools/build_items_all.py` lay them over.
+- Spell and talent numbers the Shaman Sim uses live in `src/data.js`, each with its source line.
+- In Claude Code, `/update-knowledge` reads the changed sources and proposes all of the above. `/check` runs the character check.
+
 ## Layout
 
 | Path | What it is |
@@ -60,10 +97,16 @@ The engine is [MythicSim's Forever engine](https://github.com/sage3648/mythicsim
 | `opt/` | Shaman talent optimizer: local search over legal 51-point builds, plus Pareto frontiers. |
 | `pipeline/` | The one-off crawlers that produced `data/`. They do not run as they are; see `pipeline/README.md`. |
 | `docs/multiclass.md` | Group Sim design notes, engine patches and known gaps. |
-| `docs/knowledge-bank.md` | Notes on Forever itself: the group, leveling path and dungeons, XP rules, Shaman and Paladin notes, systems, gold making, raids, sources. A copy of a Claude doc, exported 2026-11-10. |
-| `addon/ClaudeExport/` | In-game addon. `/claude` shows the whole character as text to paste into Claude. `/claudeexport` saves it and reloads, and `tools/export_watch.py` writes each save as a text file. |
+| `docs/kb/` | The knowledge bank, one page per topic, with `watch.json` (sources checked every morning), `watch_state.json` (what was last seen) and `changelog.md`. |
+| `data/hotfixes.json` | Item changes from Blizzard's hotfixes, laid over the item files at build time. |
+| `src/check/` | The character check: `parse.js` reads an export, `advise.js` works out upgrades, quests, professions and bags. No DOM. |
+| `tools/check.js`, `tools/fetch_quests.py`, `tools/watch_sources.py`, `tools/build_kb.py` | The check command, the quest data download, the source watcher and the knowledge bank page builder. |
+| `addon/ClaudeExport/` | In-game addon. `/claude` shows the whole character as text to paste into Claude. `/claudeexport` saves it and reloads, and `tools/export_watch.py` writes each save as a text file. `/claudeah` scans the auction house. |
+| `.github/workflows/` | `pages.yml` rebuilds and publishes the site on a push to main. `watch.yml` checks Blizzard's pages every morning. |
+| `.claude/commands/` | `/check` and `/update-knowledge` for Claude Code. |
 | `CLAUDE.md` | Context for Claude Code sessions started in this folder. |
-| `dist/` | The built site: `index.html`, `shaman/index.html`, `forever/index.html`, `forever/engine.gz.wasm` and `crafts/index.html`. |
+| `local/` | Not in the repo: your reports, cached quest data and prices, notes. Ignored by git. |
+| `dist/` | The built site: `index.html`, `shaman/index.html`, `forever/index.html`, `forever/engine.gz.wasm`, `crafts/index.html` and `kb/index.html`. |
 
 ## Build
 
@@ -99,7 +142,7 @@ python3 tools/build_items.py      # data/items_forever_all.json + presets -> src
 ./tools/build_site.sh && ./tools/deploy_pages.sh
 ```
 
-`deploy_pages.sh` force-pushes `dist/` as a single commit to the `gh-pages` branch, which GitHub Pages serves.
+`deploy_pages.sh` force-pushes `dist/` as a single commit to the `gh-pages` branch, which GitHub Pages serves. A push to main that touches the site's inputs does the same on its own (`.github/workflows/pages.yml`).
 
 ## Checks
 
@@ -109,6 +152,8 @@ node test/mc_quest.js all 10,20,40,60    # questing kills per hour for every spe
 node test/lv.js                          # Shaman engine at levels 8 to 60
 node test/routes.js                      # every Shaman leveling route is legal
 node test/crafts.js                      # Craft Profits pricing against hand-checked recipes
+node test/check.js                       # the character check against test/sample_export.txt
+python3 test/addon_run.py --check        # the addon in a real Lua with a stand-in WoW API (needs lupa)
 python3 test/mc_ui.py                    # Group Sim in a browser (needs Playwright and Chrome, and the local server above)
 python3 test/ui.py                       # Shaman Sim in a browser
 ```
@@ -126,6 +171,7 @@ Sources:
 - Per-level player and mob stats: the Forever client tables PlayerExpectedStat and ExpectedStat via wago.tools, with gaps filled from cmangos and vmangos.
 - Talents and leveling routes: the public talent calculators and leveling guides named on each route in the page.
 - Drop chances: Wowhead Forever and Warcraft DB. Quest rewards: QuestieDB-Forever.
+- Quests for the character check: [QuestieDB](https://github.com/Questie/QuestieDB) Forever, release v1.0.9, downloaded to your machine by `tools/fetch_quests.py` and not part of this repo.
 - Craft Profits crates, writs and favor recipes: [Method](https://www.method.gg/wow-forever/how-to-get-waylaid-crates-and-merchants-favor-in-wow-forever) and [wow.gg](https://wow.gg/guides/merchants-favor), credited on the page.
 - Craft Profits: recipes and auction prices from [AHledger](https://ahledger.com/) (free API, credited on the page); item names, vendor prices, recipe items and skill-up levels from the Forever client tables via wago.tools; which vendors sell an item, and whether a trainer or a recipe item teaches a recipe, from [MetaBot](https://metabot.gg/en/wow-forever) (Classic vendor lists); the skill at which a trainer teaches a recipe and the trainer's fee from Classic, by way of the [MissingTradeSkillsList](https://github.com/Thumbkin/MissingTradeSkillsList_Classic) addon's data, moved by as much as Forever moved the recipe. See `pipeline/crafts/README.md`.
 

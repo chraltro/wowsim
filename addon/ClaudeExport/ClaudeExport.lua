@@ -1,4 +1,5 @@
 -- ClaudeExport: /claude dumps the whole character as plain text for pasting into Claude.
+-- /claudeexport saves it to disk. /claudeah scans the auction house first (window open).
 -- Every API call is wrapped, so a function missing on the Forever client just skips that part.
 
 local ADDON = ...
@@ -546,15 +547,174 @@ local function sectionGroup()
   end
 end
 
+local function sectionCompleted()
+  local ids = {}
+  local list = C_QuestLog and try(C_QuestLog.GetAllCompletedQuestIDs)
+  if type(list) == "table" then
+    for _, id in ipairs(list) do ids[#ids + 1] = id end
+  else
+    local done = try(GetQuestsCompleted)
+    if type(done) == "table" then for id in pairs(done) do ids[#ids + 1] = id end end
+  end
+  if #ids == 0 then return end
+  table.sort(ids)
+  head(format("Completed quests (%d ids)", #ids))
+  for i = 1, #ids, 25 do add(table.concat(ids, ",", i, math.min(i + 24, #ids))) end
+end
+
+-- Recipes are only readable while the profession window is open, so they are cached like the bank.
+local DIFF = { optimal = "orange", medium = "yellow", easy = "green", trivial = "grey" }
+local function cacheRecipes()
+  local prof, rank, maxRank, names = nil, nil, nil, {}
+  if GetNumTradeSkills and GetTradeSkillLine then
+    prof, rank, maxRank = try(GetTradeSkillLine)
+    for i = 1, (try(GetNumTradeSkills) or 0) do
+      local name, kind = try(GetTradeSkillInfo, i)
+      if name and kind ~= "header" and kind ~= "subheader" then
+        names[#names + 1] = name .. (DIFF[kind] and (" [" .. DIFF[kind] .. "]") or "")
+      end
+    end
+  end
+  if #names == 0 and C_TradeSkillUI and C_TradeSkillUI.GetAllRecipeIDs then
+    local info = try(C_TradeSkillUI.GetBaseProfessionInfo) or try(C_TradeSkillUI.GetChildProfessionInfo)
+    if info then prof, rank, maxRank = info.professionName or info.parentProfessionName, info.skillLevel, info.maxSkillLevel end
+    local diffName = { [0] = "orange", [1] = "yellow", [2] = "green", [3] = "grey" }
+    for _, id in ipairs(try(C_TradeSkillUI.GetAllRecipeIDs) or {}) do
+      local r = try(C_TradeSkillUI.GetRecipeInfo, id)
+      if r and r.learned and r.name then
+        local d = diffName[r.relativeDifficulty or -1]
+        names[#names + 1] = r.name .. (d and (" [" .. d .. "]") or "")
+      end
+    end
+  end
+  if not prof or prof == "" or prof == "UNKNOWN" or #names == 0 then return end
+  ClaudeExportDB.recipes = ClaudeExportDB.recipes or {}
+  ClaudeExportDB.recipes[prof] = { names = names, rank = rank, max = maxRank, time = date("%Y-%m-%d %H:%M") }
+end
+
+local function sectionRecipes()
+  local all = ClaudeExportDB.recipes
+  if not all or not next(all) then return end
+  head("Known recipes")
+  local profs = {}
+  for p in pairs(all) do profs[#profs + 1] = p end
+  table.sort(profs)
+  for _, p in ipairs(profs) do
+    local e = all[p]
+    add(format("### %s (%d recipes, snapshot %s)", p, #e.names, e.time))
+    add(table.concat(e.names, ", "))
+  end
+end
+
+---------------------------------------------------------------------------
+-- auction house scan: /claudeah with the auction window open
+---------------------------------------------------------------------------
+local ahScan  -- { items = { [id] = { min, qty, n } }, legacy = bool }
+
+local function ahRecord(id, count, buyout)
+  if not id or not buyout or buyout <= 0 then return end   -- bid-only listings carry no price to compare
+  count = (count and count > 0) and count or 1
+  local unit = floor(buyout / count)
+  local e = ahScan.items[id]
+  if not e then e = { min = unit, qty = 0, n = 0 }; ahScan.items[id] = e end
+  if unit < e.min then e.min = unit end
+  e.qty = e.qty + count
+  e.n = e.n + 1
+end
+
+local function ahFinish(rows)
+  local distinct = 0
+  for _ in pairs(ahScan.items) do distinct = distinct + 1 end
+  ClaudeExportDB.ah = { items = ahScan.items, time = date("%Y-%m-%d %H:%M"), rows = rows, distinct = distinct,
+    faction = UnitFactionGroup("player") }
+  ahScan = nil
+  print(format("|cffd97757Claude Export:|r auction scan done, %d listings, %d different items. /claudeexport saves it.", rows, distinct))
+end
+
+local function ahReadLegacy()
+  local n = try(GetNumAuctionItems, "list") or 0
+  for i = 1, n do
+    local _, _, count, _, _, _, _, _, _, buyout, _, _, _, _, _, _, itemId = try(GetAuctionItemInfo, "list", i)
+    ahRecord(itemId, count, buyout)
+  end
+  ahFinish(n)
+end
+
+local function ahReadReplicate()
+  local n = try(C_AuctionHouse.GetNumReplicateItems) or 0
+  for i = 0, n - 1 do
+    local _, _, count, _, _, _, _, _, _, buyout, _, _, _, _, _, _, itemId = try(C_AuctionHouse.GetReplicateItemInfo, i)
+    ahRecord(itemId, count, buyout)
+  end
+  ahFinish(n)
+end
+
+local function ahStart()
+  if ahScan then print("|cffd97757Claude Export:|r a scan is already running."); return end
+  local open = (AuctionFrame and AuctionFrame:IsShown()) or (AuctionHouseFrame and AuctionHouseFrame:IsShown())
+  if not open then print("|cffd97757Claude Export:|r open the auction house first, then /claudeah."); return end
+  if QueryAuctionItems and CanSendAuctionQuery then
+    local _, canAll = try(CanSendAuctionQuery)
+    if not canAll then
+      print("|cffd97757Claude Export:|r the full scan is on cooldown (the game allows one every 15 minutes). Try again later.")
+      return
+    end
+    ahScan = { items = {}, legacy = true }
+    print("|cffd97757Claude Export:|r scanning the auction house. This can take up to a minute.")
+    try(QueryAuctionItems, "", nil, nil, 0, nil, nil, true, false, nil)
+  elseif C_AuctionHouse and C_AuctionHouse.ReplicateItems then
+    ahScan = { items = {}, legacy = false }
+    print("|cffd97757Claude Export:|r scanning the auction house. This can take up to a minute.")
+    try(C_AuctionHouse.ReplicateItems)
+  else
+    print("|cffd97757Claude Export:|r this client has no full-scan call the addon knows. Prices will come from AHledger instead.")
+  end
+end
+
+-- full=true writes every price (for the file on disk); the copy window keeps to gear, which is what a chat needs.
+local function sectionAuction(full)
+  local a = ClaudeExportDB.ah
+  if not a or not a.items then return end
+  head(format("Auction house scan (%s, %d listings, %d items, buyout per unit)", a.time, a.rows or 0, a.distinct or 0))
+  local gear, rest = {}, {}
+  for id, e in pairs(a.items) do
+    local name, _, quality, _, reqLevel, _, subclass, _, equipLoc = try(GetItemInfoX, id)
+    if name and equipLoc and equipLoc ~= "" and equipLoc ~= "INVTYPE_BAG" and equipLoc ~= "INVTYPE_NON_EQUIP_IGNORE" then
+      gear[#gear + 1] = { id = id, min = e.min, text = format("- %s (id %d%s%s%s): %s, %d listed", name, id,
+        reqLevel and reqLevel > 1 and (", req " .. reqLevel) or "", qualityName(quality) and (", " .. qualityName(quality)) or "",
+        subclass and subclass ~= "" and (", " .. subclass) or "", coins(e.min), e.qty) }
+    end
+    rest[#rest + 1] = id
+  end
+  table.sort(gear, function(x, y) return x.min < y.min end)
+  add(format("### Gear listed (%d)", #gear))
+  for _, g in ipairs(gear) do add(g.text) end
+  if not full then
+    add("(every other price is left out of this window; /claudeexport writes them all to disk)")
+    return
+  end
+  table.sort(rest)
+  add("### All prices (id:copper per unit:units listed)")
+  local row = {}
+  for _, id in ipairs(rest) do
+    local e = a.items[id]
+    row[#row + 1] = id .. ":" .. e.min .. ":" .. e.qty
+    if #row == 12 then add(table.concat(row, " ")); row = {} end
+  end
+  if #row > 0 then add(table.concat(row, " ")) end
+end
+
 ---------------------------------------------------------------------------
 -- build + window
 ---------------------------------------------------------------------------
-local function build()
+-- full=true is the copy written to disk: it adds every auction price.
+local function build(full)
   out = {}
   add("# WoW: Forever character export")
-  add("WoW: Forever = Blizzard's official Classic+ (vanilla world with new content and itemization, modern client). Exported " .. date("%Y-%m-%d %H:%M") .. ".")
+  add("WoW: Forever = Blizzard's official Classic+ (vanilla world with new content and itemization, modern client). Exported " .. date("%Y-%m-%d %H:%M") .. ". Addon version 1.4.")
   local sections = { sectionCharacter, sectionStats, sectionGear, sectionBags, sectionBank, sectionQuests,
-    sectionTalents, sectionSkills, sectionReps, sectionSpells, sectionBuffs, sectionGroup }
+    sectionCompleted, sectionTalents, sectionSkills, sectionRecipes, sectionReps, sectionSpells, sectionBuffs,
+    sectionGroup, function() sectionAuction(full) end }
   for _, fn in ipairs(sections) do
     local ok, err = pcall(fn)
     if not ok then add("(section failed: " .. tostring(err) .. ")") end
@@ -638,8 +798,8 @@ SlashCmdList.CLAUDEWINDOW = function()
   end
   preload()
   C_Timer.After(0.5, function()
-    local text = build()
-    store(text)
+    local text = build(false)
+    store(build(true))
     showWindow(text)
   end)
 end
@@ -652,13 +812,19 @@ SlashCmdList.CLAUDEEXPORT = function()
     print("|cffd97757Claude Export:|r leave combat first.")
     return
   end
-  store(build())
+  store(build(true))
   ReloadUI()
 end
 
+-- /claudeah: scan the auction house (window open), so the export knows what is for sale and for how much.
+SLASH_CLAUDEAH1 = "/claudeah"
+SlashCmdList.CLAUDEAH = ahStart
+
 local ev = CreateFrame("Frame")
-for _, e in ipairs({ "BANKFRAME_OPENED", "BANKFRAME_CLOSED", "PLAYERBANKSLOTS_CHANGED", "BAG_UPDATE_DELAYED" }) do
-  pcall(ev.RegisterEvent, ev, e)
+for _, e in ipairs({ "BANKFRAME_OPENED", "BANKFRAME_CLOSED", "PLAYERBANKSLOTS_CHANGED", "BAG_UPDATE_DELAYED",
+  "TRADE_SKILL_SHOW", "TRADE_SKILL_LIST_UPDATE", "AUCTION_ITEM_LIST_UPDATE", "REPLICATE_ITEM_LIST_UPDATE",
+  "AUCTION_HOUSE_CLOSED" }) do
+  pcall(ev.RegisterEvent, ev, e)   -- an event this client does not have just fails to register
 end
 local bankOpen = false
 ev:SetScript("OnEvent", function(_, e)
@@ -667,6 +833,14 @@ ev:SetScript("OnEvent", function(_, e)
     C_Timer.After(0.3, cacheBank)
   elseif e == "BANKFRAME_CLOSED" then
     bankOpen = false
+  elseif e == "TRADE_SKILL_SHOW" or e == "TRADE_SKILL_LIST_UPDATE" then
+    C_Timer.After(0.3, function() pcall(cacheRecipes) end)
+  elseif e == "AUCTION_ITEM_LIST_UPDATE" then
+    if ahScan and ahScan.legacy then pcall(ahReadLegacy) end
+  elseif e == "REPLICATE_ITEM_LIST_UPDATE" then
+    if ahScan and not ahScan.legacy then pcall(ahReadReplicate) end
+  elseif e == "AUCTION_HOUSE_CLOSED" then
+    ahScan = nil
   elseif bankOpen then
     cacheBank()
   end

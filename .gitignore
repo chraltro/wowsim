@@ -5,3 +5,6 @@ test/shots/
 .DS_Store
 engine-wasm/target/
 pipeline/crafts/raw/
+local/
+pastes/
+CLAUDE.local.md

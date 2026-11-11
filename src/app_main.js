@@ -26,7 +26,7 @@ const ROUTES = {
 };
 const BUILDS = [
   {key:'pure',  name:'Pure healer', route:ROUTES.pure, color:'var(--pure)', hex:'#2fa893', on:true, blurb:'Most healing at 60'},
-  {key:'melee', name:'Healer who can fight', route:ROUTES.melee, color:'var(--hybrid)', hex:'#b5832f', on:true, blurb:'99% of the healing, about twice the melee damage'},
+  {key:'melee', name:'Healer who can fight', route:ROUTES.melee, color:'var(--hybrid)', hex:'#b5832f', on:true, blurb:'99% of the healing, about two thirds more melee damage'},
   {key:'mq',    name:'Mental Quickness hybrid', route:ROUTES.mq, color:'var(--mq)', hex:'#9085e9', on:false, blurb:'More melee, gives up Nature’s Swiftness and Riptide'},
   {key:'ele',   name:'Elemental dip', route:ROUTES.ele, color:'var(--ele)', hex:'#d55181', on:false, blurb:'Lightning Bolt instead of melee'}
 ];

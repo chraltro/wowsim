@@ -31,6 +31,7 @@ def engine_ids():
 
 def main():
     d = json.load(open(SRC))
+    B.apply_hotfixes(d['items'])
     known = engine_ids()
     items, sets, dropped = {}, {}, 0
     for i in d['items']:

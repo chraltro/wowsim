@@ -1,0 +1,32 @@
+name: Watch Blizzard's notes
+# Every morning: have the pages in docs/kb/watch.json changed? If so, open an issue (or add to the open one).
+on:
+  schedule:
+    - cron: '23 5 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  issues: write
+concurrency: watch
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check the sources
+        run: python3 tools/watch_sources.py --out "$RUNNER_TEMP/changed.md"
+      - name: Open or update the issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -s "$RUNNER_TEMP/changed.md" ] || exit 0
+          gh label create sources --description "A watched source changed" --color d9b46c --force
+          n=$(gh issue list --label sources --state open --json number --jq '.[0].number')
+          if [ -n "$n" ]; then gh issue comment "$n" --body-file "$RUNNER_TEMP/changed.md"
+          else gh issue create --title "Blizzard's notes changed ($(date -u +%F))" --label sources --body-file "$RUNNER_TEMP/changed.md"; fi
+      - name: Remember what was seen
+        run: |
+          git add docs/kb/watch_state.json
+          git diff --cached --quiet && exit 0
+          git -c user.name="wowsim watch" -c user.email="actions@users.noreply.github.com" commit -q -m "Watch: sources as of $(date -u +%F)"
+          git push

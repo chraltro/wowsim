@@ -80,8 +80,30 @@ def src_compact(s):
         return {'t':'pvp', 'rank':s.get('rankFromName')}
     return None
 
+def apply_hotfixes(items):
+    """Lay data/hotfixes.json over the item records: changes Blizzard made after the item files were built."""
+    path = os.path.join(ROOT, 'data/hotfixes.json')
+    if not os.path.exists(path): return 0
+    fixes = {f['id']: f for f in json.load(open(path)).get('items', [])}
+    n = 0
+    for i in items:
+        f = fixes.get(i['id'])
+        if not f: continue
+        for k, v in f.get('set', {}).items():
+            if k == 'weapon' and isinstance(i.get('weapon'), dict):
+                i['weapon'].update(v)
+                w = i['weapon']
+                if 'dps' in w and 'dps' not in v: w['dps'] = round((w['min'] + w['max']) / 2 / w['speed'], 2)
+            else:
+                i[k] = v
+        i['hotfix'] = f.get('date')
+        n += 1
+    return n
+
+
 def main():
     d = json.load(open(SRC))
+    apply_hotfixes(d['items'])
     items = {}
     sets = {}
     dropped_raid = 0
