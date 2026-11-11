@@ -6,7 +6,6 @@ on:
     paths:
       - 'src/**'
       - 'data/**'
-      - 'docs/kb/*.md'
       - 'opt/talents_meta.json'
       - 'engine-wasm/engine.wasm.gz'
       - 'tools/**'

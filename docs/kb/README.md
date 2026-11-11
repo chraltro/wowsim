@@ -18,7 +18,7 @@ Last checked against Blizzard's notes: 2026-11-11 (hotfixes through Nov 10).
 | [Sources](sources.md) | Where the facts come from |
 | [Changes](changelog.md) | What changed in the game and in these pages, newest first |
 
-These pages are published at https://chraltro.github.io/wowsim/kb/ on every push.
+These pages are not published on the site. `tools/build_kb.py` builds a page from them into `local/kb/index.html` to read on your own machine.
 
 ## Keeping it current
 

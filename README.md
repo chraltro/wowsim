@@ -10,10 +10,9 @@ Two simulators, a crafting profit tool, a knowledge bank and a character check f
 | Shaman Sim | A Restoration Shaman in depth: a second-by-second healer AI for dungeons, questing with four fighting styles, upgrades by effort and a combat log parser. Its own engine, in JavaScript. | [/shaman/](https://chraltro.github.io/wowsim/shaman/) |
 | Forever Craft Profits | Every recipe ranked by what it makes on your auction house after the 5% cut, with vendor materials at vendor price. Flips between vendor and auction house, including crafting to sell to a vendor. Recipes worth buying, and the cheapest way to level a profession. Prices load from AHledger. | [/crafts/](https://chraltro.github.io/wowsim/crafts/) |
 
-| Knowledge bank | What we know about Forever, one page per topic, checked against Blizzard's notes and kept current as hotfixes land. Searchable. | [/kb/](https://chraltro.github.io/wowsim/kb/) |
 | Character check | Not on the site: a command that reads your character export from the in-game addon and says what to do next. Upgrades in your bags, the best auction buys for your gold, quests you have not done, recipes to learn, what to vendor. | `node tools/check.js` |
 
-The first three run in the browser. Characters and settings are kept in the browser's local storage. Craft Profits fetches the latest price scan from AHledger when it opens.
+They run in the browser. Characters and settings are kept in the browser's local storage. Craft Profits fetches the latest price scan from AHledger when it opens.
 
 ## Forever Group Sim
 
@@ -73,7 +72,7 @@ The quest data is QuestieDB's, which may not be republished, so `tools/fetch_que
 
 ## Knowledge bank
 
-`docs/kb/` holds the notes, one Markdown file per topic, and `tools/build_kb.py` turns them into the page. Keeping them current:
+`docs/kb/` holds the notes, one Markdown file per topic. They are not on the site; `tools/build_kb.py` builds a readable page into `local/kb/`. Keeping them current:
 
 - `docs/kb/watch.json` lists the pages Blizzard posts changes on. `.github/workflows/watch.yml` runs `tools/watch_sources.py` every morning and opens an issue when one changed.
 - `data/hotfixes.json` holds item changes made after the item files were built. `tools/build_items.py` and `tools/build_items_all.py` lay them over.
@@ -106,7 +105,7 @@ The quest data is QuestieDB's, which may not be republished, so `tools/fetch_que
 | `.claude/commands/` | `/check` and `/update-knowledge` for Claude Code. |
 | `CLAUDE.md` | Context for Claude Code sessions started in this folder. |
 | `local/` | Not in the repo: your reports, cached quest data and prices, notes. Ignored by git. |
-| `dist/` | The built site: `index.html`, `shaman/index.html`, `forever/index.html`, `forever/engine.gz.wasm`, `crafts/index.html` and `kb/index.html`. |
+| `dist/` | The built site: `index.html`, `shaman/index.html`, `forever/index.html`, `forever/engine.gz.wasm` and `crafts/index.html`. |
 
 ## Build
 

@@ -160,7 +160,7 @@ footer{font-size:13px;color:var(--muted);border-top:1px solid var(--line);paddin
 </head>
 <body>
 <div class="top"><div class="in">
-  <a class="brand" href="../">WoW Forever<span>knowledge bank</span></a>
+  <a class="brand" href="#">WoW Forever<span>knowledge bank</span></a>
   <label class="find"><input id="q" type="search" placeholder="Find in the notes" autocomplete="off" aria-label="Find in the notes"></label>
 </div></div>
 <div class="wrap">
@@ -251,7 +251,7 @@ def main():
         body.append('<section class="page" id="%s"><h2>%s</h2>%s\n%s</section>' % (
             name, html.escape(title), '<p class="lead">%s</p>' % inline(lead, name) if lead else '', content))
     page = PAGE.replace('/*NAV*/', ''.join(nav)).replace('/*INTRO*/', inline(intro, 'README')).replace('/*CHECKED*/', html.escape(checked)).replace('/*BODY*/', '\n'.join(body))
-    out = os.path.join(ROOT, 'dist', 'kb')
+    out = os.path.join(ROOT, 'local', 'kb')   # never dist/: the notes are not published
     os.makedirs(out, exist_ok=True)
     open(os.path.join(out, 'index.html'), 'w', encoding='utf-8').write(page)
     print('kb/index.html', len(page.encode()), 'bytes,', len(nav), 'pages')

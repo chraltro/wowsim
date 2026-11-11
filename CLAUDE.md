@@ -16,7 +16,7 @@ Tools and notes for a five-man group playing World of Warcraft: Forever (Blizzar
 
 Everything here shares one set of data and one set of engines. The site, the check command and you all read the same files, so a number is fixed in one place.
 
-- `docs/kb/`: what we know about the game, one page per topic (`README.md` is the index; `shaman.md`, `leveling.md`, `gold.md`, `systems.md`, `classes.md`, `paladin.md`, `raids.md`, `open-questions.md`, `sources.md`, `changelog.md`). Read the page that fits before answering a Forever question. When you learn something new and checked, add it there with its date and source, and add a line to `changelog.md`. These pages are published at https://chraltro.github.io/wowsim/kb/.
+- `docs/kb/`: what we know about the game, one page per topic (`README.md` is the index; `shaman.md`, `leveling.md`, `gold.md`, `systems.md`, `classes.md`, `paladin.md`, `raids.md`, `open-questions.md`, `sources.md`, `changelog.md`). Read the page that fits before answering a Forever question. When you learn something new and checked, add it there with its date and source, and add a line to `changelog.md`. They are not published on the site; `tools/build_kb.py` builds a readable page into `local/kb/`.
 - `data/`: items, class stats per level, talents, leveling routes, Shaman spell data, craft and price data. `data/hotfixes.json` holds item changes Blizzard made after the item files were built; the build lays them over.
 - `src/`: Shaman Sim (`engine.js`, `data.js`, `logparse.js`), `src/mc/` Group Sim, `src/crafts/` Craft Profits, `src/check/` the character check (`parse.js` reads an export, `advise.js` works out upgrades, quests and professions).
 - `tools/check.js`: the character check from the command line. `/check` runs it.
@@ -67,7 +67,7 @@ Typical questions: what to vendor, what to post on the auction house, which ques
 
 ## Working here
 
-- Build with `./tools/build_site.sh`. The live site is https://chraltro.github.io/wowsim/. A push to main that touches `src/`, `data/`, `docs/kb/` or `tools/` rebuilds and publishes it (`.github/workflows/pages.yml`). `./tools/deploy_pages.sh` does the same by hand.
+- Build with `./tools/build_site.sh`. The live site is https://chraltro.github.io/wowsim/. A push to main that touches `src/`, `data/` or `tools/` rebuilds and publishes it (`.github/workflows/pages.yml`). `./tools/deploy_pages.sh` does the same by hand.
 - Keeping the knowledge current: `.github/workflows/watch.yml` checks the sources in `docs/kb/watch.json` every morning and opens an issue labelled `sources` when Blizzard has posted something. `/update-knowledge` reads the changes and edits `docs/kb/`, `data/hotfixes.json` and the sim numbers. Guides lag behind hotfixes: when a guide and Blizzard disagree, Blizzard wins.
 - Checks: `node test/check.js`, `node test/crafts.js`, `node test/routes.js`, `node test/lv.js`, `python3 test/addon_run.py --check` (needs `pip install lupa`).
 - This repo is public. Keep account names, emails and API keys out of it.
