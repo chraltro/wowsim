@@ -3,7 +3,9 @@
 import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 r = lambda f: open(os.path.join(ROOT, f), encoding='utf-8').read()
-html = r('src/crafts/app.html')
+import sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from shell import shell
+html = shell(r('src/crafts/app.html'), 'crafts')
 data = r('data/crafts.json').replace('</', '<\\/')
 for k, v in [('/*__DATA__*/', data), ('/*__CORE__*/', r('src/crafts/core.js')), ('/*__APP__*/', r('src/crafts/app.js').replace('</script>', '<\\/script>'))]:
     assert html.count(k) == 1, k

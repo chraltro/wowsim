@@ -4,74 +4,51 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Forever Group Sim</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /*SHARED_CSS*/
-/* Group sim additions */
-.cls-warrior{--cc:#c79c6e} .cls-paladin{--cc:#f58cba} .cls-hunter{--cc:#abd473} .cls-rogue{--cc:#fff569} .cls-priest{--cc:#f2f2f2}
+/* Group Sim additions. Characters carry the game's class colours as cell fills. */
+.cls-warrior{--cc:#c79c6e} .cls-paladin{--cc:#f58cba} .cls-hunter{--cc:#abd473} .cls-rogue{--cc:#fff569} .cls-priest{--cc:#e8eaed}
 .cls-shaman{--cc:#2e8fe8} .cls-mage{--cc:#69ccf0} .cls-warlock{--cc:#9482c9} .cls-druid{--cc:#ff7d0a}
-.cdot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--cc);flex:none}
-.people{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 6px;scrollbar-width:thin}
-.person{display:grid;gap:2px;min-width:150px;text-align:left;border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:10px 12px;cursor:pointer;transition:border-color .2s,background .2s,transform .15s}
-.person:hover{border-color:var(--line-2)}
-.person:active{transform:scale(.98)}
-.person[aria-pressed="true"]{border-color:var(--cc);background:var(--panel-2);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--cc) 35%,transparent)}
-.person .nm{font-weight:600;display:flex;gap:8px;align-items:center}
-.person .sb{font-size:12.5px;color:var(--muted)}
-.person.add{place-content:center;color:var(--muted);border-style:dashed;min-width:120px;text-align:center}
-.grp td .bar1{height:6px;border-radius:3px;background:var(--cc);opacity:.85;margin-top:4px;transition:width .5s var(--ease)}
+.cdot{display:inline-block;width:10px;height:10px;background:var(--cc);flex:none}
+.people{display:flex;overflow-x:auto;border:1px solid var(--grid);border-right:0;scrollbar-width:thin}
+.person{display:grid;gap:1px;min-width:150px;text-align:left;border:0;border-right:1px solid var(--grid);background:var(--ground);padding:6px 10px 6px 14px;cursor:pointer;position:relative;transition:background .12s}
+.person::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--cc)}
+.person:hover{background:var(--fill)}
+.person[aria-pressed="true"]{background:var(--select-fill);box-shadow:inset 0 0 0 2px var(--select)}
+.person .nm{font-weight:bold;display:flex;gap:6px;align-items:center}
+.person .nm .cdot{display:none}
+.person .sb{font-size:12px;color:var(--muted)}
+.person.add{place-content:center;color:var(--link);min-width:120px;text-align:center}
+.person.add::before{display:none}
+.grp td .bar1{height:6px;background:var(--cc);margin-top:3px;transition:width .3s var(--ease)}
 .grp td.nmc{min-width:160px}
 .grp tr{cursor:pointer}
-.grp tbody tr:hover td{background:#141e24}
-.stepper{display:flex;align-items:center;gap:6px;flex:none}
-.stepper input{width:70px;text-align:center;font-family:var(--display);font-size:22px;font-weight:600;padding:5px 4px;-moz-appearance:textfield}
-.stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-.stepper .btn{width:40px;height:40px;padding:0;font-size:20px;border-radius:12px}
-.setup{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;align-items:end}
-.note{padding:9px 12px;border-radius:10px;background:#15202a;border-left:3px solid var(--custom);font-size:13px}
-.warnline{color:var(--warn);font-size:12.5px}
-.needlv{color:var(--warn);font-size:11.5px;font-weight:600;margin-left:6px}
-.talents{font-size:13px;color:var(--muted)}
-.talents b{color:var(--text);font-weight:500}
-.talents .nx{color:var(--gold)}
-.loader{display:flex;gap:10px;align-items:center;font-size:13px;color:var(--muted)}
-.prog{height:4px;border-radius:2px;background:var(--line);overflow:hidden;width:160px}
-.prog i{display:block;height:100%;width:0;background:var(--gold);transition:width .3s var(--ease)}
-.ups{display:grid;gap:8px}
-.up{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--panel-2)}
-.up .nm{font-weight:600}
-.up .meta{font-size:12.5px;color:var(--muted)}
-.up .gain{text-align:right;font-family:var(--display);font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}
-.up .gain small{display:block;font-family:var(--body);font-size:11.5px;color:var(--muted);font-weight:500}
-.ease{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:600;margin-right:6px;border:1px solid var(--line-2)}
-.e1{color:var(--good);border-color:color-mix(in srgb,var(--good) 45%,transparent)} .e2{color:#9fd36b;border-color:color-mix(in srgb,#9fd36b 45%,transparent)}
-.e3{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 45%,transparent)} .e4{color:var(--bad);border-color:color-mix(in srgb,var(--bad) 45%,transparent)}
-.modal{position:fixed;inset:0;background:rgba(5,9,11,.72);display:none;align-items:flex-start;justify-content:center;padding:6vh 14px 14px;z-index:50;backdrop-filter:blur(3px)}
-.modal.on{display:flex;animation:fade .2s var(--ease)}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-.sheetbox{background:var(--panel);border:1px solid var(--line-2);border-radius:16px;width:min(720px,100%);max-height:84vh;display:grid;grid-template-rows:auto auto 1fr;overflow:hidden;animation:rise .25s var(--ease)}
-@keyframes rise{from{transform:translateY(12px);opacity:.6}to{transform:none;opacity:1}}
-.sheetbox .hd{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line)}
-.sheetbox .search{padding:10px 16px;border-bottom:1px solid var(--line);display:grid;gap:6px}
-.picklist{overflow-y:auto;padding:6px 10px 12px}
-.pick{display:grid;grid-template-columns:1fr auto;gap:10px;padding:9px 8px;border-radius:10px;cursor:pointer;transition:background .15s}
-.pick:hover,.pick:focus{background:var(--panel-2);outline:none}
-.pick .st{font-size:12px;color:var(--muted)}
-.pick .sc{font-variant-numeric:tabular-nums;font-weight:600;color:var(--gold);align-self:center}
-.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);background:#0a1013;border:1px solid var(--line-2);border-radius:12px;padding:10px 14px;font-size:13.5px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s var(--ease);z-index:60}
-.toast.on{opacity:1;transform:translate(-50%,0)}
-.skel{color:transparent!important;background:linear-gradient(90deg,#16222a 0%,#1d2b33 50%,#16222a 100%);background-size:200% 100%;animation:sk 1.2s linear infinite;border-radius:6px}
-@keyframes sk{to{background-position:-200% 0}}
+.grp tbody tr:hover td{background:var(--fill)}
+.grp td.nmc{background:var(--cc)}
+.grp tbody tr:hover td.nmc{background:var(--cc)}
+.grp td.nmc .cdot{display:none}
+.grp td.nmc .sub{color:rgba(32,33,36,.82)}
+.setup{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;align-items:end}
+.talents{font-size:12px;color:var(--muted)}
+.talents b{color:var(--text);font-weight:bold}
+.talents .nx{color:var(--good)}
+.loader{display:flex;gap:10px;align-items:center;color:var(--muted)}
+.prog{height:4px;background:var(--grid);overflow:hidden;width:160px}
+.prog i{display:block;height:100%;width:0;background:var(--select);transition:width .3s var(--ease)}
+.up .gain{color:var(--text)}
+.sheetbox{display:grid;grid-template-rows:auto auto 1fr}
+.sheetbox .hd{display:flex;justify-content:space-between;align-items:center}
+.sheetbox .search{padding:8px 14px;border-bottom:1px solid var(--grid);display:grid;gap:6px}
+.picklist{overflow-y:auto}
+.pick .sc{font-weight:bold;color:var(--good);align-self:center}
+.skel{color:transparent!important;background:var(--fill)}
 @media (max-width:760px){.grid2,.grid3{grid-template-columns:1fr}.gear{grid-template-columns:1fr}.hide-s{display:none}}
 </style>
 </head>
 <body>
+<!--__SHEET_TOP__-->
 <div class="wrap">
-  <header>
-    <h1>Forever Group Sim</h1>
-    <p>Your group in WoW Forever, level 1 to 60. Questing speed, dungeon numbers and the easiest upgrades for every class, with class combat from MythicSim's engine.</p>
-  </header>
+  
   <div class="row" id="engineState"></div>
   <nav class="tabs" role="tablist">
     <button class="tab" role="tab" id="t-group" data-v="group" aria-selected="true">Group</button>
@@ -124,7 +101,7 @@
   </section>
 
   <details class="fold">
-    <summary><h2>How it works</h2><span class="sumline">Engine, numbers and sources</span></summary>
+    <summary><h2>How it works</h2><span class="sumline">Where each number comes from</span></summary>
     <div class="inner small" style="display:grid;gap:10px;max-width:82ch">
       <p style="margin:0">Class combat runs on MythicSim's Forever engine (MIT licence), built from their repository at commit b3c5eb6 and running in your browser. On top of it, this page adds fixes for pets below level 60 and levels 1 to 9, the character sheet from the Forever client tables, talents from published leveling routes, typical gear for each level, the questing loop and the upgrade ranking.</p>
       <p style="margin:0">Questing: the engine fights a normal mob of your level and gives damage per second and mana used. Kill time is the mob's health from the client tables divided by that. You take the mob's damage after your armor, dodge and parry while it is on you. Ranged classes get 4 seconds before it arrives, and a Hunter's or Warlock's pet takes the hits from level 10. After each kill you walk 10 seconds, then eat and drink together for what is still missing, with vendor food and water for your level. Healers quest with a damage rotation and their own talents.</p>
@@ -147,5 +124,6 @@
 <script>/*MC_JS*/</script>
 <script id="worker-src" type="text/plain">/*WORKER_JS*/</script>
 <script>/*APP_JS*/</script>
+<!--__SHEET_TABS__-->
 </body>
 </html>

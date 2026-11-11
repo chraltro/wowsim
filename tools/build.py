@@ -2,7 +2,9 @@ import json, os
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 base=ROOT+'/src/'
 r=lambda f: open(base+f).read()
-html=r('app.html')
+import sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from shell import shell
+html=shell(r('app.html'), 'shaman')
 meta=json.load(open(ROOT+'/opt/talents_meta.json'))
 tmeta='const TALENT_META = '+json.dumps([{k:t[k] for k in ('id','tree','name','max')} for t in meta], separators=(',',':'))+';'
 data = r('data.js') + '\n' + r('levels.js') + '\n' + tmeta + '\nDATA.LV = LEVELS; DATA.RK = RANKS;\n'

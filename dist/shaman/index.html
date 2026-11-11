@@ -4,212 +4,234 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shaman Sim</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* Layout idea: one stone-dark workbench. A shared setup (builds, gear, buffs), then three tools as tabs: simulate, upgrades, combat log. */
+/* Shared by every page of the site: the sheet's tokens, base type and the shell (title bar, name box and formula
+   bar, sheet tabs). See DESIGN.md. Page components live in each page's own stylesheet. */
 :root{
-  --bg:#0c1318; --panel:#121b21; --panel-2:#17232a; --line:#26353e; --line-2:#33454f;
-  --text:#e7e9e3; --muted:#8e9ea3; --gold:#d9b46c;
-  --pure:#2fa893; --hybrid:#b5832f; --mq:#9085e9; --ele:#d55181; --custom:#5f8fd6;
-  --good:#5fbf72; --warn:#d6a24a; --bad:#d96a5a;
-  --q2:#3fbf4f; --q3:#4f8fe8; --q4:#a66be6;
-  --display:'Cinzel','Trajan Pro',Georgia,serif;
-  --body:'IBM Plex Sans',-apple-system,'Segoe UI',Roboto,sans-serif;
-  --ease:cubic-bezier(.2,.75,.2,1);
-  color-scheme:dark;
+  --ground:#ffffff; --head:#f8f9fa; --fill:#f1f3f4; --grid:#e2e3e3; --rule:#c4c7c5;
+  --text:#202124; --muted:#5f6368; --link:#1155cc; --select:#1a73e8; --select-fill:#e8f0fe; --tab:#188038;
+  --good:#137333; --good-fill:#e6f4ea; --bad:#c5221f; --bad-fill:#fce8e6; --warn:#b06000; --warn-fill:#fef7e0;
+  --s1:#4285f4; --s2:#ea4335; --s3:#fbbc04; --s4:#34a853; --s5:#ff6d01; --s6:#46bdc6;
+  --q0:#80868b; --q1:#202124; --q2:#1a8a00; --q3:#0062c4; --q4:#8f2bd6; --q5:#c25e00;
+  --font:Arial,"Liberation Sans","Helvetica Neue",Helvetica,sans-serif;
+  --bar-h:40px;
+  color-scheme:light;
 }
 *{box-sizing:border-box;font-style:normal}
-html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
-body{background:radial-gradient(1200px 600px at 50% -220px,#16232b 0%,var(--bg) 70%) fixed,var(--bg)}
-a{color:var(--gold);text-underline-offset:3px}
-button,input,select{font:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.wrap{max-width:1180px;margin:0 auto;padding:26px 18px 72px;display:grid;gap:18px}
-header h1{font-family:var(--display);font-weight:600;font-size:clamp(26px,4.2vw,36px);letter-spacing:.02em;margin:0;text-wrap:balance}
-header p{margin:4px 0 0;color:var(--muted);max-width:70ch}
-h2{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:.03em;margin:0}
-h3{font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
-.muted{color:var(--muted)} .small{font-size:13px} .num{font-variant-numeric:tabular-nums}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
-.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+html,body{margin:0;background:var(--ground);color:var(--text);font-family:var(--font);font-size:13px;line-height:1.4}
+body{padding-bottom:calc(var(--bar-h) + 24px + env(safe-area-inset-bottom))}
+a{color:var(--link);text-underline-offset:2px}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--select);outline-offset:0;transition:outline-color .1s}
+::selection{background:#c6dafc}
+.num{font-variant-numeric:tabular-nums}
 
-/* Tabs */
-.tabs{display:flex;gap:6px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:5px;position:sticky;top:8px;z-index:20;backdrop-filter:blur(8px)}
-.tab{flex:1;border:0;background:transparent;border-radius:10px;padding:10px 8px;cursor:pointer;font-weight:600;font-size:14px;color:var(--muted);transition:background .25s var(--ease),color .25s}
-.tab[aria-selected="true"]{background:var(--panel-2);color:var(--text);box-shadow:inset 0 0 0 1px var(--line-2)}
-.view{display:none;gap:18px}
-.view.on{display:grid}
+/* Title bar, name box and formula bar */
+.xl-top{display:flex;align-items:baseline;gap:12px;padding:10px 16px 8px;flex-wrap:wrap}
+.xl-top .doc{font-size:18px;color:var(--text);text-decoration:none}
+.xl-top .where{color:var(--muted);font-size:13px}
+.xl-fx{display:grid;grid-template-columns:auto auto minmax(0,1fr);align-items:stretch;border-top:1px solid var(--grid);border-bottom:1px solid var(--rule);background:var(--ground);font-size:13px}
+.xl-fx .nb{padding:5px 12px;min-width:120px;border-right:1px solid var(--grid);white-space:nowrap}
+.xl-fx .fx{padding:5px 10px;color:var(--muted);border-right:1px solid var(--grid);font-family:Georgia,"Times New Roman",serif;font-weight:bold}
+.xl-fx .tx{padding:5px 10px;min-width:0}
+
+/* Sheet tabs: the site's navigation, fixed at the bottom of every page */
+.xl-tabs{position:fixed;left:0;right:0;bottom:0;z-index:40;height:calc(var(--bar-h) + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);
+  display:flex;background:var(--head);border-top:1px solid var(--rule);overflow-x:auto;scrollbar-width:none}
+.xl-tabs::-webkit-scrollbar{display:none}
+.xl-tabs a{flex:none;display:flex;align-items:center;padding:0 18px;color:var(--text);text-decoration:none;border-right:1px solid var(--grid);font-size:14px;transition:background .12s}
+.xl-tabs a:hover{background:var(--fill)}
+.xl-tabs a[aria-current="page"]{background:var(--ground);color:var(--tab);font-weight:bold;box-shadow:inset 0 -3px 0 var(--tab)}
+.xl-tabs .gap{flex:1;border-right:0}
+
+@media (max-width:640px){
+  .xl-fx{grid-template-columns:auto minmax(0,1fr)}
+  .xl-fx .nb{display:none}
+  .xl-tabs a{padding:0 14px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+
+/* Shaman Sim and Group Sim (the Group Sim copies this block). Blocks of cells with a grey header row; see DESIGN.md. */
+:root{--pure:var(--s1);--hybrid:var(--s2);--mq:var(--s3);--ele:var(--s4);--custom:var(--s5);--ease:cubic-bezier(.2,.75,.2,1)}
+.wrap{max-width:1240px;padding:12px 16px 24px;display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+h2{font-size:15px;font-weight:bold;margin:0}
+h3{font-size:13px;font-weight:bold;margin:0 0 6px}
+h4{font-size:13px;font-weight:bold;margin:0 0 6px}
+.muted{color:var(--muted)} .small{font-size:12px}
+.card{border:1px solid var(--grid);background:var(--ground);padding:10px 12px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+
+/* Views are toolbar toggles */
+.tabs{display:flex;gap:2px;background:var(--head);border:1px solid var(--grid);padding:3px;position:sticky;top:0;z-index:20}
+.tab{flex:none;border:0;background:transparent;border-radius:4px;padding:6px 14px;cursor:pointer;color:var(--text);transition:background .12s}
+.tab:hover{background:var(--fill)}
+.tab[aria-selected="true"]{background:var(--select-fill);color:#1967d2;font-weight:bold}
+.view{display:none;gap:12px}
+.view.on{display:grid;grid-template-columns:minmax(0,1fr)}
 
 /* Controls */
-.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--panel-2);border-radius:999px;padding:6px 12px;cursor:pointer;font-size:13.5px;font-weight:500;transition:border-color .2s,background .2s,opacity .2s}
-.chip .dot{width:10px;height:10px;border-radius:50%}
-.chip[aria-pressed="false"]{opacity:.55}
-.chip[aria-pressed="true"]{border-color:var(--line-2)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 14px;border-radius:10px;border:1px solid var(--line-2);background:var(--panel-2);cursor:pointer;font-weight:600;font-size:14px;text-decoration:none;color:var(--text);transition:border-color .2s,background .2s,transform .15s}
-.btn:hover{border-color:var(--gold)}
-.btn:active{transform:scale(.98)}
-.btn.primary{background:linear-gradient(180deg,#e3c27d,#c9a052);color:#1a1408;border-color:#e2c27c}
-.btn.primary:hover{filter:brightness(1.05)}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--rule);background:var(--ground);border-radius:4px;padding:4px 10px;cursor:pointer;transition:background .12s}
+.chip:hover{background:var(--fill)}
+.chip .dot{width:10px;height:10px;border-radius:0}
+.chip[aria-pressed="false"]{color:var(--muted);border-color:var(--grid)}
+.chip[aria-pressed="false"] .dot{opacity:.35}
+.chip[aria-pressed="true"]{background:var(--select-fill);border-color:#aecbfa}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:6px 12px;border-radius:4px;border:1px solid var(--rule);background:var(--ground);cursor:pointer;text-decoration:none;color:var(--text);transition:background .12s}
+.btn:hover{background:var(--fill)}
+.btn.primary{background:var(--tab);border-color:var(--tab);color:#fff;font-weight:bold}
+.btn.primary:hover{background:#137333}
 .btn[disabled]{opacity:.5;cursor:default}
-.btn.sm{padding:5px 10px;font-size:12.5px;font-weight:500;border-radius:8px}
-label.f{display:grid;gap:4px;font-size:12.5px;color:var(--muted);font-weight:500}
-input[type=number],input[type=text],input[type=search],select{background:#0e161b;border:1px solid var(--line);border-radius:9px;padding:8px 10px;color:var(--text);min-width:0;width:100%}
+.btn.sm{padding:3px 8px;font-size:12px}
+label.f{display:grid;gap:3px;font-size:12px;color:var(--muted)}
+input[type=number],input[type=text],input[type=search],select{background:var(--ground);border:1px solid var(--rule);border-radius:4px;padding:5px 8px;color:var(--text);min-width:0;width:100%}
 input[type=number]{font-variant-numeric:tabular-nums}
-.check{display:flex;gap:9px;align-items:flex-start;font-size:14px;cursor:pointer}
-.check input{margin-top:3px;accent-color:var(--gold)}
+.check{display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+.check input{margin-top:2px;accent-color:var(--select)}
 .check small{display:block;color:var(--muted);font-size:12px}
-input[type=range]{width:100%;accent-color:var(--gold)}
-details.fold{border:1px solid var(--line);border-radius:14px;background:var(--panel)}
-details.fold>summary{list-style:none;cursor:pointer;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px}
-details.fold>summary::-webkit-details-marker{display:none}
-details.fold>summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .25s var(--ease);margin-right:4px}
-details.fold[open]>summary::after{transform:rotate(-135deg)}
-details.fold .inner{padding:0 18px 18px;display:grid;gap:14px}
-.sumline{color:var(--muted);font-size:13px}
+input[type=range]{width:100%;accent-color:var(--select)}
 
-/* Gear list */
-.gear{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px}
-.slot{display:grid;grid-template-columns:78px 1fr auto;gap:8px;align-items:center;padding:7px 8px;border-radius:10px;border:1px solid transparent;transition:background .2s,border-color .2s}
-.slot:hover{background:#151f25;border-color:var(--line)}
-.slot .sn{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+/* A fold is a row group: grey header row with the sheet's [+] and [-] box */
+details.fold{border:1px solid var(--grid);background:var(--ground)}
+details.fold>summary{list-style:none;cursor:pointer;padding:6px 10px;display:flex;align-items:center;gap:10px;background:var(--head);transition:background .12s}
+details.fold>summary:hover{background:var(--fill)}
+details.fold>summary::-webkit-details-marker{display:none}
+details.fold>summary::before{content:"+";flex:none;width:13px;height:13px;border:1px solid var(--muted);color:var(--muted);font-size:12px;line-height:11px;text-align:center}
+details.fold[open]>summary::before{content:"\2212"}
+details.fold[open]>summary{border-bottom:1px solid var(--grid)}
+details.fold .inner{padding:10px 12px;display:grid;gap:12px}
+.sumline{color:var(--muted);margin-left:auto;text-align:right}
+
+/* Gear */
+.gear{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.slot{display:grid;grid-template-columns:76px 1fr auto;gap:8px;align-items:center;padding:4px 6px;border-bottom:1px solid var(--grid);transition:background .12s}
+.slot:hover{background:var(--fill)}
+.slot .sn{color:var(--muted);font-size:12px}
 .slot .in{min-width:0}
-.slot .nm{font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.slot .nm{font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .slot .st{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.q2{color:var(--q2)} .q3{color:var(--q3)} .q4{color:var(--q4)} .q1{color:var(--text)} .empty{color:#5d6d74}
-.sheet{width:100%;border-collapse:collapse;font-size:13.5px}
-.sheet th,.sheet td{text-align:right;padding:5px 8px;border-bottom:1px solid #1d2a31;font-variant-numeric:tabular-nums}
-.sheet th:first-child,.sheet td:first-child{text-align:left;color:var(--muted);font-weight:500}
-.sheet thead th{color:var(--text);font-weight:600}
-.bdot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:0}
+.q0{color:var(--q0)} .q1{color:var(--q1)} .q2{color:var(--q2)} .q3{color:var(--q3)} .q4{color:var(--q4)} .q5{color:var(--q5)} .empty{color:var(--q0)}
+
+/* Tables are cells */
+.sheet,.cmp{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.sheet th,.sheet td,.cmp th,.cmp td{border:1px solid var(--grid);padding:3px 6px;text-align:right;vertical-align:top}
+.sheet thead th,.cmp thead th{background:var(--head);font-weight:bold;color:var(--text)}
+.sheet th:first-child,.sheet td:first-child,.cmp th:first-child,.cmp td:first-child{text-align:left}
+.sheet td:first-child{color:var(--muted)}
+.cmp td .sub{display:block;font-size:12px;color:var(--muted)}
+.tablewrap{overflow-x:auto}
+.bdot{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:-1px}
 
 /* Results */
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.kpi{background:var(--panel-2);border:1px solid var(--line);border-radius:14px;padding:14px 16px;position:relative;overflow:hidden}
-.kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--bc)}
-.kpi .lb{font-size:12.5px;color:var(--muted);font-weight:500}
-.kpi .v{font-family:var(--display);font-size:30px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.15;margin-top:2px}
-.kpi .v small{font-family:var(--body);font-size:13px;color:var(--muted);font-weight:500;margin-left:6px}
-.kpi .d{font-size:12.5px;color:var(--muted);margin-top:4px}
-.cmp{width:100%;border-collapse:collapse;font-size:14px}
-.cmp th,.cmp td{padding:8px 10px;border-bottom:1px solid #1d2a31;text-align:right;font-variant-numeric:tabular-nums}
-.cmp th:first-child,.cmp td:first-child{text-align:left}
-.cmp thead th{font-weight:600;font-size:13px}
-.cmp td:first-child{color:#c9d0cb}
-.cmp td .sub{display:block;font-size:11.5px;color:var(--muted)}
-.tablewrap{overflow-x:auto}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));border-top:1px solid var(--grid);border-left:1px solid var(--grid)}
+.kpi{border-right:1px solid var(--grid);border-bottom:1px solid var(--grid);padding:0 0 6px;min-width:0}
+.kpi .lb{background:var(--head);border-bottom:1px solid var(--grid);padding:3px 8px;font-weight:bold;display:flex;align-items:center;gap:6px}
+.kpi .v{font-size:22px;font-weight:bold;font-variant-numeric:tabular-nums;line-height:1.2;padding:6px 8px 0;text-align:right}
+.kpi .v small{font-size:12px;color:var(--muted);font-weight:normal;margin-left:6px}
+.kpi .d{font-size:12px;color:var(--muted);padding:2px 8px 0;text-align:right}
 .chart{position:relative}
 .chart svg{display:block;width:100%;height:auto;overflow:visible}
-.chart .tip{position:absolute;pointer-events:none;background:#0a1013;border:1px solid var(--line-2);border-radius:9px;padding:7px 10px;font-size:12.5px;white-space:nowrap;opacity:0;transition:opacity .12s;transform:translate(-50%,-110%);z-index:5}
-.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.chart .tip{position:absolute;pointer-events:none;background:var(--ground);border:1px solid var(--rule);border-radius:4px;box-shadow:0 1px 3px rgba(60,64,67,.3);padding:5px 8px;font-size:12px;white-space:nowrap;opacity:0;transition:opacity .12s;transform:translate(-50%,-110%)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
 .legend span{display:inline-flex;gap:6px;align-items:center}
-.legend i{width:14px;height:3px;border-radius:2px;display:inline-block}
-.bars{display:grid;gap:8px}
-.bar{display:grid;grid-template-columns:150px 1fr 70px;gap:10px;align-items:center;font-size:13px}
+.legend i{width:10px;height:10px;display:inline-block}
+.bars{display:grid;gap:6px}
+.bar{display:grid;grid-template-columns:150px 1fr 70px;gap:10px;align-items:center}
 .bar .track{height:16px;display:flex;flex-direction:column;gap:2px}
-.bar .seg{height:7px;border-radius:0 4px 4px 0;transition:width .5s var(--ease)}
+.bar .seg{height:7px;transition:width .3s var(--ease)}
 .bar .val{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums;font-size:12px;line-height:1.25}
-.busy{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:13px}
-.spin{width:14px;height:14px;border-radius:50%;border:2px solid var(--line-2);border-top-color:var(--gold);animation:spin .8s linear infinite}
+.busy{display:inline-flex;align-items:center;gap:8px;color:var(--muted)}
+.spin{width:14px;height:14px;border-radius:50%;border:2px solid var(--grid);border-top-color:var(--select);animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.status{display:inline-block;padding:1px 7px;border-radius:999px;font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border:1px solid;margin-right:8px;vertical-align:1px;white-space:nowrap}
-.s-forever{color:var(--good);border-color:color-mix(in srgb,var(--good) 45%,transparent)}
-.s-sim{color:var(--custom);border-color:color-mix(in srgb,var(--custom) 45%,transparent)}
-.s-vanilla{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 45%,transparent)}
-.s-est{color:#c79ad8;border-color:color-mix(in srgb,#c79ad8 45%,transparent)}
-.assum{display:grid;gap:6px;font-size:13px;margin:0;padding:0;list-style:none}
+.status{display:inline-block;padding:0 5px;border-radius:2px;font-size:11px;font-weight:bold;margin-right:8px;vertical-align:1px;white-space:nowrap}
+.s-forever{color:var(--good);background:var(--good-fill)}
+.s-sim{color:#1967d2;background:var(--select-fill)}
+.s-vanilla{color:var(--warn);background:var(--warn-fill)}
+.s-est{color:var(--q4);background:#f3e8fd}
+.assum{display:grid;gap:4px;margin:0;padding:0;list-style:none}
 
 /* Level */
-.lvcard{display:grid;gap:12px}
+.lvcard{display:grid;gap:10px}
 .lvtop{display:flex;justify-content:space-between;align-items:center;gap:14px}
-.stepper{display:flex;align-items:center;gap:6px;flex:none}
-.stepper input{width:70px;text-align:center;font-family:var(--display);font-size:24px;font-weight:600;padding:5px 4px;-moz-appearance:textfield}
+.stepper{display:flex;align-items:center;gap:4px;flex:none}
+.stepper input{width:56px;text-align:center;font-size:18px;font-weight:bold;padding:4px;-moz-appearance:textfield}
 .stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-.stepper .btn{width:42px;height:42px;padding:0;font-size:20px;border-radius:12px}
-.unlocks{display:grid;gap:7px;font-size:13px}
-.ul{display:grid;grid-template-columns:52px 1fr;gap:8px;align-items:baseline}
-.ul .k{color:var(--muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
-.ul .v{display:flex;gap:6px;flex-wrap:wrap}
-.pill{display:inline-block;padding:2px 9px;border-radius:999px;background:var(--panel-2);border:1px solid var(--line);font-size:12.5px;white-space:nowrap}
-.pill.new{border-color:color-mix(in srgb,var(--gold) 50%,transparent);color:var(--gold)}
-.pill b{font-weight:600;color:var(--muted);margin-right:4px}
-.routes{display:grid;gap:8px}
-.rt{padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--panel-2);display:grid;gap:4px;font-size:13px}
-.rt .hd{display:flex;gap:8px;align-items:center;font-weight:600}
+.stepper .btn{width:32px;height:32px;padding:0;font-size:16px}
+.unlocks{display:grid;gap:4px}
+.ul{display:grid;grid-template-columns:48px 1fr;gap:8px;align-items:baseline}
+.ul .k{color:var(--muted);font-weight:bold}
+.ul .v{display:flex;gap:4px;flex-wrap:wrap}
+.pill{display:inline-block;padding:1px 6px;border:1px solid var(--grid);background:var(--head);font-size:12px;white-space:nowrap}
+.pill.new{background:var(--good-fill);border-color:#ceead6;color:var(--good)}
+.pill b{font-weight:bold;color:var(--muted);margin-right:4px}
+.routes{display:grid;gap:0;border-top:1px solid var(--grid)}
+.rt{padding:6px 8px;border:1px solid var(--grid);border-top:0;display:grid;gap:2px}
+.rt .hd{display:flex;gap:8px;align-items:center;font-weight:bold}
 .rt .tk{color:var(--muted)}
-.rt .nx{color:var(--gold)}
-.warnline{color:var(--warn);font-size:12.5px}
-.needlv{color:var(--warn);font-size:11.5px;font-weight:600;margin-left:6px}
-.note{padding:9px 12px;border-radius:10px;background:#15202a;border-left:3px solid var(--custom);font-size:13px}
+.rt .nx{color:var(--good)}
+.warnline{color:var(--warn);font-size:12px}
+.needlv{color:var(--warn);font-size:11px;font-weight:bold;margin-left:6px}
+.note{position:relative;padding:6px 18px 6px 10px;border:1px solid var(--grid)}
+.note::after{content:"";position:absolute;top:0;right:0;border-style:solid;border-width:0 9px 9px 0;border-color:transparent var(--text) transparent transparent}
 
-/* Upgrades */
-.ups{display:grid;gap:8px}
-.up{display:grid;grid-template-columns:1fr auto;gap:4px 14px;padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:var(--panel-2)}
-.up .nm{font-weight:600}
-.up .meta{font-size:12.5px;color:var(--muted)}
-.up .gain{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;font-size:16px;color:var(--good)}
-.up .gain small{display:block;font-weight:500;font-size:11.5px;color:var(--muted)}
-.ease{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:600;margin-right:6px;border:1px solid}
-.e1{color:var(--good);border-color:color-mix(in srgb,var(--good) 40%,transparent)}
-.e2{color:#9ccf6a;border-color:color-mix(in srgb,#9ccf6a 40%,transparent)}
-.e3{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 40%,transparent)}
-.e4{color:var(--bad);border-color:color-mix(in srgb,var(--bad) 40%,transparent)}
-.slotgroup{border-top:1px solid var(--line);padding-top:12px;margin-top:4px}
-.slotgroup h4{margin:0 0 8px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+/* Upgrades: rows of a list */
+.ups{display:grid;border-top:1px solid var(--grid)}
+.up{display:grid;grid-template-columns:1fr auto;gap:2px 14px;padding:6px 8px;border-bottom:1px solid var(--grid);transition:background .12s}
+.up:hover{background:var(--fill)}
+.up .nm{font-weight:bold}
+.up .meta{font-size:12px;color:var(--muted)}
+.up .gain{text-align:right;font-variant-numeric:tabular-nums;font-weight:bold;font-size:15px;color:var(--good)}
+.up .gain small{display:block;font-weight:normal;font-size:11px;color:var(--muted)}
+.ease{display:inline-block;padding:0 5px;border-radius:2px;font-size:11px;font-weight:bold;margin-right:6px}
+.e1{color:var(--good);background:var(--good-fill)} .e2{color:#3c7a00;background:#eef7e3}
+.e3{color:var(--warn);background:var(--warn-fill)} .e4{color:var(--bad);background:var(--bad-fill)}
+.slotgroup{padding-top:10px;margin-top:2px}
+.slotgroup h4{margin:0 0 4px;color:var(--muted)}
 
-/* Picker */
-.modal{position:fixed;inset:0;background:rgba(4,8,10,.6);display:none;align-items:flex-end;justify-content:center;z-index:50;padding:0}
+/* Picker: a dialog, so it floats */
+.modal{position:fixed;inset:0;background:rgba(32,33,36,.4);display:none;align-items:center;justify-content:center;z-index:50;padding:14px}
 .modal.on{display:flex}
-.sheetbox{background:var(--panel);border:1px solid var(--line-2);border-radius:18px 18px 0 0;width:100%;max-width:720px;max-height:86vh;display:flex;flex-direction:column;animation:up .28s var(--ease)}
-@keyframes up{from{transform:translateY(24px);opacity:.6}to{transform:none;opacity:1}}
-@media (min-width:760px){.modal{align-items:center}.sheetbox{border-radius:18px}}
-.sheetbox .hd{padding:14px 16px;border-bottom:1px solid var(--line);display:grid;gap:10px}
-.sheetbox .list{overflow:auto;padding:8px}
-.pick{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:9px 10px;border-radius:10px;cursor:pointer;border:1px solid transparent}
-.pick:hover,.pick:focus{background:#18232a;border-color:var(--line)}
+.sheetbox{background:var(--ground);border-radius:8px;box-shadow:0 4px 16px rgba(60,64,67,.3);width:min(720px,100%);max-height:86vh;display:flex;flex-direction:column;overflow:hidden}
+.sheetbox .hd{padding:10px 14px;border-bottom:1px solid var(--grid);display:grid;gap:8px}
+.sheetbox .list{overflow:auto}
+.pick{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:6px 14px;cursor:pointer;border-bottom:1px solid var(--grid);transition:background .12s}
+.pick:hover,.pick:focus{background:var(--select-fill);outline:none}
 .pick .st{font-size:12px;color:var(--muted)}
-.pick .sc{font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--muted);text-align:right}
+.pick .sc{font-variant-numeric:tabular-nums;font-size:12px;color:var(--muted);text-align:right}
 
 /* Log */
-.drop{border:1.5px dashed var(--line-2);border-radius:14px;padding:26px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s}
-.drop.over{border-color:var(--gold);background:#141f25}
-.fights{display:grid;gap:8px}
-.fight{border:1px solid var(--line);border-radius:12px;background:var(--panel-2)}
-.fight summary{list-style:none;cursor:pointer;padding:11px 14px;display:grid;grid-template-columns:1fr auto;gap:10px}
+.drop{border:1px dashed var(--rule);padding:22px;text-align:center;cursor:pointer;transition:background .12s}
+.drop.over{border-color:var(--select);background:var(--select-fill)}
+.fights{display:grid;border-top:1px solid var(--grid)}
+.fight{border:1px solid var(--grid);border-top:0}
+.fight summary{list-style:none;cursor:pointer;padding:6px 10px;display:grid;grid-template-columns:1fr auto;gap:10px;background:var(--head)}
+.fight summary:hover{background:var(--fill)}
 .fight summary::-webkit-details-marker{display:none}
-.fight .body{padding:0 14px 14px;display:grid;gap:12px}
-.flag{padding:9px 12px;border-radius:10px;background:#15202a;border-left:3px solid var(--warn);font-size:13.5px}
-.flag.death{border-left-color:var(--bad)}
+.fight .body{padding:10px;display:grid;gap:10px}
+.flag{padding:6px 10px;background:var(--warn-fill)}
+.flag.death{background:var(--bad-fill)}
 .flag b{color:var(--text)}
-textarea{width:100%;min-height:160px;background:#0e161b;border:1px solid var(--line);border-radius:10px;color:var(--text);padding:10px;font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace}
-.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0a1013;border:1px solid var(--line-2);padding:10px 14px;border-radius:10px;font-size:13.5px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:60}
+textarea{width:100%;min-height:160px;background:var(--ground);border:1px solid var(--rule);border-radius:4px;color:var(--text);padding:8px;font:12px/1.45 ui-monospace,Consolas,"Liberation Mono",monospace}
+.toast{position:fixed;left:16px;bottom:calc(var(--bar-h) + 12px);background:#323232;color:#fff;padding:10px 14px;border-radius:4px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:60}
 .toast.on{opacity:1}
 
-@media (max-width:900px){
-  .grid3{grid-template-columns:1fr}
-  .gear{grid-template-columns:1fr}
-}
+@media (max-width:900px){.grid3{grid-template-columns:1fr}.gear{grid-template-columns:1fr}}
 @media (max-width:640px){
-  .wrap{padding:18px 12px 60px;gap:14px}
+  .wrap{padding:10px 10px 20px;gap:10px}
   .grid2{grid-template-columns:1fr}
   .bar{grid-template-columns:110px 1fr 60px}
-  .card{padding:14px}
-  details.fold .inner{padding:0 14px 14px}
-  .tab{font-size:13px;padding:9px 4px}
+  .tabs{overflow-x:auto}
   .sumline{display:none}
+  .pill{white-space:normal}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
+<header class="xl-top"><a class="doc" href="../">wowsim</a><span class="where">WoW: Forever, Alliance RP-PvP EU</span></header>
+<div class="xl-fx" role="note"><span class="nb">Shaman Sim</span><span class="fx" aria-hidden="true">fx</span><span class="tx">A Restoration Shaman from level 1 to 60, healing a dungeon pull second by second. It also ranks gear upgrades for your level and reads your combat logs.</span></div>
 <div class="wrap">
-  <header>
-    <h1>Shaman Sim</h1>
-    <p>Restoration Shaman in WoW Forever, level 1 to 60: questing speed, dungeon healing, the easiest real upgrades at your level, and your combat logs. Every class in the group: <a id="groupLink" href="https://claude.ai/artifact/8jyCtNWjmQr2Gjfx9iN7pJ">Forever Group Sim</a>.</p>
-  </header>
+  
 
   <nav class="tabs" role="tablist" aria-label="Tools">
     <button class="tab" role="tab" id="t-sim" data-v="simulate" aria-selected="true">Simulate</button>
@@ -314,10 +336,10 @@ textarea{width:100%;min-height:160px;background:#0e161b;border:1px solid var(--l
     </div>
     <div id="results" style="display:grid;gap:14px"></div>
     <details class="fold">
-      <summary><h2>How the sim works</h2><span class="sumline">Model, numbers and sources</span></summary>
+      <summary><h2>How the sim works</h2><span class="sumline">Where each number comes from</span></summary>
       <div class="inner">
         <p class="small" style="margin:0;max-width:80ch">Questing: you fight one normal mob of the chosen level. Its health and damage come from the Forever client tables for that level; your armor and dodge cut the damage. Four ways to fight are compared: melee, melee with Earth Shock on cooldown, a Lightning Bolt pull before melee, and Lightning Bolt only. Each uses whichever weapon imbue you have that does the most damage, and Lightning Shield when it is on. If a fight would take you under 30% health, you cast Healing Wave mid-fight. After each kill you walk to the next mob, regenerating, then eat and drink at the same time for whatever you still need, using the best vendor food and water for your level. Healing Wave between pulls is used when it shortens the rest. Kills per hour is 3,600 divided by the seconds per kill. A style is marked unsafe if you run out of mana mid-fight or the mob out-damages Healing Wave.</p>
-        <p class="small" style="margin:0;max-width:80ch">Each fight is played out second by second, 40 times with different random rolls. The boss swings at the tank every 2 s; 30% of swings are avoided, 10% hit 50% harder. Every 15 s the whole group takes a hit. Your Shaman drops Healing Stream and Mana Spring once you have them, keeps Water Shield up when talented, uses Riptide on the tank, Chain Heal when three or more people are hurt, Healing Wave on the tank sized for the damage that lands during the cast, Nature's Swiftness or Lesser Healing Wave below 35% health, Mana Tide below 55% mana, and a potion when it fits. Healing that lands on full health counts as overheal. "Most tank damage you can heal through" is found by searching for the highest damage where nobody dies in at least 90% of fights.</p>
+        <p class="small" style="margin:0;max-width:80ch">Each fight is played out second by second, 40 times with different random rolls. The boss swings at the tank every 2 s; 30% of swings are avoided, 10% hit 50% harder. Every 15 s the whole group takes a hit. Your Shaman drops Healing Stream and Mana Spring once you have them, keeps Water Shield up when talented, uses Riptide on the tank, Chain Heal when three or more people are hurt, Healing Wave on the tank sized for the damage taken during the cast, Nature's Swiftness or Lesser Healing Wave below 35% health, Mana Tide below 55% mana, and a potion when it fits. Healing on a target at full health counts as overheal. "Most tank damage you can heal through" is found by searching for the highest damage where nobody dies in at least 90% of fights.</p>
         <p class="small" style="margin:0;max-width:80ch">Healing over 5 minutes is a separate calculation used for upgrades: how much you can heal with 70% Healing Wave and 30% Chain Heal before mana runs out, then at the rate your regen allows. Damage numbers are expected values against one target: melee with your best weapon imbue, Stormstrike when talented, and Earth Shock on cooldown while mana lasts.</p>
         <p class="small" style="margin:0;max-width:80ch">Every spell uses the highest rank you have at your level, with its level scaling, and talents are the first points of each build's leveling route. Below 40 there is no Chain Heal, so healing over 5 minutes uses Healing Wave alone. Default fight numbers scale with an elite of your level: change them freely.</p>
         <p class="small" style="margin:0;max-width:80ch">Not modelled: healing threat and pulling aggro, cast pushback (Healing Focus), Ancestral Healing's armor, movement, dispels, item procs and on-use trinkets, totem placement outside range, Searing Totem, adds and running mobs while questing, and health regeneration outside eating.</p>
@@ -2166,7 +2188,7 @@ if(typeof window === 'undefined'){
 'use strict';
 const $ = s => document.querySelector(s);
 // On GitHub Pages the two tools sit side by side; elsewhere they link to the published artifacts
-if(/github\.io$/.test(location.hostname)) $('#groupLink').href = '../forever/';
+// (the link to the Group Sim is in the sheet tabs now)
 const fmt = (n, d) => (n === null || n === undefined || !isFinite(n)) ? '–' : Number(n).toLocaleString('en-US', {maximumFractionDigits: d||0, minimumFractionDigits: d||0});
 const pct = (n, d) => fmt(n, d===undefined?1:d) + '%';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -2189,10 +2211,10 @@ const ROUTES = {
   ele:   [['tidalfocus',5],['mindful',3],['ihw',2],['watershield',1],['anchealing',1],['healfocus',3],['manatide',1],['convection',5],['concussion',5],['elefocus',1],['restotems',5],['healingway',3],['natswift',1],['purification',5],['riptide',1],['ancknow',5],['thundering',4]]
 };
 const BUILDS = [
-  {key:'pure',  name:'Pure healer', route:ROUTES.pure, color:'var(--pure)', hex:'#2fa893', on:true, blurb:'Most healing at 60'},
-  {key:'melee', name:'Healer who can fight', route:ROUTES.melee, color:'var(--hybrid)', hex:'#b5832f', on:true, blurb:'99% of the healing, about two thirds more melee damage'},
-  {key:'mq',    name:'Mental Quickness hybrid', route:ROUTES.mq, color:'var(--mq)', hex:'#9085e9', on:false, blurb:'More melee, gives up Nature’s Swiftness and Riptide'},
-  {key:'ele',   name:'Elemental dip', route:ROUTES.ele, color:'var(--ele)', hex:'#d55181', on:false, blurb:'Lightning Bolt instead of melee'}
+  {key:'pure',  name:'Pure healer', route:ROUTES.pure, color:'var(--pure)', hex:'#4285f4', on:true, blurb:'Most healing at 60'},
+  {key:'melee', name:'Healer who can fight', route:ROUTES.melee, color:'var(--hybrid)', hex:'#ea4335', on:true, blurb:'99% of the healing, about two thirds more melee damage'},
+  {key:'mq',    name:'Mental Quickness hybrid', route:ROUTES.mq, color:'var(--mq)', hex:'#fbbc04', on:false, blurb:'More melee, gives up Nature’s Swiftness and Riptide'},
+  {key:'ele',   name:'Elemental dip', route:ROUTES.ele, color:'var(--ele)', hex:'#34a853', on:false, blurb:'Lightning Bolt instead of melee'}
 ];
 const codeOf = t => ['ele','enh','res'].map(tr => TREE_ORDER[tr].map(id => t[id]||0).join('').replace(/0+$/,'')).join('-');
 function splitOf(t){ const s = {ele:0,enh:0,res:0}; for(const k in t){ for(const tr in TREE_ORDER) if(TREE_ORDER[tr].indexOf(k) >= 0) s[tr] += t[k]; } return s.ele+'/'+s.enh+'/'+s.res; }
@@ -2204,7 +2226,7 @@ function routeFromCode(t){
 }
 const savedOn = store.get('buildsOn', null);
 const savedCustom = store.get('custom', null);
-if(savedCustom){ const t = Engine.talentsFromCode(savedCustom.code, TREE_ORDER); BUILDS.push({key:'custom', name:'Custom', route:routeFromCode(t), color:'var(--custom)', hex:'#5f8fd6', on:true, blurb:'From your link', custom:true}); }
+if(savedCustom){ const t = Engine.talentsFromCode(savedCustom.code, TREE_ORDER); BUILDS.push({key:'custom', name:'Custom', route:routeFromCode(t), color:'var(--custom)', hex:'#ff6d01', on:true, blurb:'From your link', custom:true}); }
 BUILDS.forEach(b => { b.full = Engine.talentsAt(b.route, 51); b.split = splitOf(b.full); b.code = codeOf(b.full); if(savedOn && savedOn[b.key] !== undefined) b.on = savedOn[b.key]; });
 if(!BUILDS.some(b => b.on)) BUILDS[0].on = true;
 const talentsOf = b => Engine.talentsAt(b.route, points());
@@ -2217,7 +2239,7 @@ function renderBuildChips(){
     if(b.on && activeBuilds().length === 1) return toast('Keep at least one build');
     b.on = !b.on; saveOn(); renderBuildChips(); renderRoutes(); refresh();
   }));
-  $('#sum-builds').textContent = activeBuilds().map(b => b.name+' '+b.split).join(' · ');
+  $('#sum-builds').textContent = activeBuilds().map(b => b.name+' '+b.split).join('; ');
   const sel = $('#upBuild'); const cur = sel.value;
   sel.innerHTML = BUILDS.map(b => '<option value="'+b.key+'">'+esc(b.name)+' ('+b.split+')</option>').join('');
   if(cur && BUILDS.find(b => b.key === cur)) sel.value = cur;
@@ -2244,7 +2266,7 @@ $('#addCustom').addEventListener('click', () => {
   const ex = BUILDS.find(b => b.key === 'custom');
   const fields = {route:routeFromCode(t), full:t, split:splitOf(t), code};
   if(ex) Object.assign(ex, fields, {on:true});
-  else BUILDS.push(Object.assign({key:'custom', name:'Custom', color:'var(--custom)', hex:'#5f8fd6', on:true, blurb:'From your link', custom:true}, fields));
+  else BUILDS.push(Object.assign({key:'custom', name:'Custom', color:'var(--custom)', hex:'#ff6d01', on:true, blurb:'From your link', custom:true}, fields));
   store.set('custom', {code}); saveOn();
   const unmod = Object.keys(t).filter(k => MODELED.indexOf(k) < 0);
   $('#customMsg').textContent = 'Added ('+fields.split+'). Below 60 its points fill the main tree first, top row down.' + (unmod.length ? ' Not modelled: '+unmod.length+' talent(s) without a throughput effect here.' : '');
@@ -2264,7 +2286,7 @@ function renderLevel(){
   $('#level').value = L;
   $('#lvDown').disabled = L <= 1; $('#lvUp').disabled = L >= 60;
   const p = points();
-  $('#lvSub').textContent = p ? p+' talent point'+(p>1?'s':'')+' · '+(L < 60 ? (60-L)+' levels to go' : 'max level') : 'No talents yet · first point at 10';
+  $('#lvSub').textContent = p ? p+' talent point'+(p>1?'s':'')+', '+(L < 60 ? (60-L)+' levels to go' : 'max level') : 'No talents yet, first point at 10';
   const now = {}; EVENTS.forEach(e => { if(e.l <= L) now[e.k] = e; });
   const order = ['hw','lhw','ch','lb','es','fs','ls','rb','ft','wf','hst','ms'];
   const nowPills = order.filter(k => now[k]).map(k => '<span class="pill'+(now[k].l === L ? ' new' : '')+'">'+esc(now[k].name)+' '+now[k].rank+'</span>').join('');
@@ -2340,7 +2362,7 @@ function renderGear(){
   const bits = [worn+' item'+(worn===1?'':'s')+(all > worn ? ' ('+(all-worn)+' above your level)' : '')];
   ['int','sta','spi','str','agi'].forEach(k => { if(g.s[k]) bits.push(fmt(g.s[k])+' '+statLabel[k]); });
   if(g.s.healing) bits.push('+'+fmt(g.s.healing)+' healing');
-  $('#sum-gear').textContent = bits.join(' · ');
+  $('#sum-gear').textContent = bits.join('; ');
   $('#gearWarn').innerHTML = all > worn ? '<div class="row" style="justify-content:space-between"><span class="warnline">'+(worn ? (all-worn)+' of these items need a higher level and are left out of every number.' : 'None of this gear can be worn at level '+LEVEL+', so every number uses no gear. Clear it and add what you wear.')+'</span><button class="btn sm" id="clearHigh">Remove them</button></div>' : '';
   if($('#clearHigh')) $('#clearHigh').addEventListener('click', () => { gear = wearable(gear); saveGear(); renderGear(); refresh(); });
   $('#setNote').innerHTML = g.activeSets.length ? 'Set bonuses counted: '+g.activeSets.map(a => esc(a.set)+' ('+a.n+'): '+esc(a.text)+(a.counted ? '' : ' <span class="muted">(not modelled)</span>')).join('; ') : '';
@@ -2369,7 +2391,7 @@ function renderSheet(){
   $('#sheet').innerHTML = '<thead><tr><th>Level '+LEVEL+'</th>'+bs.map(b => '<th><span class="bdot" style="background:'+b.color+'"></span>'+esc(b.name)+'</th>').join('')+'</tr></thead><tbody>'
     + rows.map(r => '<tr><td>'+r[0]+'</td>'+cs.map(c => '<td>'+r[1](c)+'</td>').join('')+'</tr>').join('') + '</tbody>';
   const o = opts();
-  $('#sum-opts').textContent = [o.buffs.motw && 'Mark of the Wild', o.buffs.ai && 'Arcane Intellect', o.potions && 'mana potions', o.tablet && 'rank 10 Healing Wave'].filter(Boolean).join(' · ') || 'No buffs';
+  $('#sum-opts').textContent = [o.buffs.motw && 'Mark of the Wild', o.buffs.ai && 'Arcane Intellect', o.potions && 'mana potions', o.tablet && 'rank 10 Healing Wave'].filter(Boolean).join('; ') || 'No buffs';
 }
 document.querySelectorAll('#f-opts input').forEach(i => i.addEventListener('change', () => refresh()));
 
@@ -2436,7 +2458,7 @@ function renderPicker(){
   const q = $('#pickSearch').value.trim().toLowerCase();
   const rows = pickerData.filter(x => q ? x.it.n.toLowerCase().indexOf(q) >= 0 : x.gain !== null && reachLvl(x.it) <= LEVEL).slice(0, 120);
   const tag = x => x.gain === null ? '<span class="needlv">needs level '+needLvl(x.it)+'</span>' : reachLvl(x.it) > LEVEL ? '<span class="needlv">from level '+reachLvl(x.it)+' content</span>' : '';
-  $('#pickList').innerHTML = rows.map(x => '<div class="pick" tabindex="0" data-id="'+x.id+'"><div><div class="q'+x.it.q+'" style="font-weight:600">'+esc(x.it.n)+tag(x)+'</div><div class="st">'+esc(statText(x.it))+(x.it.rl ? ' · req '+x.it.rl : '')+'</div><div class="st">'+esc(srcText(x.it))+'</div></div><div class="sc">'+(x.gain === null ? '' : (x.gain>=0?'+':'')+fmt(x.gain,1)+'%')+'</div></div>').join('') || '<div class="muted small" style="padding:12px">No items match.</div>';
+  $('#pickList').innerHTML = rows.map(x => '<div class="pick" tabindex="0" data-id="'+x.id+'"><div><div class="q'+x.it.q+'" style="font-weight:600">'+esc(x.it.n)+tag(x)+'</div><div class="st">'+esc(statText(x.it))+(x.it.rl ? ', needs level '+x.it.rl : '')+'</div><div class="st">'+esc(srcText(x.it))+'</div></div><div class="sc">'+(x.gain === null ? '' : (x.gain>=0?'+':'')+fmt(x.gain,1)+'%')+'</div></div>').join('') || '<div class="muted small" style="padding:12px">No items match.</div>';
   $('#pickList').querySelectorAll('.pick').forEach(el => {
     const choose = () => { gear[pickSlot] = +el.dataset.id; if(pickSlot === 'mainhand' && ITEMS[el.dataset.id].two) delete gear.offhand; saveGear(); closePicker(); renderGear(); refresh(); };
     el.addEventListener('click', choose); el.addEventListener('keydown', e => { if(e.key === 'Enter') choose(); });
@@ -2460,7 +2482,7 @@ function srcOne(s){
   if(s.t === 'world') return 'World drop'+(s.npc ? ' ('+s.npc+')' : '')+(s.z ? ', '+s.z : '');
   return '';
 }
-function srcText(it){ return it.src ? it.src.map(srcOne).join(' · ') : 'Source not in the data'; }
+function srcText(it){ return it.src ? it.src.map(srcOne).join('; ') : 'Source not in the data'; }
 const SRC_FILTERS = [['quest','Quests',true],['vendor','Vendors',true],['crafted','Crafted',true],['dungeon','Dungeon drops',true],['npc','Named mobs',true],['rep','Reputation',true],['raid','Onyxia (from Dec 9)',false],['world','World drops',false],['pvp','PvP',false],['none','Unknown source',false]];
 const srcOn = Object.fromEntries(SRC_FILTERS.map(f => [f[0], f[2]]));
 function effortOf(it){
@@ -2512,7 +2534,7 @@ function upgradesAt(b, mode, w, maxLvl, level0){
     unit = 'kills per hour';
   } else {
     const hBase = Engine.capacity(cBase, DATA, co).total, dBase = Engine.damage(cBase, DATA, dmgO).dps;
-    $('#upBase').textContent = (LEVEL > level0 ? 'At '+LEVEL+' with this gear: ' : 'Now: ')+fmt(hBase)+' healing over 5 min · '+fmt(dBase)+' melee DPS';
+    $('#upBase').textContent = (LEVEL > level0 ? 'At '+LEVEL+' with this gear: ' : 'Now: ')+fmt(hBase)+' healing over 5 min, '+fmt(dBase)+' melee DPS';
     score = g => { const c = charFor(b, g); const h = (Engine.capacity(c, DATA, co).total - hBase)/hBase*100; const d = w > 0 ? (Engine.damage(c, DATA, dmgO).dps - dBase)/Math.max(1,dBase)*100 : 0; return {v:(1-w)*h + w*d, a:h, d}; };
     unit = 'healing';
   }
@@ -2540,7 +2562,7 @@ function upgradesAt(b, mode, w, maxLvl, level0){
     const cur = ITEMS[gear[x.r.slot]];
     const srcL = srcLevel(x.it);
     const lv = x.it.rl > 1 ? 'req '+x.it.rl : srcL ? 'no level requirement, '+(x.eff.s.t === 'quest' ? 'quest' : 'source')+' level '+srcL : 'no level requirement, item level '+x.it.il;
-    return '<div class="up"><div><div class="nm q'+x.it.q+'">'+esc(x.it.n)+'</div><div class="meta"><span class="ease e'+x.eff.lvl+'">'+esc(x.eff.label)+'</span>'+esc(srcOne(x.eff.s) || 'Source not in the data')+'</div><div class="meta">'+esc(sl)+(cur ? ', replaces '+esc(cur.n) : ', empty slot')+' · '+esc(statText(x.it))+(lv ? ' · '+lv : '')+(x.it.lowconf ? ' · stats from Wowhead only' : '')+'</div>'+(x.it.fx ? '<div class="meta">'+esc(x.it.fx[0])+' (not modelled)</div>' : '')+'</div>'
+    return '<div class="up"><div><div class="nm q'+x.it.q+'">'+esc(x.it.n)+'</div><div class="meta"><span class="ease e'+x.eff.lvl+'">'+esc(x.eff.label)+'</span>'+esc(srcOne(x.eff.s) || 'Source not in the data')+'</div><div class="meta">'+esc(sl)+(cur ? ', replaces '+esc(cur.n) : ', empty slot')+', '+esc(statText(x.it))+(lv ? ', '+lv : '')+(x.it.lowconf ? ', stats from Wowhead only' : '')+'</div>'+(x.it.fx ? '<div class="meta">'+esc(x.it.fx[0])+' (not modelled)</div>' : '')+'</div>'
       +'<div class="gain">+'+fmt(x.r.a,1)+'%<small>'+unit+'</small>'+(w > 0 ? '<small>'+(x.r.d>=0?'+':'')+fmt(x.r.d,1)+'% damage</small>' : '')+'</div></div>';
   };
   const best = cands.slice().sort((a,b) => b.r.v/b.eff.cost - a.r.v/a.eff.cost).slice(0, 10);
@@ -2635,12 +2657,12 @@ function lineChart(el, series, unit){
   const yTop = Math.ceil(maxY/unitStep)*unitStep;
   const x = i => L + (W-L-R)*i/Math.max(1,n-1), y = v => T + (H-T-B)*(1 - v/yTop);
   let g = '';
-  for(let k = 0; k <= 4; k++){ const v = yTop*k/4; g += '<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="#1f2c33" stroke-width="1"/><text x="'+(L-8)+'" y="'+(y(v)+4)+'" text-anchor="end" fill="#8e9ea3" font-size="11">'+fmt(v)+'</text>'; }
+  for(let k = 0; k <= 4; k++){ const v = yTop*k/4; g += '<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="#e2e3e3" stroke-width="1"/><text x="'+(L-8)+'" y="'+(y(v)+4)+'" text-anchor="end" fill="#5f6368" font-size="11">'+fmt(v)+'</text>'; }
   const step = (n > 150 ? 60 : 30) * (W < 420 ? 2 : 1);
-  for(let s = 0; s < n; s += step) g += '<text x="'+x(s)+'" y="'+(H-6)+'" text-anchor="middle" fill="#8e9ea3" font-size="11">'+s+' s</text>';
+  for(let s = 0; s < n; s += step) g += '<text x="'+x(s)+'" y="'+(H-6)+'" text-anchor="middle" fill="#5f6368" font-size="11">'+s+' s</text>';
   series.forEach(s => { const d = s.pts.map((v,i) => (i?'L':'M')+x(i).toFixed(1)+' '+y(v).toFixed(1)).join(' '); g += '<path d="'+d+'" fill="none" stroke="'+s.color+'" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>'; });
-  g += '<line class="xh" x1="0" x2="0" y1="'+T+'" y2="'+(H-B)+'" stroke="#8e9ea3" stroke-width="1" opacity="0"/>';
-  series.forEach((s,i) => g += '<circle class="pt" data-i="'+i+'" r="4" fill="'+s.color+'" stroke="#121b21" stroke-width="2" opacity="0"/>');
+  g += '<line class="xh" x1="0" x2="0" y1="'+T+'" y2="'+(H-B)+'" stroke="#80868b" stroke-width="1" opacity="0"/>';
+  series.forEach((s,i) => g += '<circle class="pt" data-i="'+i+'" r="4" fill="'+s.color+'" stroke="#ffffff" stroke-width="2" opacity="0"/>');
   el.innerHTML = '<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Mana over time">'+g+'<rect x="'+L+'" y="'+T+'" width="'+(W-L-R)+'" height="'+(H-T-B)+'" fill="transparent" class="hit"/></svg><div class="tip"></div>';
   const svg = el.querySelector('svg'), tip = el.querySelector('.tip'), xh = el.querySelector('.xh');
   const move = ev => {
@@ -2683,10 +2705,10 @@ function renderLog(r){
     + '<div class="kpi" style="--bc:'+(t.deaths ? 'var(--bad)' : 'var(--good)')+'"><div class="lb">Group deaths</div><div class="v">'+t.deaths+'</div></div></div>';
   const copy = '<div class="card" style="display:grid;gap:10px"><div class="row" style="justify-content:space-between"><h3 style="margin:0">Summary for Claude</h3><button class="btn primary sm" id="copySum">Copy for Claude</button></div><textarea id="sumText" readonly>'+esc(r.text)+'</textarea><div class="small muted">Paste this into the chat and ask for a critique. It holds the numbers per fight, not the raw log.</div></div>';
   const flags = r.obs.length ? '<div class="card" style="display:grid;gap:8px"><h3 style="margin:0">Things the parser noticed</h3>'+r.obs.map(o => '<div class="flag'+(o.kind==='death'?' death':'')+'"><b>'+esc(o.fight)+':</b> '+esc(o.text)+'</div>').join('')+'</div>' : '';
-  const fights = '<div class="card" style="display:grid;gap:10px"><h3 style="margin:0">Fights</h3><div class="fights">'+r.report.fights.map((f,i) => '<details class="fight"><summary><div><div style="font-weight:600">'+esc(f.name)+(f.boss ? ' <span class="ease e2">Boss</span>' : '')+(f.deaths.length ? ' <span class="ease e4">'+f.deaths.length+' died</span>' : '')+'</div><div class="small muted">'+f.duration+' s · '+fmt(f.hps)+' HPS · '+f.overhealPct+'% overheal · '+f.idleSeconds+' s without casting</div></div><div class="small muted num">#'+(i+1)+'</div></summary><div class="body">'
+  const fights = '<div class="card" style="display:grid;gap:10px"><h3 style="margin:0">Fights</h3><div class="fights">'+r.report.fights.map((f,i) => '<details class="fight"><summary><div><div style="font-weight:600">'+esc(f.name)+(f.boss ? ' <span class="ease e2">Boss</span>' : '')+(f.deaths.length ? ' <span class="ease e4">'+f.deaths.length+' died</span>' : '')+'</div><div class="small muted">'+f.duration+' s, '+fmt(f.hps)+' HPS, '+f.overhealPct+'% overheal, '+f.idleSeconds+' s without casting</div></div><div class="small muted num">#'+(i+1)+'</div></summary><div class="body">'
     + '<div class="tablewrap"><table class="cmp"><thead><tr><th>Spell</th><th>Casts</th><th>Healing</th><th>Overheal</th><th>Crit</th></tr></thead><tbody>'+f.spells.map(s => '<tr><td>'+esc(s.spell)+'</td><td>'+s.casts+'</td><td>'+fmt(s.effective)+'</td><td>'+s.overhealPct+'%</td><td>'+s.critPct+'%</td></tr>').join('')+'</tbody></table></div>'
     + (f.mana.curve.length > 3 ? '<div><div class="small muted" style="margin-bottom:6px">Mana ('+fmt(f.mana.min)+' lowest of '+fmt(f.mana.max)+')</div><div class="chart" data-curve="'+i+'"></div></div>' : '<div class="small muted">No mana data in this log. Turn on Advanced Combat Logging.</div>')
-    + (Object.keys(f.cooldowns).some(k => r.report.known[k]) ? '<div class="small muted">Cooldowns: '+Object.entries(f.cooldowns).filter(([k]) => r.report.known[k]).map(([k,v]) => esc(k)+' '+v.used+' of about '+v.possible).join(' · ')+'</div>' : '')
+    + (Object.keys(f.cooldowns).some(k => r.report.known[k]) ? '<div class="small muted">Cooldowns: '+Object.entries(f.cooldowns).filter(([k]) => r.report.known[k]).map(([k,v]) => esc(k)+' '+v.used+' of about '+v.possible).join('; ')+'</div>' : '')
     + (f.deaths.length ? f.deaths.map(d => '<div class="flag death">'+esc(d.who)+' died at '+d.at+' s. Last hits: '+esc(d.lastHits.join('; ')||'unknown')+'. Your casts in the 6 s before: '+d.myCastsLast6s+'.</div>').join('') : '')
     + '</div></details>').join('')+'</div></div>';
   $('#logOut').innerHTML = head + copy + flags + fights;
@@ -2699,7 +2721,7 @@ function renderLog(r){
     const f = r.report.fights[+c.dataset.curve]; c.dataset.done = 1;
     const n = Math.ceil(f.duration); const pts = []; let j = 0, last = f.mana.curve[0][1];
     for(let s = 0; s <= n; s++){ while(j < f.mana.curve.length && f.mana.curve[j][0] <= s){ last = f.mana.curve[j][1]; j++; } pts.push(last); }
-    lineChart(c, [{name:'Mana', color:'#2fa893', pts}], 'mana');
+    lineChart(c, [{name:'Mana', color:'#4285f4', pts}], 'mana');
   }));
 }
 
@@ -2724,5 +2746,6 @@ renderBuildChips(); renderLevel(); renderRoutes(); presetSelect(); renderGear();
 const h = (location.hash||'').slice(1); if(['simulate','upgrades','log'].indexOf(h) >= 0) show(h);
 })();
 </script>
+<nav class="xl-tabs" aria-label="Pages"><a href=".././">Start</a><a href="../forever/">Group Sim</a><a href="../shaman/" aria-current="page">Shaman Sim</a><a href="../crafts/">Craft Profits</a><span class="gap"></span></nav>
 </body>
 </html>

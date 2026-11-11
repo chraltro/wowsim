@@ -91,11 +91,11 @@
   const measure = $('measure');
   function fit(sel) {
     measure.textContent = sel.options[sel.selectedIndex] ? sel.options[sel.selectedIndex].text : '';
-    sel.style.width = Math.ceil(measure.getBoundingClientRect().width) + 'px';
+    sel.style.width = Math.ceil(measure.getBoundingClientRect().width) + 34 + 'px';   // text, side padding, the arrow
   }
   const hasRecipes = PROFS.map(() => false);
   for (const r of E.recipes) hasRecipes[r.prof] = true;
-  const fitNum = (el) => { el.style.width = (Math.max(1, String(el.value).length) + 0.35) + 'ch'; };
+  const fitNum = (el) => { el.style.width = 'calc(' + Math.max(1, String(el.value).length) + 'ch + 16px)'; };
   const fitNums = () => document.querySelectorAll('.ask input[type="number"]').forEach(fitNum);
   function buildProfSelect() {
     $('prof').innerHTML = '<option value="all">all professions</option>' +
@@ -934,7 +934,6 @@
   });
 
   // ---------- start ----------
-  if (/github\.io$/.test(location.hostname)) $('siteLink').href = '../';
   $('buildNo').textContent = D.build;
   buildProfSelect();
   renderHouse(); syncAsk(); syncSettings();

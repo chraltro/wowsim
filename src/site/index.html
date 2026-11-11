@@ -3,60 +3,59 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>WoW Forever sims</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<title>wowsim</title>
 <style>
-:root{--bg:#0c1318;--panel:#121b21;--panel-2:#17232a;--line:#26353e;--line-2:#33454f;--text:#e7e9e3;--muted:#8e9ea3;--gold:#d9b46c;--ease:cubic-bezier(.2,.75,.2,1);color-scheme:dark}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',-apple-system,'Segoe UI',Roboto,sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
-body{background:radial-gradient(1200px 600px at 50% -220px,#16232b 0%,var(--bg) 70%) fixed,var(--bg);min-height:100vh}
-.wrap{max-width:880px;margin:0 auto;padding:56px 20px 64px;display:grid;gap:28px}
-h1{font-family:'Cinzel','Trajan Pro',Georgia,serif;font-weight:600;font-size:clamp(28px,5vw,40px);letter-spacing:.02em;margin:0}
-h2{font-family:'Cinzel','Trajan Pro',Georgia,serif;font-weight:600;font-size:21px;letter-spacing:.03em;margin:0}
-p{margin:0;color:var(--muted)}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
-a.card{display:grid;gap:10px;align-content:start;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px;transition:border-color .25s var(--ease),transform .25s var(--ease),background .25s}
-a.card:hover{border-color:var(--gold);background:var(--panel-2);transform:translateY(-2px)}
-a.card:active{transform:scale(.99)}
-a.card:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.go{color:var(--gold);font-weight:600;font-size:14px;margin-top:4px}
-ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px;display:grid;gap:3px}
-footer{font-size:13px;color:var(--muted);display:grid;gap:6px}
-footer a{color:var(--gold);text-underline-offset:3px}
+/*__SHEET_CSS__*/
+/* The start page is the sheet itself: column letters, row numbers, cells. */
+.grid{margin:0;overflow-x:auto}
+.grid table{border-collapse:collapse;min-width:100%;table-layout:fixed}
+.grid col.rn{width:46px} .grid col.a{width:180px} .grid col.b{width:min(46vw,560px)} .grid col.c{width:340px} .grid col.d{width:auto}
+.grid th,.grid td{border:1px solid var(--grid);padding:3px 6px;height:23px;vertical-align:top;text-align:left;overflow-wrap:anywhere}
+.grid thead th{background:var(--head);color:var(--muted);font-weight:normal;font-size:11px;text-align:center;border-bottom-color:var(--rule);position:sticky;top:0}
+.grid th.rn{background:var(--head);color:var(--muted);font-weight:normal;font-size:11px;text-align:center;vertical-align:middle;border-right-color:var(--rule)}
+.grid tr.h td{background:var(--head);font-weight:bold}
+.grid tbody tr:not(.h):not(.blank):hover td{background:var(--fill)}
+.grid tbody tr:not(.h):not(.blank):hover td.cls{background:var(--cc)}
+.grid td.cls{background:var(--cc);font-weight:bold}
+.grid a.tool{font-weight:bold}
+.grid .m{color:var(--muted)}
+.warrior{--cc:#c79c6e} .druid{--cc:#ff7d0a} .warlock{--cc:#9482c9} .mage{--cc:#69ccf0} .shaman{--cc:#2e8fe8}
+@media (max-width:640px){
+  .grid table{table-layout:auto;min-width:0;width:100%}
+  .grid thead,.grid col.c,.grid .hide-s{display:none}
+}
 </style>
 </head>
 <body>
-<main class="wrap">
-  <header style="display:grid;gap:8px">
-    <h1>WoW Forever sims</h1>
-    <p>Simulators and a crafting tool for a group leveling together in World of Warcraft: Forever, from level 1 to 60.</p>
-  </header>
-  <div class="cards">
-    <a class="card" href="forever/">
-      <h2>Forever Group Sim</h2>
-      <p>Every class and spec, with class combat from MythicSim's Forever engine running in your browser.</p>
-      <ul><li>Kills per hour while questing, rest included</li><li>Dungeon damage and healing</li><li>Talents from published leveling routes</li><li>Upgrades ranked by how easy they are to get</li></ul>
-      <span class="go">Open the group sim</span>
-    </a>
-    <a class="card" href="shaman/">
-      <h2>Shaman Sim</h2>
-      <p>A Restoration Shaman in depth: whether you keep the tank alive, talents compared, healing upgrades and your combat logs.</p>
-      <ul><li>Healer fights simulated second by second</li><li>Talent routes for leveling</li><li>Upgrades by effort</li><li>Combat log summary to paste to Claude</li></ul>
-      <span class="go">Open the shaman sim</span>
-    </a>
-    <a class="card" href="crafts/">
-      <h2>Forever Craft Profits</h2>
-      <p>What every recipe makes on your auction house after the 5% cut, priced from the latest AHledger scan.</p>
-      <ul><li>Every profession, up to the skill you have</li><li>Vendor materials at vendor price</li><li>Flips between vendor and auction house, crafting included</li><li>Recipes worth buying, and the cheapest way to level a profession</li><li>Any ruleset, faction and region</li></ul>
-      <span class="go">Open craft profits</span>
-    </a>
-  </div>
-  <footer>
-    <span>Source and data: <a href="https://github.com/chraltro/wowsim">github.com/chraltro/wowsim</a>.</span>
-    <span>Class combat: <a href="https://github.com/sage3648/mythicsim-forever-engine">MythicSim Forever engine</a> (MIT), built on <a href="https://github.com/wowsims/forever">wowsims Forever</a> (MIT), with fixes for leveling characters. <a href="NOTICE.txt">Licences</a>. Not affiliated with Blizzard Entertainment.</span>
-    <span>Craft prices: <a href="https://ahledger.com/">AHledger</a>, from player scans.</span>
-  </footer>
+<!--__SHEET_TOP__-->
+<main class="grid">
+<table>
+  <colgroup><col class="rn"><col class="a"><col class="b"><col class="c"><col class="d"></colgroup>
+  <thead><tr><th></th><th>A</th><th>B</th><th>C</th><th class="hide-s">D</th></tr></thead>
+  <tbody>
+    <tr class="h"><th class="rn">1</th><td>Tool</td><td>What it answers</td><td class="hide-s">Built on</td><td class="hide-s"></td></tr>
+    <tr><th class="rn">2</th><td><a class="tool" href="forever/">Group Sim</a></td><td>Kills per hour and dungeon numbers for every class at your level, with the gear upgrades that are easiest to get</td><td class="hide-s">MythicSim's Forever engine, running in your browser</td><td class="hide-s"></td></tr>
+    <tr><th class="rn">3</th><td><a class="tool" href="shaman/">Shaman Sim</a></td><td>Whether the tank lives through a dungeon pull, and which Restoration talents and gear make the difference. Reads your combat logs too</td><td class="hide-s">Forever spell data from the game client</td><td class="hide-s"></td></tr>
+    <tr><th class="rn">4</th><td><a class="tool" href="crafts/">Craft Profits</a></td><td>What each recipe makes after the 5% auction cut, and the cheapest way to level a profession</td><td class="hide-s">AHledger's latest scan, for any ruleset, faction and region</td><td class="hide-s"></td></tr>
+    <tr class="blank"><th class="rn">5</th><td></td><td></td><td class="hide-s"></td><td class="hide-s"></td></tr>
+    <tr class="h"><th class="rn">6</th><td>Character</td><td>Class and role</td><td class="hide-s">Notes</td><td class="hide-s"></td></tr>
+    <tr class="shaman"><th class="rn">7</th><td class="cls">Christian</td><td>Dwarf Shaman, healer</td><td class="hide-s">Restoration, Enhancement as second spec at 40. Paladin tank alt.</td><td class="hide-s"></td></tr>
+    <tr class="warrior"><th class="rn">8</th><td class="cls">Niels</td><td>Warrior, tank or damage</td><td class="hide-s"></td><td class="hide-s"></td></tr>
+    <tr class="druid"><th class="rn">9</th><td class="cls">Nicklas</td><td>Druid, tank or damage</td><td class="hide-s"></td><td class="hide-s"></td></tr>
+    <tr class="warlock"><th class="rn">10</th><td class="cls">Mikkel</td><td>Warlock, damage</td><td class="hide-s"></td><td class="hide-s"></td></tr>
+    <tr class="mage"><th class="rn">11</th><td class="cls">Cornelius</td><td>Mage, damage</td><td class="hide-s">Hunter alt</td><td class="hide-s"></td></tr>
+    <tr class="blank"><th class="rn">12</th><td></td><td></td><td class="hide-s"></td><td class="hide-s"></td></tr>
+    <tr class="h"><th class="rn">13</th><td>Credits</td><td></td><td class="hide-s"></td><td class="hide-s"></td></tr>
+    <tr><th class="rn">14</th><td>Source and data</td><td><a href="https://github.com/chraltro/wowsim">github.com/chraltro/wowsim</a></td><td class="hide-s"></td><td class="hide-s"></td></tr>
+    <tr><th class="rn">15</th><td>Class combat</td><td><a href="https://github.com/sage3648/mythicsim-forever-engine">MythicSim Forever engine</a> (MIT), built on <a href="https://github.com/wowsims/forever">wowsims Forever</a> (MIT), with fixes for leveling characters. <a href="NOTICE.txt">Licences</a></td><td class="hide-s"></td><td class="hide-s"></td></tr>
+    <tr><th class="rn">16</th><td>Prices</td><td><a href="https://ahledger.com/">AHledger</a>, from player scans</td><td class="hide-s"></td><td class="hide-s"></td></tr>
+    <tr><th class="rn">17</th><td class="m" colspan="2">Not affiliated with Blizzard Entertainment.</td><td class="hide-s"></td><td class="hide-s"></td></tr>
+    <tr class="blank"><th class="rn">18</th><td></td><td></td><td class="hide-s"></td><td class="hide-s"></td></tr>
+    <tr class="blank"><th class="rn">19</th><td></td><td></td><td class="hide-s"></td><td class="hide-s"></td></tr>
+    <tr class="blank"><th class="rn">20</th><td></td><td></td><td class="hide-s"></td><td class="hide-s"></td></tr>
+  </tbody>
+</table>
 </main>
+<!--__SHEET_TABS__-->
 </body>
 </html>

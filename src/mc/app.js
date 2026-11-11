@@ -115,7 +115,7 @@ $('#gLevel').addEventListener('change', e => setGroupLevel(e.target.value));
 
 // ---------- Character view ----------
 function renderPeople(){
-  $('#people').innerHTML = chars.map(c => '<button class="person cls-'+c.cls+'" aria-pressed="'+(c.id === current)+'" data-id="'+c.id+'"><span class="nm"><span class="cdot"></span>'+esc(c.name)+'</span><span class="sb">'+c.level+' '+CLASS_LABEL[c.cls]+' · '+esc(CLASSDATA[c.cls].specs[specOf(c)].label)+'</span></button>').join('')
+  $('#people').innerHTML = chars.map(c => '<button class="person cls-'+c.cls+'" aria-pressed="'+(c.id === current)+'" data-id="'+c.id+'"><span class="nm"><span class="cdot"></span>'+esc(c.name)+'</span><span class="sb">'+c.level+' '+CLASS_LABEL[c.cls]+', '+esc(CLASSDATA[c.cls].specs[specOf(c)].label)+'</span></button>').join('')
     + '<button class="person add" id="addChar">+ Add character</button>';
   $('#people').querySelectorAll('.person[data-id]').forEach(b => b.addEventListener('click', () => { current = b.dataset.id; save(); renderChar(); }));
   $('#addChar').addEventListener('click', () => { const c = newChar('New character', 'warrior', groupLevel()); chars.push(c); current = c.id; save(); renderChar(); simChar(c); renderGroup(); });
@@ -170,7 +170,7 @@ function renderGear(){
   $('#gearList').querySelectorAll('[data-pick]').forEach(b => b.addEventListener('click', () => openPicker(b.dataset.pick)));
   $('#gearList').querySelectorAll('[data-clear]').forEach(b => b.addEventListener('click', () => change(c => { c.gear = Object.assign({}, gearOf(c)); delete c.gear[b.dataset.clear]; c.autoGear = false; })));
   const n = Object.keys(g).length;
-  $('#sum-gear').textContent = (c.autoGear ? 'Typical gear for level '+c.level : 'Your gear')+' · '+n+' item'+(n === 1 ? '' : 's');
+  $('#sum-gear').textContent = (c.autoGear ? 'Typical gear for level '+c.level : 'Your gear')+', '+n+' item'+(n === 1 ? '' : 's');
   $('#gearNote').textContent = c.autoGear ? 'Easy-to-get items for this level, picked by rough stat value. Change any slot to use your own.' : '';
 }
 $('#autoGear').addEventListener('click', () => change(c => { c.autoGear = true; c.gear = null; }));
@@ -192,7 +192,7 @@ function openPicker(slot){
 function renderPicker(){
   const q = $('#pickSearch').value.trim().toLowerCase();
   const rows = pickRows.filter(x => q ? x.it.n.toLowerCase().indexOf(q) >= 0 : x.ok).slice(0, 120);
-  $('#pickList').innerHTML = rows.map(x => '<div class="pick" tabindex="0" data-id="'+x.id+'"><div><div class="q'+x.it.q+'" style="font-weight:600">'+esc(x.it.n)+(!inEngine(x.id) ? '<span class="needlv">not in the engine\'s data</span>' : x.from > cur().level ? '<span class="needlv">needs level '+x.from+'</span>' : x.reach > cur().level ? '<span class="needlv">level '+x.reach+' content</span>' : '')+'</div><div class="st">'+esc(statText(x.it))+(x.it.rl ? ' · req '+x.it.rl : '')+'</div><div class="st">'+esc(srcText(x.it))+'</div></div><div class="sc"></div></div>').join('') || '<div class="muted small" style="padding:12px">No items match.</div>';
+  $('#pickList').innerHTML = rows.map(x => '<div class="pick" tabindex="0" data-id="'+x.id+'"><div><div class="q'+x.it.q+'" style="font-weight:600">'+esc(x.it.n)+(!inEngine(x.id) ? '<span class="needlv">not in the engine\'s data</span>' : x.from > cur().level ? '<span class="needlv">needs level '+x.from+'</span>' : x.reach > cur().level ? '<span class="needlv">level '+x.reach+' content</span>' : '')+'</div><div class="st">'+esc(statText(x.it))+(x.it.rl ? ', needs level '+x.it.rl : '')+'</div><div class="st">'+esc(srcText(x.it))+'</div></div><div class="sc"></div></div>').join('') || '<div class="muted small" style="padding:12px">No items match.</div>';
   $('#pickList').querySelectorAll('.pick').forEach(el => {
     const choose = () => { const id = +el.dataset.id; change(c => { c.gear = Object.assign({}, gearOf(c)); c.gear[pickSlot] = id; if(pickSlot === 'mainhand' && ITEMS_ALL[id].two) delete c.gear.offhand; c.autoGear = false; }); closePicker(); };
     el.addEventListener('click', choose); el.addEventListener('keydown', e => { if(e.key === 'Enter') choose(); });
@@ -216,7 +216,7 @@ function renderResults(){
   const du = d && d.role === 'healer' ? 'healing per second' : 'damage per second';
   const dd = d && d.ok ? 'Boss two levels above you, 2 minutes'+(d.petDps ? ', pet '+fmt(d.petDps)+' of it' : '')+(d.role === 'tank' ? '. Tanking is simmed as damage for now' : '') : esc(d ? d.why : '');
   $('#charKpis').innerHTML = kpi('Questing', qv, 'kills per hour', qd) + kpi('Dungeon', dv, du, dd)
-    + (c.cls === 'shaman' && specOf(c) === 'res' ? '<div class="note" style="grid-column:1/-1">Whether you keep the tank alive, mana over a pull and Resto talents compared: <a href="'+SHAMAN_SIM+'" target="_blank" rel="noopener">Shaman Sim</a>.</div>' : '');
+    + (c.cls === 'shaman' && specOf(c) === 'res' ? '<div class="note" style="grid-column:1/-1">The Shaman Sim plays each dungeon pull second by second and shows when your mana runs out. <a href="'+SHAMAN_SIM+'" target="_blank" rel="noopener">Shaman Sim</a>.</div>' : '');
   if(pending || !q || !q.ok){ $('#charDetails').innerHTML = ''; return; }
   const rows = [
     ['Mob', 'Level '+q.mob.level+', '+fmt(q.mob.hp)+' health, '+fmt(q.mob.dps,1)+' damage per second'],
@@ -250,7 +250,7 @@ function srcOne(s){
   if(s.t === 'world') return 'World drop'+(s.npc ? ' ('+s.npc+')' : '')+(s.z ? ', '+s.z : '');
   return '';
 }
-function srcText(it){ return it.src ? it.src.slice(0, 2).map(srcOne).join(' · ') : 'Source not in the data'; }
+function srcText(it){ return it.src ? it.src.slice(0, 2).map(srcOne).join('; ') : 'Source not in the data'; }
 function effortOf(it){
   let best = null;
   (it.src && it.src.length ? it.src : [{t:'none'}]).forEach(s => {
@@ -302,7 +302,7 @@ $('#runUps').addEventListener('click', async () => {
     $('#upState').innerHTML = '<span class="small muted">Now: '+now+'. '+rows.length+' of '+res.items.length+' items simmed are upgrades.</span>';
     $('#upList').innerHTML = rows.slice(0, 15).map(({x, it, gain, eff}) => {
       const was = ITEMS_ALL[ctx.gear[x.slot]];
-      return '<div class="up"><div><div class="nm q'+it.q+'">'+esc(it.n)+'</div><div class="meta"><span class="ease e'+eff.lvl+'">'+esc(eff.label)+'</span>'+esc(srcOne(eff.s) || 'Source not in the data')+'</div><div class="meta">'+SLOT_LABEL[x.slot]+(was ? ', replaces '+esc(was.n) : ', empty slot')+' · '+esc(statText(it))+(it.rl ? ' · req '+it.rl : '')+'</div></div><div class="gain">+'+fmt(gain,1)+'%<small>'+unit+'</small></div></div>';
+      return '<div class="up"><div><div class="nm q'+it.q+'">'+esc(it.n)+'</div><div class="meta"><span class="ease e'+eff.lvl+'">'+esc(eff.label)+'</span>'+esc(srcOne(eff.s) || 'Source not in the data')+'</div><div class="meta">'+SLOT_LABEL[x.slot]+(was ? ', replaces '+esc(was.n) : ', empty slot')+', '+esc(statText(it))+(it.rl ? ', needs level '+it.rl : '')+'</div></div><div class="gain">+'+fmt(gain,1)+'%<small>'+unit+'</small></div></div>';
     }).join('') || '<div class="small muted">Nothing beats the current gear.</div>';
   } catch(err){ $('#upState').innerHTML = '<span class="warnline">'+esc(err.message)+'</span>'; }
   finally { $('#runUps').disabled = false; }

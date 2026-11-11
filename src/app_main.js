@@ -2,7 +2,7 @@
 'use strict';
 const $ = s => document.querySelector(s);
 // On GitHub Pages the two tools sit side by side; elsewhere they link to the published artifacts
-if(/github\.io$/.test(location.hostname)) $('#groupLink').href = '../forever/';
+// (the link to the Group Sim is in the sheet tabs now)
 const fmt = (n, d) => (n === null || n === undefined || !isFinite(n)) ? '–' : Number(n).toLocaleString('en-US', {maximumFractionDigits: d||0, minimumFractionDigits: d||0});
 const pct = (n, d) => fmt(n, d===undefined?1:d) + '%';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -25,10 +25,10 @@ const ROUTES = {
   ele:   [['tidalfocus',5],['mindful',3],['ihw',2],['watershield',1],['anchealing',1],['healfocus',3],['manatide',1],['convection',5],['concussion',5],['elefocus',1],['restotems',5],['healingway',3],['natswift',1],['purification',5],['riptide',1],['ancknow',5],['thundering',4]]
 };
 const BUILDS = [
-  {key:'pure',  name:'Pure healer', route:ROUTES.pure, color:'var(--pure)', hex:'#2fa893', on:true, blurb:'Most healing at 60'},
-  {key:'melee', name:'Healer who can fight', route:ROUTES.melee, color:'var(--hybrid)', hex:'#b5832f', on:true, blurb:'99% of the healing, about two thirds more melee damage'},
-  {key:'mq',    name:'Mental Quickness hybrid', route:ROUTES.mq, color:'var(--mq)', hex:'#9085e9', on:false, blurb:'More melee, gives up Nature’s Swiftness and Riptide'},
-  {key:'ele',   name:'Elemental dip', route:ROUTES.ele, color:'var(--ele)', hex:'#d55181', on:false, blurb:'Lightning Bolt instead of melee'}
+  {key:'pure',  name:'Pure healer', route:ROUTES.pure, color:'var(--pure)', hex:'#4285f4', on:true, blurb:'Most healing at 60'},
+  {key:'melee', name:'Healer who can fight', route:ROUTES.melee, color:'var(--hybrid)', hex:'#ea4335', on:true, blurb:'99% of the healing, about two thirds more melee damage'},
+  {key:'mq',    name:'Mental Quickness hybrid', route:ROUTES.mq, color:'var(--mq)', hex:'#fbbc04', on:false, blurb:'More melee, gives up Nature’s Swiftness and Riptide'},
+  {key:'ele',   name:'Elemental dip', route:ROUTES.ele, color:'var(--ele)', hex:'#34a853', on:false, blurb:'Lightning Bolt instead of melee'}
 ];
 const codeOf = t => ['ele','enh','res'].map(tr => TREE_ORDER[tr].map(id => t[id]||0).join('').replace(/0+$/,'')).join('-');
 function splitOf(t){ const s = {ele:0,enh:0,res:0}; for(const k in t){ for(const tr in TREE_ORDER) if(TREE_ORDER[tr].indexOf(k) >= 0) s[tr] += t[k]; } return s.ele+'/'+s.enh+'/'+s.res; }
@@ -40,7 +40,7 @@ function routeFromCode(t){
 }
 const savedOn = store.get('buildsOn', null);
 const savedCustom = store.get('custom', null);
-if(savedCustom){ const t = Engine.talentsFromCode(savedCustom.code, TREE_ORDER); BUILDS.push({key:'custom', name:'Custom', route:routeFromCode(t), color:'var(--custom)', hex:'#5f8fd6', on:true, blurb:'From your link', custom:true}); }
+if(savedCustom){ const t = Engine.talentsFromCode(savedCustom.code, TREE_ORDER); BUILDS.push({key:'custom', name:'Custom', route:routeFromCode(t), color:'var(--custom)', hex:'#ff6d01', on:true, blurb:'From your link', custom:true}); }
 BUILDS.forEach(b => { b.full = Engine.talentsAt(b.route, 51); b.split = splitOf(b.full); b.code = codeOf(b.full); if(savedOn && savedOn[b.key] !== undefined) b.on = savedOn[b.key]; });
 if(!BUILDS.some(b => b.on)) BUILDS[0].on = true;
 const talentsOf = b => Engine.talentsAt(b.route, points());
@@ -53,7 +53,7 @@ function renderBuildChips(){
     if(b.on && activeBuilds().length === 1) return toast('Keep at least one build');
     b.on = !b.on; saveOn(); renderBuildChips(); renderRoutes(); refresh();
   }));
-  $('#sum-builds').textContent = activeBuilds().map(b => b.name+' '+b.split).join(' · ');
+  $('#sum-builds').textContent = activeBuilds().map(b => b.name+' '+b.split).join('; ');
   const sel = $('#upBuild'); const cur = sel.value;
   sel.innerHTML = BUILDS.map(b => '<option value="'+b.key+'">'+esc(b.name)+' ('+b.split+')</option>').join('');
   if(cur && BUILDS.find(b => b.key === cur)) sel.value = cur;
@@ -80,7 +80,7 @@ $('#addCustom').addEventListener('click', () => {
   const ex = BUILDS.find(b => b.key === 'custom');
   const fields = {route:routeFromCode(t), full:t, split:splitOf(t), code};
   if(ex) Object.assign(ex, fields, {on:true});
-  else BUILDS.push(Object.assign({key:'custom', name:'Custom', color:'var(--custom)', hex:'#5f8fd6', on:true, blurb:'From your link', custom:true}, fields));
+  else BUILDS.push(Object.assign({key:'custom', name:'Custom', color:'var(--custom)', hex:'#ff6d01', on:true, blurb:'From your link', custom:true}, fields));
   store.set('custom', {code}); saveOn();
   const unmod = Object.keys(t).filter(k => MODELED.indexOf(k) < 0);
   $('#customMsg').textContent = 'Added ('+fields.split+'). Below 60 its points fill the main tree first, top row down.' + (unmod.length ? ' Not modelled: '+unmod.length+' talent(s) without a throughput effect here.' : '');
@@ -100,7 +100,7 @@ function renderLevel(){
   $('#level').value = L;
   $('#lvDown').disabled = L <= 1; $('#lvUp').disabled = L >= 60;
   const p = points();
-  $('#lvSub').textContent = p ? p+' talent point'+(p>1?'s':'')+' · '+(L < 60 ? (60-L)+' levels to go' : 'max level') : 'No talents yet · first point at 10';
+  $('#lvSub').textContent = p ? p+' talent point'+(p>1?'s':'')+', '+(L < 60 ? (60-L)+' levels to go' : 'max level') : 'No talents yet, first point at 10';
   const now = {}; EVENTS.forEach(e => { if(e.l <= L) now[e.k] = e; });
   const order = ['hw','lhw','ch','lb','es','fs','ls','rb','ft','wf','hst','ms'];
   const nowPills = order.filter(k => now[k]).map(k => '<span class="pill'+(now[k].l === L ? ' new' : '')+'">'+esc(now[k].name)+' '+now[k].rank+'</span>').join('');
@@ -176,7 +176,7 @@ function renderGear(){
   const bits = [worn+' item'+(worn===1?'':'s')+(all > worn ? ' ('+(all-worn)+' above your level)' : '')];
   ['int','sta','spi','str','agi'].forEach(k => { if(g.s[k]) bits.push(fmt(g.s[k])+' '+statLabel[k]); });
   if(g.s.healing) bits.push('+'+fmt(g.s.healing)+' healing');
-  $('#sum-gear').textContent = bits.join(' · ');
+  $('#sum-gear').textContent = bits.join('; ');
   $('#gearWarn').innerHTML = all > worn ? '<div class="row" style="justify-content:space-between"><span class="warnline">'+(worn ? (all-worn)+' of these items need a higher level and are left out of every number.' : 'None of this gear can be worn at level '+LEVEL+', so every number uses no gear. Clear it and add what you wear.')+'</span><button class="btn sm" id="clearHigh">Remove them</button></div>' : '';
   if($('#clearHigh')) $('#clearHigh').addEventListener('click', () => { gear = wearable(gear); saveGear(); renderGear(); refresh(); });
   $('#setNote').innerHTML = g.activeSets.length ? 'Set bonuses counted: '+g.activeSets.map(a => esc(a.set)+' ('+a.n+'): '+esc(a.text)+(a.counted ? '' : ' <span class="muted">(not modelled)</span>')).join('; ') : '';
@@ -205,7 +205,7 @@ function renderSheet(){
   $('#sheet').innerHTML = '<thead><tr><th>Level '+LEVEL+'</th>'+bs.map(b => '<th><span class="bdot" style="background:'+b.color+'"></span>'+esc(b.name)+'</th>').join('')+'</tr></thead><tbody>'
     + rows.map(r => '<tr><td>'+r[0]+'</td>'+cs.map(c => '<td>'+r[1](c)+'</td>').join('')+'</tr>').join('') + '</tbody>';
   const o = opts();
-  $('#sum-opts').textContent = [o.buffs.motw && 'Mark of the Wild', o.buffs.ai && 'Arcane Intellect', o.potions && 'mana potions', o.tablet && 'rank 10 Healing Wave'].filter(Boolean).join(' · ') || 'No buffs';
+  $('#sum-opts').textContent = [o.buffs.motw && 'Mark of the Wild', o.buffs.ai && 'Arcane Intellect', o.potions && 'mana potions', o.tablet && 'rank 10 Healing Wave'].filter(Boolean).join('; ') || 'No buffs';
 }
 document.querySelectorAll('#f-opts input').forEach(i => i.addEventListener('change', () => refresh()));
 
@@ -272,7 +272,7 @@ function renderPicker(){
   const q = $('#pickSearch').value.trim().toLowerCase();
   const rows = pickerData.filter(x => q ? x.it.n.toLowerCase().indexOf(q) >= 0 : x.gain !== null && reachLvl(x.it) <= LEVEL).slice(0, 120);
   const tag = x => x.gain === null ? '<span class="needlv">needs level '+needLvl(x.it)+'</span>' : reachLvl(x.it) > LEVEL ? '<span class="needlv">from level '+reachLvl(x.it)+' content</span>' : '';
-  $('#pickList').innerHTML = rows.map(x => '<div class="pick" tabindex="0" data-id="'+x.id+'"><div><div class="q'+x.it.q+'" style="font-weight:600">'+esc(x.it.n)+tag(x)+'</div><div class="st">'+esc(statText(x.it))+(x.it.rl ? ' · req '+x.it.rl : '')+'</div><div class="st">'+esc(srcText(x.it))+'</div></div><div class="sc">'+(x.gain === null ? '' : (x.gain>=0?'+':'')+fmt(x.gain,1)+'%')+'</div></div>').join('') || '<div class="muted small" style="padding:12px">No items match.</div>';
+  $('#pickList').innerHTML = rows.map(x => '<div class="pick" tabindex="0" data-id="'+x.id+'"><div><div class="q'+x.it.q+'" style="font-weight:600">'+esc(x.it.n)+tag(x)+'</div><div class="st">'+esc(statText(x.it))+(x.it.rl ? ', needs level '+x.it.rl : '')+'</div><div class="st">'+esc(srcText(x.it))+'</div></div><div class="sc">'+(x.gain === null ? '' : (x.gain>=0?'+':'')+fmt(x.gain,1)+'%')+'</div></div>').join('') || '<div class="muted small" style="padding:12px">No items match.</div>';
   $('#pickList').querySelectorAll('.pick').forEach(el => {
     const choose = () => { gear[pickSlot] = +el.dataset.id; if(pickSlot === 'mainhand' && ITEMS[el.dataset.id].two) delete gear.offhand; saveGear(); closePicker(); renderGear(); refresh(); };
     el.addEventListener('click', choose); el.addEventListener('keydown', e => { if(e.key === 'Enter') choose(); });
@@ -296,7 +296,7 @@ function srcOne(s){
   if(s.t === 'world') return 'World drop'+(s.npc ? ' ('+s.npc+')' : '')+(s.z ? ', '+s.z : '');
   return '';
 }
-function srcText(it){ return it.src ? it.src.map(srcOne).join(' · ') : 'Source not in the data'; }
+function srcText(it){ return it.src ? it.src.map(srcOne).join('; ') : 'Source not in the data'; }
 const SRC_FILTERS = [['quest','Quests',true],['vendor','Vendors',true],['crafted','Crafted',true],['dungeon','Dungeon drops',true],['npc','Named mobs',true],['rep','Reputation',true],['raid','Onyxia (from Dec 9)',false],['world','World drops',false],['pvp','PvP',false],['none','Unknown source',false]];
 const srcOn = Object.fromEntries(SRC_FILTERS.map(f => [f[0], f[2]]));
 function effortOf(it){
@@ -348,7 +348,7 @@ function upgradesAt(b, mode, w, maxLvl, level0){
     unit = 'kills per hour';
   } else {
     const hBase = Engine.capacity(cBase, DATA, co).total, dBase = Engine.damage(cBase, DATA, dmgO).dps;
-    $('#upBase').textContent = (LEVEL > level0 ? 'At '+LEVEL+' with this gear: ' : 'Now: ')+fmt(hBase)+' healing over 5 min · '+fmt(dBase)+' melee DPS';
+    $('#upBase').textContent = (LEVEL > level0 ? 'At '+LEVEL+' with this gear: ' : 'Now: ')+fmt(hBase)+' healing over 5 min, '+fmt(dBase)+' melee DPS';
     score = g => { const c = charFor(b, g); const h = (Engine.capacity(c, DATA, co).total - hBase)/hBase*100; const d = w > 0 ? (Engine.damage(c, DATA, dmgO).dps - dBase)/Math.max(1,dBase)*100 : 0; return {v:(1-w)*h + w*d, a:h, d}; };
     unit = 'healing';
   }
@@ -376,7 +376,7 @@ function upgradesAt(b, mode, w, maxLvl, level0){
     const cur = ITEMS[gear[x.r.slot]];
     const srcL = srcLevel(x.it);
     const lv = x.it.rl > 1 ? 'req '+x.it.rl : srcL ? 'no level requirement, '+(x.eff.s.t === 'quest' ? 'quest' : 'source')+' level '+srcL : 'no level requirement, item level '+x.it.il;
-    return '<div class="up"><div><div class="nm q'+x.it.q+'">'+esc(x.it.n)+'</div><div class="meta"><span class="ease e'+x.eff.lvl+'">'+esc(x.eff.label)+'</span>'+esc(srcOne(x.eff.s) || 'Source not in the data')+'</div><div class="meta">'+esc(sl)+(cur ? ', replaces '+esc(cur.n) : ', empty slot')+' · '+esc(statText(x.it))+(lv ? ' · '+lv : '')+(x.it.lowconf ? ' · stats from Wowhead only' : '')+'</div>'+(x.it.fx ? '<div class="meta">'+esc(x.it.fx[0])+' (not modelled)</div>' : '')+'</div>'
+    return '<div class="up"><div><div class="nm q'+x.it.q+'">'+esc(x.it.n)+'</div><div class="meta"><span class="ease e'+x.eff.lvl+'">'+esc(x.eff.label)+'</span>'+esc(srcOne(x.eff.s) || 'Source not in the data')+'</div><div class="meta">'+esc(sl)+(cur ? ', replaces '+esc(cur.n) : ', empty slot')+', '+esc(statText(x.it))+(lv ? ', '+lv : '')+(x.it.lowconf ? ', stats from Wowhead only' : '')+'</div>'+(x.it.fx ? '<div class="meta">'+esc(x.it.fx[0])+' (not modelled)</div>' : '')+'</div>'
       +'<div class="gain">+'+fmt(x.r.a,1)+'%<small>'+unit+'</small>'+(w > 0 ? '<small>'+(x.r.d>=0?'+':'')+fmt(x.r.d,1)+'% damage</small>' : '')+'</div></div>';
   };
   const best = cands.slice().sort((a,b) => b.r.v/b.eff.cost - a.r.v/a.eff.cost).slice(0, 10);
@@ -471,12 +471,12 @@ function lineChart(el, series, unit){
   const yTop = Math.ceil(maxY/unitStep)*unitStep;
   const x = i => L + (W-L-R)*i/Math.max(1,n-1), y = v => T + (H-T-B)*(1 - v/yTop);
   let g = '';
-  for(let k = 0; k <= 4; k++){ const v = yTop*k/4; g += '<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="#1f2c33" stroke-width="1"/><text x="'+(L-8)+'" y="'+(y(v)+4)+'" text-anchor="end" fill="#8e9ea3" font-size="11">'+fmt(v)+'</text>'; }
+  for(let k = 0; k <= 4; k++){ const v = yTop*k/4; g += '<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="#e2e3e3" stroke-width="1"/><text x="'+(L-8)+'" y="'+(y(v)+4)+'" text-anchor="end" fill="#5f6368" font-size="11">'+fmt(v)+'</text>'; }
   const step = (n > 150 ? 60 : 30) * (W < 420 ? 2 : 1);
-  for(let s = 0; s < n; s += step) g += '<text x="'+x(s)+'" y="'+(H-6)+'" text-anchor="middle" fill="#8e9ea3" font-size="11">'+s+' s</text>';
+  for(let s = 0; s < n; s += step) g += '<text x="'+x(s)+'" y="'+(H-6)+'" text-anchor="middle" fill="#5f6368" font-size="11">'+s+' s</text>';
   series.forEach(s => { const d = s.pts.map((v,i) => (i?'L':'M')+x(i).toFixed(1)+' '+y(v).toFixed(1)).join(' '); g += '<path d="'+d+'" fill="none" stroke="'+s.color+'" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>'; });
-  g += '<line class="xh" x1="0" x2="0" y1="'+T+'" y2="'+(H-B)+'" stroke="#8e9ea3" stroke-width="1" opacity="0"/>';
-  series.forEach((s,i) => g += '<circle class="pt" data-i="'+i+'" r="4" fill="'+s.color+'" stroke="#121b21" stroke-width="2" opacity="0"/>');
+  g += '<line class="xh" x1="0" x2="0" y1="'+T+'" y2="'+(H-B)+'" stroke="#80868b" stroke-width="1" opacity="0"/>';
+  series.forEach((s,i) => g += '<circle class="pt" data-i="'+i+'" r="4" fill="'+s.color+'" stroke="#ffffff" stroke-width="2" opacity="0"/>');
   el.innerHTML = '<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Mana over time">'+g+'<rect x="'+L+'" y="'+T+'" width="'+(W-L-R)+'" height="'+(H-T-B)+'" fill="transparent" class="hit"/></svg><div class="tip"></div>';
   const svg = el.querySelector('svg'), tip = el.querySelector('.tip'), xh = el.querySelector('.xh');
   const move = ev => {
@@ -519,10 +519,10 @@ function renderLog(r){
     + '<div class="kpi" style="--bc:'+(t.deaths ? 'var(--bad)' : 'var(--good)')+'"><div class="lb">Group deaths</div><div class="v">'+t.deaths+'</div></div></div>';
   const copy = '<div class="card" style="display:grid;gap:10px"><div class="row" style="justify-content:space-between"><h3 style="margin:0">Summary for Claude</h3><button class="btn primary sm" id="copySum">Copy for Claude</button></div><textarea id="sumText" readonly>'+esc(r.text)+'</textarea><div class="small muted">Paste this into the chat and ask for a critique. It holds the numbers per fight, not the raw log.</div></div>';
   const flags = r.obs.length ? '<div class="card" style="display:grid;gap:8px"><h3 style="margin:0">Things the parser noticed</h3>'+r.obs.map(o => '<div class="flag'+(o.kind==='death'?' death':'')+'"><b>'+esc(o.fight)+':</b> '+esc(o.text)+'</div>').join('')+'</div>' : '';
-  const fights = '<div class="card" style="display:grid;gap:10px"><h3 style="margin:0">Fights</h3><div class="fights">'+r.report.fights.map((f,i) => '<details class="fight"><summary><div><div style="font-weight:600">'+esc(f.name)+(f.boss ? ' <span class="ease e2">Boss</span>' : '')+(f.deaths.length ? ' <span class="ease e4">'+f.deaths.length+' died</span>' : '')+'</div><div class="small muted">'+f.duration+' s · '+fmt(f.hps)+' HPS · '+f.overhealPct+'% overheal · '+f.idleSeconds+' s without casting</div></div><div class="small muted num">#'+(i+1)+'</div></summary><div class="body">'
+  const fights = '<div class="card" style="display:grid;gap:10px"><h3 style="margin:0">Fights</h3><div class="fights">'+r.report.fights.map((f,i) => '<details class="fight"><summary><div><div style="font-weight:600">'+esc(f.name)+(f.boss ? ' <span class="ease e2">Boss</span>' : '')+(f.deaths.length ? ' <span class="ease e4">'+f.deaths.length+' died</span>' : '')+'</div><div class="small muted">'+f.duration+' s, '+fmt(f.hps)+' HPS, '+f.overhealPct+'% overheal, '+f.idleSeconds+' s without casting</div></div><div class="small muted num">#'+(i+1)+'</div></summary><div class="body">'
     + '<div class="tablewrap"><table class="cmp"><thead><tr><th>Spell</th><th>Casts</th><th>Healing</th><th>Overheal</th><th>Crit</th></tr></thead><tbody>'+f.spells.map(s => '<tr><td>'+esc(s.spell)+'</td><td>'+s.casts+'</td><td>'+fmt(s.effective)+'</td><td>'+s.overhealPct+'%</td><td>'+s.critPct+'%</td></tr>').join('')+'</tbody></table></div>'
     + (f.mana.curve.length > 3 ? '<div><div class="small muted" style="margin-bottom:6px">Mana ('+fmt(f.mana.min)+' lowest of '+fmt(f.mana.max)+')</div><div class="chart" data-curve="'+i+'"></div></div>' : '<div class="small muted">No mana data in this log. Turn on Advanced Combat Logging.</div>')
-    + (Object.keys(f.cooldowns).some(k => r.report.known[k]) ? '<div class="small muted">Cooldowns: '+Object.entries(f.cooldowns).filter(([k]) => r.report.known[k]).map(([k,v]) => esc(k)+' '+v.used+' of about '+v.possible).join(' · ')+'</div>' : '')
+    + (Object.keys(f.cooldowns).some(k => r.report.known[k]) ? '<div class="small muted">Cooldowns: '+Object.entries(f.cooldowns).filter(([k]) => r.report.known[k]).map(([k,v]) => esc(k)+' '+v.used+' of about '+v.possible).join('; ')+'</div>' : '')
     + (f.deaths.length ? f.deaths.map(d => '<div class="flag death">'+esc(d.who)+' died at '+d.at+' s. Last hits: '+esc(d.lastHits.join('; ')||'unknown')+'. Your casts in the 6 s before: '+d.myCastsLast6s+'.</div>').join('') : '')
     + '</div></details>').join('')+'</div></div>';
   $('#logOut').innerHTML = head + copy + flags + fights;
@@ -535,7 +535,7 @@ function renderLog(r){
     const f = r.report.fights[+c.dataset.curve]; c.dataset.done = 1;
     const n = Math.ceil(f.duration); const pts = []; let j = 0, last = f.mana.curve[0][1];
     for(let s = 0; s <= n; s++){ while(j < f.mana.curve.length && f.mana.curve[j][0] <= s){ last = f.mana.curve[j][1]; j++; } pts.push(last); }
-    lineChart(c, [{name:'Mana', color:'#2fa893', pts}], 'mana');
+    lineChart(c, [{name:'Mana', color:'#4285f4', pts}], 'mana');
   }));
 }
 

@@ -5,12 +5,15 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 r = lambda f: open(os.path.join(ROOT, f)).read()
 shaman = r('src/app.html')
 css = shaman[shaman.index('<style>') + 7:shaman.index('</style>')]
-html = r('src/mc/app.html')
+html = r('src/mc/app.html').replace('/*SHARED_CSS*/', css)
+import sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from shell import shell
+html = shell(html, 'forever')
 data = r('src/data.js') + '\n' + r('src/levels.js') + '\nDATA.LV = LEVELS; DATA.RK = RANKS;\n'
 cls = r('src/mc/classdata.js')
 mc = cls + '\n' + r('src/mc/items.js') + '\n' + r('src/mc/request.js') + '\n' + r('src/mc/gear.js') + '\n' + r('src/mc/quest.js')
 worker = data + '\n' + cls + '\n' + r('src/mc/request.js') + '\n' + r('src/mc/quest.js') + '\n' + r('src/mc/worker.js')
-for k, v in [('/*SHARED_CSS*/', css), ('/*DATA_JS*/', data), ('/*MC_JS*/', mc), ('/*WORKER_JS*/', worker), ('/*APP_JS*/', r('src/mc/app.js'))]:
+for k, v in [('/*DATA_JS*/', data), ('/*MC_JS*/', mc), ('/*WORKER_JS*/', worker), ('/*APP_JS*/', r('src/mc/app.js'))]:
     assert k in html, k
     html = html.replace(k, v.replace('</script>', '<\\/script>'))
 out = os.path.join(ROOT, 'dist/forever')

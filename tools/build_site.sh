@@ -7,7 +7,7 @@ ROOT=$(cd "$(dirname "$0")/.." && pwd)
 python3 "$ROOT/tools/build.py"
 python3 "$ROOT/tools/build_mc.py"
 python3 "$ROOT/tools/build_crafts.py"
-cp "$ROOT/src/site/index.html" "$ROOT/dist/index.html"
+python3 -c "import sys; sys.path.insert(0, '$ROOT/tools'); from shell import shell; open('$ROOT/dist/index.html', 'w').write(shell(open('$ROOT/src/site/index.html').read(), 'start'))"
 cp "$ROOT/NOTICE.md" "$ROOT/dist/NOTICE.txt"   # the MIT notices travel with the compiled engine
 touch "$ROOT/dist/.nojekyll"
 ls -la "$ROOT/dist" "$ROOT/dist/shaman" "$ROOT/dist/forever" "$ROOT/dist/crafts"
