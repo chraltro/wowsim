@@ -23,7 +23,7 @@ body{padding-bottom:calc(var(--bar-h) + 24px + env(safe-area-inset-bottom))}
 a{color:var(--link);text-underline-offset:2px}
 button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--select);outline-offset:0;transition:outline-color .1s}
-::selection{background:#c6dafc}
+::selection{background:var(--select-fill)}
 .num{font-variant-numeric:tabular-nums}
 
 /* Title bar, name box and formula bar */
@@ -51,11 +51,32 @@ button,input,select,textarea{font:inherit;color:inherit}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
 
+/* Dark: the sheet's roles on a dark ground. Follows the system unless the theme button set one. */
+:root{--toggle-ink:#1967d2;--toggle-line:#aecbfa;--toast:#323232;--tab-hover:#137333;--scrim:rgba(32,33,36,.4);--lift:rgba(60,64,67,.3);--on-fill:#ffffff;
+  --gold:#a07400;--silver:#6f777d;--copper:#a5531b}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#1e1f20; --head:#28292a; --fill:#303134; --grid:#3c4043; --rule:#5f6368;
+  --text:#e8eaed; --muted:#9aa0a6; --link:#8ab4f8; --select:#8ab4f8; --select-fill:#2b3a52; --tab:#81c995; --tab-hover:#a8dab5;
+  --good:#81c995; --good-fill:#203a2b; --bad:#f28b82; --bad-fill:#45231f; --warn:#fdd663; --warn-fill:#3d3418;
+  --q0:#9d9d9d; --q1:#e8eaed; --q2:#3fd334; --q3:#5aa9ff; --q4:#c27bf5; --q5:#ff9a3c;
+  --toggle-ink:#aecbfa; --toggle-line:#5b7fb8; --toast:#e8eaed; --scrim:rgba(0,0,0,.55); --lift:rgba(0,0,0,.6); --on-fill:#1e1f20;
+  --gold:#ffd100; --silver:#c7c7cf; --copper:#eda55f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --ground:#1e1f20; --head:#28292a; --fill:#303134; --grid:#3c4043; --rule:#5f6368;
+  --text:#e8eaed; --muted:#9aa0a6; --link:#8ab4f8; --select:#8ab4f8; --select-fill:#2b3a52; --tab:#81c995; --tab-hover:#a8dab5;
+  --good:#81c995; --good-fill:#203a2b; --bad:#f28b82; --bad-fill:#45231f; --warn:#fdd663; --warn-fill:#3d3418;
+  --q0:#9d9d9d; --q1:#e8eaed; --q2:#3fd334; --q3:#5aa9ff; --q4:#c27bf5; --q5:#ff9a3c;
+  --toggle-ink:#aecbfa; --toggle-line:#5b7fb8; --toast:#e8eaed; --scrim:rgba(0,0,0,.55); --lift:rgba(0,0,0,.6); --on-fill:#1e1f20;
+  --gold:#ffd100; --silver:#c7c7cf; --copper:#eda55f; color-scheme:dark}
+.toast{color:var(--ground)!important}
+.xl-top .theme{margin-left:auto;border:1px solid var(--rule);background:var(--ground);border-radius:4px;padding:3px 10px;color:var(--text);cursor:pointer;font-size:12px}
+.xl-top .theme:hover{background:var(--fill)}
+
 /* Craft Profits on the sheet: the ledger is rows of cells, the filter is a sentence of dropdown cells.
    Green is profit, red is loss. Recipe difficulty keeps the game's orange, yellow, green and grey as a fill in the first cell. */
 :root{
   --line:var(--grid); --line-2:var(--rule); --ink:var(--text); --accent:var(--link);
-  --gold:#a07400; --silver:#6f777d; --copper:#a5531b;
+  
   --d-orange:#ff8040; --d-yellow:#ffd200; --d-green:#40c040; --d-grey:#9d9d9d;
   --ease:cubic-bezier(.2,.75,.2,1); --gutter:16px;
 }
@@ -75,7 +96,7 @@ h1{display:none}
 .tabs::-webkit-scrollbar{display:none}
 .tabs button{flex:none;border:0;background:none;border-radius:4px;padding:6px 14px;color:var(--text);white-space:nowrap;cursor:pointer;transition:background .12s}
 .tabs button:hover{background:var(--fill)}
-.tabs button[aria-selected="true"]{background:var(--select-fill);color:#1967d2;font-weight:bold}
+.tabs button[aria-selected="true"]{background:var(--select-fill);color:var(--toggle-ink);font-weight:bold}
 .tabs .ink{display:none}
 
 /* The question: dropdown cells inside a sentence */
@@ -154,8 +175,8 @@ button.row-head:hover{background:var(--fill)}
 .acts{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px}
 .btn{border:1px solid var(--rule);background:var(--ground);border-radius:4px;padding:6px 12px;min-height:32px;cursor:pointer;transition:background .12s}
 .btn:hover{background:var(--fill)}
-.btn.primary{background:var(--tab);border-color:var(--tab);color:#fff;font-weight:bold}
-.btn.primary:hover{background:#137333}
+.btn.primary{background:var(--tab);border-color:var(--tab);color:var(--on-fill);font-weight:bold}
+.btn.primary:hover{background:var(--tab-hover)}
 .btn[disabled]{opacity:.6;cursor:progress}
 .ext{color:var(--link);text-decoration:none}
 .ext:hover{text-decoration:underline}
@@ -172,10 +193,10 @@ footer{color:var(--muted);font-size:12px;display:grid;gap:6px;padding-top:14px;m
 footer p{margin:0;max-width:100ch}
 
 /* Settings: a dialog */
-.sheet-bg{position:fixed;inset:0;background:rgba(32,33,36,.4);opacity:0;transition:opacity .15s;z-index:45}
+.sheet-bg{position:fixed;inset:0;background:var(--scrim);opacity:0;transition:opacity .15s;z-index:45}
 .sheet-bg.show{opacity:1}
 .sheet{position:fixed;left:50%;top:50%;width:min(520px,calc(100% - 24px));max-height:84vh;overflow:auto;overscroll-behavior:contain;z-index:46;
-  background:var(--ground);border-radius:8px;box-shadow:0 4px 16px rgba(60,64,67,.3);padding:0 18px 18px;
+  background:var(--ground);border-radius:8px;box-shadow:0 4px 16px var(--lift);padding:0 18px 18px;
   transform:translate(-50%,-50%) scale(.98);opacity:0;pointer-events:none;transition:opacity .15s,transform .15s var(--ease)}
 .sheet.show{opacity:1;transform:translate(-50%,-50%);pointer-events:auto}
 .sheet-head{position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;background:var(--ground);padding:14px 0 8px;z-index:1;border-bottom:1px solid var(--grid)}
@@ -198,13 +219,14 @@ h3+.srow,.fine+.srow{border-top:0}
 .linkrow a.btn{text-decoration:none;color:var(--text);display:inline-flex;align-items:center}
 textarea{width:100%;border:1px solid var(--rule);background:var(--ground);border-radius:4px;padding:8px;font:12px/1.45 ui-monospace,Consolas,"Liberation Mono",monospace;resize:vertical;min-height:90px}
 .pastebox .acts{margin-top:10px;padding-bottom:6px}
-.toast{position:fixed;left:16px;bottom:calc(var(--bar-h) + 12px);background:#323232;color:#fff;padding:10px 14px;border-radius:4px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:60}
+.toast{position:fixed;left:16px;bottom:calc(var(--bar-h) + 12px);background:var(--toast);color:var(--on-fill);padding:10px 14px;border-radius:4px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:60}
 .toast.show{opacity:1}
 @media (max-width:640px){.app{padding:8px 10px 20px}.ask{font-size:14px}.row-head{padding-left:14px}.row-head[style*="--tick"]::before{width:6px}}
 </style>
 </head>
 <body>
-<header class="xl-top"><a class="doc" href="../">wowsim</a><span class="where">WoW: Forever, Alliance RP-PvP EU</span></header>
+<header class="xl-top"><a class="doc" href="../">wowsim</a><span class="where">WoW: Forever, Alliance RP-PvP EU</span><button class="theme" type="button" id="themeBtn" aria-label="Colour theme">Theme: auto</button></header>
+<script>(function(){var k="wowsim-theme",o=["auto","light","dark"],d=document.documentElement,b=document.getElementById("themeBtn"),t="auto";try{t=localStorage.getItem(k)||"auto"}catch(e){}function set(v){t=v;if(v==="auto")d.removeAttribute("data-theme");else d.setAttribute("data-theme",v);b.textContent="Theme: "+v;try{localStorage.setItem(k,v)}catch(e){}}set(o.indexOf(t)<0?"auto":t);b.onclick=function(){set(o[(o.indexOf(t)+1)%3])}})();</script>
 <div class="xl-fx" role="note"><span class="nb">Craft Profits</span><span class="fx" aria-hidden="true">fx</span><span class="tx">What every recipe makes on your auction house after the 5% cut, priced from the latest AHledger scan.</span></div>
 <div class="app">
   <header>

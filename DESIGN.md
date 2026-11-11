@@ -34,6 +34,8 @@ Sheet greys, link blue and green are Google Sheets' default interface colours as
 | Series | `#4285f4 #ea4335 #fbbc04 #34a853 #ff6d01 #46bdc6` | chart lines and builds, the sheet's default chart order |
 | Quality on white | uncommon `#1a8a00`, rare `#0062c4`, epic `#8f2bd6` | the game's hues, darkened to 4.5:1 on white |
 
+Dark: the same roles on `#1e1f20` with `#28292a` header rows, `#3c4043` gridlines, `#e8eaed` text, `#8ab4f8` links and selection, `#81c995` for the active tab and gains, and the game's own quality colours, which were made for a dark screen. Character fills keep dark text in both themes. The theme follows the system; the button in the title bar cycles auto, light and dark and remembers the choice in the browser.
+
 Type: Arial (the sheet's default), Liberation Sans where Arial is missing. No web fonts. Scale: 11px row and column headers, 13px cells and body, 15px block headers, 18px document title. Prose line height 1.5, cells 1.35 at 21px rows. Prose measure 72ch.
 
 Spacing unit 4px. Cell padding 3px 6px. Radius: cells and blocks 0, controls 4px, menus and dialogs 8px.

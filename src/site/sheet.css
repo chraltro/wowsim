@@ -16,7 +16,7 @@ body{padding-bottom:calc(var(--bar-h) + 24px + env(safe-area-inset-bottom))}
 a{color:var(--link);text-underline-offset:2px}
 button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--select);outline-offset:0;transition:outline-color .1s}
-::selection{background:#c6dafc}
+::selection{background:var(--select-fill)}
 .num{font-variant-numeric:tabular-nums}
 
 /* Title bar, name box and formula bar */
@@ -43,3 +43,24 @@ button,input,select,textarea{font:inherit;color:inherit}
   .xl-tabs a{padding:0 14px}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+
+/* Dark: the sheet's roles on a dark ground. Follows the system unless the theme button set one. */
+:root{--toggle-ink:#1967d2;--toggle-line:#aecbfa;--toast:#323232;--tab-hover:#137333;--scrim:rgba(32,33,36,.4);--lift:rgba(60,64,67,.3);--on-fill:#ffffff;
+  --gold:#a07400;--silver:#6f777d;--copper:#a5531b}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#1e1f20; --head:#28292a; --fill:#303134; --grid:#3c4043; --rule:#5f6368;
+  --text:#e8eaed; --muted:#9aa0a6; --link:#8ab4f8; --select:#8ab4f8; --select-fill:#2b3a52; --tab:#81c995; --tab-hover:#a8dab5;
+  --good:#81c995; --good-fill:#203a2b; --bad:#f28b82; --bad-fill:#45231f; --warn:#fdd663; --warn-fill:#3d3418;
+  --q0:#9d9d9d; --q1:#e8eaed; --q2:#3fd334; --q3:#5aa9ff; --q4:#c27bf5; --q5:#ff9a3c;
+  --toggle-ink:#aecbfa; --toggle-line:#5b7fb8; --toast:#e8eaed; --scrim:rgba(0,0,0,.55); --lift:rgba(0,0,0,.6); --on-fill:#1e1f20;
+  --gold:#ffd100; --silver:#c7c7cf; --copper:#eda55f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --ground:#1e1f20; --head:#28292a; --fill:#303134; --grid:#3c4043; --rule:#5f6368;
+  --text:#e8eaed; --muted:#9aa0a6; --link:#8ab4f8; --select:#8ab4f8; --select-fill:#2b3a52; --tab:#81c995; --tab-hover:#a8dab5;
+  --good:#81c995; --good-fill:#203a2b; --bad:#f28b82; --bad-fill:#45231f; --warn:#fdd663; --warn-fill:#3d3418;
+  --q0:#9d9d9d; --q1:#e8eaed; --q2:#3fd334; --q3:#5aa9ff; --q4:#c27bf5; --q5:#ff9a3c;
+  --toggle-ink:#aecbfa; --toggle-line:#5b7fb8; --toast:#e8eaed; --scrim:rgba(0,0,0,.55); --lift:rgba(0,0,0,.6); --on-fill:#1e1f20;
+  --gold:#ffd100; --silver:#c7c7cf; --copper:#eda55f; color-scheme:dark}
+.toast{color:var(--ground)!important}
+.xl-top .theme{margin-left:auto;border:1px solid var(--rule);background:var(--ground);border-radius:4px;padding:3px 10px;color:var(--text);cursor:pointer;font-size:12px}
+.xl-top .theme:hover{background:var(--fill)}

@@ -25,7 +25,12 @@ def shell(page_html, key, local=False):
     up = '' if key == 'start' else '../'
     me = next(p for p in PAGES if p[0] == key)
     shown = [p for p in PAGES if local or p[0] in PUBLISHED]
-    top = ('<header class="xl-top"><a class="doc" href="%s">wowsim</a><span class="where">WoW: Forever, Alliance RP-PvP EU</span></header>\n'
+    top = ('<header class="xl-top"><a class="doc" href="%s">wowsim</a><span class="where">WoW: Forever, Alliance RP-PvP EU</span>'
+           '<button class="theme" type="button" id="themeBtn" aria-label="Colour theme">Theme: auto</button></header>\n'
+           '<script>(function(){var k="wowsim-theme",o=["auto","light","dark"],d=document.documentElement,b=document.getElementById("themeBtn"),t="auto";'
+           'try{t=localStorage.getItem(k)||"auto"}catch(e){}'
+           'function set(v){t=v;if(v==="auto")d.removeAttribute("data-theme");else d.setAttribute("data-theme",v);b.textContent="Theme: "+v;try{localStorage.setItem(k,v)}catch(e){}}'
+           'set(o.indexOf(t)<0?"auto":t);b.onclick=function(){set(o[(o.indexOf(t)+1)%%3])}})();</script>\n'
            '<div class="xl-fx" role="note"><span class="nb">%s</span><span class="fx" aria-hidden="true">fx</span><span class="tx">%s</span></div>'
            % (up or './', html.escape(me[1]), html.escape(me[3])))
     tabs = '<nav class="xl-tabs" aria-label="Pages">%s<span class="gap"></span></nav>' % ''.join(
