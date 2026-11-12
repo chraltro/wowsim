@@ -5,6 +5,7 @@ What changed in the game and in these pages, newest first.
 ## 2026-11-12
 
 - **Gold: the house on Nov 12.** Low-zone goods now cost several times more on our house than elsewhere in the EU (Pristine Leather, Savory Whimsyfin Delight, Stranglekelp, Spider's Silk), Swiftthistle has doubled on PvP rulesets, Waylaid Crates have fallen, and the Darkmoon Faire (Nov 9 to 15, Elwynn) lifted Small Furry Paw. Added drop chances for Swiftthistle, Stranglekelp and Frilled Lichen, the Whimsyfin facts, Blueprint prices and the vendor flips. See [Gold making](gold.md).
+- **Gold at low level.** Added Coyote Meat (6s, cooks need it), where the cheap recipes are sold, and the beta finding that first-tier Scarce materials may stop dropping after level 25 (unconfirmed, and the big houses' prices argue against it).
 
 ## 2026-11-11
 
