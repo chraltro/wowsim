@@ -2,6 +2,43 @@
 
 What sells on our auction house, flips, crafting, and what a profession costs to level.
 
+## The house on Nov 12
+
+AHledger's scan of our house from Nov 12, 16:00 UTC, set against the other EU houses scanned the same day. Sold a day is AHledger's estimate from consecutive scans and leans low. This replaces the Nov 8 picture below where the two disagree.
+
+About 6,300g changes hands a day on our house: trade goods 2,100g, armor 1,225g, recipes 1,010g, consumables 625g, weapons 500g. It lists 2,819 different items against about 5,800 on PvP EU Alliance, so it is a thin market and a few sellers set each price.
+
+Several goods from the level 10 to 30 zones cost far more here than on any other EU house. Where our price is many times the others, plan on the 7-day median and treat today's price as a bonus.
+
+| Item                     | Median / cheapest | Sold a day | 7-day median | PvP EU Alliance |
+|--------------------------|-------------------|------------|--------------|-----------------|
+| Pristine Leather         | 1g / 80s          | 180        | 29s          | 7s 50c          |
+| Swiftthistle             | 11s 40c / 9s      | 1,281      | 6s 80c       | 13s 30c         |
+| Savory Whimsyfin Delight | 25s 10c / 25s 10c | 362        | 19s 80c      | 6s              |
+| Silver Ore               | 8s 90c / 8s 60c   | 665        | 9s 70c       | 6s 30c          |
+| Wool Cloth               | 2s 70c / 1s 40c   | 2,176      | 1s 10c       | 1s 50c          |
+| Stranglekelp             | 9s / 9s           | 483        | 2s           | 3s 10c          |
+| Small Furry Paw          | 45s / 22s         | 95         | 8s 30c       | 4s 20c          |
+| Spider's Silk            | 35s / 34s 80c     | 97         | 9s 60c       | 9s 50c          |
+| Briarthorn               | 4s / 3s           | 588        | 1s 50c       | 1s 20c          |
+| Frilled Lichen           | 17s / 14s 90c     | 92         | 14s 60c      | 22s 90c         |
+
+Flat or falling here: Heavy Stone, Medium Leather, Light Leather, Linen, Copper, Tin, Silk, Pristine Hide (9s, was 36s).
+
+- **Savory Whimsyfin Delight** is a new cosmetic food: it turns you into an Orc Pirate or Orc Ninja for an hour ([Method](https://www.method.gg/wow-forever/savory-whimsyfin-delight-and-savory-deviate-delight-how-to-turn-into-a-pirate-or-ninja-in-wow-forever); the beta's Murloc and Ogre forms were placeholders). Whimsyfin comes only from fishing schools in Redridge, mostly by the murloc village at the small lake in the east. The recipe drops from any Redridge mob and can be traded (5g on our house, one listed, 7-day median 7g 79c). In the game data it is Cooking 85 and one Whimsyfin plus one Mild Spices makes one dish. One guide says two; raw Whimsyfin hardly sells here (3.5 a day at 20s), which fits one. Buying the fish to cook loses money, so the profit is in fishing it. Savory Deviate Delight does not sell on our house (15s, none sold).
+- **Swiftthistle** comes with 39% of Briarthorn gathers and 20% of Mageroyal gathers, 1.5 on average each time ([timesaver.gg](https://timesaver.gg/tools/wow-forever/professions/herbalism), from Wowhead's Forever gathering counts). That is about 6s of Swiftthistle per Briarthorn node and 3s per Mageroyal node at our price. Alliance zones: Westfall, Darkshore, Duskwood, Ashenvale. The price is as high on PvP EU Alliance, so this one is not a local spike.
+- **Stranglekelp** gives 2 per node on average (same source).
+- **Frilled Lichen** (Scarce, makes Cerulean Dye, which 131 recipes use) is a bonus from ordinary herb nodes at 0.2% to 1.1% a gather (same source). A beta article gave 4% to 20% ([Gamewave](https://gamewave.fr/world-of-warcraft-forever/wow-forever-lichen-a-volants-comment-en-obtenir/)); the live counts are the ones to trust. Its price is the same on every EU house.
+- **Pristine Leather** has no published drop rate. On the three largest EU houses it sells at 6% to 7.5% of the combined Light and Medium Leather volume, which is the only hint. It goes into 126 recipes, none of whose products sell on our house, so the buyers are people leveling professions.
+- **Small Furry Paw** is a Darkmoon Faire turn-in (five for a ticket). The Faire is in Elwynn from Nov 9 to Nov 15 and returns Dec 7 in Mulgore ([Warcraft Tavern](https://www.warcrafttavern.com/forever/news/the-darkmoon-faire-is-now-open-in-wow-forever/)); another site gives Nov 16 as the last day. Expect the price to fall back when it leaves.
+- **Blueprints** from dungeon bosses sell: Trapper's Workbench 15g, Tanning Rack 10g, Arcane Salvager 9g, Rock Garden 8g 50c, Journeyman Campfire 6g 50c, Fermenter 6g, Field Guide 5g, each about 5 sold a day.
+- **Vendor to auction house** (expected profit each after the cut and failed listings): Cat Carrier (White Kitten) 60s to 1g 99c, +1g 16c, 3 sold a day, one in stock (Lil Timmy, who wanders Stormwind; [Icy Veins](https://www.icy-veins.com/wow-forever/news/dont-miss-these-cheap-pets-for-60-silver-in-wow-forever/) confirms him for Forever, respawn unknown). Manual: Mageweave Bandage 50s to 1g 25c, +57s, 9 a day. Expert Cookbook 1g to 1g 45c, +33s, 31 a day. Pattern: Red Woolen Bag 5s to 30s, 7 a day, limited stock. Recipe: Beer Basted Boar Ribs 2s 40c to 18s, 10 a day, limited. Recipe: Rage Potion 1s to 15s, 12 a day, limited. Recipe: Slitherskin Mackerel 40c to 7s, 21 a day. Together that is about 24g a day for everyone doing it. Vendor locations for all but the kitten are not checked for Forever.
+- **Crafting** pools stay small. The largest by expected profit times daily sales: White Bandit Mask (Tailoring 180), Cured Heavy Hide (Leatherworking 125), Shadow Protection Potion (Alchemy 135, 42 sold a day with one listed), Red Woolen Bag (Tailoring 90, costs 18s, sells 48s, 35 a day), Bolt of Woolen Cloth, Bronze Tube (Engineering 105). Each is single-digit gold a day for the whole house.
+- **Waylaid Crates have fallen:** Apprentice Ingots 38s, Journeyman Fabrics 25s, most others 1s to 6s.
+- **The other faction on our realm** prices these very differently (Horde RP-PvP EU: Pristine Leather 10s, Spider's Silk 7s 60c, Small Furry Paw 2s 90c; Silver Ore 18s, Jade 30s, Grave Moss 19s 60c against 8s 90c, 10s and 3s 70c here). Only a neutral auction house connects the two, at a 15% cut, and there is no price data for neutral houses.
+
+## The house on Nov 8
+
 As of Nov 8, gathering while leveling and selling Waylaid Crates is the best gold on our auction house (RP-PvP Alliance EU). Crafting for profit and flipping mostly lose this week. Prices are AHledger's scan from Nov 7, 11:50 UTC, made by a single scanner, so treat them as rough.
 
 | Item                  | Type            | Median, our house | 7-day change |
