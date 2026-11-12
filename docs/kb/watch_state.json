@@ -17,13 +17,12 @@
  "news": {
   "detail": "15 articles",
   "links": [
-   "/en-us/article/24302070/choose-your-ruleset-in-world-of-warcraft-forever",
    "/en-us/article/24302547/now-live-get-your-ticket-to-the-wow-forever-poster-signing-at-the-irvine-improv",
    "/en-us/article/24313105/watch-the-wow-forever-short-story-unbowed",
    "/en-us/article/24313106/dive-into-wow-forever-the-gods-of-zulaman-hallows-end-and-more-in-wow-weekly",
    "/en-us/article/24315203/your-next-adventure-in-wow-forever-starts-in-the-wow-portal-room",
    "/en-us/article/24315280/new-players-starter-guide-welcome-to-world-of-warcraft-forever",
-   "/en-us/article/24315281/wow-forever-hotfixes-november-10-2026",
+   "/en-us/article/24315281/wow-forever-hotfixes-november-11-2026",
    "/en-us/article/24315643/return-to-azeroth-in-world-of-warcraft-forever",
    "/en-us/article/24315819/watch-the-wow-forever-podcast-all-about-tech",
    "/en-us/article/24315820/world-of-warcraft-forever-now-live",
@@ -31,10 +30,11 @@
    "/en-us/article/24316094/prepare-for-forever-try-midnights-talebound-and-discover-sweet-treats-in-wow-weekly",
    "/en-us/article/24316097/the-adventure-begins-in-wow-forever-stay-connected-with-discord-and-taldramir-takes-shape-in-wow-weekly",
    "/en-us/article/24316974/explore-wow-forever-with-a-gamepad",
-   "/en-us/article/24317865/wow-forever-watch-forging-forever"
+   "/en-us/article/24317865/wow-forever-watch-forging-forever",
+   "/en-us/article/24317866/purchase-world-of-warcraft-forever-upgrades-and-begin-your-next-journey-in-azeroth"
   ],
-  "seen": "2026-11-11",
-  "sig": "f097cdaef0db05d9"
+  "seen": "2026-11-12",
+  "sig": "31b819306366dbd1"
  },
  "raids": {
   "detail": "6544 characters of text",
