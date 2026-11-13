@@ -2,6 +2,10 @@
 
 What changed in the game and in these pages, newest first.
 
+## 2026-11-13
+
+- **Gold: what to farm at each level.** A table of the best kill for each level group from 14 to 60, node and chest values, and the vendor flips by where you can walk, all at a safe price (the lower of ours and the EU reference). In one day every price far above the EU reference fell back to it: Pristine Leather 80s to 17s, Savory Whimsyfin Delight 25s to 8s, Small Furry Paw 22s to 9s. See [Gold making](gold.md).
+
 ## 2026-11-12
 
 - **Gold: the house on Nov 12.** Low-zone goods now cost several times more on our house than elsewhere in the EU (Pristine Leather, Savory Whimsyfin Delight, Stranglekelp, Spider's Silk), Swiftthistle has doubled on PvP rulesets, Waylaid Crates have fallen, and the Darkmoon Faire (Nov 9 to 15, Elwynn) lifted Small Furry Paw. Added drop chances for Swiftthistle, Stranglekelp and Frilled Lichen, the Whimsyfin facts, Blueprint prices and the vendor flips. See [Gold making](gold.md).

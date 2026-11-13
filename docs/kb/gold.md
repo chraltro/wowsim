@@ -2,6 +2,40 @@
 
 What sells on our auction house, flips, crafting, and what a profession costs to level.
 
+## What to farm at each level (Nov 13)
+
+One kill, node or purchase valued at a safe price: the lower of the cheapest listing on our house (scan of Nov 13, 17:06 UTC, less the 5% cut) and the EU reference price, with vendor price for what does not sell five a day. Drop chances and vendor lists are Classic's ([cmangos classic-db](https://github.com/cmangos/classic-db)); creature levels, zones and spawn counts are Forever's (QuestieDB). The numbers are a snapshot and need redoing when prices move.
+
+Why the safe price: between the Nov 12 and Nov 13 scans every price that stood far above the EU reference fell back to it. Pristine Leather went from 80s to 17s, Savory Whimsyfin Delight from 25s to 8s, Spider's Silk from 35s to 8s, Small Furry Paw from 22s to 9s, Swiftthistle from 9s to 5s, Stranglekelp from 9s to 1s 60c, Boar Intestines from 3s 50c to 19c. Coyote Meat, which matched the EU reference, held at 5s 90c. Tough Condor Meat showed 5 sold a day on Nov 12 and 156 on Nov 13, so a single day's sales figure can be wrong.
+
+| Level    | Best kill                                                    | Per kill      | What carries it                                                         |
+|----------|--------------------------------------------------------------|---------------|-------------------------------------------------------------------------|
+| 14 to 16 | Coyote, Coyote Packleader (Westfall, 10 to 12)               | 3s 50c        | Coyote Meat 51% to 54% at 5s 90c, 136 sold a day                        |
+| 17 to 19 | Dire Condor (Redridge, 18 to 19, 20 spawns)                  | 4s 40c        | Tough Condor Meat 35% at 9s, 156 sold a day, EU 10s                     |
+| 20 to 24 | Duskwood: Rabid Dire Wolf, ravagers, Black Widow Hatchling   | 3s 20c to 3s 70c | Lean Wolf Flank 55% at 2s (395 a day), Soft Patch of Fur (6s at a vendor), Spider's Silk 12% at 8s |
+| 25 to 29 | Pesterhide Hyena and Snarler (Thousand Needles, 81 spawns)   | 5s 40c        | Soft Patch of Fur on 76% of kills, 6s at a vendor                       |
+| 30 to 34 | Stranglethorn tigers and panthers (205 spawns)               | 7s 50c to 8s  | Bristly Whisker (7s 30c at a vendor), Tiger Meat 55% at 5s              |
+| 35 to 39 | Arathi Exiles: Cresting 23s, Burning 13s, Rumbling 11s       | 11s to 23s    | Cresting Charm 50% at 46s (37 a day), Burning Charm, Elemental Earth 11% at 39s |
+| 40 to 49 | Rocs (Tanaris), Savage Owlbeast (Hinterlands, 173 spawns)    | 20s to 24s    | Giant Egg 35% to 41% at 36s, only 31 sold a day                         |
+| 50 to 60 | Ironbeak owls (Felwood), Winterspring owls and screechers    | 25s to 30s    | Giant Egg 43% to 48%, Vibrant Plume up to 29%                           |
+
+- Runners-up: Moonstalker (Darkshore, 14 to 15) 5s 20c while the Darkmoon Faire holds Small Furry Paw at 9s, 2s after. Ghostpaw Runner (Ashenvale, 19 to 20, 69 spawns) 3s. Elder Ashenvale Bear (25 to 26) 4s 10c. Elemental Slave (Alterac, 32 to 34, 22 spawns) 10s 70c. Rock Elemental (Badlands, 39 to 40) 11s.
+- Above level 40 the ranking rests on Giant Egg, and 31 a day is one farmer's output, so check it again before relying on it. Vendor values for grey items are Classic's where our data has none.
+- **Nodes** at the same safe price: Briarthorn 4s 50c (with Forever's Swiftthistle rate), Silver Vein 5s 50c, Tin Vein 2s 50c, Mageroyal 2s, Grave Moss 9s (20s on Nov 13), Fadeleaf 7s 60c, Goldthorn 10s, Iron Deposit 5s 60c (the Heavy Stone is half of it), Wintersbite 31s and Firebloom 44s on thin sales, Thorium 65s on 9 sold a day. Herbs above Purple Lotus are not on the auction house yet.
+- **Chests** (Classic tables): Battered and Tattered Chests in the low zones hold about 5s. Solid Chests, in zones from about level 30, hold 29s to 2g 37c with a median of 1g 38c, mostly potions. Dwarves track them with Find Treasure.
+- **Open-water fishing** is under 41c a catch everywhere below level 30.
+- **Waylaid Crates** worth selling unopened on Nov 13: Journeyman Fabrics 59s (67 a day), Apprentice Fabrics 19s, Apprentice Parts 18s, Apprentice Ingots 16s. The rest are 1s to 8s.
+- **Blueprints** on Nov 13: Tanning Rack 8g 88c (6 a day), Arcane Salvager 6g, Field Guide 5g, Journeyman Campfire 4g 80c, Anvil 1g 10c. Fermenter, Rock Garden, Toxin Study, Trapper's Workbench and Cookie's Feast are listed but did not sell that day.
+
+### Vendor to auction house by where you can walk (Nov 13)
+
+Buy price, then cheapest on our house, sold a day, and the vendor. Vendor lists and stock are Classic's; buy prices are Forever's where our data has them.
+
+- **Ironforge and Stormwind:** Formula: Enchant 2H Weapon - Lesser Intellect, 5s to 18s, 43 a day, Tilli Thistlefuzz (Ironforge), one in stock every two hours. Recipe: Longjaw Mud Snapper, 4s to 25s (one listed, EU 11s), 8 a day, Tansy Puddlefizz (Ironforge), Khara Deepwater (Loch Modan). Recipe: Slitherskin Mackerel, 40c to 7s, 26 a day, Tansy Puddlefizz, Kriggon Talsone (Westfall). Recipe: Cooked Crab Claw, 4s to 22s (one listed, EU 12s), 8 a day, and Recipe: Westfall Stew, 2s to 15s, 3 a day, Kendor Kabonka (Stormwind). Simple Wildflowers, 2s to 12s, 16 a day, the Gump flower sellers (Stormwind). Cat Carrier (White Kitten), 60s to 4g 25c (five listed, EU 92s), 3 a day, Lil Timmy.
+- **Low zones:** Pattern: Blue Linen Robe, 3s to 60s (one listed, EU 8s), Drake Lindgren (Elwynn), Elynna (Darnassus). Recipe: Rage Potion, 1s to 9s, Xandar Goodbeard (Loch Modan). Recipe: Great Rage Potion, 20s to 44s, Ulthir (Darnassus). Recipe: Clam Chowder, 8s to 20s, Kriggon Talsone (Westfall), Heldan Galesong (Darkshore). Recipe: Rockscale Cod, 22s to 78s (EU 30s), and Recipe: Mithril Head Trout, 22s to 48s, Stuart Fleming (Menethil), Heldan Galesong. Pattern: Red Woolen Bag has fallen to 18s and Recipe: Beer Basted Boar Ribs to 6s.
+- **Level 20 and up:** Expert Cookbook, 1g to 1g 20c, 28 a day, Shandrina (Ashenvale).
+- **Level 30 and up:** Expert First Aid - Under Wraps, 1g to 1g 52c, 15 a day; Manual: Mageweave Bandage, 50s to 90s, 8 a day; Manual: Heavy Silk Bandage, 22s to 37s, 8 a day; all Deneb Walker (Arathi). Expert Fishing - The Bass and You, 1g to 1g 20c, Old Man Heming (Booty Bay).
+
 ## The house on Nov 12
 
 AHledger's scan of our house from Nov 12, 16:00 UTC, set against the other EU houses scanned the same day. Sold a day is AHledger's estimate from consecutive scans and leans low. This replaces the Nov 8 picture below where the two disagree.
@@ -43,7 +77,7 @@ Flat or falling here: Heavy Stone, Medium Leather, Light Leather, Linen, Copper,
   - Level 9 to 14: Coyote and Coyote Packleader (Westfall) 3.6s. Young Goretusk (Westfall, 12 to 13) 2.5s and Mountain Boar (Loch Modan, 10 to 11) 2.0s: Boar Ribs 25% to 27% at 1s 70c (213 sold a day, EU reference 3s 20c), Boar Intestines 32% at 3s 50c (22c a week earlier, so 1.4s and 1.0s a kill without it), Chunk of Boar Meat, Goretusk Liver. Fleshripper and Young Fleshripper (Westfall) 1.7s to 2.0s: Stringy Vulture Meat 31% to 35% at 2s, Small Egg, Light Feather. Crawlers (Westfall coast, Darkshore) 1.4s: Crawler Meat 33% to 43% at 1s 70c, 501 sold a day against 264 listed, EU reference 2s 90c. Foreststrider Fledgling (Darkshore) 1.6s: Strider Meat 43%, only 44 sold a day. Light Hide comes from 5% to 6% of skins and sells for 2s to 6s, 233 a day against 40 listed.
   - Level 14 to 20: Moonstalker (Darkshore, 14 to 15) 12s while the Faire lifts Small Furry Paw (56% in the Classic table, which one Classic player's comment disputes), 2s to 4s at the paw's usual price. Goretusk 2.9s, Great Goretusk 3.3s. Wood Lurker (Loch Modan, 17 to 18) 2.9s on Poisoned Spider Fang (28% at 7s, 16 sold a day). Venom Web spiders (Duskwood, 18 to 20) 5s on Spider's Silk at 35s, 3s at its week median. Dire wolves (Duskwood, 19 to 21) about 3s: Lean Wolf Flank 55% at 1s 50c, 373 sold a day.
   - Level 21 to 25: Wetlands crocolisks 3.7s to 5.4s (Tender Crocolisk Meat 51% to 59% at 3s 90c, 346 sold a day). Spiders with Spider's Silk at 10% to 12% (Duskwood, Wetlands) 6s to 7s at today's silk price.
-  - Not worth it: Tough Condor Meat (6s, 5 sold a day) and open-water fishing in any low zone (15c to 41c a catch).
+  - Open-water fishing in any low zone is 15c to 41c a catch. Tough Condor Meat looked dead on this scan (6s, 5 sold a day) and was not: see Nov 13 above.
 - **A level 10 to 15 character** reaches three pools worth the walk: Pristine Leather, Swiftthistle through Briarthorn and Mageroyal, and Coyote Meat. Every craft learnable by skill 150 is under 14g a day for the whole house (Cured Heavy Hide, Shadow Protection Potion, Red Woolen Bag, Bolt of Woolen Cloth, Bronze Tube lead).
 
 ## The house on Nov 8
