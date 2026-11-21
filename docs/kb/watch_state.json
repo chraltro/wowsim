@@ -10,16 +10,15 @@
   "sig": "6 posts, last 2026-09-15T01:16:18.639Z"
  },
  "hotfixes": {
-  "detail": "21258 characters of text",
-  "seen": "2026-11-11",
-  "sig": "00be4c3b2e6ea9c8"
+  "detail": "39910 characters of text",
+  "seen": "2026-11-21",
+  "sig": "92a71da0aacdc4b5"
  },
  "news": {
   "detail": "15 articles",
   "links": [
-   "/en-us/article/24302547/now-live-get-your-ticket-to-the-wow-forever-poster-signing-at-the-irvine-improv",
    "/en-us/article/24315205/wow-weekly-highlights-the-wow-forever-podcast-a-new-short-story-this-weeks-videos-and-more",
-   "/en-us/article/24315281/wow-forever-hotfixes-november-19-2026",
+   "/en-us/article/24315281/wow-forever-hotfixes-november-20-2026",
    "/en-us/article/24315643/return-to-azeroth-in-world-of-warcraft-forever",
    "/en-us/article/24315819/watch-the-wow-forever-podcast-all-about-tech",
    "/en-us/article/24315820/world-of-warcraft-forever-now-live",
@@ -30,11 +29,12 @@
    "/en-us/article/24316974/explore-wow-forever-with-a-gamepad",
    "/en-us/article/24316981/watch-the-wow-forever-podcast-the-lore-episode",
    "/en-us/article/24317086/watch-the-wow-forever-podcast-catching-up-on-classes",
+   "/en-us/article/24317681/wow-forever-class-design-echoes-of-the-worldcore-and-more-in-wow-weekly",
    "/en-us/article/24317865/wow-forever-watch-forging-forever",
    "/en-us/article/24317866/purchase-world-of-warcraft-forever-upgrades-and-begin-your-next-journey-in-azeroth"
   ],
-  "seen": "2026-11-20",
-  "sig": "10948e8cc025a1a2"
+  "seen": "2026-11-21",
+  "sig": "7a865810abd4c9aa"
  },
  "raids": {
   "detail": "6544 characters of text",
